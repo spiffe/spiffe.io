@@ -1,0 +1,106 @@
+{{- $year       := now.Year }}
+{{- $spiffeDocs := where .Site.Pages "Section" "spiffe" }}
+{{- $spireDocs  := where .Site.Pages "Section" "spire" }}
+{{- $social     := .Site.Params.socialmedia }}
+{{- $twitterUrl := printf "https://twitter.com/%s" $social.twitter }}
+{{- $slackUrl   := printf "https://%s.slack.com" $social.slack }}
+{{- $blogUrl    := $social.medium }}
+<footer class="footer has-background-dark">
+  <div class="container">
+    <img class="is-footer-logo" src="/img/logos/spiffe/horizontal/white/spiffe-horizontal-white.png">
+
+    <hr class="is-large has-background-grey-light">
+
+    <div class="columns">
+
+      <div class="column">
+        <p class="title is-size-4 has-text-white-bis">
+          SPIFFE
+        </p>
+
+        <ul>
+          {{- range $spiffeDocs }}
+          {{ .Render "li" }}
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="is-divider-vertical is-grey"></div>
+
+      <div class="column">
+        <p class="title is-size-4 has-text-white-bis">
+          SPIRE
+        </p>
+
+        <ul>
+          {{- range $spireDocs }}
+          {{ .Render "li" }}
+          {{- end }}
+        </ul>
+      </div>
+
+      <div class="is-divider-vertical is-grey"></div>
+
+      <div class="column">
+        <p class="title is-size-4 has-text-white-bis">
+          Community
+        </p>
+
+        <div class="buttons">
+          <a class="button" href="{{ $blogUrl }}">
+            <span class="icon">
+              <i class="fab fa-medium"></i>
+            </span>
+            <span>
+              Blog
+            </span>
+          </a>
+
+          <a class="button is-twitter-blue" href="{{ $twitterUrl }}">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+            <span>
+              Twitter
+            </span>
+          </a>
+
+          <a class="button">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+            <span>
+              GitHub
+            </span>
+          </a>
+
+          <a class="button is-slack-green" href="{{ $slackUrl }}">
+            <span class="icon">
+              <i class="fab fa-slack"></i>
+            </span>
+            <span>
+              Slack
+            </span>
+          </a>
+
+          <a class="button is-stack-overflow-orange">
+            <span class="icon">
+              <i class="fab fa-stack-overflow"></i>
+            </span>
+            <span>
+              StackOverflow
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <section class="has-text-centered">
+      <span class="has-text-grey-lighter">
+        &copy; {{ $year }} The SPIFFE authors
+      </span>
+    </section>
+  </div>
+</footer>

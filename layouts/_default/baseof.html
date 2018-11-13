@@ -1,0 +1,22 @@
+{{- $pageType := cond .IsHome "home" .Section }}
+{{- $favicon  := "favicon.ico" | relURL }}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    {{ partial "meta.html" . }}
+    <title>{{ block "title" . }}{{ .Site.Title }} &ndash; {{ .Site.Params.acronym }}{{ end }}</title>
+    <link rel="shortcut icon" href="{{ $favicon }}" type="image/x-icon">
+    {{ partial "css.html" . }}
+    <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+  </head>
+  <body class="is-page is-{{ $pageType }}-page has-navbar-fixed-top">
+    {{ partial "navbar.html" . }}
+
+    <main class="is-main">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+    {{ partial "javascript.html" . }}
+  </body>
+</html>

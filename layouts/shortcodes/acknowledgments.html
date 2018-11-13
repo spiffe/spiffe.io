@@ -1,0 +1,39 @@
+{{- $acknowledgments := .Site.Data.acknowledgments }}
+<table>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Social media
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{- range $acknowledgments }}
+    <tr>
+      <td>
+        {{ .name }}
+      </td>
+      <td>
+        {{ with .linkedin }}
+        <a href="https://www.linkedin.com/in/{{ . }}">
+          <span class="icon is-medium has-text-linkedin-blue">
+            <i class="fab fa-lg fa-linkedin"></i>
+          </span>
+        </a>
+        {{ end }}
+
+        {{ with .twitter }}
+        <a href="https://twitter.com/{{ . }}">
+          <span class="icon is-medium has-text-twitter-blue">
+            <i class="fab fa-lg fa-twitter"></i>
+          </span>
+        </a>
+        {{ end }}
+      </td>
+    </tr>
+    {{- end }}
+  </tbody>
+</table>

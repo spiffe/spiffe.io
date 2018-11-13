@@ -1,0 +1,4 @@
+{{- $releasesUrl := "https://api.github.com/repos/spiffe/spire/releases" }}
+{{- $releases    := getJSON $releasesUrl }}
+{{- $latest      := (index $releases 0).tag_name }}
+{{- $latest -}}

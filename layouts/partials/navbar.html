@@ -1,0 +1,75 @@
+{{- $isHome          := .IsHome }}
+{{- $isSpirePage     := eq .Section "spire" }}
+{{- $isDownloadsPage := eq .Section "downloads" }}
+{{- $spiffeLogo      := "/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png" | relURL }}
+{{- $spireLogo       := "/img/logos/spire/horizontal/color/spire-horizontal-color.png" | relURL }}
+{{- $logoUrl         := cond $isSpirePage $spireLogo $spiffeLogo }}
+{{- $social          := .Site.Params.socialmedia }}
+{{- $twitterUrl      := printf "https://twitter.com/%s" $social.twitter }}
+{{- $slackUrl        := printf "https://%s.slack.com" $social.slack }}
+{{- $blogUrl         := $social.medium }}
+{{- $nav             := .Site.Params.nav }}
+<nav class="navbar is-fixed-top is-light">
+  <div class="container">
+    <div class="navbar-brand">
+      {{- if not $isHome }}
+      <a class="navbar-item" href="{{ .Site.BaseURL }}">
+        <img src="{{ $logoUrl }}">
+      </a>
+      {{- end }}
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        {{- range $nav }}
+        <a class="navbar-item has-text-weight-bold" href="{{ .link | relURL }}">
+          {{ .text }}
+        </a>
+        {{- end }}
+
+        <div class="navbar-item">
+          <p class="control">
+            <a class="button is-black" href="{{ $blogUrl }}">
+              <span class="icon">
+                <i class="fab fa-medium"></i>
+              </span>
+              <span>
+                Blog
+              </span>
+            </a>
+
+            <a class="button is-twitter-blue" href="{{ $twitterUrl }}">
+              <span class="icon">
+                <i class="fab fa-twitter"></i>
+              </span>
+            </a>
+
+            <a class="button is-black">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+            </a>
+
+            <a class="button is-slack-green" href="{{ $slackUrl }}">
+              <span class="icon">
+                <i class="fab fa-slack"></i>
+              </span>
+            </a>
+
+            <a class="button is-stack-overflow-orange">
+              <span class="icon">
+                <i class="fab fa-stack-overflow"></i>
+              </span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

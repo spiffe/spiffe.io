@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Hugo-generated assets
+public/
+
+# Node.js assets
+node_modules/

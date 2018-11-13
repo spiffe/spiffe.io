@@ -1,0 +1,122 @@
+@charset "utf-8"
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:300,400,400i,700')
+@import url('https://use.fontawesome.com/releases/v5.4.1/css/all.css')
+
+// SPIFFE color palette
+$spiffe-blue: #04bdd9
+$spiffe-green: #bcd918
+$twitter-blue: #1da1f3
+$stack-overflow-orange: #f48024
+$slack-green: #74cdb0
+$linkedin-blue: #0077b5
+
+@import "bulma/sass/utilities/initial-variables"
+@import "bulma/sass/utilities/functions"
+
+$family-sans-serif: 'PT Sans', sans-serif
+$link: $spiffe-blue
+$link-hover: $spiffe-green
+
+@import "bulma/sass/utilities/derived-variables"
+
+$colors: mergeColorMaps(("twitter-blue": ($twitter-blue, $white), "stack-overflow-orange": ($stack-overflow-orange, $white), "slack-green": ($slack-green, $white), "linkedin-blue": ($linkedin-blue, $white)), $colors)
+$card-shadow: 0 1px 2px rgba($dark, 0.2), 0 0 0 1px rgba($dark, 0.2)
+$code: $dark
+$code-background: $white-ter
+
+@import "bulma/bulma"
+@import "bulma-divider/dist/css/bulma-divider"
+
+.is-logo-button
+  .icon img
+    width: 75%
+
+  span:nth-child(2)
+    margin-left: .5rem
+
+.article
+  margin: 2rem 0
+
+  .content
+    margin-bottom: 5rem
+
+    +touch
+      margin-left: 1rem
+      margin-right: 1rem
+
+    li
+      list-style-type: square
+
+    p a, li a
+      font-weight: 600
+
+.is-home-desktop-logo
+  width: 50%
+
+.is-home-mobile-logo
+  width: 30%
+
+.is-user-mobile-logo
+  margin: 2rem auto 0 auto
+  width: 20%
+
+=logo($desktop, $touch)
+  +desktop
+    width: $desktop
+
+  +touch
+    width: $touch
+
+.button
+  border: none
+
+.tabs
+  li.is-active
+    a
+      color: $dark
+      font-weight: bolder
+      border-bottom: 3px solid $spiffe-blue
+  
+
+.section
+  &.is-black
+    background-color: $black
+    
+    *
+      color: $white
+
+.is-hero-logo
+  +logo(40%, 60%)
+
+.footer
+  li a
+    color: $white-bis
+
+.is-footer-logo
+  +mobile
+    width: 40%
+
+  +tablet
+    width: 15%
+
+
+// This ensures a "sticky" footer at the bottom
+.is-page
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+  .is-main
+    flex: 1
+
+hr
+  &.is-large
+    height: 2px
+    margin: 3rem 0
+
+.is-downloads-table
+  a.is-download-version
+    color: $black-ter
+    
+    &:hover
+      color: $grey

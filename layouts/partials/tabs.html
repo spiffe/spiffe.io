@@ -1,0 +1,19 @@
+{{- $docs         := where .Site.Pages "Section" .Section }}
+{{- $multipleDocs := gt (len $docs) 1 }}
+{{- $currentUrl   := .URL }}
+{{- if $multipleDocs }}
+<nav class="tabs is-medium">
+  <div class="container">
+    <ul>
+      {{- range $docs }}
+      {{- $isCurrentPage := eq .URL $currentUrl }}
+      <li{{ if $isCurrentPage }} class="is-active"{{ end }}>
+        <a href="{{ .URL }}">
+          {{ .Title }}
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</nav>
+{{- end }}
