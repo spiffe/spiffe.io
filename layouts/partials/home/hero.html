@@ -1,0 +1,41 @@
+{{- $title       := .Site.Title }}
+{{- $acronym     := .Site.Params.home.acronym | markdownify }}
+{{- $description := .Site.Params.home.description | markdownify }}
+{{- $spiffeLogo  := "img/logos/spiffe/icon/color/spiffe-icon-color.svg" | relURL }}
+{{- $spireLogo   := "img/logos/spire/icon/color/spire-icon-color.svg" | relURL }}
+<section class="hero is-medium is-light">
+  <div class="hero-body has-text-centered">
+    <div class="container">
+      <img class="title is-hero-logo" src="/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png">
+
+      <br />
+
+      <p class="subtitle is-size-2 is-size-4-mobile has-text-weight-bold">
+        Secure Production Identity Framework for Everyone
+      </p>
+      <p class="subtitle is-size-3 is-size-5-mobile has-text-weight-light">
+        {{ $description }}
+      </p>
+
+      <div class="buttons is-centered is-logo-button">
+        <a class="button is-dark is-large" href="/spiffe">
+          <span class="icon">
+            <img src="{{ $spiffeLogo }}">
+          </span>
+          <span>
+            SPIFFE docs
+          </span>
+        </a>
+
+        <a class="button is-dark is-large" href="/spire">
+          <span class="icon">
+            <img src="{{ $spireLogo }}">
+          </span>
+          <span>
+            SPIRE docs
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+{{- $whatIsSpiffe := .Site.Params.home.whatis.spiffe | markdownify }}
+{{- $whatIsSpire  := .Site.Params.home.whatis.spire  | markdownify }}
+<section class="section is-black">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column is-9">
+        <p class="title is-size-3 is-size-4-mobile has-text-white-bis">
+          What is SPIFFE?
+        </p>
+
+        <p class="is-size-5 is-size-6-mobile">
+          {{ $whatIsSpiffe }}
+        </p>
+      </div> <!-- .column -->
+
+      <div class="column has-text-right is-hidden-mobile">
+        <img class="is-home-desktop-logo" src="/img/logos/spiffe/icon/color/spiffe-icon-color.png">
+      </div> <!-- .column -->
+    </div> <!-- .columns -->
+
+    <div class="columns is-hidden-tablet">
+      <div class="column has-text-centered">
+        <img class="is-home-mobile-logo" src="/img/logos/spiffe/icon/color/spiffe-icon-color.png">
+      </div> <!-- .column -->
+    </div> <!-- .column.is-hidden-tablet -->
+
+    <hr class="is-large has-background-grey">
+
+    <div class="columns is-vcentered">
+      <div class="column has-text-left is-hidden-mobile">
+        <img class="is-home-desktop-logo" src="/img/logos/spire/icon/color/spire-icon-color.png">
+      </div> <!-- .column -->
+
+      <div class="column is-9 has-text-right">
+        <p class="title is-size-3 is-size-4-mobile">
+          What is SPIRE?
+        </p>
+
+        <p class="is-size-5 is-size-6-mobile">
+          {{ $whatIsSpire }}
+        </p>
+      </div> <!-- .column -->
+    </div> <!-- .columns -->
+
+    <div class="columns is-hidden-tablet">
+      <div class="column has-text-centered is-hidden-tablet">
+        <img class="is-home-mobile-logo" src="/img/logos/spire/icon/color/spire-icon-color.png">
+      </div> <!-- .column -->
+    </div> <!-- .columns.is-hidden-tablet -->
+  </div> <!-- .container -->
+</section> <!-- .section -->

@@ -1,0 +1,9 @@
+{{- $icon := cond .isDownloadButton "arrow-alt-circle-down" "clipboard-list" }}
+<a class="button is-{{ .color }}{{ if not .isDownloadButton }} is-clipboard{{ end }}"{{ if .isDownloadButton }} href="{{ .url }}" download{{ else }} data-clipboard-action="copy" data-clipboard-text="{{ .url }}"{{ end }}>
+  <span class="icon">
+    <i class="fas fa-{{ $icon }}"></i>
+  </span>
+  <span>
+    {{ .text }}
+  </span>
+</a>

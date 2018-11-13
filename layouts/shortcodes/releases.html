@@ -1,0 +1,57 @@
+{{- $spireReleasesUrl := "https://api.github.com/repos/spiffe/spire/releases" }}
+{{- $downloadUrl      := "https://github.com/spiffe/spire/releases/download" }}
+{{- $releases         := getJSON $spireReleasesUrl }}
+{{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
+{{- $downloadButtons  := .Site.Params.downloads.buttons.download }}
+<table class="is-downloads-table">
+  <thead>
+    <tr>
+      <th>
+        Version
+      </th>
+      <th>
+        Click to copy link to clipboard
+      </th>
+      <th>
+        Click to trigger download
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{- range $releases }}
+    {{- $version      := .tag_name }}
+    {{- $versionUrl   := .html_url }}
+    {{- $tar          := (index .assets 0).name }}
+    {{- $zip          := (index .assets 1).name }}
+    {{- $binaryTarUrl := printf "%s/%s/%s" $downloadUrl $version $tar }}
+    {{- $checksumsUrl := printf "%s/%s/%s" $downloadUrl $version $zip }}
+    {{- $sourceZipUrl := printf "https://github.com/spiffe/spire/archive/%s.zip" $version }}
+    {{- $sourceTarUrl := printf "https://github.com/spiffe/spire/archive/%s.tar.gz" $version }}
+    <tr>
+      <td>
+        <a class="is-size-4 has-text-weight-bold is-download-version" href="{{ $versionUrl }}">
+          {{ $version }}
+        </a>
+      </td>
+
+      <td>
+        <div class="buttons">
+          {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Binaries (.tar.gz)" "isDownloadButton" false "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Checksums (.txt)" "isDownloadButton" false "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $sourceZipUrl "text" "Source (.zip)" "isDownloadButton" false "color" "light") }}
+          {{ partial "downloads/download-button.html" (dict "url" $sourceTarUrl "text" "Source (.tar.gz)" "isDownloadButton" false "color" "light") }}
+        </div>
+      </td>
+
+      <td>
+        <div class="buttons">
+          {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Binaries (.tar.gz)" "isDownloadButton" true "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Checksums (.txt)" "isDownloadButton" true "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $sourceZipUrl "text" "Source (.zip)" "isDownloadButton" true "color" "light") }}
+          {{ partial "downloads/download-button.html" (dict "url" $sourceTarUrl "text" "Source (.tar.gz)" "isDownloadButton" true "color" "light") }}
+        </div>
+      </td>
+    </tr>
+    {{- end }}
+  </tbody>
+</table>

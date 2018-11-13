@@ -1,0 +1,49 @@
+title        = "SPIFFE"
+baseURL      = "/"
+languageCode = "en-us"
+pygmentsStyle = "monokai"
+pygmentsCodefences = true
+canonifyurls = true
+
+[blackfriday]
+hrefTargetBlank = true
+
+[params]
+acronym = "Secure Production Identity Framework for Everyone"
+
+[params.home]
+acronym     = "**S**ecure **P**roduction **I**dentity **F**ramework **f**or **E**veryone"
+description = "Inspired by the production infrastructure of Google and others, SPIFFE is a set of open-source standards for securely identifying software systems in dynamic and heterogeneous environments. "
+
+[params.home.whatis]
+spiffe = "**SPIFFE**, the Secure Production Identity Framework For Everyone, provides a secure identity, in the form of a specially crafted X.509 certificate, to every workload in a modern production environment. SPIFFE removes the need for application-level authentication and complex network-level ACL configuration. "
+spire = "**SPIRE**, the SPIFFE Runtime Environment, is an extensible system that implements the principles embodied in the SPIFFE standards. SPIRE manages platform and workload attestation, provides an API for controlling attestation policies, and coordinates certificate issuance and rotation."
+
+[params.socialmedia]
+twitter = "SPIFFEio"
+slack   = "spiffe"
+medium  = "https://blog.spiffe.io"
+
+[params.assets]
+js = [
+    "jquery-3.3.1",
+    "clipboard-2.0.0",
+    "anchor-4.1.1",
+    "app"
+]
+
+[[params.nav]]
+text = "SPIFFE"
+link = "/spiffe"
+
+[[params.nav]]
+text = "SPIRE"
+link = "/spire"
+
+[[params.nav]]
+text = "Community"
+link = "/community"
+
+[[params.nav]]
+text = "Downloads"
+link = "/downloads"

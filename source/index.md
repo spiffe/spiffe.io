@@ -1,2 +1,0 @@
-# spiffe.io landing page
-
