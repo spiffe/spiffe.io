@@ -1,0 +1,30 @@
+issuers:
+- name: The SPIRE project
+  description: SPIRE is an open-source toolchain that implements the SPIFFE specification in a wide variety of environments
+  link: /spire
+  logo: spire/icon/color/spire-icon-color.png
+- name: Istio Citadel
+  description: Istio Citadel issues SPIFFE IDs for all workloads
+  link: https://istio.io/docs/concepts/what-is-istio/#citadel
+  logo: istio.svg
+- name: HashiCorp Consul
+  description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
+  link: https://www.consul.io
+  logo: consul.svg
+consumers:
+- name: HashiCorp Vault
+  description: Customers can authenticate to Hashicorp Vault with SPIFFE IDs
+  link: https://www.hashicorp.com/products/vault
+  logo: vault.svg
+- name: The Envoy proxy
+  description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Envoy proxies
+  link: https://envoyproxy.io
+  logo: envoy.svg
+- name: Apache Knox
+  description: Customers can authenticate to Knox with SPIFFE IDs
+  link: http://knox.apache.org/
+  logo: knox.gif
+- name: The Ghostunnel proxy
+  description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Ghostunnel proxies
+  link: https://github.com/square/ghostunnel
+  logo: square.jpg
