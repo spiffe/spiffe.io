@@ -1,0 +1,11 @@
+documents:
+- title: "Secure Production Identity Framework for Everyone (SPIFFE)"
+  filename: SPIFFE.md
+- title: The SPIFFE Identity and Verifiable Identity Document
+  filename: SPIFFE-ID.md
+- title: The SPIFFE Workload API
+  filename: SPIFFE_Workload_API.md
+- title: The SPIFFE Workload Endpoint
+  filename: SPIFFE_Workload_Endpoint.md
+- title: The X.509 SPIFFE Verifiable Identity Document
+  filename: X509-SVID.md
