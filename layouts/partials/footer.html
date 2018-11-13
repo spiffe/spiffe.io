@@ -4,6 +4,8 @@
 {{- $social     := .Site.Params.socialmedia }}
 {{- $twitterUrl := printf "https://twitter.com/%s" $social.twitter }}
 {{- $slackUrl   := printf "https://%s.slack.com" $social.slack }}
+{{- $stackUrl   := $social.stackoverflow }}
+{{- $githubUrl  := $social.github }}
 {{- $blogUrl    := $social.medium }}
 <footer class="footer has-background-dark">
   <div class="container">
@@ -47,7 +49,7 @@
         </p>
 
         <div class="buttons">
-          <a class="button" href="{{ $blogUrl }}">
+          <a class="button is-white" href="{{ $blogUrl }}">
             <span class="icon">
               <i class="fab fa-medium"></i>
             </span>
@@ -65,7 +67,7 @@
             </span>
           </a>
 
-          <a class="button">
+          <a class="button is-white" href="{{ $githubUrl }}">
             <span class="icon">
               <i class="fab fa-github"></i>
             </span>
@@ -83,7 +85,7 @@
             </span>
           </a>
 
-          <a class="button is-stack-overflow-orange">
+          <a class="button is-stack-overflow-orange" href="{{ $stackUrl }}">
             <span class="icon">
               <i class="fab fa-stack-overflow"></i>
             </span>

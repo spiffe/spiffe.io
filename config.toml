@@ -20,9 +20,11 @@ spiffe = "**SPIFFE**, the Secure Production Identity Framework For Everyone, pro
 spire = "**SPIRE**, the SPIFFE Runtime Environment, is an extensible system that implements the principles embodied in the SPIFFE standards. SPIRE manages platform and workload attestation, provides an API for controlling attestation policies, and coordinates certificate issuance and rotation."
 
 [params.socialmedia]
-twitter = "SPIFFEio"
-slack   = "spiffe"
-medium  = "https://blog.spiffe.io"
+twitter       = "SPIFFEio"
+slack         = "spiffe"
+medium        = "https://blog.spiffe.io"
+github        = "https://github.com/spiffe"
+stackoverflow = "https://stackoverflow.com/questions/tagged/spiffe"
 
 [params.assets]
 js = [
