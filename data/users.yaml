@@ -12,10 +12,6 @@ issuers:
   link: https://www.consul.io
   logo: consul.svg
 consumers:
-- name: HashiCorp Vault
-  description: Customers can authenticate to Hashicorp Vault with SPIFFE IDs
-  link: https://www.hashicorp.com/products/vault
-  logo: vault.svg
 - name: The Envoy proxy
   description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Envoy proxies
   link: https://blog.envoyproxy.io/securing-the-service-mesh-with-spire-0-3-abb45cd79810
