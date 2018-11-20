@@ -18,12 +18,11 @@ consumers:
   logo: vault.svg
 - name: The Envoy proxy
   description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Envoy proxies
-  link: https://envoyproxy.io
+  link: https://blog.envoyproxy.io/securing-the-service-mesh-with-spire-0-3-abb45cd79810
   logo: envoy.svg
-- name: Apache Knox
+- name: Pintrest Knox
   description: Customers can authenticate to Knox with SPIFFE IDs
-  link: http://knox.apache.org/
-  logo: knox.gif
+  link: https://medium.com/@Pinterest_Engineering/secret-management-in-multi-tenant-environments-debc9236a744
 - name: The Ghostunnel proxy
   description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Ghostunnel proxies
   link: https://github.com/square/ghostunnel
