@@ -20,10 +20,10 @@ consumers:
   description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Envoy proxies
   link: https://envoyproxy.io
   logo: envoy.svg
-- name: Apache Knox
+- name: Pinterest Knox
   description: Customers can authenticate to Knox with SPIFFE IDs
-  link: http://knox.apache.org/
-  logo: knox.gif
+  link: https://github.com/pinterest/knox
+  logo: pinterest.png
 - name: The Ghostunnel proxy
   description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Ghostunnel proxies
   link: https://github.com/square/ghostunnel
