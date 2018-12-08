@@ -1,6 +1,7 @@
 {{- $spireReleasesUrl := "https://api.github.com/repos/spiffe/spire/releases" }}
 {{- $downloadUrl      := "https://github.com/spiffe/spire/releases/download" }}
 {{- $releases         := getJSON $spireReleasesUrl }}
+{{- $latest           := (index $releases 0).tag_name }}
 {{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
 {{- $downloadButtons  := .Site.Params.downloads.buttons.download }}
 <table class="is-downloads-table">
@@ -21,6 +22,7 @@
     {{- range $releases }}
     {{- $version      := .tag_name }}
     {{- $versionUrl   := .html_url }}
+    {{- $isLatest     := eq $version $latest }}
     {{- $tar          := (index .assets 0).name }}
     {{- $zip          := (index .assets 1).name }}
     {{- $binaryTarUrl := printf "%s/%s/%s" $downloadUrl $version $tar }}
@@ -29,9 +31,15 @@
     {{- $sourceTarUrl := printf "https://github.com/spiffe/spire/archive/%s.tar.gz" $version }}
     <tr>
       <td>
-        <a class="is-size-4 has-text-weight-bold is-download-version" href="{{ $versionUrl }}">
+        <a class="is-size-3 is-size-4-mobile has-text-weight-bold is-download-version" href="{{ $versionUrl }}">
           {{ $version }}
         </a>
+      
+        {{- if $isLatest }}
+        <span class="tag is-success">
+          LATEST
+        </span>
+        {{- end }}
       </td>
 
       <td>
