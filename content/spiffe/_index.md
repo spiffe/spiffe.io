@@ -1,5 +1,6 @@
 ---
 title: SPIFFE overview
+short: Overview
 description: A basic introduction to SPIFFE, the Secure Production Identify Framework for Everyone
 weight: 1
 ---
