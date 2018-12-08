@@ -1,8 +1,5 @@
 {
   "devDependencies": {
     "bulma": "^0.7.2"
-  },
-  "dependencies": {
-    "bulma-divider": "^2.0.1"
   }
 }
