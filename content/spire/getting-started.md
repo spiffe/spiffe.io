@@ -235,7 +235,9 @@ The default Time to Live (ttl) for the join token is 600 seconds. To overwrite t
 
 2. Staying in the same terminal, start up the agent, passing in the path to the agent configuration file, as well as the join token you just generated. 
 
-`# sudo spire-agent run  -config /opt/spire/conf/agent/agent.conf -joinToken aaaaaaaa-bbbb-cccc-dddd-111111111111`
+```shell
+sudo spire-agent run  -config /opt/spire/conf/agent/agent.conf -joinToken aaaaaaaa-bbbb-cccc-dddd-111111111111
+```
 
 You have the option to adding the join token to the **NodeAttestor** entry in the agent configuration file instead of passing it at the command line. 
 
