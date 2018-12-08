@@ -33,19 +33,3 @@ js = [
     "anchor-4.1.1",
     "app"
 ]
-
-[[params.nav]]
-text = "SPIFFE"
-link = "/spiffe"
-
-[[params.nav]]
-text = "SPIRE"
-link = "/spire"
-
-[[params.nav]]
-text = "Community"
-link = "/community"
-
-[[params.nav]]
-text = "Downloads"
-link = "/downloads"
