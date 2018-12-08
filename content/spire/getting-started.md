@@ -1,5 +1,6 @@
 ---
 title: SPIRE Getting Started Guide
+short: Getting started
 description: Install and run a SPIRE server and agent locally on your laptop
 weight: 2
 ---

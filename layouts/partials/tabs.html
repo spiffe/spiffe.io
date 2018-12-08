@@ -6,10 +6,11 @@
   <div class="container">
     <ul>
       {{- range $docs }}
+      {{- $title := cond (isset .Params "short") (.Params.short) .Title }}
       {{- $isCurrentPage := eq .URL $currentUrl }}
       <li{{ if $isCurrentPage }} class="is-active"{{ end }}>
         <a href="{{ .URL }}">
-          {{ .Title }}
+          {{ $title }}
         </a>
       </li>
       {{- end }}
