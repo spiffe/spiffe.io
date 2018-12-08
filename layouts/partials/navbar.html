@@ -3,6 +3,7 @@
 {{- $isDownloadsPage := eq .Section "downloads" }}
 {{- $spiffeLogo      := "/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png" | relURL }}
 {{- $spireLogo       := "/img/logos/spire/horizontal/color/spire-horizontal-color.png" | relURL }}
+{{- $spireDocs       := where .Site.Pages "Section" "spire" }}
 {{- $logoUrl         := cond $isSpirePage $spireLogo $spiffeLogo }}
 {{- $social          := .Site.Params.socialmedia }}
 {{- $twitterUrl      := printf "https://twitter.com/%s" $social.twitter }}
@@ -10,7 +11,6 @@
 {{- $blogUrl         := $social.medium }}
 {{- $githubUrl       := $social.github }}
 {{- $stackUrl        := $social.stackoverflow }}
-{{- $nav             := .Site.Params.nav }}
 <nav class="navbar is-fixed-top is-light">
   <div class="container">
     <div class="navbar-brand">
@@ -29,11 +29,23 @@
 
     <div class="navbar-menu">
       <div class="navbar-end">
-        {{- range $nav }}
-        <a class="navbar-item has-text-weight-bold" href="{{ .link | relURL }}">
-          {{ .text }}
+        <a class="navbar-item has-text-weight-bold" href="/spiffe">
+          SPIFFE
         </a>
-        {{- end }}
+
+        <div class="navbar-item has-dropdown is-hoverable has-text-weight-bold">
+          <a class="navbar-link" href="/spire">
+            SPIRE
+          </a>
+
+          <div class="navbar-dropdown">
+            {{- range $spireDocs }}
+            <a class="navbar-item" href="{{ .URL }}">
+              {{ .Title }}
+            </a>
+            {{- end }}
+          </div>
+        </div>
 
         <div class="navbar-item">
           <p class="control">

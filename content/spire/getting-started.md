@@ -1,7 +1,7 @@
 ---
 title: SPIRE Getting Started Guide
 short: Getting started
-description: Install and run a SPIRE server and agent locally on your laptop
+description: Install and run a SPIRE Server and Agent locally on your laptop
 weight: 2
 ---
 
@@ -27,9 +27,9 @@ This walkthrough demonstrates how to deploy SPIRE to identify a single workload 
 
 In the walkthrough, the workload to which SPIRE will issue an identity is running under a specific UNIX user id; SPIRE uses will use this user id to generate an SVID for the workload. 
 
-This guide also illustrates node attestation using join tokens -- a pre-shared key between a server and an agent -- the simplest node attestation strategy. 
+This guide also illustrates node attestation using join tokens---a pre-shared key between a server and an agent---the simplest node attestation strategy.
 
-Finally, this guide assumes the user is running Ubuntu 16.04.
+Finally, this guide assumes the user is running **Ubuntu 16.04**.
 
 ## Step 1: Plan {#step-1}
 
@@ -234,10 +234,10 @@ Here are the steps:
 The default Time to Live (ttl) for the join token is 600 seconds. To overwrite the default, pass a different value via the **-ttl** option to the `spire-server token generate` command.
 
 2. Staying in the same terminal, start up the agent, passing in the path to the agent configuration file, as well as the join token you just generated. 
-
-```shell
-sudo spire-agent run  -config /opt/spire/conf/agent/agent.conf -joinToken aaaaaaaa-bbbb-cccc-dddd-111111111111
-```
+s
+	```shell
+	sudo spire-agent run -config /opt/spire/conf/agent/agent.conf -joinToken aaaaaaaa-bbbb-cccc-dddd-111111111111
+	```
 
 You have the option to adding the join token to the **NodeAttestor** entry in the agent configuration file instead of passing it at the command line. 
 
