@@ -1,7 +1,28 @@
 <article class="article">
   <div class="container">
-    <div class="content is-medium">
-      {{ .Content }}
+    <div class="columns">
+        <div class="column is-hidden-touch">
+            {{- if .TableOfContents }}
+            <aside class="is-toc-container">
+              <div id="toc">
+                {{ .TableOfContents }}
+              </div>
+            </aside>
+            {{- end }}
+          </div>
+      <div class="column is-three-quarters is-full-mobile">
+        <div class="content">
+          <div class="is-hidden-desktop">
+            {{ partial "dropdown.html" . }}
+          </div>
+    
+          <section class="is-inner-content">
+            {{ .Content }}
+          </section>
+        </div>
+      </div>
+
+      
     </div>
-  </div>
+  </div> <!-- .container -->
 </article>

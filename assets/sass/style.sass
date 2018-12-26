@@ -27,6 +27,31 @@ $code-background: $white-ter
 @import "bulma/bulma"
 @import "bulma-divider/dist/css/bulma-divider"
 
+.is-toc-container
+  margin-left: 1rem
+  background-color: white
+  padding-left: 1rem
+  padding: .75rem 0 .75rem 1rem
+  display: inline-block
+
+  .is-toc-title
+    margin-bottom: 1rem
+
+  &.is-active
+    position: fixed
+    max-width: 100%
+
+  #TableOfContents
+    li
+      line-height: 100%
+      font-size: .9rem
+
+      a
+        color: $grey-dark
+
+      & + li
+        margin-top: .5rem
+
 .is-logo-button
   .icon img
     width: 75%
