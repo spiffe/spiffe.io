@@ -37,10 +37,6 @@ If you have Docker installed, a convenient alternative to installing Hugo itself
 make docker-serve
 ```
 
- `docker run --rm -it -v $(PWD):/src -p 1313:1313 -u hugo jguyomard/hugo-builder hugo server -w --bind=0.0.0.0`
-
-from the base directory of this repository. A live-updated local version of the site will be made available from http://localhost:1313/.
-
 ## Publishing the site
 
 The site is published automatically by [Netlify](https://netlify.com). Whenever you merge pull requests to `master`, the site is automatically built and published in about a minute. **There's no need to handle this manually**.
