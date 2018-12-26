@@ -3,7 +3,7 @@
 {{- $spireDocs  := where .Site.Pages "Section" "spire" }}
 {{- $social     := .Site.Params.socialmedia }}
 {{- $twitterUrl := printf "https://twitter.com/%s" $social.twitter }}
-{{- $slackUrl   := printf "https://%s.slack.com" $social.slack }}
+{{- $slackUrl   := $social.slack }}
 {{- $stackUrl   := $social.stackoverflow }}
 {{- $githubUrl  := $social.github }}
 {{- $blogUrl    := $social.medium }}
