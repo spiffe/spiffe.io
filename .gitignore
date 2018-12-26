@@ -3,6 +3,7 @@
 
 # Hugo-generated assets
 public/
+resources/_gen/assets/*
 
 # Node.js assets
 node_modules/
