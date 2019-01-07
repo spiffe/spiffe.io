@@ -45,9 +45,23 @@ $navbar-dropdown-radius: none
     max-width: 100%
 
   #TableOfContents
-    li
+    > ul > li > ul > li
       line-height: 100%
       font-size: .9rem
+
+      > a
+        font-weight: bold
+
+      > ul > li 
+        padding-left: 10px
+        padding-top: 3px
+
+        > a
+          font-weight: 0
+        
+        > ul > li 
+          padding-left: 15px
+          font-size: 0.8em
 
       a
         color: $grey-dark
@@ -80,8 +94,8 @@ $navbar-dropdown-radius: none
       margin-left: 1rem
       margin-right: 1rem
 
-    li
-      list-style-type: square
+    ol > li
+      list-style-type: numeric
 
     p a, li a
       font-weight: 600
