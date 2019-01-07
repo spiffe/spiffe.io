@@ -174,7 +174,7 @@ To configure the trust bundle on the agent side, edit the configuration file  so
 
 ### Configure Agent Plugins
 
-As described above in the [Plan Your Configuration](#plan-your-configuration] section, before installing and configuring you determine which plugin you configure the agent to use for node attestation and workload attestation. 
+As described above in the [Plan Your Configuration](#plan-your-configuration) section, before installing and configuring you determine which plugin you configure the agent to use for node attestation and workload attestation. 
 
 #### Node Attestor Plugin
 

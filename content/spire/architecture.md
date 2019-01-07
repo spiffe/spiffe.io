@@ -1,7 +1,6 @@
 ---
 title: The architecture of SPIRE
 short: Architecture
-description: The nuts and bolts of the SPIFFE Runtime Environment
 weight: 3
 ---
 
