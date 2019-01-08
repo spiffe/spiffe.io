@@ -26,7 +26,7 @@ To review these concepts, see the [SPIFFE](/spiffe) and [SPIRE](/spire) overview
 
 This walkthrough demonstrates how to deploy SPIRE to identify a single workload running on a node running Linux. It sets up the SPIRE Server and SPIRE Agent so that they’re running on the same node. In an actual deployment, these would typically run on different nodes.  
 
-In the walkthrough, the workload to which SPIRE will issue an identity is running under a specific UNIX user id; SPIRE uses will use this user id to generate an SVID for the workload. 
+In the walkthrough, the workload to which SPIRE will issue an identity is running under a specific UNIX user id; SPIRE users will use this user id to generate an SVID for the workload. 
 
 This guide also illustrates node attestation using join tokens---a pre-shared key between a server and an agent---the simplest node attestation strategy.
 
