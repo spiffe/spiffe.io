@@ -21,7 +21,7 @@
   </div>
 </div>
 
-{{- if .TableOfContents }}
+{{- if and (.TableOfContents) (.Params.toc) }}
 <div class="dropdown">
   <div class="drodown-trigger">
     <button class="button is-light">
