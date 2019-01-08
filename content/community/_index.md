@@ -1,5 +1,5 @@
 ---
-title: The SPIFFE community
+title: The SPIFFE Community
 ---
 
 As an early stage project, SPIFFE is guided by a small but very active community of passionate software engineers with empathy for the problems the project will tackle. We will be opening up this community more broadly in the coming few months.
