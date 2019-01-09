@@ -7,7 +7,7 @@ weight: 1
 
 **SPIRE**, the [SPIFFE](/spiffe) Runtime Environment, is a toolchain for establishing trust between software systems across a wide variety of hosting platforms. Concretely, SPIRE exposes the [SPIFFE Workload API](https://github.com/spiffe/spire/blob/master/proto/api/workload/workload.proto), which can attest running software systems and issue [SPIFFE IDs](https://github.com/spiffe/spiffe/blob/master/standards/SPIFFE-ID.md) and [SVID](https://github.com/spiffe/spiffe/blob/master/standards/SPIFFE-ID.md)s to them. This in turn allows two workloads to establish trust between each other, for example by establishing an mTLS connection or by signing and verifying a JWT token.
 
-If you'd like to try out SPIRE on your machine, check out the [Getting started with SPIRE](getting-started) guide.
+If you'd like to try out SPIRE on your machine, check out the [Getting started with SPIRE](getting-started) guide, [or head to the Github project](https://github.com/spiffe/spire).
 
 ## Use cases
 
