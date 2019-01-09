@@ -7696,6 +7696,13 @@ label.panel-block {
   .is-footer-logo {
     width: 15%; } }
 
+section.newsbar {
+  background: #79ebfd;
+  padding: 5px;
+  font-weight: bold; }
+  section.newsbar a {
+    color: blue; }
+
 .is-page {
   display: flex;
   flex-direction: column;
