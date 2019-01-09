@@ -30,12 +30,16 @@ $navbar-dropdown-radius: none
 
 @import "bulma/bulma"
 
+.is-toc-column
+  z-index: 1
+
 .is-toc-container
   margin-left: 1rem
   background-color: white
   padding-left: 1rem
   padding: .75rem 0 .75rem 1rem
   display: inline-block
+  z-index: 1000
 
   .is-toc-title
     margin-bottom: 1rem
@@ -53,9 +57,8 @@ $navbar-dropdown-radius: none
       > a
         font-weight: bold
 
-      > ul > li 
-        padding-left: 10px
-        padding-top: 3px
+      > ul > li
+        padding: 5px 0 0 10px
 
         > a
           font-weight: 0
@@ -68,7 +71,7 @@ $navbar-dropdown-radius: none
         color: $grey-dark
 
       & + li
-        margin-top: .5rem
+        margin-top: .75rem
 
 .is-logo-button
   .icon img
@@ -140,6 +143,8 @@ $navbar-dropdown-radius: none
   +logo(40%, 60%)
 
 .footer
+  z-index: 2
+
   li a
     color: $white-bis
 
