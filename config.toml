@@ -4,6 +4,7 @@ languageCode = "en-us"
 pygmentsStyle = "monokai"
 pygmentsCodefences = true
 canonifyurls = true
+googleAnalytics = "UA-99605331-1"
 
 [blackfriday]
 hrefTargetBlank = true
