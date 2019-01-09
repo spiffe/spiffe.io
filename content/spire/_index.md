@@ -16,8 +16,4 @@ SPIRE can be used in a wide variety of scenarios and to perform a wide variety o
 * Secure authentication amongst services
 * Secure introduction to secret stores such as [Vault](https://hashicorp.com/products/vault) and [Apache Knox](http://knox.apache.org/)
 * Identity provision for service meshes such as [Istio](https://istio.io)
-* Secure bootstrap deployment for distributed systems, such as:
-  * [Kubernetes](https://kubernetes.io)
-  * [Hadoop](http://hadoop.apache.org/)
-  * [Chef](https://chef.io)
-  * [Puppet](https://puppet.com)
+* Secure bootstrap deployment for distributed systems
