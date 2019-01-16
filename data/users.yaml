@@ -16,7 +16,7 @@ consumers:
   description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Envoy proxies
   link: https://blog.envoyproxy.io/securing-the-service-mesh-with-spire-0-3-abb45cd79810
   logo: envoy.svg
-- name: Pintrest Knox
+- name: Pinterest Knox
   description: Customers can authenticate to Knox with SPIFFE IDs
   link: https://medium.com/@Pinterest_Engineering/secret-management-in-multi-tenant-environments-debc9236a744
   logo: pintrest.png
