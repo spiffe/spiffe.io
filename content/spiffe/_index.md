@@ -16,7 +16,7 @@ The SPIFFE standard provides a specification for a framework capable of bootstra
 
 The SPIFFE standard comprises three major components:
 
-* The [SPIFFE ID] which standardizes an identity namespace, and
+* The *SPIFFE ID* which standardizes an identity namespace, and
 * The [SPIFFE Verifiable Identity Document](https://github.com/spiffe/spiffe/blob/master/standards/SPIFFE-ID.md) which dictates the manner in which an issued identity may be presented and verified, and
 * The [SPIFFE Workload API](https://github.com/spiffe/spiffe/blob/master/standards/SPIFFE_Workload_API.md) which specifies an API through which identity may be retrieved and/or verified by a software system.
 
