@@ -119,7 +119,7 @@ Deploy the server by applying the configuration **server-deployment.yaml** file:
 
         $ kubectl apply -f server-deployment.yaml
 
-This creates a deployment called spire-server in the **spire** namespace and starts up a spire-server pod, as demonstrated in the output of the following two commands:
+This creates a deployment called **spire-server** in the **spire** namespace and starts up a **spire-server** pod, as demonstrated in the output of the following two commands:
 
         $ kubectl get deployments --namespace spire
 
@@ -140,8 +140,8 @@ When the server deploys, it binds in the volumes summarized in the following tab
 
 | Volume | Description | Mount Location |
 | :------ |:---------- | :------------- |
-| **spire-config** | A reference to the spire-server configmap created in the previous step | **/run/spire/config** |
-| **spire-secrets** | A  reference to the spire-server secrets created in the step [Create Server Secrets](#create-server-secrets) | **/run/spire/secrets** | 
+| **spire-config** | A reference to the **spire-server** configmap created in the previous step | **/run/spire/config** |
+| **spire-secrets** | A  reference to the **spire-server** secrets created in the step [Create Server Secrets](#create-server-secrets) | **/run/spire/secrets** | 
 | **spire-data** | The hostPath for the server's SQLite database and keys file | **/run/spire/data** |
 | **k8s-sa-cert** | The public key used to validate service accounts. As noted under [Create Server Deployment](#create-server-deployment) you must take special steps to correctly set this value if you're *not* running Kubernetes in a minikube cluster. | **/run/k8s-certs/sa.pub** |
 
@@ -188,7 +188,7 @@ Deploy the SPIRE agent by applying the **agent-daemonset.yaml** configuration.
 
         $ kubectl apply -f agent-daemonset.yaml
 
-This creates a daemonset called **spire-agent** in the **spire** namespace and starts up a **spire-agent** pod along side spire-server, as demonstrated in the output of the following two commands:
+This creates a daemonset called **spire-agent** in the **spire** namespace and starts up a **spire-agent** pod along side **spire-server**, as demonstrated in the output of the following two commands:
 
         $ kubectl get daemonset --namespace spire
 
@@ -211,7 +211,10 @@ When the agent deploys, it binds the volumes summarized in the following table:
 
 To verify that the agent attested to the server, [examine the server logs](examine-server-logs); you should expect output similar to the following:
 
-        time="2019-01-07T23:49:13Z" level=debug msg="Signing CSR for Agent SVID spiffe://example.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff" subsystem_name=node_api time="2019-01-07T23:49:13Z" level=debug msg="Signed x509 SVID \"spiffe://example.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff\" (expires 2019-01-07T23:59:39Z)" subsystem_name=ca_manager time="2019-01-07T23:49:13Z" level=debug msg="could not find node resolver type %qk8s_sat" subsystem_name=node_api time="2019-01-07T23:49:13Z" level=info msg="Node attestation request from 192.168.122.147:36718 completed using strategy k8s_sat" subsystem_name=node_api
+        time="2019-01-07T23:49:13Z" level=debug msg="Signing CSR for Agent SVID spiffe://example.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff" subsystem_name=node_api 
+        time="2019-01-07T23:49:13Z" level=debug msg="Signed x509 SVID \"spiffe://example.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff\" (expires 2019-01-07T23:59:39Z)" subsystem_name=ca_manager 
+        time="2019-01-07T23:49:13Z" level=debug msg="could not find node resolver type %qk8s_sat" subsystem_name=node_api 
+        time="2019-01-07T23:49:13Z" level=info msg="Node attestation request from 192.168.122.147:36718 completed using strategy k8s_sat" subsystem_name=node_api
 
 ## Section 5: Configure a Workload Container to Access SPIRE {#section-5}
 
