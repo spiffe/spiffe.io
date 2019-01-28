@@ -1,5 +1,5 @@
 ---
-title: Tutorial: Run SPIRE on Kubernetes
+title: "Tutorial: Run SPIRE on Kubernetes"
 toc: true
 ---
 
