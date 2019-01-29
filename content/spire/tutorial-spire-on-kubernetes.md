@@ -217,10 +217,16 @@ When the agent deploys, it binds the volumes summarized in the following table:
 
 To verify that the agent attested to the server, [examine the server logs](examine-server-logs); you should expect output similar to the following:
 
-        time="2019-01-07T23:49:13Z" level=debug msg="Signing CSR for Agent SVID spiffe://example.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff" subsystem_name=node_api 
-        time="2019-01-07T23:49:13Z" level=debug msg="Signed x509 SVID \"spiffe://example.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff\" (expires 2019-01-07T23:59:39Z)" subsystem_name=ca_manager 
-        time="2019-01-07T23:49:13Z" level=debug msg="could not find node resolver type %qk8s_sat" subsystem_name=node_api 
-        time="2019-01-07T23:49:13Z" level=info msg="Node attestation request from 192.168.122.147:36718 completed using strategy k8s_sat" subsystem_name=node_api
+        time="2019-01-07T23:49:13Z" level=debug msg="Signing CSR for Agent SVID spiffe:
+         //example.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff
+         " subsystem_name=node_api 
+        time="2019-01-07T23:49:13Z" level=debug msg="Signed x509 SVID \"spiffe://exampl
+         e.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff\" (expi
+         res 2019-01-07T23:59:39Z)" subsystem_name=ca_manager 
+        time="2019-01-07T23:49:13Z" level=debug msg="could not find node resolver type 
+         %qk8s_sat" subsystem_name=node_api 
+        time="2019-01-07T23:49:13Z" level=info msg="Node attestation request from 192.1
+         68.122.147:36718 completed using strategy k8s_sat" subsystem_name=node_api
 
 ## Section 5: Configure a Workload Container to Access SPIRE {#section-5}
 
@@ -284,18 +290,29 @@ To examine the server logs, obtain the name of the random hash pod name displaye
 Your output should look something like the following:
 
         time="2019-01-07T20:41:39Z" level=debug msg="Setting umask to 077"
-        time="2019-01-07T20:41:39Z" level=info msg="data directory: \"/run/spire/data\""
-        time="2019-01-07T20:41:39Z" level=info msg="Starting plugin catalog" subsystem_name=catalog
-        time="2019-01-07T20:41:39Z" level=debug msg="DataStore(sql): configuring plugin" subsystem_name=catalog
-        time="2019-01-07T20:41:39Z" level=debug msg="NodeAttestor(k8s_sat): configuring plugin" subsystem_name=catalog
-        time="2019-01-07T20:41:39Z" level=debug msg="NodeResolver(noop): configuring plugin" subsystem_name=catalog
-        time="2019-01-07T20:41:39Z" level=debug msg="KeyManager(disk): configuring plugin" subsystem_name=catalog
-        time="2019-01-07T20:41:39Z" level=debug msg="UpstreamCA(disk): configuring plugin" subsystem_name=catalog
+        time="2019-01-07T20:41:39Z" level=info msg="data directory: \"/run/spire/data\"
+         "
+        time="2019-01-07T20:41:39Z" level=info msg="Starting plugin catalog" subsystem_
+         name=catalog
+        time="2019-01-07T20:41:39Z" level=debug msg="DataStore(sql): configuring plugin
+         " subsystem_name=catalog
+        time="2019-01-07T20:41:39Z" level=debug msg="NodeAttestor(k8s_sat): configuring
+          plugin" subsystem_name=catalog
+        time="2019-01-07T20:41:39Z" level=debug msg="NodeResolver(noop): configuring 
+         plugin" subsystem_name=catalog
+        time="2019-01-07T20:41:39Z" level=debug msg="KeyManager(disk): configuring 
+         plugin" subsystem_name=catalog
+        time="2019-01-07T20:41:39Z" level=debug msg="UpstreamCA(disk): configuring 
+         plugin" subsystem_name=catalog
         time="2019-01-07T20:41:39Z" level=info msg="plugins started"
-        time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair set \"A\"" subsystem_name=ca_manager
-        time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair set \"B\"" subsystem_name=ca_manager
-        time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair sets" subsystem_name=ca_manager
-        time="2019-01-07T20:41:39Z" level=debug msg="Activating keypair set \"B\"" subsystem_name=ca_manager`
+        time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair set \"A\"" 
+         subsystem_name=ca_manager
+        time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair set \"B\"" 
+         subsystem_name=ca_manager
+        time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair sets" 
+         subsystem_name=ca_manager
+        time="2019-01-07T20:41:39Z" level=debug msg="Activating keypair set \"B\"" 
+         subsystem_name=ca_manager`
 
 ## Examine Agent Logs
 
@@ -305,12 +322,20 @@ To examine the agent logs, obtain the name of the random hash pod name displayed
 
 Your output should look something like the following:
 
-        time="2019-01-07T22:20:59Z" level=info msg="Starting plugin catalog" subsystem_name=catalog
-        time="2019-01-07T22:20:59Z" level=debug msg="WorkloadAttestor(k8s): configuring plugin" subsystem_name=catalog
-        time="2019-01-07T22:20:59Z" level=debug msg="WorkloadAttestor(unix): configuring plugin" subsystem_name=catalog
-        time="2019-01-07T22:20:59Z" level=debug msg="NodeAttestor(k8s_sat): configuring plugin" subsystem_name=catalog
-        time="2019-01-07T22:20:59Z" level=debug msg="KeyManager(memory): configuring plugin" subsystem_name=catalog
-        time="2019-01-07T22:20:59Z" level=debug msg="No pre-existing agent SVID found. Will perform node attestation" subsystem_name=attestor time="2019-01-07T22:29:31Z" level=info msg="Starting workload API" subsystem_name=endpoints
+        time="2019-01-07T22:20:59Z" level=info msg="Starting plugin catalog" subsystem_
+         name=catalog
+        time="2019-01-07T22:20:59Z" level=debug msg="WorkloadAttestor(k8s): configuring 
+         plugin" subsystem_name=catalog
+        time="2019-01-07T22:20:59Z" level=debug msg="WorkloadAttestor(unix): configuring 
+         plugin" subsystem_name=catalog
+        time="2019-01-07T22:20:59Z" level=debug msg="NodeAttestor(k8s_sat): configuring 
+         plugin" subsystem_name=catalog
+        time="2019-01-07T22:20:59Z" level=debug msg="KeyManager(memory): configuring 
+         plugin" subsystem_name=catalog
+        time="2019-01-07T22:20:59Z" level=debug msg="No pre-existing agent SVID found. 
+         Will perform node attestation" subsystem_name=attestor 
+        time="2019-01-07T22:29:31Z" level=info msg="Starting workload API" 
+         subsystem_name=endpoints
 
 # Changes For A Production Environment
 
