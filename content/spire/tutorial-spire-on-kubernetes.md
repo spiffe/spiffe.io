@@ -8,7 +8,9 @@ toc: true
 This tutorial walks you through getting a SPIRE Server and SPIRE Agent running in a Kubernetes cluster, and configuring a workload container to access SPIRE. 
 
 {{< warning >}}
-This tutorial is not designed for a production Kubernetes environment. A production environment requires adjustments to certain steps; the section [Changes for a Production Environment](#changes-for-a-production-environment) walks you through the necessary changes.
+This tutorial is not designed for a production Kubernetes environment. 
+A production environment requires adjustments to certain steps; the section 
+[Changes for a Production Environment](#changes-for-a-production-environment) walks you through the necessary changes.
 {{< /warning >}}
 
 ## Before You Begin
@@ -53,7 +55,11 @@ You must run all tutorial commands from the directory containing the **.yaml** f
 
 ## Section 1: Obtain the Required Files {#section-1}
 
-This tutorial requires a number of **.yaml** files *and* you must run all tutorial commands in the directory in which those files reside. To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain the **.yaml** files from the **spire-tutorials/k8s** subdirectory.
+This tutorial requires a number of **.yaml** files *and* you must run all tutorial commands in the directory in which those files 
+reside. 
+
+To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain 
+the **.yaml** files from the **spire-tutorials/k8s** subdirectory.
 
 ## Section 2: Configure Kubernetes Namespace for SPIRE Components {#section-2}
 
