@@ -132,7 +132,6 @@ This creates a deployment called **spire-server** in the **spire** namespace and
         NAME           READY   UP-TO-DATE   AVAILABLE   AGE
         spire-server   1/1     1            1           86m
 
-        shell
 
         $ kubectl get pods --namespace spire
 
