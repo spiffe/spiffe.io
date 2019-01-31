@@ -14,6 +14,6 @@ If you'd like to try out SPIRE on your machine, check out the [Getting started w
 SPIRE can be used in a wide variety of scenarios and to perform a wide variety of identity-related functions. Here are some examples:
 
 * Secure authentication amongst services
-* Secure introduction to secret stores such as [Vault](https://hashicorp.com/products/vault) and [Apache Knox](http://knox.apache.org/)
+* Secure introduction to secret stores such as [Vault](https://hashicorp.com/products/vault) and [Pinterest Knox](https://github.com/pinterest/knox)
 * Identity provisioning as the foundation of identify for sidecar proxies in a service mesh, such as [Envoy](https://blog.envoyproxy.io/securing-the-service-mesh-with-spire-0-3-abb45cd79810)
 * Provisioning and rotation of the PKI used to authenticate the components of distributed systems
