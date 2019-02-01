@@ -244,7 +244,7 @@ You have the option to adding the join token to the **NodeAttestor** entry in th
 
 ## Step 7 Register Workloads
 
-In order to enable SPIRE to perform workload attestation -- which allows the agent to identify the workload  workload to attest to its agent --  you must register the workload in the server. This tells SPIRE how to identify the workload and which SPIFFE ID to give it.
+In order to enable SPIRE to perform workload attestation -- which allows the agent to identify the workload to attest to its agent --  you must register the workload in the server. This tells SPIRE how to identify the workload and which SPIFFE ID to give it.
 
 On this machine, we have assumed our workload can be most easily identified by its UNIX user ID (UID). Therefore we're going to create this selector using a UID Unix selector that will be mapped to a target SPIFFE ID. We first need to create a new user that we will call "workload":
 
