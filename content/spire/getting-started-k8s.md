@@ -20,9 +20,9 @@ A production environment requires adjustments to certain steps; the section
 
 Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE](/spiffe) and [SPIRE](/spire) overviews.
 
-## Requirements
+## Tested Kubernetes Versions
 
-This tutorial requires one of these Kubernetes versions: 1.13.1, 1.12.4, or 1.10.12.
+This tutorial has been tested on these Kubernetes versions: 1.13.1, 1.12.4, and 1.10.12.
 
 ## Assumptions
 
@@ -135,7 +135,6 @@ This creates a deployment called **spire-server** in the **spire** namespace and
         NAME           READY   UP-TO-DATE   AVAILABLE   AGE
         spire-server   1/1     1            1           86m
 
-        shell
 
         $ kubectl get pods --namespace spire
 
