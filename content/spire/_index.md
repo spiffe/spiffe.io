@@ -1,5 +1,5 @@
 ---
-title: SPIRE overview
+title: Overview
 short: Overview
 description: A basic introduction to SPIRE, the SPIFFE Runtime Environment
 weight: 1
