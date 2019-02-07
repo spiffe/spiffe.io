@@ -4,6 +4,7 @@ short: Getting started on Kubernetes
 description: Install and run a SPIRE Server and Agent locally on a Kubernetes cluster
 weight: 3
 toc: true
+aliases: [tutorial-spire-on-kubernetes, tutorial-spire-on-kubernetes/]
 ---
 
 # About this Tutorial
