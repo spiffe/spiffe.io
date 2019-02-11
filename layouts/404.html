@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{ $links := site.Data.links404 }}
+<section class="section">
+  <div class="container">
+    <p class="title is-size-1 is-size-2-mobile has-text-weight-light">
+      Oops! Not found
+    </p>
+    
+    <div class="content is-medium">
+      <p>
+        If only you could use SPIFFE for web pages, amirite?
+      </p>
+
+      <p>
+        Perhaps you were looking for one of these pages:
+      </p>
+
+      <ul>
+        {{ range $links }}
+        <li>
+          <a href="{{ .link | relURL }}">
+            {{ .name }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</section>
+{{ end }}

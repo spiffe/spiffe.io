@@ -1,0 +1,8 @@
+- name: SPIFFE overview
+  link: /spiffe
+- name: SPIRE overview
+  link: /spire
+- name: Downloads
+  link: /downloads
+- name: The SPIFFE Community
+  link: /community
