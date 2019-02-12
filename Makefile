@@ -8,7 +8,7 @@ serve:
 	--disableFastRender
 
 production-build:
-	hugo
+	hugo --gc
 
 preview-build:
 	hugo --baseURL $(DEPLOY_PRIME_URL)
