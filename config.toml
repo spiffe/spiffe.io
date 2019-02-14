@@ -1,5 +1,5 @@
 title        = "SPIFFE"
-baseURL      = "https://spiffe.io"
+baseURL      = "https://www.spiffe.io"
 languageCode = "en-us"
 pygmentsStyle = "monokai"
 pygmentsCodefences = true
