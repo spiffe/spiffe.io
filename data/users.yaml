@@ -19,7 +19,7 @@ consumers:
 - name: Pinterest Knox
   description: Customers can authenticate to Knox with SPIFFE IDs
   link: https://medium.com/@Pinterest_Engineering/secret-management-in-multi-tenant-environments-debc9236a744
-  logo: pintrest.png
+  logo: pinterest.png
 - name: The Ghostunnel proxy
   description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Ghostunnel proxies
   link: https://github.com/square/ghostunnel
