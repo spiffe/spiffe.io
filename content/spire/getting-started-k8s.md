@@ -250,7 +250,7 @@ When the agent deploys, it binds the volumes summarized in the following table:
 | **spire-config** | The spire-agent configmap created in the  [Create Agent Configmap](#create-agent-configmap) step | **/run/spire/config** |
 | **spire-sockets** | The hostPath, which will be shared with all other pods running on the same worker host. It contains a UNIX domain socket that workloads use to communicate with the agent API. | **/run/spire/sockets** |
 
-To verify that the agent attested to the server, [examine the server logs](examine-server-logs); you should expect output similar to the following:
+To verify that the agent attested to the server, [examine the server logs](#examine-server-logs); you should expect output similar to the following:
 
 ```
 time="2019-01-07T23:49:13Z" level=debug msg="Signing CSR for Agent SVID spiffe:
