@@ -40,9 +40,11 @@
 
           <div class="navbar-dropdown">
             {{- range $spireDocs }}
+            {{- if ne .Params.navbar false }}
             <a class="navbar-item" href="{{ .URL }}">
               {{ .Title }}
             </a>
+            {{- end }}
             {{- end }}
           </div>
         </div>

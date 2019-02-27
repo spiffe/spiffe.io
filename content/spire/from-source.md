@@ -3,6 +3,7 @@ title: Building SPIRE from source
 short: Source install
 weight: 5
 toc: true
+navbar: false
 ---
 
 This document tells you how to build [SPIRE](/spire) from source, perhaps because you'd like to try out an unreleased version.
