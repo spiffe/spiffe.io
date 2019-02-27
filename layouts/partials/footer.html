@@ -36,7 +36,9 @@
 
         <ul>
           {{- range $spireDocs }}
+          {{- if ne .Params.navbar false }}
           {{ .Render "li" }}
+          {{- end }}
           {{- end }}
         </ul>
       </div>
