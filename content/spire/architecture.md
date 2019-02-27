@@ -2,6 +2,7 @@
 title: The architecture of SPIRE
 short: Architecture
 weight: 4
+navbar: false
 ---
 
 **SPIRE**, the [SPIFFE](/spiffe) Runtime Environment, is a software system that exposes an API---the SPIFFE Workload API---to other running systems (workloads) so they can retrieve their identity, as well as documents (SVIDs) to prove it to other workloads, at run-time. This proof of identity can then be used as the primary authentication mechanism for a workload when access other systems.
