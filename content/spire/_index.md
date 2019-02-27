@@ -1,7 +1,7 @@
 ---
 title: About SPIRE
 short: About SPIRE
-description: A few words about SPIRE, the SPIFFE Runtime Environment
+description: A brief introduction to SPIRE, the SPIFFE Runtime Environment
 weight: 1
 ---
 
