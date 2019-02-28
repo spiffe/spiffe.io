@@ -1,6 +1,6 @@
 ---
-title: Building SPIRE from source
-short: Source install
+title: Build SPIRE from source
+short: Build SPIRE from Source
 weight: 5
 toc: true
 navbar: false
