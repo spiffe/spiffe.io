@@ -10,7 +10,7 @@ toc: true
 
 SPIFFE, together with its implementation SPIRE, constitute a set of specifications and a software runtime to establish trust by securely identifying software services -- referred to as “workloads” in this context -- across a wide variety of hosting platforms. 
 
-SPIFFE is a set of open-source specifications for a framework capable of bootstrapping and issuing identity to services across heterogeneous environments and organizational boundaries. The heart of these specifications is the one that defines short lived cryptographic identity documents -- called SVIDs. Workloads can then use these identity documents when authenticating to other workloads, for example by establishing an TLS connection or by signing and verifying a JWT token.
+SPIFFE is a set of open-source specifications for a framework capable of bootstrapping and issuing identity to services across heterogeneous environments and organizational boundaries. The heart of these specifications is the one that defines short lived cryptographic identity documents -- called SVIDs. Workloads can then use these identity documents when authenticating to other workloads, for example by establishing a TLS connection or by signing and verifying a JWT token.
 
 SPIRE is a production-ready implementation of the SPIFFE APIs that performs node and workload attestation in order to securely issue SVIDs to workloads, and verify the SVIDs of other workloads, based on a predefined set of conditions. 
 
@@ -175,7 +175,7 @@ This section walks through a “day in the life” of a SPIRE deployment, from w
 4. The server turns on its registration API, to allow you to register workloads.  
 5. The SPIRE Agent starts up on the node that the workload is running on.  
 6. The agent performs node attestation, to prove to the server the identity of the node it is running on. For example, when running on an AWS EC2 Instance it would typically perform node attestation by supplying an [AWS Instance Identity Document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html) to the server.  
-7. The agent presents this proof of identity to the server over an TLS connection authenticated via the bootstrap bundle the agent is configured with. 
+7. The agent presents this proof of identity to the server over a TLS connection authenticated via the bootstrap bundle the agent is configured with. 
 {{< warning >}}
 This bootstrap bundle is a default configuration, and should be replaced with customer-supplied credentials in production.     
 {{< /warning >}}
