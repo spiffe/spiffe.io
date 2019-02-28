@@ -19,7 +19,7 @@ A production environment requires adjustments to certain steps; the section
 
 ## Before You Begin
 
-Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE](/spiffe) and [SPIRE](/spire) overviews.
+Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE/SPIRE Overview](https://spiffe.io/spire/overview/).
 
 ## Tested Kubernetes Versions
 

@@ -2,7 +2,7 @@
 title: Getting Started Guide for Linux
 short: Getting Started on Linux
 description: Install and run a SPIRE Server and Agent locally on Linux VMs
-weight: 2
+weight: 3
 toc: true
 ---
 
@@ -20,7 +20,7 @@ This guide requires that you understand a few key terms and concepts:
 * node attestation
 * workload attestation
 
-To review these concepts, see the [SPIFFE](/spiffe) and [SPIRE](/spire) overviews. 
+To review these concepts, see the [SPIFFE/SPIRE Overview](https://spiffe.io/spire/overview/).
 
 ### Assumptions
 
@@ -155,7 +155,7 @@ sudo mkdir -p /opt/spire/.data
 
 ### Server Configuration Reference
 
-For a complete server configuration reference, see the [SPIRE Server documentation](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+For a complete server configuration reference, see the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
 ## Step 5: Configure the Agent {#step-5}
 
@@ -211,7 +211,7 @@ KeyManager “disk” {
 
 ### Agent Configuration Reference
 
-For a complete discussion of agent configuration values, see the section [SPIRE Agent documentation](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
+For a complete discussion of agent configuration values, see the section [SPIRE Agent Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
 
 ## Step 6: Start Up the Server and Agent {#step-6}
 
