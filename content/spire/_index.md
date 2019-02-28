@@ -5,7 +5,7 @@ description: A brief introduction to SPIRE, the SPIFFE Runtime Environment
 weight: 1
 ---
 
-SPIRE is a production-ready implementation of the SPIFFE APIs that performs node and workload attestation in order to securely issue SVIDs to workloads, and verify the SVIDs of other workloads, based on a predefined set of conditions. 
+SPIRE is a production-ready implementation of the [SPIFFE](https://github.com/spiffe/spiffe) APIs that performs node and workload attestation in order to securely issue SVIDs to workloads, and verify the SVIDs of other workloads, based on a predefined set of conditions. 
 
 If you'd like to try out SPIRE on Linux, check out the [Getting Started Guide for Linux](getting-started-linux). For getting SPIRE running in a Kubernetes cluster, see the [Getting Started Guide for Kubernetes](getting-started-k8s). You can also [or head to the Github project](https://github.com/spiffe/spire).
 
