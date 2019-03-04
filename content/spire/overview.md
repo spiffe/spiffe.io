@@ -273,12 +273,10 @@ The following diagram illustrates the steps in workload attestation:
 *Summary of Steps: Workload Attestation*
 
 1. A workload (WL) calls the Workload API to request an SVID. On Unix systems this is exposed as a Unix Domain Socket.
-
-
-The agent interrogates the node’s kernel to identify the process ID of the caller. It then invokes any configured workload attestor plugins, providing them with the process ID of the workload.  
-2. Workload attestors use the process ID to discover additional information about the workload, querying neighboring platform-specific components -- such as a Kubernetes kubelet as necessary. Typically these components also reside on the same node as the agent.  
-3. The attestors return the discovered information to agent in the form of selectors.  
-4. The agent determines the workload's identity by comparing discovered selectors to registration entries, and returns the correct cached SVID to the workload. 
+2. The agent interrogates the node’s kernel to identify the process ID of the caller. It then invokes any configured workload attestor plugins, providing them with the process ID of the workload.  
+3. Workload attestors use the process ID to discover additional information about the workload, querying neighboring platform-specific components -- such as a Kubernetes kubelet as necessary. Typically these components also reside on the same node as the agent.  
+4. The attestors return the discovered information to agent in the form of selectors.  
+5. The agent determines the workload's identity by comparing discovered selectors to registration entries, and returns the correct cached SVID to the workload. 
 
 #### Workload Attestors
 
