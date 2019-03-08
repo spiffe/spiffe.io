@@ -1,6 +1,6 @@
 ---
 title: Getting Started Guide for Kubernetes
-short: Getting started on Kubernetes
+short: Getting Started on Kubernetes
 description: Install and run a SPIRE Server and Agent locally on a Kubernetes cluster
 weight: 3
 toc: true
@@ -19,7 +19,7 @@ A production environment requires adjustments to certain steps; the section
 
 ## Before You Begin
 
-Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE](/spiffe) and [SPIRE](/spire) overviews.
+Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE/SPIRE Overview](https://spiffe.io/spire/overview/).
 
 ## Tested Kubernetes Versions
 

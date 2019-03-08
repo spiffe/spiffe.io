@@ -37,7 +37,7 @@ $navbar-dropdown-radius: none
   margin-left: 1rem
   background-color: white
   padding-left: 1rem
-  padding: .75rem 0 .75rem 1rem
+  padding: 0 0 .75rem 1rem
   display: inline-block
   z-index: 1000
 
@@ -50,26 +50,32 @@ $navbar-dropdown-radius: none
     top: 4rem
 
   #TableOfContents
-    > ul > li > ul > li
-      line-height: 100%
-      font-size: .9rem
+    > ul > li
+      line-height: 1.5
+      margin-bottom: 5px !important
 
       > a
         font-weight: bold
+        font-color: black
+        font-size: .9rem
 
       > ul > li
-        padding: 5px 0 0 10px
+        line-height: 1.5
+        font-size: .9em
 
-        > a
-          font-weight: 0
-        
-        > ul > li 
-          padding-left: 15px
-          font-size: 0.8em
+        > ul > li
+          padding: 5px 0 0 10px
 
-          > ul > li
-            padding-left: 10px
-            font-size: 0.9em
+          > a
+            font-weight: 0
+          
+          > ul > li 
+            padding-left: 15px
+            font-size: 0.8em
+
+            > ul > li
+              padding-left: 10px
+              font-size: 0.9em
 
       a
         color: $grey-dark
