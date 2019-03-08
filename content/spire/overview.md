@@ -18,14 +18,13 @@ This section describes the architecture and components of SPIRE, walks you throu
 
 A SPIRE deployment is composed of a SPIRE Server and one or more SPIRE Agents. A server acts as a signing authority for identities issued to a set of workloads via agents. It also maintains a registry of workload identities and the conditions that must be verified in order for those identities to be issued. Agents expose the SPIFFE Workload API locally to workloads, and must be installed on each node on which a workload is running. 
 
-![Server and Agent](/img/server_and_agent.png)
+{{< figure src="/img/server_and_agent.png" width="70" caption="Server and Agent" >}}
 
 ## All about the Server
 
 A SPIRE Server is responsible for managing and issuing all identities in its configured SPIFFE trust domain. It stores [registration entries](#workload-registration) (which specify the [selectors](#selectors) that determine the conditions under which a particular SPIFFE ID should be issued) and signing keys, uses [node attestation](#node-attestation) to authenticate agents' identities automatically, and creates SVIDs for workloads when requested by an authenticated agent.
-<br>
-<br>
-![Server](/img/server.png)
+
+{{< figure src="/img/server.png" width="70" caption="The SPIRE Server" >}}
 
 The behavior of the server determined is through a series of plugins. SPIRE comes with several plugins included, but additional plugins can be built to extend SPIRE for specific use cases. Types of plugins include:
 
@@ -51,10 +50,9 @@ A SPIRE Agent runs on every node on which an identified workload runs. The agent
 
 * requests SVIDs from the server and caches them until a workload requests its SVID  
 * exposes the SPIFFE Workload API to workloads on node and attests the identity of workloads that call it  
-* provides the identified workloads with their SVIDs  
-<br>
-<br>
-![Agent](/img/agent.png)
+* provides the identified workloads with their SVIDs
+
+{{< figure src="/img/agent.png" width="70" caption="The SPIRE Agent" >}}
 
 The agent’s main components include:
 
@@ -211,11 +209,8 @@ Node selectors are not required for node attestation unless you are [mapping wor
 {{< /info >}}
 
 The following diagram illustrates the steps in node attestation. In this illustration, the underlying platform is AWS:
-<br>
-<br>
-![Node Attestation](/img/node_attestation.png)
 
-*Summary of Steps: Node Attestation*
+{{< figure src="/img/node_attestation.png" width="50" caption="Summary of Steps: Node Attestation" >}}
 
 1. The agent AWS node attestor plugin queries AWS for proof of the node’s identity and gives that information to the agent.  
 2. The agent passes this proof of identity to the server. The server passes this data to its AWS node attestor. 
@@ -268,9 +263,7 @@ While both agents and servers play a role in node attestation, only agents are i
 
 The following diagram illustrates the steps in workload attestation:
 
-![Workload Attestation](/img/workload_attestation.png)
-
-*Summary of Steps: Workload Attestation*
+{{< figure src="/img/workload_attestation.png" width="60" caption="Workload Attestation" >}}
 
 1. A workload (WL) calls the Workload API to request an SVID. On Unix systems this is exposed as a Unix Domain Socket.
 2. The agent interrogates the node’s kernel to identify the process ID of the caller. It then invokes any configured workload attestor plugins, providing them with the process ID of the workload.  
