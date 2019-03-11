@@ -12,7 +12,7 @@ SPIRE is a production-ready implementation of the [SPIFFE APIs](/spiffe) that pe
 SPIRE is just one implementation of the SPIFFE specification. For a list of current implementations, see the [spiffe.io homepage](https://spiffe.io). 
 {{< /info >}}
 
-This section describes the architecture and components of SPIRE, walks you through “a day in the life of” how SPIRE issued SPIFFE IDs, and looks at some basic SPIRE concepts.
+This section describes the architecture and components of SPIRE, walks you through “a day in the life of” how SPIRE issues an identity to a workload, and looks at some basic SPIRE concepts.
 
 # SPIRE Architecture and Components
 
@@ -72,12 +72,12 @@ You can create custom server and agent plugins for particular platforms and arch
 
 For help creating custom server and agent plugins, see the [SPIRE Plugin Development guide](https://github.com/spiffe/plugin-template/blob/master/SPIRE_PLUGIN_GUIDE.md). 
 
-# A Day in the Life of a SPIFFE ID
+# A Day in the Life of an SVID
 
-This section walks through a “day in the life” of how SPIRE issues a SPIFFE ID, from when agent starts up on a node all the way to the point of a workload on the same node receiving a valid identity in the form of an X.509 SVID. Note that SVIDs in JWT format are handled differently. For the purposes of simple demonstration, the workload is running on AWS EC2. 
+This section walks through a “day in the life” of how SPIRE issues an identity to a workload, from the time the agent starts up on a node to the point of a workload on the same node receiving a valid identity in the form of an X.509 SVID. Note that SVIDs in JWT format are handled differently. For the purposes of simple demonstration, the workload is running on AWS EC2. 
 
 1. The SPIRE Server starts up.  
-2. The server generates a self-signed certificate (a certificate signed with its own private key); the server will use this certificate to sign SVIDs for all the workloads in this server’s trust domain.    
+2. Unless the user has configured an UpstreamCA plugin, the server generates a self-signed certificate (a certificate signed with its own private key); the server will use this certificate to sign SVIDs for all the workloads in this server’s trust domain.    
 3. If it’s the first time starting up, the server automatically generates a trust bundle, whose contents it stores in datastore you specify in the datastore plugin -- described in the section "Built-in plugins" in the 
 [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 4. The server turns on its registration API, to allow you to register workloads.  
