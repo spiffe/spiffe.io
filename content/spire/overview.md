@@ -210,7 +210,9 @@ Node selectors are not required for node attestation unless you are [mapping wor
 
 The following diagram illustrates the steps in node attestation. In this illustration, the underlying platform is AWS:
 
-{{< figure src="/img/node_attestation.png" width="50" caption="Summary of Steps: Node Attestation" >}}
+{{< figure src="/img/node_attestation.png" width="50" caption="Node Attestation" >}}
+
+#### Summary of Steps: Node Attestation
 
 1. The agent AWS node attestor plugin queries AWS for proof of the node’s identity and gives that information to the agent.  
 2. The agent passes this proof of identity to the server. The server passes this data to its AWS node attestor. 
@@ -264,6 +266,8 @@ While both agents and servers play a role in node attestation, only agents are i
 The following diagram illustrates the steps in workload attestation:
 
 {{< figure src="/img/workload_attestation.png" width="60" caption="Workload Attestation" >}}
+
+#### Summary of Steps: Workload Attestation
 
 1. A workload (WL) calls the Workload API to request an SVID. On Unix systems this is exposed as a Unix Domain Socket.
 2. The agent interrogates the node’s kernel to identify the process ID of the caller. It then invokes any configured workload attestor plugins, providing them with the process ID of the workload.  
