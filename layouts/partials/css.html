@@ -1,4 +1,5 @@
 {{- $inServerMode := .Site.IsServer }}
+{{- $integCheck   := .Site.Params.assetintegritychecking }}
 {{- $sass         := "sass/style.sass" }}
 {{- $cssOutput    := "css/style.css" }}
 {{- $includes     := (slice "node_modules") }}
@@ -10,5 +11,5 @@
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{- else }}
 {{- $prodCss := $css | fingerprint }}
-<link rel="stylesheet" href="{{ $prodCss.RelPermalink }}" integrity="{{ $prodCss.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $prodCss.RelPermalink }}"{{ if $integCheck }} integrity="{{ $prodCss.Data.Integrity }}"{{ end }}>
 {{- end }}

@@ -11,6 +11,7 @@ hrefTargetBlank = true
 
 [params]
 acronym = "Secure Production Identity Framework for Everyone"
+assetintegritychecking = false
 
 [params.home]
 acronym     = "**S**ecure **P**roduction **I**dentity **F**ramework **f**or **E**veryone"
