@@ -27,3 +27,8 @@ While certainly a work in progress, a ton of hard work has already been put into
 Credit is also due to the following individuals (in alphabetical order by first name) for their continued support of SPIFFE:
 
 {{< acknowledgments >}}
+
+## SPIFFE and SPIRE branding guidelines
+
+* [SPIFFE](https://branding.cncf.io/projects/spiffe)
+* [SPIRE](https://branding.cncf.io/projects/spire)
