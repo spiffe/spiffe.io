@@ -119,7 +119,7 @@ The server will send to the agent a list of all registration entries for workloa
 
 During workload attestation, the agent discovers selectors and compares them to those in the cached registration entries to determine which SVIDs they should assign to the workload.  
 
-You register a workload either by issuing the **spire-server entry create** command at the command line or calling directly into the Registration API, as described in the [Registration API documentation](https://github.com/spiffe/spire/blob/master/proto/api/registration/registration.proto). 
+You register a workload either by issuing the **spire-server entry create** command at the command line or calling directly into the Registration API, as described in the [Registration API documentation](https://github.com/spiffe/spire/blob/master/proto/spire/api/registration/registration.proto). 
 
 Although registration entries apply primarily to workload attestation, SPIRE also uses them during node attestation to assign names to logical groups of nodes in order to specify that the workload can run on a group of nodes, as described in the section [Mapping Workloads to Multiple Nodes](#mapping-workloads-to-multiple-nodes).
 
