@@ -32,7 +32,7 @@ Node attestor plugins which, together with agent node attestors, verify the iden
 
 Node resolver plugins which expand the set of selectors the server can use to identify the node by verifying additional properties about the node. See the section [Node Resolution](#node-resolution) for more information.
 
-Datastore plugins, which the server uses to store, query, and update various pieces of information, such as [registration entries](#workload-registration), which nodes have attested, what the selectors for those nodes are. There is one built in datastore plugin which can use a SQLite 3 or PostgresSQL database to store the necessary data. By default it uses SQLite 3.
+Datastore plugins, which the server uses to store, query, and update various pieces of information, such as [registration entries](#workload-registration), which nodes have attested, what the selectors for those nodes are. There is one built-in datastore plugin which can use a SQLite 3 or PostgresSQL database to store the necessary data. By default it uses SQLite 3.
 
 Key manager plugins, which control how the server stores private keys used to sign X.509-SVIDs and JWT-SVIDs. 
 
@@ -76,7 +76,7 @@ This section walks through a “day in the life” of how SPIRE issues an identi
 
 1. The SPIRE Server starts up.  
 2. Unless the user has configured an UpstreamCA plugin, the server generates a self-signed certificate (a certificate signed with its own private key); the server will use this certificate to sign SVIDs for all the workloads in this server’s trust domain.    
-3. If it’s the first time starting up, the server automatically generates a trust bundle, whose contents it stores in datastore you specify in the datastore plugin -- described in the section "Built-in plugins" in the 
+3. If it’s the first time starting up, the server automatically generates a trust bundle, whose contents it stores in a datastore you specify in the datastore plugin -- described in the section "Built-in plugins" in the 
 [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 4. The server turns on its registration API, to allow you to register workloads.  
 5. The SPIRE Agent starts up on the node that the workload is running on.  
