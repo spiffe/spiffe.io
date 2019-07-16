@@ -197,8 +197,6 @@ Apply the **agent-account.yaml** configuration file to create a service account 
 $ kubectl apply -f agent-account.yaml
 ```
 
-The **agent-account.yaml** file specifies a number of important directories, notably **/run/spire/data** and **/run/spire/sockets**. These directories are bound in when the agent container is deployed.
-
 ### Create Agent Configmap
 
 Apply the **agent-configmap.yaml** configuration file to create the agent configmap.
@@ -206,6 +204,8 @@ Apply the **agent-configmap.yaml** configuration file to create the agent config
 ```bash
 $ kubectl apply -f agent-configmap.yaml
 ```
+
+The **agent-configmap.yaml** file specifies a number of important directories, notably **/run/spire/sockets** and **/run/spire/config**. These directories are bound in when the agent container is deployed.
 
 ### Create Agent Daemonset
 
@@ -254,11 +254,37 @@ time="2019-01-07T23:49:13Z" level=info msg="Node attestation request from 192.1
 68.122.147:36718 completed using strategy k8s_sat" subsystem_name=node_api
 ```
 
-## Section 5: Configure a Workload Container to Access SPIRE {#section-5}
+## Section 5: Register Workloads {#section-5}
+
+In order to enable SPIRE to perform workload attestation -- which allows the agent to identify the workload to attest to its agent --  you must register the workload in the server. This tells SPIRE how to identify the workload and which SPIFFE ID to give it.
+
+1. Create a new registration entry for the node, specifying the SPIFFE ID to allocate to the node:
+
+    ```shell
+    $ kubectl exec -n spire spire-server-0 -- /opt/spire/bin/spire-server entry create \
+        -spiffeID spiffe://example.org/ns/spire/sa/spire-agent \
+        -parentID spiffe://example.org/spire/server \
+        -selector k8s_sat:cluster:demo-cluster \
+        -selector k8s_sat:agent_ns:spire \
+        -selector k8s_sat:agent_sa:spire-agent \
+        -node
+    ```
+
+2. Create a new registration entry for the workload, specifying the SPIFFE ID to allocate to the workload:
+
+    ```shell
+    $ kubectl exec -n spire spire-server-0 -- /opt/spire/bin/spire-server entry create \
+        -spiffeID spiffe://example.org/ns/default/sa/default \
+        -parentID spiffe://example.org/ns/spire/sa/spire-agent \
+        -selector k8s:ns:default \
+        -selector k8s:sa:default
+    ```
+
+## Section 6: Configure a Workload Container to Access SPIRE {#section-6}
 
 In this step, you configure a workload container to access SPIRE. Specifically, you are configuring the workload container to access the Workload API UNIX domain socket.
 
-The **client-deployment.yaml** file configures a no-op container using the **spire-k8s** docker image used for the server and agent. Examine the `volumeMounts` and `volumes configuration` stanzas to see how the UNIX domain `socketagent.sock` is bound in.
+The **client-deployment.yaml** file configures a no-op container using the **spire-k8s** docker image used for the server and agent. Examine the `volumeMounts` and `volumes configuration` stanzas to see how the UNIX domain `agent.sock` is bound in.
 
 You can test that the agent socket is accessible from an application container by issuing the following sequence of commands:
 
@@ -291,9 +317,9 @@ You can test that the agent socket is accessible from an application container b
 
 If the agent is not running, you’ll see an error message such as “no such file or directory" or “connection refused”.
 
-If the agent is running, you’ll see different output, such as “no identity issued” or a list of SVIDs.
+If the agent is running, you’ll see a list of SVIDs.
 
-## Section 6: Tear Down All Components {#section-6}
+## Section 7: Tear Down All Components {#section-7}
 
 1. Delete the workload container:
 
