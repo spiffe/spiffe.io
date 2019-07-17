@@ -268,7 +268,7 @@ On this machine, we have assumed our workload can be most easily identified by i
 		-selector unix:uid:${workload user id from previous step}
 	```
 
-You can now [retrieve the SVID via the Workload API](#step-8:-retrieve-workload-svids). 
+You can now [retrieve the SVID via the Workload API](#step-8-retrieve-workload-svids). 
 
 ### More on Registration Entries
 
