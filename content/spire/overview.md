@@ -68,7 +68,7 @@ You customize the agent’s behavior by configuring plugins and other configurat
 
 You can create custom server and agent plugins for particular platforms and architectures for which SPIRE doesn’t include plugins. For example, you could create server and agent node attestors for an architecture other than those summarized under [Node Attestation](#node-attestation). Or you could create a custom datastore plugin to support a type of database SPIRE doesn’t currently support. Because SPIRE loads custom plugins at runtime, you need not recompile SPIRE in order to enable them. 
 
-For help creating custom server and agent plugins, see the [SPIRE Plugin Development guide](https://github.com/spiffe/plugin-template/blob/master/SPIRE_PLUGIN_GUIDE.md). 
+For help creating custom server and agent plugins, see [`examples/plugins`directory in spire repo](https://github.com/spiffe/spire/tree/master/examples/plugins). 
 
 # A Day in the Life of an SVID
 
