@@ -199,7 +199,7 @@ Examples of proof of the node’s identity include:
 * an identity document delivered to the node via a cloud platform (such as an AWS Instance Identity Document) 
 * verifying a private key stored on a Hardware Security Module or Trusted Platform Module attached to the node  
 * a manual verification provided through a join token when the agent is installed
-identification credentials provisioned by a multi-node software system when it was installed on the node (such as a Kubernetes Service Account token)  
+* identification credentials provisioned by a multi-node software system when it was installed on the node (such as a Kubernetes Service Account token)  
 * other proof of machine identity (such as a deployed server certificate) 
 
 Node attestors return an (optional) set of node selectors to the server that identify a specific machine (such as an Amazon Instance ID). Since the specific identity of a single machine is often not useful when defining the identity of a workload, SPIRE queries a [node resolver](#node-resolution) (if there is one) to see what additional properties of the attested node can be verified (for example, if the node is a member of an AWS Security Group). The set of selectors from both attestor and resolver become the set of selectors associated with the agent node’s SPIFFE ID.  
