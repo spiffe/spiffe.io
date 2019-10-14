@@ -7,12 +7,12 @@ toc: true
 aliases: [tutorial-spire-on-kubernetes, tutorial-spire-on-kubernetes/]
 ---
 
-# About this Tutorial
+# About this Guide
 
-This tutorial walks you through getting a SPIRE Server and SPIRE Agent running in a Kubernetes cluster, and configuring a workload container to access SPIRE.
+This guide walks you through getting a SPIRE Server and SPIRE Agent running in a Kubernetes cluster, and configuring a workload container to access SPIRE.
 
 {{< warning >}}
-This tutorial is not designed for a production Kubernetes environment.
+This deployment this guide walks you through creating is not designed for a production Kubernetes environment.
 A production environment requires adjustments to certain steps; the section
 [Changes for a Production Environment](#changes-for-a-production-environment) walks you through the necessary changes.
 {{< /warning >}}
@@ -23,11 +23,11 @@ Before you begin, read through this section for information about the environmen
 
 ## Tested Kubernetes Versions
 
-This tutorial has been tested on these Kubernetes versions: 1.13.1, 1.12.4, and 1.10.12.
+This steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1.12.4, and 1.10.12.
 
 ## Assumptions
 
-The sample **.yaml** files for this walkthrough assume you are running Kubernetes in a [minikube](https://kubernetes.io/docs/setup/minikube/) cluster. If you’re not running a minikube cluster, you will need to adjust certain configuration settings; these adjustments are called out in the relevant step in the tutorial.
+The sample **.yaml** files for this walkthrough assume you are running Kubernetes in a [minikube](https://kubernetes.io/docs/setup/minikube/) cluster. If you’re not running a minikube cluster, you will need to adjust certain configuration settings; these adjustments are called out in the relevant step in the guide.
 
 ## Deployment and Configuration Details
 
@@ -38,19 +38,19 @@ The sample **.yaml** files for this walkthrough assume you are running Kubernete
 * The agent runs in a service account named **spire-agent**
 * The server uses a **hostPath** bind mount for persisting its keys and SQLite database.
 * The agent uses a **hostPath** bind mount for sharing the agent API's UNIX domain socket with application containers.
-* This tutorial does all configuring via Kubernetes configmaps. The container image for SPIRE contains only binaries.
+* This guide does all configuring via Kubernetes configmaps. The container image for SPIRE contains only binaries.
 
 # Steps
 
 This section walks you step-by-step through getting a server and agent(s) running in your Kubernetes cluster and configuring a workload container to access SPIRE.
 
 {{< warning >}}
-You must run all tutorial commands from the directory containing the **.yaml** files used for configuration. See [Obtain the Required Files](#section-1) for details.
+You must run all commands from the directory containing the **.yaml** files used for configuration. See [Obtain the Required Files](#section-1) for details.
 {{< /warning >}}
 
 ## Section 1: Obtain the Required Files {#section-1}
 
-This tutorial requires a number of **.yaml** files *and* you must run all tutorial commands in the directory in which those files
+This deployment this guide walks you through setting up requires a number of **.yaml** files *and* you must run all commands in the directory in which those files
 reside.
 
 To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain
@@ -58,7 +58,7 @@ the **.yaml** files from the **spire-tutorials/k8s** subdirectory.
 
 ## Section 2: Configure Kubernetes Namespace for SPIRE Components {#section-2}
 
-Follow these steps to configure the **spire** namespace in which this tutorial deploys the SPIRE Server and SPIRE Agent.
+Follow these steps to configure the **spire** namespace in which SPIRE Server and SPIRE Agent are deployed.
 
 1. Create the namespace:
 
@@ -403,10 +403,10 @@ time="2019-01-07T22:29:31Z" level=info msg="Starting workload API"
 
 # Changes For A Production Environment
 
-This tutorial is not designed for a production Kubernetes environment. A production environment requires adjustments to certain steps; these changes are summarized in this section.
+This deployment you set up in this walkthrough is not designed for a production Kubernetes environment. A production environment requires adjustments to certain steps; these changes are summarized in this section.
 
 The server uses a **hostPath** bind mount for persisting its keys and SQLite database. In a production deployment, a more robust and secure persistence mechanism is required.
 
-This tutorial uses a bootstrap cert -- **dummy_upstream_ca.crt** -- and key from the SPIRE source tree. In a production deployment, you would generate a new key/certificate pair and implement certificate rotation.
+This walkthrough uses a bootstrap cert -- **dummy_upstream_ca.crt** -- and key from the SPIRE source tree. In a production deployment, you would generate a new key/certificate pair and implement certificate rotation.
 
 In the [Create Server Configmap](#create-server-configmap) step: set the the cluster name in the `k8s_sat NodeAttestor` entry to the name you provide in the **agent-configmap.yaml** configuration file.
