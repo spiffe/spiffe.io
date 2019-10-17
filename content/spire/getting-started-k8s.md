@@ -11,11 +11,6 @@ aliases: [tutorial-spire-on-kubernetes, tutorial-spire-on-kubernetes/]
 
 This guide walks you through getting a SPIRE Server and SPIRE Agent running in a Kubernetes cluster, and configuring a workload container to access SPIRE.
 
-{{< warning >}}
-This deployment this guide walks you through creating is not designed for a production Kubernetes environment.
-A production environment requires adjustments to certain steps; the section
-[Changes for a Production Environment](#changes-for-a-production-environment) walks you through the necessary changes.
-{{< /warning >}}
 
 ## Before You Begin
 
@@ -370,9 +365,9 @@ time="2019-10-17T20:50:51Z" level=debug msg="No pre-existing agent SVID found. W
 time="2019-10-17T20:50:51Z" level=info msg="Starting workload API" subsystem_name=endpoints
 ```
 
-# Changes For A Production Environment
+# Considerations For A Production Environment
 
-This deployment you set up in this walkthrough is not designed for a production Kubernetes environment. A production environment requires adjustments to certain steps; these changes are summarized in this section.
+When deploying SPIRE in a production environment the following considerations should be made.
 
 In the [Create Server Configmap](#create-server-configmap) step: set the the cluster name in the `k8s_sat NodeAttestor` entry to the name you provide in the **agent-configmap.yaml** configuration file.
 
