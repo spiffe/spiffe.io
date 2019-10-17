@@ -11,7 +11,6 @@ aliases: [tutorial-spire-on-kubernetes, tutorial-spire-on-kubernetes/]
 
 This guide walks you through getting a SPIRE Server and SPIRE Agent running in a Kubernetes cluster, and configuring a workload container to access SPIRE.
 
-
 ## Before You Begin
 
 Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE/SPIRE Overview](https://spiffe.io/spire/overview/).
