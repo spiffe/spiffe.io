@@ -77,9 +77,8 @@ Follow these steps to configure the **spire** namespace in which SPIRE Server an
 To configure the SPIRE server, you:
 
 1. Create server service account
-2. Create server secrets
-3. Create server configmap
-4. Create server statefulset
+2. Create server configmap
+3. Create server statefulset
 
 ### Create Server Service Account
 
@@ -115,7 +114,7 @@ In a deployment such as this, where the agent and server share the same cluster,
 
 To allow the server to read and write to this configmap, a ClusterRole must be created that confers the appropriate entitlements to Kubernetes RBAC, and that ClusterRoleBinding must be associated with the service account created in the previous step.
 
-1. Create a ClusterRole named **spire-server-trust-role** the corresponding ClusterRoleBinding by applying the **server-cluster-role.yaml** configuration file:
+1. Create a ClusterRole named **spire-server-trust-role** and a corresponding ClusterRoleBinding by applying the **server-cluster-role.yaml** configuration file:
 
     ```bash
     $ kubectl apply -f server-cluster-role.yaml
@@ -129,9 +128,7 @@ To allow the server to read and write to this configmap, a ClusterRole must be c
 
 ### Create Server Configmap
 
-The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data**, **/run/spire/config**, **/run/spire/secrets**, and **/run/k8s-certs**. These volumes are bound in when the server container is deployed.
-
-The configmap also contains the bootstrap certificate **dummy_upstream_ca.crt**. As explained in the section [Changes for a Production Environment](#changes-for-a-production-environment), this is not appropriate for a production environment.
+The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data**, **/run/spire/config**, and **/run/k8s-certs**. These volumes are bound in when the server container is deployed.
 
 To create the server configmap, issue the following command:
 
@@ -171,7 +168,6 @@ When the server deploys, it binds in the volumes summarized in the following tab
 | Volume | Description | Mount Location |
 | :------ |:---------- | :------------- |
 | **spire-config** | A reference to the **spire-server** configmap created in the previous step | **/run/spire/config** |
-| **spire-secrets** | A  reference to the **spire-server** secrets created in the step [Create Server Secrets](#create-server-secrets) | **/run/spire/secrets** |
 | **spire-data** | The hostPath for the server's SQLite database and keys file | **/run/spire/data** |
 | **k8s-sa-cert** | The public key used to validate service accounts. As noted under [Create Server StatefulSet](#create-server-statefulset) you must take special steps to correctly set this value if you're *not* running Kubernetes in a minikube cluster. | **/run/k8s-certs/sa.pub** |
 
