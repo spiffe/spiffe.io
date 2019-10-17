@@ -307,7 +307,7 @@ You can test that the agent socket is accessible from an application container b
 3. Obtain a shell connection to the running pod:
 
     ```bash
-    $ kubectl exec -it client-6f9659bd44-m98vv /bin/bash
+    $ kubectl exec -it client-6f9659bd44-m98vv /bin/sh
     ```
 
 4. Verify the container can access the socket:
