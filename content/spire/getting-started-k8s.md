@@ -115,22 +115,16 @@ In a deployment such as this, where the agent and server share the same cluster,
 
 To allow the server to read and write to this configmap, a ClusterRole must be created that confers the appropriate entitlements to Kubernetes RBAC, and that ClusterRoleBinding must be associated with the service account created in the previous step.
 
-1. Create two ClusterRole objects named **spire-server-role** and **spire-server-cluster-role**, and the corresponding ClusterRoleBinding objects by applying the **server-cluster-role.yaml** configuration file:
+1. Create a ClusterRole named **spire-server-trust-role** the corresponding ClusterRoleBinding by applying the **server-cluster-role.yaml** configuration file:
 
     ```bash
     $ kubectl apply -f server-cluster-role.yaml
     ```
 
-2. To confirm successful creation, verify that the two ClusterRoles appear in the output of the following command:
+2. To confirm successful creation, verify that the ClusterRole appears in the output of the following command:
 
     ```bash
     $ kubectl get clusterroles --namespace spire | grep spire
-    ```
-
-2. To confirm successful creation, verify that two ClusterRolesBindings appear in the output of the following command:
-
-    ```bash
-    $ kubectl get clusterrolebindings --namespace spire | grep spire
     ```
 
 ### Create Server Configmap
