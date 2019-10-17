@@ -11,6 +11,7 @@ aliases: [tutorial-spire-on-kubernetes, tutorial-spire-on-kubernetes/]
 
 This guide walks you through getting a SPIRE Server and SPIRE Agent running in a Kubernetes cluster, and configuring a workload container to access SPIRE.
 
+
 ## Before You Begin
 
 Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE/SPIRE Overview](https://spiffe.io/spire/overview/).
@@ -19,9 +20,18 @@ Before you begin, read through this section for information about the environmen
 
 This steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1.12.4, and 1.10.12.
 
-## Assumptions
-
-The sample **.yaml** files for this walkthrough assume you are running Kubernetes in a [minikube](https://kubernetes.io/docs/setup/minikube/) cluster. If you’re not running a minikube cluster, you will need to adjust certain configuration settings; these adjustments are called out in the relevant step in the guide.
+{{< warning >}}
+If you are using minikube to run this tutorial, when starting your test cluster you should pass some additional configuration flags.
+```
+minikube start \
+    --extra-config=apiserver.service-account-signing-key-file=/var/lib/minikube/certs/sa.key \
+    --extra-config=apiserver.service-account-key-file=/var/lib/minikube/certs/sa.pub \
+    --extra-config=apiserver.service-account-issuer=api \
+    --extra-config=apiserver.service-account-api-audiences=api,spire-server \
+    --extra-config=apiserver.authorization-mode=RBAC \
+    --extra-config=kubelet.authentication-token-webhook=true
+```
+{{< warning >}}
 
 ## Deployment and Configuration Details
 
@@ -30,7 +40,6 @@ The sample **.yaml** files for this walkthrough assume you are running Kubernete
 * All SPIRE components are created in a Kubernetes namespace called **spire**.
 * The server runs in a service account named **spire-server**
 * The agent runs in a service account named **spire-agent**
-* The server uses a **hostPath** bind mount for persisting its keys and SQLite database.
 * The agent uses a **hostPath** bind mount for sharing the agent API's UNIX domain socket with application containers.
 * This guide does all configuring via Kubernetes configmaps. The container image for SPIRE contains only binaries.
 
@@ -132,8 +141,6 @@ $ kubectl apply -f server-configmap.yaml
 
 ### Create Server StatefulSet
 
-Before you deploy the server: If you are not running Kubernetes in a minikube cluster, you must introspect the running pod for kube-apiserver to determine which certificate Kubernetes uses to validate service accounts. This will either be the value of **--service-account-key-file** OR -- if that is not provided to **kube-apiserver** -- the value of **--tls-private-key-file**. Depending on which applies to you, set the **k8s-sa-cert** value to the certificate in use.
-
 Deploy the server by applying the configuration **server-statefulset.yaml** file:
 
 ```bash
@@ -163,7 +170,6 @@ When the server deploys, it binds in the volumes summarized in the following tab
 | :------ |:---------- | :------------- |
 | **spire-config** | A reference to the **spire-server** configmap created in the previous step | **/run/spire/config** |
 | **spire-data** | The hostPath for the server's SQLite database and keys file | **/run/spire/data** |
-| **k8s-sa-cert** | The public key used to validate service accounts. As noted under [Create Server StatefulSet](#create-server-statefulset) you must take special steps to correctly set this value if you're *not* running Kubernetes in a minikube cluster. | **/run/k8s-certs/sa.pub** |
 
 ### Create Server Service
 
@@ -371,4 +377,6 @@ When deploying SPIRE in a production environment the following considerations sh
 In the [Create Server Configmap](#create-server-configmap) step: set the the cluster name in the `k8s_sat NodeAttestor` entry to the name you provide in the **agent-configmap.yaml** configuration file.
 
 If your Kubernetes cluster supports projected service account tokens, consider using the built-in 
-[Projected Service Account Token k8s Node Attestor](/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_k8s_psat.md) for authenticating the SPIRE agent to the server. Projected Service Account Tokens are more tightly scoped than regular service account tokens, and thus more secure.
+[Projected Service Account Token k8s Node Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_k8s_psat.md) for authenticating the SPIRE agent to the server. Projected Service Account Tokens are more tightly scoped than regular service account tokens, and thus more secure.
+
+By default, the SPIRE agent does not verify the identity of the Kubernetes kubelet when requesting metadata for workload attestation. For additional security, you may wish to configure the Kubernetes workload attestor to perform this verification on compatible Kubernetes distributions by setting `skip_kubelet_verification` to `true. [Read more](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md)
