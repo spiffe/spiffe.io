@@ -133,27 +133,6 @@ To allow the server to read and write to this configmap, a ClusterRole must be c
     $ kubectl get clusterrolebindings --namespace spire | grep spire
     ```
 
-### Create Server Secrets
-
-This example of creating secrets uses a bootstrap cert and key, as configured in the **server-secrets.yaml** configuration file. 
-
-{{< warning >}}
-The value for `bootstrap.key` is a base64 encoding of the key of a public/private keypair. 
-For production deployments the default values provided here should *never* be used. Instead a unique public and private key should be generated for each SPIRE server when first deployed.
-{{< /warning >}}
-
-1. Create a set of secrets named **spire-server** in the **spire** namespace by issuing the following command:
-
-    ```bash
-    $ kubectl apply -f server-secrets.yaml
-    ```
-
-2. To confirm this command succeeded, look for the string “spire-server Opaque” in the output of the following command:
-
-    ```bash
-    $ kubectl get secrets --namespace spire
-    ```
-
 ### Create Server Configmap
 
 The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data**, **/run/spire/config**, **/run/spire/secrets**, and **/run/k8s-certs**. These volumes are bound in when the server container is deployed.
