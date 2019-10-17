@@ -246,21 +246,6 @@ When the agent deploys, it binds the volumes summarized in the following table:
 | **spire-config** | The spire-agent configmap created in the  [Create Agent Configmap](#create-agent-configmap) step | **/run/spire/config** |
 | **spire-sockets** | The hostPath, which will be shared with all other pods running on the same worker host. It contains a UNIX domain socket that workloads use to communicate with the agent API. | **/run/spire/sockets** |
 
-To verify that the agent attested to the server, [examine the server logs](#examine-server-logs); you should expect output similar to the following:
-
-```
-time="2019-01-07T23:49:13Z" level=debug msg="Signing CSR for Agent SVID spiffe:
-//example.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff
-" subsystem_name=node_api
-time="2019-01-07T23:49:13Z" level=debug msg="Signed x509 SVID \"spiffe://exampl
-e.org/spire/agent/k8s_sat/minikube/139f5941-b83b-43f9-b35c-cafbe720d3ff\" (expi
-res 2019-01-07T23:59:39Z)" subsystem_name=ca_manager
-time="2019-01-07T23:49:13Z" level=debug msg="could not find node resolver type
-%qk8s_sat" subsystem_name=node_api
-time="2019-01-07T23:49:13Z" level=info msg="Node attestation request from 192.1
-68.122.147:36718 completed using strategy k8s_sat" subsystem_name=node_api
-```
-
 ## Section 5: Register Workloads {#section-5}
 
 In order to enable SPIRE to perform workload attestation -- which allows the agent to identify the workload to attest to its agent --  you must register the workload in the server. This tells SPIRE how to identify the workload and which SPIFFE ID to give it.
@@ -355,30 +340,13 @@ $ kubectl logs -f spire-server-b95945658-4wbkd --namespace spire
 Your output should look something like the following:
 
 ```
-time="2019-01-07T20:41:39Z" level=debug msg="Setting umask to 077"
-time="2019-01-07T20:41:39Z" level=info msg="data directory: \"/run/spire/data\"
-  "
-time="2019-01-07T20:41:39Z" level=info msg="Starting plugin catalog" subsystem_
-  name=catalog
-time="2019-01-07T20:41:39Z" level=debug msg="DataStore(sql): configuring plugin
-  " subsystem_name=catalog
-time="2019-01-07T20:41:39Z" level=debug msg="NodeAttestor(k8s_sat): configuring
-  plugin" subsystem_name=catalog
-time="2019-01-07T20:41:39Z" level=debug msg="NodeResolver(noop): configuring
-  plugin" subsystem_name=catalog
-time="2019-01-07T20:41:39Z" level=debug msg="KeyManager(disk): configuring
-  plugin" subsystem_name=catalog
-time="2019-01-07T20:41:39Z" level=debug msg="UpstreamCA(disk): configuring
-  plugin" subsystem_name=catalog
-time="2019-01-07T20:41:39Z" level=info msg="plugins started"
-time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair set \"A\""
-  subsystem_name=ca_manager
-time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair set \"B\""
-  subsystem_name=ca_manager
-time="2019-01-07T20:41:39Z" level=debug msg="Loaded keypair sets"
-  subsystem_name=ca_manager
-time="2019-01-07T20:41:39Z" level=debug msg="Activating keypair set \"B\""
-  subsystem_name=ca_manager
+time="2019-10-17T20:48:17Z" level=debug msg="Initializing API endpoints" subsystem_name=endpoints
+time="2019-10-17T20:48:17Z" level=info msg="Starting TCP server" address="[::]:8081" subsystem_name=endpoints
+time="2019-10-17T20:48:17Z" level=info msg="Starting UDS server" address=/tmp/spire-registration.sock subsystem_name=endpoints
+time="2019-10-17T20:48:17Z" level=debug msg="Notifier handled event" event="bundle loaded" notifier=k8sbundle subsystem_name=ca_manager
+time="2019-10-17T20:48:55Z" level=debug msg="Signing CSR for Agent SVID" agent_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35d5b3ec848e" attestor=k8s_sat spiffe_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35d5b3ec848e" subsystem_name=node_api
+time="2019-10-17T20:48:55Z" level=debug msg="Signed X509 SVID" expiration="2019-10-17T21:48:55Z" spiffe_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35d5b3ec848e" subsystem_name=ca
+time="2019-10-17T20:48:55Z" level=info msg="Node attestation request completed" address="10.0.2.15:41048" attestor=k8s_sat spiffe_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35d5b3ec848e" subsystem_name=node_api
 ```
 
 ## Examine Agent Logs
@@ -392,28 +360,21 @@ $ kubectl logs -f spire-agent-88cpl --namespace spire
 Your output should look something like the following:
 
 ```
-time="2019-01-07T22:20:59Z" level=info msg="Starting plugin catalog" subsystem_
-  name=catalog
-time="2019-01-07T22:20:59Z" level=debug msg="WorkloadAttestor(k8s): configuring
-  plugin" subsystem_name=catalog
-time="2019-01-07T22:20:59Z" level=debug msg="WorkloadAttestor(unix): configuring
-  plugin" subsystem_name=catalog
-time="2019-01-07T22:20:59Z" level=debug msg="NodeAttestor(k8s_sat): configuring
-  plugin" subsystem_name=catalog
-time="2019-01-07T22:20:59Z" level=debug msg="KeyManager(memory): configuring
-  plugin" subsystem_name=catalog
-time="2019-01-07T22:20:59Z" level=debug msg="No pre-existing agent SVID found.
-  Will perform node attestation" subsystem_name=attestor
-time="2019-01-07T22:29:31Z" level=info msg="Starting workload API"
-  subsystem_name=endpoints
+time="2019-10-17T20:50:51Z" level=info msg="Starting agent with data directory: \"/run/spire\""
+time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true plugin_name=k8s_sat plugin_services="[]" plugin_type=NodeAttestor subsystem_name=catalog
+time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true plugin_name=memory plugin_services="[]" plugin_type=KeyManager subsystem_name=catalog
+time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true plugin_name=k8s plugin_services="[]" plugin_type=WorkloadAttestor subsystem_name=catalog
+time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true plugin_name=unix plugin_services="[]" plugin_type=WorkloadAttestor subsystem_name=catalog
+time="2019-10-17T20:50:51Z" level=debug msg="No pre-existing agent SVID found. Will perform node attestation" path=/run/spire/agent_svid.der subsystem_name=attestor
+2019/10/17 20:50:51 [DEBUG] Starting checker name=agent
+time="2019-10-17T20:50:51Z" level=info msg="Starting workload API" subsystem_name=endpoints
 ```
 
 # Changes For A Production Environment
 
 This deployment you set up in this walkthrough is not designed for a production Kubernetes environment. A production environment requires adjustments to certain steps; these changes are summarized in this section.
 
-The server uses a **hostPath** bind mount for persisting its keys and SQLite database. In a production deployment, a more robust and secure persistence mechanism is required.
-
-This walkthrough uses a bootstrap cert -- **dummy_upstream_ca.crt** -- and key from the SPIRE source tree. In a production deployment, you would generate a new key/certificate pair and implement certificate rotation.
-
 In the [Create Server Configmap](#create-server-configmap) step: set the the cluster name in the `k8s_sat NodeAttestor` entry to the name you provide in the **agent-configmap.yaml** configuration file.
+
+If your Kubernetes cluster supports projected service account tokens, consider using the built-in 
+[Projected Service Account Token k8s Node Attestor](/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_k8s_psat.md) for authenticating the SPIRE agent to the server. Projected Service Account Tokens are more tightly scoped than regular service account tokens, and thus more secure.
