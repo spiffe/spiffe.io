@@ -345,13 +345,23 @@ $ kubectl logs -f spire-server-b95945658-4wbkd --namespace spire
 Your output should look something like the following:
 
 ```
-time="2019-10-17T20:48:17Z" level=debug msg="Initializing API endpoints" subsystem_name=endpoints
-time="2019-10-17T20:48:17Z" level=info msg="Starting TCP server" address="[::]:8081" subsystem_name=endpoints
-time="2019-10-17T20:48:17Z" level=info msg="Starting UDS server" address=/tmp/spire-registration.sock subsystem_name=endpoints
-time="2019-10-17T20:48:17Z" level=debug msg="Notifier handled event" event="bundle loaded" notifier=k8sbundle subsystem_name=ca_manager
-time="2019-10-17T20:48:55Z" level=debug msg="Signing CSR for Agent SVID" agent_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35d5b3ec848e" attestor=k8s_sat spiffe_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35d5b3ec848e" subsystem_name=node_api
-time="2019-10-17T20:48:55Z" level=debug msg="Signed X509 SVID" expiration="2019-10-17T21:48:55Z" spiffe_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35d5b3ec848e" subsystem_name=ca
-time="2019-10-17T20:48:55Z" level=info msg="Node attestation request completed" address="10.0.2.15:41048" attestor=k8s_sat spiffe_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35d5b3ec848e" subsystem_name=node_api
+time="2019-10-17T20:48:17Z" level=debug msg="Initializing API endpoints" 
+ subsystem_name=endpoints
+time="2019-10-17T20:48:17Z" level=info msg="Starting TCP server" 
+ address="[::]:8081" subsystem_name=endpoints
+time="2019-10-17T20:48:17Z" level=info msg="Starting UDS server" 
+ address=/tmp/spire-registration.sock subsystem_name=endpoints
+time="2019-10-17T20:48:17Z" level=debug msg="Notifier handled event" 
+ event="bundle loaded" notifier=k8sbundle subsystem_name=ca_manager
+time="2019-10-17T20:48:55Z" level=debug msg="Signing CSR for Agent SVID" 
+ agent_id="spiffe://example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-...
+time="2019-10-17T20:48:55Z" level=debug msg="Signed X509 SVID" 
+ expiration="2019-10-17T21:48:55Z" spiffe_id="spiffe://example.org/spire/...
+ 578c8d2a-4713-468c-9619-35d5b3ec848e" subsystem_name=ca
+time="2019-10-17T20:48:55Z" level=info msg="Node attestation request 
+ completed" address="10.0.2.15:41048" attestor=k8s_sat spiffe_id="spiffe:
+ //example.org/spire/agent/k8s_sat/demo-cluster/578c8d2a-4713-468c-9619-35
+ d5b3ec848e" subsystem_name=node_api
 ```
 
 ## Examine Agent Logs
@@ -365,14 +375,21 @@ $ kubectl logs -f spire-agent-88cpl --namespace spire
 Your output should look something like the following:
 
 ```
-time="2019-10-17T20:50:51Z" level=info msg="Starting agent with data directory: \"/run/spire\""
-time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true plugin_name=k8s_sat plugin_services="[]" plugin_type=NodeAttestor subsystem_name=catalog
-time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true plugin_name=memory plugin_services="[]" plugin_type=KeyManager subsystem_name=catalog
-time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true plugin_name=k8s plugin_services="[]" plugin_type=WorkloadAttestor subsystem_name=catalog
-time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true plugin_name=unix plugin_services="[]" plugin_type=WorkloadAttestor subsystem_name=catalog
-time="2019-10-17T20:50:51Z" level=debug msg="No pre-existing agent SVID found. Will perform node attestation" path=/run/spire/agent_svid.der subsystem_name=attestor
+time="2019-10-17T20:50:51Z" level=info msg="Starting agent with data directory:
+  \"/run/spire\""
+time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=
+ true plugin_name=k8s_sat plugin_services="[]" plugin_type=NodeAttestor subsystem_name=catalog
+time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=
+ true plugin_name=memory plugin_services="[]" plugin_type=KeyManager subsystem_name=catalog
+time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=
+ true plugin_name=k8s plugin_services="[]" plugin_type=WorkloadAttestor subsystem_name=catalog
+time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=
+ true plugin_name=unix plugin_services="[]" plugin_type=WorkloadAttestor subsystem_name=catalog
+time="2019-10-17T20:50:51Z" level=debug msg="No pre-existing agent SVID found. 
+ Will perform node attestation" path=/run/spire/agent_svid.der subsystem_name=attestor
 2019/10/17 20:50:51 [DEBUG] Starting checker name=agent
-time="2019-10-17T20:50:51Z" level=info msg="Starting workload API" subsystem_name=endpoints
+time="2019-10-17T20:50:51Z" level=info msg="Starting workload API" 
+ subsystem_name=endpoints
 ```
 
 # Considerations When Using Minikube {#minikube}
