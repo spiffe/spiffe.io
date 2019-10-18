@@ -31,7 +31,7 @@ minikube start \
     --extra-config=apiserver.authorization-mode=RBAC \
     --extra-config=kubelet.authentication-token-webhook=true
 ```
-{{< warning >}}
+{{< /warning >}}
 
 ## Deployment and Configuration Details
 
@@ -131,7 +131,7 @@ To allow the server to read and write to this configmap, a ClusterRole must be c
 
 ### Create Server Configmap
 
-The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data**, **/run/spire/config**, and **/run/k8s-certs**. These volumes are bound in when the server container is deployed.
+The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data** abd **/run/spire/config**. These volumes are bound in when the server container is deployed.
 
 To create the server configmap, issue the following command:
 
@@ -379,4 +379,4 @@ In the [Create Server Configmap](#create-server-configmap) step: set the the clu
 If your Kubernetes cluster supports projected service account tokens, consider using the built-in 
 [Projected Service Account Token k8s Node Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_k8s_psat.md) for authenticating the SPIRE agent to the server. Projected Service Account Tokens are more tightly scoped than regular service account tokens, and thus more secure.
 
-By default, the SPIRE agent does not verify the identity of the Kubernetes kubelet when requesting metadata for workload attestation. For additional security, you may wish to configure the Kubernetes workload attestor to perform this verification on compatible Kubernetes distributions by setting `skip_kubelet_verification` to `true. [Read more](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md)
+As configured, the SPIRE agent does not verify the identity of the Kubernetes kubelet when requesting metadata for workload attestation. For additional security, you may wish to configure the Kubernetes workload attestor to perform this verification on compatible Kubernetes distributions by setting `skip_kubelet_verification` to `false`. [Read more](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md)
