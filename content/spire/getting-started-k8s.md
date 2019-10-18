@@ -131,7 +131,7 @@ To allow the server to read and write to this configmap, a ClusterRole must be c
 
 ### Create Server Configmap
 
-The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data** abd **/run/spire/config**. These volumes are bound in when the server container is deployed.
+The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data** and **/run/spire/config**. These volumes are bound in when the server container is deployed.
 
 To create the server configmap, issue the following command:
 
