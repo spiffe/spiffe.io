@@ -204,6 +204,20 @@ Apply the **agent-account.yaml** configuration file to create a service account 
 $ kubectl apply -f agent-account.yaml
 ```
 
+To allow the agent read access to the kubelet API to perform workload attestation, a ClusterRole must be created that confers the appropriate entitlements to Kubernetes RBAC, and that ClusterRoleBinding must be associated with the service account created in the previous step.
+
+1. Create a ClusterRole named **spire-agent-cluster-role** and a corresponding ClusterRoleBinding by applying the **agent-cluster-role.yaml** configuration file:
+
+    ```bash
+    $ kubectl apply -f agent-cluster-role.yaml
+    ```
+
+2. To confirm successful creation, verify that the ClusterRole appears in the output of the following command:
+
+    ```bash
+    $ kubectl get clusterroles --namespace spire | grep spire
+    ```
+
 ### Create Agent Configmap
 
 Apply the **agent-configmap.yaml** configuration file to create the agent configmap.
