@@ -1,7 +1,7 @@
 ---
 title: Getting Started Guide for Kubernetes
 short: Getting Started on Kubernetes
-description: Install and run a SPIRE Server and Agent locally on a Kubernetes cluster
+description: Install and run a SPIRE Server and Agent on a Kubernetes cluster
 weight: 3
 toc: true
 aliases: [tutorial-spire-on-kubernetes, tutorial-spire-on-kubernetes/]
@@ -14,23 +14,14 @@ This guide walks you through getting a SPIRE Server and SPIRE Agent running in a
 
 ## Before You Begin
 
-Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE/SPIRE Overview](https://spiffe.io/spire/overview/).
+Before you begin, read through this section for information about the environment and deployment it sets up. Also, if you’re not familiar with basic SPIFFE and SPIRE concepts, be sure to review the [SPIFFE/SPIRE Overview](/spire/overview/).
 
 ## Tested Kubernetes Versions
 
 This steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1.12.4, and 1.10.12.
 
 {{< warning >}}
-If you are using minikube to run this tutorial, when starting your test cluster you should pass some additional configuration flags.
-```
-minikube start \
-    --extra-config=apiserver.service-account-signing-key-file=/var/lib/minikube/certs/sa.key \
-    --extra-config=apiserver.service-account-key-file=/var/lib/minikube/certs/sa.pub \
-    --extra-config=apiserver.service-account-issuer=api \
-    --extra-config=apiserver.service-account-api-audiences=api,spire-server \
-    --extra-config=apiserver.authorization-mode=RBAC \
-    --extra-config=kubelet.authentication-token-webhook=true
-```
+If you are using minikube to run this tutorial you should specify some special flags as described [here](#minikube).
 {{< /warning >}}
 
 ## Deployment and Configuration Details
@@ -382,6 +373,19 @@ time="2019-10-17T20:50:51Z" level=info msg="Plugin loaded." built-in_plugin=true
 time="2019-10-17T20:50:51Z" level=debug msg="No pre-existing agent SVID found. Will perform node attestation" path=/run/spire/agent_svid.der subsystem_name=attestor
 2019/10/17 20:50:51 [DEBUG] Starting checker name=agent
 time="2019-10-17T20:50:51Z" level=info msg="Starting workload API" subsystem_name=endpoints
+```
+
+# Considerations When Using Minikube {#minikube}
+
+If you are using minikube to run this tutorial, when starting your cluster you should pass some additional configuration flags.
+```
+minikube start \
+    --extra-config=apiserver.service-account-signing-key-file=/var/lib/minikube/certs/sa.key \
+    --extra-config=apiserver.service-account-key-file=/var/lib/minikube/certs/sa.pub \
+    --extra-config=apiserver.service-account-issuer=api \
+    --extra-config=apiserver.service-account-api-audiences=api,spire-server \
+    --extra-config=apiserver.authorization-mode=RBAC \
+    --extra-config=kubelet.authentication-token-webhook=true
 ```
 
 # Considerations For A Production Environment

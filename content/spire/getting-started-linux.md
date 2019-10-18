@@ -1,7 +1,7 @@
 ---
 title: Getting Started Guide for Linux
 short: Getting Started on Linux
-description: Install and run a SPIRE Server and Agent locally on Linux VMs
+description: Install and run a SPIRE Server and Agent on Linux VMs
 weight: 3
 toc: true
 ---
