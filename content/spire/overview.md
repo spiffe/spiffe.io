@@ -2,7 +2,7 @@
 title: SPIRE Overview
 short: Overview
 description: An overview of SPIRE's architecture and fundamentals
-weight: 2
+weight: 22
 toc: true
 ---
 
