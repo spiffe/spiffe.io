@@ -1,7 +1,7 @@
 ---
-title: About SPIRE
-short: About SPIRE
-description: A brief introduction to SPIRE, the SPIFFE Runtime Environment
+title: Understand SPIRE
+short: Understand
+description: Basic understanding
 weight: 1
 ---
 
