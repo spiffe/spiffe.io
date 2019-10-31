@@ -13,7 +13,7 @@ In this quick introduction to SPIRE you will learn how to:
 * **Start the spire-server process**
 * **Attest a spire-agent to the server using a join token**
 * **Configure a registration entry for a workload**
-* **Fetch an SVID over the WorkloadAPI**
+* **Fetch an x509-SVID over the WorkloadAPI**
 * **Learn where to find resources for more complex installations on Linux and Kubernetes** 
 
 ## Prerequisites
@@ -125,7 +125,7 @@ Selector      : unix:uid:501
 {{< /info >}}
 
 
-## Fetch and view a x509 SVID 
+## Fetch and view a x509-SVID 
 
 Check that the agent is running:
 
@@ -134,7 +134,7 @@ $ ./spire-agent healthcheck
 Agent is healthy.
 ```
 
-This command replicates the process that a workload would take to get an SVID from the agent. The SVID could be used to authenticate the workload to another workload. To fetch and write an x509 SVID to /tmp/:
+This command replicates the process that a workload would take to get an x509-SVID from the agent. The x509-SVID could be used to authenticate the workload to another workload. To fetch and write an x509-SVID to /tmp/:
 
 ```
 $ ./spire-agent api fetch x509 -write /tmp/
