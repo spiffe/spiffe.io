@@ -8,7 +8,7 @@ toc: true
 
 # Authenticating two workloads using mTLS
 
-This section should include:
+TODO: This section should include:
 * basic summary of the use case
 * a diagram
 * a list of steps you would need to go through to accomplish them
@@ -17,7 +17,7 @@ This section should include:
 
 # Authenticating two workloads using JWT-based authentication
 
-This section should include:
+TODO: This section should include:
 * basic summary of the use case
 * a diagram
 * a list of steps you would need to go through to accomplish them
@@ -26,7 +26,7 @@ This section should include:
 
 # Securely authenticating multiple SPIRE Servers
 
-This section should include:
+TODO: This section should include:
 * basic summary of the use case
 * a diagram
 * a list of steps you would need to go through to accomplish them
