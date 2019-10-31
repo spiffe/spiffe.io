@@ -8,7 +8,7 @@ weight: 20
 
 ## SPIFFE and SPIRE Implementation Examples
 
-See the links below for presentations, podcasts, and blog posts that demonstrate how people have used SPIFFE and SPIRE to address complex software infrastructure challenges.
+The following presentations, podcasts, and blog posts demonstrate how people have used SPIFFE and SPIRE to address complex software infrastructure challenges.
 
 ### Presentations
 
