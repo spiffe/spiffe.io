@@ -32,49 +32,13 @@ This guide also illustrates node attestation using join tokens---a pre-shared ke
 
 Finally, this guide assumes the user is running **Ubuntu 16.04**.
 
-## Step 1: Plan {#step-1}
-
-### Plan Your Configuration
-
-To customize the behavior of the SPIRE Server and SPIRE Agent to meet your application’s needs you edit configuration files for the server and agent. 
-
-Note that the some of the configuration file default settings -- such as those for database choice for server data, key management backend, and upstream -- will work well for most evaluations. 
-
-The following decisions influence how you set values in the configuration file: 
-
-* What you will name your server trust domain and your agent trust domain 
-
-Trust domain names must be identical in the server and the agent. 
-
-* Which node attestation method your application requires 
-
-This depends on your where your workload is running. Your choice of node attestation method determines which node-attestor plugins you configure SPIRE to use in Server Plugins and Agent Plugins sections of the SPIRE configuration files. You must configure at least one node attestor on the server and only one node attestor on the agent. 
-
-For simplicity’s sake, this guide demonstrates using the join token method for node attestation. 
-
-* Which workload attestation method your application requires. As with node attestation methods, your choice depends on the infrastructure your application’s workloads are deployed in (for example, SPIRE supports identifying workloads that run in Kubernetes).
-
-* Which type of database your application will use to store server data
-
-SPIRE employs a database to persist data related to workload identities and registration entries. By default, SPIRE bundles SQLite and sets it as the default for storage of server data. SPIRE currently also supports PostgreSQL. For production purposes, you should carefully consider which database to use. 
-
-* Which key management backend your application requires
-
-The key manager generates and persists the public-private key pair used for the agent SVID.  You must choose whether to store the private key on disk or in memory. For production purposes, you also might consider integrating a custom backend for storage purposes, such as a secret store.
-
-* Which trust root (“upstream certificate authority (CA)”) your application will use
-
-The SPIRE server provides a CA. If you’re, for example, using an external PKI system that provides an upstream CA, you can configure SPIRE to use that instead.
-
-Once you’ve made these decisions, you can [configure the server](#step-4) and [configure the agent](#step-5) accordingly, after [installing them](#step-3-install-the-server-and-agent). 
-
-## Step 2: Obtain the SPIRE Binaries {#step-2}
+## Step 1: Obtain the SPIRE Binaries {#step-1}
 
 Pre-built SPIRE releases can be found on the [SPIRE downloads page](/downloads#spire). These releases contain both server and agent binaries.
 
 If you wish, you may also [build SPIRE from source](https://github.com/spiffe/spire/blob/master/CONTRIBUTING.md).
 
-## Step 3: Install the Server and Agent {#step-3}
+## Step 2: Install the Server and Agent {#step-2}
 
 As stated above, this guide illustrates installs the server and agent on the same node. More typically, your architecture will have the the server installed on one node and one or more agents installed on distinct nodes. 
 
@@ -95,7 +59,7 @@ To install the server and agent:
 	ln -s /opt/spire/spire-agent /usr/bin/spire-agent
 	```
 
-## Step 4: Configure the Server {#step-4}
+## Step 3: Configure the Server {#step-3}
 
 To configure the server you:
 
@@ -106,7 +70,7 @@ To configure the server you:
 
 However, to get a simple deployment up and running for demonstration purposes, you need only go through steps 1, 2, and 3. 
 
-To configure the items in steps 1, 2, and 3, edit the server’s configuration file, located in **/opt/spire/conf/server/server.conf**.
+To configure the items in steps 1 and 2, edit the server’s configuration file, located in **/opt/spire/conf/server/server.conf**.
 
 If you choose to change the default data directory, you do this at the command line.  
 
@@ -157,7 +121,7 @@ sudo mkdir -p /opt/spire/.data
 
 For a complete server configuration reference, see the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
-## Step 5: Configure the Agent {#step-5}
+## Step 4: Configure the Agent {#step-4}
 
 When connecting to the SPIRE Server for the first time, the agent uses a configured X.509 CA certificate to verify the initial connection. SPIRE releases include a "dummy" certificate for this purpose. For a production implementation, a separate key should be generated. See the [next section](#generate-a-key).
 
@@ -213,7 +177,7 @@ KeyManager “disk” {
 
 For a complete discussion of agent configuration values, see the section [SPIRE Agent Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
 
-## Step 6: Start Up the Server and Agent {#step-6}
+## Step 5: Start Up the Server and Agent {#step-5}
 
 In this example, we will start a server and join an agent to it using the join token attestation method. 
 
@@ -242,7 +206,7 @@ s
 
 You have the option to adding the join token to the **NodeAttestor** entry in the agent configuration file instead of passing it at the command line. 
 
-## Step 7 Register Workloads
+## Step 6 Register Workloads {#step-6}
 
 In order to enable SPIRE to perform workload attestation -- which allows the agent to identify the workload to attest to its agent --  you must register the workload in the server. This tells SPIRE how to identify the workload and which SPIFFE ID to give it.
 
@@ -268,7 +232,7 @@ On this machine, we have assumed our workload can be most easily identified by i
 		-selector unix:uid:${workload user id from previous step}
 	```
 
-You can now [retrieve the SVID via the Workload API](#step-8-retrieve-workload-svids). 
+You can now [retrieve the SVID via the Workload API](#step-7). 
 
 ### More on Registration Entries
 
@@ -285,7 +249,7 @@ Because this guide assumes we’re running on UNIX, we also specify the followin
 
 Not that the minimum requirement for a UNIX kernel selector is just one of these.
 
-## Step 8: Retrieve Workload SVIDs
+## Step 7: Retrieve Workload SVIDs {#step-7}
 
 At this point, the registration API has been called and the target workload has been registered with the SPIRE Server. We can now call the workload API using a command line program to request the workload’s SVID from the agent, as illustrated in the next section.
 
