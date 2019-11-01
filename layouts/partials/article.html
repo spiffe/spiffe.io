@@ -2,7 +2,7 @@
   <div class="container">
     <div class="columns">
       {{ partial "section-menu.html" . }}
-      <div class="column is-full-mobile">
+      <div class="column is-three-fifths is-full-mobile">
         <div class="content">
           <div class="is-hidden-desktop">
             {{ partial "dropdown.html" . }}
@@ -14,7 +14,7 @@
         </div>
       </div>
       {{- if .Params.toc }}
-      <div class="column is-one-quarter is-toc-column is-hidden-touch">
+      <div class="column is-one-fifth is-toc-column is-hidden-touch">
         
         <aside class="is-toc-container">
           <div id="toc">
