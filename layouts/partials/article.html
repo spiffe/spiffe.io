@@ -39,6 +39,18 @@
           <section class="is-inner-content">
             {{ .Content }}
           </section>
+		  <br />
+          <section class="is-inner-content">
+          {{ if .IsPage }}
+            Last modified on {{ .Lastmod }}
+            <br />
+            Edit this page on GitHub
+            <a href="{{ $githubURL }}/content/{{ .File.Path}}">
+              {{ $githubURL }}/content/{{ .File.Path}}
+            </a>
+            <br />
+          {{ end }}
+          </section>
         </div>
       </div>
       {{- if .Params.toc }}
