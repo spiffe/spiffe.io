@@ -70,16 +70,3 @@ This is more Scytale than SPIFFE
 | Topic | Authors | Organization | Date | Language |
 | --- | --- | --- | --- | --- |
 | - | - | - | - | - |
-
-
-
-
-<!---
-This is a bucket for other videos and prose on the web that related to SPI* but are not case studies.
-
-
-
-Secret management in multi-tenant environments (Knox) @Pinterest
-https://medium.com/pinterest-engineering/secret-management-in-multi-tenant-environments-debc9236a744
-
---->
