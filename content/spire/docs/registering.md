@@ -97,3 +97,7 @@ TODO
 # How to remove workload registration entries
 
 TODO
+
+## Automating Workload Registration on Kubernetes
+
+TODO

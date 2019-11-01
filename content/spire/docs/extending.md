@@ -1,7 +1,7 @@
 ---
 title: Extend SPIRE
 description: Learn how to extend SPIRE with third-party plugins
-weight: 140
+weight: 150
 ---
 
 # Available third party plugins

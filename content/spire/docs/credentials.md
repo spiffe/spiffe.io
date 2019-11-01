@@ -2,7 +2,7 @@
 title: Retrieving credentials
 short: Retrieving credentials
 description: How to retrieve credentials
-weight: 130
+weight: 140
 toc: true
 ---
 
