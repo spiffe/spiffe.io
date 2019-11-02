@@ -1,7 +1,8 @@
-{{- $docs := .CurrentSection.RegularPages }}     
+{{- $docs         := .CurrentSection.RegularPages }}
 {{- $multipleDocs := gt (len $docs) 1 }}
 {{- $currentUrl   := .URL }}
 {{- $sectionCount := 3 }}
+
 {{- $sectionCountStringSingular := "third" }}
 {{- if .Params.toc }}
   {{- $sectionCount = add $sectionCount 1 }}
@@ -40,6 +41,8 @@
           <section class="is-inner-content">
             {{ .Content }}
           </section>
+          
+          <br />
         </div>
       </div>
       {{- if .Params.toc }}
@@ -53,7 +56,7 @@
        
       </div>
       {{- end }}
-      
     </div>
   </div> <!-- .container -->
+
 </article>

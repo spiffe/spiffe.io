@@ -1,12 +1,14 @@
-{{- $year       := now.Year }}
-{{- $spiffeDocs := where .Site.Pages "Section" "spiffe" }}
-{{- $spireDocs  := where .Site.Pages "Section" "spire" }}
-{{- $social     := .Site.Params.socialmedia }}
-{{- $twitterUrl := printf "https://twitter.com/%s" $social.twitter }}
-{{- $slackUrl   := $social.slack }}
-{{- $stackUrl   := $social.stackoverflow }}
-{{- $githubUrl  := $social.github }}
-{{- $blogUrl    := $social.medium }}
+{{- $year               := now.Year }}
+{{- $spiffeDocs         := where .Site.Pages "Section" "spiffe" }}
+{{- $spireDocs          := where .Site.Pages "Section" "spire" }}
+{{- $social             := .Site.Params.socialmedia }}
+{{- $twitterUrl         := printf "https://twitter.com/%s" $social.twitter }}
+{{- $slackUrl           := $social.slack }}
+{{- $stackUrl           := $social.stackoverflow }}
+{{- $githubUrl          := $social.github }}
+{{- $blogUrl            := $social.medium }}
+{{- $sourceGithubURL    := .Site.Params.githubURL }}     
+
 <footer class="footer has-background-dark">
   <div class="container">
     <img class="is-footer-logo" src="/img/logos/spiffe/horizontal/white/spiffe-horizontal-white.png">
@@ -100,6 +102,17 @@
     </div>
 
     <br />
+
+    {{- if (or (eq .Kind "page") (eq .Kind "section")) }}
+    <section class="has-text-centered github-link">
+      Last modified on {{ .Lastmod }}
+      &bullet;
+      <a href="{{ $sourceGithubURL }}/content/{{ .File.Path}}">
+        Edit this page on GitHub
+      </a>
+      <br />
+    </section>
+    {{- end }}
 
     <section class="has-text-centered">
       <span class="has-text-grey-lighter">
