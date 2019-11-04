@@ -37,11 +37,7 @@ To install the server and agent:
 
 ## Step 3: Configure the Agent {#step-3}
 
-### How to set up workload attestation for a Linux OS 
-TODO: Complete this. Much of the content here can be derived from that in Scytale Enterprise
-
-### How to set up workload Attestation for Docker 
-TODO: Complete this. Much of the content here can be derived from that in Scytale Enterprise
+TODO
 
 # Installing SPIRE Agents on Kubernetes
 
@@ -116,15 +112,3 @@ When the agent deploys, it binds the volumes summarized in the following table:
 | :------ |:---------- | :------------- |
 | **spire-config** | The spire-agent configmap created in the  [Create Agent Configmap](#create-agent-configmap) step | **/run/spire/config** |
 | **spire-sockets** | The hostPath, which will be shared with all other pods running on the same worker host. It contains a UNIX domain socket that workloads use to communicate with the agent API. | **/run/spire/sockets** |
-
-## Workload Attestation for Kubernetes
-
-TODO: Complete
-
-### Workload Attestation for Docker
-
-TODO: Complete
-
-### Automating Workload Registration on Kubernetes
-
-TODO: Complete

@@ -1,10 +1,39 @@
+{{- $docs         := .CurrentSection.RegularPages }}
+{{- $multipleDocs := gt (len $docs) 1 }}
+{{- $currentUrl   := .URL }}
+{{- $sectionCount := 3 }}
+
+{{- $sectionCountStringSingular := "third" }}
+{{- if .Params.toc }}
+  {{- $sectionCount = add $sectionCount 1 }}
+{{- end }}
+{{- if $multipleDocs }}
+  {{- $sectionCount = add $sectionCount 1 }}
+{{- end }}
+{{- if eq $sectionCount 4 }}
+  {{- $sectionCountStringSingular = "quarter" }}
+{{- else if eq $sectionCount 5 }}
+  {{- $sectionCountStringSingular = "fifth" }}
+{{- end}}
 {{- $githubURL     := .Site.Params.githubURL }}
 
 <article class="article">
   <div class="container">
     <div class="columns">
-      {{ partial "section-menu.html" . }}
-      <div class="column is-three-fifths is-full-mobile">
+      {{- if $multipleDocs }}
+        <div class="column is-one-{{ $sectionCountStringSingular }} is-section-menu is-hidden-touch">
+        
+        <ul>
+        {{ range $docs }}
+            <li class="{{- if eq .URL $currentUrl }}is-active{{- end }}">
+                <a href="{{ .URL }}">{{ .Title }}</a>
+            </li>
+        {{ end }}
+        </ul>
+        
+        </div>
+      {{- end}}
+      <div class="column is-three-{{ $sectionCountStringSingular }}s is-full-mobile">
         <div class="content">
           <div class="is-hidden-desktop">
             {{ partial "dropdown.html" . }}
@@ -28,7 +57,7 @@
         </div>
       </div>
       {{- if .Params.toc }}
-      <div class="column is-one-fifth is-toc-column is-hidden-touch">
+      <div class="column is-one-{{ $sectionCountStringSingular }} is-toc-column is-hidden-touch">
         
         <aside class="is-toc-container">
           <div id="toc">
