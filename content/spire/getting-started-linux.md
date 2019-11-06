@@ -91,24 +91,11 @@ To install the server and agent:
 2. Add `spire-server` and `spire-agent` to your $PATH for convenience:
 
 	```shell
-	ln -s /opt/spire/spire-server /usr/bin/spire-server
-	ln -s /opt/spire/spire-agent /usr/bin/spire-agent
+	sudo ln -s /opt/spire/spire-server /usr/bin/spire-server
+	sudo ln -s /opt/spire/spire-agent /usr/bin/spire-agent
 	```
 
 ## Step 4: Configure the Server {#step-4}
-
-To configure the server you:
-
-1. Configure the trust domain
-2. Configure the server certificate authority (CA), which might include configuring an UpstreamCA plugin 
-3. Configure the node attestation plugin
-4. Configure a default **.data** directory for persisting data
-
-However, to get a simple deployment up and running for demonstration purposes, you need only go through steps 1, 2, and 3. 
-
-To configure the items in steps 1, 2, and 3, edit the server’s configuration file, located in **/opt/spire/conf/server/server.conf**.
-
-If you choose to change the default data directory, you do this at the command line.  
 
 ### Configure the Server’s Trust Domain
 
@@ -117,25 +104,6 @@ To configure the server’s trust domain:
 1. Edit the server’s configuration file in  **/opt/spire/conf/server/server.conf**
 2. Locate the section labeled **trust_domain**  
 3. Enter the trust domain name you decided on in the [Plan Your Configuration](#plan-your-configuration) section above. 
-
-### Configure the Trusted Root CA Plugin
-
-Every SVID issued by a SPIRE installation is issued from a common trust root. SPIRE provides a pluggable mechanism for retrieving this trust root. By default, it uses a key stored on disk. 
-
-You configure the plugin by editing the `UpstreamCA “disk”` entry in the server configuration file:
-
-1. Edit the server’s configuration file in  **/opt/spire/conf/server/server.conf**
-2. Locate the **UpstreamCA "disk" { .. }** plugin in the **plugins{...}** section
-3. Modify the  **key_file_path** and **cert_file_path** appropriately
-
-For simplicity’s sake, here we illustrate CA plugin configuration using a dummy CA key provided in SPIRE, setting the paths as follows:
-
-```shell
-key_file_path = "/opt/spire/conf/server/dummy_upstream_ca.key"
-cert_file_path = "/opt/spire/conf/server/dummy_upstream_ca.crt"
-```
-
-When you customize these instructions for your architecture, you will substitute the appropriate path values to point to your application’s key and certs.
 
 ### Configure Server Plugins
 
@@ -147,11 +115,15 @@ As described above in the [Plan Your Configuration](#plan-your-configuration) se
 
 For simplicity’s sake, this guide illustrates node attestation using the join token method. Note that SPIRE ships with the default node attestation method set to join token. 
 
-Pre-built binaries must reside in a **.data** directory. Create this directory in the location of your choice. For example: 
+### Configure Data Directory
 
-```shell
-sudo mkdir -p /opt/spire/.data
-```
+The example configuration files included in the release tarball persist data under the `./data/server` directory (as in the `data` directory in the working directory where the SPIRE server is executed). For the purposes of this guide, we want to instead persist data under `/opt/spire/data/server`.
+
+To do so:
+
+1. Edit the server’s configuration file in **/opt/spire/conf/server/server.conf**
+2. Identity paths in the configuration starting with `./data/server`
+3. Replace `./data/server` prefix on those paths with `/opt/spire/data/server`
 
 ### Server Configuration Reference
 
@@ -159,19 +131,17 @@ For a complete server configuration reference, see the [SPIRE Server Configurati
 
 ## Step 5: Configure the Agent {#step-5}
 
-When connecting to the SPIRE Server for the first time, the agent uses a configured X.509 CA certificate to verify the initial connection. SPIRE releases include a "dummy" certificate for this purpose. For a production implementation, a separate key should be generated. See the [next section](#generate-a-key).
+When connecting to the SPIRE Server for the first time, the agent typically uses a configured trust bundle to trust the server certificate. For demonstration purposes, the agent will be configured to skip this verification step. **For production use** the agent should be configured with a path to the trust bundle (see `trust_bundle_path` [here](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md#agent-configuration-file))
 
-### Generate a Key
+### Configure Data Directory
 
-Use the tool of your choice -- such as openssl, cfssl, or an equivalent tool -- to generate a key for the server and certificate, to be bundled with the agent. 
+The example configuration files included in the release tarball persist data under the `./data/agent` directory (as in the `data` directory in the working directory where the SPIRE Agent is executed). For the purposes of this guide, we want to instead persist data under `/opt/spire/data/agent`.
 
-### Configure the Trust Bundle Path
+To do so:
 
-To configure the trust bundle on the agent side, edit the configuration file  so that the agent looks for the trust bundle at the correct path:
-
-1. Edit the agent’s configuration file in  **/opt/spire/conf/agent/agent.conf**
-2. Locate the **trust_bundle_path = { .. }** entry 
-3. Set the value to  **/opt/spire/conf/agent/dummy_root_ca.crt**
+1. Edit the agent’s configuration file in **/opt/spire/conf/agent/agent.conf**
+2. Identity paths in the configuration starting with `./data/agent`
+3. Replace `./data/agent` prefix on those paths with `/opt/spire/data/agent`
 
 ### Configure Agent Plugins
 
