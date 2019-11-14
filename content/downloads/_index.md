@@ -47,7 +47,7 @@ To build the `spire-agent` and `spire-server` binaries from source:
 $ make all
 ```
 
-The built binaries are available in `cmd/spire-agent/spire-agent` and `cmd/spire-server/spire-server`, respectively.
+The built binaries are available in `bin/spire-agent` and `bin/spire-server`, respectively.
 
 ## Getting help
 
