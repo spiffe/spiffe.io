@@ -1,0 +1,11 @@
+{{- $docs         := .Page.CurrentSection.RegularPages }}
+{{- $currentUrl   := .Page.URL }}
+
+<ul>
+{{ range $docs }}
+    <li class="{{- if eq .URL $currentUrl }}is-active{{- end }}">
+        <a href="{{ .URL }}">{{ .Title }}</a>
+        <p>{{ .Description }}</p> 
+    </li>
+{{ end }}
+</ul>
