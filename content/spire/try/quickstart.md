@@ -18,7 +18,7 @@ In this quick introduction to SPIRE you will learn how to:
 
 ## Prerequisites
 
-* **A Linux or macOS environment**
+* **A 64 bit Linux or macOS environment**
 * **The openssl command line tool**
 * **For macOS, Go 1.11 or higher must be installed to build SPIRE. See https://golang.org/dl/ or run `brew install golang`**
 
@@ -29,7 +29,7 @@ The commands in this getting started guide can be run as a standard user or root
 ### Downloading SPIRE for Linux
 
 ```
-$ curl -L https://github.com/spiffe/spire/releases/download/0.8.4/spire-0.8.4-linux-x86_64-glibc.tar.gz | tar xzf -
+$ curl -s -N -L https://github.com/spiffe/spire/releases/download/0.8.4/spire-0.8.4-linux-x86_64-glibc.tar.gz | tar xz
 ```
 
 This will create a `spire-0.8.4` directory containing the binaries and example configuration files.
@@ -44,21 +44,28 @@ $ go build ./cmd/spire-server
 $ go build ./cmd/spire-agent
 ```
 
-## Starting the SPIRE Server
+## Create a data directory
 
-The SPIRE Server manages and issues identities. You can use the example configuration file provided to start the server:
+SPIRE needs a location to store configuration data. By default SPIRE expects this to be is `/opt/spire/.data`, so this directory must be created.
 
 ```
-$ ./spire-server run -config conf/server/server.conf
+$ mkdir -p /opt/spire/.data
+```
+
+
+
+ but you can change this by modifying `conf/server/server.conf`. 
+
+## Starting the SPIRE Server
+
+The SPIRE Server manages and issues identities. You can use the example configuration file provided to start the server, from within the directory created in the previous step:
+
+```
+$ ./spire-server run -config conf/server/server.conf &
 ...
 INFO[0000] Starting TCP server   address="127.0.0.1:8081" subsystem_name=endpoints
 INFO[0000] Starting UDS server   address=/tmp/spire-registration.sock subsystem_name=endpoints
 ```
-
-{{< info >}}
-The server will run in the foreground and log to standard out. You may want to perform the further steps in a new terminal window.
-{{< /info >}}
-
 
 ## Creating a join token to attest the agent to the server
 
@@ -91,15 +98,10 @@ SPIRE agents query the SPIRE server to attest (authenticate) nodes and workloads
 Use the token created in the previous step to start and attest the agent:
 
 ```
-$ ./spire-agent run -config conf/agent/agent.conf -joinToken <token_string>
+$ ./spire-agent run -config conf/agent/agent.conf -joinToken <token_string> &
 ...
 INFO[0000] Starting workload API   subsystem_name=endpoints
 ```
-
-{{< info >}}
-Like the server, the agent will run in the foreground and log to standard out, you may want to perform the further steps in a new terminal window.
-{{< /info >}}
-
 
 ## Create a registration policy for your workload
 
