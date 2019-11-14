@@ -1,8 +1,8 @@
 ---
 title: SPIRE Documentation
 short: Documentation
-description: Docs and things
+description: How to accomplish key tasks when working with SPIRE
 weight: 100
 ---
 
-TBD
+{{< sectiontoc >}}
