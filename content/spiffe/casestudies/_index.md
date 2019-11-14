@@ -1,16 +1,12 @@
 ---
-title: SPIFFE and SPIRE Implementation Examples
-short: SPIFFE and SPIRE Implementation Examples
-description: How SPIFFE is being used
+title: Examples
+description: Real world examples of how SPIFFE and SPIRE are being used
 weight: 20
 ---
 
-
-## SPIFFE and SPIRE Implementation Examples
-
 The following presentations, podcasts, and blog posts demonstrate how people have used SPIFFE and SPIRE to address complex software infrastructure challenges.
 
-### Presentations
+# Presentations
 
 Most of these presentations link to YouTube videos. Some of these links start at a certain point in a video that contains multiple presentations.
 
@@ -28,13 +24,13 @@ Most of these presentations link to YouTube videos. Some of these links start at
 | [Securely extending the Istio Service Mesh into new environments with SPIRE](https://youtu.be/H5IlmYmEDKk?t=8896) | Max Lambrecht & Eugene Weiss | Scytale | SPIFFE Community Day | 3-May-2019 | English |
 | [SPIFFE & SPIRE panel](https://thenewstack.io/pancakes-at-kubecon-cloudnativecon-eu-all-about-spiffe-and-spire/) | Krishna Ganugapati, Andrew Jessup,  Maya Kaczoworski, Tom Petrocelli, Andreas Zitzelsberger | VMware, Scytale, Google, Amalgam Insights, QAware | KubeCon Europe | 10-May-2018 | English |
 
-### Podcasts
+# Podcasts
 
 | Topic | Presenters | Presenters' Organization | Podcast | Date | Language |
 | --- | --- | --- | --- | --- | --- |
 | [SPIFFE & SPIRE panel](https://thenewstack.io/pancakes-at-kubecon-cloudnativecon-eu-all-about-spiffe-and-spire/) | Krishna Ganugapati, Andrew Jessup,  Maya Kaczoworski, Tom Petrocelli, Andreas Zitzelsberger | VMware, Scytale, Google, Amalgam Insights, QAware | The New Stack Analysts  | 10-May-2018 | English |
 
-### Blog Posts and Other Documents
+# Blog Posts and Other Documents
 
 | Topic | Authors | Organization | Date | Language |
 | --- | --- | --- | --- | --- |
@@ -42,7 +38,7 @@ Most of these presentations link to YouTube videos. Some of these links start at
 | [Knox and SPIFFE in multi-tenant environments](https://medium.com/pinterest-engineering/secret-management-in-multi-tenant-environments-debc9236a744) | Jeremy Krach | Pinterest | 23-March-2019 | English |
 
 
-## SPIFFE and SPIRE Overviews
+# SPIFFE and SPIRE Overviews
 
 These <!--- presentations, --->podcasts<!---, and blog posts---> provide an overview of SPIFFE and SPIRE.
 
@@ -55,7 +51,7 @@ Most of these presentations link to YouTube videos. Some of these links start at
 | --- | --- | --- | --- | --- | --- |
 --->
 
-### Podcasts
+## Podcasts
 
 | Topic | Presenters | Presenters' Organization | Podcast | Date | Language |
 | --- | --- | --- | --- | --- | --- |
