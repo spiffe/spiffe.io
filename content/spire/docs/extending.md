@@ -2,18 +2,91 @@
 title: Extend SPIRE
 description: Learn how to extend SPIRE with third-party plugins
 weight: 150
+toc: true
 ---
 
-# Available third party plugins
+SPIRE is highly extensible via a plugin framework that allows many core operations to be added and customized.
 
-TODO: This should list out third party plugins that developers have made available, grouped by plugin type, with a short description of each.
+# Node Attestor plugins
 
-# Integrating third party plugins
+A Node Attestor implements validation logic for nodes (physical or virtual machines) that are attempting to establish their identity. Typically a Node Attestor is implemented as a plugin on the Server and with a corresponding plugin on the Agent. A Node Attestor plugin will often expose selectors that can be used when creating the registration entries that define a workload.
 
-TODO:  This should explain how a third party plug-in such as https://github.com/bloomberg/spire-tpm-plugin. The text below should explain how to do this step by step.
+SPIRE comes with a set of built-in Node Attestor plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) that support various cloud platforms, schedulers and other machine identity sources. Servers can have multiple Node Attestor plugins enabled simultaneously, however a given agent may only have one NodeAttestor plugin enabled at a time.
 
-As described above in the [Plan Your Configuration](#plan-your-configuration) section, before installing and configuring you determine which plugin you configure the server to use for node attestation. You must edit the configuration file to point to the path to the binary of the plugin your application will use. 
+In addition, known third-party Node Attestor plugins include:
 
-1. Edit the server’s configuration file in **/opt/spire/conf/server/server.conf**
-2. Locate the **plugin_cmd = { .. }** entry in the **plugins { ... }** section 
-3. Set the value to the path to your plugin binary 
+* https://github.com/bloomberg/spire-tpm-plugin - This plugin allows SPIRE to attest to machines with a TPMv2 compatible Trusted Platform Module installed. The TPM holds the proof of identity of the machine, and SPIRE will require the TPM to provide a specific signed quote to prove it.
+
+* https://github.com/zlabjp/spire-openstack-plugin - This plugin allows SPIRE to attest to nodes deployed by OpenStack and identify them by the OpenStack project ID and instance ID. 
+
+# Node Resolver plugins
+
+Once the identity of an individual node has been determined, in some cases it is valuable to be able to expose additional verified metadata about that workload as selectors for registration entries. For example, the AWS EC2 IID Node Attestor plugin can be used to prove the Instance ID of a given EC2 instance, but the AWS EC2 IID Node Resolver plugin will - by looking up additional instance metadata in AWS - expose additional selectors (such as instance tag or label) based on this verified metadata.
+
+Node Resolver plugins are typically coupled to a specific Node Attestor plugin (such as the AWS EC2 IID Node Attestor), since they will rely on that plugin to verify the initial identity of the node.
+
+SPIRE comes with a set of built-in Node Resolver plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+
+# Workload Attestor plugins
+
+While Node Attestors help SPIRE verify the identity of a node running a workload, Workload Attestors identify a specific workload running on that node. Workload attestors run on the Agent. A workload attestor may leverage kernel metadata retrieved during a call to the Workload API to determine the identity of a workload, but it may also choose to interrogate other local sources (such as the calling binary, the Docker daemon or the Kubernetes kubelet) to verify the identity of a workload. As with Node Attestor plugins, Workload Attestor plugins expose selectors that allow registration entries to be created for workloads based on the properties of the workload that the attestor verified.
+
+SPIRE comes with a set of built-in Workload Attestor plugins for the [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
+
+# Datastore plugins
+
+The SPIRE Server must persist some data (such as registration entries) to a backing datastore. SPIRE can be configured to use different datastore types (for example, SQLLite, MySQL, Postgres) through Datastore plugins. 
+
+SPIRE comes with a set of built-in Datastore plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+
+In addition, known third party Datastore plugins include:
+
+* https://github.com/summerwind/spire-plugin-datastore-k8s - This plugin allows SPIRE configuration to be store in Kubernetes using Kubernetes Custom Resource Defintiions (CRDs).
+
+# Upstream Certificate Authority (UpstreamCA) plugins
+
+UpstreamCA plugins allow the SPIRE server to integrate with existing public key infrastructure, such that the certificates it generates derive from specific intermediate or root certificate supplied to SPIRE. By choosing or developing different UpstreamCA plugins it is possible to customize how SPIRE retrieves these certficates (for example from a file, or a particular secrets manager or certificate vault).
+
+SPIRE comes with a set of built-in UpstreamCA plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+
+# KeyManager plugins
+
+In some cases it might be desirable for SPIRE to avoid being exposed to a signing key at all - for example if the signing key is held in a secure hardware enclave. In such the SPIRE Server and Agent can leverage KeyManager plugins to delegate the actual signing operation to another system (such as a TPM).
+
+SPIRE comes with a set of built-in KeyManager plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+
+# Notifier plugins
+
+Notifier plugins allow actions to be triggered in other systems when certain events occur on the SPIRE Server, and in some cases interrupt the event itself. Notifier plugins can support a number of different use cases, such as when certificate rotation events occur.
+
+SPIRE comes with a set of built-in Notifier plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+
+# Working with first-party plugins
+
+First party plugins can be enabled by including the appropriate configuration stanza in `plugins` section the Server or Agent configuration file. 
+
+*   For instructions on modifying the Server and Agent configuration files, please follow [Configuring the SPIRE Server](/spire/docs/configuring)
+*   For more information on enabling the plugins in the Server, read the [Server configuration guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+*   For more information on enabling the plugins in the Agent, read the [Agent configuration guide](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
+
+# Working with third party plugins
+
+{{< warning >}}
+Third party plugins are not officially supported by the SPIRE project, and may not work with the latest version of SPIRE. Please consult the authors of any third party plugins for details, and exercise caution when using third-party code.
+{{< /warning >}}
+
+To use a third party plugin, you must obtain or build a plugin binary that is designed to run on your target architecture. This must then be installed on the same machines running the SPIRE Agent or Server and have sufficient permissions to be executed by the same user that the SPIRE Agent or Server is running as.
+
+Once this has been done, configuration of a third party plugin is done through adding a stanza to the Server or Agent configuration file, as for first party plugins described above. However the configuration block should also include a `plugin_cmd` stanza that specifies the path to the plugin binary on disk.
+
+For example:
+
+```
+NodeAttestor "tpm" {
+	plugin_cmd = "/path/to/plugin_cmd"
+	plugin_checksum = "sha256 of the plugin binary"
+	plugin_data {
+		ca_path = "/opt/spire/.data/certs"
+	}
+}
+```
