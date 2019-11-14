@@ -1,12 +1,10 @@
 ---
 title: How does SPIRE compare to other tools?
 short: Comparisons
-description: How does SPIRE compare to other tools?
+description: Understand SPIRE by comparing and contrasting it to related systems
 weight: 23
 toc: true
 ---
-
-This page aims to help you understand SPIRE by comparing and contrasting it to related systems.
 
 # Secret Stores
 _e.g. Hashicorp Vault, Square Keywhiz_
