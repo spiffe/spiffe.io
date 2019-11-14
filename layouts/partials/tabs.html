@@ -1,4 +1,6 @@
 {{- $currentUrl   := .URL }}
+{{- $docs         := .CurrentSection.RegularPages }}
+{{- $multipleDocs := gt (len $docs) 1 }}
 
 {{- $currentSection := .Section }}
 
@@ -25,3 +27,17 @@
 </nav>
 {{- end }}
 {{- end }}
+{{- if $multipleDocs }}
+<nav class="subtabs is-medium">
+  <div class="container">
+    <ul>
+    {{ range $docs }}
+      <li class="{{- if eq .URL $currentUrl }}is-active{{- end }}">
+          <a href="{{ .URL }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
+    </ul>
+    <div style="clear: both;"></div>
+  </div>
+</nav>
+{{- end}}

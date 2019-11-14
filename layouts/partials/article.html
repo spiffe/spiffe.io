@@ -6,31 +6,13 @@
 {{- if .Params.toc }}
   {{- $sectionCount = add $sectionCount 1 }}
 {{- end }}
-{{- if $multipleDocs }}
-  {{- $sectionCount = add $sectionCount 1 }}
-{{- end }}
 {{- if eq $sectionCount 4 }}
   {{- $sectionCountStringSingular = "quarter" }}
-{{- else if eq $sectionCount 5 }}
-  {{- $sectionCountStringSingular = "fifth" }}
 {{- end}}
 
 <article class="article">
   <div class="container">
     <div class="columns">
-      {{- if $multipleDocs }}
-        <div class="column is-one-{{ $sectionCountStringSingular }} is-section-menu is-hidden-touch">
-        
-        <ul>
-        {{ range $docs }}
-            <li class="{{- if eq .URL $currentUrl }}is-active{{- end }}">
-                <a href="{{ .URL }}">{{ .Title }}</a>
-            </li>
-        {{ end }}
-        </ul>
-        
-        </div>
-      {{- end}}
       <div class="column is-three-{{ $sectionCountStringSingular }}s is-full-mobile">
         <div class="content">
           <div class="is-hidden-desktop">
@@ -38,18 +20,6 @@
           </div>
           <section class="is-inner-content">
             {{ .Content }}
-          </section>
-		  <br />
-          <section class="is-inner-content">
-          {{ if .IsPage }}
-            Last modified on {{ .Lastmod }}
-            <br />
-            Edit this page on GitHub
-            <a href="{{ $githubURL }}/content/{{ .File.Path}}">
-              {{ $githubURL }}/content/{{ .File.Path}}
-            </a>
-            <br />
-          {{ end }}
           </section>
         </div>
       </div>
