@@ -13,7 +13,7 @@ issuers:
   logo: consul.svg
 consumers:
 - name: The Envoy proxy
-  description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Envoy proxies
+  description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication) connections between Envoy proxies
   link: https://blog.envoyproxy.io/securing-the-service-mesh-with-spire-0-3-abb45cd79810
   logo: envoy.svg
 - name: Pinterest Knox
