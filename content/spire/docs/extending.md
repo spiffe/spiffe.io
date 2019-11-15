@@ -11,7 +11,7 @@ SPIRE is highly extensible via a plugin framework that allows many core operatio
 
 A Node Attestor implements validation logic for nodes (physical or virtual machines) that are attempting to establish their identity. Typically a Node Attestor is implemented as a plugin on the Server and with a corresponding plugin on the Agent. A Node Attestor plugin will often expose selectors that can be used when creating the registration entries that define a workload.
 
-SPIRE comes with a set of built-in Node Attestor plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) that support various cloud platforms, schedulers and other machine identity sources. Servers can have multiple Node Attestor plugins enabled simultaneously, however a given agent may only have one NodeAttestor plugin enabled at a time.
+SPIRE comes with a set of built-in Node Attestor plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) that support various cloud platforms, schedulers and other machine identity sources. Servers can have multiple Node Attestor plugins enabled simultaneously, however a given Agent may only have one Node Attestor plugin enabled at a time.
 
 In addition, known third-party Node Attestor plugins include:
 
@@ -41,17 +41,17 @@ SPIRE comes with a set of built-in Datastore plugins for the [Server](https://gi
 
 In addition, known third party Datastore plugins include:
 
-* https://github.com/summerwind/spire-plugin-datastore-k8s - This plugin allows SPIRE configuration to be store in Kubernetes using Kubernetes Custom Resource Defintiions (CRDs).
+* https://github.com/summerwind/spire-plugin-datastore-k8s - This plugin allows SPIRE configuration data to be stored in Kubernetes using Kubernetes Custom Resource Definitions (CRDs).
 
 # Upstream Certificate Authority (UpstreamCA) plugins
 
-UpstreamCA plugins allow the SPIRE server to integrate with existing public key infrastructure, such that the certificates it generates derive from specific intermediate or root certificate supplied to SPIRE. By choosing or developing different UpstreamCA plugins it is possible to customize how SPIRE retrieves these certficates (for example from a file, or a particular secrets manager or certificate vault).
+UpstreamCA plugins allow the SPIRE Server to integrate with existing public key infrastructure, such that the certificates it generates derive from specific intermediate or root certificates supplied to SPIRE. By choosing or developing different UpstreamCA plugins it is possible to customize how SPIRE retrieves these certificates (for example from a file, or a particular secrets manager or certificate vault).
 
 SPIRE comes with a set of built-in UpstreamCA plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
 # KeyManager plugins
 
-In some cases it might be desirable for SPIRE to avoid being exposed to a signing key at all - for example if the signing key is held in a secure hardware enclave. In such the SPIRE Server and Agent can leverage KeyManager plugins to delegate the actual signing operation to another system (such as a TPM).
+In some cases it might be desirable for SPIRE to avoid being exposed to a signing key at all - for example if the signing key is held in a secure hardware enclave. In such a case, the SPIRE Server and Agent can leverage KeyManager plugins to delegate the actual signing operation to another system (such as a TPM).
 
 SPIRE comes with a set of built-in KeyManager plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
@@ -63,9 +63,9 @@ SPIRE comes with a set of built-in Notifier plugins for the [Server](https://git
 
 # Working with first-party plugins
 
-First party plugins can be enabled by including the appropriate configuration stanza in `plugins` section the Server or Agent configuration file. 
+First party plugins can be enabled by including the appropriate configuration stanza in the `plugins` section of the Server or Agent configuration file. 
 
-*   For instructions on modifying the Server and Agent configuration files, please follow [Configuring the SPIRE Server](/spire/docs/configuring)
+*   For instructions on modifying the Server and Agent configuration files, please follow [Configuring the SPIRE Server](/spire/docs/configuring).
 *   For more information on enabling the plugins in the Server, read the [Server configuration guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 *   For more information on enabling the plugins in the Agent, read the [Agent configuration guide](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
 
@@ -75,7 +75,7 @@ First party plugins can be enabled by including the appropriate configuration st
 Third party plugins are not officially supported by the SPIRE project, and may not work with the latest version of SPIRE. Please consult the authors of any third party plugins for details, and exercise caution when using third-party code.
 {{< /warning >}}
 
-To use a third party plugin, you must obtain or build a plugin binary that is designed to run on your target architecture. This must then be installed on the same machines running the SPIRE Agent or Server and have sufficient permissions to be executed by the same user that the SPIRE Agent or Server is running as.
+To use a third party plugin, you must obtain or build a plugin binary that is designed to run on your target architecture. The plugin binary must then be installed on the same machines running the SPIRE Agent or Server and have sufficient permissions to be executed by the same user that the SPIRE Agent or Server is running as.
 
 Once this has been done, configuration of a third party plugin is done through adding a stanza to the Server or Agent configuration file, as for first party plugins described above. However the configuration block should also include a `plugin_cmd` stanza that specifies the path to the plugin binary on disk.
 
