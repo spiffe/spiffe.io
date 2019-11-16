@@ -37,19 +37,23 @@ To install the server and agent:
 
 ## Step 3: Configure the Agent {#step-3}
 
-TODO
+Once the SPIRE Server and Agent have been installed, it will be necessary to configure it for your environment. Follow the [Configuring SPIRE](/spire/docs/configuring/) section for full details, in particular Node Attestation and Workload Attestation.
+
+Note that the a SPIRE Agent must be restarted once its configuration has been modified for changes to take effect.
 
 # Installing SPIRE Agents on Kubernetes
 
-## Section 1: Configure SPIRE Agent {#section-1}
+{{< warning >}}
+You must run all commands from the directory containing the **.yaml** files used for configuration. See [Obtain the Required Files](install-server#section-1) section of the SPIRE Server installation guide for details.
+{{< /warning >}}
 
-To configure the agent, you:
+To install SPIRE Agents on Kubernetes, you:
 
 1. Create the agent service account
 2. Create the agent configmap
 3. Create the agent daemonset
 
-### Create Agent Service Account
+## Step 1: Create Agent Service Account
 
 Apply the **agent-account.yaml** configuration file to create a service account named **spire-agent** in the **spire** namespace:
 
@@ -71,9 +75,9 @@ To allow the agent read access to the kubelet API to perform workload attestatio
     $ kubectl get clusterroles --namespace spire | grep spire
     ```
 
-### Create Agent Configmap
+## Step 2: Create Agent Configmap
 
-Apply the **agent-configmap.yaml** configuration file to create the agent configmap.
+Apply the **agent-configmap.yaml** configuration file to create the agent configmap. This is mounted as the `agent.conf` file that determines the SPIRE Agent's configuration. 
 
 ```bash
 $ kubectl apply -f agent-configmap.yaml
@@ -81,7 +85,11 @@ $ kubectl apply -f agent-configmap.yaml
 
 The **agent-configmap.yaml** file specifies a number of important directories, notably **/run/spire/sockets** and **/run/spire/config**. These directories are bound in when the agent container is deployed.
 
-### Create Agent Daemonset
+Follow the [Configuring SPIRE](/spire/docs/configuring/) section for full details on how to configure the SPIRE Agent, in particular Node Attestation and Workload Attestation.
+
+Note that the a SPIRE Agent must be restarted once its configuration has been modified for changes to take effect.
+
+## Step 3: Create Agent Daemonset
 
 Agents are deployed as a daemonset and one runs on each Kubernetes worker instance.
 

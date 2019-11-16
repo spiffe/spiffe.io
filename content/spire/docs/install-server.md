@@ -50,18 +50,17 @@ To configure the items in steps 1 and 2, edit the server’s configuration file,
 
 If you choose to change the default data directory, you do this at the command line.  
 
-
-For simplicity’s sake, this guide illustrates node attestation using the join token method. Note that SPIRE ships with the default node attestation method set to join token. 
-
 Pre-built binaries must reside in a **.data** directory. Create this directory in the location of your choice. For example: 
 
 ```shell
 sudo mkdir -p /opt/spire/.data
 ```
 
-# How to install the SPIRE server on Kubernetes
+Once the SPIRE Server and Agent have been installed, it will be necessary to configure it for your environment. Follow the [Configuring SPIRE](/spire/docs/configuring/) section for full details, in particular Node Attestation and Workload Attestation.
 
-TODO: We should find some standard Kubernetes configuration files and publish those, and reference them here. The standard files should be fully annotated.
+Note that the a SPIRE Agent must be restarted once its configuration has been modified for changes to take effect.
+
+# How to install the SPIRE server on Kubernetes
 
 This section walks you step-by-step through getting a server running in your Kubernetes cluster and configuring a workload container to access SPIRE.
 
@@ -69,7 +68,7 @@ This section walks you step-by-step through getting a server running in your Kub
 You must run all commands from the directory containing the **.yaml** files used for configuration. See [Obtain the Required Files](#section-1) for details.
 {{< /warning >}}
 
-## Section 1: Obtain the Required Files {#section-1}
+## Step 1: Obtain the Required Files {#section-1}
 
 This deployment this guide walks you through setting up requires a number of **.yaml** files *and* you must run all commands in the directory in which those files
 reside.
@@ -77,7 +76,7 @@ reside.
 To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain
 the **.yaml** files from the **spire-tutorials/k8s** subdirectory.
 
-## Section 2: Configure Kubernetes Namespace for SPIRE Components {#section-2}
+## Step 2: Configure Kubernetes Namespace for SPIRE Components {#section-2}
 
 Follow these steps to configure the **spire** namespace in which SPIRE Server and SPIRE Agent are deployed.
 
@@ -93,7 +92,7 @@ Follow these steps to configure the **spire** namespace in which SPIRE Server an
     $ kubectl get namespaces
     ```
 
-## Section 3: Configure SPIRE Server {#section-3}
+## Step 3: Configure SPIRE Server {#section-3}
 
 To configure the SPIRE server, you:
 
@@ -115,7 +114,7 @@ To configure the SPIRE server, you:
     $ kubectl get serviceaccount --namespace spire
     ```
 
-### Create Server Bundle Configmap, Role & ClusterRoleBinding
+### Server Bundle Configmap, Role & ClusterRoleBinding
 
 For the server to function, it is necessary for it to provide agents with certificates that they can use to verify the identity of the server when establishing a connection.
 
@@ -151,7 +150,9 @@ To allow the server to read and write to this configmap, a ClusterRole must be c
 
 The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data** and **/run/spire/config**. These volumes are bound in when the server container is deployed.
 
-Before applying the configmap to your cluster, you should review the instructions for [customizing server configuration](#customize-server}).
+Follow the [Configuring SPIRE](/spire/docs/configuring/) section for full details on how to configure the SPIRE Server, in particular Node Attestation and Workload Attestation.
+
+Note that the a SPIRE Server must be restarted once its configuration has been modified for changes to take effect.
 
 To applying the server configmap to your cluster, issue the following command:
 
