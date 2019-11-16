@@ -12,7 +12,7 @@ One component of this configuration system is the Secret Discovery Service proto
 
 # How It Works
 
-When Envoy connects to the SDS server the SPIRE Agent attests Envoy and determines which service identities and CA certificates it should make available to Envoy over SDS.
+When Envoy connects to the SDS server exposed by the SPIRE Agent, the Agent attests Envoy and determines which service identities and CA certificates it should make available to Envoy over SDS.
 
 As service identities and CA certificates are rotated, updates are streamed back to Envoy, which can immediately apply them to new connections without interruption or downtime and without the private keys ever having to touch the disk. In other words, SPIRE’s rich methods of defining and attesting services can be used to target the Envoy process, define an identity for it, and provide it with X.509 certificates and trust information that Envoy can use for TLS communication.
 
@@ -64,7 +64,7 @@ The name of the TLS certificate is the SPIFFE ID of the service that Envoy is ac
 
 ## Validation Context
 
-Envoy uses trusted CA certificates to verify peer certificates. Validation Contexts provide these trusted CA certificates. SPIRE can provide a validation context per trust domain.
+Envoy uses trusted CA certificates to verify peer certificates. Validation contexts provide these trusted CA certificates. SPIRE can provide a validation context per trust domain.
 
 To obtain a validation context for a trust domain, you can configure a validation context within the SDS configuration of a TLS context, setting the name of the validation context to the SPIFFE ID of the trust domain.
 
