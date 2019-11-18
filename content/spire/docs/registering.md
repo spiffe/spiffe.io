@@ -1,11 +1,11 @@
 ---
 title: Registering workloads
-description: Registering workloads
+description: Registering workloads with SPIFFE IDs in the SPIRE Server
 weight: 130
 toc: true
 ---
 
-# About registration entries
+# How to create a registration entry {#create-registration-entry}
 
 A registration entry contains the following:
 
@@ -19,51 +19,44 @@ The server will send to the agent a list of all registration entries for workloa
 
 During workload attestation, the agent discovers selectors and compares them to those in the cached registration entries to determine which SVIDs they should assign to the workload.  
 
-You register a workload either by issuing the **spire-server entry create** command at the command line or calling directly into the Registration API, as described in the [Registration API documentation](https://github.com/spiffe/spire/blob/master/proto/spire/api/registration/registration.proto). 
+You register a workload either by issuing the `spire-server entry create` command at the command line or calling directly into the Registration API, as described in the [Registration API documentation](https://github.com/spiffe/spire/blob/master/proto/spire/api/registration/registration.proto). Existing entries can be modified using the `spire-server entry update` command.
 
-Although registration entries apply primarily to workload attestation, SPIRE also uses them during node attestation to assign names to logical groups of nodes in order to specify that the workload can run on a group of nodes, as described in the section [Mapping Workloads to Multiple Nodes](#mapping-workloads-to-multiple-nodes).
+{{< info >}}
+When running on Kubernetes, a common way to invoke commands on the SPIRE Server is through the `kubectl exec` command on a pod running the SPIRE Server. For example:
+```
+kubectl exec -n spire spire-server-0 -- \
+    /opt/spire/bin/spire-server entry create \
+    -spiffeID spiffe://example.org/ns/default/sa/default \
+    -parentID spiffe://example.org/ns/spire/sa/spire-agent \
+    -selector k8s:ns:default \
+```
+{{< /info >}}
 
-## Mapping Workloads to Multiple Nodes 
+To learn more about the `spire-server entry create` and `spire-server entry update` commands and options, consult the [SPIRE Server reference guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
-In many cases a workload may not be bound to a specific node; it may be able to run on any node in a cluster of machines. SPIRE can support this by assigning the logical group of agents a single SPIFFE ID and then mapping the group’s SPIFFE ID to the parent ID in the workload’s registration entry. 
+# How to register a workload
 
-Consider a scenario in which you are running workload as a container a Kubernetes cluster with 10 nodes. Kubernetes can pick any of the 10 nodes to schedule the container. 
+Registering a workload is accomplished by creating one or more registration entries in the SPIRE Server. To register a workload, it is necessary to tell SPIRE both:
 
-If SPIRE required using a single agent’s ID as the Parent ID for the workload, then you would have to create 10 distinct registration entries, one for each node. Moreover, when you bring up a new Kubernetes node, nothing can run on that node until the you added a new registration entry for the workload specific to that node.
+1.  a SPIFFE ID assigned to the agent(s) that are running on the node(s) that the workload is entitled to run on, and
+1.  the attributes of the workload itself running on those machines
 
-To solve this, you tell SPIRE that this workload can run on any of the nodes in this Kubernetes cluster, by doing the following:  
+## 1. Defining the SPIFFE ID of the Agent
 
-1. Create a registration entry to group the nodes in that cluster; this logical group entry includes: 
+The SPIFFE ID assigned to the Agent may be an ID assigned automatically as part of the node attestation process. For example, when a Agent is attested the AWS IID node attestor, it is automatically assigned a SPIFFE ID of the form `spiffe://example.org/agent/aws_iid/ACCOUNT_ID/REGION/INSTANCE_ID`.
 
-    * a SPIFFE ID, such as **spiffe://example.org/_my-cluster_**
-    * one or more node selectors that identify nodes belonging to the group  
+Alternatively, a SPIFFE ID may be assigned to one or more Agents by creating a [registration entry](#create-registration-entry) that specifies via selectors specific attributes of a node. For example SPIFFE ID `spiffe://acme.com/web-cluster` can be assigned to any SPIRE Agent running on a set of EC2 instances with the tag `app` set to a value of `webserver` by creating a registration entry like the following:
 
-2. Create a second registration entry to set the workload’s Parent ID to the logical grouping’s SPIFFE ID: **spiffe://example.org/_my-cluster_** 
+```
+spire-server entry create \ 
+    -node \
+    -spiffeID spiffe://acme.com/web-cluster \
+    -selector tag:app:webserver
+```
 
-If you're using the Kubernetes node attestor, it will expose a SPIFFE ID for the cluster automatically that can be used as a Parent ID for workloads running on the cluster. 
+A selector is a native property of a node or workload that SPIRE can verify before issuing an identity.  A single registration entry may contain either node selectors or workload selectors but not both. Note the `-node` flag in the command above, which denotes this command is specifying node selectors.
 
-{{< warning >}}
-A single registration entry may contain either node selectors or workload selectors but not both.
-{{< /warning >}}
-
-The node selectors you choose determine which nodes SPIRE includes in the logical group. For example, the node selector(s) might be require the node be in a specific AWS autoscaling group, or Azure virtual network.
-
-## Selectors
-
-A selector is a native property of a node or workload that SPIRE can verify before issuing an identity. Different selectors are available depending on the platform or architecture on which the workload’s application is running. 
-
-Some platforms have only node selectors, some only workload selectors, and some a mixture of both, as summarized in the following two tables:
-
-**Table 1: Supported workload attestation selectors, by platform**
-
-| For a list of supported selectors for this platform | Go here |
-| ---------------- | ----------- |
-| **Unix**       | The [configuration reference page for the Unix Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_unix.md)
-| **Kubernetes** | The [configuration reference page for the Kubernetes Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md)
-| **Docker** | The [configuration reference page for the Docker Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_docker.md)
-<br>
-
-**Table 2: Supported node attestation/resolution selectors, by platform**
+Different selectors are available depending on the platform or architecture on which the workload’s application is running.
 
 | For a list of supported selectors for this platform | Go here |
 | ---------------- | ----------- |
@@ -71,33 +64,55 @@ Some platforms have only node selectors, some only workload selectors, and some 
 | **AWS**       | The [configuration reference page for the AWS Node Resolver](https://github.com/spiffe/spire/blob/master/doc/plugin_server_noderesolver_aws_iid.md)
 | **Azure**       | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/master/doc/plugin_server_noderesolver_azure_msi.md)
 
+## 2. Defining the SPIFFE ID of the Workload
+
+Once the Agent or Agents has a SPIFFE ID assigned, another registration entry can be created to identify specific workloads when they call the Workload API exposed by that agent.
+
+For example, to create a registration entry that will match a linux process running under Unix group ID 1000 running on an agent identified as `spiffe://acme.com/web-cluster` (described above) would be achieved with the following command:
+
+```
+spire-server entry create \
+    -parentID spiffe://acme.com/web-cluster \
+    -spiffeID spiffe://acme.com/webapp  \
+    -selector unix:gid:1000
+```
+
+| For a list of supported selectors for this platform | Go here |
+| ---------------- | ----------- |
+| **Unix**       | The [configuration reference page for the Unix Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_unix.md)
+| **Kubernetes** | The [configuration reference page for the Kubernetes Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md)
+| **Docker** | The [configuration reference page for the Docker Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_docker.md)
+
+# How to list registration entries
+
+To list all existing registration entries, use the command `spire-server entry show`.
+
+To filter registration entries to those that match a specific SPIFFE ID, parent SPIFFE ID, or registration entry ID, use the `-spiffeID`, `-parentID`, `-selector` or `-entryID` flags respectively.
 
 {{< info >}}
-It is not necessary to specify node selectors unless you are mapping workloads to multiple nodes. 
+Note that each registration entry has a single, unique Registration Entry ID, but multiple registration entries may specify the same SPIFFE ID.
 {{< /info >}}
 
-Consider an example in which you want to identify nodes based on AWS selectors and identify workloads based on Unix selectors. To accomplish this, you would create one registration entry for AWS node attestation and another entry for Unix workload attestation.
+For example, to list all registration entries that match a set of EC2 instances with the tag `app` set to a value of `webserver`, run the following:
 
-# How register a workload
+```
+spire-server entry show -selector tag:app:webserver
+```
 
-TODO
+To learn more about the `spire-server entry show` command and options, consult the [SPIRE Server reference guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
-## On Kubernetes
+# How to remove registration entries
 
-TODO
+To permanently delete existing registration entries, use the command `spire-server entry delete`, specifying the relevant registration entry with the `-entryID` command. 
 
-## On Linux
+For example:
 
-TODO
+```
+spire-server entry delete -entryID 92f4518e-61c9-420d-b984-074afa7c7002
+```
 
-# How to list workload registration entries
+To learn more about the `spire-server entry delete` command and options, consult the [SPIRE Server reference guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
-TODO
+# Where next?
 
-# How to remove workload registration entries
-
-TODO
-
-## Automating Workload Registration on Kubernetes
-
-TODO
+Once you've learned how to create, update and delete registration entries, consider reviewing the guide on [How to use SVIDs](/spiffe/svids/).
