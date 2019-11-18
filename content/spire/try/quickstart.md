@@ -1,6 +1,6 @@
 ---
-title: SPIRE Quickstart
-short: SPIRE Quickstart
+title: SPIRE Quickstart for Linux and MacOS X
+short: SPIRE Quickstart for Linux and MacOS X
 description: How to quickly get SPIRE up and running
 weight: 1
 toc: false
@@ -33,10 +33,10 @@ The commands in this getting started guide can be run as a standard user or root
 ### Downloading SPIRE for Linux
 
 ```
-$ curl -s -N -L https://github.com/spiffe/spire/releases/download/0.8.4/spire-0.8.4-linux-x86_64-glibc.tar.gz | tar xz
+$ curl -s -N -L https://github.com/spiffe/spire/releases/download/0.9.0/spire-0.9.0-linux-x86_64-glibc.tar.gz | tar xz
 ```
 
-This will create a `spire-0.8.4` directory containing the binaries and example configuration files.
+This will create a `spire-0.9.0` directory containing the binaries and example configuration files.
 
 ### Building SPIRE on macOS/Darwin
 
@@ -48,44 +48,32 @@ $ go build ./cmd/spire-server
 $ go build ./cmd/spire-agent
 ```
 
-## Create a data directory
-
-SPIRE needs a location to store configuration data. By default SPIRE expects this to be is `/opt/spire/.data`, so this directory must be created.
-
-```
-$ mkdir -p /opt/spire/.data
-```
-
-
-
- but you can change this by modifying `conf/server/server.conf`. 
-
 ## Starting the SPIRE Server
 
 The SPIRE Server manages and issues identities. You can use the example configuration file provided to start the server, from within the directory created in the previous step:
 
 ```
-$ ./spire-server run -config conf/server/server.conf &
+$ bin/spire-server run -config conf/server/server.conf &
 ...
 INFO[0000] Starting TCP server   address="127.0.0.1:8081" subsystem_name=endpoints
 INFO[0000] Starting UDS server   address=/tmp/spire-registration.sock subsystem_name=endpoints
+```
+
+Check that the server is running:
+
+```
+$ bin/spire-server healthcheck
+Server is healthy.
 ```
 
 ## Creating a join token to attest the agent to the server
 
 A join token is one of the many available agent attestor methods. It is a one-time-use, pre-shared key that attests (authenticates) the SPIRE agent to the SPIRE server. Other agent attestation methods include AWS/GCP instance identity tokens and X.509 certificates. To see a complete list of available attestors, click [here](https://spiffe.io/spire/overview/#selectors).
 
-Check that the server is running:
-
-```
-$ ./spire-server healthcheck
-Server is healthy.
-```
-
 Generate a one-time-use token to use to attest the agent:
 
 ```
-$ ./spire-server token generate -spiffeID spiffe://example.org/myagent
+$ bin/spire-server token generate -spiffeID spiffe://example.org/myagent
 Token: <token_string>
 ```
 
@@ -102,9 +90,16 @@ SPIRE agents query the SPIRE server to attest (authenticate) nodes and workloads
 Use the token created in the previous step to start and attest the agent:
 
 ```
-$ ./spire-agent run -config conf/agent/agent.conf -joinToken <token_string> &
+$ bin/spire-agent run -config conf/agent/agent.conf -joinToken <token_string> &
 ...
 INFO[0000] Starting workload API   subsystem_name=endpoints
+```
+
+Check that the agent is running:
+
+```
+$ bin/spire-agent healthcheck
+Agent is healthy.
 ```
 
 ## Create a registration policy for your workload
@@ -117,7 +112,7 @@ This command is creating a registration entry based on the current user's UID ($
 
 
 ```
-$ ./spire-server entry create -parentID spiffe://example.org/myagent \
+$ bin/spire-server entry create -parentID spiffe://example.org/myagent \
     -spiffeID spiffe://example.org/myservice -selector unix:uid:$(id -u)
 Entry ID      : ac5e2354-596a-4059-85f7-5b76e3bb53b3
 SPIFFE ID     : spiffe://example.org/myservice
@@ -133,17 +128,10 @@ Selector      : unix:uid:501
 
 ## Fetch and view a x509-SVID 
 
-Check that the agent is running:
-
-```
-$ ./spire-agent healthcheck
-Agent is healthy.
-```
-
 This command replicates the process that a workload would take to get an x509-SVID from the agent. The x509-SVID could be used to authenticate the workload to another workload. To fetch and write an x509-SVID to /tmp/:
 
 ```
-$ ./spire-agent api fetch x509 -write /tmp/
+$ bin/spire-agent api fetch x509 -write /tmp/
 Received 1 bundle after 254.780649ms
 SPIFFE ID:		spiffe://example.org/myservice
 SVID Valid After:	2019-10-25 19:07:49 +0000 UTC
@@ -207,9 +195,4 @@ Certificate:
 
 ## Next steps
 
-* [An in-depth overview of SPIRE](https://spiffe.io/spire/overview/)
-
-* [A detailed guide to installing and configuring SPIRE for Linux hosts](https://spiffe.io/spire/getting-started-linux/)
-
-* [A detailed guide to installing and configuring SPIRE in a Kubernetes environment](https://spiffe.io/spire/getting-started-k8s/)
-
+* [Review the SPIRE Documentation](https://spiffe.io/spire/docs/) to learn how to configure SPIRE for your environment.
