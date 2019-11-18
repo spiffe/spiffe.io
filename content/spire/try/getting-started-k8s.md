@@ -197,7 +197,7 @@ You can test that the agent socket is accessible from an application container b
 4. Verify the container can access the socket:
 
     ```bash
-    /opt/spire # /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
+    /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
     ```
 
 If the agent is not running, you’ll see an error message such as “no such file or directory" or “connection refused”.
