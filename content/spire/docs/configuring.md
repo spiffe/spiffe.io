@@ -400,3 +400,7 @@ _This configuration applies to the SPIRE Server and SPIRE Agent_
 You can set the log file location and the level of logging for the SPIRE Server and SPIRE Agent in their respective configuration files. Edit the `log_file` value to set the log file location and the `log_level` value to set the level of logging. This can be one of DEBUG, INFO, WARN or ERROR.
 
 By default, SPIRE logs go to STDOUT. However the SPIRE Agent and Server can be onfigured instead to write logs directly to a file by specifying the path to the file in the `log_file` attribute.
+
+# Where next?
+
+Once you've configured your Server and Agents, consider reviewing the guide on [Registering Workloads](/spire/docs/registering/).

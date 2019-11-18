@@ -211,3 +211,7 @@ When the server deploys, it binds in the volumes summarized in the following tab
     NAME           TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
     spire-server   NodePort   10.107.205.29   <none>        8081:30337/TCP   88m
     ```
+
+# Where next?
+
+Once you've installed the SPIRE Server, consider reviewing the guide on [How to install SPIRE Agents](/spire/docs/install-agents/).
