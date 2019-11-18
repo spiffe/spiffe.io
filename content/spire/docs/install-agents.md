@@ -123,3 +123,7 @@ When the agent deploys, it binds the volumes summarized in the following table:
 | :------ |:---------- | :------------- |
 | **spire-config** | The spire-agent configmap created in the  [Create Agent Configmap](#create-agent-configmap) step | **/run/spire/config** |
 | **spire-sockets** | The hostPath, which will be shared with all other pods running on the same worker host. It contains a UNIX domain socket that workloads use to communicate with the agent API. | **/run/spire/sockets** |
+
+# Where next?
+
+Once you've installed SPIRE Agents, consider reviewing the guide on [Configuring the SPIRE Server and Agents](/spire/docs/configuring/).
