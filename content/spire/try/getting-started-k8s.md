@@ -5,6 +5,10 @@ description: Install and run a SPIRE Server and Agent on a Kubernetes cluster
 weight: 3
 toc: true
 aliases: [tutorial-spire-on-kubernetes, tutorial-spire-on-kubernetes/]
+menu:
+  spire:
+    weight: 20
+    parent: 'spire-try'
 ---
 
 # About this Guide

@@ -4,6 +4,10 @@ short: SPIRE Quickstart
 description: How to quickly get SPIRE up and running
 weight: 1
 toc: false
+menu:
+  spire:
+    weight: 20
+    parent: 'spire-try'
 ---
 
 ## Overview

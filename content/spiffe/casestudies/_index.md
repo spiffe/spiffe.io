@@ -2,6 +2,9 @@
 title: Examples
 description: Real world examples of how SPIFFE and SPIRE are being used
 weight: 20
+menu:
+  spiffe:
+    weight: 20
 ---
 
 The following presentations, podcasts, and blog posts demonstrate how people have used SPIFFE and SPIRE to address complex software infrastructure challenges.

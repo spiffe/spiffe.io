@@ -3,7 +3,6 @@
 {{- $isDownloadsPage := eq .Section "downloads" }}
 {{- $spiffeLogo      := "/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png" | relURL }}
 {{- $spireLogo       := "/img/logos/spire/horizontal/color/spire-horizontal-color.png" | relURL }}
-{{- $spireDocs       := where .Site.Pages "Section" "spire" }}
 {{- $logoUrl         := cond $isSpirePage $spireLogo $spiffeLogo }}
 {{- $social          := .Site.Params.socialmedia }}
 {{- $twitterUrl      := printf "https://twitter.com/%s" $social.twitter }}
@@ -28,10 +27,32 @@
     </div>
 
     <div class="navbar-menu">
+
       <div class="navbar-end">
-        <a class="navbar-item has-text-weight-bold" href="/spiffe">
+
+      <div class="navbar-item has-dropdown is-hoverable has-text-weight-bold">
+        <a class="navbar-link" href="/spiffe">
           About SPIFFE
         </a>
+        <div class="navbar-dropdown">
+            {{- range .Site.Menus.spiffe }}
+              {{- if .HasChildren }}
+                <a class="navbar-item" href="{{ .URL }}">
+                  <span>{{ .Title }}</span>
+                </a>
+                {{- range .Children }}
+                  <a class="navbar-item navbar-item-sub" href="{{ .URL }}">
+                    {{ .Title }}
+                  </a>
+                {{- end }}
+              {{- else }}
+                <a class="navbar-item" href="{{ .URL }}">
+                  <span>{{ .Title }}</span>
+                </a>
+              {{- end }}
+            {{- end }}
+          </div>
+        </div>
 
         <div class="navbar-item has-dropdown is-hoverable has-text-weight-bold">
           <a class="navbar-link" href="/spire">
@@ -39,12 +60,21 @@
           </a>
 
           <div class="navbar-dropdown">
-            {{- range $spireDocs }}
-            {{- if ne .Params.navbar false }}
-            <a class="navbar-item" href="{{ .URL }}">
-              {{ .Title }}
-            </a>
-            {{- end }}
+            {{- range .Site.Menus.spire }}
+              {{- if .HasChildren }}
+                <a class="navbar-item" href="{{ .URL }}">
+                  <span>{{ .Title }}</span>
+                </a>
+                {{- range .Children }}
+                  <a class="navbar-item navbar-item-sub" href="{{ .URL }}">
+                    &raquo;	  {{ .Title }}
+                  </a>
+                {{- end }}
+              {{- else }}
+                <a class="navbar-item" href="{{ .URL }}">
+                  <span>{{ .Title }}</span>
+                </a>
+              {{- end }}
             {{- end }}
           </div>
         </div>

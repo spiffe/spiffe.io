@@ -4,6 +4,10 @@ short: Comparisons
 description: Understand SPIRE by comparing and contrasting it to related systems
 weight: 23
 toc: true
+menu:
+  spire:
+    weight: 20
+    parent: 'spire-understand'
 ---
 
 # Secret Stores

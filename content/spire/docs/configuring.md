@@ -3,6 +3,9 @@ title: Configuring SPIRE
 description: How to configure SPIRE for your environment
 weight: 130
 toc: true
+menu:
+  spire:
+    parent: 'spire-docs'
 ---
 
 To customize the behavior of the SPIRE Server and SPIRE Agent to meet your application’s needs you edit configuration files for the server and agent. 

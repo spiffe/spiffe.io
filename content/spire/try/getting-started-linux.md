@@ -4,6 +4,10 @@ short: Getting Started on Linux
 description: Install and run a SPIRE Server and Agent on Linux VMs
 weight: 3
 toc: true
+menu:
+  spire:
+    weight: 20
+    parent: 'spire-try'
 ---
 
 ## Before You Begin

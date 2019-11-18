@@ -3,6 +3,9 @@ title: Extend SPIRE
 description: Learn how to extend SPIRE with third-party plugins
 weight: 150
 toc: true
+menu:
+  spire:
+    parent: 'spire-docs'
 ---
 
 SPIRE is highly extensible via a plugin framework that allows many core operations to be added and customized.
