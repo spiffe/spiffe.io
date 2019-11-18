@@ -3,6 +3,9 @@ title: Registering workloads
 description: Registering workloads with SPIFFE IDs in the SPIRE Server
 weight: 130
 toc: true
+menu:
+  spire:
+    parent: 'spire-docs'
 ---
 
 # How to create a registration entry {#create-registration-entry}

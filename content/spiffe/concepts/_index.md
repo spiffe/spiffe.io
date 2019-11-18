@@ -3,6 +3,9 @@ title: SPIFFE Concepts
 short: Concepts
 weight: 10
 toc: true
+menu:
+  spiffe:
+    weight: 20
 ---
 
 # SPIFFE Concepts

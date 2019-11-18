@@ -4,6 +4,9 @@ short: Install Server
 description: How to install the SPIRE Server on Linux and Kubernetes
 weight: 110
 toc: true
+menu:
+  spire:
+    parent: 'spire-docs'
 ---
 
 # How to install the SPIRE server on Linux 
