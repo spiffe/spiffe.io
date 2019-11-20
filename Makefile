@@ -5,7 +5,9 @@ serve:
 	hugo server \
 	--buildDrafts \
 	--buildFuture \
-	--disableFastRender
+	--disableFastRender \
+	--ignoreCache \
+	--noHTTPCache
 
 production-build:
 	hugo --gc

@@ -5,6 +5,7 @@ pygmentsStyle = "monokai"
 pygmentsCodefences = true
 canonifyurls = true
 googleAnalytics = "UA-99605331-1"
+enableGitInfo = true
 
 [blackfriday]
 hrefTargetBlank = true
@@ -12,6 +13,7 @@ hrefTargetBlank = true
 [params]
 acronym = "Secure Production Identity Framework for Everyone"
 assetintegritychecking = false
+githuburl = "https://github.com/spiffe/spiffe.io/tree/master"
 
 [params.home]
 acronym     = "**S**ecure **P**roduction **I**dentity **F**ramework **f**or **E**veryone"
@@ -24,7 +26,7 @@ spire = "**SPIRE**, the SPIFFE Runtime Environment, is an extensible system that
 [params.socialmedia]
 twitter       = "SPIFFEio"
 slack         = "https://slack.spiffe.io/"
-medium        = "https://blog.scytale.io"
+medium        = "https://scytale.io/blog/"
 github        = "https://github.com/spiffe"
 stackoverflow = "https://stackoverflow.com/questions/tagged/spiffe"
 

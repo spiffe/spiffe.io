@@ -30,24 +30,35 @@ $navbar-dropdown-radius: none
 
 @import "bulma/bulma"
 
+.hero
+  margin-top: 1rem
+  margin-bottom: 1rem
+
+.hero.is-light
+  background-color: inherit
+
+.hero-body
+  padding: 1rem 0rem
+  .title
+     margin-bottom: 0.5rem
+
 figure
   img
     margin-bottom: 1rem
   figcaption
     font-style: normal !important
-    font-size: 1.75rem
+    font-size: 0.85rem
     font-weight: 500
 
 .is-toc-column
   z-index: 1
 
 .is-toc-container
-  margin-left: 1rem
-  background-color: white
-  padding-left: 1rem
   padding: 0 0 .75rem 1rem
+  border-left: 1px $grey-light solid
   display: inline-block
   z-index: 1000
+  height: 90%
 
   .is-toc-title
     margin-bottom: 1rem
@@ -59,37 +70,25 @@ figure
 
   #TableOfContents
     > ul > li
-      line-height: 1.5
-      margin-bottom: 5px !important
+      line-height: 1.0
+      margin-bottom: 2px !important
 
       > a
-        font-weight: bold
-        font-color: black
-        font-size: .9rem
+        font-weight: 800
+        font-color: $black-bis
+        font-size: .8rem
 
-      > ul > li
-        line-height: 1.5
-        font-size: .9em
-
-        > ul > li
-          padding: 5px 0 0 10px
-
-          > a
-            font-weight: 0
-          
-          > ul > li 
-            padding-left: 15px
-            font-size: 0.8em
-
-            > ul > li
-              padding-left: 10px
-              font-size: 0.9em
+      > ul 
+        display: none 
 
       a
         color: $grey-dark
 
       & + li
         margin-top: .75rem
+
+.navbar-item-sub
+  font-weight: 100 !important
 
 .is-logo-button
   .icon img
@@ -99,7 +98,6 @@ figure
     margin-left: .5rem
 
 .article
-  margin: 2rem 0
 
   .content
     pre
@@ -142,13 +140,34 @@ figure
 .button
   border: none
 
+.tabs.is-medium
+    font-size: inherit
+
+.subtabs
+  .container
+    background-color: darken($primary, 10%)
+    ul
+      display: block
+      li
+        display: block
+        float: left
+        a
+          color: $white
+          padding: 0.8rem
+          font-size: 0.9rem
+          font-weight: 800
+      li.is-active
+          background-color: darken($primary, 20%)
+
 .tabs
   li.is-active
     a
       color: $dark
       font-weight: bolder
-      border-bottom: 3px solid $spiffe-blue
-  
+      border-bottom: 3px solid darken($primary, 10%)
+
+.tabs:not(:last-child)
+  margin-bottom: inherit
 
 .section
   &.is-black
@@ -165,6 +184,12 @@ figure
 
   li a
     color: $white-bis
+
+  .github-link
+    color: darken($white-bis, 60%)
+
+    a
+      color: darken($white-bis, 60%)
 
 .is-footer-logo
   +mobile

@@ -1,16 +1,24 @@
-{{- $docs         := where .Site.Pages "Section" .Section }}
-{{- $multipleDocs := gt (len $docs) 1 }}
 {{- $currentUrl   := .URL }}
-{{- if $multipleDocs }}
+{{- $docs         := .CurrentSection.RegularPages }}
+{{- $multipleDocs := gt (len $docs) 1 }}
+
+{{- $currentSection := .Section }}
+
+{{- range $section, $taxonomy := .Site.Sections }}
+{{- if eq $taxonomy.Section $currentSection }}
 <nav class="tabs is-medium">
   <div class="container">
     <ul>
-      {{- range $docs }}
-      {{- $title := cond (isset .Params "short") (.Params.short) .Title }}
-      {{- $isCurrentPage := eq .URL $currentUrl }}
-      <li{{ if $isCurrentPage }} class="is-active"{{ end }}>
+      <li{{ if eq .URL $currentUrl }} class="is-active"{{ end }}>
         <a href="{{ .URL }}">
-          {{ $title }}
+          {{ .Title }}
+        </a>
+      </li>
+      {{- range $s2, $t2 := $taxonomy.Sections }}
+      {{- $title := cond (isset $t2.Params "short") ($t2.Params.short) $t2.Title }}
+      <li{{ if eq .URL $currentUrl }} class="is-active"{{ end }}>
+        <a href="{{ $t2.URL }}">
+          {{ $t2.Title }}
         </a>
       </li>
       {{- end }}
@@ -18,3 +26,18 @@
   </div>
 </nav>
 {{- end }}
+{{- end }}
+{{- if $multipleDocs }}
+<nav class="subtabs is-medium">
+  <div class="container">
+    <ul>
+    {{ range $docs }}
+      <li class="{{- if eq .URL $currentUrl }}is-active{{- end }}">
+          <a href="{{ .URL }}">{{ .Title }}</a>
+      </li>
+    {{ end }}
+    </ul>
+    <div style="clear: both;"></div>
+  </div>
+</nav>
+{{- end}}

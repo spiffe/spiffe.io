@@ -1,19 +1,30 @@
+{{- $docs := .CurrentSection.RegularPages }}     
+{{- $multipleDocs := gt (len $docs) 1 }}
+{{- $currentUrl   := .URL }}
+{{- $sectionCount := 3 }}
+{{- $sectionCountStringSingular := "third" }}
+{{- if .Params.toc }}
+  {{- $sectionCount = add $sectionCount 1 }}
+{{- end }}
+{{- if eq $sectionCount 4 }}
+  {{- $sectionCountStringSingular = "quarter" }}
+{{- end}}
+
 <article class="article">
   <div class="container">
     <div class="columns">
-      <div class="column is-full-mobile">
+      <div class="column is-three-{{ $sectionCountStringSingular }}s is-full-mobile">
         <div class="content">
           <div class="is-hidden-desktop">
             {{ partial "dropdown.html" . }}
           </div>
-    
           <section class="is-inner-content">
             {{ .Content }}
           </section>
         </div>
       </div>
       {{- if .Params.toc }}
-      <div class="column is-one-quarter is-toc-column is-hidden-touch">
+      <div class="column is-one-{{ $sectionCountStringSingular }} is-toc-column is-hidden-touch">
         
         <aside class="is-toc-container">
           <div id="toc">
@@ -23,7 +34,7 @@
        
       </div>
       {{- end }}
-      
     </div>
   </div> <!-- .container -->
+
 </article>
