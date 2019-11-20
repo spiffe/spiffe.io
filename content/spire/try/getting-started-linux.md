@@ -22,7 +22,7 @@ In this introduction to SPIRE you will learn how to:
 # Prerequisites
 
 * A 64 bit Linux or macOS environment
-* The openssl command line tool**
+* The openssl command line tool
 * For macOS, Go 1.11 or higher must be installed to build SPIRE. See https://golang.org/dl/ or run `brew install golang`
 
 The commands in this getting started guide can be run as a standard user or root.
