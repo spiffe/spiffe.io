@@ -1,9 +1,8 @@
+{{- $displayReleases  := ne (getenv "HIDE_RELEASES") "true" }}
 {{- $spireReleasesUrl := "https://api.github.com/repos/spiffe/spire/releases" }}
 {{- $downloadUrl      := "https://github.com/spiffe/spire/releases/download" }}
-{{- $releases         := getJSON $spireReleasesUrl }}
-{{- $latest           := (index $releases 0).tag_name }}
-{{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
-{{- $downloadButtons  := .Site.Params.downloads.buttons.download }}
+
+{{- if $displayReleases }}
 <table class="is-downloads-table">
   <thead>
     <tr>
@@ -19,7 +18,12 @@
     </tr>
   </thead>
   <tbody>
+    {{- $releases         := getJSON $spireReleasesUrl }}
     {{- range $releases }}
+    {{- $latest           := (index $releases 0).tag_name }}
+    {{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
+    {{- $downloadButtons  := .Site.Params.downloads.buttons.download }}
+
     {{- $version      := .tag_name }}
     {{- $versionUrl   := .html_url }}
     {{- $isLatest     := eq $version $latest }}
@@ -63,3 +67,8 @@
     {{- end }}
   </tbody>
 </table>
+{{- else }}
+<blockquote>
+  The releases table is not currently displayed because you're running the site in standard development mode. To display the releases table while in development mode, run <code>make serve-with-releases</code> rather than the standard <code>make serve</code>.
+</blockquote>
+{{- end }}
