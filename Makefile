@@ -2,12 +2,18 @@ setup:
 	npm install
 
 serve:
-	hugo server \
+	HIDE_RELEASES=true hugo server \
 	--buildDrafts \
 	--buildFuture \
 	--disableFastRender \
 	--ignoreCache \
 	--noHTTPCache
+
+serve-with-releases:
+	hugo server \
+	--buildDrafts \
+	--buildFuture \
+	--disableFastRender
 
 production-build:
 	hugo --gc
