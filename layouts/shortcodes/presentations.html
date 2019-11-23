@@ -27,6 +27,7 @@
                 {{- if isset . "description" }}
                 <p>{{ .description }}</p>
                 {{- end}}
+                <p>
                 <i> {{- if isset . "venue" }}  
                         Presented {{- if isset . "presenters" }} by {{ .presenters }} {{- end }}
                     {{- else }} 
@@ -35,10 +36,10 @@
                     {{- if isset . "venue" }} at {{ .venue }} {{- end }}
                     {{- if isset . "publication" }} in {{ .publication }} {{- end }}
                     {{- if isset . "date" }} on {{ .date }} {{- end }}.</i>
+                </p>
             </div>
         </div>
-        &nbsp;
+        <div style="clear: both; margin-bottom: 10px;"></div>
     </div>
     {{- end }}
-    &nbsp;
 {{- end }}
