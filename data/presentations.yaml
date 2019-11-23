@@ -231,3 +231,39 @@
   presenters: Evan Gilman
   organizations: Scytale
   description: The first public presentation of the SPIFFE and SPIRE projects at KubeCon 2017.
+- title: "Scaling SPIRE for Performance and Availability"
+  link: https://www.youtube.com/watch?v=uF_fU-ngXxY&list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien&index=313&t=0s
+  youtube: uF_fU-ngXxY
+  venue: KubeCon NA 2019
+  date: 21-Nov-2019
+  organizations: Uber
+  presenters: Tyler Julian
+  description: In this deep dive, Tyler covers how SPIRE scales to meet the needs of hundreds of thousands of workloads. And, despite a requirement for high, efficient throughout, the system must remain resilient in the face of failure.
+  category: advanced-tutorial
+- title: "Five Things You Didn’t Know You Could Do with SPIFFE and SPIRE"
+  link: https://www.youtube.com/watch?v=5m6kjzdysBI
+  youtube: 5m6kjzdysBI
+  presenters: Andrew Jessup and Andrés Vega
+  organization: Scytale
+  description: Andrew and Andrés review the history of SPIFFE and SPIRE from 2016 to 2019 and showcase how applications can use SVIDs to interact with databases and cloud platform.
+  date: 19-Nov-2019
+  venue: KubeCon NA 2019
+  category: overview
+  weight: 80
+- title: "Booth Talks @ KubeCon 19: Strengthening Envoy authentication with SPIRE"
+  link: https://www.youtube.com/watch?v=MKtQbEwMcJY
+  youtube: MKtQbEwMcJY
+  presenters: Andrew Harding
+  organization: Scytale
+  date: 20-Nov-2019
+  category: advanced-tutorial
+  venue: KubeCon NA 2019
+- title: "Securing Communication Between Meshes and Beyond with SPIFFE Federation"
+  link: https://www.youtube.com/watch?v=cx_NnvbsCP4
+  youtube: cx_NnvbsCP4
+  presenters: Evan Gilman and Oliver Liu
+  organizations: Google and Scytale
+  category: advanced-tutorial
+  date: 20-Nov-2019
+  venue: KubeCon NA 2019
+  description: Evan and Oliver discuss how SPIFFE Federation works, and use it to show how a SPIRE- and Istio- identified workload can establish trust to each other.
