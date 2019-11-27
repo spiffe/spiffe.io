@@ -1,0 +1,269 @@
+- title: Integrating NGINX and SPIRE
+  link: https://www.youtube.com/watch?v=plRkDK5xFpM&list=PLWsNZXV-gXVY_br7I8gz9q0Fijk4DoUxG&index=5&t=0s
+  youtube: plRkDK5xFpM
+  presenters:  Faisal Memon
+  organizations: F5 Networks
+  venue: SPIFFE Community Day
+  date: 11-October-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: Authenticating database clients using SPIRE-issued SVIDs
+  link: https://www.youtube.com/watch?v=YFll-3jgFrU&list=PLWsNZXV-gXVY_br7I8gz9q0Fijk4DoUxG&index=6&t=0s
+  presenters:  Agustín Martínez Fayó 
+  youtube: YFll-3jgFrU
+  organizations: Scytale
+  venue: SPIFFE Community Day
+  date: 11-October-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: TPM Node Attestation with SPIRE
+  link: https://www.youtube.com/watch?v=30S0sKRxzjM&list=PLWsNZXV-gXVY_br7I8gz9q0Fijk4DoUxG&index=7&t=0s
+  presenters: Peyton Walters 
+  youtube: 30S0sKRxzjM
+  organizations: Bloomberg
+  venue: SPIFFE Community Day
+  date: 11-October-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: "Securing Grey Matter: SPIFFE/SPIRE in a Hybrid Mesh"
+  link: https://www.youtube.com/watch?v=1TlEO0xO8jw&list=PLWsNZXV-gXVY_br7I8gz9q0Fijk4DoUxG&index=8&t=0s
+  youtube: 1TlEO0xO8jw
+  presenters: Charles Strahan 
+  organizations: Decipher Technology Studios
+  venue: SPIFFE Community Day
+  date: 11-October-2019
+  language: English
+  category: case-study
+  weight: 100
+- title: "Leveraging SPIFFE Federation to access AWS APIs using OIDC validation"
+  link: https://www.youtube.com/watch?v=db_3LefoG9k&list=PLWsNZXV-gXVY_br7I8gz9q0Fijk4DoUxG&index=9&t=775s
+  youtube: db_3LefoG9k
+  presenters: Eugene Weiss 
+  organizations: Scytale
+  venue: SPIFFE Community Day
+  date: 11-October-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: "How SPIFFE helps Istio in Service Mesh Federation"
+  link: https://www.youtube.com/watch?v=SCBksDnA2rU
+  youtube: SCBksDnA2rU
+  presenters: Yonggang (Oliver) Liu & Wencheng Lu
+  organizations: Google
+  venue: KubeCon China
+  date: 5-July-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: "Transparent Service Authentication and Authorization With Calico, Envoy and SPIRE"
+  link: https://youtu.be/H5IlmYmEDKk?t=7812
+  youtube: H5IlmYmEDKk
+  presenters: Spike Curtis
+  organizations: Tigera
+  venue: SPIFFE Community Day
+  date: 3-May-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: "Using SPIFFE and SPIRE to ensure secure communications across hybrid infrastructure services"
+  link: https://youtu.be/H5IlmYmEDKk?t=2585
+  youtube: H5IlmYmEDKk
+  presenters: Matthew McPherrin
+  organizations: Square
+  venue: SPIFFE Community Day
+  date: 3-May-2019
+  language: English
+  category: case-study
+  weight: 100
+- title: "Integrating SPIRE with workload schedulers"
+  link: https://youtu.be/H5IlmYmEDKk?t=4703
+  youtube: H5IlmYmEDKk
+  presenters: Tyler Dixon
+  organizations: Uber
+  venue: SPIFFE Community Day
+  date: 3-May-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: "Securely extending the Istio Service Mesh into new environments with SPIRE"
+  link: https://youtu.be/H5IlmYmEDKk?t=8896
+  youtube: H5IlmYmEDKk
+  presenters: Max Lambrecht & Eugene Weiss
+  organizations: Scytale
+  venue: SPIFFE Community Day
+  date: 3-May-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: "SPIFFE & SPIRE panel"
+  link: https://thenewstack.io/pancakes-at-kubecon-cloudnativecon-eu-all-about-spiffe-and-spire/
+  thumbnail: https://pbs.twimg.com/profile_images/650494844536647680/kxpz8kAv_400x400.png
+  presenters: Krishna Ganugapati, Andrew Jessup,  Maya Kaczoworski, Tom Petrocelli, Andreas Zitzelsberger
+  organizations: VMware, Scytale, Google, Amalgam Insights, QAware 
+  venue: KubeCon Europe
+  date: 10-May-2018
+  language: English
+  category: overview
+  weight: 100
+- title: "Integrating cloud-native authentication/authorization using Envoy, Open Policy Agent, and SPIRE"
+  link: https://blog.openpolicyagent.org/envoy-external-authorization-with-opa-578213ed567c
+  presenters: Ash Narkar
+  organizations: Styra Inc.
+  date: 7-May-2019
+  language: English
+  category: advanced-tutorial
+  weight: 100
+- title: "Knox and SPIFFE in multi-tenant environments"
+  link: https://medium.com/pinterest-engineering/secret-management-in-multi-tenant-environments-debc9236a744
+  presenters: Jeremy Krach
+  organizations: Pinterest
+  date: 23-March-2019
+  language: English
+  category: case-study
+  weight: 100
+- title: "SPIFFE Overview"
+  link: https://kubernetespodcast.com/episode/045-spiffe/
+  description: SPIFFE is the Secure Production Identity Framework for Everyone. Craig hates the name. Andrew Jessup, co-founder and VP of Product at Scytale (with a C) tells him and Adam why they should look past that and how Jason Bourne fits into the world of Cloud Native.
+  thumbnail: https://kubernetespodcast.com/_assets/images/Kubernetes-Podcast-Logo_1400x1400.png
+  presenters: Andrew Jessup
+  organizations: Scytale
+  date: 21-March-2019
+  language: English
+  category: overview
+  weight: 100
+- title: "Zero-Trust Networks"
+  link: https://www.se-radio.net/2019/10/episode-385-evan-gilman-and-doug-barth-on-zero-trust-networks/
+  presenters: "Doug Barth & Evan Gilman"
+  organizations: Stripe, Scytale
+  date: 22-October-2019
+  language: English
+  thumbnail: https://is1-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1f/21/70/1f2170f9-5e02-a5d2-f106-0a58b775de83/mza_8949086484379343965.jpg/268x0w.jpg
+  category: overview
+  weight: 50
+- title: "SPIFFE: Zero Trust Workload Identification"
+  link: https://softwareengineeringdaily.com/2018/11/14/spiffe-zero-trust-workload-identification-with-evan-gilman/
+  presenters: Evan Gilman
+  organizations: Scytale
+  date: 14-November-2018
+  publication: Software Engineering Daily
+  thumbnail: https://i0.wp.com/softwareengineeringdaily.com/wp-content/uploads/2018/05/logo.png?w=120&ssl=1
+  language: English
+  category: overview
+  weight: 50
+- title: "SPIFFE Project Intro"
+  link: https://www.youtube.com/watch?v=0LSaNrOabH4
+  venue: KubeCon EU 2018
+  date: 4-May-2019
+  category: overview
+  presenters: Andrew Jessup
+  weight: 20
+  youtube: 0LSaNrOabH4
+- title: "SPIFFE and SPIRE in 6 minutes"
+  link: https://www.youtube.com/watch?v=C1kwY0N4PUk&feature=youtu.be&t=6m15s
+  youtube: C1kwY0N4PUk
+  venue: KubeCon EU 2018
+  date: 4-May-2019
+  category: overview
+  presenters: Andrew Jessup
+  weight: 10
+- title: Managing Microservices Identity with SPIFFE
+  link: https://www.youtube.com/watch?v=6b76J8bC2Ac
+  youtube: 6b76J8bC2Ac
+  category: overview
+  weight: 100
+  presenters: Madhukesh Wali
+  date: 25-Nov-2018
+  venue: Easy Bay Cloud Native Meetup
+- title: "TGI Kubernetes 094: SPIFFE and SPIRE"
+  description: Joe Beda gives a background on the motivation behind SPIFFE and SPIRE, and then livestreams installing it onto a Kubernetes cluster.
+  link: https://www.youtube.com/watch?v=cx__8khtih4
+  venue: TGI Kubernetes
+  youtube: cx__8khtih4
+  presenters: Joe Beda
+  organizations: VMWare
+  date: 18-Oct-2019
+  category: overview
+  weight: 100
+- title: Cloud Native Identity Management
+  youtube: eCLTdSp4JzE
+  link: https://www.youtube.com/watch?v=eCLTdSp4JzE
+  presenters: Andreas Zitzelsberger
+  venue: KubeCon EU 2018
+  date: 4-May-2018
+  organizations: QAware
+  description: Andreas from QAWare explains how they used SPIRE as the foundation of a secure workload identity management system for a client.
+  category: case-study
+- title: "Securing Application Telemetry & Tracing with SPIFFE and Envoy"
+  description: In this talk, Sabree demonstrates how to use Envoy proxy and SPIRE to protect your telemetry endpoints, in both push and pull use cases, utilizing fluentd, Prometheus, and OpenTracing & Jaeger. 
+  youtube: _OzG4PHihSk
+  link: https://www.youtube.com/watch?v=_OzG4PHihSk
+  presenters: Sabree Blackmon
+  venue: KubeCon EU 2018
+  category: advanced-tutorial
+  date: 15-Dec-2018
+  venue: KubeCon NA 2018
+- title: "Uber x Security: Why and How We Built Our Workload Identity Platform"
+  presenters: Tyler Julian
+  organizations: Uber
+  date: 24-May-2019
+  venue: KubeCon EU 2019
+  youtube: JKkq60DvPBw
+  category: case-study
+  link: https://www.youtube.com/watch?v=JKkq60DvPBw
+  weight: 10
+- title: "Securing Multi-Cloud Cross-Cluster Communication with SPIFFE and SPIRE"
+  youtube: sLN11qAFAC4
+  link: https://www.youtube.com/watch?v=sLN11qAFAC4
+  date: 24-May-2019
+  venue: KubeCon EU 2019
+  category: overview
+  presenters: Evan Gilman
+  organizations: Scytale
+- title: "Introducing SPIFFE: An Open Standard for Identity in Cloud Native Environments"
+  link: https://www.youtube.com/watch?v=ikmxZdZRTio&t=6s
+  youtube: ikmxZdZRTio
+  venue: KubeCon NA 2017
+  date: 15-Dec-2017
+  category: overview
+  presenters: Evan Gilman
+  organizations: Scytale
+  description: The first public presentation of the SPIFFE and SPIRE projects at KubeCon 2017.
+- title: "Scaling SPIRE for Performance and Availability"
+  link: https://www.youtube.com/watch?v=uF_fU-ngXxY&list=PLj6h78yzYM2NDs-iu8WU5fMxINxHXlien&index=313&t=0s
+  youtube: uF_fU-ngXxY
+  venue: KubeCon NA 2019
+  date: 21-Nov-2019
+  organizations: Uber
+  presenters: Tyler Julian
+  description: In this deep dive, Tyler covers how SPIRE scales to meet the needs of hundreds of thousands of workloads. And, despite a requirement for high, efficient throughout, the system must remain resilient in the face of failure.
+  category: advanced-tutorial
+- title: "Five Things You Didn’t Know You Could Do with SPIFFE and SPIRE"
+  link: https://www.youtube.com/watch?v=5m6kjzdysBI
+  youtube: 5m6kjzdysBI
+  presenters: Andrew Jessup and Andrés Vega
+  organization: Scytale
+  description: Andrew and Andrés review the history of SPIFFE and SPIRE from 2016 to 2019 and showcase how applications can use SVIDs to interact with databases and cloud platform.
+  date: 19-Nov-2019
+  venue: KubeCon NA 2019
+  category: overview
+  weight: 80
+- title: "Booth Talks @ KubeCon 19: Strengthening Envoy authentication with SPIRE"
+  link: https://www.youtube.com/watch?v=MKtQbEwMcJY
+  youtube: MKtQbEwMcJY
+  presenters: Andrew Harding
+  organization: Scytale
+  date: 20-Nov-2019
+  category: advanced-tutorial
+  venue: KubeCon NA 2019
+- title: "Securing Communication Between Meshes and Beyond with SPIFFE Federation"
+  link: https://www.youtube.com/watch?v=cx_NnvbsCP4
+  youtube: cx_NnvbsCP4
+  presenters: Evan Gilman and Oliver Liu
+  organizations: Google and Scytale
+  category: advanced-tutorial
+  date: 20-Nov-2019
+  venue: KubeCon NA 2019
+  description: Evan and Oliver discuss how SPIFFE Federation works, and use it to show how a SPIRE- and Istio- identified workload can establish trust to each other.

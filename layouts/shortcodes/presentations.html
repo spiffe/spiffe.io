@@ -1,0 +1,45 @@
+{{- $presentations := .Site.Data.presentations }}
+{{- $category := .Get "category" }} 
+
+{{- range sort $presentations "weight" }}
+    {{- if eq .category $category }}
+    <div class="presentation">
+        <div class="thumbnail">
+        {{- if isset . "youtube" }}
+          <a href="{{ .link }}">
+              <img src="https://img.youtube.com/vi/{{ .youtube }}/1.jpg" width="120" height="90"/>
+          </a>
+        {{- else if isset . "thumbnail" }}
+          <a href="{{ .link }}">
+            <img src="{{ .thumbnail }}" width="120" height="90"/>
+          </a>
+        {{- end }} 
+        &nbsp;
+        </div>
+        <div> 
+            <div>
+                <a href="{{ .link }}"><strong>{{.title }}</strong></a>
+                {{- if isset . "organizations" }}
+                  ({{ .organizations }})
+                {{- end }}
+            </div>
+            <div class="description">
+                {{- if isset . "description" }}
+                <p>{{ .description }}</p>
+                {{- end}}
+                <p>
+                <i> {{- if isset . "venue" }}  
+                        Presented {{- if isset . "presenters" }} by {{ .presenters }} {{- end }}
+                    {{- else }} 
+                        By {{ .presenters }}
+                    {{- end }}
+                    {{- if isset . "venue" }} at {{ .venue }} {{- end }}
+                    {{- if isset . "publication" }} in {{ .publication }} {{- end }}
+                    {{- if isset . "date" }} on {{ .date }} {{- end }}.</i>
+                </p>
+            </div>
+        </div>
+        <div style="clear: both; margin-bottom: 10px;"></div>
+    </div>
+    {{- end }}
+{{- end }}
