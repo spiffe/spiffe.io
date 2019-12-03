@@ -14,7 +14,7 @@ SPIRE is highly extensible via a plugin framework that allows many core operatio
 
 A Node Attestor implements validation logic for nodes (physical or virtual machines) that are attempting to establish their identity. Typically a Node Attestor is implemented as a plugin on the Server and with a corresponding plugin on the Agent. A Node Attestor plugin will often expose selectors that can be used when creating the registration entries that define a workload.
 
-SPIRE comes with a set of built-in Node Attestor plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) that support various cloud platforms, schedulers and other machine identity sources. Servers can have multiple Node Attestor plugins enabled simultaneously, however a given Agent may only have one Node Attestor plugin enabled at a time.
+SPIRE comes with a set of built-in Node Attestor plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md) that support various cloud platforms, schedulers and other machine identity sources. Servers can have multiple Node Attestor plugins enabled simultaneously, however a given Agent may only have one Node Attestor plugin enabled at a time.
 
 In addition, known third-party Node Attestor plugins include:
 
@@ -56,7 +56,7 @@ SPIRE comes with a set of built-in UpstreamCA plugins for the [Server](https://g
 
 In some cases it might be desirable for SPIRE to avoid being exposed to a signing key at all - for example if the signing key is held in a secure hardware enclave. In such a case, the SPIRE Server and Agent can leverage KeyManager plugins to delegate the actual signing operation to another system (such as a TPM).
 
-SPIRE comes with a set of built-in KeyManager plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+SPIRE comes with a set of built-in KeyManager plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
 
 # Notifier plugins
 
