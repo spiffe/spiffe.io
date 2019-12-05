@@ -13,41 +13,43 @@ menu:
 
 ## Step 1: Obtain the SPIRE Binaries {#step-1}
 
-Pre-built SPIRE releases can be found on the [SPIRE downloads page](/downloads#spire). These releases contain both server and agent binaries.
+Pre-built SPIRE releases can be found on the [SPIRE downloads page](/downloads#spire). The tarballs contain both server and agent binaries.
 
 If you wish, you may also [build SPIRE from source](https://github.com/spiffe/spire/blob/master/CONTRIBUTING.md).
 
 ## Step 2: Install the Server and Agent {#step-2}
 
-As stated above, this guide illustrates installs the server and agent on the same node. More typically, your architecture will have the the server installed on one node and one or more agents installed on distinct nodes. 
+This introductory guide describes how to install the server and agent on the same node. On a typical production deployment you will have the server installed on one node and one or more agents installed on distinct nodes. 
 
 To install the server and agent:
 
-1. Obtain the latest tarball from [the SPIRE downloads page](/downloads#spire) and then extract it into the **/opt/spire** directory using the following commands:
+1. Obtain the latest tarball from the [SPIRE downloads page](/downloads#spire) and then extract it into the **/opt/spire** directory using the following commands:
 
-	```shell
-	wget https://github.com/spiffe/spire/releases/download/{{< spire-latest >}}/spire-{{< spire-latest >}}-linux-x86_64-glibc.tar.gz
-	sudo tar zvxf spire-{{< spire-latest >}}-linux-x86_64-glibc.tar.gz
-	sudo cp -r spire-{{< spire-latest >}}/. /opt/spire/
-	```
+    ```console
+    wget https://github.com/spiffe/spire/releases/download/{{< spire-latest >}}/spire-{{< spire-latest >}}-linux-x86_64-glibc.tar.gz
+    sudo tar zvxf spire-{{< spire-latest >}}-linux-x86_64-glibc.tar.gz
+    sudo cp -r spire-{{< spire-latest >}}/. /opt/spire/
+    ```
 
 2. Add `spire-server` and `spire-agent` to your $PATH for convenience:
 
-	```shell
-	ln -s /opt/spire/spire-server /usr/bin/spire-server
-	ln -s /opt/spire/spire-agent /usr/bin/spire-agent
-	```
+    ```console
+    ln -s /opt/spire/spire-server /usr/bin/spire-server
+    ln -s /opt/spire/spire-agent /usr/bin/spire-agent
+    ```
 
 ## Step 3: Configure the Agent {#step-3}
 
-Once the SPIRE Server and Agent have been installed, it will be necessary to configure it for your environment. Follow the [Configuring SPIRE](/spire/docs/configuring/) section for full details, in particular Node Attestation and Workload Attestation.
+Once the SPIRE Agent has been installed, you need to configure it for your environment. See [Configuring SPIRE](/spire/docs/configuring/) for details about how to configure SPIRE, in particular Node Attestation and Workload Attestation.
 
-Note that the a SPIRE Agent must be restarted once its configuration has been modified for changes to take effect.
+Note that the SPIRE Agent must be restarted once its configuration has been modified for changes to take effect.
+
+If you haven't already, see [Install SPIRE Server](/spire/docs/install-server/) to learn how to install the SPIRE Server.
 
 # Installing SPIRE Agents on Kubernetes
 
 {{< warning >}}
-You must run all commands from the directory containing the **.yaml** files used for configuration. See [Obtain the Required Files](install-server#section-1) section of the SPIRE Server installation guide for details.
+You must run all commands from the directory containing the **.yaml** files used for configuration. See [Obtain the Required Files](/spire/docs/install-server#section-1) section of the SPIRE Server installation guide for details.
 {{< /warning >}}
 
 To install SPIRE Agents on Kubernetes, you:
@@ -56,11 +58,13 @@ To install SPIRE Agents on Kubernetes, you:
 2. Create the agent configmap
 3. Create the agent daemonset
 
+See the following sections for details.
+
 ## Step 1: Create Agent Service Account
 
 Apply the **agent-account.yaml** configuration file to create a service account named **spire-agent** in the **spire** namespace:
 
-```bash
+```console
 $ kubectl apply -f agent-account.yaml
 ```
 
@@ -68,13 +72,13 @@ To allow the agent read access to the kubelet API to perform workload attestatio
 
 1. Create a ClusterRole named **spire-agent-cluster-role** and a corresponding ClusterRoleBinding by applying the **agent-cluster-role.yaml** configuration file:
 
-    ```bash
+    ```console
     $ kubectl apply -f agent-cluster-role.yaml
     ```
 
 2. To confirm successful creation, verify that the ClusterRole appears in the output of the following command:
 
-    ```bash
+    ```console
     $ kubectl get clusterroles --namespace spire | grep spire
     ```
 
@@ -82,7 +86,7 @@ To allow the agent read access to the kubelet API to perform workload attestatio
 
 Apply the **agent-configmap.yaml** configuration file to create the agent configmap. This is mounted as the `agent.conf` file that determines the SPIRE Agent's configuration. 
 
-```bash
+```console
 $ kubectl apply -f agent-configmap.yaml
 ```
 
@@ -98,13 +102,13 @@ Agents are deployed as a daemonset and one runs on each Kubernetes worker instan
 
 Deploy the SPIRE agent by applying the **agent-daemonset.yaml** configuration.
 
-```bash
+```console
 $ kubectl apply -f agent-daemonset.yaml
 ```
 
 This creates a daemonset called **spire-agent** in the **spire** namespace and starts up a **spire-agent** pod along side **spire-server**, as demonstrated in the output of the following two commands:
 
-```bash
+```console
 $ kubectl get daemonset --namespace spire
 
 NAME          DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
@@ -121,9 +125,11 @@ When the agent deploys, it binds the volumes summarized in the following table:
 
 | Volume | Description | Mount Location |
 | :------ |:---------- | :------------- |
-| **spire-config** | The spire-agent configmap created in the  [Create Agent Configmap](#create-agent-configmap) step | **/run/spire/config** |
+| **spire-config** | The spire-agent configmap created in the  [Create Agent Configmap](#create-agent-configmap) step. | **/run/spire/config** |
 | **spire-sockets** | The hostPath, which will be shared with all other pods running on the same worker host. It contains a UNIX domain socket that workloads use to communicate with the agent API. | **/run/spire/sockets** |
 
 # Where next?
 
-Once you've installed SPIRE Agents, consider reviewing the guide on [Configuring the SPIRE Server and Agents](/spire/docs/configuring/).
+If you haven't already, see [Install SPIRE Server](/spire/docs/install-server/) to learn how to install the SPIRE Server.
+
+Once you've installed SPIRE Server and Agents, consider reviewing the guide on [Configuring the SPIRE Server and Agents](/spire/docs/configuring/).
