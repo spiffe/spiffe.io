@@ -10,3 +10,5 @@ menu:
 ---
 
 {{< sectiontoc >}}
+* [Configuring SPIRE federation](/spire/docs/federation)  
+How to configure SPIRE to federate with services such as Amazon S3
