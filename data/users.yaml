@@ -12,7 +12,7 @@ issuers:
   link: https://www.consul.io/segmentation.html
   logo: consul.svg
 - name: Kuma
-  description: Kuma automatically generates SPIFFE-compatible certificates that identify all the services and workloads running in the service mesh, and encrypt all the traffic generated between them
+  description: Kuma automatically generates SPIFFE-compatible certificates that identify all the services and workloads running in the service mesh, and encrypts all the traffic generated between them
   link: https://kuma.io
   logo: kuma.svg
 consumers:
