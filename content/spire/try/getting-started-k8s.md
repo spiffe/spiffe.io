@@ -147,7 +147,6 @@ In order to enable SPIRE to perform workload attestation -- which allows the age
     $ kubectl exec -n spire spire-server-0 -- \
         /opt/spire/bin/spire-server entry create \
         -spiffeID spiffe://example.org/ns/spire/sa/spire-agent \
-        -parentID spiffe://example.org/spire/server \
         -selector k8s_sat:cluster:demo-cluster \
         -selector k8s_sat:agent_ns:spire \
         -selector k8s_sat:agent_sa:spire-agent \
