@@ -9,7 +9,7 @@ menu:
     weight: 20
 ---
 
-A SPIFFE-compatible identity provider such as SPIRE will expose [SPIFFE Verifiable Identity Documents](/spiffe/concepts/#spiffe-verifiable-identity-document-svid) (SVIDs) via the [SPIFFE Workload API](http://localhost:1313/spiffe/concepts/#spiffe-workload-api). Workloads can use SVIDs retrieved from this API to verify the provenance of a message or to establish mutual TLS secured channels between two workloads. 
+A SPIFFE-compatible identity provider such as SPIRE will expose [SPIFFE Verifiable Identity Documents](/spiffe/concepts/#spiffe-verifiable-identity-document-svid) (SVIDs) via the [SPIFFE Workload API](/spiffe/concepts/#spiffe-workload-api). Workloads can use SVIDs retrieved from this API to verify the provenance of a message or to establish mutual TLS secured channels between two workloads. 
 
 # Interacting with the Workload API
 

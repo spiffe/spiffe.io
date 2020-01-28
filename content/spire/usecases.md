@@ -25,7 +25,7 @@ To use SPIRE to establish mTLS between a number of workloads requires the follow
 
 1.   [Install a SPIRE Server](/spire/docs/install-server/) into target environment.
 2.   [Install a SPIRE Agent](/spire/docs/install-agents/) on each physical or virtual machine running their target environment.
-3.   [Configure Node Attestation](/spire/docs/configuring/#configuring-node-attestation) and [Workload Attestation](http://localhost:1313/spire/docs/configuring/#configuring-workload-attestation).
+3.   [Configure Node Attestation](/spire/docs/configuring/#configuring-node-attestation) and [Workload Attestation](/spire/docs/configuring/#configuring-workload-attestation).
 4.   Create registration entries to identify specific workloads in the target environment.
 5.   Configure each workload to use the keys and X.509 certificates delivered via the SPIFFE Workload API exposed by the SPIRE Agent to establish mTLS connections. This may be accomplished by [having the workload retrieve and interact with these keys and certificates directly](/spiffe/svids/), OR using a proxy ([such as Envoy](/spire/docs/envoy/)) to establish inbound or outbound mTLS connections on behalf of the workload.
 
@@ -35,7 +35,7 @@ While mTLS is useful for securing communication between workloads across untrust
 
 Unlike mTLS, using JWTs does not normally provide a means to guarantee the integrity of a message sent and can, if used improperly, be subject to replay attacks if a malicious actor can obtain a valid JWT. But JWTs can be used to authenticate messages between workloads when direct mTLS may not be possible (for instance, if a Layer 7 load balancer is on the network path between them), or when several workloads may send messages over a single encrypted channel.
 
-SPIRE supports a specific form of JWT that is specifically designed to encode SPIFFE IDs, the [JWT-SVID](http://localhost:1313/spiffe/concepts/#spiffe-verifiable-identity-document-svid). SPIRE can simplify the widespread deployment of JWT-SVIDs between workloads in distributed systems by:
+SPIRE supports a specific form of JWT that is specifically designed to encode SPIFFE IDs, the [JWT-SVID](/spiffe/concepts/#spiffe-verifiable-identity-document-svid). SPIRE can simplify the widespread deployment of JWT-SVIDs between workloads in distributed systems by:
 
 1.   [Attesting](/spire/concepts/#attestation) the identity of a workload in a distributed software system at runtime.
 2.   Generating JWT-SVIDs on behalf of a workload via the [Workload API](/spiffe/concepts/#spiffe-workload-api).
@@ -45,6 +45,6 @@ To use SPIRE to authenticate workloads using JWTs requires the following:
 
 1.   [Install a SPIRE Server](/spire/docs/install-server/) into target environment.
 2.   [Install a SPIRE Agent](/spire/docs/install-agents/) on each physical or virtual machine running their target environment.
-3.   [Configure Node Attestation](/spire/docs/configuring/#configuring-node-attestation) and [Workload Attestation](http://localhost:1313/spire/docs/configuring/#configuring-workload-attestation).
+3.   [Configure Node Attestation](/spire/docs/configuring/#configuring-node-attestation) and [Workload Attestation](/spire/docs/configuring/#configuring-workload-attestation).
 4.   Create registration entries to identify specific workloads in the target environment.
 5.   Configure each workload to generate or verify JWTs delivered via the SPIFFE Workload API exposed by the SPIRE Agent. This may be accomplished by [having the workload retrieve and interact with these JWT-SVIDs directly](/spiffe/svids/), OR using a proxy ([such as Envoy](/spire/docs/envoy/)) to attach and verify JWTs to messages on behalf of the workload automatically.
