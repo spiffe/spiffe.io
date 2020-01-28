@@ -11,6 +11,10 @@ issuers:
   description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
   link: https://www.consul.io/segmentation.html
   logo: consul.svg
+- name: Kuma
+  description: Kuma automatically generates SPIFFE-compatible certificates that identify all the services and workloads running in the service mesh, and encrypts all the traffic generated between them
+  link: https://kuma.io
+  logo: kuma.svg
 consumers:
 - name: The Envoy proxy
   description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication) connections between Envoy proxies
