@@ -57,7 +57,7 @@ If this configuration is changed from the default on the server, then the config
 # Configuring node attestation
 _This configuration applies to the SPIRE Server and SPIRE Agent_
 
-A SPIFFE Server identifies and attests Agents through the process of *node attestation* and *resolution* (read more about this in [SPIRE Concepts](/spire/overview/#spire-concepts)). This is accomplished through Node Attestor and Node Resolver plugins, which you configure and enable in the server. 
+A SPIFFE Server identifies and attests Agents through the process of *node attestation* and *resolution* (read more about this in [SPIRE Concepts](/spire/concepts)). This is accomplished through Node Attestor and Node Resolver plugins, which you configure and enable in the server. 
 
 Your choice of node attestation method determines which node-attestor plugins you configure SPIRE to use in Server Plugins and Agent Plugins sections of the SPIRE configuration files. You must configure _at least one_ node attestor on the server and _only one_ node attestor on each Agent.
 
@@ -125,7 +125,7 @@ To use X.509 Certificate Node Attestation, configure and enable the x509pop Node
 
 ### SSH Certificate
 
-In some environments each node is automatically provisioned with a valid and unique SSH certificate that identifies the node. SPIRE can use this certificate to bootstrap it's identity.
+In some environments each node is automatically provisioned with a valid and unique SSH certificate that identifies the node. SPIRE can use this certificate to bootstrap its identity.
 
 Nodes attested via this method are automatically given a SPIFFE ID in the form of:
 
@@ -192,11 +192,11 @@ As with Node Attestation, Workload Attestation is accomplished through enabling 
 
 ## Workload Attestation for workloads scheduled by Kubernetes
 
-When workloads are running in Kubernetes, it is valuable to be able to describe them in terms of Kubernetes constructs such as the a namespace or service account or abel associated with the pod the workload is running under.
+When workloads are running in Kubernetes, it is valuable to be able to describe them in terms of Kubernetes constructs such as the namespace, service account, or label associated with the pod the workload is running under.
 
 The Kubernetes Workload Attestor plugin works by interrogating the local Kubelet to retrieve kubernetes-specific metadata about particular process when it calls the Workload API, and uses that to identify workloads whose registration entries match those values.
 
-For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Kubernetes Workload Attestor plugin](https://github.com/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_azure_msi.md).
+For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Kubernetes Workload Attestor plugin](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md).
 
 ## Workload Attestation for Docker containers
 
