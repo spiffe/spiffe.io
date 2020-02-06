@@ -122,7 +122,7 @@ $ kubectl apply \
     -f agent-daemonset.yaml
 ```
 
-This creates a daemonset called **spire-agent** in the **spire** namespace and starts up a **spire-agent** pod along side **spire-server**, as demonstrated in the output of the following two commands:
+This creates a daemonset called **spire-agent** in the **spire** namespace and starts up a **spire-agent** pod along side **spire-server**, as demonstrated in the output of the following commands:
 
 ```bash
 $ kubectl get daemonset --namespace spire
