@@ -31,7 +31,7 @@ If you are using minikube to run this tutorial you should specify some special f
 
 # Obtain the Required Files {#section-1}
 
-This deployment this guide walks you through setting up requires a number of **.yaml** files *and* you must run all commands in the directory in which those files
+Walking through this guide requires a number of **.yaml** files *and* you must run all commands in the directory in which those files
 reside.
 
 To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain
