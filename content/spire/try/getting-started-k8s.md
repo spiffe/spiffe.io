@@ -31,7 +31,7 @@ If you are using minikube to run this tutorial you should specify some special f
 
 # Obtain the Required Files {#section-1}
 
-This deployment this guide walks you through setting up requires a number of **.yaml** files *and* you must run all commands in the directory in which those files
+Walking through this guide requires a number of **.yaml** files *and* you must run all commands in the directory in which those files
 reside.
 
 To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain
@@ -122,7 +122,7 @@ $ kubectl apply \
     -f agent-daemonset.yaml
 ```
 
-This creates a daemonset called **spire-agent** in the **spire** namespace and starts up a **spire-agent** pod along side **spire-server**, as demonstrated in the output of the following two commands:
+This creates a daemonset called **spire-agent** in the **spire** namespace and starts up a **spire-agent** pod along side **spire-server**, as demonstrated in the output of the following commands:
 
 ```bash
 $ kubectl get daemonset --namespace spire
@@ -226,9 +226,12 @@ minikube start \
     --extra-config=apiserver.service-account-key-file=/var/lib/minikube/certs/sa.pub \
     --extra-config=apiserver.service-account-issuer=api \
     --extra-config=apiserver.service-account-api-audiences=api,spire-server \
-    --extra-config=apiserver.authorization-mode=RBAC \
+    --extra-config=apiserver.authorization-mode=Node,RBAC \
     --extra-config=kubelet.authentication-token-webhook=true
 ```
+{{< info >}}
+For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`.
+{{< /info >}}
 
 # Considerations For A Production Environment
 
