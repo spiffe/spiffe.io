@@ -133,13 +133,13 @@ Nodes attested via this method are automatically given a SPIFFE ID in the form o
 spiffe://<trust-domain>/spire/agent/sshpop/<fingerprint>
 ```
 
-Where <fingerpint> is a hash of the certificate itself. This SPIFFE ID can then be used as the basis of other workload registration entries.
+Where `<fingerprint>` is a hash of the certificate itself. This SPIFFE ID can then be used as the basis of other workload registration entries.
 
 To use SSH Certificate Node Attestation, configure and enable the sshpop Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_sshpop.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_nodeattestor_sshpop.md).
 
 ## Attestation for Linux nodes on a Cloud Provider {#customize-server-cloud-attestation}
 
-Many cloud providers offer privaliged APIs that allow a process running on a particular node hosted by that provider to be able to prove which node it is running on. SPIRE can be configured to leverage these APIs for node attestation. This is particularly convenient for automation because an Agent starting for the first time on a new instance can automatically attest its identity to the SPIRE server without pre-existing certificates or join tokens being issued to it.
+Many cloud providers offer privileged APIs that allow a process running on a particular node hosted by that provider to be able to prove which node it is running on. SPIRE can be configured to leverage these APIs for node attestation. This is particularly convenient for automation because an Agent starting for the first time on a new instance can automatically attest its identity to the SPIRE server without pre-existing certificates or join tokens being issued to it.
 
 ### Google Compute Engine Instances
 
@@ -200,9 +200,9 @@ For more information, including details of the exposed selectors, refer to the c
 
 ## Workload Attestation for Docker containers
 
-When workloads are running in a Docker container, it can be helpful to be able to describe them in terms of attributes of that container, such as the Docker image the container was started from, or the value of a particular envrionment variable.
+When workloads are running in a Docker container, it can be helpful to be able to describe them in terms of attributes of that container, such as the Docker image the container was started from, or the value of a particular environment variable.
 
-The Docker Workload Attestor plugin works by interrogating to the local Docker deamon to retrieve Docker-specific metadata about a particular process when it calls the Workload API.
+The Docker Workload Attestor plugin works by interrogating to the local Docker daemon to retrieve Docker-specific metadata about a particular process when it calls the Workload API.
 
 For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Docker Workload Attestor plugin](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_docker.md).
 
@@ -325,7 +325,7 @@ SPIRE Servers)
 This signing key should be considered extremely sensitive as to obtain it would allow a malicious actor to impersonate the SPIRE Server and to issue identities on its behalf. 
 {{< /warning >}}
 
-To help ensure the integrity of the signing key a SPIRE Server may either sign material itself using a signing key stored on disk, or delegate singing to an independent Certificate Authority (CA), such as the AWS Secrets Manager. This behavior is configured through the `UpstreamCA` section in the
+To help ensure the integrity of the signing key a SPIRE Server may either sign material itself using a signing key stored on disk, or delegate signing to an independent Certificate Authority (CA), such as the AWS Secrets Manager. This behavior is configured through the `UpstreamCA` section in the
 `server.conf` file.
 
 For a complete server configuration reference, see the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
@@ -399,7 +399,7 @@ _This configuration applies to the SPIRE Server and SPIRE Agent_
 
 You can set the log file location and the level of logging for the SPIRE Server and SPIRE Agent in their respective configuration files. Edit the `log_file` value to set the log file location and the `log_level` value to set the level of logging. This can be one of DEBUG, INFO, WARN or ERROR.
 
-By default, SPIRE logs go to STDOUT. However the SPIRE Agent and Server can be onfigured instead to write logs directly to a file by specifying the path to the file in the `log_file` attribute.
+By default, SPIRE logs go to STDOUT. However the SPIRE Agent and Server can be configured instead to write logs directly to a file by specifying the path to the file in the `log_file` attribute.
 
 # Where next?
 
