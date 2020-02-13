@@ -1,7 +1,16 @@
+- title: An Introduction to the SPIFFE and SPIRE Projects in 10 minutes
+  link: https://www.youtube.com/watch?v=Q2SiGeebRKY
+  youtube: Q2SiGeebRKY
+  presenters: Evan Gilman
+  organizations: Scytale
+  category: overview
+  date: 13-Feb-2020
+  description: In this lightboard video Evan Gilman, an engineer at Scytale, provides an overview of CNCF’s SPIFFE and SPIRE Projects.
+  weight: 0
 - title: Integrating NGINX and SPIRE
   link: https://www.youtube.com/watch?v=plRkDK5xFpM&list=PLWsNZXV-gXVY_br7I8gz9q0Fijk4DoUxG&index=5&t=0s
   youtube: plRkDK5xFpM
-  presenters:  Faisal Memon
+  presenters: Faisal Memon
   organizations: F5 Networks
   venue: SPIFFE Community Day
   date: 11-October-2019
@@ -267,3 +276,4 @@
   date: 20-Nov-2019
   venue: KubeCon NA 2019
   description: Evan and Oliver discuss how SPIFFE Federation works, and use it to show how a SPIRE- and Istio- identified workload can establish trust to each other.
+
