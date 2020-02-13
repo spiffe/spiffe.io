@@ -23,10 +23,10 @@ In this introduction to SPIRE on Kubernetes you will learn how to:
 * Fetch an x509-SVID over the SPIFFE Workload API
 * Learn where to find resources for more complex installations
 
-This steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1.12.4, and 1.10.12.
+The steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1.12.4, and 1.10.12.
 
 {{< info >}}
-If you are using minikube to run this tutorial you should specify some special flags as described [here](#minikube).
+If you are using Minikube to run this tutorial you should specify some special flags as described [here](#minikube).
 {{< /info >}}
 
 # Obtain the Required Files {#section-1}
@@ -85,7 +85,7 @@ $ kubectl apply \
     -f server-service.yaml
 ```
 
-This creates a statefulset called **spire-server** in the **spire** namespace and starts up a **spire-server** pod, as demonstrated in the output of the following two commands:
+This creates a statefulset called **spire-server** in the **spire** namespace and starts up a **spire-server** pod, as demonstrated in the output of the following commands:
 
 ```bash
 $ kubectl get statefulset --namespace spire
@@ -139,7 +139,7 @@ spire-server-b95945658-4wbkd   1/1     Running   0          103m
 
 # Register Workloads {#section-5}
 
-In order to enable SPIRE to perform workload attestation -- which allows the agent to identify the workload to attest to its agent --  you must register the workload in the server. This tells SPIRE how to identify the workload and which SPIFFE ID to give it.
+In order to enable SPIRE to perform workload attestation -- which allows the agent to identify the workload to attest to its agent -- you must register the workload in the server. This tells SPIRE how to identify the workload and which SPIFFE ID to give it.
 
 1. Create a new registration entry for the node, specifying the SPIFFE ID to allocate to the node:
 
@@ -199,7 +199,7 @@ You can test that the agent socket is accessible from an application container b
     /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
     ```
 
-If the agent is not running, you’ll see an error message such as “no such file or directory" or “connection refused”.
+If the agent is not running, you’ll see an error message such as "no such file or directory" or "connection refused".
 
 If the agent is running, you’ll see a list of SVIDs.
 
@@ -219,7 +219,7 @@ If the agent is running, you’ll see a list of SVIDs.
 
 # Considerations When Using Minikube {#minikube}
 
-If you are using minikube to run this tutorial, when starting your cluster you should pass some additional configuration flags.
+If you are using Minikube to run this tutorial, when starting your cluster you should pass some additional configuration flags.
 ```
 minikube start \
     --extra-config=apiserver.service-account-signing-key-file=/var/lib/minikube/certs/sa.key \
