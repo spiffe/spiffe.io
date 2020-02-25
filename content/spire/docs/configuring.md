@@ -181,7 +181,7 @@ The default resource–assigned by the agent plugin–is scoped relatively widel
 If you configure a custom resource ID in the agent configuration file, you must specify custom resource IDs for each tenant, in the `NodeAttestor` stanza of the `server.conf` configuration file. (See [Configure the Server](#configure-the-server).)
 {{< /warning >}}
 
-For more information on configuring Azure MSI Node Attestors or Resolver plugins, refer to the corresponding SPIRE documentation for the AWS [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_azure_msi.md) and [SPIRE Server  Node Resolver](https://github.com/spiffe/spire/blob/master/doc/plugin_server_noderesolver_azure_msi.md) on the SPIRE Server, and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_nodeattestor_azure_msi.md) on the agent.
+For more information on configuring Azure MSI Node Attestors or Resolver plugins, refer to the corresponding SPIRE documentation for the Azure MSI [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_azure_msi.md) and [SPIRE Server  Node Resolver](https://github.com/spiffe/spire/blob/master/doc/plugin_server_noderesolver_azure_msi.md) on the SPIRE Server, and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_nodeattestor_azure_msi.md) on the agent.
 
 # Configuring workload attestation
 _This configuration applies to the SPIRE Agent_
@@ -299,7 +299,7 @@ The following list summarizes the connection string values you set:
 * \[port\] - port number of the Postgres server
 
 # Configuring how generated keys are stored on the Agent and Server
-_This configuration applies to the SPIRE Server and SPIRE Agent
+_This configuration applies to the SPIRE Server and SPIRE Agent_
 
 Both the SPIRE Agent and SPIRE Server generate private keys and certificates during normal operation. It is important to maintain the integrity of these keys and certificates to ensure the integrity of the issued SPIFFE identities is maintained.
 
@@ -307,7 +307,7 @@ Currently SPIRE supports two key management strategies on both the Agent and Ser
 
 * **Store in-memory**. In this strategy keys and certificates are only stored in-memory. This means that if the Server or Agent crashes or is otherwise re-started, the keys must be re-generated. In the case of the SPIRE Agent this typically requires the agent to re-attest to the Server upon restart. This strategy can be managed by enabling and configuring the memory key manager plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_keymanager_memory.md) and/or [SPIRE Agent](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_keymanager_memory.md).
 
-* **Store on disk**. In this strategy, keys and certificates are stored in a specified file on disk. An advantage of this approach is they survive a restart of the SPIRE Server or Agent. A disadvantage is that since they keys are stored in files on disk, additional precautions must be taken to prevent a malicious process from reading those files. This strategy can be managed by enabling and configuring the memory key manager plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_keymanager_disk.md) and/or [SPIRE Agent](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_keymanager_disk.md).
+* **Store on disk**. In this strategy, keys and certificates are stored in a specified file on disk. An advantage of this approach is they survive a restart of the SPIRE Server or Agent. A disadvantage is that since they keys are stored in files on disk, additional precautions must be taken to prevent a malicious process from reading those files. This strategy can be managed by enabling and configuring the disk key manager plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_keymanager_disk.md) and/or [SPIRE Agent](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_keymanager_disk.md).
 
 Alternatively, SPIRE can be configured to integrating a custom backend such as a secret store through third party key manager plugins. The guide on [Extending SPIRE](/spire/docs/extending/) covers this in more detail.
 
