@@ -43,7 +43,7 @@ To install the server and agent:
 To configure the server on Linux, you:
 
 1. Configure the trust domain
-2. Configure the server certificate authority (CA), which might include configuring an UpstreamCA plugin 
+2. Configure the server certificate authority (CA), which might include configuring an UpstreamAuthority plugin
 3. Configure the node attestation plugin
 4. Configure a default **.data** directory for persisting data
 

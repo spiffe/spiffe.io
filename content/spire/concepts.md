@@ -39,7 +39,7 @@ Datastore plugins, which the server uses to store, query, and update various pie
 
 Key manager plugins, which control how the server stores private keys used to sign X.509-SVIDs and JWT-SVIDs. 
 
-Upstream certificate authority (CA) plugins. By default the SPIRE Server acts as its own certificate authority. However, you can use an upstream CA plugin to use a different CA from a different PKI system.  
+Upstream authority plugins. By default the SPIRE Server acts as its own certificate authority. However, you can use an upstream authority plugin to use a different CA from a different PKI system.
 
 {{< info >}}
 CAs apply to SVIDs in X.509 format only. SPIRE creates JWT-SVIDs without a certificate authority. 
@@ -78,7 +78,7 @@ For help creating custom server and agent plugins, see [`examples/plugins`direct
 This section walks through a “day in the life” of how SPIRE issues an identity to a workload, from the time the agent starts up on a node to the point of a workload on the same node receiving a valid identity in the form of an X.509 SVID. Note that SVIDs in JWT format are handled differently. For the purposes of simple demonstration, the workload is running on AWS EC2. 
 
 1. The SPIRE Server starts up.  
-2. Unless the user has configured an UpstreamCA plugin, the server generates a self-signed certificate (a certificate signed with its own private key); the server will use this certificate to sign SVIDs for all the workloads in this server’s trust domain.    
+2. Unless the user has configured an UpstreamAuthority plugin, the server generates a self-signed certificate (a certificate signed with its own private key); the server will use this certificate to sign SVIDs for all the workloads in this server’s trust domain.
 3. If it’s the first time starting up, the server automatically generates a trust bundle, whose contents it stores in a datastore you specify in the datastore plugin -- described in the section "Built-in plugins" in the 
 [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 4. The server turns on its registration API, to allow you to register workloads.  

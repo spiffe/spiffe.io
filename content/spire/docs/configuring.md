@@ -311,7 +311,7 @@ Currently SPIRE supports two key management strategies on both the Agent and Ser
 
 Alternatively, SPIRE can be configured to integrating a custom backend such as a secret store through third party key manager plugins. The guide on [Extending SPIRE](/spire/docs/extending/) covers this in more detail.
 
-# Configuring which trust root / "upstream CA" your application will use
+# Configuring which trust root / "upstream authority" your application will use
 _This configuration applies to the SPIRE Server_
 
 Each SPIRE Server uses a specific root signing key that is used to accomplish several important actions:
@@ -325,7 +325,7 @@ SPIRE Servers)
 This signing key should be considered extremely sensitive as to obtain it would allow a malicious actor to impersonate the SPIRE Server and to issue identities on its behalf. 
 {{< /warning >}}
 
-To help ensure the integrity of the signing key a SPIRE Server may either sign material itself using a signing key stored on disk, or delegate signing to an independent Certificate Authority (CA), such as the AWS Secrets Manager. This behavior is configured through the `UpstreamCA` section in the
+To help ensure the integrity of the signing key a SPIRE Server may either sign material itself using a signing key stored on disk, or delegate signing to an independent Certificate Authority (CA), such as the AWS Secrets Manager. This behavior is configured through the `UpstreamAuthority` section in the
 `server.conf` file.
 
 For a complete server configuration reference, see the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
@@ -345,25 +345,25 @@ sudo openssl req \
        -x509 -days 365 -out /opt/spire/conf/root.crt
 ```
 
-This strategy can be managed by enabling and configuring the `disk` UpstreamCA plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_upstreamca_disk.md).
+This strategy can be managed by enabling and configuring the `disk` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_upstreamauthority_disk.md).
 
 #### Configure AWS Secrets Manager
 
 The SPIRE Server can be configured to load CA credentials from [Amazon Web Services Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html), using them to generate intermediate signing certificates for the server's signing authority. 
 
-This strategy can be managed by enabling and configuring the `awssecret` UpstreamCA plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_upstreamca_awssecret.md).
+This strategy can be managed by enabling and configuring the `awssecret` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_upstreamauthority_awssecret.md).
 
 #### Configure AWS Certificate Manager
 
 The SPIRE Server can be configured to load CA credentials from Amazon Web Services Certificate Manager [Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/) (PCA) them to generate intermediate signing certificates for the server's signing authority. 
 
-This strategy can be managed by enabling and configuring the `aws_pca` UpstreamCA plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_upstreamca_aws_pca.md).
+This strategy can be managed by enabling and configuring the `aws_pca` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_upstreamauthority_aws_pca.md).
 
 #### Configure another SPIRE installation
 
 The SPIRE Server can be configured to load CA credentials from the Workload API of another SPIFFE implementation such as SPIRE. This enables a technique called "Nested SPIRE" that, as a compliment to HA deployments, allows independent SPIRE Servers to issue identities against a single trust domain.
 
-A full treatment for Nested SPIRE is beyond the scope of this guide. However this strategy can be managed by enabling and configuring the `spire` UpstreamCA plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_upstreamca_spire.md).
+A full treatment for Nested SPIRE is beyond the scope of this guide. However this strategy can be managed by enabling and configuring the `spire` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/plugin_server_upstreamauthority_spire.md).
 
 # Export Metrics for Monitoring
 _This configuration applies to the SPIRE Server and SPIRE Agent_
