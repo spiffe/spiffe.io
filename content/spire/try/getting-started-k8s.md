@@ -10,7 +10,7 @@ menu:
     parent: 'spire-try'
 ---
 
-## Overview
+# Overview
 
 This guide walks you through getting a SPIRE Server and SPIRE Agent running in a Kubernetes cluster, and configuring a workload container to access SPIRE.
 
@@ -29,13 +29,13 @@ The steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1
 If you are using Minikube to run this tutorial you should specify some special flags as described [here](#minikube).
 {{< /info >}}
 
-# Obtain the Required Files {#section-1}
+## Obtain the Required Files
 
 This guide requires a number of **.yaml** files. To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain the **.yaml** files from the **spire-tutorials/k8s/quickstart** subdirectory. Remember to run all kubectl commands in the directory in which those files reside.
 
 Set up a Kubernetes environment on a provider of your choice or use Minikube. Link the Kubernetes environment to the kubectl command.
 
-# Configure Kubernetes Namespace for SPIRE Components {#section-2}
+## Configure Kubernetes Namespace for SPIRE Components
 
 Follow these steps to configure the **spire** namespace in which SPIRE Server and SPIRE Agent are deployed.
 
@@ -53,9 +53,9 @@ Follow these steps to configure the **spire** namespace in which SPIRE Server an
     $ kubectl get namespaces
     ```
 
-# Configure SPIRE Server {#section-3}
+## Configure SPIRE Server
 
-## Create Server Bundle Configmap, Role & ClusterRoleBinding
+### Create Server Bundle Configmap, Role & ClusterRoleBinding
 
 For the server to function, it is necessary for it to provide agents with certificates that they can use to verify the identity of the server when establishing a connection.
 
@@ -72,11 +72,11 @@ $ kubectl apply \
     -f server-cluster-role.yaml
 ```
 
-## Create Server Configmap
+### Create Server Configmap
 
 The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data** and **/run/spire/config**. These volumes are bound in when the server container is deployed.
 
-Deploy the server configmap and statefulset by applying the following files via kubectl:
+Deploy the server configmap and statefulset by ap
 
 ```bash
 $ kubectl apply \
@@ -104,7 +104,7 @@ NAME           TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 spire-server   NodePort   10.107.205.29   <none>        8081:30337/TCP   88m
 ```
 
-# Configure and deploy the SPIRE Agent {#section-4}
+## Configure and deploy the SPIRE Agent
 
 To allow the agent read access to the kubelet API to perform workload attestation, a Service Account and ClusterRole must be created that confers the appropriate entitlements to Kubernetes RBAC, and that ClusterRoleBinding must be associated with the service account created in the previous step.
 
@@ -166,7 +166,7 @@ In order to enable SPIRE to perform workload attestation -- which allows the age
         -selector k8s:sa:default
     ```
 
-# Configure a Workload Container to Access SPIRE {#section-6}
+## Configure a Workload Container to Access SPIRE
 
 In this step, you configure a workload container to access SPIRE. Specifically, you are configuring the workload container to access the Workload API UNIX domain socket.
 
@@ -212,7 +212,7 @@ You can test that the agent socket is accessible from an application container b
     ```
 
 
-# Tear Down All Components {#section-7}
+## Tear Down All Components
 
 1. Delete the workload container:
 
@@ -233,7 +233,7 @@ You can test that the agent socket is accessible from an application container b
     $ kubectl delete clusterrolebinding spire-server-trust-role-binding spire-agent-cluster-role-binding
     ```
 
-# Considerations When Using Minikube {#minikube}
+# Considerations When Using Minikube
 
 If you are using Minikube to run this tutorial, when starting your cluster you should pass some additional configuration flags.
 ```
@@ -249,7 +249,7 @@ $ minikube start \
 For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`.
 {{< /info >}}
 
-# Considerations For A Production Environment
+## Considerations For A Production Environment
 
 When deploying SPIRE in a production environment the following considerations should be made.
 
@@ -260,6 +260,6 @@ If your Kubernetes cluster supports projected service account tokens, consider u
 
 As configured, the SPIRE agent does not verify the identity of the Kubernetes kubelet when requesting metadata for workload attestation. For additional security, you may wish to configure the Kubernetes workload attestor to perform this verification on compatible Kubernetes distributions by setting `skip_kubelet_verification` to `false`. [Read more](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md)
 
-# Next steps
+## Next steps
 
 * [Review the SPIRE Documentation](/spire/docs/) to learn how to configure SPIRE for your environment.

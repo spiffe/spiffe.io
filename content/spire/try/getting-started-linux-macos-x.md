@@ -82,7 +82,7 @@ Make a note of the token, you will need it in the next step to attest the agent 
 A Join Token is just one of the many available agent attestation methods. To see a complete list of available attestors, click [here](/spire/docs/registering/#1-defining-the-spiffe-id-of-the-agent).
 {{< /info >}}
 
-# Starting the agent
+# Starting the SPIRE Agent
 
 SPIRE agents query the SPIRE server to attest (authenticate) nodes and workloads.
 
