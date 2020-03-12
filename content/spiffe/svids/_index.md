@@ -36,6 +36,15 @@ If you are developing in Go, the SPIFFE project maintains a Go client library th
 
 You can find the library as well as links to the GoDoc on [GitHub](https://github.com/spiffe/go-spiffe).
 
+## Working with SVIDs in Other languages
+
+The SPIFFE project also maintains other language client libraries as below:
+
+- [Java client library](https://github.com/spiffe/java-spiffe)
+- [C client library](https://github.com/spiffe/c-spiffe)
+
+See each repositories for the details.
+
 # Using the SPIFFE Helper utility
 
 The [SPIFFE Helper](https://github.com/spiffe/spiffe-helper) utility is a general purpose utility that is useful when building or integrating with applications that cannot write to the Workload API directly. Broadly, the helper is able to:
