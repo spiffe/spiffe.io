@@ -223,11 +223,11 @@ The SPIRE Server can be configured to utilize different SQL-compatible storage b
 
 Alternatively, SPIRE can be configured to use non-SQL compatible storage backends through third party datastore plugins. The guide on [Extending SPIRE](/spire/docs/extending/) covers this in more detail.
 
-### Configure SQLlite as a SPIRE data-store
+### Configure SQLite as a SPIRE data-store
 
-By default, the SPIRE Server creates and uses a local SQLlite database for backing up and storing configuration data. While convenient for testing this is generally not recommended for production deployments as it is difficult to share a SQLlite data-store across multiple machines, which can complicate backups, HA deployments and upgrades.
+By default, the SPIRE Server creates and uses a local SQLite database for backing up and storing configuration data. While convenient for testing this is generally not recommended for production deployments as it is difficult to share a SQLite data-store across multiple machines, which can complicate backups, HA deployments and upgrades.
 
-To configure the server to use a SQLlite database, enable the stanza in the configuration file that looks like this:
+To configure the server to use a SQLite database, enable the stanza in the configuration file that looks like this:
 
 ``` syntaxhighlighter-pre
     DataStore "sql" {
@@ -238,7 +238,7 @@ To configure the server to use a SQLlite database, enable the stanza in the conf
     }
 ```
 
-There should be no other (un-commented) `Datastore` stanzas in the configuration file.
+There should be no other (un-commented) `DataStore` stanzas in the configuration file.
 
 The database will be created in a path specified in the connection string, which is relative to the path of the `spire-server` binary.
 
