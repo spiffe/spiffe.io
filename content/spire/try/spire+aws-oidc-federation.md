@@ -104,66 +104,6 @@ Apply the deployment file:
 $ kubectl apply -f client-deployment.yaml
 ```
 
-
-
-
-## Test AWS
-
-### Connect client
-
-Get:
-$ kubectl get pods 
-
-output:
-```
-$ kubectl get pods
-NAME                      READY   STATUS    RESTARTS   AGE
-client-74d4467b44-7nrs2   1/1     Running   0          27s
-```
-
-Go into:
-```
-$ kubectl exec -it client-74d4467b44-7nrs2 /bin/sh
-```
-
-### Get token
-I will fetch for an jwt svid and create a `token` file that includes only token from it.
-**replace `mys3` with your Authentication provider audience**
-```
-$ /opt/spire/bin/spire-agent api fetch jwt -audience mys3 -socketPath /run/spire/sockets/agent.sock | sed '2q' | sed 's/[[:space:]]//g' > token
-```
-
-### Access to aws
-It will connect to aws s3 using token from fetched svid
-***
-replace:
-- `${ROLE-NAME-ARN}` with your role arn on aws
-- `s3://oidc-federation-test/test.txt test.txt` replace with your configured s3 bucket
-***
-
-```
-$ AWS_ROLE_ARN=${ROLE-NAME-ARN} AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 cp s3://oidc-tutorial-bucket/test.txt test.txtt
-```
-
-## Clean
-
-### Delete client namespace
-```
-$ kubectl delete deployment client
-```
-
-### Delete spire namespace
-```
-$ kubectl delete namespace spire
-```
-
-
-
-
-
-
-======================================================================
-======================================================================
 # Part Two: Configure AWS Components
 
 After configuring the SPIRE components, continue with configuring AWS.
@@ -358,3 +298,16 @@ If successful, this command would output:
 ```console
 download: s3://oidc-federation-test-bucket/test.txt to ./test.txt
 ```
+
+## Cleanup
+
+### Delete client namespace
+```
+$ kubectl delete deployment client
+```
+
+### Delete spire namespace
+```
+$ kubectl delete namespace spire
+```
+
