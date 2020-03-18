@@ -36,7 +36,6 @@ The following strings in the YAML files must be substituted for values specific 
 
 | String | Example Substitution | Description | Files to Change |
 | --- | --- | --- | --- |
-
 | MY\_EMAIL\_ADDRESS | `user@example.org` | The terms of service for the Let's Encrypt certificate authority requires that you specify a valid email | oidc-dp-configmap.yaml |
 | MY\_DISCOVERY\_DOMAIN | `host1.example.org` | You must configure a public DNS A record for the OIDC Discovery Provider REST API. See the next section for details | server-configmap.yaml (1 instance), oidc-dp-configmap.yaml (1 instance), ingress.yaml (2 instances) |
 
