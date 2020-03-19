@@ -19,7 +19,6 @@ Note the following required accounts, prerequisites, and limitations before star
 * Access to the Kubernetes environment that you configured when going through [Kubernetes Quickstart](/spire/try/getting-started-k8s/) 
 * This tutorial cannot run on Minikube as the Kubernetes environment must be network accessible by AWS
 * Access to the AWS console
-* [AWS CLI tools](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) installed on the same instance as the SPIRE Agent
 * DNS A record or CNAME for the SPIRE OIDC Discovery Provider REST API
 
 # Part One: Configure SPIRE Components
@@ -43,7 +42,7 @@ In the YAML files, instances of the `example.org` trust domain are valid to use 
 
 ## Configure DNS for the OIDC Discovery Provider REST API
 
-SPIRE OIDC Discovery Provider provides a REST API to serve OIDC discovery documents. Configure DNS to make the domain hosting the OIDC Discovery Provider publicly resolvable, such as by an A record or CNAME. In the YAML files set up for this tutorial, replace MY\_DISCOVERY\_DOMAIN with the FQDN of the DNS hostname that you create.
+SPIRE OIDC Discovery Provider provides a REST API to serve OIDC discovery documents. Configure DNS to make the domain hosting the OIDC Discovery Provider publicly resolvable, such as by an A record or CNAME. In the YAML files set up for this tutorial, replace MY\_DISCOVERY\_DOMAIN with the FQDN of the DNS hostname that you create. Although this page should contain all the info you need to run this tutorial, the OIDC Discovery Provider configuration file format is described on [GitHub](https://github.com/spiffe/spire/tree/master/support/oidc-discovery-provider).
 
 ## Create OIDC Discovery Provider Configmap
 
@@ -51,22 +50,26 @@ The SPIRE OIDC Discovery Provider serves OIDC discovery documents via a REST API
 
 Before running the command below, ensure that you have replaced the MY\_DISCOVERY\_DOMAIN placeholder with the FQDN of the Discovery Provider that you configured in DNS as described in [Replace Placeholder Strings in YAML Files](#replace-placeholder-strings-in-yaml-files).
 
-Use the following command to apply the updated server configmap, the configmap for the OIDC Discovery Provider, and deploy the statefulset:
+Use the following command to apply the updated server configmap, the configmap for the OIDC Discovery Provider, and deploy the updated **spire-server** statefulset:
 
-```
+```console
 $ kubectl apply \
     -f server-configmap.yaml \
     -f oidc-dp-configmap.yaml \
     -f server-statefulset.yaml
 ```
 
-This creates a stateful set called **spire-server**.
+To verify that the spire-server-0 pod has spire-server and spire-oidc containers, run:
+
+```console
+kubectl get pods spire-server-0 -n spire -o jsonpath='{.spec.containers[*].name}'
+```
 
 ## Configure the OIDC Discovery Provider Service and Ingress
 
 Use the following command to set up a service definition for the OIDC Discovery Provider and to configure ingress for that service:
 
-```
+```console
 $ kubectl apply \
     -f server-oidc-service.yaml \
     -f ingress.yaml 
