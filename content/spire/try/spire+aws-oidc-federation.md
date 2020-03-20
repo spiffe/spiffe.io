@@ -320,15 +320,35 @@ If successful, this command would output the following and the test.txt file sho
 download: s3://oidc-federation-test-bucket/test.txt to ./test.txt
 ```
 
-## Cleanup
+# Cleanup
 
-### Delete client namespace
+When you are finished running this tutorial, you can use the following commands to remove the SPIRE setup for AWS OIDC Authentication.
+
+## Kubernetes Cleanup
+
+Keep in mind that these commands will also remove the setup that you configured in the [Kubernetes Quickstart](/spire/try/getting-started-k8s/).
+
+Delete the workload container:
+
 ```
 $ kubectl delete deployment client
 ```
 
-### Delete spire namespace
+Run the following command to delete all deployments and configurations for the agent, server, and namespace:
+
 ```
 $ kubectl delete namespace spire
 ```
+
+You may also need to remove configuration elements from your cloud-based Kubernetes environment.
+
+## AWS Cleanup
+
+Delete the policy, role, and S3 bucket that you configured for this tutorial.
+
+## DNS Cleanup
+
+Remove the DNS A Record for the SPIRE OIDC Discovery Provider
+
+You can remove the A record that you configured for the SPIRE OIDC Discovery Provider document location using your preferred DNS tool.
 
