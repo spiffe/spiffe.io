@@ -19,7 +19,7 @@ Note the following required accounts, prerequisites, and limitations before star
 * Access to the Kubernetes environment that you configured when going through [Kubernetes Quickstart](/spire/try/getting-started-k8s/) 
 * This tutorial cannot run on Minikube as the Kubernetes environment must be network accessible by AWS
 * Access to the AWS console
-* DNS A record or CNAME for the SPIRE OIDC Discovery Provider REST API
+* DNS A record for the SPIRE OIDC Discovery Provider document location
 
 # Part One: Configure SPIRE Components
 
@@ -33,22 +33,37 @@ Completing this tutorial requires a number of YAML files. To get these files, cl
 
 The following strings in the YAML files must be substituted for values specific to your environment. Each location where you must make a change has been marked with `TODO:` in the YAML files.
 
-| String | Example Substitution | Description | Files to Change |
-| --- | --- | --- | --- |
-| MY\_EMAIL\_ADDRESS | `user@example.org` | The terms of service for the Let's Encrypt certificate authority requires that you specify a valid email | oidc-dp-configmap.yaml |
-| MY\_DISCOVERY\_DOMAIN | `host1.example.org` | You must configure a public DNS A record for the OIDC Discovery Provider REST API. See the next section for details | server-configmap.yaml (1 instance), oidc-dp-configmap.yaml (1 instance), ingress.yaml (2 instances) |
+| String | Description | Files to Change |
+| --- | --- | --- |
+| MY\_EMAIL\_ADDRESS | The terms of service for the Let's Encrypt certificate authority requires that you specify a valid email. Let's Encrypt is used to configure a certificate for the OIDC Discovery Domain. See the next section for details. Example value: `user@example.org` | oidc-dp-configmap.yaml (1 instance) |
+| MY\_DISCOVERY\_DOMAIN | You must configure a public DNS A record for the IP address of the OIDC Discovery Provider. See the next section for details. Example value: `oidc-discovery.example.org` | server-configmap.yaml (1 instance), oidc-dp-configmap.yaml (1 instance), ingress.yaml (2 instances) |
 
-In the YAML files, instances of the `example.org` trust domain are valid to use for this tutorial and do not need to be changed.
+In the YAML files, instances of the `example.org` [trust domain](/spiffe/concepts/#trust-domain) are valid to use for this tutorial and do not need to be changed.
 
-## Configure DNS for the OIDC Discovery Provider REST API
+## Required DNS A Record for the OIDC Discovery Provider IP Address
 
-SPIRE OIDC Discovery Provider provides a REST API to serve OIDC discovery documents. Configure DNS to make the domain hosting the OIDC Discovery Provider publicly resolvable, such as by an A record or CNAME. In the YAML files set up for this tutorial, replace MY\_DISCOVERY\_DOMAIN with the FQDN of the DNS hostname that you create. Although this page should contain all the info you need to run this tutorial, the OIDC Discovery Provider configuration file format is described on [GitHub](https://github.com/spiffe/spire/tree/master/support/oidc-discovery-provider).
+The SPIRE OIDC Discovery Provider provides a URL to the location of the OIDC discovery document specified by the OIDC protocol. After starting the spire-oidc service you'll need to configure a DNS A record to point to the external IP address of that service. In the YAML files set up for this tutorial, replace MY\_DISCOVERY\_DOMAIN with the FQDN of the planned DNS hostname. The FQDN value for MY\_DISCOVERY\_DOMAIN does not need to correspond to an existing FQDN on your network. It is specific to the Kubernetes environment.
+
+To get the external IP address required for the A record, you will need to proceed through the following steps until you start the spire-oidc service and verify the external IP address in the section [Verify That spire-oidc has an External Service Address](#verify-that-spireoidc-has-an-external-service-address). The DNS A record should take the following form:
+
+```console
+MY_DISCOVERY_DOMAIN          A        EXTERNAL-IP for spire-oidc service
+```
+
+For example:
+```console
+oidc-discovery.example.org   A        93.184.216.34
+```
+
+Although this tutorial should contain all the info you need, the SPIRE OIDC Discovery Provider configuration file format is described on [GitHub](https://github.com/spiffe/spire/tree/master/support/oidc-discovery-provider).
+
+This tutorial uses Let's Encrypt to configure a certificate for the OIDC Discovery Domain. But other than editing the oidc-dp-configmap.yaml file as described in the previous section, no additional setup steps are required for Let's Encrypt.
 
 ## Create OIDC Discovery Provider Configmap
 
-The SPIRE OIDC Discovery Provider serves OIDC discovery documents via a REST API at the FQDN that you configured. The oidc-dp-configmap.yaml file specifies the URL to the OIDC Discovery Provider.
+The SPIRE OIDC Discovery Provider serves the OIDC discovery document. The oidc-dp-configmap.yaml file specifies the URL to the OIDC Discovery Provider.
 
-Before running the command below, ensure that you have replaced the MY\_DISCOVERY\_DOMAIN placeholder with the FQDN of the Discovery Provider that you configured in DNS as described in [Replace Placeholder Strings in YAML Files](#replace-placeholder-strings-in-yaml-files).
+Before running the command below, ensure that you have replaced the MY\_DISCOVERY\_DOMAIN placeholder with the FQDN of the Discovery Provider as described in [Replace Placeholder Strings in YAML Files](#replace-placeholder-strings-in-yaml-files).
 
 Use the following command to apply the updated server configmap, the configmap for the OIDC Discovery Provider, and deploy the updated **spire-server** statefulset:
 
@@ -62,7 +77,7 @@ $ kubectl apply \
 To verify that the spire-server-0 pod has spire-server and spire-oidc containers, run:
 
 ```console
-kubectl get pods spire-server-0 -n spire -o jsonpath='{.spec.containers[*].name}'
+kubectl get pods spire-server-0 -n spire -o jsonpath='{.spec.containers[*].name}{"\n"}'
 ```
 
 ## Configure the OIDC Discovery Provider Service and Ingress
@@ -88,7 +103,7 @@ spire-server   0/1     10h
 
 ## Verify That spire-oidc has an External Service Address
 
-Run the following command to verify that the EXTERNAL-IP value is present for the spire-oidc service. The spire-oidc Discovery Provider service must provide an external IP address for AWS to access the REST API provided by spire-oidc.
+Run the following command to verify that the EXTERNAL-IP value is present for the spire-oidc service. The spire-oidc Discovery Provider service must provide an external IP address for AWS to access the OIDC discovery document provided by spire-oidc.
 
 ```
 $ kubectl get service -n spire
@@ -97,6 +112,10 @@ NAME           TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)          AGE
 spire-oidc     LoadBalancer   10.12.0.18    34.82.139.13   443:30198/TCP    108s
 spire-server   NodePort       10.12.13.51   <none>         8081:32115/TCP   10h
 ```
+
+### Configure a DNS A Record to Point to the spire-oidc EXTERNAL-IP
+
+At this point you can put the value of the spire-oidc EXTERNAL-IP in the required DNS A record, along with the value of the MY\_DISCOVERY\_DOMAIN domain that you specified in oidc-dp-configmap.yaml. For more details, see [Required DNS A Record for the OIDC Discovery Provider IP Address](#required-dns-a-record-for-the-oidc-discovery-provider-ip-address).
 
 ## Create Client
 
@@ -295,7 +314,7 @@ $ kubectl exec -it client-74d4467b44-7nrs2 /bin/sh
 AWS_ROLE_ARN=ROLE-NAME-ARN AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 cp s3://oidc-federation-test-bucket/test.txt test.txt
 ```
 
-If successful, this command would output:
+If successful, this command would output the following and the test.txt file should copied to your current directory:
 
 ```console
 download: s3://oidc-federation-test-bucket/test.txt to ./test.txt
