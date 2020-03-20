@@ -351,4 +351,3 @@ Delete the policy, role, and S3 bucket that you configured for this tutorial.
 Remove the DNS A Record for the SPIRE OIDC Discovery Provider
 
 You can remove the A record that you configured for the SPIRE OIDC Discovery Provider document location using your preferred DNS tool.
-
