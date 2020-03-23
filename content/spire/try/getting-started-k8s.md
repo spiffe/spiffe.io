@@ -18,7 +18,7 @@ In this introduction to SPIRE on Kubernetes you will learn how to:
 
 * Create the appropriate Kubernetes namespaces and service accounts to deploy SPIRE
 * Deploy the SPIRE Server as a Kubernetes statefulset
-* Deploy the SPIRE Agent as a Kubernetes deaemonset
+* Deploy the SPIRE Agent as a Kubernetes daemonset
 * Configure a registration entry for a workload
 * Fetch an x509-SVID over the SPIFFE Workload API
 * Learn where to find resources for more complex installations
@@ -31,23 +31,23 @@ If you are using Minikube to run this tutorial you should specify some special f
 
 # Obtain the Required Files {#section-1}
 
-Walking through this guide requires a number of **.yaml** files *and* you must run all commands in the directory in which those files
-reside.
+This guide requires a number of **.yaml** files. To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain the **.yaml** files from the **spire-tutorials/k8s** subdirectory. Remember to run all kubectl commands in the directory in which those files reside.
 
-To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain
-the **.yaml** files from the **spire-tutorials/k8s** subdirectory.
+Set up a Kubernetes environment on a provider of your choice or use Minikube. Link the Kubernetes environment to the kubectl command.
 
 # Configure Kubernetes Namespace for SPIRE Components {#section-2}
 
 Follow these steps to configure the **spire** namespace in which SPIRE Server and SPIRE Agent are deployed.
 
-1. Create the namespace:
+1. Change to the directory containing the **.yaml** files.
+
+2. Create the namespace:
 
     ```bash
     $ kubectl apply -f spire-namespace.yaml
     ```
 
-2. Run the following command and verify that *spire* is listed in the output:
+3. Run the following command and verify that *spire* is listed in the output:
 
     ```bash
     $ kubectl get namespaces
@@ -199,9 +199,16 @@ You can test that the agent socket is accessible from an application container b
     /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
     ```
 
-If the agent is not running, you’ll see an error message such as "no such file or directory" or "connection refused".
+   If the agent is not running, you’ll see an error message such as “no such file or directory" or “connection refused”.
 
-If the agent is running, you’ll see a list of SVIDs.
+   If the agent is running, you’ll see a list of SVIDs.
+
+5. Exit from `/bin/sh` on the client container:
+
+    ```bash
+    $ exit
+    ```
+
 
 # Tear Down All Components {#section-7}
 
@@ -211,17 +218,24 @@ If the agent is running, you’ll see a list of SVIDs.
     $ kubectl delete deployment client
     ```
 
-2. Run the following commands to delete all deployments and configurations for the agent, server, and namespace:
+2. Run the following command to delete all deployments and configurations for the agent, server, and namespace:
 
     ```bash
     $ kubectl delete namespace spire
+    ```
+
+3. Run the following commands to delete the ClusterRole and ClusterRoleBinding settings:
+
+    ```bash
+    $ kubectl delete clusterrole spire-server-trust-role spire-agent-cluster-role
+    $ kubectl delete clusterrolebinding spire-server-trust-role-binding spire-agent-cluster-role-binding
     ```
 
 # Considerations When Using Minikube {#minikube}
 
 If you are using Minikube to run this tutorial, when starting your cluster you should pass some additional configuration flags.
 ```
-minikube start \
+$ minikube start \
     --extra-config=apiserver.service-account-signing-key-file=/var/lib/minikube/certs/sa.key \
     --extra-config=apiserver.service-account-key-file=/var/lib/minikube/certs/sa.pub \
     --extra-config=apiserver.service-account-issuer=api \
