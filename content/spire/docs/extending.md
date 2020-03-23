@@ -38,7 +38,7 @@ SPIRE comes with a set of built-in Workload Attestor plugins for the [Agent](htt
 
 # Datastore plugins
 
-The SPIRE Server must persist some data (such as registration entries) to a backing datastore. SPIRE can be configured to use different datastore types (for example, SQLLite, MySQL, Postgres) through Datastore plugins. 
+The SPIRE Server must persist some data (such as registration entries) to a backing datastore. SPIRE can be configured to use different datastore types (for example, SQLite, MySQL, Postgres) through Datastore plugins.
 
 SPIRE comes with a set of built-in Datastore plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
