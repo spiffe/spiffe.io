@@ -12,33 +12,25 @@ menu:
 
 This tutorial builds on the [Kubernetes Quickstart](/spire/try/getting-started-k8s/) guide to describe how a SPIRE identified workload can, using a JWT-SVID, authenticate to Amazon AWS APIs, assume an AWS IAM role, and retrieve data from an AWS S3 bucket. This avoids the need to create and deploy AWS IAM credentials with the workload itself.
 
+In this tutorial you will learn how to:
+
+* Deploy the OIDC Discovery Provider Service
+* Create the required DNS A record to point to the Discovery Provider document
+* Create a sample AWS Identity Policy, policy, role, and S3 bucket
+* Test access to the S3 bucket
+
 ## Prerequisites
 
 Note the following required accounts, prerequisites, and limitations before starting on this tutorial:
 
-* Access to the Kubernetes environment that you configured when going through [Kubernetes Quickstart](/spire/try/getting-started-k8s/) 
+* You'll need access to the Kubernetes environment that you configured when going through [Kubernetes Quickstart](/spire/try/getting-started-k8s/) 
+* You'll need access to the AWS console to configure an identity provider, policy, role, and S3 bucket
+* You'll need the ability to configure a DNS A record for the SPIRE OIDC Discovery Provider document location
 * This tutorial cannot run on Minikube as the Kubernetes environment must be network accessible by AWS
-* Access to the AWS console
-* DNS A record for the SPIRE OIDC Discovery Provider document location
 
 # Part One: Configure SPIRE Components
 
 In the first part of this procedure, you configure the SPIRE components. In the second part, you configure the AWS components. You test the connection in the third part.
-
-## Download Kubernetes YAML Files for this Tutorial
-
-Completing this tutorial requires a number of YAML files. To get these files, clone https://github.com/spiffe/spire-tutorials. The files for this tutorial are in the k8s/REPLACE_ME directory.
-
-## Replace Placeholder Strings in YAML Files
-
-The following strings in the YAML files must be substituted for values specific to your environment. Each location where you must make a change has been marked with `TODO:` in the YAML files.
-
-| String | Description | Files to Change |
-| --- | --- | --- |
-| MY\_EMAIL\_ADDRESS | The terms of service for the Let's Encrypt certificate authority requires that you specify a valid email. Let's Encrypt is used to configure a certificate for the OIDC Discovery Domain. See the next section for details. Example value: `user@example.org` | oidc-dp-configmap.yaml (1 instance) |
-| MY\_DISCOVERY\_DOMAIN | You must configure a public DNS A record for the IP address of the OIDC Discovery Provider. See the next section for details. Example value: `oidc-discovery.example.org` | server-configmap.yaml (1 instance), oidc-dp-configmap.yaml (1 instance), ingress.yaml (2 instances) |
-
-In the YAML files, instances of the `example.org` [trust domain](/spiffe/concepts/#trust-domain) are valid to use for this tutorial and do not need to be changed.
 
 ## Required DNS A Record for the OIDC Discovery Provider IP Address
 
@@ -55,11 +47,30 @@ For example:
 oidc-discovery.example.org   A        93.184.216.34
 ```
 
+{{< info >}}
+As with any change to DNS, it will take minutes or hours for the new A record to propagate to DNS servers. This tutorial will not work until the A record is propagated to the relevant DNS servers.
+{{< /info >}}
+
 Although this tutorial should contain all the info you need, the SPIRE OIDC Discovery Provider configuration file format is described on [GitHub](https://github.com/spiffe/spire/tree/master/support/oidc-discovery-provider).
 
 This tutorial uses Let's Encrypt to configure a certificate for the OIDC Discovery Domain. But other than editing the oidc-dp-configmap.yaml file as described in the previous section, no additional setup steps are required for Let's Encrypt.
 
-## Create OIDC Discovery Provider Configmap
+## Download Kubernetes YAML Files for this Tutorial
+
+Completing this tutorial requires a number of YAML files. To get these files, clone https://github.com/spiffe/spire-tutorials. The files for this tutorial are in the k8s/REPLACE_ME directory.
+
+## Replace Placeholder Strings in YAML Files
+
+The following strings in the YAML files must be substituted for values specific to your environment. Each location where you must make a change has been marked with `TODO:` in the YAML files.
+
+| String | Description | Files to Change |
+| --- | --- | --- |
+| MY\_EMAIL\_ADDRESS | The terms of service for the Let's Encrypt certificate authority requires that you specify a valid email. Let's Encrypt is used to configure a certificate for the OIDC Discovery Domain. See the next section for details. Example value: `user@example.org` | oidc-dp-configmap.yaml (1 instance) |
+| MY\_DISCOVERY\_DOMAIN | You must configure a public DNS A record for the IP address of the OIDC Discovery Provider. See the next section for details. Example value: `oidc-discovery.example.org` | server-configmap.yaml (1 instance), oidc-dp-configmap.yaml (1 instance), ingress.yaml (2 instances) |
+
+In the YAML files, instances of the `example.org` [trust domain](/spiffe/concepts/#trust-domain) are valid to use for this tutorial and do not need to be changed.
+
+## Deploy OIDC Discovery Provider Configmap
 
 The SPIRE OIDC Discovery Provider serves the OIDC discovery document. The oidc-dp-configmap.yaml file specifies the URL to the OIDC Discovery Provider.
 
@@ -88,13 +99,13 @@ Use the following command to set up a service definition for the OIDC Discovery 
 $ kubectl apply \
     -f server-oidc-service.yaml \
     -f ingress.yaml 
- ```
+```
 
 ## Verify the spire-server Stateful Set
 
 Verify that the spire-server stateful set has been created:
 
-```
+```console
 $ kubectl get statefulset --namespace spire
 
 NAME           READY   AGE
@@ -105,7 +116,7 @@ spire-server   0/1     10h
 
 Run the following command to verify that the EXTERNAL-IP value is present for the spire-oidc service. The spire-oidc Discovery Provider service must provide an external IP address for AWS to access the OIDC discovery document provided by spire-oidc.
 
-```
+```console
 $ kubectl get service -n spire
 
 NAME           TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)          AGE
@@ -117,11 +128,11 @@ spire-server   NodePort       10.12.13.51   <none>         8081:32115/TCP   10h
 
 At this point you can put the value of the spire-oidc EXTERNAL-IP in the required DNS A record, along with the value of the MY\_DISCOVERY\_DOMAIN domain that you specified in oidc-dp-configmap.yaml. For more details, see [Required DNS A Record for the OIDC Discovery Provider IP Address](#required-dns-a-record-for-the-oidc-discovery-provider-ip-address).
 
-## Create Client
+## Deploy the Client
 
-Apply the deployment file:
+Apply the client deployment file to create a client in a different namespace that you will use for testing in part 3 of this document:
 
-```
+```console
 $ kubectl apply -f client-deployment.yaml
 ```
 
@@ -131,7 +142,7 @@ After configuring the SPIRE components, continue with configuring AWS.
 
 ## Set up an OIDC Identity Provider on AWS
 
-To allow the SPIRE Agent to authenticate to an AWS service S3 bucket, you must configure an OpenID Connect identity provider. The AWS identity provider queries the SPIRE OIDC Discovery Provider REST API that you configured.
+To allow the SPIRE Agent to authenticate to an AWS service S3 bucket, you must configure an OpenID Connect identity provider. The AWS identity provider queries the SPIRE OIDC Discovery Provider that you configured.
 
 1. Navigate to the AWS [Identity and Access Management (IAM) page](https://console.aws.amazon.com/iam/home#/home), logging in if necessary.
 
@@ -139,9 +150,9 @@ To allow the SPIRE Agent to authenticate to an AWS service S3 bucket, you must c
 
 3. For **Provider Type**, choose **OpenID Connect**.
 
-4. For **Provider URL**, type `https://` and then the FQDN corresponding to the value that you used for MY\_DISCOVERY\_DOMAIN in the YAML files. The AWS identity provider queries the SPIRE OIDC Discovery Provider REST API at this URL.
+4. For **Provider URL**, type `https://` and then the FQDN corresponding to the value that you used for MY\_DISCOVERY\_DOMAIN in the YAML files. The AWS identity provider queries the SPIRE OIDC Discovery Provider at this URL.
 
-5. For **Audience**, type `mys3`. The SPIRE Agent presents this string to AWS when authenticating to the Amazon S3 bucket. Click **Next Step**. AWS verifies access to the Provider URL after you click the button and displays an error if it is inaccessible. If this occurs, ensure that the DNS is properly configured for public access to the SPIRE OIDC Discovery Provider REST API (Provider URL).
+5. For **Audience**, type `mys3`. The SPIRE Agent presents this string to AWS when authenticating to the Amazon S3 bucket. Click **Next Step**. AWS verifies access to the Provider URL after you click the button and displays an error if it is inaccessible. If this occurs, ensure that the DNS is properly configured for public access to the SPIRE OIDC Discovery Provider (Provider URL).
 
 6. Verify the information on the **Verify Provider Information** page and if OK, click **Create**.
 
@@ -258,7 +269,7 @@ To allow the workload from outside AWS to access AWS S3, add the workload's SPIF
 Create a simple test file in an AWS S3 bucket to use for testing.
 
 1. Create a text file on your local computer called 'test.txt` with the following single line:
-```
+```console
 oidc-tutorial file
 ```
 You'll upload this file to the S3 bucket later.
@@ -297,11 +308,13 @@ client-74d4467b44-7nrs2   1/1     Running   0          27s
 $ kubectl exec -it client-74d4467b44-7nrs2 /bin/sh
 ```
 
-3. Fetch a JWT SVID from the identity provider on AWS and save the token from the JWT SVID into a file called `token`:
+3. Fetch a JWT SVID from the identity provider on AWS and save the token from the JWT SVID into a file on the client container called `token`:
 
 ```console
-/opt/spire/bin/spire-agent api fetch jwt -audience mys3 -socketPath /run/spire/sockets/agent.sock | sed '2q' | sed 's/[[:space:]]//g' > token
+/opt/spire/bin/spire-agent api fetch jwt -audience mys3 -socketPath /run/spire/sockets/agent.sock | sed '2!d' | sed 's/[[:space:]]//g' > token
 ```
+
+To familiarize yourself with the form of the token 
 
 4. Navigate to the AWS [Identity and Access Management (IAM) page](https://console.aws.amazon.com/iam/home#/home), logging in if necessary.
 
@@ -314,10 +327,15 @@ $ kubectl exec -it client-74d4467b44-7nrs2 /bin/sh
 AWS_ROLE_ARN=ROLE-NAME-ARN AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 cp s3://oidc-federation-test-bucket/test.txt test.txt
 ```
 
-If successful, this command would output the following and the test.txt file should copied to your current directory:
+If successful, this command would output the following and the `test.txt file` should copied to the client container:
 
 ```console
 download: s3://oidc-federation-test-bucket/test.txt to ./test.txt
+```
+
+8. Exit from `/bin/sh` on the client container:
+```console
+exit
 ```
 
 # Cleanup
@@ -330,13 +348,13 @@ Keep in mind that these commands will also remove the setup that you configured 
 
 Delete the workload container:
 
-```
+```console
 $ kubectl delete deployment client
 ```
 
 Run the following command to delete all deployments and configurations for the agent, server, and namespace:
 
-```
+```console
 $ kubectl delete namespace spire
 ```
 
@@ -347,7 +365,5 @@ You may also need to remove configuration elements from your cloud-based Kuberne
 Delete the policy, role, and S3 bucket that you configured for this tutorial.
 
 ## DNS Cleanup
-
-Remove the DNS A Record for the SPIRE OIDC Discovery Provider
 
 You can remove the A record that you configured for the SPIRE OIDC Discovery Provider document location using your preferred DNS tool.
