@@ -130,7 +130,7 @@ At this point you can put the value of the spire-oidc EXTERNAL-IP in the require
 
 ## Deploy the Client
 
-Apply the client deployment file to create a client in a different namespace that you will use for testing in part 3 of this document:
+Apply the client deployment file to create a client in a different namespace that you will use for testing in [part 3](#part-3-test-access-to-aws-s3) of this document:
 
 ```console
 $ kubectl apply -f client-deployment.yaml
@@ -294,27 +294,27 @@ You'll upload this file to the S3 bucket later.
 
 Now that Kubernetes and AWS are configured for OIDC federation, we'll test the connection. This test retrieves a JWT SVID from the SPIRE Agent and uses the JWT token in the JWT SVID to access S3.
 
-1. Run: 
-```console
-$ kubectl get pods
+1. Run the following command to list the full name of the client pod:
+   ```console
+   $ kubectl get pods
 
-NAME                      READY   STATUS    RESTARTS   AGE
-client-74d4467b44-7nrs2   1/1     Running   0          27s
-```
+   NAME                      READY   STATUS    RESTARTS   AGE
+   client-74d4467b44-7nrs2   1/1     Running   0          27s
+   ```
 
-2. Start a shell on the client using the client pod name just shown.
+2. Start a shell on the client using the client pod name shown under **NAME** in the output of the last step.
 
-```console
-$ kubectl exec -it client-74d4467b44-7nrs2 /bin/sh
-```
+   ```console
+   $ kubectl exec -it client-74d4467b44-7nrs2 /bin/sh
+   ```
 
 3. Fetch a JWT SVID from the identity provider on AWS and save the token from the JWT SVID into a file on the client container called `token`:
 
-```console
-/opt/spire/bin/spire-agent api fetch jwt -audience mys3 -socketPath /run/spire/sockets/agent.sock | sed '2!d' | sed 's/[[:space:]]//g' > token
-```
+   ```console
+   /opt/spire/bin/spire-agent api fetch jwt -audience mys3 -socketPath /run/spire/sockets/agent.sock | sed '2!d' | sed 's/[[:space:]]//g' > token
+   ```
 
-To familiarize yourself with the form of the token 
+   To familiarize yourself with the form of the token, you may want to view it with the `cat` command.
 
 4. Navigate to the AWS [Identity and Access Management (IAM) page](https://console.aws.amazon.com/iam/home#/home), logging in if necessary.
 
@@ -323,20 +323,22 @@ To familiarize yourself with the form of the token
 6. At the top of the **Summary** page, copy the role ARN into the clipboard.
 
 7. Run the following command, pasting the ARN in place of ROLE-NAME-ARN:
-```console
-AWS_ROLE_ARN=ROLE-NAME-ARN AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 cp s3://oidc-federation-test-bucket/test.txt test.txt
-```
 
-If successful, this command would output the following and the `test.txt file` should copied to the client container:
+   ```console
+   AWS_ROLE_ARN=ROLE-NAME-ARN AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 cp s3://oidc-federation-test-bucket/test.txt test.txt
+   ```
 
-```console
-download: s3://oidc-federation-test-bucket/test.txt to ./test.txt
-```
+   If successful, this command will output the following and the `test.txt file` should be copied to the client container:
+
+   ```console
+   download: s3://oidc-federation-test-bucket/test.txt to ./test.txt
+   ```
 
 8. Exit from `/bin/sh` on the client container:
-```console
-exit
-```
+
+   ```console
+   exit
+   ```
 
 # Cleanup
 
@@ -346,17 +348,25 @@ When you are finished running this tutorial, you can use the following commands 
 
 Keep in mind that these commands will also remove the setup that you configured in the [Kubernetes Quickstart](/spire/try/getting-started-k8s/).
 
-Delete the workload container:
+1. Delete the workload container:
 
-```console
-$ kubectl delete deployment client
-```
+   ```console
+   $ kubectl delete deployment client
+   ```
 
-Run the following command to delete all deployments and configurations for the agent, server, and namespace:
+2. Delete all deployments and configurations for the agent, server, and namespace:
 
-```console
-$ kubectl delete namespace spire
-```
+   ```console
+   $ kubectl delete namespace spire
+   ```
+
+3. Delete the ClusterRole and ClusterRoleBinding settings:
+
+   ```console
+   $ kubectl delete clusterrole spire-server-trust-role spire-agent-cluster-role
+   $ kubectl delete clusterrolebinding spire-server-trust-role-binding spire-agent-cluster-role-binding
+   ```
+
 
 You may also need to remove configuration elements from your cloud-based Kubernetes environment.
 
@@ -366,4 +376,4 @@ Delete the policy, role, and S3 bucket that you configured for this tutorial.
 
 ## DNS Cleanup
 
-You can remove the A record that you configured for the SPIRE OIDC Discovery Provider document location using your preferred DNS tool.
+You can remove the A record that you configured for the SPIRE OIDC Discovery Provider document location.
