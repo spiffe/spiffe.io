@@ -137,6 +137,8 @@ spire-agent-88cpl              1/1     Running   0          6m45s
 spire-server-b95945658-4wbkd   1/1     Running   0          103m
 ```
 
+As a daemonset, you'll see as many **spire-agent** pods as you have nodes.
+
 # Register Workloads {#section-5}
 
 In order to enable SPIRE to perform workload attestation -- which allows the agent to identify the workload to attest to its agent -- you must register the workload in the server. This tells SPIRE how to identify the workload and which SPIFFE ID to give it.
