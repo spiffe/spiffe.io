@@ -21,7 +21,7 @@ In this tutorial you will learn how to:
 
 ## Prerequisites
 
-Note the following required accounts, prerequisites, and limitations before starting on this tutorial:
+Note the following required accounts, prerequisites, and limitations before starting this tutorial:
 
 * You'll need access to the Kubernetes environment that you configured when going through [Kubernetes Quickstart](/spire/try/getting-started-k8s/) 
 * You'll need access to the AWS console to configure an identity provider, policy, role, and S3 bucket
@@ -30,9 +30,9 @@ Note the following required accounts, prerequisites, and limitations before star
 
 ### Required DNS A Record for the OIDC Discovery Provider IP Address
 
-The SPIRE OIDC Discovery Provider provides a URL to the location of the discovery document specified by the OIDC protocol. After starting the spire-oidc service you'll need to configure a DNS A record to point to the external IP address of that service. In the YAML files set up for this tutorial, replace MY\_DISCOVERY\_DOMAIN with the FQDN of the planned DNS hostname. The FQDN value for MY\_DISCOVERY\_DOMAIN does not need to correspond to an existing FQDN on your network. It is specific to the Kubernetes environment.
+The SPIRE OIDC Discovery Provider provides a URL to the location of the discovery document specified by the OIDC protocol. After starting the spire-oidc service you'll need to configure a DNS A record to point to the external IP address of that service. In the YAML files set up for this tutorial, replace MY\_DISCOVERY\_DOMAIN with the FQDN of the planned DNS hostname. The FQDN value for MY\_DISCOVERY\_DOMAIN does not need to correspond to an existing domain on your network. It is specific to the Kubernetes environment.
 
-To get the external IP address required for the A record, you will need to proceed through the following steps until you start the spire-oidc service and verify the external IP address in the section [Verify That spire-oidc has an External Service Address](#verify-that-spireoidc-has-an-external-service-address). The DNS A record should take the following form:
+To get the external IP address required for the A record, you will need to proceed through the steps in this tutorial until you start the spire-oidc service and verify the external IP address in the section [Verify That spire-oidc has an External Service Address](#verify-that-spireoidc-has-an-external-service-address). The DNS A record should take the following form:
 
 ```console
 MY_DISCOVERY_DOMAIN          A        EXTERNAL-IP for spire-oidc service
@@ -49,7 +49,7 @@ As with any change to DNS, it will take minutes or hours for the new A record to
 
 Although this tutorial should contain all the info you need, the SPIRE OIDC Discovery Provider configuration file format is described on [GitHub](https://github.com/spiffe/spire/tree/master/support/oidc-discovery-provider).
 
-This tutorial uses Let's Encrypt to configure a certificate for the OIDC Discovery Domain. But other than editing the oidc-dp-configmap.yaml file as described in the previous section, no additional setup steps are required for Let's Encrypt.
+This tutorial uses Let's Encrypt to configure a certificate for the OIDC Discovery Provider domain. But other than editing the oidc-dp-configmap.yaml file as described in the previous section, no additional setup steps are required for Let's Encrypt.
 
 # Part One: Configure SPIRE Components
 
@@ -76,7 +76,7 @@ The SPIRE OIDC Discovery Provider provides a URL to the location of the discover
 
 Before running the command below, ensure that you have replaced the MY\_DISCOVERY\_DOMAIN placeholder with the FQDN of the Discovery Provider as described in [Replace Placeholder Strings in YAML Files](#replace-placeholder-strings-in-yaml-files).
 
-Use the following command to apply the updated server configmap, the configmap for the OIDC Discovery Provider, and deploy the updated **spire-server** statefulset:
+Change to the directory containing the **k8s/oidc-aws** YAML files and use the following command to apply the updated server configmap, the configmap for the OIDC Discovery Provider, and deploy the updated **spire-server** statefulset:
 
 ```console
 $ kubectl apply \
@@ -237,7 +237,12 @@ To allow the workload from outside AWS to access AWS S3, add the workload's SPIF
 
 3. Click the **Trust relationships** tab near the middle of the page and then click **Edit trust relationship**.
 
-4. In the JSON access control policy, add a condition line at the end of the `StringEquals` attribute to restrict access to workloads matching the workload SPIFFE ID that was assigned in the [Kubernetes Quickstart](/spire/try/getting-started-k8s/). Use the form shown below but substitute your Discovery Provider FQDN for MY\_DISCOVERY\_DOMAIN. Add a comma at the end of the previous line after `"mys3"`.
+4. In the JSON access control policy, add a condition line at the end of the `StringEquals` attribute to restrict access to workloads matching the workload SPIFFE ID that was assigned in the [Kubernetes Quickstart](/spire/try/getting-started-k8s/). The new line to add is:
+
+   ```json
+   "MY_DISCOVERY_DOMAIN:sub": "spiffe://example.org/ns/default/sa/default"
+   ```
+   But substitute your Discovery Provider FQDN for MY\_DISCOVERY\_DOMAIN. Add a comma at the end of the previous line after `"mys3"`. When finished, the JSON should look similar to:
 
    ```json
    {
@@ -260,7 +265,7 @@ To allow the workload from outside AWS to access AWS S3, add the workload's SPIF
    }
    ```
 
-5. Click **Update Trust Policy**.
+5. Click **Update Trust Policy**. This change to the IAM role takes a minute or two to propagate.
 
 ## Create an AWS S3 Test File
 
@@ -339,6 +344,7 @@ Now that Kubernetes and AWS are configured for OIDC federation, we'll test the c
    ```console
    # cat test.txt
    oidc-tutorial file
+   ```
 
 9. Exit from `/bin/sh` on the client container:
 
@@ -364,7 +370,7 @@ In a production environment, you will need a way to automatically refresh the JW
 
 ### (NotFound) Error
 
-If in step 2 you get an error message that includes `(NotFound)`, be sure to substitute your client pod name instead of using the example pod shown in step 2.
+If in step 2 you get an error message that includes `(NotFound)`, be sure to substitute your client pod name instead of using the example pod shown there.
 
 ### General Troubleshooting
 
@@ -406,4 +412,4 @@ Delete the policy, role, and S3 bucket that you configured for this tutorial.
 
 ## DNS Cleanup
 
-You can remove the A record that you configured for the SPIRE OIDC Discovery Provider document location.
+Remove the A record that you configured for the SPIRE OIDC Discovery Provider document location.
