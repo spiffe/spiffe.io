@@ -16,7 +16,7 @@ In this tutorial you will learn how to:
 
 * Deploy the OIDC Discovery Provider Service
 * Create the required DNS A record to point to the Discovery Provider document
-* Create a sample AWS Identity Policy, policy, role, and S3 bucket
+* Create a sample AWS identity provider, policy, role, and S3 bucket
 * Test access to the S3 bucket
 
 ## Prerequisites
@@ -44,7 +44,7 @@ oidc-discovery.example.org   A        93.184.216.34
 ```
 
 {{< info >}}
-As with any change to DNS, it will take minutes or hours for the new A record to propagate to DNS servers. This tutorial will not work until the A record is propagated.
+As with any change to DNS, it will take minutes or hours for the new A record to propagate to DNS servers. This tutorial will not work until the A record is propagated. Once the A record is propagated, you should be able to view the discovery document at https://MY_DISCOVERY_DOMAIN/.well-known/openid-configuration .
 {{< /info >}}
 
 Although this tutorial should contain all the info you need, the SPIRE OIDC Discovery Provider configuration file format is described on [GitHub](https://github.com/spiffe/spire/tree/master/support/oidc-discovery-provider).
@@ -168,36 +168,36 @@ Create the following simple AWS IAM policy that governs access to the S3 bucket 
 
 4. Replace the existing skeleton JSON blob with the following JSON blob:
 
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "s3:PutAccountPublicAccessBlock",
-                "s3:GetAccountPublicAccessBlock",
-                "s3:ListAllMyBuckets",
-                "s3:ListJobs",
-                "s3:CreateJob",
-                "s3:HeadBucket"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": "s3:*",
-            "Resource": [
-                "arn:aws:s3:::oidc-federation-test",
-                "arn:aws:s3:::oidc-federation-test/*",
-                "arn:aws:s3:*:*:job/*"
-            ]
-        }
-    ]
-}
-```
+   ```json
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Sid": "VisualEditor0",
+               "Effect": "Allow",
+               "Action": [
+                   "s3:PutAccountPublicAccessBlock",
+                   "s3:GetAccountPublicAccessBlock",
+                   "s3:ListAllMyBuckets",
+                   "s3:ListJobs",
+                   "s3:CreateJob",
+                   "s3:HeadBucket"
+               ],
+               "Resource": "*"
+           },
+           {
+               "Sid": "VisualEditor1",
+               "Effect": "Allow",
+               "Action": "s3:*",
+               "Resource": [
+                   "arn:aws:s3:::oidc-federation-test-bucket",
+                   "arn:aws:s3:::oidc-federation-test-bucket/*",
+                   "arn:aws:s3:*:*:job/*"
+               ]
+           }
+       ]
+   }
+   ```
 
 5. Click **Review policy**.
 
@@ -266,7 +266,7 @@ To allow the workload from outside AWS to access AWS S3, add the workload's SPIF
 
 Create a simple test file in an AWS S3 bucket to use for testing.
 
-1. Create a text file on your local computer called 'test.txt` with the following single line:
+1. Create a text file on your local computer called `test.txt` with the following single line:
 
    ```console
    oidc-tutorial file
@@ -314,8 +314,6 @@ Now that Kubernetes and AWS are configured for OIDC federation, we'll test the c
    # /opt/spire/bin/spire-agent api fetch jwt -audience mys3 -socketPath /run/spire/sockets/agent.sock | sed '2!d' | sed 's/[[:space:]]//g' > token
    ```
 
-   To familiarize yourself with the form of the token, you may want to view it with the `cat` command. You can decode the token by pasting it in the tool at https://jwt.io . These JWT tokens have an expiration time of 5 minutes, so you must complete this test within that time.
-
 4. Navigate to the AWS [Identity and Access Management (IAM) page](https://console.aws.amazon.com/iam/home#/home), logging in if necessary.
 
 5. Click **Roles**, search for the `oidc-federation-test-role` role you created, and click on the role name.
@@ -325,20 +323,52 @@ Now that Kubernetes and AWS are configured for OIDC federation, we'll test the c
 7. Run the following command, pasting the ARN in place of ROLE-NAME-ARN:
 
    ```console
-   AWS_ROLE_ARN=ROLE-NAME-ARN AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 cp s3://oidc-federation-test-bucket/test.txt test.txt
+   # AWS_ROLE_ARN=ROLE-NAME-ARN AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 cp s3://oidc-federation-test-bucket/test.txt test.txt
    ```
 
-   If successful, this command will output the following and the `test.txt file` should be copied to the client container:
+   If successful, this command will output the following and the `test.txt` file should be copied to the client container:
 
    ```console
    download: s3://oidc-federation-test-bucket/test.txt to ./test.txt
    ```
 
-8. Exit from `/bin/sh` on the client container:
+   See the next section if the command isn't successful.
+
+8. Verify that the `test.txt` exists and contains `oidc-tutorial file`:
 
    ```console
-   exit
+   # cat test.txt
+   oidc-tutorial file
+
+9. Exit from `/bin/sh` on the client container:
+
+   ```console
+   # exit
    ```
+
+## Troubleshooting s3 Testing
+
+If you ran into a problem testing access to the s3 `test.txt` file, see the following sections for possible solutions.
+
+### An error occurred (403) Error
+
+If in step 7 of testing you get an error message that includes `An error occurred (403)`, the S3 bucket name in the AWS policy may not match the S3 bucket you specified on the command line.
+
+### (ExpiredTokenException) Error
+
+If in step 7 of testing you get an error message that includes `ExpiredTokenException`, the JWT token has expired. Start the test again at step 3 to download a new JWT token. These JWT tokens have an expiration time of 5 minutes, so you must complete the test within that time.
+
+You can decode the token by pasting it in the tool at https://jwt.io . There you can check the token expiration time by hovering your mouse pointer over the `exp` field.
+
+In a production environment, you will need a way to automatically refresh the JWT tokens for access to AWS.
+
+### (NotFound) Error
+
+If in step 2 you get an error message that includes `(NotFound)`, be sure to substitute your client pod name instead of using the example pod shown in step 2.
+
+### General Troubleshooting
+
+Double check that the AWS policy name, role name, S3 bucket name, and ARN match across these settings and the commands that you type. This applies mostly if you needed to use different names than those listed here.
 
 # Cleanup
 
