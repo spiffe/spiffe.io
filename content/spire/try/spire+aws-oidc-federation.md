@@ -1,7 +1,7 @@
 ---
 title: AWS OIDC Authentication
-description: Using OIDC to Authenticate SPIRE to AWS S3
-weight: 3
+description: Using OIDC to Authenticate SPIRE to AWS S3 on Kubernetes
+weight: 4
 toc: true
 aliases:
 menu:
@@ -25,16 +25,12 @@ Note the following required accounts, prerequisites, and limitations before star
 
 * You'll need access to the Kubernetes environment that you configured when going through [Kubernetes Quickstart](/spire/try/getting-started-k8s/) 
 * You'll need access to the AWS console to configure an identity provider, policy, role, and S3 bucket
-* You'll need the ability to configure a DNS A record for the SPIRE OIDC Discovery Provider document location
 * This tutorial cannot run on Minikube as the Kubernetes environment must be network accessible by AWS
+* You'll need the ability to configure a DNS A record for the SPIRE OIDC Discovery Provider document location (see next section)
 
-# Part One: Configure SPIRE Components
+### Required DNS A Record for the OIDC Discovery Provider IP Address
 
-In the first part of this procedure, you configure the SPIRE components. In the second part, you configure the AWS components. You test the connection in the third part.
-
-## Required DNS A Record for the OIDC Discovery Provider IP Address
-
-The SPIRE OIDC Discovery Provider provides a URL to the location of the OIDC discovery document specified by the OIDC protocol. After starting the spire-oidc service you'll need to configure a DNS A record to point to the external IP address of that service. In the YAML files set up for this tutorial, replace MY\_DISCOVERY\_DOMAIN with the FQDN of the planned DNS hostname. The FQDN value for MY\_DISCOVERY\_DOMAIN does not need to correspond to an existing FQDN on your network. It is specific to the Kubernetes environment.
+The SPIRE OIDC Discovery Provider provides a URL to the location of the discovery document specified by the OIDC protocol. After starting the spire-oidc service you'll need to configure a DNS A record to point to the external IP address of that service. In the YAML files set up for this tutorial, replace MY\_DISCOVERY\_DOMAIN with the FQDN of the planned DNS hostname. The FQDN value for MY\_DISCOVERY\_DOMAIN does not need to correspond to an existing FQDN on your network. It is specific to the Kubernetes environment.
 
 To get the external IP address required for the A record, you will need to proceed through the following steps until you start the spire-oidc service and verify the external IP address in the section [Verify That spire-oidc has an External Service Address](#verify-that-spireoidc-has-an-external-service-address). The DNS A record should take the following form:
 
@@ -48,16 +44,20 @@ oidc-discovery.example.org   A        93.184.216.34
 ```
 
 {{< info >}}
-As with any change to DNS, it will take minutes or hours for the new A record to propagate to DNS servers. This tutorial will not work until the A record is propagated to the relevant DNS servers.
+As with any change to DNS, it will take minutes or hours for the new A record to propagate to DNS servers. This tutorial will not work until the A record is propagated.
 {{< /info >}}
 
 Although this tutorial should contain all the info you need, the SPIRE OIDC Discovery Provider configuration file format is described on [GitHub](https://github.com/spiffe/spire/tree/master/support/oidc-discovery-provider).
 
 This tutorial uses Let's Encrypt to configure a certificate for the OIDC Discovery Domain. But other than editing the oidc-dp-configmap.yaml file as described in the previous section, no additional setup steps are required for Let's Encrypt.
 
+# Part One: Configure SPIRE Components
+
+In the first part of this procedure, you configure the SPIRE components. In the second part, you configure the AWS components. You test the connection in the third part.
+
 ## Download Kubernetes YAML Files for this Tutorial
 
-Completing this tutorial requires a number of YAML files. To get these files, clone https://github.com/spiffe/spire-tutorials. The files for this tutorial are in the k8s/REPLACE_ME directory.
+To get the YAML files required for this tutorial, clone https://github.com/spiffe/spire-tutorials. The files for this tutorial are in the **k8s/oidc-aws** directory.
 
 ## Replace Placeholder Strings in YAML Files
 
@@ -65,14 +65,14 @@ The following strings in the YAML files must be substituted for values specific 
 
 | String | Description | Files to Change |
 | --- | --- | --- |
-| MY\_EMAIL\_ADDRESS | The terms of service for the Let's Encrypt certificate authority requires that you specify a valid email. Let's Encrypt is used to configure a certificate for the OIDC Discovery Domain. See the next section for details. Example value: `user@example.org` | oidc-dp-configmap.yaml (1 instance) |
-| MY\_DISCOVERY\_DOMAIN | You must configure a public DNS A record for the IP address of the OIDC Discovery Provider. See the next section for details. Example value: `oidc-discovery.example.org` | server-configmap.yaml (1 instance), oidc-dp-configmap.yaml (1 instance), ingress.yaml (2 instances) |
+| MY\_EMAIL\_ADDRESS | The terms of service for the Let's Encrypt certificate authority requires that you specify a valid email. Let's Encrypt is used to configure a certificate for the OIDC Discovery Domain (see the [Discovery Provider](#required-dns-a-record-for-the-oidc-discovery-provider-ip-address) info above). Example value: user@example.org | oidc-dp-configmap.yaml (1 instance) |
+| MY\_DISCOVERY\_DOMAIN | You must configure a public DNS A record for the IP address of the OIDC Discovery Provider. See the next section for details. Example value: `oidc-discovery.example.org` | ingress.yaml (2 instances), oidc-dp-configmap.yaml (1 instance), server-configmap.yaml (1 instance) |
 
 In the YAML files, instances of the `example.org` [trust domain](/spiffe/concepts/#trust-domain) are valid to use for this tutorial and do not need to be changed.
 
 ## Deploy OIDC Discovery Provider Configmap
 
-The SPIRE OIDC Discovery Provider serves the OIDC discovery document. The oidc-dp-configmap.yaml file specifies the URL to the OIDC Discovery Provider.
+The SPIRE OIDC Discovery Provider provides a URL to the location of the discovery document specified by the OIDC protocol. The oidc-dp-configmap.yaml file specifies the URL to the OIDC Discovery Provider.
 
 Before running the command below, ensure that you have replaced the MY\_DISCOVERY\_DOMAIN placeholder with the FQDN of the Discovery Provider as described in [Replace Placeholder Strings in YAML Files](#replace-placeholder-strings-in-yaml-files).
 
@@ -88,7 +88,7 @@ $ kubectl apply \
 To verify that the spire-server-0 pod has spire-server and spire-oidc containers, run:
 
 ```console
-kubectl get pods spire-server-0 -n spire -o jsonpath='{.spec.containers[*].name}{"\n"}'
+$ kubectl get pods spire-server-0 -n spire -o jsonpath='{.spec.containers[*].name}{"\n"}'
 ```
 
 ## Configure the OIDC Discovery Provider Service and Ingress
@@ -162,9 +162,9 @@ Create the following simple AWS IAM policy that governs access to the S3 bucket 
 
 1. Navigate to the AWS [Identity and Access Management (IAM) page](https://console.aws.amazon.com/iam/home#/home), logging in if necessary.
 
-2. Click **Policies** on the left and then click **Create Policy** in the middle of the page.
+2. Click **Policies** on the left and then click **Create Policy** in the top middle of the page.
 
-3. Click the **JSON** tab at the top.
+3. Click the **JSON** tab.
 
 4. Replace the existing skeleton JSON blob with the following JSON blob:
 
@@ -201,11 +201,9 @@ Create the following simple AWS IAM policy that governs access to the S3 bucket 
 
 5. Click **Review policy**.
 
-6. For **Name**, type a name such as `oidc-federation-test-policy`.
+6. For **Name**, type the name `oidc-federation-test-policy`.
 
-7. Optionally, type a **Description**.
-
-8. Click **Create policy**.
+7. Click **Create policy**.
 
 ## Create an AWS IAM Role for the Identity Provider
 
@@ -217,17 +215,17 @@ The IAM role contains the connection parameters for the OIDC federation to AWS s
 
 3. Click **Web Identity** near the top of the page.
 
-4. For **Identity provider**, choose the identity provider that you created in AWS in the previous section.
+4. For **Identity provider**, choose the identity provider that you created in AWS. The identity provider will be your Discovery Provider FQDN followed by `:aud`, such as `oidc-discovery.example.org:aud`.
 
 5. For **Audience**, choose the audience you specified in the identity provider: `mys3`.
 
 6. Click **Next: Permissions**.
 
-7. Search for the policy that you created in the previous section: `oidc-federation-test-policy`. Click the check box next to that policy and then click **Next: Tags**.
+7. Search for the policy that you created in the previous section: `oidc-federation-test-policy`. Click the check box next to that policy and then click **Next: Tags**. (Don't click the name of the policy.)
 
 8. Click **Next: Review** to skip the **Add Tags** screen.
 
-9. Type a name for the IAM role such as `oidc-federation-test-role`, a description if desired, and click **Create role**. 
+9. Type the name `oidc-federation-test-role` for the IAM role and click **Create role**. 
 
 ## Add the SPIFFE ID to the IAM Role
 
@@ -235,32 +233,32 @@ To allow the workload from outside AWS to access AWS S3, add the workload's SPIF
 
 1. Navigate to the AWS [Identity and Access Management (IAM) page](https://console.aws.amazon.com/iam/home#/home), logging in if necessary.
 
-2. Open the IAM role that you created in the previous section, `oidc-federation-test-role`. If needed, click **Roles** on the left, use the search field to find the IAM role that you created in the last section, and click the role.
+2. Click **Roles** on the left, use the search field to find the `oidc-federation-test-role` IAM role that you created in the last section, and click the role.
 
 3. Click the **Trust relationships** tab near the middle of the page and then click **Edit trust relationship**.
 
-4. In the JSON access control policy, add a condition line at the end of the `StringEquals` attribute to restrict access to workloads matching the workload SPIFFE ID that was assigned in the [Kubernetes Quickstart](/spire/try/getting-started-k8s/).
+4. In the JSON access control policy, add a condition line at the end of the `StringEquals` attribute to restrict access to workloads matching the workload SPIFFE ID that was assigned in the [Kubernetes Quickstart](/spire/try/getting-started-k8s/). Use the form shown below but substitute your Discovery Provider FQDN for MY\_DISCOVERY\_DOMAIN. Add a comma at the end of the previous line after `"mys3"`.
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::012345678901:oidc-provider/MY_DISCOVERY_DOMAIN"
-      },
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-        "StringEquals": {
-          "MY_DISCOVERY_DOMAIN:aud": "mys3",
-          "MY_DISCOVERY_DOMAIN:sub": "spiffe://example.org/ns/default/sa/default"
-        }
-      }
-    }
-  ]
-}
-```
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "Federated": "arn:aws:iam::012345678901:oidc-provider/MY_DISCOVERY_DOMAIN"
+         },
+         "Action": "sts:AssumeRoleWithWebIdentity",
+         "Condition": {
+           "StringEquals": {
+             "MY_DISCOVERY_DOMAIN:aud": "mys3",
+             "MY_DISCOVERY_DOMAIN:sub": "spiffe://example.org/ns/default/sa/default"
+           }
+         }
+       }
+     ]
+   }
+   ```
 
 5. Click **Update Trust Policy**.
 
@@ -269,12 +267,14 @@ To allow the workload from outside AWS to access AWS S3, add the workload's SPIF
 Create a simple test file in an AWS S3 bucket to use for testing.
 
 1. Create a text file on your local computer called 'test.txt` with the following single line:
-```console
-oidc-tutorial file
-```
-You'll upload this file to the S3 bucket later.
 
-2. Navigate to the AWS [Amazon S3 page](https://s3.console.aws.amazon.com/s3/home) logging in if necessary.
+   ```console
+   oidc-tutorial file
+   ```
+
+   You'll upload this file to the S3 bucket momentarily.
+
+2. Navigate to the AWS [Amazon S3 page](https://s3.console.aws.amazon.com/s3/home), logging in if necessary.
 
 3. Click **Create bucket**.
 
@@ -311,16 +311,16 @@ Now that Kubernetes and AWS are configured for OIDC federation, we'll test the c
 3. Fetch a JWT SVID from the identity provider on AWS and save the token from the JWT SVID into a file on the client container called `token`:
 
    ```console
-   /opt/spire/bin/spire-agent api fetch jwt -audience mys3 -socketPath /run/spire/sockets/agent.sock | sed '2!d' | sed 's/[[:space:]]//g' > token
+   # /opt/spire/bin/spire-agent api fetch jwt -audience mys3 -socketPath /run/spire/sockets/agent.sock | sed '2!d' | sed 's/[[:space:]]//g' > token
    ```
 
-   To familiarize yourself with the form of the token, you may want to view it with the `cat` command.
+   To familiarize yourself with the form of the token, you may want to view it with the `cat` command. You can decode the token by pasting it in the tool at https://jwt.io . These JWT tokens have an expiration time of 5 minutes, so you must complete this test within that time.
 
 4. Navigate to the AWS [Identity and Access Management (IAM) page](https://console.aws.amazon.com/iam/home#/home), logging in if necessary.
 
-5. Click **Roles**, search for the role you just created, and click on the role name.
+5. Click **Roles**, search for the `oidc-federation-test-role` role you created, and click on the role name.
 
-6. At the top of the **Summary** page, copy the role ARN into the clipboard.
+6. At the top of the **Summary** page, next to **Role ARN**, copy the role ARN into the clipboard by clicking the small icon at the end.
 
 7. Run the following command, pasting the ARN in place of ROLE-NAME-ARN:
 
