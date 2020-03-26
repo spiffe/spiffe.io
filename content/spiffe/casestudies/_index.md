@@ -9,6 +9,6 @@ menu:
 
 {{< presentations category="case-study" >}}
 
-<hr/>
+---
 
 You can find more presentations on a variety of topics concerning SPIFFE and SPIRE on our [Community Presentations](/community/presentations/) page.
