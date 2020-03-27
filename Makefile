@@ -16,7 +16,9 @@ serve-with-releases:
 	--disableFastRender
 
 production-build:
-	hugo --gc
+	hugo \
+		--gc \
+		--ignoreCache
 
 preview-build:
 	hugo --baseURL $(DEPLOY_PRIME_URL)
