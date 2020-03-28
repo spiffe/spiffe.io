@@ -295,7 +295,7 @@ Create a simple test file in an AWS S3 bucket to use for testing.
 
 9. Click **Upload**.
 
-# Part 3: Test Access to AWS S3
+# Part Three: Test Access to AWS S3
 
 Now that Kubernetes and AWS are configured for OIDC federation, we'll test the connection. This test retrieves a JWT SVID from the SPIRE Agent and uses the JWT token in the JWT SVID to access S3.
 
@@ -352,9 +352,9 @@ Now that Kubernetes and AWS are configured for OIDC federation, we'll test the c
    # exit
    ```
 
-## Troubleshooting s3 Testing
+## Troubleshooting S3 Testing
 
-If you ran into a problem testing access to the s3 `test.txt` file, see the following sections for possible solutions.
+If you ran into a problem testing access to the `test.txt` file in S3, see the following sections for possible solutions.
 
 ### An error occurred (403) Error
 
