@@ -23,9 +23,8 @@ In this tutorial you will learn how to:
 
 Note the following required accounts, prerequisites, and limitations before starting this tutorial:
 
-* You'll need access to the Kubernetes environment that you configured when going through [Kubernetes Quickstart](/spire/try/getting-started-k8s/) 
-* You'll need access to the AWS console with an account that has permissions to configure an identity provider, IAM policy, IAM role, and S3 bucket
-* This tutorial cannot run on Minikube as the Kubernetes environment must be network accessible by AWS
+* You'll need access to the Kubernetes environment that you configured when going through [Kubernetes Quickstart](/spire/try/getting-started-k8s/). The Kubernetes environment must be able to expose an Ingress to the public internet. _Note: This is generally not true for local Kubernetes environments such as Minikube._
+* You'll need access to the AWS console with an account that has permissions to configure an identity provider, IAM policy, IAM role, and S3 bucket.
 * You'll need the ability to configure a DNS A record for the SPIRE OIDC Discovery document endpoint (see [Part 2](#part-2-configure-dns-for-the-oidc-discovery-provider-ip-address))
 
 
