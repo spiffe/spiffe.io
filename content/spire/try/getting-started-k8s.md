@@ -76,7 +76,7 @@ $ kubectl apply \
 
 The server is configured in the Kubernetes configmap specified in server-configmap.yaml, which specifies a number of important directories, notably **/run/spire/data** and **/run/spire/config**. These volumes are bound in when the server container is deployed.
 
-Deploy the server configmap and statefulset by ap
+Deploy the server configmap and statefulset by applying the following files via kubectl:
 
 ```bash
 $ kubectl apply \
