@@ -87,9 +87,9 @@ As part of this tutorial, you will need to register a public DNS record that wil
 
 In this tutorial, the subdomain that you create will provide an endpoint to the discovery document specified by the OIDC protocol. AWS will query this endpoint as part of the authentication handshake between AWS and SPIRE.
 
-## Display the External Service Address of spire-oidc
+## Retrieve the IP Address of the SPIRE OIDC Discovery Provider
 
-Run the following command to display the external IP address of the spire-oidc service. The spire-oidc Discovery Provider service must provide an external IP address for AWS to access the OIDC Discovery document provided by spire-oidc.
+Run the following command to retrieve the external IP address of the spire-oidc service. The spire-oidc Discovery Provider service must provide an external IP address for AWS to access the OIDC Discovery document provided by spire-oidc.
 
 ```console
 $ kubectl get service -n spire spire-oidc
