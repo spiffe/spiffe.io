@@ -34,7 +34,7 @@ In the first part of this procedure, you configure the SPIRE components in Kuber
 
 ## Download Kubernetes YAML Files for this Tutorial
 
-To get the YAML files required for this tutorial, clone https://github.com/spiffe/spire-tutorials. The files for this tutorial are in the **k8s/oidc-aws** directory.
+To get the YAML files required for this tutorial, clone https://github.com/spiffe/spire-tutorials. The files for this tutorial are in the `k8s/oidc-aws` directory.
 
 ## Replace Placeholder Strings in YAML Files
 
@@ -53,7 +53,7 @@ The SPIRE OIDC Discovery Provider provides a URL to the location of the discover
 
 Before running the command below, ensure that you have replaced the MY\_DISCOVERY\_DOMAIN placeholder with the FQDN of the Discovery Provider as described in [Replace Placeholder Strings in YAML Files](#replace-placeholder-strings-in-yaml-files).
 
-Change to the directory containing the **k8s/oidc-aws** YAML files and use the following command to apply the updated server configmap, the configmap for the OIDC Discovery Provider, and deploy the updated **spire-server** statefulset:
+Change to the directory containing the `k8s/oidc-aws` YAML files and use the following command to apply the updated server configmap, the configmap for the OIDC Discovery Provider, and deploy the updated **spire-server** statefulset:
 
 ```console
 $ kubectl apply \
@@ -62,11 +62,16 @@ $ kubectl apply \
     -f server-statefulset.yaml
 ```
 
-To verify that the spire-server pod has spire-server and spire-oidc containers, run:
+To verify that the **spire-server** pod has **spire-server** and **spire-oidc** containers, run:
 
 ```console
 $ kubectl get pods -n spire -l app=spire-server -o \
     jsonpath='{.items[*].spec.containers[*].name}{"\n"}'
+```
+
+This should output:
+
+```console
 spire-server spire-oidc
 ```
 
@@ -83,13 +88,13 @@ $ kubectl apply \
 
 # Part 2: Configure DNS for the OIDC Discovery IP Address
 
-As part of this tutorial, you will need to register a public DNS record that will resolve to the public IP address of your Kubernetes cluster. This will require you or an administrator to have registered a domain name (e.g. yutani.com) with a domain name registrar, have configured its name server to point to a DNS service, and have the ability to create an A record for a new subdomain (e.g. oidc-discovery.yutani.com) in that DNS service. If you don't have a registered domain name or access to a DNS service, services like Google Domains can help you set one up for a fee.
+As part of this tutorial, you will need to register a public DNS record that will resolve to the public IP address of your Kubernetes cluster. This will require you or an administrator to have registered a domain name (e.g. `yutani.com`) with a domain name registrar, have configured its name server to point to a DNS service, and have the ability to create an A record for a new subdomain (e.g. `oidc-discovery.yutani.com`) in that DNS service. If you don't have a registered domain name or access to a DNS service, services like Google Domains can help you set one up for a fee.
 
 In this tutorial, the subdomain that you create will provide an endpoint to the discovery document specified by the OIDC protocol. AWS will query this endpoint as part of the authentication handshake between AWS and SPIRE.
 
 ## Retrieve the IP Address of the SPIRE OIDC Discovery Provider
 
-Run the following command to retrieve the external IP address of the spire-oidc service. The spire-oidc Discovery Provider service must provide an external IP address for AWS to access the OIDC Discovery document provided by spire-oidc.
+Run the following command to retrieve the external IP address of the **spire-oidc** service. The **spire-oidc** Discovery Provider service must provide an external IP address for AWS to access the OIDC Discovery document provided by **spire-oidc**.
 
 ```console
 $ kubectl get service -n spire spire-oidc
@@ -100,7 +105,7 @@ spire-oidc     LoadBalancer   10.12.0.18    34.82.139.13   443:30198/TCP    108s
 
 ## Configure an A Record for the OIDC Discovery Document Endpoint
 
-Using your preferred DNS tool, put the MY\_DISCOVERY\_DOMAIN domain and the spire-oidc external IP address in a new DNS A record. The A record should take the following form:
+Using your preferred DNS tool, put the MY\_DISCOVERY\_DOMAIN domain and the **spire-oidc** external IP address in a new DNS A record. The A record should take the following form:
 
 ```console
 MY_DISCOVERY_DOMAIN          A        EXTERNAL-IP for spire-oidc service
@@ -112,7 +117,7 @@ oidc-discovery.example.org   A        93.184.216.34
 ```
 
 {{< info >}}
-Do not use the oidc-discovery.example.org domain or IP address shown above.
+Do not use the `oidc-discovery.example.org` domain or IP address shown above.
 {{< /info >}}
 
 ## Verify the DNS A Record
@@ -133,7 +138,7 @@ As with any change to DNS, it will take minutes or hours for the new A record to
 
    The `Address:` field at the bottom should correspond to the IP address in the A record.
 
-2. In your browser, navigate to https://MY_DISCOVERY_DOMAIN/.well-known/openid-configuration . You should see JSON output similar to the following:
+2. In your browser, navigate to `https://MY_DISCOVERY_DOMAIN/.well-known/openid-configuration`. You should see JSON output similar to the following:
 
    ```json
    {
@@ -293,7 +298,7 @@ To allow the workload from outside AWS to access AWS S3, add the workload's SPIF
    ```json
    "MY_DISCOVERY_DOMAIN:sub": "spiffe://example.org/ns/default/sa/default"
    ```
-   But substitute your Discovery document FQDN for MY\_DISCOVERY\_DOMAIN. Add a comma at the end of the previous line after `"mys3"`. When finished, the JSON should look similar to the following if you used oidc-discovery.example.org for your OIDC discovery domain:
+   But substitute your Discovery document FQDN for MY\_DISCOVERY\_DOMAIN. Add a comma at the end of the previous line after `"mys3"`. When finished, the JSON should look similar to the following if you used `oidc-discovery.example.org` for your OIDC discovery domain:
 
    ```json
    {
