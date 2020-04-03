@@ -83,7 +83,7 @@ $ kubectl apply \
 
 # Part 2: Configure DNS for the OIDC Discovery IP Address
 
-As part of this tutorial, you will need to register a public DNS record that will resolve to the public IP address of your Kubernetes cluster. This will require you or an administrator to have registered a domain name (e.g. yutani.com) with a domain name registrar, have configured its name server to point to a DNS service, and to be able to create an A record for a new subdomain (e.g. oidc-discovery.yutani.com) in that DNS service. If you don't have a registered domain name or access to a DNS service, services like Google Domains can help you set one up for a fee.
+As part of this tutorial, you will need to register a public DNS record that will resolve to the public IP address of your Kubernetes cluster. This will require you or an administrator to have registered a domain name (e.g. yutani.com) with a domain name registrar, have configured its name server to point to a DNS service, and have the ability to create an A record for a new subdomain (e.g. oidc-discovery.yutani.com) in that DNS service. If you don't have a registered domain name or access to a DNS service, services like Google Domains can help you set one up for a fee.
 
 In this tutorial, the subdomain that you create will provide an endpoint to the discovery document specified by the OIDC protocol. AWS will query this endpoint as part of the authentication handshake between AWS and SPIRE.
 
@@ -155,7 +155,37 @@ As with any change to DNS, it will take minutes or hours for the new A record to
 
 # Part 3: Configure AWS Components
 
-After configuring the SPIRE components, continue with configuring AWS.
+After configuring an A Record for the OIDC discovery document endpoint, continue with configuring AWS.
+
+## Create an AWS S3 Bucket and Test File
+
+Create a simple test file in an AWS S3 bucket to use for testing.
+
+1. Create a text file on your local computer called `test.txt` with the following single line:
+
+   ```console
+   oidc-tutorial file
+   ```
+
+   You'll upload this file to the S3 bucket momentarily.
+
+2. Navigate to the AWS [Amazon S3 page](https://s3.console.aws.amazon.com/s3/home), logging in if necessary.
+
+3. Click **Create bucket**.
+
+4. Under **Bucket name** type a name for the S3 bucket that you'll use for testing.
+
+   The bucket name must be unique across all S3 bucket names in Amazon S3 since buckets can be accessed via a URL. Substitute the name of this bucket for MY\_TEST\_BUCKET in the JSON policy definition in [Create an AWS IAM Policy](#create-an-aws-iam-policy) and when testing in [Part 4](#part-4-test-access-to-aws-s3).
+
+5. Leave the **Region**, **Bucket settings for Block Public Access**, and **Advanced settings** at the default values and click **Create bucket**.
+
+6. Click the name of your bucket to open the bucket. 
+
+7. Click **Upload**.
+
+8. Add the `test.txt` file to the upload area using your local file navigator or drag and drop.
+
+9. Click **Upload**.
 
 ## Set up an OIDC Identity Provider on AWS
 
@@ -169,13 +199,15 @@ To allow the SPIRE Agent to authenticate to an AWS service S3 bucket, you must c
 
 4. For **Provider URL**, type `https://` and then the FQDN corresponding to the value that you used for MY\_DISCOVERY\_DOMAIN in the YAML files. The AWS identity provider queries the SPIRE OIDC Discovery document at this URL.
 
-5. For **Audience**, type `mys3`. The SPIRE Agent presents this string to AWS when authenticating to the Amazon S3 bucket. Click **Next Step**. AWS verifies access to the Provider URL after you click the button and displays an error if it is inaccessible. If this occurs, ensure that the DNS is properly configured for public access to the SPIRE OIDC Discovery document endpoint (Provider URL).
+5. For **Audience**, type `mys3`. The SPIRE Agent presents this string to AWS when authenticating to the Amazon S3 bucket. 
+
+6. Click **Next Step**. AWS verifies access to the Provider URL after you click the button and displays an error if it is inaccessible. If this occurs, ensure that the DNS is properly configured for public access to the SPIRE OIDC Discovery document endpoint (Provider URL).
 
 6. Verify the information on the **Verify Provider Information** page and if OK, click **Create**.
 
 ## Create an AWS IAM Policy
 
-Create the following simple AWS IAM policy that governs access to the S3 bucket used in this tutorial. In the next section, you will associate this policy with an IAM role.
+The following simple AWS IAM policy governs access to the S3 bucket used in this tutorial. In the next section, you will associate this policy with an IAM role.
 
 1. Navigate to the AWS [Identity and Access Management (IAM) page](https://console.aws.amazon.com/iam/home#/home), logging in if necessary.
 
@@ -183,7 +215,7 @@ Create the following simple AWS IAM policy that governs access to the S3 bucket 
 
 3. Click the **JSON** tab.
 
-4. Replace the existing skeleton JSON blob with the following JSON blob:
+4. Replace the existing skeleton JSON with the following JSON policy definition and replace MY\_TEST\_BUCKET with the name of the S3 test bucket that you created in [Create an AWS S3 Bucket and Test File](#create-an-aws-s3-bucket-and-test-file):
 
    ```json
    {
@@ -207,8 +239,8 @@ Create the following simple AWS IAM policy that governs access to the S3 bucket 
                "Effect": "Allow",
                "Action": "s3:*",
                "Resource": [
-                   "arn:aws:s3:::oidc-federation-test-bucket",
-                   "arn:aws:s3:::oidc-federation-test-bucket/*",
+                   "arn:aws:s3:::MY_TEST_BUCKET",
+                   "arn:aws:s3:::MY_TEST_BUCKET/*",
                    "arn:aws:s3:*:*:job/*"
                ]
            }
@@ -286,38 +318,10 @@ To allow the workload from outside AWS to access AWS S3, add the workload's SPIF
 
 6. Click **Update Trust Policy**. This change to the IAM role takes a minute or two to propagate.
 
-## Create an AWS S3 Bucket and Test File
-
-Create a simple test file in an AWS S3 bucket to use for testing.
-
-1. Create a text file on your local computer called `test.txt` with the following single line:
-
-   ```console
-   oidc-tutorial file
-   ```
-
-   You'll upload this file to the S3 bucket momentarily.
-
-2. Navigate to the AWS [Amazon S3 page](https://s3.console.aws.amazon.com/s3/home), logging in if necessary.
-
-3. Click **Create bucket**.
-
-4. Under **Bucket name** type `oidc-federation-test-bucket`.
-
-5. Leave the **Region**, **Bucket settings for Block Public Access**, and **Advanced settings** at the default values and click **Create bucket**.
-
-6. Click `oidc-federation-test-bucket` to open the bucket. 
-
-7. Click **Upload**.
-
-8. Add the `test.txt` file to the upload area using your local file navigator or drag and drop.
-
-9. Click **Upload**.
-
 
 # Part 4: Test Access to AWS S3
 
-Now that Kubernetes and AWS are configured for OIDC federation, we'll test the connection. This test retrieves a JWT SVID from the SPIRE Agent and uses the JWT token in the JWT SVID to access S3.
+Now that SPIRE in Kubernetes, the DNS A record for the OIDC Discovery document endpoint, and AWS are configured for OIDC federation, we'll test the connection. This test retrieves a JWT SVID from the SPIRE Agent and uses the JWT token in the JWT SVID to access S3.
 
 1. In the directory containing the YAML files, apply the client deployment file to create a test client in a different namespace:
 
@@ -357,11 +361,11 @@ Now that Kubernetes and AWS are configured for OIDC federation, we'll test the c
 
 5. Locate the ARN of the IAM role that you created in [Part 3](#part-3-configure-aws-components) and saved in `oidc-arn.txt`. Alternatively, return to the AWS console and find the ARN of the IAM role there.
 
-6. Run the following command, pasting the ARN in place of ROLE-NAME-ARN:
+6. Run the following command, pasting the ARN in place of MY\_ROLE\_NAME\_ARN and your S3 test bucket name in place of MY\_TEST\_BUCKET:
 
    ```console
-   # AWS_ROLE_ARN=ROLE-NAME-ARN AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 \
-       cp s3://oidc-federation-test-bucket/test.txt test.txt
+   # AWS_ROLE_ARN=MY_ROLE_NAME_ARN AWS_WEB_IDENTITY_TOKEN_FILE=token aws s3 \
+       cp s3://MY_TEST_BUCKET/test.txt test.txt
    ```
 
    If successful, this command will output the following and the `test.txt` file should be copied to the client container:
@@ -372,7 +376,7 @@ Now that Kubernetes and AWS are configured for OIDC federation, we'll test the c
 
    See the next section if the command isn't successful.
 
-7. Verify that the `test.txt` exists and contains `oidc-tutorial file`:
+7. Verify that the `test.txt` file exists and contains `oidc-tutorial file`:
 
    ```console
    # cat test.txt
@@ -391,19 +395,15 @@ If you ran into a problem testing access to the `test.txt` file in S3, see the f
 
 ### An error occurred (403) Error
 
-If in step 7 of testing you get an error message that includes `An error occurred (403)`, the S3 bucket name in the AWS policy may not match the S3 bucket you specified on the command line.
+If in step 6 of testing you get an error message that includes `An error occurred (403)`, the S3 bucket name in the AWS policy may not match the S3 bucket you specified on the command line.
 
 ### (ExpiredTokenException) Error
 
-If in step 7 of testing you get an error message that includes `ExpiredTokenException`, the JWT token has expired. Start the test again at step 3 to download a new JWT token. These JWT tokens have an expiration time of 5 minutes, so you must complete the test within that time.
+If in step 6 of testing you get an error message that includes `ExpiredTokenException`, the JWT token has expired. Start the test again at step 3 to download a new JWT token. These JWT tokens have an expiration time of 5 minutes, so you must complete the test within that time.
 
 You can decode the token by pasting it in the tool at https://jwt.io . There you can check the token expiration time by hovering your mouse pointer over the `exp` field.
 
 In a production environment, you will need a way to automatically refresh the JWT tokens for access to AWS.
-
-### (NotFound) Error
-
-If in step 2 you get an error message that includes `(NotFound)`, be sure to substitute your client pod name instead of using the example pod shown there.
 
 ### General Troubleshooting
 
