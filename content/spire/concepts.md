@@ -12,7 +12,7 @@ menu:
 SPIRE is a production-ready implementation of the [SPIFFE APIs](/spiffe) that performs node and workload attestation in order to securely issue SVIDs to workloads, and verify the SVIDs of other workloads, based on a predefined set of conditions. 
 
 {{< info >}}
-SPIRE is just one implementation of the SPIFFE specification. For a list of current implementations, see the [spiffe.io homepage](https://spiffe.io). 
+SPIRE is just one implementation of the SPIFFE specification. For a list of current implementations, see the [spiffe.io homepage](/). 
 {{< /info >}}
 
 This section describes the architecture and components of SPIRE, walks you through “a day in the life of” how SPIRE issues an identity to a workload, and looks at some basic SPIRE concepts.
