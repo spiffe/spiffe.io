@@ -16,7 +16,7 @@ The SPIRE Server and Agent are configured in a file called `server.conf` and `ag
 
 By default the Server expects the configuration file to reside at `conf/server/server.conf`, however the Server can be configured to use a configuration file in a different location with the `--config` flag. See the [SPIRE Server reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) for more information.
 
-Similarly, the Agent expects this file to reside at `conf/agent/agent.conf`, however the Server can be configured to use a configuration file in a different location with the `--config` flag. See the [SPIRE Agent reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) for more information.
+Similarly, the Agent expects this file to reside at `conf/agent/agent.conf`, however the Server can be configured to use a configuration file in a different location with the `--config` flag. See the [SPIRE Agent reference](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md) for more information.
 
 The configuration file is loaded once when the Server or Agent is started. If the configuration file for either is modified, the Server or Agent must be restarted for the configuration to take effect.
 
