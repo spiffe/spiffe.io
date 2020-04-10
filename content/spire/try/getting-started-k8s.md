@@ -31,7 +31,7 @@ If you are using Minikube to run this tutorial you should specify some special f
 
 # Obtain the Required Files {#section-1}
 
-This guide requires a number of **.yaml** files. To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain the **.yaml** files from the **spire-tutorials/k8s** subdirectory. Remember to run all kubectl commands in the directory in which those files reside.
+This guide requires a number of **.yaml** files. To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain the **.yaml** files from the **spire-tutorials/k8s/quickstart** subdirectory. Remember to run all kubectl commands in the directory in which those files reside.
 
 Set up a Kubernetes environment on a provider of your choice or use Minikube. Link the Kubernetes environment to the kubectl command.
 
