@@ -26,9 +26,9 @@ To install the server and agent:
 1. Obtain the latest tarball from the [SPIRE downloads page](/downloads#spire) and then extract it into the **/opt/spire** directory using the following commands:
 
     ```console
-    wget https://github.com/spiffe/spire/releases/download/{{< spire-latest >}}/spire-{{< spire-latest >}}-linux-x86_64-glibc.tar.gz
-    sudo tar zvxf spire-{{< spire-latest >}}-linux-x86_64-glibc.tar.gz
-    sudo cp -r spire-{{< spire-latest >}}/. /opt/spire/
+    wget https://github.com/spiffe/spire/releases/download/{{< spire-latest "tag" >}}/{{< spire-latest "tarball" >}}
+    sudo tar zvxf {{< spire-latest "tarball" >}}
+    sudo cp -r spire-{{< spire-latest "version" >}}/. /opt/spire/
     ```
 
 2. Add `spire-server` and `spire-agent` to your $PATH for convenience:

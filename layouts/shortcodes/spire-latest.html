@@ -1,9 +1,17 @@
 {{- $displayReleases  := ne (getenv "HIDE_RELEASES") "true" }}
 {{- if $displayReleases }}
-{{- $releasesUrl := "https://api.github.com/repos/spiffe/spire/releases" }}
-{{- $releases    := getJSON $releasesUrl }}
-{{- $latest      := (index $releases 0).tag_name }}
-{{- $latest -}}
+  {{- $releasesUrl   := "https://api.github.com/repos/spiffe/spire/releases" }}
+  {{- $releases      := getJSON $releasesUrl }}
+  {{- $latestTag     := (index $releases 0).tag_name }}
+
+  {{- if eq (.Get 0) "tag" }}
+    {{- $latestTag -}}
+  {{- else if eq (.Get 0) "version" -}}
+    {{- index (findRE "([0-9.]+)" $latestTag) 0 }}
+  {{- else if eq (.Get 0) "tarball" -}}
+    {{- (index (index $releases 0).assets 0).name -}}
+  {{- end -}}
+
 {{- else -}}
-LATEST
+  LATEST-{{- (.Get 0) -}}
 {{- end -}}
