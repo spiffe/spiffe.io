@@ -262,4 +262,4 @@ As configured, the SPIRE agent does not verify the identity of the Kubernetes ku
 
 # Next steps
 
-* [Review the SPIRE Documentation](https://spiffe.io/spire/docs/) to learn how to configure SPIRE for your environment.
+* [Review the SPIRE Documentation](/spire/docs/) to learn how to configure SPIRE for your environment.
