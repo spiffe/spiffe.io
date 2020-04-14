@@ -55,10 +55,19 @@ Markdown sources for the documentation are in the [`content`](content) directory
 
 #### Latest SPIRE version
 
-Hugo can automatically infer the latest version of SPIRE using the GitHub [Releases API](https://developer.github.com/v3/repos/releases/). To insert that version into text, use the [`spire-latest`](layouts/shortcodes/spire-latest.html) [shortcode](#shortcodes). Here's an example:
+Hugo can automatically infer the latest version of SPIRE using the GitHub [Releases API](https://developer.github.com/v3/repos/releases/). To insert that version into text, use the [`spire-latest`](layouts/shortcodes/spire-latest.html) [shortcode](#shortcodes).
+This shortcode has a mandatory parameter that can be either `version`, `tag` or `tarball`.
+
+Here's an example:
 
 ```markdown
-The most recent version of SPIRE is {{< spire-latest >}}.
+The most recent version of SPIRE is "{{< spire-latest "version" >}}", that is tagged as "{{< spire-latest "tag" >}}" and packed in the file "{{< spire-latest "tarball" >}}"
+```
+
+that will generate the following output:
+
+```
+The most recent version of SPIRE is "0.9.3", that is tagged as "v0.9.3" and packed in the file "spire-0.9.3-linux-x86_64-glibc.tar.gz"
 ```
 
 ### The Downloads page
