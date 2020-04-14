@@ -27,15 +27,15 @@ To install the server and agent:
 
     ```console
     wget https://github.com/spiffe/spire/releases/download/{{< spire-latest "tag" >}}/{{< spire-latest "tarball" >}}
-    sudo tar zvxf {{< spire-latest "tarball" >}}
+    tar zvxf {{< spire-latest "tarball" >}}
     sudo cp -r spire-{{< spire-latest "version" >}}/. /opt/spire/
     ```
 
 2. Add `spire-server` and `spire-agent` to your $PATH for convenience:
 
     ```console
-    ln -s /opt/spire/spire-server /usr/bin/spire-server
-    ln -s /opt/spire/spire-agent /usr/bin/spire-agent
+    sudo ln -s /opt/spire/bin/spire-server /usr/bin/spire-server
+    sudo ln -s /opt/spire/bin/spire-agent /usr/bin/spire-agent
     ```
 
 ## Step 3: Configure the Server {#step-3}
