@@ -32,7 +32,7 @@ The commands in this getting started guide can be run as a standard user or root
 ## Downloading SPIRE for Linux
 
 ```
-$ curl -s -N -L https://github.com/spiffe/spire/releases/download/0.9.0/spire-0.9.0-linux-x86_64-glibc.tar.gz | tar xz
+$ curl -s -N -L https://github.com/spiffe/spire/releases/download/0.10.0/spire-0.10.0-linux-x86_64-glibc.tar.gz | tar xz
 ```
 
 This will create a `spire-0.9.0` directory containing the binaries and example configuration files.
