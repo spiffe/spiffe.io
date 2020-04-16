@@ -32,17 +32,17 @@ The commands in this getting started guide can be run as a standard user or root
 ## Downloading SPIRE for Linux
 
 ```
-$ curl -s -N -L https://github.com/spiffe/spire/releases/download/0.9.0/spire-0.9.0-linux-x86_64-glibc.tar.gz | tar xz
+$ curl -s -N -L https://github.com/spiffe/spire/releases/download/{{< spire-latest "tag" >}}/{{< spire-latest "tarball" >}} | tar xz
 ```
 
-This will create a `spire-0.9.0` directory containing the binaries and example configuration files.
+This will create a `spire-{{< spire-latest "version" >}}` directory containing the binaries and example configuration files.
 
 ## Building SPIRE on macOS/Darwin
 
 *To complete this step you will need Go 1.11 or higher ([https://golang.org/dl/](https://golang.org/dl/))*
 
 ```
-$ git clone --single-branch --branch v0.8 https://github.com/spiffe/spire.git
+$ git clone --single-branch --branch {{< spire-latest "tag" >}} https://github.com/spiffe/spire.git
 $ go build ./cmd/spire-server 
 $ go build ./cmd/spire-agent
 ```
