@@ -46,11 +46,11 @@ In addition, known third party Datastore plugins include:
 
 * https://github.com/summerwind/spire-plugin-datastore-k8s - This plugin allows SPIRE configuration data to be stored in Kubernetes using Kubernetes Custom Resource Definitions (CRDs).
 
-# Upstream Certificate Authority (UpstreamCA) plugins
+# Upstream Authority plugins
 
-UpstreamCA plugins allow the SPIRE Server to integrate with existing public key infrastructure, such that the certificates it generates derive from specific intermediate or root certificates supplied to SPIRE. By choosing or developing different UpstreamCA plugins it is possible to customize how SPIRE retrieves these certificates (for example from a file, or a particular secrets manager or certificate vault).
+UpstreamAuthority plugins allow the SPIRE Server to integrate with existing public key infrastructure, such that the certificates it generates derive from specific intermediate or root certificates supplied to SPIRE. By choosing or developing different UpstreamAuthority plugins it is possible to customize how SPIRE retrieves these certificates (for example from a file, or a particular secrets manager or certificate vault).
 
-SPIRE comes with a set of built-in UpstreamCA plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+SPIRE comes with a set of built-in UpstreamAuthority plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
 
 # KeyManager plugins
 
