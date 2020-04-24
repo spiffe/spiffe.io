@@ -214,6 +214,19 @@ The Unix Workload Attestor works by determining kernel metadata from the workloa
 
 For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Unix Workload Attestor plugin](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_unix.md).
 
+# Configuring where to store agent and server data
+_This configuration applies to the SPIRE Server and SPIRE Agent_
+
+The `data_dir` option in the `agent.conf` and `server.conf` configuration files sets the directory for SPIRE runtime data.
+
+If you specify a relative path for `data_dir` by starting the path with `./` then `data_dir` is evaluated based on the current working directory from which you run the SPIRE Agent or Server. Using a relative path for `data_dir` can be useful for initial evaluation of SPIRE, but for production deployments you may want to set `data_dir` to an absolute path. By convention, specify `"/opt/spire/data"` for `data_dir` if you have installed SPIRE in `/opt/spire`.
+
+Ensure the path that you specify for `data_dir` and all subdirectories are readable by the Linux user that runs the SPIRE Agent or Server executable. You may want to use [chown](http://man7.org/linux/man-pages/man1/chown.1.html) to change the ownership of these data directories to the Linux user that will run the executable.
+
+If the path that you specify for `data_dir` does not exist, the SPIRE Agent or Server executable will create the path if the Linux user that runs the executable has permissions to do so.
+
+Typically you should use the value for `data_dir` as the base directory for other data paths that you configure in the `agent.conf` and `server.conf` configuration files. For example, if you set `data_dir` to `"/opt/spire/data"` in `agent.conf`, set the `KeyManager "disk" plugin_data directory` to `"/opt/spire/data/agent"`. Or, if you set `data_dir` to `/opt/spire/data` in `server.conf`, set the `connection_string` to `"/opt/spire/data/server/datastore.sqlite3"` if you use SQLite for the SPIRE Server data-store as described next.
+
 # Configuring how to store server data
 _This configuration applies to the SPIRE Server_
 
