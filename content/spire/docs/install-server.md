@@ -51,12 +51,6 @@ However, to get a simple deployment up and running for demonstration purposes, y
 
 To configure the items in steps 1, 2, and 4, edit the server’s configuration file, located in **/opt/spire/conf/server/server.conf**.
 
-Pre-built binaries require you to create a **.data** directory. For example, if you've installed SPIRE in the default **/opt/spire** location, type:
-
-```console
-sudo mkdir -p /opt/spire/.data
-```
-
 See [Configuring SPIRE](/spire/docs/configuring/) for details about how to configure SPIRE, in particular Node Attestation and Workload Attestation.
 
 Note that a SPIRE Server must be restarted once its configuration has been modified for changes to take effect.
@@ -73,7 +67,7 @@ You must run all commands from the directory containing the **.yaml** files used
 
 ## Step 1: Obtain the Required Files {#section-1}
 
-To obtain the required **.yaml** files, clone **https://github.com/spiffe/spire-tutorials** and copy the **.yaml** files from the **spire-tutorials/k8s** subdirectory.
+To obtain the required **.yaml** files, clone **https://github.com/spiffe/spire-tutorials** and copy the **.yaml** files from the **spire-tutorials/k8s/quickstart** subdirectory.
 
 ## Step 2: Configure Kubernetes Namespace for SPIRE Components {#section-2}
 
