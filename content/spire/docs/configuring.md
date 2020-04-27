@@ -219,7 +219,7 @@ _This configuration applies to the SPIRE Server and SPIRE Agent_
 
 The `data_dir` option in the `agent.conf` and `server.conf` configuration files sets the directory for SPIRE runtime data.
 
-If you specify a relative path for `data_dir` by starting the path with `./` then `data_dir` is evaluated based on the current working directory from which you run the SPIRE Agent or Server. Using a relative path for `data_dir` can be useful for initial evaluation of SPIRE, but for production deployments you may want to set `data_dir` to an absolute path. By convention, specify `"/opt/spire/data"` for `data_dir` if you have installed SPIRE in `/opt/spire`.
+If you specify a relative path for `data_dir` by starting the path with `./` then `data_dir` is evaluated based on the current working directory from which you run the `spire-agent` or `spire-server` command. Using a relative path for `data_dir` can be useful for an initial trial of SPIRE, but for production deployments you may want to set `data_dir` to an absolute path. By convention, specify `"/opt/spire/data"` for `data_dir` if you have installed SPIRE in `/opt/spire`.
 
 Ensure the path that you specify for `data_dir` and all subdirectories are readable by the Linux user that runs the SPIRE Agent or Server executable. You may want to use [chown](http://man7.org/linux/man-pages/man1/chown.1.html) to change the ownership of these data directories to the Linux user that will run the executable.
 
