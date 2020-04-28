@@ -23,7 +23,7 @@ In this introduction to SPIRE you will learn how to:
 
 * A 64 bit Linux or macOS environment
 * The openssl command line tool
-* For macOS, Go 1.11 or higher must be installed to build SPIRE. See https://golang.org/dl/ or run `brew install golang`
+* For macOS, Go 1.13 or higher must be installed to build SPIRE. See https://golang.org/dl/ or run `brew install golang` .
 
 The commands in this getting started guide can be run as a standard user or root.
 
@@ -31,20 +31,31 @@ The commands in this getting started guide can be run as a standard user or root
 
 ## Downloading SPIRE for Linux
 
+Run the following command to download and unpack pre-built `spire-server` and `spire-agent` executables and example configuration files in a `spire-{{< spire-latest "version" >}}` directory.
+
 ```
 $ curl -s -N -L https://github.com/spiffe/spire/releases/download/{{< spire-latest "tag" >}}/{{< spire-latest "tarball" >}} | tar xz
 ```
 
-This will create a `spire-{{< spire-latest "version" >}}` directory containing the binaries and example configuration files.
-
 ## Building SPIRE on macOS/Darwin
 
-*To complete this step you will need Go 1.11 or higher ([https://golang.org/dl/](https://golang.org/dl/))*
+Run the following commands to clone SPIRE and build the `spire-server` and `spire-agent` executables using go. The executables will be created in the `spire` directory.
+
+*To complete this step you will need Go 1.13 or higher ([https://golang.org/dl/](https://golang.org/dl/))*
 
 ```
 $ git clone --single-branch --branch {{< spire-latest "tag" >}} https://github.com/spiffe/spire.git
+$ cd spire
 $ go build ./cmd/spire-server 
 $ go build ./cmd/spire-agent
+```
+
+
+Move the executables into a `bin` directory as expected by the rest of this document:
+
+```
+$ mkdir bin
+$ mv spire-server spire-agent bin
 ```
 
 # Starting the SPIRE Server
