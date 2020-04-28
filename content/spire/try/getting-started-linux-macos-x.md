@@ -50,8 +50,7 @@ $ go build ./cmd/spire-server
 $ go build ./cmd/spire-agent
 ```
 
-
-Move the executables into a `bin` directory as expected by the rest of this document:
+Create, and move the SPIRE executables into, a `bin` directory as expected by the rest of this document:
 
 ```
 $ mkdir bin
