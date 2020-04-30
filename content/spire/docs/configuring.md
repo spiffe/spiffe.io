@@ -253,7 +253,7 @@ To configure the server to use a SQLite database, enable the stanza in the confi
 
 There should be no other (un-commented) `DataStore` stanzas in the configuration file.
 
-The database will be created in a path specified in the connection string, which is relative to the path of the `spire-server` binary.
+The database will be created in the path specified in `connection_string`. For more information about choosing a location for SPIRE-related data, see [Configuring where to store agent and server data](#configuring-where-to-store-agent-and-server-data).
 
 ### Configure MySQL as a Datastore
 
@@ -330,7 +330,7 @@ _This configuration applies to the SPIRE Server_
 Each SPIRE Server uses a specific root signing key that is used to accomplish several important actions:
 
 * To establish trust by a SPIRE Agent to the SPIRE Server, as the agent holds a certificate that has been signed by that key (note though that trust from the server to the agent is established through attestation).
-* To generate X.509 SVIDs that are issued to workloads
+* To generate X.509 or JWT SVIDs that are issued to workloads
 * To generate SPIFFE trust bundles (used to establish trust with other
 SPIRE Servers)
 
