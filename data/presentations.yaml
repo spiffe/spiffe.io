@@ -1,3 +1,14 @@
+- title: Building Zero Trust based Authentication in Healthcare with SPIRE
+  link: https://www.youtube.com/watch?v=TfnU1xD9EFY
+  youtube: TfnU1xD9EFY
+  presenters: Bobby Samuels, Frederick Kautz, Emiliano Berenbaum, and Madhu Wali
+  organizations: Anthem, doc.ai, Scytale/HPE
+  venue: Cloud Native Computing Foundation Webinar
+  category: case-study
+  date: 29-Apr-2020
+  language: English
+  description: How to use CNCF's SPIFFE and SPIRE projects along with other Cloud Native technologies to build a solid foundation for operating Zero Trust security models.
+  weight: 100
 - title: An Introduction to the SPIFFE and SPIRE Projects in 10 minutes
   link: https://www.youtube.com/watch?v=Q2SiGeebRKY
   youtube: Q2SiGeebRKY
