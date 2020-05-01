@@ -31,19 +31,15 @@ A SPIRE Server is responsible for managing and issuing all identities in its con
 
 The behavior of the server determined is through a series of plugins. SPIRE comes with several plugins included, but additional plugins can be built to extend SPIRE for specific use cases. Types of plugins include:
 
-Node attestor plugins which, together with agent node attestors, verify the identity of the node the agent is running on. See the section [Node Attestation](#node-attestation) for more information.
+**Node attestor plugins** which, together with agent node attestors, verify the identity of the node the agent is running on. See the section [Node Attestation](#node-attestation) for more information.
 
-Node resolver plugins which expand the set of selectors the server can use to identify the node by verifying additional properties about the node. See the section [Node Resolution](#node-resolution) for more information.
+**Node resolver plugins** which expand the set of selectors the server can use to identify the node by verifying additional properties about the node. See the section [Node Resolution](#node-resolution) for more information.
 
-Datastore plugins, which the server uses to store, query, and update various pieces of information, such as [registration entries](#workload-registration), which nodes have attested, what the selectors for those nodes are. There is one built-in datastore plugin which can use a SQLite 3 or PostgresSQL database to store the necessary data. By default it uses SQLite 3.
+**Datastore plugins**, which the server uses to store, query, and update various pieces of information, such as [registration entries](#workload-registration), which nodes have attested, what the selectors for those nodes are. There is one built-in datastore plugin which can use a MySQL, SQLite 3, or PostgresSQL database to store the necessary data. By default it uses SQLite 3.
 
-Key manager plugins, which control how the server stores private keys used to sign X.509-SVIDs and JWT-SVIDs. 
+**Key manager plugins**, which control how the server stores private keys used to sign X.509-SVIDs and JWT-SVIDs. 
 
-Upstream authority plugins. By default the SPIRE Server acts as its own certificate authority. However, you can use an upstream authority plugin to use a different CA from a different PKI system.
-
-{{< info >}}
-CAs apply to SVIDs in X.509 format only. SPIRE creates JWT-SVIDs without a certificate authority. 
-{{< /info >}}
+**Upstream authority plugins**. By default the SPIRE Server acts as its own certificate authority. However, you can use an upstream authority plugin to use a different CA from a different PKI system.
 
 You customize the server’s behavior by configuring plugins and various other configuration variables. See the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) for details. 
 
@@ -71,7 +67,7 @@ You customize the agent’s behavior by configuring plugins and other configurat
 
 You can create custom server and agent plugins for particular platforms and architectures for which SPIRE doesn’t include plugins. For example, you could create server and agent node attestors for an architecture other than those summarized under [Node Attestation](#node-attestation). Or you could create a custom datastore plugin to support a type of database SPIRE doesn’t currently support. Because SPIRE loads custom plugins at runtime, you need not recompile SPIRE in order to enable them. 
 
-For help creating custom server and agent plugins, see [`examples/plugins`directory in spire repo](https://github.com/spiffe/spire/tree/master/examples/plugins). 
+For help creating custom server and agent plugins, see [SPIRE Plugin Development](https://github.com/spiffe/plugin-template/blob/master/SPIRE_PLUGIN_GUIDE.md). 
 
 # A Day in the Life of an SVID
 
