@@ -15,6 +15,11 @@ The table [below](#spire-releases) lists the available releases for [SPIRE](/spi
 * The SPIRE source code as a zip file
 * The SPIRE source code as a tarball
 
+Starting with SPIRE v0.10.0, an additional `spire-extras` tarball is available that contains the following binaries:
+
+* OIDC Discovery Provider
+* Kubernetes Workload Registrar
+
 ## SPIRE releases
 
 {{< releases >}}
