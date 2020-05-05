@@ -11,14 +11,14 @@ The table [below](#spire-releases) lists the available releases for [SPIRE](/spi
   * The `spire-agent` and `spire-server` binaries
   * Configuration for the SPIRE agent and server
   * A [Docker Compose](https://docs.docker.com/compose) configuration that enables you to run an agent and a server simultaneously using [Docker](https://docker.com)
-* A `.txt` file containing checksums for the binary tarball
+* A `.txt` file containing the SHA-256 checksum for the binary tarball
 * The SPIRE source code as a zip file
 * The SPIRE source code as a tarball
 
-Starting with SPIRE v0.10.0, an additional `spire-extras` tarball is available that contains the following binaries:
+Starting with SPIRE v0.10.0, a `spire-extras` tarball is available that contains the following binaries:
 
-* OIDC Discovery Provider
-* Kubernetes Workload Registrar
+* [OIDC Discovery Provider](https://github.com/spiffe/spire/blob/master/support/oidc-discovery-provider/README.md)
+* [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/master/support/k8s/k8s-workload-registrar/README.md)
 
 ## SPIRE releases
 
@@ -27,6 +27,13 @@ Starting with SPIRE v0.10.0, an additional `spire-extras` tarball is available t
 This document tells you how to build [SPIRE](/spire) from source, perhaps because you'd like to try out an unreleased version.
 
 # Build from Source
+
+To build SPIRE from source on Linux, you'll need:
+* `git` - To clone the source from GitHub
+* `make` - To run the Makefile
+* `gcc` - To build the binaries
+
+The build script installs the required toolchain as needed, except for `gcc`. For example, the build script installs a private version of `go` that has been verified to successfully build SPIRE.
 
 ## Fetching
 
@@ -42,17 +49,13 @@ The SPIRE codebase uses [Go modules](https://github.com/golang/go/wiki/Modules),
 
 ## Building
 
-{{< requirement >}}
-To build SPIRE from source, you'll need [Go 1.11](https://golang.org/dl) or higher.
-{{< /requirement >}}
-
-To build the `spire-agent` and `spire-server` binaries from source:
+To build the binaries from source:
 
 ```bash
-$ make all
+$ make build
 ```
 
-The built binaries are available in `bin/spire-agent` and `bin/spire-server`, respectively.
+The built binaries are placed in `bin`.
 
 ## Getting help
 
