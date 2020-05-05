@@ -3,37 +3,37 @@ title: Get SPIRE
 toc: true
 ---
 
-# Download pre-built SPIRE Releases
+# Download SPIRE Source and Linux Binaries
 
 The table [below](#spire-releases) lists the available releases for [SPIRE](/spire). The following is available for each release:
 
-* A tarball containing:
+* A tarball for Linux operating systems containing:
   * The `spire-agent` and `spire-server` binaries
-  * Configuration for the SPIRE agent and server
+  * Configuration files for the SPIRE Agent and Server
   * A [Docker Compose](https://docs.docker.com/compose) configuration that enables you to run an agent and a server simultaneously using [Docker](https://docker.com)
 * A `.txt` file containing the SHA-256 checksum for the binary tarball
 * The SPIRE source code as a zip file
 * The SPIRE source code as a tarball
 
-Starting with SPIRE v0.10.0, a `spire-extras` tarball is available that contains the following binaries:
+Starting with SPIRE v0.10.0, a `spire-extras` tarball is available that contains the following binaries for Linux operating systems:
 
 * [OIDC Discovery Provider](https://github.com/spiffe/spire/blob/master/support/oidc-discovery-provider/README.md)
 * [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/master/support/k8s/k8s-workload-registrar/README.md)
 
-## SPIRE releases
+## SPIRE Releases
 
 {{< releases >}}
-
-This document tells you how to build [SPIRE](/spire) from source, perhaps because you'd like to try out an unreleased version.
 
 # Build from Source
 
 To build SPIRE from source on Linux, you'll need:
-* `git` - To clone the source from GitHub
+* `git` - To clone the source from GitHub. Alternatively, you could use `curl` or `wget`.
 * `make` - To run the Makefile
 * `gcc` - To build the binaries
 
 The build script installs the required toolchain as needed, except for `gcc`. For example, the build script installs a private version of `go` that has been verified to successfully build SPIRE.
+
+To build SPIRE on macOS, see [Building SPIRE on macOS/Darwin](/spire/try/getting-started-linux-macos-x/#building-spire-on-macosdarwin).
 
 ## Fetching
 
@@ -57,6 +57,6 @@ $ make build
 
 The built binaries are placed in `bin`.
 
-## Getting help
+## Getting Help
 
 If you run `make help`, you'll see a complete list of available `make` commands, along with descriptions of what those commands do.
