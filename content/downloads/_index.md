@@ -7,7 +7,7 @@ toc: true
 
 The table [below](#spire-releases) lists the available releases for [SPIRE](/spire). The following is available for each release:
 
-* A tarball for Linux operating systems containing:
+* A tarball for Linux x86_64 operating systems containing:
   * The `spire-agent` and `spire-server` binaries
   * Configuration files for the SPIRE Agent and Server
   * A [Docker Compose](https://docs.docker.com/compose) configuration that enables you to run an agent and a server simultaneously using [Docker](https://docker.com)
@@ -15,7 +15,7 @@ The table [below](#spire-releases) lists the available releases for [SPIRE](/spi
 * The SPIRE source code as a zip file
 * The SPIRE source code as a tarball
 
-Starting with SPIRE v0.10.0, a `spire-extras` tarball is available that contains the following binaries for Linux operating systems:
+Starting with SPIRE v0.10.0, a `spire-extras` tarball is available that contains the following binaries for Linux x86_64 operating systems:
 
 * [OIDC Discovery Provider](https://github.com/spiffe/spire/blob/master/support/oidc-discovery-provider/README.md)
 * [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/master/support/k8s/k8s-workload-registrar/README.md)
