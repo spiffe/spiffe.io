@@ -1,4 +1,4 @@
-- title: "Community Introductions: Ed Warnicke at Network Service Mesh"
+- title: How Network Service Mesh uses SPIFFE and SPIRE
   link: https://www.youtube.com/watch?v=fxtG1wuLSDw&feature=youtu.be&t=17m37s
   youtube: fxtG1wuLSDw
   presenters: Ed Warnicke
@@ -9,7 +9,7 @@
   language: English
   description: A brief overview of how the open source project Network Service Mesh is integrating SPIFFE/SPIRE
   weight: 100
-- title: "Community Introductions: Domingo Kiser at Frontdoor"
+- title: How Frontdoor is using SPIRE
   link: https://www.youtube.com/watch?v=fxtG1wuLSDw&feature=youtu.be&t=14m41s
   youtube: fxtG1wuLSDw
   presenters: Domingo Kiser
@@ -20,7 +20,7 @@
   language: English
   description: A brief overview of how Frontdoor is using SPIRE
   weight: 100
-- title: "Community Introductions: Zero Trust in Health Care"
+- title: How doc.ai and Anthem are using SPIRE
   link: https://www.youtube.com/watch?v=fxtG1wuLSDw&feature=youtu.be&t=6m2s
   youtube: fxtG1wuLSDw
   presenters: Frederick Kautz, Bobby Samuel
@@ -31,7 +31,7 @@
   language: English
   description: A brief overview of how doc.ai and Anthem are implementing zero-trust authentication using SPIRE
   weight: 100
-- title: "Community Introductions: Eric Lee at GitHub"
+- title: How GitHub is using SPIRE
   link: https://www.youtube.com/watch?v=fxtG1wuLSDw&feature=youtu.be&t=0m45s
   youtube: fxtG1wuLSDw
   presenters: Eric Lee
@@ -41,17 +41,6 @@
   date: 24-Apr-2020
   language: English
   description: A brief overview of how GitHub is using SPIRE
-  weight: 100
-- title: SPIFFE 2020 Use Case Survey Insights
-  link: https://youtu.be/DuzEczFVmpY
-  youtube: DuzEczFVmpY
-  presenters: Catherine Hicks
-  organizations: Scytale/HPE
-  venue: SPIFFE Community Day
-  category: advanced-tutorial
-  date: 24-Apr-2020
-  language: English
-  description: Insights from a recent community survey conducted on user needs and use cases
   weight: 100
 - title: Operationalizing SPIRE at Square
   link: https://youtu.be/KP9rME3zw6g
@@ -64,18 +53,18 @@
   language: English
   description: How Square deployed SPIRE and Envoy on a bare metal/multicloud hybrid environment
   weight: 100
-- title: Observability in SPIRE at Scale
+- title: Uber's Findings on Observability in SPIRE at Scale
   link: https://youtu.be/nIRy_aI0E5k
   youtube: nIRy_aI0E5k
   presenters: Andrew Moore 
   organizations: Uber
   venue: SPIFFE Community Day
-  category: case-study
+  category: advanced-tutorial
   date: 24-Apr-2020
   language: English
   description: How to implement telemetry with SPIRE Agents deployed on over 10,000 nodes
   weight: 100
-- title: "Lessons Learned: Designing Scalable, PKI-based Authentication With SPIRE"
+- title: "Lessons Learned: Designing Scalable, PKI-based Authentication With SPIRE at ByteDance/TikTok"
   link: https://youtu.be/TOjb_imYuLE
   youtube: TOjb_imYuLE
   presenters: Eli Nesterov
@@ -86,7 +75,7 @@
   language: English
   description: Why ByteDance decided to use SPIRE and how they are deploying SPIRE
   weight: 100
-- title: Establishing Trust Across Regulatory Boundaries in Complex, Heterogeneous Infrastructures Using SPIRE
+- title: Establishing Trust Across Regulatory Boundaries Using SPIRE at TransferWise
   link: https://youtu.be/MUFQSD6EmZ8
   youtube: MUFQSD6EmZ8
   presenters: Jonathan Oddy
@@ -103,43 +92,10 @@
   presenters: Ash Narkar
   organizations: Styra
   venue: SPIFFE Community Day
-  category: case-study
-  date: 24-Apr-2020
-  language: English
-  description: How you can enable decoupled authentication and authorization with SPIRE and OPA using the go-spiffe v2 library
-  weight: 100
-- title: "Project Updates: SPIRE"
-  link: https://youtu.be/-2FK8YkLh_U
-  youtube: -2FK8YkLh_U
-  presenters: Tyler Julian and Andrew Harding
-  organizations: Uber, Scytale/HPE
-  venue: SPIFFE Community Day
-  category: overview
-  date: 24-Apr-2020
-  language: English
-  description: An update on SPIRE, including 0.10 release highlights and version 2 of the go-spiffe library
-  weight: 100
-- title: "Project Updates: SIG-Spec"
-  link: https://youtu.be/5NJXp6iiMec
-  youtube: 5NJXp6iiMec
-  presenters: Justin Burke
-  organizations: Google
-  venue: SPIFFE Community Day
   category: advanced-tutorial
   date: 24-Apr-2020
   language: English
-  description: An update on the in-progress specification for SPIFFE Federation
-  weight: 100
-- title: The SPIFFE Continuum - The set of real values (SPIFFE update)
-  link: https://youtu.be/6Q9UZdF7WAE
-  youtube: 6Q9UZdF7WAE
-  presenters: Andrés Vega
-  organizations: Scytale/HPE
-  venue: SPIFFE Community Day
-  category: overview
-  date: 24-Apr-2020
-  language: English
-  description: SPIFFE/SPIRE project highlights since the last SPIFFE Community Day as well as what is ahead in the roadmap
+  description: How you can enable decoupled authentication and authorization with SPIRE and OPA using the go-spiffe v2 library
   weight: 100
 - title: Building Zero Trust based Authentication in Healthcare with SPIRE
   link: https://www.youtube.com/watch?v=TfnU1xD9EFY
