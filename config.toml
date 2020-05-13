@@ -7,9 +7,6 @@ canonifyurls = true
 googleAnalytics = "UA-99605331-1"
 enableGitInfo = true
 
-[markup]
-  [markup.tableOfContents]
-    startLevel = 1
 
 [params]
 acronym = "Secure Production Identity Framework for Everyone"

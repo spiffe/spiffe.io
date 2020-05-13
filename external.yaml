@@ -1,0 +1,49 @@
+spire/understand:
+    source: https://github.com/spiffe/spire
+    pullFiles:
+        - doc/SPIRE101.md
+    transform:
+        SPIRE101.md:
+            frontMatter:
+                title: SPIRE Overview
+                short: SPIRE 101
+                kind: spire-understand
+                weight: 100
+spire/installing:
+    source: https://github.com/spiffe/spire
+    pullFiles:
+        - doc/upgrading.md
+    transform:
+        upgrading.md:
+            frontMatter:
+                short: Upgrade/Downgrade SPIRE
+                kind: spire-installing
+                weight: 80
+spire/using:
+    source: https://github.com/spiffe/spire
+    pullFiles:
+        - doc/spire_agent.md
+        - doc/spire_server.md
+        - doc/telemetry_config.md
+        - doc/scaling_spire.md
+    transform:
+        spire_agent.md:
+            frontMatter:
+                title: SPIRE Agent Configuration Reference
+                kind: spire-using
+                weight: 300
+        spire_server.md:
+            frontMatter:
+                title: SPIRE Server Configuration Reference
+                kind: spire-using
+                weight: 400
+        telemetry_config.md:
+            frontMatter:
+                title: SPIRE Telemetry Configuration
+                kind: spire-using
+                weight: 500
+        scaling_spire.md:
+            frontMatter:
+                title: Scaling SPIRE
+                kind: spire-using
+                weight: 700

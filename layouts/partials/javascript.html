@@ -1,5 +1,6 @@
 {{- $integCheck   := .Site.Params.assetintegritychecking }}
 {{- $jsFiles := .Site.Params.assets.js }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.min.js"></script>
 {{- range $jsFiles }}
 {{- $path := printf "js/%s.js" . }}
 {{- $js := resources.Get $path | minify | fingerprint }}

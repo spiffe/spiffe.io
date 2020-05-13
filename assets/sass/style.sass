@@ -31,17 +31,29 @@ $navbar-dropdown-radius: none
 
 @import "bulma/bulma"
 
+
+$primary: #566366
+$secondary: #7d9199
+$blue: #008d9c
+$code: $blue
+$code-background: $white-bis
+$link: $blue
+$light-separator: #e2e2e2
+
+@import "custom"
+@import "docs"
+@import "toc"
+
 .hero
-  margin-top: 1rem
-  margin-bottom: 1rem
+  margin: .8rem 1rem
 
 .hero.is-light
   background-color: inherit
 
 .hero-body
-  padding: 1rem 0rem
+  padding: 0
   .title
-     margin-bottom: 0.5rem
+     margin-bottom: 0
 
 figure
   img
@@ -101,6 +113,10 @@ figure
 .article
 
   .content
+
+    h1:not(:first-child)
+      margin-top: .7em
+
     pre
       background-color: #272822
       color: $white

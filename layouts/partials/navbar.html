@@ -1,6 +1,7 @@
 {{- $isHome          := .IsHome }}
 {{- $isSpirePage     := eq .Section "spire" }}
 {{- $isDownloadsPage := eq .Section "downloads" }}
+{{- $isDocsPage      := eq .Section "docs" }}
 {{- $spiffeLogo      := "/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png" | relURL }}
 {{- $spireLogo       := "/img/logos/spire/horizontal/color/spire-horizontal-color.png" | relURL }}
 {{- $logoUrl         := cond $isSpirePage $spireLogo $spiffeLogo }}
@@ -12,7 +13,7 @@
 {{- $stackUrl        := $social.stackoverflow }}
 {{- $youtubeUrl      := $social.youtube }}
 <nav class="navbar is-fixed-top is-light">
-  <div class="container">
+  <div class="container {{ if $isDocsPage }}is-fluid{{ end }} ">
     <div class="navbar-brand">
       {{- if not $isHome }}
       <a class="navbar-item" href="{{ .Site.BaseURL }}">
@@ -20,95 +21,26 @@
       </a>
       {{- end }}
 
-      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target=".navbar-top">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
 
-    <div class="navbar-menu">
+    <div class="navbar-menu navbar-top">
 
       <div class="navbar-end">
 
-      <div class="navbar-item has-dropdown is-hoverable has-text-weight-bold">
-        <a class="navbar-link" href="/spiffe">
-          About SPIFFE
-        </a>
-        <div class="navbar-dropdown">
-            {{- range .Site.Menus.spiffe }}
-              {{- if .HasChildren }}
-                <a class="navbar-item" href="{{ .URL }}">
-                  <span>{{ .Title }}</span>
-                </a>
-                {{- range .Children }}
-                  <a class="navbar-item navbar-item-sub" href="{{ .URL }}">
-                    {{ .Title }}
-                  </a>
-                {{- end }}
-              {{- else }}
-                <a class="navbar-item" href="{{ .URL }}">
-                  <span>{{ .Title }}</span>
-                </a>
-              {{- end }}
-            {{- end }}
-          </div>
-        </div>
-
-        <div class="navbar-item has-dropdown is-hoverable has-text-weight-bold">
-          <a class="navbar-link" href="/spire">
-            About SPIRE
-          </a>
-
-          <div class="navbar-dropdown">
-            {{- range .Site.Menus.spire }}
-              {{- if .HasChildren }}
-                <a class="navbar-item" href="{{ .URL }}">
-                  <span>{{ .Title }}</span>
-                </a>
-                {{- range .Children }}
-                  <a class="navbar-item navbar-item-sub" href="{{ .URL }}">
-                    &raquo;	  {{ .Title }}
-                  </a>
-                {{- end }}
-              {{- else }}
-                <a class="navbar-item" href="{{ .URL }}">
-                  <span>{{ .Title }}</span>
-                </a>
-              {{- end }}
-            {{- end }}
-          </div>
-        </div>
-
-        <a class="navbar-item has-text-weight-bold" href="/downloads">
+        {{- if not $isDocsPage -}}
+        <a class="navbar-item has-text-weight-bold" href="/downloads/">
           Get SPIRE
         </a>
 
-        <div class="navbar-item has-dropdown is-hoverable has-text-weight-bold">
-          <a class="navbar-link" href="/community">
-            Community
-          </a>
-
-          <div class="navbar-dropdown">
-              {{- range .Site.Menus.community }}
-                {{- if .HasChildren }}
-                  <a class="navbar-item" href="{{ .URL }}">
-                    <span>{{ .Title }}</span>
-                  </a>
-                  {{- range .Children }}
-                    <a class="navbar-item navbar-item-sub" href="{{ .URL }}">
-                      {{ .Title }}
-                    </a>
-                  {{- end }}
-                {{- else }}
-                  <a class="navbar-item" href="{{ .URL }}">
-                    <span>{{ .Title }}</span>
-                  </a>
-                {{- end }}
-              {{- end }}
-            </div>
-          </div>
-        </div>
+        <a class="navbar-item has-text-weight-bold" href="/docs/latest/">
+          Documentation
+        </a>
+        {{- end -}}
 
         <div class="navbar-item">
           <p class="control">

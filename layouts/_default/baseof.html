@@ -1,5 +1,6 @@
-{{- $pageType := cond .IsHome "home" .Section }}
-{{- $favicon  := "favicon.ico" | relURL }}
+{{- $pageType   := cond .IsHome "home" .Section }}
+{{- $isDocsPage := eq .Section "docs" }}
+{{- $favicon    := "favicon.ico" | relURL }}
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
@@ -16,7 +17,9 @@
       {{ block "main" . }}{{ end }}
     </main>
 
-    {{ partial "footer.html" . }}
+    {{- if not $isDocsPage -}}
+      {{ partial "footer.html" . }}
+    {{- end -}}
     {{ partial "javascript.html" . }}
     {{ template "_internal/google_analytics_async.html" . }}
   </body>
