@@ -1,0 +1,87 @@
+.docs-nav
+  overflow: hidden
+
+  &-section
+    line-height: 1.3
+    +desktop
+      font-size: 1.5em
+    +touch
+      font-size: 1.2em
+
+  &-title
+    display: block
+    text-transform: uppercase
+    color: $primary
+    font-weight: 300
+
+    +desktop
+      font-size: 1rem
+      margin-bottom: .5rem
+    +touch
+      font-size: .8rem
+      margin-bottom: .4rem
+
+    a
+      color: $primary
+
+      &:hover
+        color: $blue
+
+  &-item
+    display: block
+    color: $primary
+    font-weight: 400
+
+    +desktop
+      font-size: .9rem
+      margin-left: .5rem
+      line-height: 130%
+    +touch
+      font-size: .7rem
+      margin-left: .4rem
+      line-height: 110%
+
+    &:hover
+      color: $dark
+
+      color: $blue
+
+  &-item + &-item
+    +desktop
+      margin-top: .5rem
+    +touch
+      margin-top: .4rem
+
+  &-hr
+    background-color: $light-separator
+    margin: 1em 0
+    height: 1px
+
+.figure
+  img
+    margin-bottom: .5rem
+
+  figcaption
+    font-style: normal !important
+    font-size: 1.5rem
+    font-weight: 500
+
+.tag
+  &.latest-tag
+    margin-left: .5rem
+
+.article
+  padding-bottom: 5rem
+
+  .content
+    width: 75%
+
+    +touch
+      width: 100%
+
+  .container
+    .section
+      padding: 0rem 1rem
+
+.navbar
+  z-index: 20

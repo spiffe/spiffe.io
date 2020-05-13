@@ -5,7 +5,7 @@ toc: true
 
 # Download SPIRE Source and Linux Binaries
 
-The table [below](#spire-releases) lists the available releases for [SPIRE](/spire). The following is available for each release:
+The table [below](#spire-releases) lists the available releases for [SPIRE](/docs/latest/spire/understand/). The following is available for each release:
 
 * A tarball for Linux x86_64 operating systems containing:
   * The `spire-agent` and `spire-server` binaries
@@ -33,7 +33,7 @@ To build SPIRE from source on Linux, you'll need:
 
 The build script installs the required toolchain as needed, except for `gcc`. For example, the build script installs a private version of `go` that has been verified to successfully build SPIRE.
 
-To build SPIRE on macOS, see [Building SPIRE on macOS/Darwin](/spire/try/getting-started-linux-macos-x/#building-spire-on-macosdarwin).
+To build SPIRE on macOS, see [Building SPIRE on macOS/Darwin](/docs/latest/spire/installing/getting-started-linux-macos-x/#building-spire-on-macosdarwin).
 
 ## Fetching
 

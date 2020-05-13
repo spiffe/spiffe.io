@@ -1,9 +1,16 @@
 # macOS
 .DS_Store
 
+# IDEs
+.vscode
+
 # Hugo-generated assets
 public/
 resources/
 
 # Node.js assets
 node_modules/
+
+# Temporal content
+checkouts/
+static/img/checkouts/

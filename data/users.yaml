@@ -1,7 +1,7 @@
 issuers:
 - name: The SPIRE project
   description: SPIRE is an open-source toolchain that implements the SPIFFE specification in a wide variety of environments
-  link: /spire
+  link: /docs/latest/spire/understand/concepts/
   logo: spire/icon/color/spire-icon-color.png
 - name: Istio Citadel
   description: Istio Citadel issues SPIFFE IDs for all workloads
@@ -25,6 +25,6 @@ consumers:
   link: https://medium.com/@Pinterest_Engineering/secret-management-in-multi-tenant-environments-debc9236a744
   logo: pinterest.png
 - name: The Ghostunnel proxy
-  description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Ghostunnel proxies with built-in support for obtaining X.509-SVID identities via the [SPIFFE Workload API](/spiffe/concepts/#spiffe-workload-api)
+  description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Ghostunnel proxies with built-in support for obtaining X.509-SVID identities via the [SPIFFE Workload API](/docs/latest/spiffe/concepts/#spiffe-workload-api)
   link: https://github.com/square/ghostunnel
   logo: square.jpg

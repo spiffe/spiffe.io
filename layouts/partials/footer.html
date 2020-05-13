@@ -20,36 +20,6 @@
 
       <div class="column">
         <p class="title is-size-4 has-text-white-bis">
-          SPIFFE
-        </p>
-
-        <ul>
-          {{- range $spiffeDocs }}
-          {{ .Render "li" }}
-          {{- end }}
-        </ul>
-      </div>
-
-      <div class="is-divider-vertical is-grey"></div>
-
-      <div class="column">
-        <p class="title is-size-4 has-text-white-bis">
-          SPIRE
-        </p>
-
-        <ul>
-          {{- range $spireDocs }}
-          {{- if ne .Params.navbar false }}
-          {{ .Render "li" }}
-          {{- end }}
-          {{- end }}
-        </ul>
-      </div>
-
-      <div class="is-divider-vertical is-grey"></div>
-
-      <div class="column">
-        <p class="title is-size-4 has-text-white-bis">
           Community
         </p>
 

@@ -1,0 +1,42 @@
+{{ $home      := site.BaseURL }}
+{{ $logo      := site.Params.logos.navbar }}
+{{ $social    := site.Params.social }}
+{{ $github    := $social.github }}
+{{ $twitter   := printf "https://twitter.com/%s" $social.twitter }}
+{{ $medium    := $social.medium }}
+{{ $slack     := $social.slack }}
+{{ $docsHome  := .CurrentSection }}
+{{ $allDocs   := where site.RegularPages "Section" "docs" }}
+{{ $docs       := where $allDocs ".Params.kind" "eq" "documentation" }}
+{{ $version   := index (split .File.Path "/") 1 }}
+{{ $pageUrl   := .URL }}
+<nav class="navbar is-primary">
+  <div class="navbar-brand is-hidden-tablet">
+    <a class="navbar-item" href="{{ $home }}">
+      <img src="{{ $logo }}">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mobile-menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu is-hidden-tablet navbar-top" id="mobile-menu">
+    <div class="navbar-start">
+      <span class="navbar-item is-size-5 has-text-weight-light is-uppercase">
+        Core Docs
+      </span>
+
+      <a class="navbar-item" href="{{ $docsHome.URL }}">
+        {{ $docsHome.Name }}
+      </a>
+
+      {{ range $docs }}
+      {{ partial "docs/navbar-link.html" (dict "ctx" . "pageUrl" $pageUrl "version" $version) }}
+      {{ end }}
+
+    </div>
+  </div>
+</nav>

@@ -23,6 +23,7 @@ production-build:
 		--ignoreCache
 
 preview-build:
+	python ./pull_external.py && \
 	hugo \
 		--gc \
 		--ignoreCache \
