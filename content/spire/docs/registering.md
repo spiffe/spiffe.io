@@ -16,8 +16,6 @@ A registration entry contains the following:
 * a set of one or more selectors
 * a parent ID 
 
-A registration entry inherits any selectors from the parent ID, and this allows for common selectors across a number of workloads to be shared easily across a number of workloads. See the section [Mapping Workloads to Multiple Nodes](#mapping-workloads-to-multiple-nodes).
-
 The server will send to the agent a list of all registration entries for workloads that are entitled to run on that node. Agents cache these registration entries and keep them updated. 
 
 During workload attestation, the agent discovers selectors and compares them to those in the cached registration entries to determine which SVIDs they should assign to the workload.  
@@ -115,6 +113,10 @@ spire-server entry delete -entryID 92f4518e-61c9-420d-b984-074afa7c7002
 ```
 
 To learn more about the `spire-server entry delete` command and options, consult the [SPIRE Server reference guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+
+# Mapping Workloads to Multiple Nodes
+
+A workload registration entry can have a single parent ID. This could be the SPIFFE ID of a specific node (i.e. the SPIFFE ID of an agent as given through node attestation) or it could also be the SPIFFE ID of a node registration entry (sometimes referred to as a node alias/set). A node alias (or set) is a group of nodes that share similar characteristics that are given a shared identity. The node registration entry has the node selectors that are required in order for a node to qualify for the shared identity. Meaning that any node that has at least the selectors defined by a node registration entry is given that alias (or belongs to that node set). When a workload registration entry uses the SPIFFE ID of a node alias as the parent, any node with that alias is authorized to obtain SVIDs for that workload
 
 # Where next?
 
