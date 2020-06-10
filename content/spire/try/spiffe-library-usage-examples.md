@@ -14,9 +14,9 @@ You can use one of the following libraries to fetch SVIDs and trust bundles from
 
 The following code samples demonstrate how to use the libraries to establish and maintain SPIFFE-enabled connections transparently between applications.
 
-# C
+# C++
 
-See the [c-spiffe library GitHub page](https://github.com/spiffe/c-spiffe) for more information about the SPIFFE Go library. 
+See the [c-spiffe library GitHub page](https://github.com/spiffe/c-spiffe) for more information about the SPIFFE C++ library. 
 
 # Go
 
@@ -28,7 +28,7 @@ See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe/tree
 
 # Java
 
-See the [java-spiffe library GitHub page](https://github.com/spiffe/java-spiffe/tree/v2-api) for more information about the SPIFFE Go library. 
+See the [java-spiffe library GitHub page](https://github.com/spiffe/java-spiffe/tree/v2-api) for more information about the SPIFFE Java library. 
 
 * [Federation and TCP Support](https://github.com/spiffe/spiffe-example/tree/master/java-spiffe-federation-jboss)
 
