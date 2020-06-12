@@ -7,11 +7,11 @@ menu:
     weight: 10
 ---
 
-As an early stage project, SPIFFE is guided by a small but very active community of passionate software engineers with empathy for the problems the project will tackle. We will be opening up this community more broadly in the coming few months.
+SPIFFE is guided by a small but very active community of passionate software engineers with empathy for the problems that the project is tackling.
 
 ## Join the Community
 
-* **Slack** --- Most real-time discussions happen on SPIFFE's Slack channel at https://spiffe.slack.com. You can join [here](https://slack.spiffe.io/).
+* **Slack** --- Most real-time discussions happen on SPIFFE's Slack channels at https://spiffe.slack.com. You can join [here](https://slack.spiffe.io/).
 
 * **Mailing lists** --- Announcements occur in the SPIFFE [Google Group](https://groups.google.com/a/spiffe.io/forum/#!forum/announce). There is also a [users](https://groups.google.com/a/spiffe.io/forum/#!forum/user-discussion) and [developers](https://groups.google.com/a/spiffe.io/forum/#!forum/dev-discussion) list.
 
@@ -21,16 +21,18 @@ As an early stage project, SPIFFE is guided by a small but very active community
 
 ## Contribute to the Project
 
-Both SPIFFE and SPIRE are managed publicly on Github. You can contribute by filing issues, submitting pull requests, 
+You can contribute to SPIFFE and SPIRE by filing issues and submitting pull requests on GitHub. See these contribution guidelines for details such as GitHub etiquette and coding conventions:
 
 * [SPIFFE contribution guidelines](https://github.com/spiffe/spiffe/blob/master/CONTRIBUTING.md)
 * [SPIRE contribution guidelines](https://github.com/spiffe/spire/blob/master/CONTRIBUTING.md)
 
-While anyone is welcome to propose contributions via pull request, we strongly encourage significant contributions - particularly those that might require a significant change to core components - to be first discussed and a high level design agreed upon with the appropriate SIGs or WGs (see above).
+While anyone is welcome to propose contributions via pull requests, we strongly encourage significant contributions - particularly those that might require a significant change to core components - to be first discussed and a high level design agreed upon with the appropriate SIGs or WGs (see above).
 
-Day to day contributions are vetted by the project's maintainers. Overall project direction, guidance and conflict resolution is overseen by the projects' Techincal Steering Committee. Full details on this process can be found [in the project GOVERNANCE page](https://github.com/spiffe/spiffe/blob/master/GOVERNANCE.md).
+Day to day contributions are vetted by the project's maintainers. Overall project direction, guidance and conflict resolution is overseen by the projects' Technical Steering Committee. Full details on this process can be found [in the project GOVERNANCE page](https://github.com/spiffe/spiffe/blob/master/GOVERNANCE.md).
 
-## SPIFFE and SPIRE branding guidelines
+## SPIFFE and SPIRE Branding Media Library
+
+Find SPIFFE and SPIRE logos here:
 
 * [SPIFFE](https://branding.cncf.io/projects/spiffe)
 * [SPIRE](https://branding.cncf.io/projects/spire)
