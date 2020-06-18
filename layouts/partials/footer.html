@@ -7,6 +7,7 @@
 {{- $stackUrl           := $social.stackoverflow }}
 {{- $githubUrl          := $social.github }}
 {{- $blogUrl            := $social.medium }}
+{{- $youtubeUrl         := $social.youtube }}
 {{- $sourceGithubURL    := .Site.Params.githubURL }}     
 
 <footer class="footer has-background-dark">
@@ -97,6 +98,16 @@
               StackOverflow
             </span>
           </a>
+
+          <a class="button is-youtube-red" href="{{ $youtubeUrl }}">
+            <span class="icon">
+              <i class="fab fa-youtube"></i>
+            </span>
+            <span>
+              YouTube
+            </span>
+          </a>
+
         </div>
       </div>
     </div>
