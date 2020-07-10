@@ -2,13 +2,13 @@
 title: Upgrading
 short: Upgrading
 description: SPIRE Server and Agent version compatibility
-weight: 125
+weight: 160
 toc: true
 menu:
   spire:
     parent: 'spire-docs'
 ---
-<!--- BEGIN IMPORT FROM spiffe/spire/master/doc/upgrading.md --->
+<!--- BEGIN IMPORT FROM https://github.com/spiffe/spire/blob/master/doc/upgrading.md --->
 # Managing Upgrades/Downgrades
 This guide describes how to upgrade your SPIRE deployment, as well as the compatibility guarantees that SPIRE users can expect.
 
