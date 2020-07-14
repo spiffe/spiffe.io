@@ -36,16 +36,6 @@ While Node Attestors help SPIRE verify the identity of a node running a workload
 
 SPIRE comes with a set of built-in Workload Attestor plugins for the [Agent](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
 
-# Datastore plugins
-
-The SPIRE Server must persist some data (such as registration entries) to a backing datastore. SPIRE can be configured to use different datastore types (for example, SQLite, MySQL, Postgres) through Datastore plugins.
-
-SPIRE comes with a set of built-in Datastore plugins for the [Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
-
-In addition, known third party Datastore plugins include:
-
-* https://github.com/summerwind/spire-plugin-datastore-k8s - This plugin allows SPIRE configuration data to be stored in Kubernetes using Kubernetes Custom Resource Definitions (CRDs).
-
 # Upstream Authority plugins
 
 UpstreamAuthority plugins allow the SPIRE Server to integrate with existing public key infrastructure, such that the certificates it generates derive from specific intermediate or root certificates supplied to SPIRE. By choosing or developing different UpstreamAuthority plugins it is possible to customize how SPIRE retrieves these certificates (for example from a file, or a particular secrets manager or certificate vault).
