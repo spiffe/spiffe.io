@@ -30,6 +30,7 @@ slack         = "https://slack.spiffe.io/"
 medium        = "https://blog.spiffe.io/"
 github        = "https://github.com/spiffe"
 stackoverflow = "https://stackoverflow.com/questions/tagged/spiffe"
+youtube       = "https://www.youtube.com/channel/UCVzeW7j02FDNggkI5JKPvJg/f"
 
 [params.assets]
 js = [
