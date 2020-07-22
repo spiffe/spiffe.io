@@ -1,7 +1,7 @@
 {{- $inServerMode := .Site.IsServer }}
 {{- $integCheck   := .Site.Params.assetintegritychecking }}
 {{- $sass         := "sass/style.sass" }}
-{{- $cssOutput    := "css/style2.css" }}
+{{- $cssOutput    := "css/style.css" }}
 {{- $includes     := (slice "node_modules") }}
 {{- $cssDevOpts   := (dict "includePaths" $includes "targetPath" $cssOutput "enableSourceMap" true) }}
 {{- $cssProdOpts  := (dict "includePaths" $includes "targetPath" $cssOutput "outputStyle" "compressed") }}
