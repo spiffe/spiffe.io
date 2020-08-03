@@ -118,7 +118,7 @@ $ kubectl get pods --namespace spire
 
 NAME                           READY   STATUS    RESTARTS   AGE
 spire-agent-88cpl              1/1     Running   0          6m45s
-spire-server-b95945658-4wbkd   1/1     Running   0          103m
+spire-server-0                 1/1     Running   0          103m
 ```
 
 When the agent deploys, it binds the volumes summarized in the following table:
