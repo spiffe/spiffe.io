@@ -3,6 +3,8 @@ title: SPIFFE Library Usage Examples
 short: SPIFFE Library Usage Examples
 description: Writing code in your applications to create SPIFFE-enabled connections
 kind: spire-integration-using
+aliases:
+    - /spire/try/spiffe-library-usage-examples
 ---
 
 You can use one of the following libraries to fetch SVIDs and trust bundles from within your applications. These libraries handle the work of interfacing with the SPIFFE Workload API to make your coding easier.

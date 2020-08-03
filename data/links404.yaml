@@ -1,8 +1,8 @@
 - name: SPIFFE overview
-  link: /spiffe
+  link: /docs/latest/spiffe/overview
 - name: SPIRE overview
-  link: /spire
+  link: /docs/latest/spire/understand/
 - name: Get SPIRE
   link: /downloads
 - name: The SPIFFE Community
-  link: /community
+  link: /docs/latest/spire/developing/get-involved/

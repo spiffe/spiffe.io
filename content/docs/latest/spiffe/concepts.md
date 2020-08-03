@@ -3,6 +3,8 @@ title: SPIFFE Concepts
 short: Concepts
 weight: 20
 kind: spiffe
+aliases:
+    - /spiffe/concepts
 ---
 
 This section looks at some basic concepts in SPIFFE that we refer to frequently throughout this overview.

@@ -4,6 +4,8 @@ short: Working with SVIDs
 kind: spire-developing
 description: How to write code to work with SPIFFE SVIDs
 weight: 130
+aliases:
+    - /spiffe/svids
 ---
 
 A SPIFFE-compatible identity provider such as SPIRE will expose [SPIFFE Verifiable Identity Documents](/docs/latest/spiffe/concepts/#spiffe-verifiable-identity-document-svid) (SVIDs) via the [SPIFFE Workload API](/docs/latest/spiffe/concepts/#spiffe-workload-api). Workloads can use SVIDs retrieved from this API to verify the provenance of a message or to establish mutual TLS secured channels between two workloads. 

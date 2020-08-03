@@ -4,6 +4,8 @@ short: Case Studies
 description: Real world examples of how SPIFFE and SPIRE are being used
 kind: spire-usecases
 weight: 20
+aliases:
+    - /spiffe/casestudies
 ---
 
 {{< presentations category="case-study" >}}

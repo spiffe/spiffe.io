@@ -4,6 +4,8 @@ short: Configuring
 kind: spire-using
 description: How to configure SPIRE for your environment
 weight: 80
+aliases:
+    - /spire/docs/configuring
 ---
 To customize the behavior of the SPIRE Server and SPIRE Agent to meet your application’s needs you edit configuration files for the server and agent. 
 
