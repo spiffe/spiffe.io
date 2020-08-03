@@ -4,6 +4,8 @@ short: Get Involved
 kind: spire-developing
 description: How to navigate and connect with the SPIFFE community
 weight: 150
+aliases:
+    - /community
 ---
 
 SPIFFE is guided by a small but very active community of passionate software engineers with empathy for the problems that the project is tackling.

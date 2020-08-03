@@ -4,6 +4,8 @@ short: Install Agent
 kind: spire-installing
 description: How to install the SPIRE Agents on Linux and Kubernetes
 weight: 70
+aliases:
+    - /spire/docs/install-agents
 ---
 
 ## Step 1: Obtain the SPIRE Binaries {#step-1}

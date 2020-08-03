@@ -4,6 +4,8 @@ short: Install Server
 kind: spire-installing
 description: How to install the SPIRE Server on Linux and Kubernetes
 weight: 60
+aliases:
+    - /spire/docs/install-server
 ---
 ## Step 1: Obtain the SPIRE Binaries
 

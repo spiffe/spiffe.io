@@ -4,6 +4,8 @@ short: Extending
 kind: spire-developing
 description: Learn how to extend SPIRE with third-party plugins
 weight: 100
+aliases:
+    - /spire/docs/extending
 ---
 
 SPIRE is highly extensible via a plugin framework that allows many core operations to be added and customized.

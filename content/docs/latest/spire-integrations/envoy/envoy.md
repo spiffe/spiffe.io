@@ -4,6 +4,8 @@ short: Using Envoy with SPIRE
 description: How to configure the Envoy proxy with SPIFFE and SPIRE
 kind: spire-envoy
 weight: 10
+aliases:
+    - /spire/docs/envoy
 ---
 
 Envoy is a popular open-source service proxy that is widely used to provide abstracted, secure, authenticated and encrypted communication between services. Envoy enjoys a rich configuration system that allows for flexible third-party interaction.

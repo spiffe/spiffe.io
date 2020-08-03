@@ -4,6 +4,8 @@ short: Registering workloads
 kind: spire-using
 description: Registering workloads with SPIFFE IDs in the SPIRE Server
 weight: 90
+aliases:
+    - /spire/docs/registering
 ---
 
 # How to create a registration entry {#create-registration-entry}

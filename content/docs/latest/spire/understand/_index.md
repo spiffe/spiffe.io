@@ -2,6 +2,9 @@
 title: Understand SPIRE
 short: Understand
 kind: spire-understand
+aliases:
+    - /spire
+    - /spire/docs
 ---
 
 SPIRE is a production-ready implementation of the [SPIFFE](https://github.com/spiffe/spiffe) APIs that performs node and workload attestation in order to securely issue SVIDs to workloads, and verify the SVIDs of other workloads, based on a predefined set of conditions. 

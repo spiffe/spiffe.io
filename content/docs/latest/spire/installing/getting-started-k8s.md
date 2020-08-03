@@ -3,7 +3,10 @@ title: Quickstart for Kubernetes
 description: Quickly get SPIRE up and running on a Kubernetes cluster
 kind: spire-installing
 weight: 50
-aliases: [tutorial-spire-on-kubernetes, tutorial-spire-on-kubernetes/]
+aliases:
+    - /tutorial-spire-on-kubernetes
+    - /spire/try/getting-started-k8s
+    - /spire/getting-started-k8s
 ---
 
 # Overview

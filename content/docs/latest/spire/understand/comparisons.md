@@ -4,6 +4,8 @@ short: Comparisons
 kind: spire-understand
 description: Understand SPIRE by comparing and contrasting it to related systems
 weight: 30
+aliases:
+    - /spire/comparisons
 ---
 
 # Secret Stores

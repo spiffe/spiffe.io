@@ -19,6 +19,8 @@ spire/installing:
                 short: Upgrade/Downgrade SPIRE
                 kind: spire-installing
                 weight: 80
+                aliases:
+                    - /spire/docs/upgrading
 spire/using:
     source: https://github.com/spiffe/spire
     pullFiles:
@@ -47,3 +49,6 @@ spire/using:
                 title: Scaling SPIRE
                 kind: spire-using
                 weight: 700
+                aliases:
+                    - /spire/docs/scaling_spire
+                    - /spire/docs/scaling-spire
