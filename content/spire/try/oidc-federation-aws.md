@@ -338,7 +338,7 @@ Now that SPIRE in Kubernetes, the DNS A record for the OIDC Discovery document e
 
    ```console
    $ kubectl exec -it $(kubectl get pods -o \
-       jsonpath={'.items[*]'.metadata.name}) /bin/sh
+       jsonpath={'.items[*]'.metadata.name}) -- /bin/sh
    ```
 
 3. Fetch a JWT SVID from the identity provider on AWS and save the token from the JWT SVID into a file on the client container called `token`:

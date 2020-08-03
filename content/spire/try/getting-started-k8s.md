@@ -134,7 +134,7 @@ $ kubectl get pods --namespace spire
 
 NAME                           READY   STATUS    RESTARTS   AGE
 spire-agent-88cpl              1/1     Running   0          6m45s
-spire-server-b95945658-4wbkd   1/1     Running   0          103m
+spire-server-0                 1/1     Running   0          103m
 ```
 
 As a daemonset, you'll see as many **spire-agent** pods as you have nodes.
@@ -192,7 +192,7 @@ You can test that the agent socket is accessible from an application container b
 3. Obtain a shell connection to the running pod:
 
     ```bash
-    $ kubectl exec -it client-6f9659bd44-m98vv /bin/sh
+    $ kubectl exec -it client-6f9659bd44-m98vv -- /bin/sh
     ```
 
 4. Verify the container can access the socket:
