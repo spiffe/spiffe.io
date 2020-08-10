@@ -8,7 +8,7 @@
 {{ $spireUsing      := where $allDocs ".Params.kind" "eq" "spire-using" }}
 {{ $spireDeveloping := where $allDocs ".Params.kind" "eq" "spire-developing" }}
 
-{{ $spireUseCases   := where $allDocs ".Params.kind" "eq" "spire-usecases" }}
+{{ $spireInt        := where $allDocs ".Params.kind" "eq" "spire-integrations" }}
 {{ $spireOIDC       := where $allDocs ".Params.kind" "eq" "spire-oidc" }}
 {{ $spireEnvoy      := where $allDocs ".Params.kind" "eq" "spire-envoy" }}
 {{ $spireLibraries  := where $allDocs ".Params.kind" "eq" "spire-integration-using" }}
@@ -62,7 +62,7 @@
   SPIRE Integrations
 </span>
 
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireUseCases "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireInt "pageUrl" $pageUrl "version" $version ) }}
 {{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireOIDC "pageUrl" $pageUrl "version" $version ) }}
 {{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireEnvoy "pageUrl" $pageUrl "version" $version ) }}
 {{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireLibraries "pageUrl" $pageUrl "version" $version ) }}
