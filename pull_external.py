@@ -11,7 +11,7 @@ GIT_CLONE_CMD = "git clone {{}} ./{}/{{}}/{{}}".format(CHECKOUT_DIR)
 RE_EXTRACT_TITLE: Pattern[str] = re.compile("([#\s]*)(?P<title>.*)")
 RE_EXTRACT_IMAGES: Pattern[str] = re.compile("\!\[(?P<alt>.*)\]\((?P<url>.*)\)")
 RE_EXTRACT_LINKS: Pattern[str] = re.compile(
-    "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?!http)\S+)\)"
+    "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?!http)(?!#)\S+)\)"
 )
 
 
