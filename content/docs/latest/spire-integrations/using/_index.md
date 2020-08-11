@@ -1,6 +1,6 @@
 ---
-title: Using SPIRE with your own applications
-short: Using SPIRE with your own applications
+title: SPIFFE Libraries
+short: SPIFFE Libraries
 kind: spire-integration-using
 ---
 
