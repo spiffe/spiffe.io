@@ -1,18 +1,8 @@
-spire/understand:
-    source: https://github.com/spiffe/spire
-    pullFiles:
-        - doc/SPIRE101.md
-    transform:
-        SPIRE101.md:
-            frontMatter:
-                title: SPIRE Overview
-                short: SPIRE 101
-                kind: spire-understand
-                weight: 100
 spire/installing:
     source: https://github.com/spiffe/spire
     pullFiles:
         - doc/upgrading.md
+        - doc/SPIRE101.md
     transform:
         upgrading.md:
             frontMatter:
@@ -21,6 +11,12 @@ spire/installing:
                 weight: 80
                 aliases:
                     - /spire/docs/upgrading
+        SPIRE101.md:
+            frontMatter:
+                title: Quickstart for Docker Compose
+                short: Quickstart for Docker Compose
+                kind: spire-installing
+                weight: 55
 spire/using:
     source: https://github.com/spiffe/spire
     pullFiles:
