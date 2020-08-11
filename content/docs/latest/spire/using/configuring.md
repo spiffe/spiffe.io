@@ -380,13 +380,19 @@ A full treatment for Nested SPIRE is beyond the scope of this guide. However thi
 # Export Metrics for Monitoring
 _This configuration applies to the SPIRE Server and SPIRE Agent_
 
-SPIRE allows you to export both Server and  Agent metrics for the purposes of telemetry/monitoring. To configure which metrics collectors you export metrics data to, edit the "Telemetry configuration" section of the server and agent configuration files. SPIRE currently supports exporting of metrics to [Prometheus](https://prometheus.io/), [Statsd](https://github.com/statsd/statsd), and [Datadog](https://docs.datadoghq.com/developers/dogstatsd/) (DogStatsd format). You may configure multiple collectors at the same time. Statsd and DogStatsd both support multiple declarations in the event that you want to send metrics to more than one collector.
+SPIRE allows you to export both Server and Agent metrics for the purposes of telemetry/monitoring. To configure which metrics collectors that SPIRE exports metrics data to, add or edit the telemetry section of the server and agent configuration files. SPIRE can export metrics to 
+[Datadog](https://docs.datadoghq.com/developers/dogstatsd/) (DogStatsd format),
+[M3](https://github.com/m3db/m3),
+[Prometheus](https://prometheus.io/), and
+[Statsd](https://github.com/statsd/statsd).
+
+You may configure multiple collectors at the same time. DogStatsd, M3, and Statsd support multiple declarations in the event that you want to send metrics to more than one collector.
 
 {{< info >}}
 If you want to use Amazon Cloud Watch for metrics collection, review [this document](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html) on retrieving custom metrics with the CloudWatch agent and StatsD.
 {{< /info >}}
 
-Below is an example of a configuration block that exports telemetry to Prometheus, Datadog and StatsD:
+Below is an example of a configuration block for `agent.conf` or `server.conf` that exports telemetry to Datadog, M3, Prometheus, and StatsD, and disables the in-memory collector:
 
 ``` syntaxhighlighter-pre
 telemetry {
@@ -394,17 +400,26 @@ telemetry {
                 port = 9988
         }
 
-        DogStatsd {
-                address = "localhost:8125"
-        }
+        DogStatsd = [
+            { address = "localhost:8125" },
+        ]
 
-        Statsd {
-               address = "collector.example.org:8125"
+        Statsd = [
+            { address = "localhost:1337" },
+            { address = "collector.example.org:8125" },
+        ]
+
+        M3 = [
+            { address = "localhost:9000" env = "prod" },
+        ]
+
+        InMem {
+            enabled = false
         }
 }
 ```
 
-For more information, refer to the relevant section of the [SPIRE Server](https://github.com/spiffe/spire/blob/master/doc/spire_server.md#telemetry-configuration) reference guide, or [SPIRE Agent](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md#telemetry-configuration) reference guide.
+For more information, see the [telemetry configuration](https://github.com/spiffe/spire/blob/master/doc/telemetry_config.md) guide.
 
 # Logging
 _This configuration applies to the SPIRE Server and SPIRE Agent_
