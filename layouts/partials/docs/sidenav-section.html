@@ -3,28 +3,26 @@
 
 {{- $scratch := newScratch -}}
 
-{{- $node    := index (where .section "IsNode" "eq" true) 0 -}}
-{{- $pages   := where .section "IsPage" "eq" true -}}
+{{- $docs    := where .section "Section" "eq" "docs" -}}
+{{- $node    := index (where $docs "IsNode" "eq" true) 0 -}}
+{{- $pages   := where .section ".URL" "ne" $node.URL -}}
 
-{{ range $pages }}
-    {{- if eq (index (split .File.Path "/") 1 ) $version -}}
-        {{ $scratch.Add "sectionsForVersion" (slice .)}}
-    {{ end }}
 
-{{ end }}
+{{- range $pages -}}
+    {{- $scratch.Add "sectionsForVersion" (slice .) -}}
+{{- end -}}
 
 {{- if (ne ($scratch.Get "sectionsForVersion") nil) and (gt (len ($scratch.Get "sectionsForVersion")) 0) -}}
 
-{{ if $node }}
+{{- if $node -}}
     <span class="docs-nav-title">
-        <a href="{{ $node.URL }}">{{ $node.Params.short }}</a>
+        <a href="{{- $node.URL -}}">{{- $node.Params.short -}}</a>
     </span>
-{{ end }}
+{{- end -}}
 
-{{ range ($scratch.Get "sectionsForVersion") }}
-{{ partial "docs/sidenav-link.html" (dict "ctx" . "pageUrl" $pageUrl "version" $version) }}
-{{ end }}
+{{- range ($scratch.Get "sectionsForVersion") -}}
+    {{- partial "docs/sidenav-link.html" (dict "ctx" . "pageUrl" $pageUrl "version" $version) -}}
+{{- end -}}
 
 <hr class="docs-nav-hr"/>
-
-{{ end }}
+{{- end -}}
