@@ -1,13 +1,12 @@
 {{- $kind       := .Get 0 -}}
-{{- $allDocs    := where site.RegularPages "Section" "docs" -}}
-{{- $spireTocs  := where $allDocs ".Params.kind" "eq" $kind -}}
 {{- $currentUrl := .Page.URL }}
-
 <ul>
-{{ range $spireTocs }}
+{{ range site.Pages }}
+    {{ if and (eq .Params.kind $kind) (or (eq .IsNode false) (eq .Params.toc true))  }}
     <li class="{{- if eq .URL $currentUrl }}is-active{{- end }}">
         <a href="{{ .URL }}">{{ .Title }}</a>
         <p>{{ .Description }}</p>
     </li>
+    {{ end }}
 {{ end }}
 </ul>

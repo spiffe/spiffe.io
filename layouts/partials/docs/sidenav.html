@@ -1,5 +1,5 @@
 {{ $docsHome   := .CurrentSection }}
-{{ $allDocs    := where site.Pages "Section" "docs" }}
+{{ $allDocs    := site.Pages  }}
 
 {{ $spiffe     := where $allDocs ".Params.kind" "eq" "spiffe" }}
 

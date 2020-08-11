@@ -1,5 +1,9 @@
 ---
 title: Get SPIRE
+short: Get SPIRE
+kind: spire-installing
+description: How to install SPIRE
+weight: 10
 toc: true
 ---
 
