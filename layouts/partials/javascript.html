@@ -1,5 +1,8 @@
 {{- $integCheck   := .Site.Params.assetintegritychecking }}
 {{- $jsFiles := .Site.Params.assets.js }}
+{{- if eq .Section "docs" -}}
+    {{- $jsFiles = $jsFiles | append .Site.Params.docs.assets.js -}}
+{{- end -}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.7.0/tocbot.min.js"></script>
 {{- range $jsFiles }}
 {{- $path := printf "js/%s.js" . }}

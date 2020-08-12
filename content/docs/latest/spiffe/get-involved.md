@@ -1,9 +1,9 @@
 ---
 title: Get Involved
 short: Get Involved
-kind: spire-developing
+kind: spiffe
 description: How to navigate and connect with the SPIFFE community
-weight: 150
+weight: 400
 aliases:
     - /community
 ---

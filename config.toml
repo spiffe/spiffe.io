@@ -36,3 +36,8 @@ js = [
     "anchor-4.1.1",
     "app"
 ]
+
+[params.docs.assets]
+js = [
+    "docs"
+]
