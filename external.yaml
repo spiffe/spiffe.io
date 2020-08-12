@@ -8,6 +8,7 @@ spire/installing:
             frontMatter:
                 short: Upgrade/Downgrade SPIRE
                 kind: spire-installing
+                description: SPIRE Server and Agent version compatibility
                 weight: 80
                 aliases:
                     - /spire/docs/upgrading
@@ -15,6 +16,7 @@ spire/installing:
             frontMatter:
                 title: Quickstart for Docker Compose
                 short: Quickstart for Docker Compose
+                description: Quickly get SPIRE up and running on Docker Compose
                 kind: spire-installing
                 weight: 55
 spire/using:
@@ -28,21 +30,25 @@ spire/using:
         spire_agent.md:
             frontMatter:
                 title: SPIRE Agent Configuration Reference
+                description: Command line options, agent.conf settings, and built-in plugins for SPIRE Agent
                 kind: spire-using
                 weight: 300
         spire_server.md:
             frontMatter:
                 title: SPIRE Server Configuration Reference
+                description: Command line options, server.conf settings, and built-in plugins for SPIRE Server
                 kind: spire-using
                 weight: 400
         telemetry_config.md:
             frontMatter:
                 title: SPIRE Telemetry Configuration
+                description: Configure SPIRE Agent and Server metrics output to supported sinks
                 kind: spire-using
                 weight: 500
         scaling_spire.md:
             frontMatter:
                 title: Scaling SPIRE
+                description: Supported SPIRE topologies, identity federation, and sizing considerations
                 kind: spire-using
                 weight: 700
                 aliases:
