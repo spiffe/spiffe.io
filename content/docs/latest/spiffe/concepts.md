@@ -1,7 +1,7 @@
 ---
 title: SPIFFE Concepts
 short: Concepts
-weight: 20
+weight: 200
 kind: spiffe
 aliases:
     - /spiffe/concepts

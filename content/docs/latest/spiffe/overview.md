@@ -3,7 +3,7 @@ title: SPIFFE Overview
 short: Overview
 description: An overview of the SPIFFE specification
 kind: spiffe
-weight: 10
+weight: 100
 aliases:
     - /docs/latest
     - /spiffe
