@@ -12,6 +12,22 @@
 {{- $githubUrl       := $social.github }}
 {{- $stackUrl        := $social.stackoverflow }}
 {{- $youtubeUrl      := $social.youtube }}
+{{- $version         := index (split .File.Path "/") 1 -}}
+{{- $pageUrl         := .URL -}}
+
+
+{{ $spiffe          := where site.Pages ".Params.kind" "eq" "spiffe" }}
+
+{{ $spireUnderstand := where site.Pages ".Params.kind" "eq" "spire-understand" }}
+{{ $spireInstalling := where site.Pages ".Params.kind" "eq" "spire-installing" }}
+{{ $spireUsing      := where site.Pages ".Params.kind" "eq" "spire-using" }}
+{{ $spireDeveloping := where site.Pages ".Params.kind" "eq" "spire-developing" }}
+
+{{ $spireInt        := where site.Pages ".Params.kind" "eq" "spire-integrations" }}
+{{ $spireOIDC       := where site.Pages ".Params.kind" "eq" "spire-oidc" }}
+{{ $spireEnvoy      := where site.Pages ".Params.kind" "eq" "spire-envoy" }}
+{{ $spireLibraries  := where site.Pages ".Params.kind" "eq" "spire-integration-using" }}
+
 <nav class="navbar is-fixed-top is-light">
   <div class="container {{ if $isDocsPage }}is-fluid{{ end }} ">
     <div class="navbar-brand">
@@ -85,6 +101,46 @@
           </p>
         </div>
       </div>
+
+      {{- if $isDocsPage -}}
+        <div class="navbar-end is-hidden-tablet">
+
+          <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
+            SPIFFE
+          </span>
+    
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "section" $spiffe "pageUrl" $pageUrl "version" $version ) }}
+    
+          <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
+            SPIRE
+          </span>
+          
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Understand" "section" $spireUnderstand "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Installing" "section" $spireInstalling "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Using" "section" $spireUsing "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Developing" "section" $spireDeveloping "pageUrl" $pageUrl "version" $version ) }}
+          
+          <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
+            SPIRE Integrations
+          </span>
+          
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Overview" "section" $spireInt "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "OIDC Federation" "section" $spireOIDC "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "SPIRE and Envoy" "section" $spireEnvoy "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "SPIFFE Libraries" "section" $spireLibraries "pageUrl" $pageUrl "version" $version ) }}
+          
+          <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
+            Reference
+          </span>
+          
+          <a class="navbar-item" href="https://docs.google.com/document/d/1RZnBfj8I5xs8Yi_BPEKBRp0K3UnIJYTDg_31rfTt4j8/" target="_blank">
+            Design Document: SPIFFE Reference Implementation (SRI)
+          </a>
+    
+        </div>
+      {{- end -}}
+
     </div>
+    
   </div>
 </nav>
