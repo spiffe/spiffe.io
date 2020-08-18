@@ -23,7 +23,7 @@ spire = "**SPIRE**, the SPIFFE Runtime Environment, is an extensible system that
 
 [params.socialmedia]
 twitter       = "SPIFFEio"
-slack         = "https://slack.spiffe.io/"
+slack         = "https://spiffe.slack.com/"
 medium        = "https://blog.spiffe.io/"
 github        = "https://github.com/spiffe"
 stackoverflow = "https://stackoverflow.com/questions/tagged/spiffe"

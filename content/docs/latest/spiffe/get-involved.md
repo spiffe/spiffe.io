@@ -12,7 +12,7 @@ SPIFFE is guided by a small but very active community of passionate software eng
 
 ## Join the Community
 
-* **Slack** --- Most real-time discussions happen on SPIFFE's Slack channels at https://spiffe.slack.com. You can join [here](https://slack.spiffe.io/).
+* **Slack** --- Most real-time discussions happen on SPIFFE's Slack channels at https://spiffe.slack.com.
 
 * **Mailing lists** --- Announcements occur in the SPIFFE [Google Group](https://groups.google.com/a/spiffe.io/forum/#!forum/announce). There is also a [users](https://groups.google.com/a/spiffe.io/forum/#!forum/user-discussion) and [developers](https://groups.google.com/a/spiffe.io/forum/#!forum/dev-discussion) list.
 
