@@ -4,7 +4,7 @@ setup:
 	npm install
 
 serve: pull-external-content
-	HIDE_RELEASES=true hugo server \
+	HIDE_RELEASES=true BRANCH=local hugo server \
 		--buildDrafts \
 		--buildFuture \
 		--disableFastRender \
@@ -29,12 +29,12 @@ preview-build: pull-external-content
 		--baseURL $(DEPLOY_PRIME_URL)
 
 docker-serve: pull-external-content
-	docker run --rm -it -v $(PWD):/src -p 1313:1313 -e HIDE_RELEASES=true \
+	docker run --rm -it -v $(PWD):/src -p 1313:1313 -e BRANCH=local -e HIDE_RELEASES=true \
 		klakegg/hugo:${HUGO_VERSION}-ext \
 		server --buildDrafts --buildFuture
 
 docker-serve-with-releases: pull-external-content
-	docker run --rm -it -v $(PWD):/src -p 1313:1313 \
+	docker run --rm -it -v $(PWD):/src -p 1313:1313 -e BRANCH=local \
 		klakegg/hugo:${HUGO_VERSION}-ext \
 		server --buildDrafts --buildFuture
 
