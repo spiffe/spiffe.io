@@ -22,5 +22,10 @@
     {{- end -}}
     {{ partial "javascript.html" . }}
     {{ template "_internal/google_analytics_async.html" . }}
+<script>
+  ga('send', 'pageview', {
+    'Branch':  '{{ getenv "BRANCH" }}'
+  });
+</script>
   </body>
 </html>
