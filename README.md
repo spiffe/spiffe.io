@@ -11,31 +11,45 @@ The site is built using:
 
 ## Develop the site locally
 
-To develop the locally, you'll first need to install some assets (mostly Sass assets) using [npm](https://npmjs.org):
+### Using Docker
+
+This is the preferred way to run the website for local development. First, build the image by running:
+```shell
+make docker-build
+```
+And then serve the website:
+
+```shell
+make docker-serve
+```
+The website is now live and listening to changes in the content and the [external content descriptor file](./external.yaml) and will rebuild every time it detect a change in of them.
+
+You can also run the website with the list of SPIRE releases on the Downloads page:
+```shell
+make docker-serve-with-releases
+```
+
+The website will be available on http://localhost:1313.
+
+### Using your local environment
+
+To develop the site
+ locally, you'll first need to install some assets (mostly Sass assets) using [npm](https://npmjs.org):
 
 ```shell
 make setup
 ```
 
-With those assets in place, you can run the site locally using [Hugo](#hugo) or [Docker](#docker).
-
-### Hugo
-
 To run the site using Hugo, make sure it's [installed](https://gohugo.io/getting-started/installing/) and then run:
 
 ```shell
-make serve
+make serve # or make serve-with-releases
 ```
 
 > Check the `HUGO_VERSION` environment variable in the [`netlify.toml`](netlify.toml) configuration file to see which Hugo version is deemed canonical for the SPIFFE website. Any Hugo version at or after that version should work fine. If you plan on working on the Sass/CSS, make sure to install the "extended" version of Hugo with support for [Hugo Pipes](https://gohugo.io/hugo-pipes/), which processes the Sass in realtime.
 
-### Docker
+The website will be available on http://localhost:1313.
 
-If you have Docker installed, a convenient alternative to installing Hugo itself is to simply run:
-
-```shell
-make docker-serve
-```
 
 ## Publishing the site
 
