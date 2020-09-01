@@ -8,10 +8,10 @@ aliases:
     - /spire/concepts
 ---
 
-SPIRE is a production-ready implementation of the [SPIFFE APIs](/docs/latest/spiffe/overview/) that performs node and workload attestation in order to securely issue SVIDs to workloads, and verify the SVIDs of other workloads, based on a predefined set of conditions. 
+SPIRE is a production-ready implementation of the [SPIFFE APIs](/docs/latest/spiffe/overview/) that performs node and workload attestation in order to securely issue SVIDs to workloads, and verify the SVIDs of other workloads, based on a predefined set of conditions.
 
 {{< info >}}
-SPIRE is just one implementation of the SPIFFE specification. For a list of current implementations, see the [spiffe.io homepage](/). 
+SPIRE is just one implementation of the SPIFFE specification. For a list of current implementations, see the [spiffe.io homepage](/).
 {{< /info >}}
 
 This section describes the architecture and components of SPIRE, walks you through “a day in the life of” how SPIRE issues an identity to a workload, and looks at some basic SPIRE concepts.
@@ -64,32 +64,32 @@ You customize the agent’s behavior by configuring plugins and other configurat
 
 ## Custom Server and Agent Plugins
 
-You can create custom server and agent plugins for particular platforms and architectures for which SPIRE doesn’t include plugins. For example, you could create server and agent node attestors for an architecture other than those summarized under [Node Attestation](#node-attestation). Or you could create a custom datastore plugin to support a type of database SPIRE doesn’t currently support. Because SPIRE loads custom plugins at runtime, you need not recompile SPIRE in order to enable them. 
+You can create custom server and agent plugins for particular platforms and architectures for which SPIRE doesn’t include plugins. For example, you could create server and agent node attestors for an architecture other than those summarized under [Node Attestation](#node-attestation). Or you could create a custom keymanager plugin to handle private keys in a way SPIRE doesn’t currently support. Because SPIRE loads custom plugins at runtime, you do not need recompile SPIRE in order to enable them.
 
 For help creating custom server and agent plugins, see [SPIRE Plugin Development](https://github.com/spiffe/plugin-template/blob/master/SPIRE_PLUGIN_GUIDE.md). 
 
 # A Day in the Life of an SVID
 
-This section walks through a “day in the life” of how SPIRE issues an identity to a workload, from the time the agent starts up on a node to the point of a workload on the same node receiving a valid identity in the form of an X.509 SVID. Note that SVIDs in JWT format are handled differently. For the purposes of simple demonstration, the workload is running on AWS EC2. 
+This section walks through a “day in the life” of how SPIRE issues an identity to a workload, from the time the agent starts up on a node to the point of a workload on the same node receiving a valid identity in the form of an X.509 SVID. Note that SVIDs in JWT format are handled differently. For the purposes of simple demonstration, the workload is running on AWS EC2.
 
 1. The SPIRE Server starts up.  
 2. Unless the user has configured an UpstreamAuthority plugin, the server generates a self-signed certificate (a certificate signed with its own private key); the server will use this certificate to sign SVIDs for all the workloads in this server’s trust domain.
-3. If it’s the first time starting up, the server automatically generates a trust bundle, whose contents it stores in a datastore you specify in the datastore plugin -- described in the section "Built-in plugins" in the 
-[SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+3. If it’s the first time starting up, the server automatically generates a trust bundle, whose contents it stores in a sql datastore you specify in the datastore configuration -- described in the section "Built-in plugins" in the
+[Server plugin: DataStore sql](https://github.com/spiffe/spire/blob/master/doc/plugin_server_datastore_sql.md).
 4. The server turns on its registration API, to allow you to register workloads.  
 5. The SPIRE Agent starts up on the node that the workload is running on.  
 6. The agent performs node attestation, to prove to the server the identity of the node it is running on. For example, when running on an AWS EC2 Instance it would typically perform node attestation by supplying an [AWS Instance Identity Document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html) to the server.  
-7. The agent presents this proof of identity to the server over a TLS connection authenticated via the bootstrap bundle the agent is configured with. 
+7. The agent presents this proof of identity to the server over a TLS connection authenticated via the bootstrap bundle the agent is configured with.
 {{< warning >}}
-This bootstrap bundle is a default configuration, and should be replaced with customer-supplied credentials in production.     
+This bootstrap bundle is a default configuration, and should be replaced with customer-supplied credentials in production.
 {{< /warning >}}
-8. The server calls the AWS API to validate the proof.    
-9. AWS acknowledges the document is valid.    
-10. The server performs node resolution, to verify additional properties about the agent node and update its registration entries accordingly. For example, if the node was attested using an AWS Instance Identity Document, then the server would use a supplied set of AWS credentials to query the AWS control plane to retrieve additional metadata about the instance ID that the AWS Instance Identity Document verified.  
+8. The server calls the AWS API to validate the proof.
+9. AWS acknowledges the document is valid.
+10. The server performs node resolution, to verify additional properties about the agent node and update its registration entries accordingly. For example, if the node was attested using  Microsoft Azure Managed Service Identity (MSI). The resolver extracts the Tenant ID and Principal ID from the agent SPIFFE ID and uses the various Azure services to get information for building an additional set of selectors.
 11. The server issues an SVID to the agent, representing the identity of the agent itself.  
-12. The agent contacts the server (using its SVID as its TLS client certificate) to obtain the registration entries it is authorized for and to ask the server to sign workload SVIDs.  
+12. The agent contacts the server (using its SVID as its TLS client certificate) to obtain the registration entries it is authorized for and to ask the server to sign workload SVIDs.
 13. Now fully bootstrapped, the agent turns on the Workload API.  
-14. A workload calls the Workload API to request an SVID.   
+14. A workload calls the Workload API to request an SVID.
 15. The agent initiates the workload attestation process by calling its workload attestors, providing them with the process ID of the workload process.  
 16. Attestors use the process ID to discover additional information about the workload
 17. The attestors return the discovered information to agent in the form of selectors
@@ -101,9 +101,9 @@ This section looks at some basic concepts in SPIRE that we will refer to through
 
 ## Workload Registration
 
-In order for SPIRE to identify a workload, you must register the workload with the SPIRE Server, via registration entries. Workload registration tells SPIRE how to identify the workload and which SPIFFE ID to give it. 
+In order for SPIRE to identify a workload, you must register the workload with the SPIRE Server, via registration entries. Workload registration tells SPIRE how to identify the workload and which SPIFFE ID to give it.
 
-A registration entry maps an identity -- in the form of a SPIFFE ID -- to a set of properties known as selectors that the workload must possess in order to be issued a particular identity. During workload attestation, the agent uses these selector values to verify the workload’s identity. 
+A registration entry maps an identity -- in the form of a SPIFFE ID -- to a set of properties known as selectors that the workload must possess in order to be issued a particular identity. During workload attestation, the agent uses these selector values to verify the workload’s identity.
 
 Workload registration is covered in detail in the [SPIRE Documentation](/docs/latest/spire/using/registering/)
 
