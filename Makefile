@@ -28,15 +28,24 @@ preview-build: pull-external-content
 		--ignoreCache \
 		--baseURL $(DEPLOY_PRIME_URL)
 
-docker-serve: pull-external-content
-	docker run --rm -it -v $(PWD):/src -p 1313:1313 -e BRANCH=local -e HIDE_RELEASES=true \
-		klakegg/hugo:${HUGO_VERSION}-ext \
-		server --buildDrafts --buildFuture
+docker-build:
+	docker build . \
+		--rm \
+		-t spiffe.io:latest \
+		-f Dockerfile.dev
 
-docker-serve-with-releases: pull-external-content
-	docker run --rm -it -v $(PWD):/src -p 1313:1313 -e BRANCH=local \
-		klakegg/hugo:${HUGO_VERSION}-ext \
-		server --buildDrafts --buildFuture
+docker-serve:
+	docker run --rm -it \
+		-v $(PWD):/app \
+		-p 1313:1313 \
+		-e HIDE_RELEASES=true \
+		spiffe.io:latest
+
+docker-serve-with-releases:
+	docker run --rm -it \
+		-v $(PWD):/app \
+		-p 1313:1313 \
+		spiffe.io:latest
 
 pull-external-content:
 	python ./pull_external.py
