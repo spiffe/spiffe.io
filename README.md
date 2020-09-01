@@ -22,7 +22,7 @@ And then serve the website:
 ```shell
 make docker-serve
 ```
-The website is now live and listening to changes in the content and the [external content descriptor file](./external.yaml) and will rebuild every time it detect a change in of them.
+The website is now live and listening to changes in any of the markdown files or the [external content descriptor file](./external.yaml), and it will rebuild and reload the page every time it detect changes.
 
 You can also run the website with the list of SPIRE releases on the Downloads page:
 ```shell
