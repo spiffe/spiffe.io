@@ -20,15 +20,15 @@ This section describes the architecture and components of SPIRE, walks you throu
 
 A SPIRE deployment is composed of a SPIRE Server and one or more SPIRE Agents. A server acts as a signing authority for identities issued to a set of workloads via agents. It also maintains a registry of workload identities and the conditions that must be verified in order for those identities to be issued. Agents expose the SPIFFE Workload API locally to workloads, and must be installed on each node on which a workload is running. 
 
-{{< figure src="/img/server_and_agent.png" width="70" caption="Server and Agent" >}}
+{{< figure src="/img/server_and_agent.png" width="80" caption="Server and Agent" >}}
 
 ## All about the Server
 
-A SPIRE Server is responsible for managing and issuing all identities in its configured SPIFFE trust domain. It stores [registration entries](#workload-registration) (which specify the [selectors](#selectors) that determine the conditions under which a particular SPIFFE ID should be issued) and signing keys, uses [node attestation](#node-attestation) to authenticate agents' identities automatically, and creates SVIDs for workloads when requested by an authenticated agent.
+A SPIRE Server is responsible for managing and issuing all identities in its configured SPIFFE trust domain. It stores [registration entries](#workload-registration) (which specify the selectors that determine the conditions under which a particular SPIFFE ID should be issued) and signing keys, uses [node attestation](#node-attestation) to authenticate agents' identities automatically, and creates SVIDs for workloads when requested by an authenticated agent.
 
-{{< figure src="/img/server.png" width="70" caption="The SPIRE Server" >}}
+{{< figure src="/img/server.png" width="80" caption="The SPIRE Server" >}}
 
-The behavior of the server determined is through a series of plugins. SPIRE comes with several plugins included, but additional plugins can be built to extend SPIRE for specific use cases. Types of plugins include:
+The behavior of the server is determined through a series of plugins. SPIRE comes with several plugins included, but additional plugins can be built to extend SPIRE for specific use cases. Types of plugins include:
 
 **Node attestor plugins** which, together with agent node attestors, verify the identity of the node the agent is running on. See the section [Node Attestation](#node-attestation) for more information.
 
@@ -42,7 +42,7 @@ The behavior of the server determined is through a series of plugins. SPIRE come
 
 You customize the server’s behavior by configuring plugins and various other configuration variables. See the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) for details. 
 
-## All about the Agent
+## All About the Agent
 
 A SPIRE Agent runs on every node on which an identified workload runs. The agent:
 
@@ -50,7 +50,7 @@ A SPIRE Agent runs on every node on which an identified workload runs. The agent
 * exposes the SPIFFE Workload API to workloads on node and attests the identity of workloads that call it  
 * provides the identified workloads with their SVIDs
 
-{{< figure src="/img/agent.png" width="70" caption="The SPIRE Agent" >}}
+{{< figure src="/img/agent.png" width="80" caption="The SPIRE Agent" >}}
 
 The agent’s main components include:
 
@@ -139,7 +139,7 @@ Node selectors are not required for node attestation unless you are [mapping wor
 
 The following diagram illustrates the steps in node attestation. In this illustration, the underlying platform is AWS:
 
-{{< figure src="/img/node_attestation.png" width="50" caption="Node Attestation" >}}
+{{< figure src="/img/node_attestation.png" width="80" caption="Node Attestation" >}}
 
 #### Summary of Steps: Node Attestation
 
@@ -160,13 +160,9 @@ Agents and servers interrogate the underlying platform through their respective 
 
 For cases where there is no platform that can directly identify a node, SPIRE includes node attestors for attesting:
 
-with server-generated join tokens
+**with server-generated join tokens** -- A join token is a pre-shared key between a SPIRE Server and Agent. The server can generate join tokens once installed that can be used to verify an agent when it starts. To help protect against misuse, join tokens expire immediately after use.
 
-A join token is a pre-shared key between a SPIRE Server and Agent. The server can generate join tokens once installed that can be used to verify an agent when it starts. To help protect against misuse, join tokens expire immediately after use.
-
-using an existing X.509 certificate
-
-For information on configuring node attestors, see the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [SPIRE Agent Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
+**using an existing X.509 certificate** -- For information on configuring node attestors, see the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [SPIRE Agent Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
 
 #### Node Resolution
 
@@ -194,7 +190,7 @@ While both agents and servers play a role in node attestation, only agents are i
 
 The following diagram illustrates the steps in workload attestation:
 
-{{< figure src="/img/workload_attestation.png" width="60" caption="Workload Attestation" >}}
+{{< figure src="/img/workload_attestation.png" width="80" caption="Workload Attestation" >}}
 
 #### Summary of Steps: Workload Attestation
 
