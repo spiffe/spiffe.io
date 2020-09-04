@@ -18,7 +18,7 @@ githuburl = "https://github.com/spiffe/spiffe.io/tree/master"
 
 [params.home]
 acronym     = "**S**ecure **P**roduction **I**dentity **F**ramework **f**or **E**veryone"
-description = "Production identity control plane for distributed systems. "
+description = "A universal identity control plane for distributed systems. "
 
 [params.home.whatis]
 spiffe = "**SPIFFE**, the Secure Production Identity Framework For Everyone, provides a secure identity, in the form of a specially crafted X.509 certificate, to every workload in a modern production environment. SPIFFE removes the need for application-level authentication and complex network-level ACL configuration. "
