@@ -6,6 +6,8 @@ verify_ssl = true
 [dev-packages]
 flake8 = "*"
 black = "*"
+watchdog = "*"
+argh = "*"
 
 [packages]
 pyyaml = "~=5.3"

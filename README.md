@@ -13,42 +13,47 @@ The site is built using:
 
 ### Using Docker
 
-This is the preferred way to run the website for local development. First, build the image by running:
+This is the preferred way to run the website for local development. 
 ```shell
-make docker-build
+$ make docker-serve
 ```
-And then serve the website:
+This command will create a Docker image with all the tools you need to run the website. Note that some of the steps might ask you to run additional commands, please ignore them.
 
-```shell
-make docker-serve
-```
-The website is now live and listening to changes in any of the markdown files or the [external content descriptor file](./external.yaml), and it will rebuild and reload the page every time it detects changes.
+Once the image is created, it will run the website on development mode while listening to changes in any of the markdown files or the [external content descriptor file](./external.yaml), rebuilding the site and reloading the website in your browser every time it detects changes.
 
 You can also run the website with the list of SPIRE releases on the Downloads page:
 ```shell
-make docker-serve-with-releases
+$ make docker-serve-with-releases
 ```
 
 The website will be available on http://localhost:1313.
 
 ### Using your local environment
 
-To develop the site
- locally, you'll first need to install some assets (mostly Sass assets) using [npm](https://npmjs.org):
+Alternatively, you can run the website on development mode using the tools installed in your operating system.
 
+You'll need:
+* [Hugo](https://gohugo.io/) (use [HUGO VERSION](./netlify.toml), or higher)
+* [Python](https://www.python.org/) (use [recommended version](./.python-version), or higher. [Pyenv](https://github.com/pyenv/pyenv) is recommended for version management)
+* [Pipenv](https://pipenv.pypa.io/)
+* [npm](https://npmjs.org)
+
+> If you plan on working on the Sass/CSS, make sure to install the "extended" version of Hugo with support for [Hugo Pipes](https://gohugo.io/hugo-pipes/), which processes the Sass in realtime.
+
+
+First, you will have to install the dependencies running:
 ```shell
-make setup
+$ make setup
 ```
 
-To run the site using Hugo, make sure it's [installed](https://gohugo.io/getting-started/installing/) and then run:
-
+Then you can run the website:
 ```shell
-make serve # or make serve-with-releases
+$ make serve # or make serve-with-releases
 ```
 
-> Check the `HUGO_VERSION` environment variable in the [`netlify.toml`](netlify.toml) configuration file to see which Hugo version is deemed canonical for the SPIFFE website. Any Hugo version at or after that version should work fine. If you plan on working on the Sass/CSS, make sure to install the "extended" version of Hugo with support for [Hugo Pipes](https://gohugo.io/hugo-pipes/), which processes the Sass in realtime.
+The website will be available on http://localhost:1313 and will be listening to changes in any of the markdown files or the [external content descriptor file](./external.yaml), rebuilding the site and reloading the website in your browser every time it detects changes.
 
-The website will be available on http://localhost:1313.
+
 
 
 ## Publishing the site

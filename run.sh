@@ -7,11 +7,7 @@ npm install
 pipenv run python pull_external.py
 
 # Runs Hugo server watching for file changes and rebuild
-hugo server --buildDrafts --buildFuture &
+hugo server "$@" &
 
 # Watches for changes in the external file descriptor
-inotifywait -r -m -e modify external.yaml |
-    while read path _ file; do 
-        echo "----- Pulling in external content. Please wait. -----"
-        pipenv run python pull_external.py
-    done
+pipenv run watchmedo shell-command --wait --pattern="./external.yaml" --command="pipenv run python pull_external.py"
