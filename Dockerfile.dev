@@ -8,19 +8,19 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-# Adds only python and dependencies files into the image so we don't need to rebuild on content changes
-ADD [".python-version", "Pipfile*", "run.sh", "/app/"]
-
 # Installs Pipenv and extra dependencies
-RUN apt update && apt install pipenv curl zlib1g-dev libssl-dev inotify-tools -y
+RUN apt update && apt install pipenv curl zlib1g-dev libssl-dev -y
 
 # Installs Pyenv
 ENV PATH="/root/.pyenv/bin:${PATH}"
 RUN curl https://pyenv.run | bash
 RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
+# Adds only python and dependencies files into the image so we don't need to rebuild on content changes
+ADD [".python-version", "Pipfile*", "run.sh", "/app/"]
+
 # Installs Python and dependencies
-RUN pyenv install && pipenv install
+RUN pyenv install && pipenv install --dev
 
 VOLUME ["/app"]
 

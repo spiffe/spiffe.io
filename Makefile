@@ -1,18 +1,19 @@
 HUGO_VERSION ?= 0.68.3
 
 setup:
+	pipenv install --dev
 	npm install
 
-serve: pull-external-content
-	HIDE_RELEASES=true hugo server \
+serve:
+	HIDE_RELEASES=true bash run.sh \
 		--buildDrafts \
 		--buildFuture \
 		--disableFastRender \
 		--ignoreCache \
 		--noHTTPCache
 
-serve-with-releases: pull-external-content
-	hugo server \
+serve-with-releases:
+	bash run.sh \
 		--buildDrafts \
 		--buildFuture \
 		--disableFastRender
@@ -34,14 +35,14 @@ docker-build:
 		-t spiffe.io:latest \
 		-f Dockerfile.dev
 
-docker-serve:
+docker-serve: docker-build
 	docker run --rm -it \
 		-v $(PWD):/app \
 		-p 1313:1313 \
 		-e HIDE_RELEASES=true \
 		spiffe.io:latest
 
-docker-serve-with-releases:
+docker-serve-with-releases: docker-build
 	docker run --rm -it \
 		-v $(PWD):/app \
 		-p 1313:1313 \
