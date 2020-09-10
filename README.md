@@ -27,7 +27,7 @@ Web Server is available at //localhost:1313/ (bind address 0.0.0.0)
 ```
 Open [`http://localhost:1313`](http://localhost:1313) in your browser to view your local version of the spiffe.io website.
 
-The website is now running on development mode, while listening for changes in any of the Markdown files or the [external content descriptor file](./external.yaml), rebuilding the site and reloading the website in your browser every time it detects changes.
+The website is now running in development mode, meaning that any changes in the Markdown files or the [external content descriptor file](./external.yaml) trigger a rebuild of the site. After the rebuild, the site is reloaded in your browser.
 
 You can also run the website with a list of releases under the "SPIRE Releases" heading on the Downloads page (`content/downloads/_index.md`):
 ```shell
@@ -38,7 +38,7 @@ The default of `make docker-serve` omits the live SPIRE releases as a workaround
 
 ### Using your local environment
 
-Alternatively, you can run the website on development mode using the tools installed in your operating system.
+Alternatively, you can run the website in development mode using the tools installed in your operating system.
 
 You'll need:
 * [Hugo](https://gohugo.io/) (use [HUGO VERSION](./netlify.toml), or higher)
@@ -64,10 +64,7 @@ Hugo might take a few seconds to build and serve the website. The following line
 Web Server is available at //localhost:1313/ (bind address 0.0.0.0)
 ```
 
-The website is now available at [`http://localhost:1313`](http://localhost:1313) and will be listening for changes in any of the markdown files or the [external content descriptor file](./external.yaml), rebuilding the site and reloading the website in your browser every time it detects changes.
-
-
-
+The website is now available at [`http://localhost:1313`](http://localhost:1313). Changes in the Markdown files or the [external content descriptor file](./external.yaml) trigger a rebuild of the site. After the rebuild, the site is reloaded in your browser.
 
 ## Publishing the site
 
