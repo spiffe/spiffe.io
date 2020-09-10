@@ -13,20 +13,28 @@ The site is built using:
 
 ### Using Docker
 
-This is the preferred way to run the website for local development. 
+This is the preferred way to run the website for local development as Docker is the only tool you need to install and tool dependencies are managed better in the Docker method.
+
+Ensure that Docker is running and then type:
 ```shell
 $ make docker-serve
 ```
-This command will create a Docker image with all the tools you need to run the website. Note that some of the steps might ask you to run additional commands, please ignore them.
+This command takes a few minutes to create a Docker image with all the tools you need to run the website. After that, it will serve the website locally. Note that some of the steps might ask you to run additional commands, please ignore them.
 
-Once the image is created, it will run the website on development mode while listening to changes in any of the markdown files or the [external content descriptor file](./external.yaml), rebuilding the site and reloading the website in your browser every time it detects changes.
+The following line indicates that the image has been created and the website is ready:
+```
+Web Server is available at //localhost:1313/ (bind address 0.0.0.0)
+```
+Open [`http://localhost:1313`](http://localhost:1313) in your browser to view your local version of the spiffe.io website.
 
-You can also run the website with the list of SPIRE releases on the Downloads page:
+The website is now running on development mode, while listening for changes in any of the Markdown files or the [external content descriptor file](./external.yaml), rebuilding the site and reloading the website in your browser every time it detects changes.
+
+You can also run the website with a list of releases under the "SPIRE Releases" heading on the Downloads page (`content/downloads/_index.md`):
 ```shell
 $ make docker-serve-with-releases
 ```
 
-The website will be available on http://localhost:1313.
+The default of `make docker-serve` omits the live SPIRE releases as a workaround to avoid a GitHub rate limiting issue as described in [issue 93](https://github.com/spiffe/spiffe.io/issues/93).
 
 ### Using your local environment
 
@@ -46,12 +54,17 @@ First, you will have to install the dependencies running:
 $ make setup
 ```
 
-Then you can run the website:
+Then you can run the website by typing:
 ```shell
 $ make serve # or make serve-with-releases
 ```
 
-The website will be available on http://localhost:1313 and will be listening to changes in any of the markdown files or the [external content descriptor file](./external.yaml), rebuilding the site and reloading the website in your browser every time it detects changes.
+Hugo might take a few seconds to build and serve the website. The following line indicates that the website is ready:
+```
+Web Server is available at //localhost:1313/ (bind address 0.0.0.0)
+```
+
+The website is now available at [`http://localhost:1313`](http://localhost:1313) and will be listening for changes in any of the markdown files or the [external content descriptor file](./external.yaml), rebuilding the site and reloading the website in your browser every time it detects changes.
 
 
 
