@@ -167,11 +167,11 @@ In order to enable SPIRE to perform workload attestation -- which allows the age
 
 # Configure a Workload Container to Access SPIRE
 
-In this step, you configure a workload container to access SPIRE. Specifically, you are configuring the workload container to access the Workload API UNIX domain socket.
+In this section, you configure a workload container to access SPIRE. Specifically, you are configuring the workload container to access the Workload API UNIX domain socket.
 
 The **client-deployment.yaml** file configures a no-op container using the **spire-k8s** docker image used for the server and agent. Examine the `volumeMounts` and `volumes configuration` stanzas to see how the UNIX domain `agent.sock` is bound in.
 
-You can test that the agent socket is accessible from an application container by issuing the following sequence of commands:
+You can test that the agent socket is accessible from an application container by issuing the following commands:
 
 1. Apply the deployment file:
 
@@ -179,32 +179,24 @@ You can test that the agent socket is accessible from an application container b
     $ kubectl apply -f client-deployment.yaml
     ```
 
-2. Obtain the pod hash for the workload container pod:
+2. Start a shell connection to the running pod:
 
     ```bash
-    $ kubectl get pods
-
-    NAME                      READY   STATUS    RESTARTS   AGE
-    client-6f9659bd44-m98vv   1/1     Running   0          18s
+    $ kubectl exec -it $(kubectl get pods -o=jsonpath='{.items[0].metadata.name}' \
+       -l app=client)  -- /bin/sh
     ```
 
-3. Obtain a shell connection to the running pod:
+3. In the shell connection you just created, verify that the container can access the socket:
 
     ```bash
-    $ kubectl exec -it client-6f9659bd44-m98vv -- /bin/sh
-    ```
-
-4. Verify the container can access the socket:
-
-    ```bash
-    /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
+    $ /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
     ```
 
    If the agent is not running, you’ll see an error message such as “no such file or directory" or “connection refused”.
 
    If the agent is running, you’ll see a list of SVIDs.
 
-5. Exit from `/bin/sh` on the client container:
+4. Exit from `/bin/sh` on the client container:
 
     ```bash
     $ exit
