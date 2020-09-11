@@ -50,10 +50,18 @@ $light-separator: #e2e2e2
   background-color: inherit
 
 .hero-body
-  padding: 0
+  padding-bottom: 4em !important
+  padding-top: 4em !important
   .title
      margin-bottom: 0
      line-height: 1.2
+  .project-title
+     padding-bottom: 30px
+     color: lighten($dark, 50%)
+  .buttons
+    margin-top: 20px
+    .button .is-dark
+      background-color: lighten($dark, 50%)
 
 figure
   img
@@ -136,6 +144,15 @@ figure
 
     p a, li a
       font-weight: 600
+
+body.is-home-page
+  section
+    &.use-cases
+      p
+        &.image
+          width: 75%
+          margin: auto
+          padding-bottom: 1em
 
 .is-home-desktop-logo
   width: 50%
