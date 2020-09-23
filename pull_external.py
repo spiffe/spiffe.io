@@ -14,6 +14,8 @@ RE_EXTRACT_LINKS: Pattern[str] = re.compile(
     "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?!http)(?!#)\S+)\)"
 )
 
+# holds the git URL and the new path for links between pulled in files
+internal_links: dict = {}
 
 def main():
     os.system("rm -rf ./{}/".format(CHECKOUT_DIR))
@@ -24,11 +26,9 @@ def main():
     content: dict
     for directory, content in yaml_external.items():
         directories_to_create.append(directory)
-        print("Create {} directory...".format(directory))
 
         repo = _get_repo_url_from_pull_url(content.get("source"))
         repos_to_clone.add(repo)
-        print("Pull repo {}...".format(repo))
 
     _clone_repos(repos_to_clone)
     # pull_directories(yaml_external)
@@ -122,13 +122,23 @@ def _clone_repos(repos: List[str]):
 def _pull_files(yaml_external: dict) -> List[str]:
     generated_files: List[str] = []
     content: dict
-    for target_dir, content in yaml_external.items():
-        pull_files: List[str] = content.get("pullFiles", None)
-        if not pull_files:
-            continue
 
+    # collects all the URLs and new file paths for the pulled in files.
+    # we need to do this as a prep step before processing each file
+    # so we can redirect internally
+    for target_dir, content in yaml_external.items():
+        for rel_file in content.get("pullFiles", []):
+            full_url = "{}/blob/master/{}".format(content.get('source'), rel_file)
+            file_name = os.path.basename(rel_file)
+            rel_path_to_target_file = "".join(os.path.join(target_dir, file_name).split('.')[:-1])
+            internal_links[full_url] = "/docs/latest/{}/".format(rel_path_to_target_file)
+
+
+    for target_dir, content in yaml_external.items():
+        pull_files: List[str] = content.get("pullFiles", [])
         repo_owner, repo_name = _get_canonical_repo_from_url(content.get("source"))
 
+        # processes and copies content from the git checkout to the desired location
         for rel_file in pull_files:
             filename = os.path.basename(rel_file)
             abs_path_to_source_file = os.path.abspath(
@@ -198,7 +208,7 @@ def _copy_file(
 
         final_content = _process_content(
             content=content,
-            abs_path_source_dir=abs_path_to_repo_checkout_dir,
+            abs_path_to_source_dir=abs_path_to_repo_checkout_dir,
             rel_path_to_source_file=rel_path_to_source_file,
             repo_owner=repo_owner,
             repo_name=repo_name,
@@ -210,7 +220,7 @@ def _copy_file(
 
 def _process_content(
     content: str,
-    abs_path_source_dir: str,
+    abs_path_to_source_dir: str,
     rel_path_to_source_file: str,
     repo_owner: str,
     repo_name: str,
@@ -220,7 +230,7 @@ def _process_content(
         alt = m.group("alt")
         new_url = _copy_asset(
             url_path=url,
-            abs_path_checkout_dir=abs_path_source_dir,
+            abs_path_to_source_dir=abs_path_to_source_dir,
             rel_path_to_source_file=rel_path_to_source_file,
             repo_owner=repo_owner,
             repo_name=repo_name,
@@ -241,9 +251,13 @@ def _process_content(
         elif rel == "./":
             rel_url = os.path.join(os.path.dirname(rel_path_to_source_file), url)
 
-        new_url = "https://github.com/{}/{}/tree/master/{}".format(
+        new_url = "https://github.com/{}/{}/blob/master/{}".format(
             repo_owner, repo_name, rel_url
         )
+        # if this file has been already pulled in, we can use the new internal URL
+        # instead of pointing to the original github location
+        if new_url in internal_links:
+            new_url = internal_links[new_url]
 
         new_link = "[{}]({})".format(alt, new_url)
         return new_link
@@ -256,7 +270,7 @@ def _process_content(
 
 def _copy_asset(
     url_path: str,
-    abs_path_checkout_dir: str,
+    abs_path_to_source_dir: str,
     rel_path_to_source_file: str,
     repo_owner: str,
     repo_name: str,
@@ -268,7 +282,7 @@ def _copy_asset(
         rel_path_to_source_dir = os.path.dirname(rel_path_to_source_file)
         rel_path_to_asset = os.path.join(rel_path_to_source_dir, url_path)
 
-    path_to_source_asset = os.path.join(abs_path_checkout_dir, rel_path_to_asset)
+    path_to_source_asset = os.path.join(abs_path_to_source_dir, rel_path_to_asset)
     path_to_target_asset = Path(
         os.path.join("./static/img/checkouts", repo_owner, repo_name, rel_path_to_asset)
     )
