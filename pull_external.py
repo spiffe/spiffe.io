@@ -122,20 +122,21 @@ def _clone_repos(repos: List[str]):
 def _pull_files(yaml_external: dict) -> List[str]:
     generated_files: List[str] = []
     content: dict
+
+    # collects all the URLs and new file paths for the pulled in files.
+    # we need to do this as a prep step before processing each file
+    # so we can redirect internally
     for target_dir, content in yaml_external.items():
-        pull_files: List[str] = content.get("pullFiles", None)
-        if not pull_files:
-            continue
-
-        repo_owner, repo_name = _get_canonical_repo_from_url(content.get("source"))
-
-        # collects all the URLs and new file paths for the pulled in files.
-        # we need to do this as a prep step before processing each file
-        for rel_file in pull_files:
+        for rel_file in content.get("pullFiles", []):
             full_url = "{}/blob/master/{}".format(content.get('source'), rel_file)
             file_name = os.path.basename(rel_file)
             rel_path_to_target_file = "".join(os.path.join(target_dir, file_name).split('.')[:-1])
-            internal_links[full_url] = "/docs/latest/{}".format(rel_path_to_target_file)
+            internal_links[full_url] = "/docs/latest/{}/".format(rel_path_to_target_file)
+
+
+    for target_dir, content in yaml_external.items():
+        pull_files: List[str] = content.get("pullFiles", [])
+        repo_owner, repo_name = _get_canonical_repo_from_url(content.get("source"))
 
         # processes and copies content from the git checkout to the desired location
         for rel_file in pull_files:
