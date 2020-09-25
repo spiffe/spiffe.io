@@ -103,7 +103,7 @@ When the server sees the SPIFFE ID of the agent's own SVID, he fetches and signs
 1. Fetche all registration entries that have the agent's SPIFFE ID set as parentID
 2. Also recursively fetch all decendants of the resulting list of SPIFFE IDs.
 3. Determin from the server's database what additional properaties the specific agent is associated with.
-4. Fetch any SPIFFE ID that &mdash; at least &mdash; declares selectors on all of those additional properties. Don't decend on their children, though.
+4. Fetch any SPIFFE ID that &mdash; at least &mdash; declares one selecto on any of those additional properties. Don't decend on their children, though.
 
 Those are the workload entries signed and returned to the agent.
 
