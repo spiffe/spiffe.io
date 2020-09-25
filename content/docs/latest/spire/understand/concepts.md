@@ -100,7 +100,7 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 
 ## Authorized Registration Entries
 
-The server sends authorized registration entries to the agent. The correpsonding datastore query is construed as follows:
+The server only sends authorized registration entries to the agent. The correpsonding datastore query is construed as follows:
 
 1. Fetch all registration entries that have the agent's SPIFFE ID set as parentID.
 2. Determine from the server's database what additional properties the specific agent is associated with.
