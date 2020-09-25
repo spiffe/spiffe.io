@@ -92,7 +92,7 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 14. Now fully bootstrapped, the agent starts listening on the Workload API socket.  
 15. A workload calls the Workload API to request an SVID.
 16. The agent initiates the workload attestation process by calling its workload attestors, providing them with the process ID of the workload process.  
-17. Attestors use the process ID to discover additional information about the workload.
+17. Attestors use kernel and userspace calls to discover additional bits of information ("selectors") about the workload.
 18. The attestors return the discovered information to agent in the form of selectors.
 19. The agent determines the workload's identity by comparing discovered selectors to registration entries, and returns the correct SVID (already in its cache) to the workload when the workload asks for it.  
 
