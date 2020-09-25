@@ -96,7 +96,7 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 18. The attestors return the discovered information to agent in the form of selectors.
 19. The agent determines the workload's identity by comparing discovered selectors to registration entries, and returns the correct SVID (already in stock) to the workload when the workload asks for it.  
 
-## Authorized registration entries
+## Authorized Registration Entries
 
 When the server sees the SPIFFE ID of the agent's own SVID, he fetches and signs all registration entries, for with the agent's SPIFFE ID is authorized. The selection query is construed as follows:
 
