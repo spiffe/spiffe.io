@@ -88,13 +88,25 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 10. The server performs node resolution, to verify additional properties about the agent node and update its registration entries accordingly. For example, if the node was attested using  Microsoft Azure Managed Service Identity (MSI). The resolver extracts the Tenant ID and Principal ID from the agent SPIFFE ID and uses the various Azure services to get information for building an additional set of selectors.
 11. The server issues an SVID to the agent, representing the identity of the agent itself.  
 12. The agent contacts the server (using its SVID as its TLS client certificate) to obtain the registration entries it is authorized for and to ask the server to sign workload SVIDs.
-13. The server sees the SPIFFE ID of the agent's own SVID (the one used as it's TLS client certificate), and fetches all registration entries that have the agent's SPIFFE ID set as parentID and also recursively decends to fetch all entries that decend from the agent's SPIFFE ID. Those are the workload entries signed and return to the agent.
+13. The server sees the SPIFFE ID of the agent's own SVID (the one used as it's TLS client certificate), and fetches all [authorized registration entries](#authorized-registration-entries). All Those are the workload entries signed and return to the agent.
 14. Now fully bootstrapped, the agent turns on the Workload API.  
 15. A workload calls the Workload API to request an SVID.
 16. The agent initiates the workload attestation process by calling its workload attestors, providing them with the process ID of the workload process.  
 17. Attestors use the process ID to discover additional information about the workload
 18. The attestors return the discovered information to agent in the form of selectors
 19. The agent determines the workload's identity by comparing discovered selectors to registration entries, and returns the correct SVID (already in stock) to the workload when the workload asks for it.  
+
+## Authorized registration entries
+
+When the server sees the SPIFFE ID of the agent's own SVID, he fetches and signs all registration entries, for with the agent's SPIFFE ID is authorized. The selection query is construed as follows:
+
+1. Fetche all registration entries that have the agent's SPIFFE ID set as parentID
+2. Also recursively fetch all decendants of the resulting list of SPIFFE IDs.
+3. Determin from the server's database what additional properaties the specific agent is associated with.
+4. Fetch any SPIFFE ID that &mdash; at least &mdash; declares selectors on all of those additional properties. Don't decend on their children, though.
+
+Those are the workload entries signed and returned to the agent.
+
 
 # SPIRE Concepts
 
