@@ -88,13 +88,14 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 10. The server performs node resolution, to verify additional properties about the agent node and update its registration entries accordingly. For example, if the node was attested using  Microsoft Azure Managed Service Identity (MSI). The resolver extracts the Tenant ID and Principal ID from the agent SPIFFE ID and uses the various Azure services to get information for building an additional set of selectors.
 11. The server issues an SVID to the agent, representing the identity of the agent itself.  
 12. The agent contacts the server (using its SVID as its TLS client certificate) to obtain the registration entries it is authorized for.
-13. The server sees the SPIFFE ID of the agent's own SVID (the one used as its TLS client certificate), and fetches all [authorized registration entries](#authorized-registration-entries) and they return to the agent.
-14. Now fully bootstrapped, the agent starts listening on the Workload API socket.  
-15. A workload calls the Workload API to request an SVID.
-16. The agent initiates the workload attestation process by calling its workload attestors, providing them with the process ID of the workload process.  
-17. Attestors use kernel and userspace calls to discover additional bits of information ("selectors") about the workload.
-18. The attestors return the discovered information to agent in the form of selectors.
-19. The agent determines the workload's identity by comparing discovered selectors to registration entries, and returns the correct SVID (already in its cache) to the workload when the workload asks for it.  
+13. The server authenticates the agent using the agent's SVID. The agent, in turn, completes the mTLS handshake and authenticates the server using the bootstrap bundle
+14. The server then fetches all [authorized registration entries](#authorized-registration-entries) from its data store and sends them to the agent.
+15. Now fully bootstrapped, the agent starts listening on the Workload API socket.  
+16. A workload calls the Workload API to request an SVID.
+17. The agent initiates the workload attestation process by calling its workload attestors, providing them with the process ID of the workload process.  
+18. Attestors use kernel and userspace calls to discover additional bits of information ("selectors") about the workload.
+19. The attestors return the discovered information to agent in the form of selectors.
+20. The agent determines the workload's identity by comparing discovered selectors to registration entries, and returns the correct SVID (already in its cache) to the workload when the workload asks for it.  
 
 ## Authorized Registration Entries
 
