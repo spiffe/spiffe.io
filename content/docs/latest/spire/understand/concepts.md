@@ -87,7 +87,7 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 9. AWS acknowledges the document is valid.
 10. The server performs node resolution, to verify additional properties about the agent node and update its registration entries accordingly. For example, if the node was attested using  Microsoft Azure Managed Service Identity (MSI). The resolver extracts the Tenant ID and Principal ID from the agent SPIFFE ID and uses the various Azure services to get information for building an additional set of selectors.
 11. The server issues an SVID to the agent, representing the identity of the agent itself.  
-12. The agent contacts the server (using its SVID as its TLS client certificate) to obtain the registration entries it is authorized for and to ask the server to sign workload SVIDs.
+12. The agent contacts the server (using its SVID as its TLS client certificate) to obtain the registration entries it is authorized for.
 13. The server sees the SPIFFE ID of the agent's own SVID (the one used as its TLS client certificate), and fetches all [authorized registration entries](#authorized-registration-entries) and they return to the agent.
 14. Now fully bootstrapped, the agent turns on the Workload API.  
 15. A workload calls the Workload API to request an SVID.
