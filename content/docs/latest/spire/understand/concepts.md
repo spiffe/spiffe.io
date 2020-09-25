@@ -101,9 +101,11 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 When the server sees the SPIFFE ID of the agent's own SVID, he fetches and signs all registration entries, for with the agent's SPIFFE ID is authorized. The selection query is construed as follows:
 
 1. Fetch all registration entries that have the agent's SPIFFE ID set as parentID
-2. Determin from the server's database what additional properaties the specific agent is associated with.
-3. Fetch any SPIFFE ID that &mdash; at least &mdash; declares one selection on any of those additional properties.
+2. Determin from the server's database what additional properties the specific agent is associated with.
+3. Fetch any SPIFFE ID that &mdash; at least &mdash; declares one selection on any of those additional properties. \*
 4. Also recursively fetch all decendants of the resulting list of SPIFFE IDs.
+
+\* see also [mapping workloads to multiple nodes](https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes).
 
 Those are the workload entries signed and returned to the agent.
 
