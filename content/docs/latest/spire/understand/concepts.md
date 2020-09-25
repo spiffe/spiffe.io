@@ -98,7 +98,7 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 
 ## Authorized Registration Entries
 
-When the server sees the SPIFFE ID of the agent's own SVID, the server fetches all registration entries, for with the agent's SPIFFE ID is authorized. The selection query is construed as follows:
+The server sends authorized registration entries to the agent. The correpsonding datastore query is construed as follows:
 
 1. Fetch all registration entries that have the agent's SPIFFE ID set as parentID.
 2. Determine from the server's database what additional properties the specific agent is associated with.
@@ -107,7 +107,7 @@ When the server sees the SPIFFE ID of the agent's own SVID, the server fetches a
 
 \* see also [mapping workloads to multiple nodes](https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes).
 
-Those are the workload entries signed and returned to the agent.
+The resulting set of registratino entries is the agent.
 
 # SPIRE Concepts
 
