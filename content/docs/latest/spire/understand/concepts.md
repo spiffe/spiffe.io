@@ -147,7 +147,7 @@ Examples of proof of the node’s identity include:
 Node attestors return an (optional) set of node selectors to the server that identify a specific machine (such as an Amazon Instance ID). Since the specific identity of a single machine is often not useful when defining the identity of a workload, SPIRE queries a [node resolver](#node-resolution) (if there is one) to see what additional properties of the attested node can be verified (for example, if the node is a member of an AWS Security Group). The set of selectors from both attestor and resolver become the set of selectors associated with the agent node’s SPIFFE ID.  
  
 {{< info >}}
-Node selectors are not required for node attestation unless you are [mapping workloads to multiple nodes](#mapping-workloads-to-multiple-nodes).
+Node selectors are not required for node attestation unless you are [mapping workloads to multiple nodes](https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes).
 {{< /info >}}
 
 The following diagram illustrates the steps in node attestation. In this illustration, the underlying platform is AWS:
