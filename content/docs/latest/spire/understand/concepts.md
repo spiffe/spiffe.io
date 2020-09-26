@@ -103,8 +103,8 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 The server only sends authorized registration entries to the agent. The server does the following to obtain those authorized entries:
 
 1. Query the database for any registration entries that have the agent's SPIFFE ID listed as their "parent SPIFFE ID".
-2. Query the database for what additional properties the specific agent is associated with.
-3. Query the database for any registration entries that declare at least one selection on any of those additional properties. \*
+2. Query the database for what additional properties the specific agent is associated with ("_node_ selectors").
+3. Query the database for any registration entries that declare at least one selection on any of those _node_ selectors. \*
 4. Recursively query the database for any registration entries that declare any of the entries obtained so far as their "parent SPIFFE ID" (descend to all children).
 
 \* see also [mapping workloads to multiple nodes](https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes).
