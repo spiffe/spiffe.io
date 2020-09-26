@@ -100,12 +100,12 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 
 ## Authorized Registration Entries
 
-The server only sends authorized registration entries to the agent. The correpsonding datastore query is construed as follows:
+The server only sends authorized registration entries to the agent. The server does the following to obtain those authorized entries:
 
-1. Fetch all registration entries that have the agent's SPIFFE ID set as parentID.
-2. Determine from the server's database what additional properties the specific agent is associated with.
-3. Fetch any SPIFFE ID that &mdash; at least &mdash; declares one selection on any of those additional properties. \*
-4. Also recursively fetch all descendants of the resulting list of SPIFFE IDs.
+1. Query the database for any registration entries that have the agent's SPIFFE ID listed as their "parent SPIFFE ID".
+2. Query the database for what additional properties the specific agent is associated with.
+3. Query the database for any registration entries that declare at least one selection on any of those additional properties. \*
+4. Recursively query the database for any registration entries that declare any of the entries obtained so far as their "parent SPIFFE ID" (descend to all children).
 
 \* see also [mapping workloads to multiple nodes](https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes).
 
