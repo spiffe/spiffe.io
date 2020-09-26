@@ -92,7 +92,7 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 14. The server then fetches all [authorized registration entries](#authorized-registration-entries) from its data store and sends them to the agent.
 15. The agent then sends workload CSRs to the server which the server signs and returns as workload SVIDs to the client. The client puts them in cache.
 15. Now fully bootstrapped, the agent starts listening on the Workload API socket.  
-16. A workload calls the Workload API to request an SVID.
+16. A workload calls the Workload API to request a SVID.
 17. The agent initiates the workload attestation process by calling its workload attestors, providing them with the process ID of the workload process.  
 18. Attestors use kernel and userspace calls to discover additional bits of information ("selectors") about the workload.
 19. The attestors return the discovered information to the agent in the form of selectors.
