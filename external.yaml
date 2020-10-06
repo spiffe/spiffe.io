@@ -3,6 +3,7 @@ spire/installing:
     pullFiles:
         - doc/upgrading.md
         - doc/SPIRE101.md
+        - doc/using_spire.md
     transform:
         upgrading.md:
             frontMatter:
@@ -19,6 +20,12 @@ spire/installing:
                 description: Quickly get SPIRE up and running on Docker Compose
                 kind: spire-installing
                 weight: 55
+        using_spire.md:
+            frontMatter:
+                title: Getting SPIRE
+                description: Platforms on Which SPIRE is Supported
+                kind: spire-installing
+                weight: 10
 spire/using:
     source: https://github.com/spiffe/spire
     pullFiles:
