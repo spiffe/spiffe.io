@@ -31,7 +31,6 @@ $navbar-dropdown-radius: none
 
 @import "bulma/bulma"
 
-
 $primary: #566366
 $secondary: #7d9199
 $blue: #008d9c
@@ -53,11 +52,13 @@ $light-separator: #e2e2e2
   padding-bottom: 4em !important
   padding-top: 4em !important
   .title
-     margin-bottom: 0
-     line-height: 1.2
+    margin-bottom: 0
+    line-height: 1.5
+    &.book
+      margin-bottom: 1.2rem
   .project-title
-     padding-bottom: 30px
-     color: lighten($dark, 50%)
+    padding-bottom: 30px
+    color: lighten($dark, 50%)
   .buttons
     margin-top: 20px
     .button .is-dark
@@ -99,8 +100,8 @@ figure
         font-color: $black-bis
         font-size: .8rem
 
-      > ul 
-        display: none 
+      > ul
+        display: none
 
       a
         color: $grey-dark
@@ -134,11 +135,10 @@ figure
       background-color: #272822
       color: $white
 
-
     li .highlight
       margin-bottom: 1rem
 
-    margin-bottom: 5rem
+      margin-bottom: 5rem
 
     +touch
       margin-left: 1rem
@@ -180,7 +180,7 @@ body.is-home-page
   border: none
 
 .tabs.is-medium
-    font-size: inherit
+  font-size: inherit
 
 .subtabs
   .container
@@ -196,7 +196,7 @@ body.is-home-page
           font-size: 0.9rem
           font-weight: 800
       li.is-active
-          background-color: darken($primary, 20%)
+        background-color: darken($primary, 20%)
 
 .tabs
   li.is-active
@@ -211,7 +211,7 @@ body.is-home-page
 .section
   &.is-black
     background-color: $black
-    
+
     *
       color: $white
 
@@ -237,35 +237,34 @@ body.is-home-page
   +tablet
     width: 15%
 
-
 section.newsbar
   background: #000
   padding: 12px
   font-weight: bold
   color: $white-bis
-  
-  .video-text 
+
+  .video-text
     padding: 12px
 
   .embed-container
-    position: relative 
-    padding-bottom: 56.25% 
-    height: 0 
-    overflow: hidden 
+    position: relative
+    padding-bottom: 56.25%
+    height: 0
+    overflow: hidden
     max-width: 100%
-    
+
     iframe, object, embed
-      position: absolute 
-      top: 0 
-      left: 0 
-      width: 100% 
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
       height: 100%
 
-section.what-is 
+section.what-is
   background: $grey-dark
   color: $white-bis
-  
-  strong 
+
+  strong
     color: $white-bis
 
 // This ensures a "sticky" footer at the bottom
@@ -285,7 +284,7 @@ hr
 .is-downloads-table
   a.is-download-version
     color: $black-ter
-    
+
     &:hover
       color: $grey
 
@@ -300,7 +299,7 @@ hr
 
 .presentation
   clear: both
-  
+
   .thumbnail
     float: left
     padding-right: 10px
