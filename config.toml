@@ -6,6 +6,7 @@ pygmentsCodefences = true
 canonifyurls = true
 googleAnalytics = "UA-99605331-1"
 enableGitInfo = true
+publicUrl = "https://spiffe.io"
 
 [markup]
   [markup.tableOfContents]

@@ -2,6 +2,7 @@ import yaml
 import os
 import shutil
 import re
+import toml
 from typing import List, Set, Tuple, Pattern, Match
 from urllib.parse import urlparse
 from pathlib import Path
@@ -11,11 +12,13 @@ GIT_CLONE_CMD = "git clone {{}} ./{}/{{}}/{{}}".format(CHECKOUT_DIR)
 RE_EXTRACT_TITLE: Pattern[str] = re.compile("([#\s]*)(?P<title>.*)")
 RE_EXTRACT_IMAGES: Pattern[str] = re.compile("\!\[(?P<alt>.*)\]\((?P<url>.*)\)")
 RE_EXTRACT_LINKS: Pattern[str] = re.compile(
-    "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?!http)(?!#)\S+)\)"
+    "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?P<domain>https?:\/\/[a-zA-Z\.0-9-]+)?(?!#)\S+)\)"
 )
 
 # holds the git URL and the new path for links between pulled in files
 internal_links: dict = {}
+config: dict = toml.load("config.toml")
+
 
 def main():
     os.system("rm -rf ./{}/".format(CHECKOUT_DIR))
@@ -128,11 +131,13 @@ def _pull_files(yaml_external: dict) -> List[str]:
     # so we can redirect internally
     for target_dir, content in yaml_external.items():
         for rel_file in content.get("pullFiles", []):
-            full_url = "{}/blob/master/{}".format(content.get('source'), rel_file)
+            full_url = "{}/blob/master/{}".format(content.get("source"), rel_file)
             file_name = os.path.basename(rel_file)
-            rel_path_to_target_file = "".join(os.path.join(target_dir, file_name).split('.')[:-1])
-            internal_links[full_url] = "/docs/latest/{}/".format(rel_path_to_target_file)
-
+            file_path = os.path.join(target_dir, file_name)
+            rel_path_to_target_file = ("".join(file_path.split(".")[:-1])).lower()
+            internal_links[full_url] = "/docs/latest/{}/".format(
+                rel_path_to_target_file
+            )
 
     for target_dir, content in yaml_external.items():
         pull_files: List[str] = content.get("pullFiles", [])
@@ -244,20 +249,30 @@ def _process_content(
         alt = m.group("alt")
         rel = m.group("rel")
         url = m.group("url")
+        domain = m.group("domain")
 
         rel_url = url
-        if rel == "/":
-            rel_url = url
-        elif rel == "./":
-            rel_url = os.path.join(os.path.dirname(rel_path_to_source_file), url)
+        # this is an external url
+        if domain is not None:
+            # that points to this site
+            if domain == config.get("publicUrl"):
+                new_url = url[len(config.get("publicUrl")) :]
+            else:
+                new_url = url
+        # this is an internal relative url
+        else:
+            if rel == "/":
+                rel_url = url
+            elif rel == "./" or rel == "":
+                rel_url = os.path.join(os.path.dirname(rel_path_to_source_file), url)
 
-        new_url = "https://github.com/{}/{}/blob/master/{}".format(
-            repo_owner, repo_name, rel_url
-        )
-        # if this file has been already pulled in, we can use the new internal URL
-        # instead of pointing to the original github location
-        if new_url in internal_links:
-            new_url = internal_links[new_url]
+            new_url = "https://github.com/{}/{}/blob/master/{}".format(
+                repo_owner, repo_name, rel_url
+            )
+            # if this file has been already pulled in, we can use the new internal URL
+            # instead of pointing to the original github location
+            if new_url in internal_links:
+                new_url = internal_links[new_url]
 
         new_link = "[{}]({})".format(alt, new_url)
         return new_link
