@@ -22,10 +22,18 @@
     {{- end -}}
     {{ partial "javascript.html" . }}
     {{ template "_internal/google_analytics_async.html" . }}
-<script>
-  ga('send', 'pageview', {
-    'Branch':  '{{ getenv "BRANCH" }}'
-  });
-</script>
+    <script>
+      ga('send', 'pageview', {
+        'Branch':  '{{ getenv "BRANCH" }}'
+      });
+    </script>
+    <script>
+      var captureOutboundLink = function(url) {
+        ga('send', 'event', 'outbound', 'click', url, {
+          'transport': 'beacon',
+          'hitCallback': function(){ document.location = url; }
+        });
+      }
+    </script> 
   </body>
 </html>
