@@ -3,9 +3,9 @@ issuers:
   description: SPIRE is an open-source toolchain that implements the SPIFFE specification in a wide variety of environments
   link: /docs/latest/spire/understand/concepts/
   logo: spire/icon/color/spire-icon-color.png
-- name: Istio Citadel
-  description: Istio Citadel issues SPIFFE IDs for all workloads
-  link: https://istio.io/docs/concepts/what-is-istio/#citadel
+- name: Istio 
+  description: The Istio control plane issues SPIFFE IDs for all workloads
+  link: https://istio.io/latest/docs/concepts/security/#pki
   logo: istio.svg
 - name: HashiCorp Consul
   description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
