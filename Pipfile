@@ -11,6 +11,7 @@ argh = "*"
 
 [packages]
 pyyaml = "~=5.3"
+toml = "~=0.10.1"
 
 [requires]
 python_version = "3.7"

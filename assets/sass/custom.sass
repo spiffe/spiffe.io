@@ -80,11 +80,30 @@
       width: 100%
 
   .container
+
     .section
       padding: 0rem 1rem
 
+    .is-centered
+      width: 75%
+
+      +desktop
+        margin: auto
+
 .navbar
   z-index: 20
+
+.column
+  &.stretch
+    line-height: 0
+
+.book-cover
+
+  &.big
+    width: 420px
+
+  &.small
+    width: 253px
 
 a
   code
