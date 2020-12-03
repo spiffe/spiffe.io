@@ -24,7 +24,7 @@ As service identities and CA certificates are rotated, updates are streamed back
 
 # Configuring SPIRE
 
-Setting up SDS support in SPIRE is as simple as setting the `enable_sds = true` configuration value in the SPIRE Agent configuration.
+As of SPIRE version v0.10, SDS support is enabled in SPIRE by default, so no SPIRE configuration change is needed. In earlier versions of SPIRE, `enable_sds = true` was required in the SPIRE Agent configuration file. That setting is now deprecated and should be removed from SPIRE Agent configuration files for SPIRE versions v0.10 and later.
 
 # Configuring Envoy
 
