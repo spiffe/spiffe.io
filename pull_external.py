@@ -9,8 +9,11 @@ from pathlib import Path
 
 CHECKOUT_DIR = "checkouts"
 GIT_CLONE_CMD = "git clone {{}} ./{}/{{}}/{{}}".format(CHECKOUT_DIR)
+MARKDOWN_IMAGE_REFERENCE_STYLE_OPENING = "["
 RE_EXTRACT_TITLE: Pattern[str] = re.compile("([#\s]*)(?P<title>.*)")
-RE_EXTRACT_IMAGES: Pattern[str] = re.compile("\!\[(?P<alt>.*)\]\((?P<url>.*)\)")
+RE_EXTRACT_IMAGES: Pattern[str] = re.compile(
+    "\!\[(?P<alt>.*)\](?P<style>[\(\[])(?P<url>.*)[\)\]]"
+)
 RE_EXTRACT_LINKS: Pattern[str] = re.compile(
     "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?P<domain>https?:\/\/[a-zA-Z\.0-9-]+)?(?!#)\S+)\)"
 )
@@ -233,6 +236,15 @@ def _process_content(
     def repl_images(m: Match[str]):
         url = m.group("url")
         alt = m.group("alt")
+        style = m.group("style")
+        title = None
+
+        if style == MARKDOWN_IMAGE_REFERENCE_STYLE_OPENING:
+            image_reference_regex = '\[{}\]: *(?P<url>.*) "(?P<title>.*)"'.format(url)
+            ref_match = re.search(image_reference_regex, m.string)
+            url = ref_match.group("url")
+            title = ref_match.group("title")
+
         new_url = _copy_asset(
             url_path=url,
             abs_path_to_source_dir=abs_path_to_source_dir,
@@ -240,8 +252,8 @@ def _process_content(
             repo_owner=repo_owner,
             repo_name=repo_name,
         )
-        figure = '{{{{< figure src="{}" caption="{}" width="100" >}}}}'.format(
-            new_url, alt
+        figure = '{{{{< figure src="{}" alt="{}" title="{}" width="100" >}}}}'.format(
+            new_url, alt, title
         )
         return figure
 
