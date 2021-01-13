@@ -97,34 +97,6 @@ def _clone_repos(repos: List[str]):
         os.system(cmd)
 
 
-# TODO: This is currently not being used
-# def pull_directories(yaml_external: dict):
-#     content: dict
-#     for target_dir, content in yaml_external.items():
-#         pull_dir = content.get("pullDir", None)
-#         if not pull_dir:
-#             continue
-
-#         # abs_target_path = get_abs_dir_path(target_dir)
-#         repo_owner, repo_name = get_canonical_repo_from_url(content.get("source"))
-#         repo_checkout_base_path = os.path.join(CHECKOUT_DIR, repo_owner, repo_name)
-#         repo_checkout_pull_path = os.path.join(repo_checkout_base_path, pull_dir)
-
-#         for root, _, files in os.walk(repo_checkout_pull_path):
-#             for file in files:
-#                 relative_path = os.path.join(
-#                     root[len(repo_checkout_pull_path) + 1 :], file
-#                 )
-#                 copy_file(
-#                     base_src_path=repo_checkout_base_path,
-#                     pull_dir=pull_dir,
-#                     rel_file_path=relative_path,
-#                     target_dir=target_dir,
-#                     transform_file=content.get("transform", {}).get(file, None),
-#                     remove_heading=True,
-#                 )
-
-
 def _pull_files(yaml_external: dict) -> List[str]:
     generated_files: List[str] = []
     content: dict
