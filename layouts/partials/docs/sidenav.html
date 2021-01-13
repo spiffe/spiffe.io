@@ -1,27 +1,24 @@
 {{ $docsHome   := .CurrentSection }}
 {{ $allDocs    := site.Pages  }}
 
-{{ $spiffe     := where $allDocs ".Params.kind" "eq" "spiffe" }}
+{{ $spiffeAbout        := where $allDocs ".Params.kind" "eq" "spiffe-about" }}
 
-{{ $spireUnderstand := where $allDocs ".Params.kind" "eq" "spire-understand" }}
-{{ $spireInstalling := where $allDocs ".Params.kind" "eq" "spire-installing" }}
-{{ $spireUsing      := where $allDocs ".Params.kind" "eq" "spire-using" }}
-{{ $spireDeveloping := where $allDocs ".Params.kind" "eq" "spire-developing" }}
+{{ $spireAbout         := where $allDocs ".Params.kind" "eq" "spire-about" }}
 
-{{ $spireInt        := where $allDocs ".Params.kind" "eq" "spire-integrations" }}
-{{ $spireOIDC       := where $allDocs ".Params.kind" "eq" "spire-oidc" }}
-{{ $spireEnvoy      := where $allDocs ".Params.kind" "eq" "spire-envoy" }}
-{{ $spireLibraries  := where $allDocs ".Params.kind" "eq" "spire-integration-using" }}
+{{ $spirePlanning      := where $allDocs ".Params.kind" "eq" "planning" }}
+{{ $spireTry           := where $allDocs ".Params.kind" "eq" "try" }}  
+{{ $spireDeploying     := where $allDocs ".Params.kind" "eq" "deploying" }}
+{{ $spireMaintenance   := where $allDocs ".Params.kind" "eq" "maintenance" }}
+
+{{ $spireArchitecture  := where $allDocs ".Params.kind" "eq" "architecture" }}
+{{ $spireMicroservices := where $allDocs ".Params.kind" "eq" "microservices" }}
+{{ $spireKeyless       := where $allDocs ".Params.kind" "eq" "keyless" }}
 
 {{ $pageUrl    := .URL }}
 {{ $isDocsHome := eq .URL $docsHome.URL }}
 {{ $version    := index (split .File.Path "/") 1 }}
 {{/* $latest     := index site.Data.releases 1 */}}
 {{/* $latest     := "v0.10.0" */}}
-
-<!-- <span class="docs-nav-title">
-  About SPIRE
-</span> -->
 
 {{/*}}
 {{ $docsHomeVersion := $version }}
@@ -46,31 +43,21 @@
 <span class="docs-nav-section">
   SPIFFE
 </span>
-
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spiffe "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spiffeAbout "pageUrl" $pageUrl "version" $version ) }}
 
 <span class="docs-nav-section">
   SPIRE
 </span>
-
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireUnderstand "pageUrl" $pageUrl "version" $version ) }}
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireInstalling "pageUrl" $pageUrl "version" $version ) }}
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireUsing "pageUrl" $pageUrl "version" $version ) }}
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireDeveloping "pageUrl" $pageUrl "version" $version ) }}
-
-<span class="docs-nav-section">
-  SPIRE Integrations
-</span>
-
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireInt "pageUrl" $pageUrl "version" $version ) }}
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireOIDC "pageUrl" $pageUrl "version" $version ) }}
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireEnvoy "pageUrl" $pageUrl "version" $version ) }}
-{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireLibraries "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireAbout "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireTry "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spirePlanning "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireDeploying "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireMaintenance "pageUrl" $pageUrl "version" $version ) }}
 
 <span class="docs-nav-section">
-  Reference
+  Specific Integrations
 </span>
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireArchitecture "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireMicroservices "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireKeyless "pageUrl" $pageUrl "version" $version ) }}
 
-<a class="docs-nav-item" href="https://docs.google.com/document/d/1RZnBfj8I5xs8Yi_BPEKBRp0K3UnIJYTDg_31rfTt4j8/" target="_blank">
-  Design Document: SPIFFE Reference Implementation (SRI)
-</a>

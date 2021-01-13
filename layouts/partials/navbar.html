@@ -15,18 +15,18 @@
 {{- $version         := index (split .File.Path "/") 1 -}}
 {{- $pageUrl         := .URL -}}
 
+{{ $spiffeAbout        := where site.Pages ".Params.kind" "eq" "spiffe-about" }}
 
-{{ $spiffe          := where site.Pages ".Params.kind" "eq" "spiffe" }}
+{{ $spireAbout         := where site.Pages ".Params.kind" "eq" "spire-about" }}
 
-{{ $spireUnderstand := where site.Pages ".Params.kind" "eq" "spire-understand" }}
-{{ $spireInstalling := where site.Pages ".Params.kind" "eq" "spire-installing" }}
-{{ $spireUsing      := where site.Pages ".Params.kind" "eq" "spire-using" }}
-{{ $spireDeveloping := where site.Pages ".Params.kind" "eq" "spire-developing" }}
+{{ $spirePlanning      := where site.Pages ".Params.kind" "eq" "planning" }}
+{{ $spireTry           := where site.Pages ".Params.kind" "eq" "try" }}  
+{{ $spireDeploying     := where site.Pages ".Params.kind" "eq" "deploying" }}
+{{ $spireMaintenance   := where site.Pages ".Params.kind" "eq" "maintenance" }}
 
-{{ $spireInt        := where site.Pages ".Params.kind" "eq" "spire-integrations" }}
-{{ $spireOIDC       := where site.Pages ".Params.kind" "eq" "spire-oidc" }}
-{{ $spireEnvoy      := where site.Pages ".Params.kind" "eq" "spire-envoy" }}
-{{ $spireLibraries  := where site.Pages ".Params.kind" "eq" "spire-integration-using" }}
+{{ $spireArchitecture  := where site.Pages ".Params.kind" "eq" "architecture" }}
+{{ $spireMicroservices := where site.Pages ".Params.kind" "eq" "microservices" }}
+{{ $spireKeyless       := where site.Pages ".Params.kind" "eq" "keyless" }}
 
 <nav class="navbar is-fixed-top is-light">
   <div class="container {{ if $isDocsPage }}is-fluid{{ end }} ">
@@ -104,39 +104,30 @@
 
       {{- if $isDocsPage -}}
         <div class="navbar-end is-hidden-tablet">
-
           <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
             SPIFFE
           </span>
     
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "section" $spiffe "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "section" $spiffeAbout "pageUrl" $pageUrl "version" $version ) }}
     
           <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
             SPIRE
           </span>
           
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Understand" "section" $spireUnderstand "pageUrl" $pageUrl "version" $version ) }}
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Installing" "section" $spireInstalling "pageUrl" $pageUrl "version" $version ) }}
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Using" "section" $spireUsing "pageUrl" $pageUrl "version" $version ) }}
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Developing" "section" $spireDeveloping "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "About" "section" $spireAbout "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Try"  "section" $spireTry "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Plan" "section" $spirePlanning "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Deploy" "section" $spireDeploying "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Maintain" "section" $spireMaintenance "pageUrl" $pageUrl "version" $version ) }}
           
           <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
-            SPIRE Integrations
+            Specific Integrations
           </span>
           
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Overview" "section" $spireInt "pageUrl" $pageUrl "version" $version ) }}
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "OIDC Federation" "section" $spireOIDC "pageUrl" $pageUrl "version" $version ) }}
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "SPIRE and Envoy" "section" $spireEnvoy "pageUrl" $pageUrl "version" $version ) }}
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "SPIFFE Libraries" "section" $spireLibraries "pageUrl" $pageUrl "version" $version ) }}
-          
-          <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
-            Reference
-          </span>
-          
-          <a class="navbar-item" href="https://docs.google.com/document/d/1RZnBfj8I5xs8Yi_BPEKBRp0K3UnIJYTDg_31rfTt4j8/" target="_blank">
-            Design Document: SPIFFE Reference Implementation (SRI)
-          </a>
-    
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "SPIRE Architecture" "section" $spireArchitecture "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Microservices Communication" "section" $spireMicroservices "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Keyless Authentication" "section" $spireKeyless "pageUrl" $pageUrl "version" $version ) }}
+
         </div>
       {{- end -}}
 
