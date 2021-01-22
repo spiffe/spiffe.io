@@ -101,7 +101,7 @@ architecture/nested:
                 title: Deploying a Nested SPIRE Architecture
                 short: Nested SPIRE Example
                 kind: architecture
-                description: Chaining SPIRE Servers to use the same trust domain
+                description: Chaining SPIRE Servers to Use the Same Trust Domain
                 weight: 100
 architecture/federation:
     source: https://github.com/spiffe/spire-tutorials
@@ -113,7 +113,7 @@ architecture/federation:
                 title: Deploying a Federated SPIRE Architecture
                 short: SPIRE Federation Example
                 kind: architecture
-                description: Chaining SPIRE Servers to use the same trust domain
+                description: Federating SPIRE Servers with Different Trust Domains
                 weight: 200
 microservices/envoy-x509:
     source: https://github.com/spiffe/spire-tutorials
