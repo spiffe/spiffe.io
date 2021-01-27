@@ -28,7 +28,7 @@ The steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1
 If you are using Minikube to run this tutorial you should specify some special flags as described [here](#considerations-when-using-minikube).
 {{< /info >}}
 {{< info >}}
-If you are using Kubeadm to run this tutorial, you should create some resources specified in [here](#considerations-when-using-kubeadm).
+If you are using Kubeadm to run this tutorial, you should create the resources specified [here](#considerations-when-using-kubeadm).
 {{< /info >}}
 # Obtain the Required Files
 
