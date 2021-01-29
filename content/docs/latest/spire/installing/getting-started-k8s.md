@@ -27,9 +27,11 @@ The steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1
 {{< info >}}
 If you are using Minikube to run this tutorial you should specify some special flags as described [here](#considerations-when-using-minikube).
 {{< /info >}}
+
 {{< info >}}
-If you are using Kubeadm to run this tutorial, you should create the resources specified [here](#considerations-when-using-kubeadm).
+If you are using Kubeadm to run this tutorial, a default storage class and an associated provisioner must be manually created, otherwise the **spire-server** pod will stay in `Pending` status, showing the `1 pod has unbound immediate PersistentVolumeClaims` error.
 {{< /info >}}
+
 # Obtain the Required Files
 
 This guide requires a number of **.yaml** files. To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain the **.yaml** files from the **spire-tutorials/k8s/quickstart** subdirectory. Remember to run all kubectl commands in the directory in which those files reside.
@@ -240,17 +242,6 @@ $ minikube start \
 ```
 {{< info >}}
 For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`.
-{{< /info >}}
-
-# Considerations When Using Kubeadm
-
-If you are using Kubeadm to run this tutorial, a default storage class and an associated provisioner must be manually created. To achieve this, change to the directory named **kubeadm**, and run the two commands shown below.
-``` 
-$ kubectl apply -f default-storage-class.yaml
-$ kubectl apply -f storage-provisioner.yaml 
-```
-{{< info >}}
-These commands must be executed before spire-server statefulset creation, otherwise the pod will stay in `Pending` status
 {{< /info >}}
 
 # Considerations For A Production Environment
