@@ -124,9 +124,9 @@
             Integrate SPIRE
           </span>
           
-          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "SPIRE Architecture" "section" $spireArchitecture "pageUrl" $pageUrl "version" $version ) }}
           {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Securing Microservices" "section" $spireMicroservices "pageUrl" $pageUrl "version" $version ) }}
           {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Keyless Authentication" "section" $spireKeyless "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "SPIRE Architecture" "section" $spireArchitecture "pageUrl" $pageUrl "version" $version ) }}
 
         </div>
       {{- end -}}
