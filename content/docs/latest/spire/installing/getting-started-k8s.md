@@ -28,6 +28,10 @@ The steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1
 If you are using Minikube to run this tutorial you should specify some special flags as described [here](#considerations-when-using-minikube).
 {{< /info >}}
 
+{{< info >}}
+If you are using Kubeadm to run this tutorial, a default storage class and an associated provisioner must be manually created, otherwise the **spire-server** pod will stay in `Pending` status, showing the `1 pod has unbound immediate PersistentVolumeClaims` error.
+{{< /info >}}
+
 # Obtain the Required Files
 
 This guide requires a number of **.yaml** files. To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain the **.yaml** files from the **spire-tutorials/k8s/quickstart** subdirectory. Remember to run all kubectl commands in the directory in which those files reside.
