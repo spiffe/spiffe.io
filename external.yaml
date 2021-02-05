@@ -1,63 +1,165 @@
-spire/installing:
+try:
     source: https://github.com/spiffe/spire
     pullFiles:
-        - doc/upgrading.md
         - doc/SPIRE101.md
-        - doc/using_spire.md
     transform:
-        upgrading.md:
-            frontMatter:
-                short: Upgrade/Downgrade SPIRE
-                kind: spire-installing
-                description: SPIRE Server and Agent version compatibility
-                weight: 80
-                aliases:
-                    - /spire/docs/upgrading
         SPIRE101.md:
             frontMatter:
                 title: Quickstart for Docker Compose
                 short: Quickstart for Docker Compose
                 description: Quickly get SPIRE up and running on Docker Compose
-                kind: spire-installing
+                kind: try
                 weight: 55
-        using_spire.md:
-            frontMatter:
-                title: Getting SPIRE
-                description: Platforms on Which SPIRE is Supported
-                kind: spire-installing
-                weight: 10
-spire/using:
+                aliases:
+                    - /docs/latest/spire/installing/spire101/
+maintenance:
     source: https://github.com/spiffe/spire
     pullFiles:
-        - doc/spire_agent.md
-        - doc/spire_server.md
-        - doc/telemetry_config.md
+        - doc/upgrading.md
+    transform:
+        upgrading.md:
+            frontMatter:
+                short: Upgrade/Downgrade SPIRE
+                kind: maintenance
+                description: SPIRE Server and Agent version compatibility
+                weight: 80
+                aliases:
+                    - /spire/docs/upgrading
+planning:
+    source: https://github.com/spiffe/spire
+    pullFiles:
         - doc/scaling_spire.md
     transform:
-        spire_agent.md:
-            frontMatter:
-                title: SPIRE Agent Configuration Reference
-                description: Command line options, agent.conf settings, and built-in plugins for SPIRE Agent
-                kind: spire-using
-                weight: 300
-        spire_server.md:
-            frontMatter:
-                title: SPIRE Server Configuration Reference
-                description: Command line options, server.conf settings, and built-in plugins for SPIRE Server
-                kind: spire-using
-                weight: 400
-        telemetry_config.md:
-            frontMatter:
-                title: SPIRE Telemetry Configuration
-                description: Configure SPIRE Agent and Server metrics output to supported sinks
-                kind: spire-using
-                weight: 500
         scaling_spire.md:
             frontMatter:
                 title: Scaling SPIRE
                 description: Supported SPIRE topologies, identity federation, and sizing considerations
-                kind: spire-using
-                weight: 700
+                kind: planning
+                weight: 80
                 aliases:
                     - /spire/docs/scaling_spire
                     - /spire/docs/scaling-spire
+                    - /docs/latest/spire/using/scaling_spire/
+deploying:
+    source: https://github.com/spiffe/spire
+    pullFiles:
+        - doc/using_spire.md
+        - doc/spire_agent.md
+        - doc/spire_server.md
+        - doc/telemetry_config.md
+    transform:
+        using_spire.md:
+            frontMatter:
+                title: Getting SPIRE
+                description: Platforms on Which SPIRE is Supported
+                kind: deploying
+                weight: 10
+                aliases:
+                    - /docs/latest/spire/installing/using_spire/
+        spire_agent.md:
+            frontMatter:
+                title: SPIRE Agent Configuration Reference
+                description: Command line options, agent.conf settings, and built-in plugins for SPIRE Agent
+                kind: deploying
+                weight: 300
+                aliases:
+                    - /docs/latest/spire/using/spire_agent/
+        spire_server.md:
+            frontMatter:
+                title: SPIRE Server Configuration Reference
+                description: Command line options, server.conf settings, and built-in plugins for SPIRE Server
+                kind: deploying
+                weight: 400
+                aliases:
+                    - /docs/latest/spire/using/spire_server/
+        telemetry_config.md:
+            frontMatter:
+                title: SPIRE Telemetry Configuration
+                description: Configure SPIRE Agent and Server metrics output to supported sinks
+                kind: deploying
+                weight: 500
+                aliases:
+                    - /docs/latest/spire/using/telemetry_config/
+keyless/vault:
+    source: https://github.com/spiffe/spire-tutorials
+    pullFiles:
+        - k8s/oidc-vault/README.md
+    transform:
+        README.md:
+            frontMatter:
+                short: Vault Integration Example
+                kind: keyless
+                description: Using SPIRE JWT-SVIDs to Authenticate to Hashicorp Vault
+                weight: 200
+architecture/nested:
+    source: https://github.com/spiffe/spire-tutorials
+    pullFiles:
+        - docker-compose/nested-spire/README.md
+    transform:
+        README.md:
+            frontMatter:
+                title: Deploying a Nested SPIRE Architecture
+                short: Nested SPIRE Example
+                kind: architecture
+                description: Chaining SPIRE Servers to Use the Same Trust Domain
+                weight: 100
+architecture/federation:
+    source: https://github.com/spiffe/spire-tutorials
+    pullFiles:
+        - docker-compose/federation/README.md
+    transform:
+        README.md:
+            frontMatter:
+                title: Deploying a Federated SPIRE Architecture
+                short: SPIRE Federation Example
+                kind: architecture
+                description: Federating SPIRE Servers with Different Trust Domains
+                weight: 200
+microservices/envoy-x509:
+    source: https://github.com/spiffe/spire-tutorials
+    pullFiles:
+        - k8s/envoy-x509/README.md
+    transform:
+        README.md:
+            frontMatter:
+                title: Using Envoy with X.509-SVIDs
+                short: SPIRE with Envoy and X.509-SVIDs
+                kind: microservices
+                description: Securing Microservice Communication with Envoy Using X.509 SPIFFE IDs
+                weight: 100
+microservices/envoy-jwt:
+    source: https://github.com/spiffe/spire-tutorials
+    pullFiles:
+        - k8s/envoy-jwt/README.md
+    transform:
+        README.md:
+            frontMatter:
+                title: Using Envoy with JWT-SVIDs
+                short: SPIRE with Envoy and JWT-SVIDs
+                kind: microservices
+                description: Securing Microservice Communication with Envoy Using JWT SPIFFE IDs
+                weight: 200
+microservices/envoy-opa:
+    source: https://github.com/spiffe/spire-tutorials
+    pullFiles:
+        - k8s/envoy-opa/README.md
+    transform:
+        README.md:
+            frontMatter:
+                title: OPA Authorization with Envoy and X.509-SVIDs
+                short: Spire with OPA + Envoy + X.509-SVIDs
+                kind: microservices
+                description: Secure Communication Using Envoy with X.509-SVIDs and Open Policy Agent Authorization
+                weight: 300
+microservices/envoy-jwt-opa:
+    source: https://github.com/spiffe/spire-tutorials
+    pullFiles:
+        - k8s/envoy-jwt-opa/README.md
+    transform:
+        README.md:
+            frontMatter:
+                title: OPA Authorization with Envoy and JWT-SVIDs
+                short: Spire with OPA + Envoy + JWT-SVIDs
+                kind: microservices
+                description: Secure Communication Using Envoy with JWT-SVIDs and Open Policy Agent Authorization
+                weight: 400

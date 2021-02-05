@@ -1,9 +1,16 @@
 # THIS FILE IS AUTO-GENERATED. DO NOT MODIFY BY HAND
 
-docs/latest/spire/installing/upgrading.md
-docs/latest/spire/installing/SPIRE101.md
-docs/latest/spire/installing/using_spire.md
-docs/latest/spire/using/spire_agent.md
-docs/latest/spire/using/spire_server.md
-docs/latest/spire/using/telemetry_config.md
-docs/latest/spire/using/scaling_spire.md
+docs/latest/try/SPIRE101.md
+docs/latest/maintenance/upgrading.md
+docs/latest/planning/scaling_spire.md
+docs/latest/deploying/using_spire.md
+docs/latest/deploying/spire_agent.md
+docs/latest/deploying/spire_server.md
+docs/latest/deploying/telemetry_config.md
+docs/latest/keyless/vault/README.md
+docs/latest/architecture/nested/README.md
+docs/latest/architecture/federation/README.md
+docs/latest/microservices/envoy-x509/README.md
+docs/latest/microservices/envoy-jwt/README.md
+docs/latest/microservices/envoy-opa/README.md
+docs/latest/microservices/envoy-jwt-opa/README.md
