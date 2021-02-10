@@ -464,7 +464,7 @@
   category: case-study
   date: 17-Nov-2020
   venue: SPIFFE Production Identity Day, KubeCon NA 2020
-  description: description: Eric explains how SPIRE is used at GitHub, giving implementation details about agent operation and custom node selectors, making use of the platform-agnostic characteristic of SPIRE.SPIRE.
+  description: Eric explains how SPIRE is used at GitHub, giving implementation details about agent operation and custom node selectors, making use of the platform-agnostic characteristic of SPIRE.SPIRE.
 - title: "Passport App: The role of SPIFFE and SPIRE in a return to work solution"
   link: https://youtu.be/nZXCbiS6wfE
   youtube: nZXCbiS6wfE
