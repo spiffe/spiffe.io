@@ -393,4 +393,129 @@
   date: 20-Nov-2019
   venue: KubeCon NA 2019
   description: Evan and Oliver discuss how SPIFFE Federation works, and use it to show how a SPIRE- and Istio- identified workload can establish trust to each other.
-
+- title: "Practical Introduction to SPIFFE"
+  link: https://youtu.be/6e4snGCTLOk
+  youtube: 6e4snGCTLOk
+  presenters: Kelsey Hightower
+  organizations: Google
+  category: overview
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Kelsey gives a practical demonstration on how to leverage SPIFFE in your own applications.
+- title: "Attesting Istio Workload Identities with SPIRE"
+  link: https://youtu.be/xgzQEb9hbMI?t=222
+  youtube: xgzQEb9hbMI
+  presenters: Doron Chen
+  organizations: IBM
+  category: case-study
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Doron describes a POC work that replaces the Istio Identity issuing Mechanism with SPIRE.
+- title: "Leveraging Certificate Transparency to Strengthen Auditability in SPIRE" 
+  link: https://youtu.be/xgzQEb9hbMI?t=1272
+  youtube: xgzQEb9hbMI
+  presenters: Ruide Zhang
+  organizations: ByteDance
+  category: advanced-tutorial
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Ruide shows how to improve SPIRE by performing auditability on the issued SVIDs. 
+- title: "Parsec and SPIFFE"
+  link: https://youtu.be/xgzQEb9hbMI?t=1606
+  youtube: xgzQEb9hbMI
+  presenters: Paul Howard
+  organizations: Arm
+  category: case-study
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Paul gives a brief description on how Parsec can make use of SPIFFE identities to support multitenancy.
+- title: "SPIFFE and SPIRE: Architecture Deep Dive"
+  link: https://youtu.be/ZJxq8hPgYVI
+  youtube: ZJxq8hPgYVI
+  presenters: Andrew Harding and Evan Gilman
+  organizations: VMware
+  category: overview
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Andrew and Evan offer a complete explanation of the SPIFFE and SPIRE architecture, including node and workload attestation, key management, and trust bundle rotation strategy.
+- title: "Securing Kafka with SPIFFE"
+  link: https://youtu.be/4pfY0uFW7yk
+  youtube: 4pfY0uFW7yk
+  presenters: Jonathan Oddy and Levani Kokhreidze
+  organizations: TransferWise
+  category: case-study
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Jonathan and Levani explain how SPIFFE and Envoy are used to secure Kafka's client-broker communication by solving common problems such as certificate distribution at large scale.
+- title: "Using SPIRE in Production at Uber"
+  link: https://youtu.be/o98SFmW4akQ
+  youtube: o98SFmW4akQ
+  presenters: Andrew Moore
+  organizations: Uber
+  category: case-study
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: This session provides an overview of how Uber uses SPIFFE and SPIRE for workload authentication in a diverse deployment environment.
+- title: "SPIFFE at GitHub"
+  link: https://youtu.be/vX8SS5wQuY8
+  youtube: vX8SS5wQuY8
+  presenters: Eric Lee
+  organizations: GitHub
+  category: case-study
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Eric explains how SPIRE is used at GitHub, giving implementation details about agent operation and custom node selectors, making use of the platform-agnostic characteristic of SPIRE.SPIRE.
+- title: "Passport App: The role of SPIFFE and SPIRE in a return to work solution"
+  link: https://youtu.be/nZXCbiS6wfE
+  youtube: nZXCbiS6wfE
+  presenters: Frederick Kautz
+  organizations: doc.ai
+  category: case-study
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  descripion: Frederick demonstrates a SPIFFE/SPIRE enabled solution which will help employers manage their return to work strategy, focusing on privacy.
+- title: "10 Lessons From Migrating to SPIFFE After 10 Years Of Service Identity at Square"
+  link: https://youtu.be/x642wq7lbpY
+  youtube: x642wq7lbpY
+  presenters: Mat Byczkowski
+  organizations: Square
+  category: case-study
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Mat describes the principal benefits of migrating from a homegrown service identity issuer to SPIFFE, showing what the team learned in this process.
+- title: "Using a CRD to better integrate SPIRE and Kubernetes"
+  link: https://youtu.be/_6yKKvYQcak
+  youtube: _6yKKvYQcak
+  presenters: Faisal Memon
+  organizations: F5/NGINX
+  category: advanced-tutorial
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: In this talk the CRD for a SPIFFE ID is presented, along with its leading motivations in the context of using SPIRE in the NGINX Service Mesh Architecture.
+- title: "Fortifying Microservice Security with SPIRE and OPA"
+  link: https://youtu.be/iQ5ctLQswUc
+  youtube: iQ5ctLQswUc
+  presenters: Ash Nakar
+  organizations: Styra
+  category: advanced-tutorial
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Ash defines what OPA is, its main features, and gives a practical live demo using this tool along with SPIRE and OIDC.
+- title: "Using DevIDs and TPMs for Node Attestation"
+  link: https://youtu.be/SSdWeDf02TM
+  youtube: SSdWeDf02TM
+  presenters: Adriane Cardozo and Marcos Yedro
+  organizations: HPE
+  category: advanced-tutorial
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Marcos presents the proposed design for the TPM Node Attestor and Adriane shows a demo on how this plugin is used.
+- title: "Attestation and identity provisioning to Intel SGX workloads"
+  link: https://youtu.be/8xwO1FgVyCU
+  youtube: 8xwO1FgVyCU
+  presenters: Andrey Brito
+  organizations: UFCG
+  category: advanced-tutorial
+  date: 17-Nov-2020
+  venue: SPIFFE Production Identity Day, KubeCon NA 2020
+  description: Using a live demo, Andrey explains how an SGX workload attestor can improve the strength of application identities. 
