@@ -238,8 +238,7 @@ $ minikube start \
     --extra-config=apiserver.service-account-key-file=/var/lib/minikube/certs/sa.pub \
     --extra-config=apiserver.service-account-issuer=api \
     --extra-config=apiserver.service-account-api-audiences=api,spire-server \
-    --extra-config=apiserver.authorization-mode=Node,RBAC \
-    --extra-config=kubelet.authentication-token-webhook=true
+    --extra-config=apiserver.authorization-mode=Node,RBAC
 ```
 {{< info >}}
 For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`.
