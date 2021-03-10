@@ -41,10 +41,10 @@ Authorization policy engines typically aim to allow some of this decision making
 As a more concrete example, an operations team might choose to deploy (1) SPIRE to identify all workloads and issue to them X.509-SVIDs, (2) the Envoy proxy adjacent to each workload to, using X.509-SVIDs, ensure all messages sent between workloads are authenticated and mTLS-encrypted and (3) an Envoy filter that, before passing an authenticated request through to the destination workload, first ensures the request matches an authorization policy that requires that only certain workloads are allowed to send and receive messages between each other.
 
 # Service Meshes
-_e.g. [Istio](https://istio.io/), Open Service Mesh, Consul Connect, or [Grey Matter](https://greymatter.io)_
+_e.g. [Istio](https://istio.io/), [Network Service Mesh](https://networkservicemesh.io/), Consul Connect, or [Grey Matter](https://greymatter.io)_
 
 A service mesh aims to simplify communication between workloads by providing features such as automatic authentication and authorization and enforcing mutual TLS between workloads. To provide these capabilities, a service mesh typically provides integrated tooling that: (1) identifies workloads, (2) mediates communication between workloads, usually through a proxy deployed adjacent to each workload, and (3) ensures each adjacent proxy enforces a consistent authentication and authorization policy (usually through an authorization policy engine).
 
-Many service mesh implementations have adopted partial implementations of the SPIFFE specification (including Istio and Consul) and thus can be considered SPIFFE identity providers, and some (such as Grey Matter or Open Service Mesh) actually incorporate SPIRE as a component of their solution. 
+Many service mesh implementations have adopted partial implementations of the SPIFFE specification (including Istio and Consul) and thus can be considered SPIFFE identity providers, and some (such as Grey Matter or Network Service Mesh) actually incorporate SPIRE as a component of their solution. 
 
 Service mesh solutions that specifically implement the SPIFFE Workload API should be able to support any software that expects this API to be available. Service mesh solutions that can deliver SVIDs to their workloads _and_ support the SPIFFE Federation API can establish trust automatically between mesh-identified workloads and workloads running SPIRE, or running on different mesh implementations.
