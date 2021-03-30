@@ -1,6 +1,7 @@
-{{- $displayReleases  := ne (getenv "HIDE_RELEASES") "true" }}
-{{- $spireReleasesUrl := "https://api.github.com/repos/spiffe/spire/releases" }}
-{{- $downloadUrl      := "https://github.com/spiffe/spire/releases/download" }}
+{{- $displayReleases       := ne (getenv "HIDE_RELEASES") "true" }}
+{{- $spireReleasesUrl      := "https://api.github.com/repos/spiffe/spire/releases" }}
+{{- $spireLatestReleaseUrl := "https://api.github.com/repos/spiffe/spire/releases/latest" }}
+{{- $downloadUrl           := "https://github.com/spiffe/spire/releases/download" }}
 
 {{- if $displayReleases }}
 <table class="is-downloads-table">
@@ -18,9 +19,10 @@
     </tr>
   </thead>
   <tbody>
-    {{- $releases         := getJSON $spireReleasesUrl }}
-    {{- range $releases }}
-    {{- $latest           := (index $releases 0).tag_name }}
+    {{- $releases         := sort (getJSON $spireReleasesUrl) "created_at" "desc" }}
+    {{- $latestRelease    := getJSON $spireLatestReleaseUrl }}
+    {{- $latest           := $latestRelease.tag_name }}
+    {{- range $releases -}}
     {{- $hasExtras        := (index .assets 2).name }}
     {{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
     {{- $downloadButtons  := .Site.Params.downloads.buttons.download }}

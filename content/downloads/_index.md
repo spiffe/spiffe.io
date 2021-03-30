@@ -20,8 +20,8 @@ The table [below](#spire-releases) lists the available releases for [SPIRE](/doc
 
 Starting with SPIRE v0.10.0, a `spire-extras` tarball is available that contains the following binaries for Linux x86_64 operating systems:
 
-* [OIDC Discovery Provider](https://github.com/spiffe/spire/blob/master/support/oidc-discovery-provider/README.md)
-* [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/master/support/k8s/k8s-workload-registrar/README.md)
+* [OIDC Discovery Provider](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/support/oidc-discovery-provider/README.md)
+* [Kubernetes Workload Registrar](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/support/k8s/k8s-workload-registrar/README.md)
 
 ## SPIRE Releases
 
