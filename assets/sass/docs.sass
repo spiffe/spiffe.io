@@ -1,5 +1,8 @@
 $panel-header-logo-width: 85%
 
+html
+  overflow: auto
+
 =flex
   display: flex
 
@@ -15,7 +18,7 @@ $panel-header-logo-width: 85%
   +row
   position: relative
   overflow: hidden
-  height: 100vh
+  height: calc(100vh - 3.25rem)
 
   .is-scrollable
     overflow-y: auto
@@ -25,6 +28,7 @@ $panel-header-logo-width: 85%
 
   &-panel
     +column
+    padding-top: 1rem
     padding-bottom: 4rem
     flex: 0 0 20%
 
