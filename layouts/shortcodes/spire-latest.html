@@ -1,7 +1,6 @@
 {{- $displayReleases  := ne (getenv "HIDE_RELEASES") "true" }}
-{{- if $displayReleases }}
-  {{- $latestReleaseUrl := "https://api.github.com/repos/spiffe/spire/releases/latest" }}
-  {{- $latest           := getJSON $latestReleaseUrl }}
+{{- if $displayReleases -}}
+  {{- $latest := site.Data.releases.latest -}}
 
   {{- if eq (.Get 0) "tag" }}
     {{- $latest.tag_name -}}
