@@ -14,3 +14,4 @@ node_modules/
 # Temporal content
 checkouts/
 static/img/checkouts/
+data/releases.yaml

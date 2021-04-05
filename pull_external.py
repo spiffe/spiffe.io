@@ -32,6 +32,7 @@ latest_release = None
 
 
 def main():
+    _pull_latest_release()
     os.system("rm -rf ./{}/".format(CHECKOUT_DIR))
     yaml_external = _read_yaml("external.yaml")
     repos_to_clone: Set[str] = set()
@@ -47,6 +48,15 @@ def main():
     _clone_repos(repos_to_clone)
     generated_files = _pull_files(yaml_external)
     _generate_gitignore(generated_files)
+
+
+def _pull_latest_release():
+    global latest_release
+    json = _get_latest_spire_release()
+    latest_release = json.get("tag_name", "master")
+
+    with open("data/releases.yaml", "w") as releases_file:
+        releases_file.write(yaml.dump({"latest": json}))
 
 
 def _read_yaml(file_name: str) -> dict:
@@ -104,15 +114,13 @@ def _clone_repos(repos: List[str]):
         os.system(cmd)
 
 
-def _get_latest_spire_release() -> str:
+def _get_latest_spire_release() -> dict:
     global latest_release
     if latest_release is not None:
         return latest_release
     data = requests.get(GITHUB_API_LATEST_RELEASE)
-    tag_name = data.json().get("tag_name", "master")
-    latest_release = tag_name
 
-    return latest_release
+    return data.json()
 
 
 def _checkout_switch(content: dict):
