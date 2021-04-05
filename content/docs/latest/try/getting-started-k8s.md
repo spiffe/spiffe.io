@@ -251,9 +251,9 @@ When deploying SPIRE in a production environment the following considerations sh
 In the [Create Server Configmap](#create-server-configmap) step: set the the cluster name in the `k8s_sat NodeAttestor` entry to the name you provide in the **agent-configmap.yaml** configuration file.
 
 If your Kubernetes cluster supports projected service account tokens, consider using the built-in 
-[Projected Service Account Token k8s Node Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_k8s_psat.md) for authenticating the SPIRE agent to the server. Projected Service Account Tokens are more tightly scoped than regular service account tokens, and thus more secure.
+[Projected Service Account Token k8s Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_psat.md) for authenticating the SPIRE agent to the server. Projected Service Account Tokens are more tightly scoped than regular service account tokens, and thus more secure.
 
-As configured, the SPIRE agent does not verify the identity of the Kubernetes kubelet when requesting metadata for workload attestation. For additional security, you may wish to configure the Kubernetes workload attestor to perform this verification on compatible Kubernetes distributions by setting `skip_kubelet_verification` to `false`. [Read more](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md)
+As configured, the SPIRE agent does not verify the identity of the Kubernetes kubelet when requesting metadata for workload attestation. For additional security, you may wish to configure the Kubernetes workload attestor to perform this verification on compatible Kubernetes distributions by setting `skip_kubelet_verification` to `false`. [Read more](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_k8s.md)
 
 # Next steps
 

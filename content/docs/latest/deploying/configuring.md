@@ -14,9 +14,9 @@ To customize the behavior of the SPIRE Server and SPIRE Agent to meet your appli
 
 The SPIRE Server and Agent are configured in a file called `server.conf` and `agent.conf` respectively. 
 
-By default the Server expects the configuration file to reside at `conf/server/server.conf`, however the Server can be configured to use a configuration file in a different location with the `--config` flag. See the [SPIRE Server reference](https://github.com/spiffe/spire/blob/main/doc/spire_server.md) for more information.
+By default the Server expects the configuration file to reside at `conf/server/server.conf`, however the Server can be configured to use a configuration file in a different location with the `--config` flag. See the [SPIRE Server reference](/docs/latest/deploying/spire_server/) for more information.
 
-Similarly, the Agent expects this file to reside at `conf/agent/agent.conf`, however the Server can be configured to use a configuration file in a different location with the `--config` flag. See the [SPIRE Agent reference](https://github.com/spiffe/spire/blob/main/doc/spire_agent.md) for more information.
+Similarly, the Agent expects this file to reside at `conf/agent/agent.conf`, however the Server can be configured to use a configuration file in a different location with the `--config` flag. See the [SPIRE Agent reference](/docs/latest/deploying/spire_agent/) for more information.
 
 The configuration file is loaded once when the Server or Agent is started. If the configuration file for either is modified, the Server or Agent must be restarted for the configuration to take effect.
 
@@ -75,7 +75,7 @@ At the time of this writing,  projected service accounts are a relatively new f
 
 Node attestation using Kubernetes [Projected Service Account Tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection) (PSATs) allows a SPIRE Server to verify the identity of a SPIRE Agent running on a Kubernetes Cluster. Projected Service Account Tokens provide additional security guarantees over traditional Kubernetes Service Account Tokens and when supported by a Kubernetes cluster, PSAT is the recommended attestation strategy.
 
-To use PSAT Node Attestation, configure enable the PSAT Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_k8s_psat.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_nodeattestor_k8s_psat.md).
+To use PSAT Node Attestation, configure enable the PSAT Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_psat.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_k8s_psat.md).
 
 ### Service Account Tokens
 
@@ -83,7 +83,7 @@ In cases where workloads are running on Kubernetes but the Projected Service Acc
 
 Because the service account token does not contain claims that could be used to strongly identify the node/daemonset/pod running the agent, any container running in a whitelisted service account can masquerade as an agent. For this reason it is strongly recommended that agents run under a dedicated service account when using this attestation method.
 
-To use SAT Node Attestation, configure and enable the SAT Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_k8s_sat.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_nodeattestor_k8s_sat.md).
+To use SAT Node Attestation, configure and enable the SAT Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_sat.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_k8s_sat.md).
 
 ## Attestation of nodes running Linux {#customize-server-linux-attestation}
 
@@ -102,13 +102,13 @@ NodeAttestor "join_token" {
 } 
 ```
 
-Once join token node attestation has been configured, a join token can be generated on the server using the `spire-server token generate` command. Optionally you can associate a particular SPIFFE ID with the Join Token with the `-spiffeID` flag. [Read more](https://github.com/spiffe/spire/blob/main/doc/spire_server.md#spire-server-token-generate) about using this command.
+Once join token node attestation has been configured, a join token can be generated on the server using the `spire-server token generate` command. Optionally you can associate a particular SPIFFE ID with the Join Token with the `-spiffeID` flag. [Read more](/docs/latest/deploying/spire_server/#spire-server-token-generate) about using this command.
 
-When starting a SPIRE Agent for the first time with Join Token attestation enabled, the agent can be started with the `spire-agent run` command, and specifying the join token generated by the server using the `-joinToken` flag. [Read more](https://github.com/spiffe/spire/blob/main/doc/spire_agent.md#spire-agent-run) about this command.
+When starting a SPIRE Agent for the first time with Join Token attestation enabled, the agent can be started with the `spire-agent run` command, and specifying the join token generated by the server using the `-joinToken` flag. [Read more](/docs/latest/deploying/spire_agent/#spire-agent-run) about this command.
 
 The server will validate the join token and issue the Agent an SVID, and the SVID will be rotated automatically as long as it maintains a connection to the Server. On subsequent starts the Agent will use that SVID to authenticate to the server unless it has expired and not renewed.
 
-To use Join Token Node Attestation, configure and enable the join token Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_jointoken.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_nodeattestor_jointoken.md).
+To use Join Token Node Attestation, configure and enable the join token Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_jointoken.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_jointoken.md).
 
 To disable join token attestation on the server, comment out or delete this stanza from the configuration file before starting it.
 
@@ -121,7 +121,7 @@ of this guide, they will be called the *root certificate bundle*). The Server mu
 
 In addition attestor exposes the selector `subject:cn` which will match any certificate that is both (a) valid, as described above, and (b) whose common name (CN) matches that described in the selector.
 
-To use X.509 Certificate Node Attestation, configure and enable the x509pop Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_x509pop.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_nodeattestor_x509pop.md).
+To use X.509 Certificate Node Attestation, configure and enable the x509pop Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_x509pop.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_x509pop.md).
 
 ### SSH Certificate
 
@@ -135,7 +135,7 @@ spiffe://<trust-domain>/spire/agent/sshpop/<fingerprint>
 
 Where `<fingerprint>` is a hash of the certificate itself. This SPIFFE ID can then be used as the basis of other workload registration entries.
 
-To use SSH Certificate Node Attestation, configure and enable the sshpop Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_sshpop.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_nodeattestor_sshpop.md).
+To use SSH Certificate Node Attestation, configure and enable the sshpop Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_sshpop.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_sshpop.md).
 
 ## Attestation for Linux nodes on a Cloud Provider {#customize-server-cloud-attestation}
 
@@ -150,7 +150,7 @@ Google Compute Engine (GCE) node attestation and resolution allows a SPIRE Serve
 3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID
 4.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or Resolver, or have the SPIFFE ID of the SPIRE Agent as a parent.
 
-To use GCP IIT Node Attestation, configure and enable the gcp_iit Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_gcp_iit.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_nodeattestor_gcp_iit.md).
+To use GCP IIT Node Attestation, configure and enable the gcp_iit Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_gcp_iit.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_gcp_iit.md).
 
 ### Amazon EC2 Instances
 
@@ -162,7 +162,7 @@ EC2 node attestation and resolution allows a SPIRE Server to identify and authen
 4.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID
 5.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or Resolver, or have the SPIFFE ID of the SPIRE Agent as a parent.
 
-For more information on configuring AWS EC2 Node Attestors or Resolver plugins, refer to the corresponding SPIRE documentation for the AWS [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_aws_iid.md) on the SPIRE Server, and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_nodeattestor_aws_iid.md) on the agent.
+For more information on configuring AWS EC2 Node Attestors or Resolver plugins, refer to the corresponding SPIRE documentation for the AWS [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md) and [SPIRE Server  Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_aws_iid.md) on the SPIRE Server, and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_aws_iid.md) on the agent.
 
 ### Azure Virtual Machines
 
@@ -181,7 +181,7 @@ The default resource–assigned by the agent plugin–is scoped relatively widel
 If you configure a custom resource ID in the agent configuration file, you must specify custom resource IDs for each tenant, in the `NodeAttestor` stanza of the `server.conf` configuration file.
 {{< /warning >}}
 
-For more information on configuring Azure MSI Node Attestors or Resolver plugins, refer to the corresponding SPIRE documentation for the Azure MSI [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_azure_msi.md) and [SPIRE Server  Node Resolver](https://github.com/spiffe/spire/blob/main/doc/plugin_server_noderesolver_azure_msi.md) on the SPIRE Server, and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_nodeattestor_azure_msi.md) on the agent.
+For more information on configuring Azure MSI Node Attestors or Resolver plugins, refer to the corresponding SPIRE documentation for the Azure MSI [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_azure_msi.md) and [SPIRE Server  Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_azure_msi.md) on the SPIRE Server, and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_azure_msi.md) on the agent.
 
 # Configuring workload attestation
 _This configuration applies to the SPIRE Agent_
@@ -196,7 +196,7 @@ When workloads are running in Kubernetes, it is valuable to be able to describe 
 
 The Kubernetes Workload Attestor plugin works by interrogating the local Kubelet to retrieve kubernetes-specific metadata about particular process when it calls the Workload API, and uses that to identify workloads whose registration entries match those values.
 
-For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Kubernetes Workload Attestor plugin](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_workloadattestor_k8s.md).
+For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Kubernetes Workload Attestor plugin](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_k8s.md).
 
 ## Workload Attestation for Docker containers
 
@@ -204,7 +204,7 @@ When workloads are running in a Docker container, it can be helpful to be able t
 
 The Docker Workload Attestor plugin works by interrogating to the local Docker daemon to retrieve Docker-specific metadata about a particular process when it calls the Workload API.
 
-For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Docker Workload Attestor plugin](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_workloadattestor_docker.md).
+For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Docker Workload Attestor plugin](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_docker.md).
 
 ## Workload Attestation for Unix processes 
 
@@ -212,7 +212,7 @@ When workloads are running on Unix, it can be helpful to be able to describe the
 
 The Unix Workload Attestor works by determining kernel metadata from the workload calling the Workload API by examining the caller of the Unix domain socket.
 
-For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Unix Workload Attestor plugin](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_workloadattestor_unix.md).
+For more information, including details of the exposed selectors, refer to the corresponding SPIRE documentation for the [Unix Workload Attestor plugin](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_unix.md).
 
 # Configuring where to store agent and server data
 _This configuration applies to the SPIRE Server and SPIRE Agent_
@@ -232,7 +232,7 @@ _This configuration applies to the SPIRE Server_
 
 The data-store is where SPIRE Server persists dynamic configuration such as registration entries and identity mapping policies that are retrieved from the SPIRE Server. By default, SPIRE bundles SQLite and sets it as the default for storage of server data. SPIRE also supports other compatible data-stores. For production purposes, you should carefully consider which database to use, particularly when deploying SPIRE in a High Availability configuration.
 
-The SPIRE Server can be configured to utilize different SQL-compatible storage backends by configuring the default SQL data-store plugin as described below. A complete reference for how this block is configured can be found in the [SPIRE documentation](https://github.com/spiffe/spire/blob/main/doc/plugin_server_datastore_sql.md).
+The SPIRE Server can be configured to utilize different SQL-compatible storage backends by configuring the default SQL data-store plugin as described below. A complete reference for how this block is configured can be found in the [SPIRE documentation](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_datastore_sql.md).
 
 Alternatively, SPIRE can be configured to use non-SQL compatible storage backends through third party datastore plugins. The guide on [Extending SPIRE](/docs/latest/spire/developing/extending/) covers this in more detail.
 
@@ -318,9 +318,9 @@ Both the SPIRE Agent and SPIRE Server generate private keys and certificates dur
 
 Currently SPIRE supports two key management strategies on both the Agent and Server.
 
-* **Store in-memory**. In this strategy keys and certificates are only stored in-memory. This means that if the Server or Agent crashes or is otherwise re-started, the keys must be re-generated. In the case of the SPIRE Agent this typically requires the agent to re-attest to the Server upon restart. This strategy can be managed by enabling and configuring the memory key manager plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_keymanager_memory.md) and/or [SPIRE Agent](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_keymanager_memory.md).
+* **Store in-memory**. In this strategy keys and certificates are only stored in-memory. This means that if the Server or Agent crashes or is otherwise re-started, the keys must be re-generated. In the case of the SPIRE Agent this typically requires the agent to re-attest to the Server upon restart. This strategy can be managed by enabling and configuring the memory key manager plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_keymanager_memory.md) and/or [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_keymanager_memory.md).
 
-* **Store on disk**. In this strategy, keys and certificates are stored in a specified file on disk. An advantage of this approach is they survive a restart of the SPIRE Server or Agent. A disadvantage is that since they keys are stored in files on disk, additional precautions must be taken to prevent a malicious process from reading those files. This strategy can be managed by enabling and configuring the disk key manager plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_keymanager_disk.md) and/or [SPIRE Agent](https://github.com/spiffe/spire/blob/main/doc/plugin_agent_keymanager_disk.md).
+* **Store on disk**. In this strategy, keys and certificates are stored in a specified file on disk. An advantage of this approach is they survive a restart of the SPIRE Server or Agent. A disadvantage is that since they keys are stored in files on disk, additional precautions must be taken to prevent a malicious process from reading those files. This strategy can be managed by enabling and configuring the disk key manager plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_keymanager_disk.md) and/or [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_keymanager_disk.md).
 
 Alternatively, SPIRE can be configured to integrating a custom backend such as a secret store through third party key manager plugins. The guide on [Extending SPIRE](/docs/latest/spire/developing/extending/) covers this in more detail.
 
@@ -341,7 +341,7 @@ This signing key should be considered extremely sensitive as to obtain it would 
 To help ensure the integrity of the signing key a SPIRE Server may either sign material itself using a signing key stored on disk, or delegate signing to an independent Certificate Authority (CA), such as the AWS Secrets Manager. This behavior is configured through the `UpstreamAuthority` section in the
 `server.conf` file.
 
-For a complete server configuration reference, see the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/main/doc/spire_server.md).
+For a complete server configuration reference, see the [SPIRE Server Configuration Reference](/docs/latest/deploying/spire_server/).
 
 #### Configure an On-disk Signing Key
 
@@ -358,25 +358,25 @@ sudo openssl req \
        -x509 -days 365 -out /opt/spire/conf/root.crt
 ```
 
-This strategy can be managed by enabling and configuring the `disk` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_upstreamauthority_disk.md).
+This strategy can be managed by enabling and configuring the `disk` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_upstreamauthority_disk.md).
 
 #### Configure AWS Secrets Manager
 
 The SPIRE Server can be configured to load CA credentials from [Amazon Web Services Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html), using them to generate intermediate signing certificates for the server's signing authority. 
 
-This strategy can be managed by enabling and configuring the `awssecret` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_upstreamauthority_awssecret.md).
+This strategy can be managed by enabling and configuring the `awssecret` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_upstreamauthority_awssecret.md).
 
 #### Configure AWS Certificate Manager
 
 The SPIRE Server can be configured to load CA credentials from Amazon Web Services Certificate Manager [Private Certificate Authority](https://aws.amazon.com/certificate-manager/private-certificate-authority/) (PCA) them to generate intermediate signing certificates for the server's signing authority. 
 
-This strategy can be managed by enabling and configuring the `aws_pca` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_upstreamauthority_aws_pca.md).
+This strategy can be managed by enabling and configuring the `aws_pca` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_upstreamauthority_aws_pca.md).
 
 #### Configure another SPIRE installation
 
 The SPIRE Server can be configured to load CA credentials from the Workload API of another SPIFFE implementation such as SPIRE. This enables a technique called "Nested SPIRE" that, as a compliment to HA deployments, allows independent SPIRE Servers to issue identities against a single trust domain.
 
-A full treatment for Nested SPIRE is beyond the scope of this guide. However this strategy can be managed by enabling and configuring the `spire` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/main/doc/plugin_server_upstreamauthority_spire.md).
+A full treatment for Nested SPIRE is beyond the scope of this guide. However this strategy can be managed by enabling and configuring the `spire` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_upstreamauthority_spire.md).
 
 # Export Metrics for Monitoring
 _This configuration applies to the SPIRE Server and SPIRE Agent_
@@ -420,7 +420,7 @@ telemetry {
 }
 ```
 
-For more information, see the [telemetry configuration](https://github.com/spiffe/spire/blob/main/doc/telemetry_config.md) guide.
+For more information, see the [telemetry configuration](/docs/latest/deploying/telemetry_config/) guide.
 
 # Logging
 _This configuration applies to the SPIRE Server and SPIRE Agent_

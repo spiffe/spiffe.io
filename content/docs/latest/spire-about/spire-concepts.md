@@ -41,7 +41,7 @@ The behavior of the server is determined through a series of plugins. SPIRE come
 
 **Upstream authority plugins**. By default the SPIRE Server acts as its own certificate authority. However, you can use an upstream authority plugin to use a different CA from a different PKI system.
 
-You customize the server’s behavior by configuring plugins and various other configuration variables. See the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) for details. 
+You customize the server’s behavior by configuring plugins and various other configuration variables. See the [SPIRE Server Configuration Reference](/docs/latest/deploying/spire_server/) for details. 
 
 ## All About the Agent
 
@@ -61,7 +61,7 @@ The agent’s main components include:
 
 * Key manager plugins, which the agent uses to generate and use private keys for X.509-SVIDs issued to workloads.
 
-You customize the agent’s behavior by configuring plugins and other configuration variables. See the [SPIRE Agent Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md) for details.
+You customize the agent’s behavior by configuring plugins and other configuration variables. See the [SPIRE Agent Configuration Reference](/docs/latest/deploying/spire_agent/) for details.
 
 ## Custom Server and Agent Plugins
 
@@ -74,7 +74,7 @@ This section walks through a “day in the life” of how SPIRE issues an identi
 1. The SPIRE Server starts up.  
 2. Unless the user has configured an UpstreamAuthority plugin, the server generates a self-signed certificate (a certificate signed with its own private key); the server will use this certificate to sign SVIDs for all the workloads in this server’s trust domain.
 3. If it’s the first time starting up, the server automatically generates a trust bundle, whose contents it stores in a sql datastore you specify in the datastore configuration -- described in the section "Built-in plugins" in the
-[Server plugin: DataStore sql](https://github.com/spiffe/spire/blob/master/doc/plugin_server_datastore_sql.md).
+[Server plugin: DataStore sql](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_datastore_sql.md).
 4. The server turns on its registration API, to allow you to register workloads.  
 5. The SPIRE Agent starts up on the node that the workload is running on.  
 6. The agent performs node attestation, to prove to the server the identity of the node it is running on. For example, when running on an AWS EC2 Instance it would typically perform node attestation by supplying an [AWS Instance Identity Document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html) to the server.  
@@ -177,7 +177,7 @@ For cases where there is no platform that can directly identify a node, SPIRE in
 
 **with server-generated join tokens** -- A join token is a pre-shared key between a SPIRE Server and Agent. The server can generate join tokens once installed that can be used to verify an agent when it starts. To help protect against misuse, join tokens expire immediately after use.
 
-**using an existing X.509 certificate** -- For information on configuring node attestors, see the [SPIRE Server Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_server.md) and [SPIRE Agent Configuration Reference](https://github.com/spiffe/spire/blob/master/doc/spire_agent.md).
+**using an existing X.509 certificate** -- For information on configuring node attestors, see the [SPIRE Server Configuration Reference](/docs/latest/deploying/spire_server/) and [SPIRE Agent Configuration Reference](/docs/latest/deploying/spire_agent/).
 
 #### Node Resolution
 
