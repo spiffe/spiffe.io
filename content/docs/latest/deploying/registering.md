@@ -21,7 +21,7 @@ The server will send to the agent a list of all registration entries for workloa
 
 During workload attestation, the agent discovers selectors and compares them to those in the cached registration entries to determine which SVIDs they should assign to the workload.  
 
-You register a workload either by issuing the `spire-server entry create` command at the command line or calling directly into the Registration API, as described in the [Registration API documentation](https://github.com/spiffe/spire/blob/master/proto/spire/api/registration/registration.proto). Existing entries can be modified using the `spire-server entry update` command.
+You register a workload either by issuing the `spire-server entry create` command at the command line or calling directly into the Registration API, as described in the [Registration API documentation](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/proto/spire/api/registration/registration.proto). Existing entries can be modified using the `spire-server entry update` command.
 
 {{< info >}}
 When running on Kubernetes, a common way to invoke commands on the SPIRE Server is through the `kubectl exec` command on a pod running the SPIRE Server. For example:
@@ -34,7 +34,7 @@ kubectl exec -n spire spire-server-0 -- \
 ```
 {{< /info >}}
 
-To learn more about the `spire-server entry create` and `spire-server entry update` commands and options, consult the [SPIRE Server reference guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+To learn more about the `spire-server entry create` and `spire-server entry update` commands and options, consult the [SPIRE Server reference guide](/docs/latest/deploying/spire_server/).
 
 # How to register a workload
 
@@ -62,9 +62,9 @@ Different selectors are available depending on the platform or architecture on w
 
 | For a list of supported selectors for this platform | Go here |
 | ---------------- | ----------- |
-| **Kubernetes**       | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_k8s_sat.md)
-| **AWS**       | The [configuration reference page for the AWS Node Attestor](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_aws_iid.md)
-| **Azure**       | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/main/doc/plugin_server_noderesolver_azure_msi.md)
+| **Kubernetes**       | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_sat.md)
+| **AWS**       | The [configuration reference page for the AWS Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_aws_iid.md)
+| **Azure**       | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_azure_msi.md)
 
 ## 2. Defining the SPIFFE ID of the Workload
 
@@ -81,9 +81,9 @@ spire-server entry create \
 
 | For a list of supported selectors for this platform | Go here |
 | ---------------- | ----------- |
-| **Unix**       | The [configuration reference page for the Unix Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_unix.md)
-| **Kubernetes** | The [configuration reference page for the Kubernetes Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_k8s.md)
-| **Docker** | The [configuration reference page for the Docker Workload Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_agent_workloadattestor_docker.md)
+| **Unix**       | The [configuration reference page for the Unix Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_unix.md)
+| **Kubernetes** | The [configuration reference page for the Kubernetes Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_k8s.md)
+| **Docker** | The [configuration reference page for the Docker Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_docker.md)
 
 # How to list registration entries
 
@@ -101,7 +101,7 @@ For example, to list all registration entries that match a set of EC2 instances 
 spire-server entry show -selector tag:app:webserver
 ```
 
-To learn more about the `spire-server entry show` command and options, consult the [SPIRE Server reference guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+To learn more about the `spire-server entry show` command and options, consult the [SPIRE Server reference guide](/docs/latest/deploying/spire_server/).
 
 # How to remove registration entries
 
@@ -113,7 +113,7 @@ For example:
 spire-server entry delete -entryID 92f4518e-61c9-420d-b984-074afa7c7002
 ```
 
-To learn more about the `spire-server entry delete` command and options, consult the [SPIRE Server reference guide](https://github.com/spiffe/spire/blob/master/doc/spire_server.md).
+To learn more about the `spire-server entry delete` command and options, consult the [SPIRE Server reference guide](/docs/latest/deploying/spire_server/).
 
 # Mapping Workloads to Multiple Nodes
 

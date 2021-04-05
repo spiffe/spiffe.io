@@ -3,24 +3,32 @@ import os
 import shutil
 import re
 import toml
+import subprocess
+import requests
 from typing import List, Set, Tuple, Pattern, Match
 from urllib.parse import urlparse
 from pathlib import Path
 
 CHECKOUT_DIR = "checkouts"
 GIT_CLONE_CMD = "git clone {{}} ./{}/{{}}/{{}}".format(CHECKOUT_DIR)
+GIT_CHECKOUT_CMD = "git checkout {}"
+GITHUB_API_LATEST_RELEASE = "https://api.github.com/repos/spiffe/spire/releases/latest"
 MARKDOWN_IMAGE_REFERENCE_STYLE_OPENING = "["
 RE_EXTRACT_TITLE: Pattern[str] = re.compile("([#\s]*)(?P<title>.*)")
 RE_EXTRACT_IMAGES: Pattern[str] = re.compile(
     "\!\[(?P<alt>.*)\](?P<style>[\(\[])(?P<url>.*)[\)\]]"
 )
 RE_EXTRACT_LINKS: Pattern[str] = re.compile(
-    "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?P<domain>https?:\/\/[a-zA-Z\.0-9-]+)?(?!#)\S+)\)"
+    "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?P<domain>https?:\/\/(?P<host>[a-zA-Z\.0-9-]+))?(?!#)\S+)\)"
+)
+RE_EXTRACT_GITHUB_PATH: Pattern[str] = re.compile(
+    "https?:\/\/github\.com\/\w+\/\w+\/\w+\/\w+\/(?P<path>.*)"
 )
 
 # holds the git URL and the new path for links between pulled in files
 internal_links: dict = {}
 config: dict = toml.load("config.toml")
+latest_release = None
 
 
 def main():
@@ -37,7 +45,6 @@ def main():
         repos_to_clone.add(repo)
 
     _clone_repos(repos_to_clone)
-    # pull_directories(yaml_external)
     generated_files = _pull_files(yaml_external)
     _generate_gitignore(generated_files)
 
@@ -97,6 +104,37 @@ def _clone_repos(repos: List[str]):
         os.system(cmd)
 
 
+def _get_latest_spire_release() -> str:
+    global latest_release
+    if latest_release is not None:
+        return latest_release
+    data = requests.get(GITHUB_API_LATEST_RELEASE)
+    tag_name = data.json().get("tag_name", "master")
+    latest_release = tag_name
+
+    return latest_release
+
+
+def _checkout_switch(content: dict):
+    source = content.get("source")
+    latest_release = _get_latest_spire_release()
+    cmd = GIT_CHECKOUT_CMD.format(latest_release).split()
+    repo_owner, repo_name = _get_canonical_repo_from_url(source)
+    cwd = os.path.join(CHECKOUT_DIR, repo_owner, repo_name)
+    subprocess.run(cmd, stdout=subprocess.PIPE, cwd=cwd)
+
+
+def _get_branch_by_repo_url(url: str) -> str:
+    repo_owner, repo_name = _get_canonical_repo_from_url(url)
+    branch = (
+        _get_latest_spire_release()
+        if (repo_owner, repo_name) == ("spiffe", "spire")
+        else "master"
+    )
+
+    return branch
+
+
 def _pull_files(yaml_external: dict) -> List[str]:
     generated_files: List[str] = []
     content: dict
@@ -105,8 +143,12 @@ def _pull_files(yaml_external: dict) -> List[str]:
     # we need to do this as a prep step before processing each file
     # so we can redirect internally
     for target_dir, content in yaml_external.items():
+        source = content.get("source", "").strip()
+        if source == config.get("spireGitHubUrl"):
+            _checkout_switch(content)
         for rel_file in content.get("pullFiles", []):
-            full_url = "{}/blob/master/{}".format(content.get("source"), rel_file)
+            branch = _get_branch_by_repo_url(source)
+            full_url = "{}/blob/{}/{}".format(content.get("source"), branch, rel_file)
             file_name = os.path.basename(rel_file)
             file_path = os.path.join(target_dir, file_name)
             rel_path_to_target_file = ("".join(file_path.split(".")[:-1])).lower()
@@ -115,6 +157,7 @@ def _pull_files(yaml_external: dict) -> List[str]:
             )
 
     for target_dir, content in yaml_external.items():
+        source = content.get("source", "").strip()
         pull_files: List[str] = content.get("pullFiles", [])
         repo_owner, repo_name = _get_canonical_repo_from_url(content.get("source"))
 
@@ -130,8 +173,7 @@ def _pull_files(yaml_external: dict) -> List[str]:
                 target_dir=target_dir,
                 transform_file=content.get("transform", {}).get(filename, None),
                 remove_heading=True,
-                repo_owner=repo_owner,
-                repo_name=repo_name,
+                source=source,
             )
             generated_files.append(abs_path_to_target_file)
 
@@ -149,10 +191,9 @@ def _copy_file(
     abs_path_to_repo_checkout_dir: str,
     rel_path_to_source_file: str,
     target_dir: str,
+    source: str,
     transform_file: dict = {},
     remove_heading: bool = True,
-    repo_owner: str = "",
-    repo_name: str = "",
 ) -> str:
     file_name = os.path.basename(rel_path_to_source_file)
 
@@ -190,8 +231,7 @@ def _copy_file(
             content=content,
             abs_path_to_source_dir=abs_path_to_repo_checkout_dir,
             rel_path_to_source_file=rel_path_to_source_file,
-            repo_owner=repo_owner,
-            repo_name=repo_name,
+            source=source,
         )
         target_file.write(final_content)
 
@@ -202,9 +242,10 @@ def _process_content(
     content: str,
     abs_path_to_source_dir: str,
     rel_path_to_source_file: str,
-    repo_owner: str,
-    repo_name: str,
+    source: str,
 ):
+    repo_owner, repo_name = _get_canonical_repo_from_url(source)
+
     def repl_images(m: Match[str]):
         url = m.group("url")
         alt = m.group("alt")
@@ -234,25 +275,41 @@ def _process_content(
         rel = m.group("rel")
         url = m.group("url")
         domain = m.group("domain")
+        host = m.group("host")
 
         rel_url = url
-        # this is an external url
+
+        # this is a FQDN
         if domain is not None:
+            is_link_to_spire_repo = (
+                host == "github.com"
+                and _get_canonical_repo_from_url(url) == ("spiffe", "spire")
+            )
+
             # that points to this site
+            new_url = url
             if domain == config.get("publicUrl"):
                 new_url = url[len(config.get("publicUrl")) :]
-            else:
+            elif is_link_to_spire_repo:
                 new_url = url
+                github_url = RE_EXTRACT_GITHUB_PATH.search(url)
+                if github_url is not None and github_url.group("path") != "":
+                    branch = _get_latest_spire_release()
+                    new_url = "https://github.com/{}/{}/blob/{}/{}".format(
+                        "spiffe", "spire", branch, github_url.group("path")
+                    )
+
         # this is an internal relative url
         else:
-            if rel == "/":
-                rel_url = url
-            elif rel == "./" or rel == "":
+            if rel == "./" or rel == "":
                 rel_url = os.path.join(os.path.dirname(rel_path_to_source_file), url)
 
-            new_url = "https://github.com/{}/{}/blob/master/{}".format(
-                repo_owner, repo_name, rel_url
+            branch = _get_branch_by_repo_url(source)
+
+            new_url = "https://github.com/{}/{}/blob/{}/{}".format(
+                repo_owner, repo_name, branch, rel_url
             )
+
             # if this file has been already pulled in, we can use the new internal URL
             # instead of pointing to the original github location
             if new_url in internal_links:

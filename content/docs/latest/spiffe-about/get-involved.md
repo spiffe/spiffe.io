@@ -26,7 +26,7 @@ SPIFFE is guided by a small but very active community of passionate software eng
 You can contribute to SPIFFE and SPIRE by filing issues and submitting pull requests on GitHub. See these contribution guidelines for details such as GitHub etiquette and coding conventions:
 
 * [SPIFFE contribution guidelines](https://github.com/spiffe/spiffe/blob/master/CONTRIBUTING.md)
-* [SPIRE contribution guidelines](https://github.com/spiffe/spire/blob/master/CONTRIBUTING.md)
+* [SPIRE contribution guidelines](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/CONTRIBUTING.md)
 
 While anyone is welcome to propose contributions via pull requests, we strongly encourage significant contributions - particularly those that might require a significant change to core components - to be first discussed and a high level design agreed upon with the appropriate SIGs or WGs (see above).
 
