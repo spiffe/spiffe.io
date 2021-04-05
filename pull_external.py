@@ -299,7 +299,6 @@ def _process_content(
             if domain == config.get("publicUrl"):
                 new_url = url[len(config.get("publicUrl")) :]
             elif is_link_to_spire_repo:
-                new_url = url
                 github_url = RE_EXTRACT_GITHUB_PATH.search(url)
                 if github_url is not None and github_url.group("path") != "":
                     branch = _get_latest_spire_release()
