@@ -319,6 +319,9 @@ def _process_content(
         else:
             if rel == "./" or rel == "":
                 rel_url = os.path.join(os.path.dirname(rel_path_to_source_file), url)
+            rel_url = os.path.normpath(
+                os.path.join(os.path.dirname(rel_path_to_source_file), rel, url)
+            )
 
             branch = _get_branch_by_repo_url(source)
 
