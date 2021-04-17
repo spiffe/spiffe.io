@@ -42,7 +42,7 @@ clusters:
     http2_protocol_options: {}
     hosts:
     - pipe:
-      path: /tmp/agent.sock
+      path: /tmp/spire-agent/public/api.sock
 ```
 
 The `connect_timeout` influences how fast Envoy will be able to respond if the SPIRE Agent is not running when Envoy is started or if the SPIRE Agent is restarted.
