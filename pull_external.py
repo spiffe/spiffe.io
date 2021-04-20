@@ -5,7 +5,7 @@ import re
 import toml
 import subprocess
 import requests
-from typing import List, Set, Tuple, Pattern, Match
+from typing import Dict, List, Set, Tuple, Pattern, Match
 from urllib.parse import urlparse
 from pathlib import Path
 
@@ -26,8 +26,8 @@ RE_EXTRACT_GITHUB_PATH: Pattern[str] = re.compile(
 )
 
 # holds the git URL and the new path for links between pulled in files
-internal_links: dict = {}
-config: dict = toml.load("config.toml")
+internal_links: Dict = {}
+config: Dict = toml.load("config.toml")
 latest_release = None
 
 
@@ -38,7 +38,7 @@ def main():
     repos_to_clone: Set[str] = set()
     directories_to_create: List[str] = []
 
-    content: dict
+    content: Dict
     for directory, content in yaml_external.items():
         directories_to_create.append(directory)
 
@@ -59,7 +59,7 @@ def _pull_latest_release():
         releases_file.write(yaml.dump({"latest": json}))
 
 
-def _read_yaml(file_name: str) -> dict:
+def _read_yaml(file_name: str) -> Dict:
     with open(file_name, "r", encoding="utf-8") as stream:
         yaml_file = yaml.safe_load(stream)
         return yaml_file
@@ -94,7 +94,7 @@ def _get_file_content(filename: str, remove_heading=False) -> Tuple[str, str]:
                 return "".join(raw[i:]), heading
 
 
-def _generate_yaml_front_matter(front_matter: dict = {}) -> List[str]:
+def _generate_yaml_front_matter(front_matter: Dict = {}) -> List[str]:
     fm = ["---"]
     for key, value in front_matter.items():
         if type(value) == dict:
@@ -114,16 +114,19 @@ def _clone_repos(repos: List[str]):
         os.system(cmd)
 
 
-def _get_latest_spire_release() -> dict:
+def _get_latest_spire_release() -> Dict:
     global latest_release
-    if latest_release is not None:
+
+    if latest_release:
         return latest_release
+
     data = requests.get(GITHUB_API_LATEST_RELEASE)
+    latest_release = data.json()
 
-    return data.json()
+    return latest_release
 
 
-def _checkout_switch(content: dict):
+def _checkout_switch(content: Dict):
     source = content.get("source")
     latest_release = _get_latest_spire_release()
     cmd = GIT_CHECKOUT_CMD.format(latest_release).split()
@@ -143,27 +146,25 @@ def _get_branch_by_repo_url(url: str) -> str:
     return branch
 
 
-def _pull_files(yaml_external: dict) -> List[str]:
-    generated_files: List[str] = []
-    content: dict
-
-    # collects all the URLs and new file paths for the pulled in files.
-    # we need to do this as a prep step before processing each file
-    # so we can redirect internally
+def _get_internal_links(yaml_external: Dict):
+    links = {}
     for target_dir, content in yaml_external.items():
         source = content.get("source", "").strip()
         if source == config.get("spireGitHubUrl"):
             _checkout_switch(content)
         for rel_file in content.get("pullFiles", []):
             branch = _get_branch_by_repo_url(source)
-            full_url = "{}/blob/{}/{}".format(content.get("source"), branch, rel_file)
+            full_url = "{}/blob/{}/{}".format(source, branch, rel_file)
             file_name = os.path.basename(rel_file)
             file_path = os.path.join(target_dir, file_name)
             rel_path_to_target_file = ("".join(file_path.split(".")[:-1])).lower()
-            internal_links[full_url] = "/docs/latest/{}/".format(
-                rel_path_to_target_file
-            )
+            links[full_url] = "/docs/latest/{}/".format(rel_path_to_target_file)
 
+    return links
+
+
+def _process_files(yaml_external: Dict) -> List[str]:
+    files = []
     for target_dir, content in yaml_external.items():
         source = content.get("source", "").strip()
         pull_files: List[str] = content.get("pullFiles", [])
@@ -183,7 +184,15 @@ def _pull_files(yaml_external: dict) -> List[str]:
                 remove_heading=True,
                 source=source,
             )
-            generated_files.append(abs_path_to_target_file)
+            files.append(abs_path_to_target_file)
+    return files
+
+
+def _pull_files(yaml_external: Dict) -> List[str]:
+    global internal_links
+
+    internal_links = _get_internal_links(yaml_external)
+    generated_files = _process_files(yaml_external)
 
     return generated_files
 
@@ -200,7 +209,7 @@ def _copy_file(
     rel_path_to_source_file: str,
     target_dir: str,
     source: str,
-    transform_file: dict = {},
+    transform_file: Dict = {},
     remove_heading: bool = True,
 ) -> str:
     file_name = os.path.basename(rel_path_to_source_file)
@@ -300,7 +309,7 @@ def _process_content(
                 new_url = url[len(config.get("publicUrl")) :]
             elif is_link_to_spire_repo:
                 github_url = RE_EXTRACT_GITHUB_PATH.search(url)
-                if github_url is not None and github_url.group("path") != "":
+                if github_url and github_url.group("path"):
                     branch = _get_latest_spire_release()
                     new_url = "https://github.com/{}/{}/blob/{}/{}".format(
                         "spiffe", "spire", branch, github_url.group("path")

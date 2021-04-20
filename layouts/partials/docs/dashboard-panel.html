@@ -1,7 +1,7 @@
 {{ $home       := site.BaseURL }}
 {{ $logo       := site.Params.logos.sidebar | relURL }}
 {{ $spiffeLogo := "/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png" | relURL }}
-{{ $latest     := getJSON "https://api.github.com/repos/spiffe/spire/releases/latest" }}
+{{ $latest     := site.Data.releases.latest }}
 
 <div class="dashboard-panel left has-background-white-bis is-hidden-mobile">
   <div class="dashboard-panel-header has-text-centered">
