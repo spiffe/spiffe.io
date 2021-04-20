@@ -27,7 +27,4 @@ See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe/tree
 
 # Java
 
-See the [java-spiffe library GitHub page](https://github.com/spiffe/java-spiffe) for more information about the SPIFFE Java library. 
-
-* [Federation and TCP Support](https://github.com/spiffe/spiffe-example/tree/master/java-spiffe-federation-jboss)
-
+See the [java-spiffe library GitHub page](https://github.com/spiffe/java-spiffe) for more information about the SPIFFE Java library.
