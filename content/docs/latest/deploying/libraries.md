@@ -19,11 +19,11 @@ See the [c-spiffe library GitHub page](https://github.com/spiffe/c-spiffe) for m
 
 # Go
 
-See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe/tree/master/v2) for more information about the SPIFFE Go library. 
+See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe/tree/main/v2) for more information about the SPIFFE Go library. 
 
-* [SPIFFE to SPIFFE authentication using X.509 SVIDs](https://github.com/spiffe/go-spiffe/tree/master/v2/examples/spiffe-tls)
+* [SPIFFE to SPIFFE authentication using X.509 SVIDs](https://github.com/spiffe/go-spiffe/tree/main/v2/examples/spiffe-tls)
 
-* [SPIFFE to SPIFFE authentication using JWT SVIDs](https://github.com/spiffe/go-spiffe/tree/master/v2/examples/spiffe-jwt-using-proxy)
+* [SPIFFE to SPIFFE authentication using JWT SVIDs](https://github.com/spiffe/go-spiffe/tree/main/v2/examples/spiffe-jwt-using-proxy)
 
 # Java
 
