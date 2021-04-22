@@ -66,6 +66,28 @@ Web Server is available at //localhost:1313/ (bind address 0.0.0.0)
 
 The website is now available at [`http://localhost:1313`](http://localhost:1313). Changes in the Markdown files or the [external content descriptor file](./external.yaml) trigger a rebuild of the site. After the rebuild, the site is reloaded in your browser.
 
+### Avoiding broken links
+
+It is common that URLs you are pointing to get deprecated or moved somewhere else over time, leading to broken links on our website.
+
+In order to avoid this, there is a tool that lets you check whether there are broken links in the whole website or not.
+
+First, make sure you are serving the website locally and that it is accesible at `http://localhost:1313`, then run the following command:
+
+```shell
+make docker-check-links # if you prefer to use Docker
+```
+
+or
+
+```shell
+make check-links # if you prefer to run the toolchain in your machine
+```
+
+The tool will crawl your local website and will report if there's any broken link on it.
+
+If there's any, and you can't fix it right away, please [file an issue on GitHub](https://github.com/spiffe/spiffe.io/issues/new]).
+
 ## Publishing the site
 
 The site is published automatically by [Netlify](https://netlify.com). Whenever you merge pull requests to `master`, the site is automatically built and published in about a minute. **There's no need to handle this manually**.
