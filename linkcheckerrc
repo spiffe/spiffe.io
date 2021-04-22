@@ -1,0 +1,7 @@
+[filtering]
+check_extern=1
+
+[output]
+status=0
+
+[AnchorCheck]
