@@ -1,5 +1,5 @@
 [filtering]
-check_extern=1
+checkextern=1
 
 [output]
 status=0
