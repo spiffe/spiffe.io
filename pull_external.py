@@ -168,7 +168,7 @@ def _process_files(yaml_external: Dict) -> List[str]:
     for target_dir, content in yaml_external.items():
         source = content.get("source", "").strip()
         pull_files: List[str] = content.get("pullFiles", [])
-        repo_owner, repo_name = _get_canonical_repo_from_url(content.get("source"))
+        repo_owner, repo_name = _get_canonical_repo_from_url(source)
 
         # processes and copies content from the git checkout to the desired location
         for rel_file in pull_files:
