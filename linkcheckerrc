@@ -4,5 +4,3 @@ ignore=letsencrypt\.org
 
 [output]
 status=0
-
-[AnchorCheck]
