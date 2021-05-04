@@ -62,9 +62,9 @@ Different selectors are available depending on the platform or architecture on w
 
 | For a list of supported selectors for this platform | Go here |
 | ---------------- | ----------- |
-| **Kubernetes**       | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/master/doc/plugin_server_nodeattestor_k8s_sat.md)
-| **AWS**       | The [configuration reference page for the AWS Node Resolver](https://github.com/spiffe/spire/blob/master/doc/plugin_server_noderesolver_aws_iid.md)
-| **Azure**       | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/master/doc/plugin_server_noderesolver_azure_msi.md)
+| **Kubernetes**       | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_k8s_sat.md)
+| **AWS**       | The [configuration reference page for the AWS Node Attestor](https://github.com/spiffe/spire/blob/main/doc/plugin_server_nodeattestor_aws_iid.md)
+| **Azure**       | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/main/doc/plugin_server_noderesolver_azure_msi.md)
 
 ## 2. Defining the SPIFFE ID of the Workload
 
