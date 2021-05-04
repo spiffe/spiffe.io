@@ -67,8 +67,6 @@ You customize the agent’s behavior by configuring plugins and other configurat
 
 You can create custom server and agent plugins for particular platforms and architectures for which SPIRE doesn’t include plugins. For example, you could create server and agent node attestors for an architecture other than those summarized under [Node Attestation](#node-attestation). Or you could create a custom keymanager plugin to handle private keys in a way SPIRE doesn’t currently support. Because SPIRE loads custom plugins at runtime, you do not need recompile SPIRE in order to enable them.
 
-For help creating custom server and agent plugins, see [SPIRE Plugin Development](https://github.com/spiffe/plugin-template/blob/master/SPIRE_PLUGIN_GUIDE.md). 
-
 # A Day in the Life of an SVID
 
 This section walks through a “day in the life” of how SPIRE issues an identity to a workload, from the time the agent starts up on a node to the point of a workload on the same node receiving a valid identity in the form of an X.509 SVID. Note that SVIDs in JWT format are handled differently. For the purposes of simple demonstration, the workload is running on AWS EC2.

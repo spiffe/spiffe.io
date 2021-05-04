@@ -1,30 +1,30 @@
 issuers:
-- name: The SPIRE project
-  description: SPIRE is an open-source toolchain that implements the SPIFFE specification in a wide variety of environments
-  link: /docs/latest/spire/understand/concepts/
-  logo: spire/icon/color/spire-icon-color.png
-- name: Istio 
-  description: The Istio control plane issues SPIFFE IDs for all workloads
-  link: https://istio.io/latest/docs/concepts/security/#pki
-  logo: istio.svg
-- name: HashiCorp Consul
-  description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
-  link: https://www.consul.io/segmentation.html
-  logo: consul.svg
-- name: Kuma
-  description: Kuma automatically generates SPIFFE-compatible certificates that identify all the services and workloads running in the service mesh, and encrypts all the traffic generated between them
-  link: https://kuma.io
-  logo: kuma.svg
+  - name: The SPIRE project
+    description: SPIRE is an open-source toolchain that implements the SPIFFE specification in a wide variety of environments
+    link: /docs/latest/spire/understand/concepts/
+    logo: spire/icon/color/spire-icon-color.png
+  - name: Istio
+    description: The Istio control plane issues SPIFFE IDs for all workloads
+    link: https://istio.io/latest/docs/concepts/security/#pki
+    logo: istio.svg
+  - name: HashiCorp Consul
+    description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
+    link: https://www.consul.io/segmentation.html
+    logo: consul.svg
+  - name: Kuma
+    description: Kuma automatically generates SPIFFE-compatible certificates that identify all the services and workloads running in the service mesh, and encrypts all the traffic generated between them
+    link: https://kuma.io
+    logo: kuma.svg
 consumers:
-- name: The Envoy proxy
-  description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication) connections between Envoy proxies
-  link: https://blog.envoyproxy.io/securing-the-service-mesh-with-spire-0-3-abb45cd79810
-  logo: envoy.svg
-- name: Pinterest Knox
-  description: Customers can authenticate to Knox with SPIFFE IDs
-  link: https://medium.com/@Pinterest_Engineering/secret-management-in-multi-tenant-environments-debc9236a744
-  logo: pinterest.png
-- name: The Ghostunnel proxy
-  description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Multiplexed_Transport_Layer_Security) connections between Ghostunnel proxies with built-in support for obtaining X.509-SVID identities via the [SPIFFE Workload API](/docs/latest/spiffe/concepts/#spiffe-workload-api)
-  link: https://github.com/square/ghostunnel
-  logo: square.jpg
+  - name: The Envoy proxy
+    description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
+    link: https://blog.envoyproxy.io/securing-the-service-mesh-with-spire-0-3-abb45cd79810
+    logo: envoy.svg
+  - name: Pinterest Knox
+    description: Customers can authenticate to Knox with SPIFFE IDs
+    link: https://medium.com/@Pinterest_Engineering/secret-management-in-multi-tenant-environments-debc9236a744
+    logo: pinterest.png
+  - name: The Ghostunnel proxy
+    description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Ghostunnel proxies with built-in support for obtaining X.509-SVID identities via the [SPIFFE Workload API](/docs/latest/spiffe-about/spiffe-concepts/#spiffe-workload-api)
+    link: https://github.com/square/ghostunnel
+    logo: square.jpg
