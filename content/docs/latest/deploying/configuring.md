@@ -65,7 +65,7 @@ Your choice of node attestation method determines which node-attestor plugins yo
 
 To issue identities to workloads running in a Kubernetes cluster, it is necessary to deploy a SPIRE Agent to each node in that cluster that is running a workload ([read more](/docs/latest/spire/installing/install-agents/#installing-spire-agents-on-kubernetes) on how to install SPIRE Agents on Kubernetes).
 
-Service Account Tokens can be validated using the Kubernetes [Token Review API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#tokenreview-v1-authentication-k8s-io). Because of this, the SPIRE Server does not itself need to be running on Kubernetes, and a single SPIRE Server may support agents running on multiple Kubernetes clusters with PSAT attestation enabled.
+Service Account Tokens can be validated using the Kubernetes [Token Review API](https://kubernetes.io/docs/reference/kubernetes-api/authentication-resources/token-review-v1/). Because of this, the SPIRE Server does not itself need to be running on Kubernetes, and a single SPIRE Server may support agents running on multiple Kubernetes clusters with PSAT attestation enabled.
 
 ### Projected Service Account Tokens
 
