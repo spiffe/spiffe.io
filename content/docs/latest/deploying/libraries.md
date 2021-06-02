@@ -15,7 +15,8 @@ The following code samples demonstrate how to use the libraries to establish and
 
 # C, C++
 
-See the [c-spiffe library GitHub page](https://github.com/HewlettPackard/c-spiffe) for more information about the SPIFFE C/C++ library, which is under development in 2021. This library replaces an earlier c-spiffe library that was archived.
+See the [c-spiffe library GitHub page](https://github.com/HewlettPackard/c-spiffe) for more information about a SPIFFE C/C++ library. This library is not yet part of the official SPIFFE repo and is still under development in June 2021. An earlier official c-spiffe library became out-of-date and was archived.
+
 
 # Go
 
