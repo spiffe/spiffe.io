@@ -72,7 +72,7 @@ It is common that URLs you are pointing to get deprecated or moved somewhere els
 
 In order to avoid this, there is a tool that lets you check whether there are broken links in the whole website or not.
 
-First, make sure you are serving the website locally and that it is accesible at `http://localhost:1313`, then run the following command:
+First, make sure you are serving the website locally using the `-with-releases` form of the script (`make docker-serve-with-releases` or `make serve-with-releases`), and that it is accesible at `http://localhost:1313`, then run the following command:
 
 ```shell
 make docker-check-links # if you prefer to use Docker
