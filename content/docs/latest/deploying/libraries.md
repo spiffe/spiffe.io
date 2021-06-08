@@ -13,9 +13,10 @@ You can use one of the following libraries to fetch SVIDs and trust bundles from
 
 The following code samples demonstrate how to use the libraries to establish and maintain SPIFFE-enabled connections transparently between applications.
 
-# C++
+# C, C++
 
-See the [c-spiffe library GitHub page](https://github.com/spiffe/c-spiffe) for more information about the SPIFFE C++ library. 
+See the [c-spiffe library GitHub page](https://github.com/HewlettPackard/c-spiffe) for more information about a SPIFFE C/C++ library. This library is not yet part of the official SPIFFE repo and is still under development in June 2021. An earlier official c-spiffe library became out-of-date and was archived.
+
 
 # Go
 
