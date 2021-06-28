@@ -29,3 +29,7 @@ See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe/tree
 # Java
 
 See the [java-spiffe library GitHub page](https://github.com/spiffe/java-spiffe) for more information about the SPIFFE Java library.
+
+# Rust
+
+See the [spiffe crate](https://crates.io/crates/spiffe) for more information about the SPIFFE Rust library. 
