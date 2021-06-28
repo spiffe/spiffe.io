@@ -32,4 +32,5 @@ See the [java-spiffe library GitHub page](https://github.com/spiffe/java-spiffe)
 
 # Rust
 
-See the [spiffe crate](https://crates.io/crates/spiffe) for more information about the SPIFFE Rust library. 
+See the [spiffe crate](https://crates.io/crates/spiffe) for more information about the SPIFFE Rust library.
+This library is not yet part of the official SPIFFE repo and is still under development. 
