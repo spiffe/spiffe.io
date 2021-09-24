@@ -2,14 +2,18 @@
 title: Extend SPIRE
 short: Extending
 kind: planning
-description: Learn how to extend SPIRE with third-party plugins
+description: Learn how to extend SPIRE with plugins
 weight: 100
 aliases:
     - /spire/docs/extending
     - /docs/latest/spire/developing/extending
 ---
 
-SPIRE is highly extensible via a plugin framework that allows many core operations to be added and customized.
+SPIRE is highly extensible via a plugin framework that allows many core operations to be added and customized. This page describes the types of plugins available, how to integrate plugins while deploying SPIRE, and has a link to the SPIRE Plugin SDK for those interested in authoring a plugin.
+
+# Authoring SPIRE plugins
+
+Refer to the [Spire Plugin SDK](https://github.com/spiffe/spire-plugin-sdk) GitHub page for documentation and templates that you can use to code your own SPIRE plugins.
 
 # Node Attestor plugins
 
