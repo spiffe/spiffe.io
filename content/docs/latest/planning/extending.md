@@ -13,7 +13,7 @@ SPIRE is highly extensible via a plugin framework that allows many core operatio
 
 # Authoring SPIRE plugins
 
-Refer to the [Spire Plugin SDK](https://github.com/spiffe/spire-plugin-sdk) GitHub page for documentation and templates that you can use to code your own SPIRE plugins.
+Refer to the [SPIRE Plugin SDK](https://github.com/spiffe/spire-plugin-sdk) GitHub page for documentation and templates that you can use to code your own SPIRE plugins.
 
 # Node Attestor plugins
 
@@ -47,11 +47,11 @@ UpstreamAuthority plugins allow the SPIRE Server to integrate with existing publ
 
 SPIRE comes with a set of built-in UpstreamAuthority plugins for the [Server](/docs/latest/deploying/spire_server/).
 
-# KeyManager plugins
+# Key Manager plugins
 
-In some cases it might be desirable for SPIRE to avoid being exposed to a signing key at all - for example if the signing key is held in a secure hardware enclave. In such a case, the SPIRE Server and Agent can leverage KeyManager plugins to delegate the actual signing operation to another system (such as a TPM).
+In some cases it might be desirable for SPIRE to avoid being exposed to a signing key at all - for example if the signing key is held in a secure hardware enclave. In such a case, the SPIRE Server and Agent can leverage Key Manager plugins to delegate the actual signing operation to another system (such as a TPM).
 
-SPIRE comes with a set of built-in KeyManager plugins for the [Server](/docs/latest/deploying/spire_server/) and [Agent](/docs/latest/deploying/spire_agent/).
+SPIRE comes with a set of built-in Key Manager plugins for the [Server](/docs/latest/deploying/spire_server/) and [Agent](/docs/latest/deploying/spire_agent/).
 
 # Notifier plugins
 
