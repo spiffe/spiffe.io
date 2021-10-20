@@ -29,7 +29,7 @@ In addition, known third-party Node Attestor plugins include:
 
 # Node Resolver plugins
 
-Once the identity of an individual node has been determined, in some cases it is valuable to be able to expose additional verified metadata about that workload as selectors for registration entries. For example, the AWS EC2 IID Node Attestor plugin can be used to prove the Instance ID of a given EC2 instance, but the AWS EC2 IID Node Resolver plugin will - by looking up additional instance metadata in AWS - expose additional selectors (such as instance tag or label) based on this verified metadata.
+Once the identity of an individual node has been determined, in some cases it is valuable to be able to expose additional verified metadata about that node as selectors for registration entries. For example, the AWS EC2 IID Node Attestor plugin can be used to prove the Instance ID of a given EC2 instance, but the AWS EC2 IID Node Resolver plugin will - by looking up additional instance metadata in AWS - expose additional selectors (such as instance tag or label) based on this verified metadata.
 
 Node Resolver plugins are typically coupled to a specific Node Attestor plugin (such as the AWS EC2 IID Node Attestor), since they will rely on that plugin to verify the initial identity of the node.
 
