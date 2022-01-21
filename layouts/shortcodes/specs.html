@@ -1,5 +1,5 @@
 {{- $documents := .Site.Data.spec.documents }}
-{{- $rootUrl   := "https://github.com/spiffe/spiffe/blob/master/standards" }}
+{{- $rootUrl   := "https://github.com/spiffe/spiffe/blob/main/standards" }}
 <ul>
   {{- range $documents }}
   {{- $url := printf "%s/%s" $rootUrl .filename }}

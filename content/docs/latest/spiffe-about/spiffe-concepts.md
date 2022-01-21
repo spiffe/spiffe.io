@@ -33,7 +33,7 @@ SPIFFE IDs are a [Uniform Resource Identifier (URI)](https://tools.ietf.org/html
 
 The _workload identifier_ uniquely identifies a specific workload within a [trust domain](#trust-domain).
 
-The [SPIFFE specification](https://github.com/spiffe/spiffe/blob/master/standards/SPIFFE.md) describes in detail the format and use of SPIFFE IDs.
+The [SPIFFE specification](https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE.md) describes in detail the format and use of SPIFFE IDs.
 
 ## Trust Domain
 
@@ -49,7 +49,7 @@ An SVID contains a single SPIFFE ID, which represents the identity of the servic
 
 As tokens are susceptible to _replay attacks_, in which an attacker that obtains the token in transit can use it to impersonate a workload, it is advised to use X.509-SVIDs whenever possible. However, there may be some situations in which the only option is the JWT token format, for example, when your architecture has an L7 proxy or load balancer between two workloads.
 
-For detailed information on the SVID, see the [SVID specification](https://github.com/spiffe/spiffe/blob/master/standards/X509-SVID.md).
+For detailed information on the SVID, see the [SVID specification](https://github.com/spiffe/spiffe/blob/main/standards/X509-SVID.md).
 
 ## SPIFFE Workload API
 
