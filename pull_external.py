@@ -140,7 +140,7 @@ def _get_branch_by_repo_url(url: str) -> str:
     branch = (
         _get_latest_spire_release()
         if (repo_owner, repo_name) == ("spiffe", "spire")
-        else "master"
+        else "main"
     )
 
     return branch
