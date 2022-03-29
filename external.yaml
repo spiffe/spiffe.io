@@ -82,6 +82,7 @@ deploying:
                     - /docs/latest/spire/using/telemetry_config/
 keyless/vault:
     source: https://github.com/spiffe/spire-tutorials
+    branch: master
     pullFiles:
         - k8s/oidc-vault/README.md
     transform:
@@ -93,6 +94,7 @@ keyless/vault:
                 weight: 200
 architecture/nested:
     source: https://github.com/spiffe/spire-tutorials
+    branch: master
     pullFiles:
         - docker-compose/nested-spire/README.md
     transform:
@@ -105,6 +107,7 @@ architecture/nested:
                 weight: 100
 architecture/federation:
     source: https://github.com/spiffe/spire-tutorials
+    branch: master
     pullFiles:
         - docker-compose/federation/README.md
     transform:
@@ -117,6 +120,7 @@ architecture/federation:
                 weight: 200
 microservices/envoy-x509:
     source: https://github.com/spiffe/spire-tutorials
+    branch: master
     pullFiles:
         - k8s/envoy-x509/README.md
     transform:
@@ -129,6 +133,7 @@ microservices/envoy-x509:
                 weight: 100
 microservices/envoy-jwt:
     source: https://github.com/spiffe/spire-tutorials
+    branch: master
     pullFiles:
         - k8s/envoy-jwt/README.md
     transform:
@@ -141,6 +146,7 @@ microservices/envoy-jwt:
                 weight: 200
 microservices/envoy-opa:
     source: https://github.com/spiffe/spire-tutorials
+    branch: master
     pullFiles:
         - k8s/envoy-opa/README.md
     transform:
@@ -153,6 +159,7 @@ microservices/envoy-opa:
                 weight: 300
 microservices/envoy-jwt-opa:
     source: https://github.com/spiffe/spire-tutorials
+    branch: master
     pullFiles:
         - k8s/envoy-jwt-opa/README.md
     transform:
