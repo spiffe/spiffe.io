@@ -135,25 +135,25 @@ def _checkout_switch(content: Dict):
     subprocess.run(cmd, stdout=subprocess.PIPE, cwd=cwd)
 
 
-def _get_branch_by_repo_url(url: str) -> str:
+def _get_branch_by_repo_url(url: str, source_branch: str) -> str:
     repo_owner, repo_name = _get_canonical_repo_from_url(url)
-    branch = (
-        _get_latest_spire_release()
-        if (repo_owner, repo_name) == ("spiffe", "spire")
-        else "main"
-    )
+    if (repo_owner, repo_name) == ("spiffe", "spire"):
+        return _get_latest_spire_release()
+    elif source_branch:
+        return source_branch
 
-    return branch
+    return "master"
 
 
 def _get_internal_links(yaml_external: Dict):
     links = {}
     for target_dir, content in yaml_external.items():
         source = content.get("source", "").strip()
+        source_branch = content.get("branch", "").strip()
         if source == config.get("spireGitHubUrl"):
             _checkout_switch(content)
         for rel_file in content.get("pullFiles", []):
-            branch = _get_branch_by_repo_url(source)
+            branch = _get_branch_by_repo_url(source, source_branch)
             full_url = "{}/blob/{}/{}".format(source, branch, rel_file)
             file_name = os.path.basename(rel_file)
             file_path = os.path.join(target_dir, file_name)
@@ -167,6 +167,7 @@ def _process_files(yaml_external: Dict) -> List[str]:
     files = []
     for target_dir, content in yaml_external.items():
         source = content.get("source", "").strip()
+        source_branch = content.get("branch", "").strip()
         pull_files: List[str] = content.get("pullFiles", [])
         repo_owner, repo_name = _get_canonical_repo_from_url(source)
 
@@ -183,6 +184,7 @@ def _process_files(yaml_external: Dict) -> List[str]:
                 transform_file=content.get("transform", {}).get(filename, None),
                 remove_heading=True,
                 source=source,
+                source_branch=source_branch,
             )
             files.append(abs_path_to_target_file)
     return files
@@ -209,6 +211,7 @@ def _copy_file(
     rel_path_to_source_file: str,
     target_dir: str,
     source: str,
+    source_branch: str,
     transform_file: Dict = {},
     remove_heading: bool = True,
 ) -> str:
@@ -249,6 +252,7 @@ def _copy_file(
             abs_path_to_source_dir=abs_path_to_repo_checkout_dir,
             rel_path_to_source_file=rel_path_to_source_file,
             source=source,
+            source_branch=source_branch,
         )
         target_file.write(final_content)
 
@@ -260,6 +264,7 @@ def _process_content(
     abs_path_to_source_dir: str,
     rel_path_to_source_file: str,
     source: str,
+    source_branch: str,
 ):
     repo_owner, repo_name = _get_canonical_repo_from_url(source)
 
@@ -320,7 +325,7 @@ def _process_content(
             if rel == "./" or rel == "":
                 rel_url = os.path.join(os.path.dirname(rel_path_to_source_file), url)
 
-            branch = _get_branch_by_repo_url(source)
+            branch = _get_branch_by_repo_url(source, source_branch)
 
             new_url = "https://github.com/{}/{}/blob/{}/{}".format(
                 repo_owner, repo_name, branch, rel_url
