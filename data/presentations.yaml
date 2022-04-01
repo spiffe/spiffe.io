@@ -53,6 +53,16 @@
   language: English
   description: How Square deployed SPIRE and Envoy on a bare metal/multicloud hybrid environment
   weight: 100
+- title: "Introducing Robust Identities into Istio by integrating with SPIRE"
+  link: https://youtu.be/xhd8MhG4Vvw
+  youtube: xhd8MhG4Vvw
+  presenters: Alexandre Alvino, Caio Milfont, Juliano Fantozzi, Max Lambrecht, Praneetha Manthravadi
+  organizations: HPE
+  category: advanced-tutorial
+  date: 29-Mar-2022
+  venue: Munch and Learn, HPE
+  description: This project leverages the service management capability of Istio and the secure identity framework of SPIRE to deliver robust and flexible attestation beyond Kuberbetes namespaces and service accounts  and provide end-to-end secure attestation of workloads based on zero trust principles regardless of location of such workloads.
+  weight: 100
 - title: Uber's Findings on Observability in SPIRE at Scale
   link: https://youtu.be/nIRy_aI0E5k
   youtube: nIRy_aI0E5k
