@@ -20,10 +20,7 @@ WORKDIR /app
 ENV PATH="/home/appuser/.pyenv/bin:/home/appuser/.local/bin:${PATH}"
 RUN curl https://pyenv.run | bash
 RUN export PATH="$(pyenv root)/shims/python:$PATH"
-RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 RUN echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
-# RUN eval "$(pyenv init - sh)"
-# RUN eval "$(pyenv init --path)"
 
 # Installs Python
 ADD [".python-version", "/app/"]
