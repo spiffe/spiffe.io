@@ -16,7 +16,7 @@ requests = "~=2.25.1"
 linkchecker = "~=10.0.1"
 
 [requires]
-python_version = "3.8.13"
+python_version = "3.8"
 
 [pipenv]
 allow_prereleases = true
