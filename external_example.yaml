@@ -2,15 +2,16 @@
 spire/understand:
     # github repo that hold the source content
     source: https://github.com/spiffe/spire
+    # repository branch to pull, it has no effect on spiffe/spire repo, where the latest version bransh is always pulled
+    branch: main
     # individual files we want to pull in
     pullFiles:
         - doc/SPIRE101.md
+        - doc/upgrading.md
     # any transformation we want to apply to the pulled in files
     transform:
         # the file name we want to apply the transformation to
         SPIRE101.md:
-            # rename the file (NOT YET IMPLEMENTED)
-            rename: SPIRE-INTRO.md
             # HUGO's front-matter we want to inject in the file
             # For available variables see: https://gohugo.io/content-management/front-matter/#front-matter-variables
             frontMatter:
@@ -18,39 +19,20 @@ spire/understand:
                 short: SPIRE 101
                 kind: spire-understand
                 weight: 100
-
-spire/installing:
-    source: https://github.com/spiffe/spire
-    pullFiles:
-        - doc/upgrading.md
-    transform:
         upgrading.md:
             frontMatter:
                 short: Upgrade/Downgrade SPIRE
                 kind: spire-installing
                 weight: 80
-
-spire/using:
-    source: https://github.com/spiffe/spire
+keyless/vault:
+    source: https://github.com/spiffe/spire-tutorials
+    branch: master
     pullFiles:
-        - doc/spire_agent.md
-        - doc/spire_server.md
-        - doc/telemetry_config.md
-        - doc/scaling_spire.md
+        - k8s/oidc-vault/README.md
     transform:
-        spire_agent.md:
+        README.md:
             frontMatter:
-                title: SPIRE Agent Configuration Reference
-                kind: spire-using
-        spire_server.md:
-            frontMatter:
-                title: SPIRE Server Configuration Reference
-                kind: spire-using
-        telemetry_config.md:
-            frontMatter:
-                title: SPIRE Telemetry Configuration
-                kind: spire-using
-        scaling_spire.md:
-            frontMatter:
-                title: Scaling SPIRE
-                kind: spire-using
+                short: Vault Integration Example
+                kind: keyless
+                description: Using SPIRE JWT-SVIDs to Authenticate to Hashicorp Vault
+                weight: 200
