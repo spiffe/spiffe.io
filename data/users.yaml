@@ -15,6 +15,10 @@ issuers:
     description: Kuma automatically generates SPIFFE-compatible certificates that identify all the services and workloads running in the service mesh, and encrypts all the traffic generated between them
     link: https://kuma.io
     logo: kuma.svg
+  - name: cert-manager CSI driver
+    description: csi-driver-spiffe is a cert-manager project that delivers SPIFFE compliant X.509-SVIDs to Kubernetes Pods using CSI, based on the identity of the mounting ServiceAccount.
+    link: https://github.com/cert-manager/csi-driver-spiffe
+    logo: cert-manager.png
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
