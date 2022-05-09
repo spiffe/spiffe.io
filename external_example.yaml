@@ -26,7 +26,7 @@ spire/understand:
                 weight: 80
 keyless/vault:
     source: https://github.com/spiffe/spire-tutorials
-    branch: master
+    branch: main
     pullFiles:
         - k8s/oidc-vault/README.md
     transform:
