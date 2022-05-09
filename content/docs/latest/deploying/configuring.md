@@ -234,8 +234,6 @@ The data-store is where SPIRE Server persists dynamic configuration such as regi
 
 The SPIRE Server can be configured to utilize different SQL-compatible storage backends by configuring the default SQL data-store plugin as described below. A complete reference for how this block is configured can be found in the [SPIRE documentation](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_datastore_sql.md).
 
-Alternatively, SPIRE can be configured to use non-SQL compatible storage backends through third party datastore plugins. The guide on [Extending SPIRE](/docs/latest/spire/developing/extending/) covers this in more detail.
-
 ### Configure SQLite as a SPIRE data-store
 
 By default, the SPIRE Server creates and uses a local SQLite database for backing up and storing configuration data. While convenient for testing this is generally not recommended for production deployments as it is difficult to share a SQLite data-store across multiple machines, which can complicate backups, HA deployments and upgrades.
