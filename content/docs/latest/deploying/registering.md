@@ -21,7 +21,7 @@ The server will send to the agent a list of all registration entries for workloa
 
 During workload attestation, the agent discovers selectors and compares them to those in the cached registration entries to determine which SVIDs they should assign to the workload.  
 
-You register a workload either by issuing the `spire-server entry create` command at the command line or calling directly into the Registration API, as described in the [Registration API documentation](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/proto/spire/api/registration/registration.proto). Existing entries can be modified using the `spire-server entry update` command.
+You register a workload either by issuing the `spire-server entry create` command at the command line or calling directly into the Entry API, as described in the [Entry API documentation](https://github.com/spiffe/spire-api-sdk/blob/{{< spire-latest "tag" >}}/proto/spire/api/server/entry/v1/entry.proto). Existing entries can be modified using the `spire-server entry update` command.
 
 {{< info >}}
 When running on Kubernetes, a common way to invoke commands on the SPIRE Server is through the `kubectl exec` command on a pod running the SPIRE Server. For example:
@@ -63,7 +63,7 @@ Different selectors are available depending on the platform or architecture on w
 | For a list of supported selectors for this platform | Go here |
 | ---------------- | ----------- |
 | **Kubernetes**       | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_sat.md)
-| **AWS**       | The [configuration reference page for the AWS Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_aws_iid.md)
+| **AWS**       | The [configuration reference page for the AWS Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md)
 | **Azure**       | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_azure_msi.md)
 
 ## 2. Defining the SPIFFE ID of the Workload
