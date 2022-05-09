@@ -12,7 +12,7 @@ aliases:
 
 Pre-built SPIRE releases can be found on the [SPIRE downloads page](/downloads/#spire-releases). The tarballs contain both server and agent binaries.
 
-If you wish, you may also [build SPIRE from source](https://github.com/spiffe/spire/blob/master/CONTRIBUTING.md).
+If you wish, you may also [build SPIRE from source](https://github.com/spiffe/spire/blob/main/CONTRIBUTING.md).
 
 ## Step 2: Install the Server and Agent {#step-2}
 

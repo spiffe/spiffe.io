@@ -53,7 +53,7 @@ def main():
 def _pull_latest_release():
     global latest_release
     json = _get_latest_spire_release()
-    latest_release = json.get("tag_name", "master")
+    latest_release = json.get("tag_name", "main")
 
     with open("data/releases.yaml", "w") as releases_file:
         releases_file.write(yaml.dump({"latest": json}))

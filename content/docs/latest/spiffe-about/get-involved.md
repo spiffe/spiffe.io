@@ -17,7 +17,7 @@ SPIFFE is guided by a small but very active community of passionate software eng
 
 * **Mailing lists** --- Announcements occur in the SPIFFE [Google Group](https://groups.google.com/a/spiffe.io/forum/#!forum/announce). There is also a [users](https://groups.google.com/a/spiffe.io/forum/#!forum/user-discussion) and [developers](https://groups.google.com/a/spiffe.io/forum/#!forum/dev-discussion) list.
 
-* **Special Interest Groups and Working Groups** --- The broader SPIFFE community is self-organized into Special Interest Groups (SIGs) that coordinate to manage specific aspects of SPIFFE’s design, and Working Groups (WGs) that focus on short-term cross-SIG initiatives. A list of active SIGs and WGs can be found [here](https://github.com/spiffe/spiffe/tree/master/community).
+* **Special Interest Groups and Working Groups** --- The broader SPIFFE community is self-organized into Special Interest Groups (SIGs) that coordinate to manage specific aspects of SPIFFE’s design, and Working Groups (WGs) that focus on short-term cross-SIG initiatives. A list of active SIGs and WGs can be found [here](https://github.com/spiffe/spiffe/tree/main/community).
 
 * **Social media** --- Follow us on [Twitter](https://twitter.com/SPIFFEio).
 
