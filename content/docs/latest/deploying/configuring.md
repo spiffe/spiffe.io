@@ -81,7 +81,7 @@ To use PSAT Node Attestation, configure enable the PSAT Node Attestor plugin on 
 
 In cases where workloads are running on Kubernetes but the Projected Service Account Token feature is not available for the cluster they are running on, SPIRE can establish trust between the Server and Agent using Service Account Tokens. Unlike when using Projected Service Account Tokens, this method requires that the SPIRE Server and SPIRE Agent both be deployed on the same Kubernetes cluster.
 
-Because the service account token does not contain claims that could be used to strongly identify the node/daemonset/pod running the agent, any container running in a whitelisted service account can masquerade as an agent. For this reason it is strongly recommended that agents run under a dedicated service account when using this attestation method.
+Because the service account token does not contain claims that could be used to strongly identify the node/daemonset/pod running the agent, any container running in an allowed service account can masquerade as an agent. For this reason it is strongly recommended that agents run under a dedicated service account when using this attestation method.
 
 To use SAT Node Attestation, configure and enable the SAT Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_sat.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_k8s_sat.md).
 
