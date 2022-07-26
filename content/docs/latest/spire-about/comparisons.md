@@ -21,7 +21,7 @@ By contrast, while SPIRE does _generate_ SPIFFE identities that can be used to [
 SPIRE's attestation policies provide a flexible and powerful solution for secure introduction to secrets managers. A common use of SPIRE-issued [SVIDs](/docs/latest/spiffe/concepts/#spiffe-verifiable-identity-document-svid) is to authenticate to secret stores to allow an application to retrieve secrets.
 
 # Identity Providers
-_e.g. ory.sh, VMWare Lightwave, WS02 Identity Server_
+_e.g. ory.sh, VMWare Lightwave, WSO2 Identity Server_
 
 Identity providers are typically responsible for generating short-lived identity documents in various formats for workloads when they interact with other systems. These may include, for example: SVIDs (for SPIFFE), access or refresh tokens (OAuth) or Service Tickets (Kerberos). If an identity provider implements the SPIFFE specification faithfully then it can be considered a SPIFFE Identity Provider. Since SPIRE implements the SPIFFE specification it may be considered a SPIFFE identity provider. 
 
