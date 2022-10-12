@@ -9,6 +9,7 @@
   language: English
   description: A brief overview of how the open source project Network Service Mesh is integrating SPIFFE/SPIRE
   weight: 100
+  link: https://www.hpe.com/h22228/video-gallery/us/en/cdf4364c-1008-4478-bad9-ac15df2e7eb4/video/
 - title: How Frontdoor is using SPIRE
   link: https://www.youtube.com/watch?v=fxtG1wuLSDw&feature=youtu.be&t=14m41s
   youtube: fxtG1wuLSDw
