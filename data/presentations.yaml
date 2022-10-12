@@ -9,7 +9,14 @@
   language: English
   description: A brief overview of how the open source project Network Service Mesh is integrating SPIFFE/SPIRE
   weight: 100
+- title: "How to prevent software supply chain attacks using SPIRE and Sigstore"
   link: https://www.hpe.com/h22228/video-gallery/us/en/cdf4364c-1008-4478-bad9-ac15df2e7eb4/video/
+  youtube: qT09bEmQmLI
+  presenters: Daniel Feldman
+  organizations: HPE
+  category: advanced-tutorial
+  date: 10-Oct-2022
+  description: Using a live demo, Andrey explains how an SGX workload attestor can improve the strength of application identities. 
 - title: How Frontdoor is using SPIRE
   link: https://www.youtube.com/watch?v=fxtG1wuLSDw&feature=youtu.be&t=14m41s
   youtube: fxtG1wuLSDw
@@ -123,7 +130,7 @@
   link: https://www.youtube.com/watch?v=Q2SiGeebRKY
   youtube: Q2SiGeebRKY
   presenters: Evan Gilman
-  organizations: Scytale
+  organizations: Scytale/HPE
   category: overview
   date: 13-Feb-2020
   description: In this lightboard video Evan Gilman, an engineer at Scytale, provides an overview of CNCF’s SPIFFE and SPIRE Projects.
@@ -142,7 +149,7 @@
   link: https://www.youtube.com/watch?v=YFll-3jgFrU&list=PLWsNZXV-gXVY_br7I8gz9q0Fijk4DoUxG&index=6&t=0s
   presenters:  Agustín Martínez Fayó 
   youtube: YFll-3jgFrU
-  organizations: Scytale
+  organizations: Scytale/HPE
   venue: SPIFFE Community Day
   date: 11-October-2019
   language: English
@@ -172,7 +179,7 @@
   link: https://www.youtube.com/watch?v=db_3LefoG9k&list=PLWsNZXV-gXVY_br7I8gz9q0Fijk4DoUxG&index=9&t=775s
   youtube: db_3LefoG9k
   presenters: Eugene Weiss 
-  organizations: Scytale
+  organizations: Scytale/HPE
   venue: SPIFFE Community Day
   date: 11-October-2019
   language: English
@@ -222,7 +229,7 @@
   link: https://youtu.be/H5IlmYmEDKk?t=8896
   youtube: H5IlmYmEDKk
   presenters: Max Lambrecht & Eugene Weiss
-  organizations: Scytale
+  organizations: Scytale/HPE
   venue: SPIFFE Community Day
   date: 3-May-2019
   language: English
@@ -260,7 +267,7 @@
   description: SPIFFE is the Secure Production Identity Framework for Everyone. Craig hates the name. Andrew Jessup, co-founder and VP of Product at Scytale (with a C) tells him and Adam why they should look past that and how Jason Bourne fits into the world of Cloud Native.
   thumbnail: https://kubernetespodcast.com/_assets/images/Kubernetes-Podcast-Logo_1400x1400.png
   presenters: Andrew Jessup
-  organizations: Scytale
+  organizations: Scytale/HPE
   date: 21-March-2019
   language: English
   category: overview
@@ -268,7 +275,7 @@
 - title: "Zero-Trust Networks"
   link: https://www.se-radio.net/2019/10/episode-385-evan-gilman-and-doug-barth-on-zero-trust-networks/
   presenters: "Doug Barth & Evan Gilman"
-  organizations: Stripe, Scytale
+  organizations: Stripe, Scytale/HPE
   date: 22-October-2019
   language: English
   thumbnail: https://is1-ssl.mzstatic.com/image/thumb/Podcasts123/v4/1f/21/70/1f2170f9-5e02-a5d2-f106-0a58b775de83/mza_8949086484379343965.jpg/268x0w.jpg
@@ -277,7 +284,7 @@
 - title: "SPIFFE: Zero Trust Workload Identification"
   link: https://softwareengineeringdaily.com/2018/11/14/spiffe-zero-trust-workload-identification-with-evan-gilman/
   presenters: Evan Gilman
-  organizations: Scytale
+  organizations: Scytale/HPE
   date: 14-November-2018
   publication: Software Engineering Daily
   thumbnail: https://i0.wp.com/softwareengineeringdaily.com/wp-content/uploads/2018/05/logo.png?w=120&ssl=1
@@ -290,7 +297,7 @@
   date: 4-May-2019
   category: overview
   presenters: Andrew Jessup
-  organizations: Scytale
+  organizations: Scytale/HPE
   weight: 20
   youtube: 0LSaNrOabH4
 - title: "SPIFFE and SPIRE in 6 minutes"
@@ -300,7 +307,7 @@
   date: 4-May-2019
   category: overview
   presenters: Andrew Jessup
-  organizations: Scytale
+  organizations: Scytale/HPE
   weight: 10
 - title: Managing Microservices Identity with SPIFFE
   link: https://www.youtube.com/watch?v=6b76J8bC2Ac
@@ -308,7 +315,7 @@
   category: overview
   weight: 100
   presenters: Madhukesh Wali
-  organizations: Scytale
+  organizations: Scytale/HPE
   date: 25-Nov-2018
   venue: Easy Bay Cloud Native Meetup
 - title: "TGI Kubernetes 094: SPIFFE and SPIRE"
@@ -356,7 +363,7 @@
   venue: KubeCon EU 2019
   category: overview
   presenters: Evan Gilman
-  organizations: Scytale
+  organizations: Scytale/HPE
   weight: 90
 - title: "Introducing SPIFFE: An Open Standard for Identity in Cloud Native Environments"
   link: https://www.youtube.com/watch?v=ikmxZdZRTio&t=6s
@@ -365,7 +372,7 @@
   date: 15-Dec-2017
   category: overview
   presenters: Evan Gilman
-  organizations: Scytale
+  organizations: Scytale/HPE
   description: The first public presentation of the SPIFFE and SPIRE projects at KubeCon 2017.
   weight: 90
 - title: "Scaling SPIRE for Performance and Availability"
@@ -381,7 +388,7 @@
   link: https://www.youtube.com/watch?v=5m6kjzdysBI
   youtube: 5m6kjzdysBI
   presenters: Andrew Jessup and Andrés Vega
-  organizations: Scytale
+  organizations: Scytale/HPE
   description: Andrew and Andrés review the history of SPIFFE and SPIRE from 2016 to 2019 and showcase how applications can use SVIDs to interact with databases and cloud platform.
   date: 19-Nov-2019
   venue: KubeCon NA 2019
@@ -391,7 +398,7 @@
   link: https://www.youtube.com/watch?v=MKtQbEwMcJY
   youtube: MKtQbEwMcJY
   presenters: Andrew Harding
-  organizations: Scytale
+  organizations: Scytale/HPE
   date: 20-Nov-2019
   category: advanced-tutorial
   venue: KubeCon NA 2019
@@ -399,7 +406,7 @@
   link: https://www.youtube.com/watch?v=cx_NnvbsCP4
   youtube: cx_NnvbsCP4
   presenters: Evan Gilman and Oliver Liu
-  organizations: Google and Scytale
+  organizations: Google and Scytale/HPE
   category: advanced-tutorial
   date: 20-Nov-2019
   venue: KubeCon NA 2019
