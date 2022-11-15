@@ -57,7 +57,7 @@ If this configuration is changed from the default on the server, then the config
 # Configuring node attestation
 _This configuration applies to the SPIRE Server and SPIRE Agent_
 
-A SPIFFE Server identifies and attests Agents through the process of *node attestation* and *resolution* (read more about this in [SPIRE Concepts](/docs/latest/spire/understand/concepts/)). This is accomplished through Node Attestor plugins, which you configure and enable in the server. 
+A SPIFFE Server identifies and attests Agents through the process of *node attestation* (read more about this in [SPIRE Concepts](/docs/latest/spire/understand/concepts/)). This is accomplished through Node Attestor plugins, which you configure and enable in the server. 
 
 Your choice of node attestation method determines which node-attestor plugins you configure SPIRE to use in Server Plugins and Agent Plugins sections of the SPIRE configuration files. You must configure _at least one_ node attestor on the server and _only one_ node attestor on each Agent.
 
@@ -143,7 +143,7 @@ Many cloud providers offer privileged APIs that allow a process running on a par
 
 ### Google Compute Engine Instances
 
-Google Compute Engine (GCE) node attestation and resolution allows a SPIRE Server to identify and authenticate a SPIRE Agent running on a GCP GCE instance automatically. In brief, it is accomplished through the following:
+Google Compute Engine (GCE) node attestation allows a SPIRE Server to identify and authenticate a SPIRE Agent running on a GCP GCE instance automatically. In brief, it is accomplished through the following:
 
 1.   The SPIRE Agent gcp\_iit Node Attestor plugin retrieves a GCP instance's [instance identity token](https://cloud.google.com/compute/docs/instances/verifying-instance-identity), and identifies itself to the SPIRE Server gcp\_iit Node Attestor plugin.
 2.   The SPIRE Server gcp\_iit Node Attestor plugin calls a GCP API to verify the validity of the token, if the `use_instance_metadata` configuration value is set to `true`.
@@ -154,7 +154,7 @@ To use GCP IIT Node Attestation, configure and enable the gcp_iit Node Attestor 
 
 ### Amazon EC2 Instances
 
-EC2 node attestation and resolution allows a SPIRE Server to identify and authenticate a SPIRE Agent running on an AWS EC2 Instance automatically. In brief, it is accomplished through the following:
+EC2 node attestation allows a SPIRE Server to identify and authenticate a SPIRE Agent running on an AWS EC2 Instance automatically. In brief, it is accomplished through the following:
 
 1.  The SPIRE Agent aws\_iid Node Attestor plugin retrieves an AWS instance's instance identity document, and identifies itself to the SPIRE Server aws\_iid Node Attestor plugin.
 2.  The SPIRE Server aws\_iid Node Attestor plugin calls an AWS API to verify the validity of the document, using an AWS IAM role with limited permissions. 
@@ -165,7 +165,7 @@ For more information on configuring AWS EC2 Node Attestors plugins, refer to the
 
 ### Azure Virtual Machines
 
-Azure MSI node attestation and resolution
+Azure MSI node attestation
 allows a SPIRE Server to identify and authenticate a SPIRE Agent running on an Azure VM automatically. SPIRE uses MSI tokens in order to attest the agent. The MSI tokens must be scoped to mitigate abuse if intercepted. In brief, it is accomplished through the following:
 
 1.  The SPIRE Agent azure\_msi Node Attestor plugin retrieves an Azure VM's MSI token, and identifies itself to the SPIRE Server azure\_msi Node Attestor plugin.
