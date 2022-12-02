@@ -60,11 +60,11 @@ A selector is a native property of a node or workload that SPIRE can verify befo
 
 Different selectors are available depending on the platform or architecture on which the workload’s application is running.
 
-| For a list of supported selectors for this platform | Go here |
-| ---------------- | ----------- |
-| **Kubernetes**       | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_sat.md)
-| **AWS**       | The [configuration reference page for the AWS Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md)
-| **Azure**       | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_azure_msi.md)
+| For a list of supported selectors for this platform | Go here                                                                                                                                                                                              |
+|-----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Kubernetes**                                      | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_sat.md)                       |
+| **AWS**                                             | The [configuration reference page for the AWS Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md)                              |
+| **Azure**                                           | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_azure_msi.md) |
 
 ## 2. Defining the SPIFFE ID of the Workload
 
@@ -79,11 +79,11 @@ spire-server entry create \
     -selector unix:gid:1000
 ```
 
-| For a list of supported selectors for this platform | Go here |
-| ---------------- | ----------- |
-| **Unix**       | The [configuration reference page for the Unix Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_unix.md)
-| **Kubernetes** | The [configuration reference page for the Kubernetes Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_k8s.md)
-| **Docker** | The [configuration reference page for the Docker Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_docker.md)
+| For a list of supported selectors for this platform | Go here                                                                                                                                                                           |
+|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Unix**                                            | The [configuration reference page for the Unix Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_unix.md)      |
+| **Kubernetes**                                      | The [configuration reference page for the Kubernetes Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_k8s.md) |
+| **Docker**                                          | The [configuration reference page for the Docker Workload Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_docker.md)  |
 
 # How to list registration entries
 
