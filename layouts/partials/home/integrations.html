@@ -4,10 +4,10 @@
 {{- $adopters := $users.adopters }}
 <section class="section has-text-centered">
         <h2 class="title is-size-2 is-size-3-mobile is-spaced">
-          Used By
+          Integrations
         </h2>
         <div class="is-flex is-space-between">
-            {{- range $adopters }}
+            {{- range $issuers }}
             {{ partial "user.html" . }}
             {{- end }}
         </div>

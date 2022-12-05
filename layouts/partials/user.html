@@ -1,5 +1,6 @@
 {{- $imgUrl := printf "img/logos/%s" .logo | relURL }}
-<div class="card">
+{{- $imgName := .name }}
+<!-- <div class="card">
   <div class="card-content">
     <article class="media">
       <figure class="media-left is-hidden-mobile">
@@ -27,4 +28,11 @@
       </div>
     </article>
   </div>
+</div> -->
+
+<div class="img-container-sm">
+  <a href="{{ .link }}"></a>
+    <img src="{{ $imgUrl }}" class="image" alt="{{ $imgName }} logo">
+  </a>
 </div>
+

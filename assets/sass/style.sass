@@ -43,7 +43,8 @@ $light-separator: #e2e2e2
 @import "toc"
 
 .hero
-  margin: .8rem 1rem .9rem 1rem
+  margin: 1.5rem 2rem 1.5rem 2rem
+  border-bottom: 1px solid #D9DCE0
 
 .hero.is-light
   background-color: inherit
@@ -153,11 +154,58 @@ figure
 body.is-home-page
   section
     &.use-cases
-      p
+      div
         &.image
-          width: 75%
+          width: 60%
           margin: auto
           padding-bottom: 1em
+
+.width-md
+  width: 60%
+
+.width-lg
+  width: 80%
+
+.fullwidth
+  width: 100%
+
+.img-container-lg
+  flex: 1
+  width: 300px
+  height: 200px
+
+.img-container-md
+  width: 60%
+  height: 200px
+  margin: 0 auto
+
+.img-long 
+    width: 100%
+    height: 500px
+
+.img-container-lg, .img-container-md, .img-long
+  img
+    width: 100%
+    height: 100%
+    object-fit: contain
+
+.margin-md-top-bottom
+  margin: 30px 0px
+
+.is-columns-centered
+  margin: 0 auto
+
+.is-align-items-center
+  align-items: center
+
+.is-justify-content-center
+  justify-content: center
+
+.is-space-between
+  justify-content: space-between
+
+.btn-wide
+  width: 10%
 
 .is-home-desktop-logo
   width: 50%
@@ -214,6 +262,23 @@ body.is-home-page
 
     *
       color: $white
+
+.section
+  .img-container-sm
+    img
+      width: 100%
+      height: 100%
+      object-fit: contain
+
+.section
+  border-bottom: 1px solid #D9DCE0
+
+.is-space-between
+  justify-content: space-between
+
+.img-container-sm
+  width: 150px
+  height: 100px
 
 .is-hero-logo
   +logo(40%, 60%)
@@ -317,3 +382,6 @@ hr
 
   .description
     font-size: 0.8em
+
+.subtitle-text
+  padding: 3em 0

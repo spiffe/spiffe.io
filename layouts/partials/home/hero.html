@@ -4,8 +4,19 @@
 {{- $spiffeLogo  := "img/logos/spiffe/icon/color/spiffe-icon-color.svg" | relURL }}
 {{- $spireLogo   := "img/logos/spire/icon/color/spire-icon-color.svg" | relURL }}
 <section class="hero is-medium is-light">
-  <div class="hero-body has-text-centered">
-    <div class="container">
+  <div class="hero-body is-flex is-align-items-center p-3">
+    <div class="">
+      <div class="text-container">
+        <h4 class="title is-2">Universal identity control plane for distributed systems</h4>
+        <p class="subtitle is-5 subtitle-text">Spiffe and SPIRE provide strongly attested, cryptographic identities to workloads across a wide variety of platforms</p>
+        <div class="flex">
+            <button class="button is-medium is-dark">Get started</button>
+            <button class="button is-medium is-dark">Download</button>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container has-text-centered">
       <img class="title is-hero-logo" src="/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png">
 
       <br />
@@ -13,9 +24,9 @@
       <p class="project-title is-size-4 is-size-4-mobile has-text-weight-bold">
         Secure Production Identity Framework for Everyone
       </p>
-      <p class="subtitle is-size-3 is-size-5-mobile has-text-weight-light">
+      <!-- <p class="subtitle is-size-3 is-size-5-mobile has-text-weight-light">
         {{ $description }}
-      </p>
+      </p> -->
     </div>
 <!-- Hidden for now since it is redundant with the top-bar nav
     <div class="buttons is-centered is-logo-button">
