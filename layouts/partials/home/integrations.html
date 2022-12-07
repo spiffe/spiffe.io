@@ -1,14 +1,12 @@
 {{- $users     := .Site.Data.users }}
 {{- $issuers   := $users.issuers }}
-{{- $consumers := $users.consumers }}
-{{- $adopters := $users.adopters }}
 <section class="section has-text-centered">
-        <h2 class="title is-size-2 is-size-3-mobile is-spaced">
-          Integrations
-        </h2>
-        <div class="is-flex is-space-between margin-md-top-bottom">
-            {{- range $issuers }}
-            {{ partial "user.html" . }}
-            {{- end }}
-        </div>
-</section> <!-- .section -->
+    <h2 class="title is-size-2 is-size-3-mobile is-spaced">
+        Integrations
+    </h2>
+    <div class="is-flex is-space-between margin-md-top-bottom">
+        {{- range $issuers }}
+        {{ partial "user.html" . }}
+        {{- end }}
+    </div>
+</section> 

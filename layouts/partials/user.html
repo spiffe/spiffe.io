@@ -1,35 +1,5 @@
 {{- $imgUrl := printf "img/logos/%s" .logo | relURL }}
 {{- $imgName := .name }}
-<!-- <div class="card">
-  <div class="card-content">
-    <article class="media">
-      <figure class="media-left is-hidden-mobile">
-        <p class="image is-64x64">
-          <a href="{{ .link }}">
-            <img src="{{ $imgUrl }}">
-          </a>
-        </p>
-      </figure>
-      <div class="media-content">
-        <h3>
-          <a class="has-text-dark" href="{{ .link }}">
-            {{ .name }}
-          </a>
-        </h3>
-
-        {{ .description | markdownify }}
-        <a href="{{ .link }}">Read more</a>
-
-        <div class="is-user-mobile-logo is-hidden-tablet">
-          <a href="{{ .link }}">
-            <img src="{{ $imgUrl }}">
-          </a>
-        </div>
-      </div>
-    </article>
-  </div>
-</div> -->
-
 <div class="img-container-sm fullwidth-mobile">
   <a href="{{ .link }}"></a>
     <img src="{{ $imgUrl }}" class="image" alt="{{ $imgName }} logo">
