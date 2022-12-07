@@ -203,6 +203,10 @@ body.is-home-page
 .margin-md-top-bottom
   margin: 30px 0px
 
+.margin-md-top-bottom-mobile
+  +mobile
+    margin: 30px 0px
+
 .is-columns-centered
   margin: 0 auto
 
@@ -223,6 +227,10 @@ body.is-home-page
 
 .btn-wide
   width: 10%
+
+.btn-wide
+  +mobile
+   width: 40%
 
 .slideshow-container
   position: relative
@@ -358,6 +366,22 @@ body.is-home-page
 
   +tablet
     width: 15%
+
+.flex-column-mobile
+  +mobile
+    flex-direction: column
+
+.flex-column-mobile-reverse
+  +mobile
+    flex-direction: column-reverse
+
+.text-container
+  +mobile
+    text-align: center
+
+.fullwidth-mobile
+  +mobile
+    width: 100%
 
 section.news
   padding: 5px

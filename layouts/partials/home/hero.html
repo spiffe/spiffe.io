@@ -4,14 +4,18 @@
 {{- $spiffeLogo  := "img/logos/spiffe/icon/color/spiffe-icon-color.svg" | relURL }}
 {{- $spireLogo   := "img/logos/spire/icon/color/spire-icon-color.svg" | relURL }}
 <section class="hero is-medium is-light">
-  <div class="hero-body is-flex is-align-items-center p-3">
+  <div class="hero-body is-flex is-align-items-center p-3 flex-column-mobile-reverse">
     <div class="">
       <div class="text-container">
-        <h4 class="title is-2">Universal identity control plane for distributed systems</h4>
+        <h4 class="title is-2 is-size-4-mobile">Universal identity control plane for distributed systems</h4>
         <p class="subtitle is-5 subtitle-text">Spiffe and SPIRE provide strongly attested, cryptographic identities to workloads across a wide variety of platforms</p>
         <div class="flex">
+          <a href="/spiffe">
             <button class="button is-medium is-dark">Get started</button>
+          </a>
+          <a href="/downloads">
             <button class="button is-medium is-dark">Download</button>
+          </a>
         </div>
     </div>
     </div>
