@@ -466,3 +466,17 @@ hr
 
 .subtitle-text
   padding: 3em 0
+
+.slider-container
+  overflow: hidden
+
+.moving-text:hover
+  animation-play-state: paused
+
+@keyframes marquee
+    from{transform: translateX(100%)}
+    to{transform: translateX(-100%)}
+
+@media (prefers-reduced-motion: no-preference)
+  .moving-text
+      animation: marquee 15s linear infinite
