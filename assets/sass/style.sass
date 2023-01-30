@@ -361,6 +361,9 @@ body.is-home-page
 
 .footer
   z-index: 2
+  padding: 3rem 1.5rem
+  +mobile
+    text-align: center
 
   li a
     color: $white-bis
@@ -371,12 +374,19 @@ body.is-home-page
     a
       color: darken($white-bis, 60%)
 
+.is-columns-stacked-mobile
+  +mobile
+    flex-direction: column
+
 .is-footer-logo
   +mobile
     width: 40%
 
   +tablet
     width: 15%
+
+  +desktop
+    width: 30%
 
 .flex-column-mobile
   +mobile
@@ -464,6 +474,11 @@ hr
 
   +touch
     width: 80%
+
+.copyright
+  text-align: right
+  +mobile
+    text-align: center
 
 .presentation
   clear: both
