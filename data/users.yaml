@@ -45,32 +45,5 @@ adopters:
     logo: Twilio-logo.svg
   - name: Duke Energy
     logo: Duke_Energy_logo.svg
-  - name: Indeed
-    logo: Indeed_logo.svg
-  - name: Yahoo
-    logo: Yahoo-logo.svg
-  - name: Hashicorp
-    logo: HashiCorp-logo.svg
-  - name: Cisco Systems
-    logo: Cisco-Systems-logo.svg
-  - name: Amazon
-    logo: Amazon-logo.svg
-  - name: Unity Technologies
-    logo: Unity-Technologies-logo.svg
-  - name: Arm
-    logo: ARM-architecture-logo.svg
-  - name: VMware
-    logo: VMware-Inc.-logo.svg
-  - name: Hewlett-Packard Enterprise
-    logo: Hewlett-Packard-Enterprise-logo.svg
-  - name: Google
-    logo: Google-logo.svg
-  - name: IBM
-    logo: IBM-logo.svg
-  - name: Intel
-    logo: Intel-logo.svg
-  - name: SAP
-    logo: SAP-SE-logo.svg
-  - name: TransferWise
-    logo: TransferWise-logo.svg
+
  
