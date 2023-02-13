@@ -498,20 +498,39 @@ hr
 
 .grid
   display: grid
-  grid-template-columns: repeat(20, 1fr)
+  grid-template-columns: repeat(40, 1fr)
   gap: 10px
   grid-template-rows: 1fr
 
-.slider-container
+.image-barrier
   overflow: hidden
+  position: relative
 
-.moving-text:hover
-  animation-play-state: paused
+#infinite div.image-barrier
+  background:#fff
+  
+  &::before, &::after
+    content: " "
+    position: absolute
+    z-index: 9
+    width: 180px
+    height: 100%
+
+  &::before
+    top: 0
+    left: 0
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)
+
+  &::after
+    top: 0
+    right: 0
+    background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)
+
+.image-lane
+  width: calc(180px * 40)
+
+  .image-item
+    animation: marquee 35s linear infinite
 
 @keyframes marquee
-    from{transform: translateX(100%)}
-    to{transform: translateX(-100%)}
-
-@media (prefers-reduced-motion: no-preference)
-  .moving-text
-      animation: marquee 15s linear infinite
+    100% { transform: translateX(calc(-180px * 20));  }
