@@ -107,9 +107,4 @@ adopters:
   - name: Google
     logo: Google-logo.svg
     link: https://www.google.com/
-  - name: Hashicorp
-    logo: HashiCorp-logo.svg
-    link: https://www.hashicorp.com/
-  - name: Hewlett-Packard Enterprise
-    logo: Hewlett-Packard-Enterprise-logo.svg
-    link: https://www.hpe.com/us/en/home.html
+ 
