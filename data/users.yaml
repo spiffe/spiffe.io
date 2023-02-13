@@ -15,17 +15,6 @@ issuers:
   - name: GCP
     link: https://cloud.google.com/
     logo: google-cloud.png
-  - name: HashiCorp Consul
-    description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
-    link: https://www.consul.io/segmentation.html
-    logo: consul.svg
-  - name: Istio
-    description: The Istio control plane issues SPIFFE IDs for all workloads
-    link: https://istio.io/latest/docs/concepts/security/#pki
-    logo: istio.svg
-  - name: Kubernetes
-    link: https://kubernetes.io
-    logo: Kubernetes_logo.png
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
