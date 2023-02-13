@@ -107,4 +107,6 @@ adopters:
   - name: Google
     logo: Google-logo.svg
     link: https://www.google.com/
- 
+  - name: Hashicorp
+    logo: HashiCorp-logo.svg
+    link: https://www.hashicorp.com/
