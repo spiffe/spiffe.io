@@ -33,83 +33,83 @@ consumers:
     link: https://github.com/square/ghostunnel
     logo: square.jpg
 adopters:
-  - name: Uber
-    logo: Uber-logo.svg
-  - name: Bloomberg
-    logo: Bloomberg-L.P.-logo.svg
-  - name: Anthem
-    logo: Anthem-Inc.-logo.svg
-  - name: Netflix
-    logo: Netflix-logo.svg
-  - name: Twilio
-    logo: Twilio-logo.svg
-  - name: Duke Energy
-    logo: Duke_Energy_logo.svg
-  - name: Indeed
-    logo: Indeed_logo.svg
-  - name: Yahoo
-    logo: Yahoo-logo.svg
-  - name: Hashicorp
-    logo: HashiCorp-logo.svg
-  - name: Cisco Systems
-    logo: Cisco-Systems-logo.svg
   - name: Amazon
     logo: Amazon-logo.svg
-  - name: Unity Technologies
-    logo: Unity-Technologies-logo.svg
+  - name: Anthem
+    logo: Anthem-Inc.-logo.svg
   - name: Arm
     logo: ARM-architecture-logo.svg
-  - name: VMware
-    logo: VMware-Inc.-logo.svg
-  - name: Hewlett-Packard Enterprise
-    logo: Hewlett-Packard-Enterprise-logo.svg
+  - name: Bloomberg
+    logo: Bloomberg-L.P.-logo.svg
+  - name: Cisco Systems
+    logo: Cisco-Systems-logo.svg
+  - name: Duke Energy
+    logo: Duke_Energy_logo.svg
   - name: Google
     logo: Google-logo.svg
+  - name: Hashicorp
+    logo: HashiCorp-logo.svg
+  - name: Hewlett-Packard Enterprise
+    logo: Hewlett-Packard-Enterprise-logo.svg
   - name: IBM
     logo: IBM-logo.svg
+  - name: Indeed
+    logo: Indeed_logo.svg
   - name: Intel
     logo: Intel-logo.svg
+  - name: Netflix
+    logo: Netflix-logo.svg
   - name: SAP
     logo: SAP-SE-logo.svg
   - name: TransferWise
     logo: TransferWise-logo.svg
-  - name: Uber
-    logo: Uber-logo.svg
-  - name: Bloomberg
-    logo: Bloomberg-L.P.-logo.svg
-  - name: Anthem
-    logo: Anthem-Inc.-logo.svg
-  - name: Netflix
-    logo: Netflix-logo.svg
   - name: Twilio
     logo: Twilio-logo.svg
-  - name: Duke Energy
-    logo: Duke_Energy_logo.svg
-  - name: Indeed
-    logo: Indeed_logo.svg
-  - name: Yahoo
-    logo: Yahoo-logo.svg
-  - name: Hashicorp
-    logo: HashiCorp-logo.svg
-  - name: Cisco Systems
-    logo: Cisco-Systems-logo.svg
-  - name: Amazon
-    logo: Amazon-logo.svg
+  - name: Uber
+    logo: Uber-logo.svg
   - name: Unity Technologies
     logo: Unity-Technologies-logo.svg
-  - name: Arm
-    logo: ARM-architecture-logo.svg
   - name: VMware
     logo: VMware-Inc.-logo.svg
-  - name: Hewlett-Packard Enterprise
-    logo: Hewlett-Packard-Enterprise-logo.svg
+  - name: Yahoo
+    logo: Yahoo-logo.svg
+  - name: Amazon
+    logo: Amazon-logo.svg
+  - name: Anthem
+    logo: Anthem-Inc.-logo.svg
+  - name: Arm
+    logo: ARM-architecture-logo.svg
+  - name: Bloomberg
+    logo: Bloomberg-L.P.-logo.svg
+  - name: Cisco Systems
+    logo: Cisco-Systems-logo.svg
+  - name: Duke Energy
+    logo: Duke_Energy_logo.svg
   - name: Google
     logo: Google-logo.svg
+  - name: Hashicorp
+    logo: HashiCorp-logo.svg
+  - name: Hewlett-Packard Enterprise
+    logo: Hewlett-Packard-Enterprise-logo.svg
   - name: IBM
     logo: IBM-logo.svg
+  - name: Indeed
+    logo: Indeed_logo.svg
   - name: Intel
     logo: Intel-logo.svg
+  - name: Netflix
+    logo: Netflix-logo.svg
   - name: SAP
     logo: SAP-SE-logo.svg
   - name: TransferWise
     logo: TransferWise-logo.svg
+  - name: Twilio
+    logo: Twilio-logo.svg
+  - name: Uber
+    logo: Uber-logo.svg
+  - name: Unity Technologies
+    logo: Unity-Technologies-logo.svg
+  - name: VMware
+    logo: VMware-Inc.-logo.svg
+  - name: Yahoo
+    logo: Yahoo-logo.svg
