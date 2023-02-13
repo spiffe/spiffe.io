@@ -10,6 +10,11 @@
                 {{- range $adopters }}
                 {{ partial "user.html" . }}
                 {{- end }}
+
+                {{/* This duplicate exist to enable infinite scroll effect */}}
+                {{- range $adopters }}
+                {{ partial "user.html" . }}
+                {{- end }}
             </div>
           </div>
         </div>
