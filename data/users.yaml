@@ -35,81 +35,121 @@ consumers:
 adopters:
   - name: Amazon
     logo: Amazon-logo.svg
+    link: https://www.amazon.com/
   - name: Anthem
     logo: Anthem-Inc.-logo.svg
+    link: https://www.anthem.com/
   - name: Arm
     logo: ARM-architecture-logo.svg
+    link: https://www.arm.com/
   - name: Bloomberg
     logo: Bloomberg-L.P.-logo.svg
+    link: https://www.bloomberg.com/
   - name: Cisco Systems
     logo: Cisco-Systems-logo.svg
+    link: https://www.cisco.com/
   - name: Duke Energy
     logo: Duke_Energy_logo.svg
+    link: https://www.duke-energy.com/
   - name: Google
     logo: Google-logo.svg
+    link: https://www.google.com/
   - name: Hashicorp
     logo: HashiCorp-logo.svg
+    link: https://www.hashicorp.com/
   - name: Hewlett-Packard Enterprise
     logo: Hewlett-Packard-Enterprise-logo.svg
+    link: https://www.hpe.com/us/en/home.html
   - name: IBM
     logo: IBM-logo.svg
+    link: https://www.ibm.com/us-en/
   - name: Indeed
     logo: Indeed_logo.svg
+    link: https://www.indeed.com/
   - name: Intel
     logo: Intel-logo.svg
+    link: https://www.intel.com/content/www/us/en/homepage.html
   - name: Netflix
     logo: Netflix-logo.svg
+    link: https://www.netflix.com/
   - name: SAP
     logo: SAP-SE-logo.svg
+    link: https://www.sap.com/
   - name: TransferWise
     logo: TransferWise-logo.svg
+    link: https://wise.com/
   - name: Twilio
     logo: Twilio-logo.svg
+    link: https://www.twilio.com/
   - name: Uber
     logo: Uber-logo.svg
+    link: https://www.uber.com/
   - name: Unity Technologies
     logo: Unity-Technologies-logo.svg
+    link: https://unity.com/
   - name: VMware
     logo: VMware-Inc.-logo.svg
+    link: https://www.vmware.com/
   - name: Yahoo
     logo: Yahoo-logo.svg
+    link: https://www.yahoo.com/
   - name: Amazon
     logo: Amazon-logo.svg
+    link: https://www.amazon.com/
   - name: Anthem
     logo: Anthem-Inc.-logo.svg
+    link: https://www.anthem.com/
   - name: Arm
     logo: ARM-architecture-logo.svg
+    link: https://www.arm.com/
   - name: Bloomberg
     logo: Bloomberg-L.P.-logo.svg
+    link: https://www.bloomberg.com/
   - name: Cisco Systems
     logo: Cisco-Systems-logo.svg
+    link: https://www.cisco.com/
   - name: Duke Energy
     logo: Duke_Energy_logo.svg
+    link: https://www.duke-energy.com/
   - name: Google
     logo: Google-logo.svg
+    link: https://www.google.com/
   - name: Hashicorp
     logo: HashiCorp-logo.svg
+    link: https://www.hashicorp.com/
   - name: Hewlett-Packard Enterprise
     logo: Hewlett-Packard-Enterprise-logo.svg
+    link: https://www.hpe.com/us/en/home.html
   - name: IBM
     logo: IBM-logo.svg
+    link: https://www.ibm.com/us-en/
   - name: Indeed
     logo: Indeed_logo.svg
+    link: https://www.indeed.com/
   - name: Intel
     logo: Intel-logo.svg
+    link: https://www.intel.com/content/www/us/en/homepage.html
   - name: Netflix
     logo: Netflix-logo.svg
+    link: https://www.netflix.com/
   - name: SAP
     logo: SAP-SE-logo.svg
+    link: https://www.sap.com/
   - name: TransferWise
     logo: TransferWise-logo.svg
+    link: https://wise.com/
   - name: Twilio
     logo: Twilio-logo.svg
+    link: https://www.twilio.com/
   - name: Uber
     logo: Uber-logo.svg
+    link: https://www.uber.com/
   - name: Unity Technologies
     logo: Unity-Technologies-logo.svg
+    link: https://unity.com/
   - name: VMware
     logo: VMware-Inc.-logo.svg
+    link: https://www.vmware.com/
   - name: Yahoo
     logo: Yahoo-logo.svg
+    link: https://www.yahoo.com/
