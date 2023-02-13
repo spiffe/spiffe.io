@@ -1,24 +1,31 @@
 issuers:
-  - name: The SPIRE project
-    description: SPIRE is an open-source toolchain that implements the SPIFFE specification in a wide variety of environments
-    link: /docs/latest/spire/understand/concepts/
-    logo: spire/icon/color/spire-icon-color.png
-  - name: Istio
-    description: The Istio control plane issues SPIFFE IDs for all workloads
-    link: https://istio.io/latest/docs/concepts/security/#pki
-    logo: istio.svg
-  - name: HashiCorp Consul
-    description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
-    link: https://www.consul.io/segmentation.html
-    logo: consul.svg
-  - name: Kuma
-    description: Kuma automatically generates SPIFFE-compatible certificates that identify all the services and workloads running in the service mesh, and encrypts all the traffic generated between them
-    link: https://kuma.io
-    logo: kuma.svg
+  - name: AWS
+    link: https://aws.amazon.com/
+    logo: Amazon-Web-Services-logo.svg
+  - name: Azure
+    link: https://azure.microsoft.com/
+    logo: azure.png
   - name: cert-manager CSI driver
     description: csi-driver-spiffe is a cert-manager project that delivers SPIFFE compliant X.509-SVIDs to Kubernetes Pods using CSI, based on the identity of the mounting ServiceAccount.
     link: https://github.com/cert-manager/csi-driver-spiffe
     logo: cert-manager.png
+  - name: Dapr
+    link: https://dapr.io/
+    logo: Dapr_logo.svg
+  - name: GCP
+    link: https://cloud.google.com/
+    logo: google-cloud.png
+  - name: HashiCorp Consul
+    description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
+    link: https://www.consul.io/segmentation.html
+    logo: consul.svg
+  - name: Istio
+    description: The Istio control plane issues SPIFFE IDs for all workloads
+    link: https://istio.io/latest/docs/concepts/security/#pki
+    logo: istio.svg
+  - name: Kubernetes
+    link: https://kubernetes.io
+    logo: Kubernetes_logo.png
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
