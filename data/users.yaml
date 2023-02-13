@@ -12,9 +12,6 @@ issuers:
   - name: Dapr
     link: https://dapr.io/
     logo: Dapr_logo.svg
-  - name: GCP
-    link: https://cloud.google.com/
-    logo: google-cloud.png
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
@@ -122,30 +119,3 @@ adopters:
   - name: Indeed
     logo: Indeed_logo.svg
     link: https://www.indeed.com/
-  - name: Intel
-    logo: Intel-logo.svg
-    link: https://www.intel.com/content/www/us/en/homepage.html
-  - name: Netflix
-    logo: Netflix-logo.svg
-    link: https://www.netflix.com/
-  - name: SAP
-    logo: SAP-SE-logo.svg
-    link: https://www.sap.com/
-  - name: TransferWise
-    logo: TransferWise-logo.svg
-    link: https://wise.com/
-  - name: Twilio
-    logo: Twilio-logo.svg
-    link: https://www.twilio.com/
-  - name: Uber
-    logo: Uber-logo.svg
-    link: https://www.uber.com/
-  - name: Unity Technologies
-    logo: Unity-Technologies-logo.svg
-    link: https://unity.com/
-  - name: VMware
-    logo: VMware-Inc.-logo.svg
-    link: https://www.vmware.com/
-  - name: Yahoo
-    logo: Yahoo-logo.svg
-    link: https://www.yahoo.com/
