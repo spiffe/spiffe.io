@@ -184,29 +184,16 @@ You can test that the agent socket is accessible from an application container b
     $ kubectl apply -f client-deployment.yaml
     ```
 
-2. Start a shell connection to the running pod:
+2. Verify that the container can access the socket:
 
     ```bash
     $ kubectl exec -it $(kubectl get pods -o=jsonpath='{.items[0].metadata.name}' \
-       -l app=client)  -- /bin/sh
-    ```
-
-3. In the shell connection you just created, verify that the container can access the socket:
-
-    ```bash
-    $ /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
+       -l app=client)  -- /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
     ```
 
    If the agent is not running, you’ll see an error message such as “no such file or directory" or “connection refused”.
 
    If the agent is running, you’ll see a list of SVIDs.
-
-4. Exit from `/bin/sh` on the client container:
-
-    ```bash
-    $ exit
-    ```
-
 
 # Tear Down All Components
 
