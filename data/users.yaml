@@ -1,30 +1,19 @@
 issuers:
   - name: AWS
-    link: https://aws.amazon.com/
     logo: Amazon-Web-Services-logo.svg
   - name: Azure
-    link: https://azure.microsoft.com/
     logo: azure.png
   - name: cert-manager CSI driver
-    description: csi-driver-spiffe is a cert-manager project that delivers SPIFFE compliant X.509-SVIDs to Kubernetes Pods using CSI, based on the identity of the mounting ServiceAccount.
-    link: https://github.com/cert-manager/csi-driver-spiffe
     logo: cert-manager.png
   - name: Dapr
-    link: https://dapr.io/
     logo: Dapr_logo.svg
   - name: GCP
-    link: https://cloud.google.com/
     logo: google-cloud.png
   - name: HashiCorp Consul
-    description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
-    link: https://www.consul.io/segmentation.html
     logo: consul.svg
   - name: Istio
-    description: The Istio control plane issues SPIFFE IDs for all workloads
-    link: https://istio.io/latest/docs/concepts/security/#pki
     logo: istio.svg
   - name: Kubernetes
-    link: https://kubernetes.io
     logo: Kubernetes_logo.png
 consumers:
   - name: The Envoy proxy
