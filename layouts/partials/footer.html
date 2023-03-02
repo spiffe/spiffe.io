@@ -8,97 +8,35 @@
 {{- $githubUrl          := $social.github }}
 {{- $blogUrl            := $social.medium }}
 {{- $youtubeUrl         := $social.youtube }}
-{{- $sourceGithubURL    := .Site.Params.githubURL }}     
+{{- $sourceGithubURL    := .Site.Params.githuburl }}     
 
 <footer class="footer has-background-dark">
-  <div class="container">
-    <img class="is-footer-logo" src="/img/logos/spiffe/horizontal/white/spiffe-horizontal-white.png">
-
-    <hr class="is-large has-background-grey-light">
-
-    <div class="columns">
-
-      <div class="column">
-        <p class="title is-size-4 has-text-white-bis">
-          Community
-        </p>
-
-        <div class="buttons">
-          <a class="button is-white" href="{{ $blogUrl }}">
-            <span class="icon">
-              <i class="fab fa-medium"></i>
-            </span>
-            <span>
-              Blog
-            </span>
-          </a>
-
-          <a class="button is-twitter-blue" href="{{ $twitterUrl }}">
-            <span class="icon">
-              <i class="fab fa-twitter"></i>
-            </span>
-            <span>
-              Twitter
-            </span>
-          </a>
-
-          <a class="button is-white" href="{{ $githubUrl }}">
-            <span class="icon">
-              <i class="fab fa-github"></i>
-            </span>
-            <span>
-              GitHub
-            </span>
-          </a>
-
-          <a class="button is-slack-green" href="{{ $slackUrl }}">
-            <span class="icon">
-              <i class="fab fa-slack"></i>
-            </span>
-            <span>
-              Slack
-            </span>
-          </a>
-
-          <a class="button is-stack-overflow-orange" href="{{ $stackUrl }}">
-            <span class="icon">
-              <i class="fab fa-stack-overflow"></i>
-            </span>
-            <span>
-              StackOverflow
-            </span>
-          </a>
-
-          <a class="button is-youtube-red" href="{{ $youtubeUrl }}">
-            <span class="icon">
-              <i class="fab fa-youtube"></i>
-            </span>
-            <span>
-              YouTube
-            </span>
-          </a>
-
-        </div>
-      </div>
+  <div class="container is-flex is-space-between is-columns-stacked-mobile">
+    <div class="column">
+      <a href="{{ .Site.BaseURL }}">
+        <img class="is-footer-logo" src="/img/logos/spiffe/horizontal/white/spiffe-horizontal-white.png">
+      </a>
+    </div>
+    <div class="has-text-centered py-2 order-sm-2 column">
+      <a href="https://www.linuxfoundation.org/terms" target="_blank" rel="noopener">Terms</a> |
+      <a href="https://www.linuxfoundation.org/privacy" target="_blank" rel="noopener">Privacy</a> |
+      <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener">Trademarks</a> |
+      <a href="{{ $sourceGithubURL }}/LICENSE" target="_blank" rel="noopener">License</a>
     </div>
 
-    <br />
-
     {{- if (or (eq .Kind "page") (eq .Kind "section")) }}
-    <section class="has-text-centered github-link">
+    <div class="column has-text-centered github-link">
       Last modified on {{ .Lastmod }}
       &bullet;
       <a href="{{ $sourceGithubURL }}/content/{{ .File.Path}}">
         Edit this page on GitHub
       </a>
       <br />
-    </section>
+    </div>
     {{- end }}
 
-    <section class="has-text-centered">
-      <span class="has-text-grey-lighter">
+    <div class="column has-text-grey-lighter copyright">
         &copy; {{ $year }} The SPIFFE authors
-      </span>
-    </section>
+    </div>
   </div>
 </footer>
