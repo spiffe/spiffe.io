@@ -224,11 +224,11 @@ $ minikube start \
     --extra-config=apiserver.service-account-signing-key-file=/var/lib/minikube/certs/sa.key \
     --extra-config=apiserver.service-account-key-file=/var/lib/minikube/certs/sa.pub \
     --extra-config=apiserver.service-account-issuer=api \
-    --extra-config=apiserver.service-account-api-audiences=api,spire-server \
+    --extra-config=apiserver.api-audiences=api,spire-server \
     --extra-config=apiserver.authorization-mode=Node,RBAC
 ```
 {{< info >}}
-For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`.
+For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`. Besides, for older versions of Kubernetes you should use `apiserver.service-account-api-audiences` configuration flag instead of `apiserver.api-audiences`.
 {{< /info >}}
 
 # Considerations For A Production Environment
