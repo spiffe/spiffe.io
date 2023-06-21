@@ -39,7 +39,7 @@ The [SPIFFE specification](https://github.com/spiffe/spiffe/blob/main/standards/
 
 The trust domain corresponds to the trust root of a system. A trust domain could represent an individual, organization, environment or department running their own independent SPIFFE infrastructure. All workloads identified in the same trust domain are issued identity documents that can be verified against the root keys of the trust domain.
 
-It is generally advised keep workloads that are in either different physical locations (such as different data centers or cloud regions) or environments where different security practices are applied (such as a staging or lab environment compared to a production environment) in distinct trust domains.
+It is generally advised to keep workloads that are in either different physical locations (such as different data centers or cloud regions) or environments where different security practices are applied (such as a staging or lab environment compared to a production environment) in distinct trust domains.
 
 ## SPIFFE Verifiable Identity Document (SVID)
 
