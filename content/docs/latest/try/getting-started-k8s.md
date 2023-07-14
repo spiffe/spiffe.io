@@ -168,9 +168,9 @@ The server is configured in the Kubernetes configmap specified in server-configm
 
 Deploy the server configmap and statefulset by applying the following files via kubectl:
 
-# SPIRE Agent Information
+## SPIRE Agent Information
 
-To allow the agent read access to the kubelet API to perform workload attestation, a Service Account and ClusterRole must be created that confers the appropriate entitlements to Kubernetes RBAC, and that ClusterRoleBinding must be associated with the service account created in the previous step.
+To allow the agent read access to the kubelet API to perform workload attestation, a Service Account and ClusterRole must be created that confers the appropriate entitlements to Kubernetes RBAC, and that ClusterRoleBinding must be associated with the service account created in the helm chart.
 
 The Agent as a daemonset that runs one instance of each Agent on each Kubernetes worker node.
 
