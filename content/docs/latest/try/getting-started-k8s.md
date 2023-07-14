@@ -42,7 +42,7 @@ Set up a Kubernetes environment on a provider of your choice or use Minikube. Li
 
 # Install with Helm
     ```bash
-    $ $ helm repo add spiffe https://spiffe.github.io/helm-charts/
+    $ helm repo add spiffe https://spiffe.github.io/helm-charts/
     $ helm -n spire install spire spiffe/spire -f values.yaml --create-namespace
     ```
 # Verify
