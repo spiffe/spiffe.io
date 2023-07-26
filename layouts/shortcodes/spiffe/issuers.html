@@ -17,7 +17,10 @@
             </h2>
     
             {{ .description | markdownify }}
+            
+            {{ if .link }}
             <a href="{{ .link }}">Read more</a>
+            {{- end }}
             <div class="is-user-mobile-logo is-hidden-tablet">
                 <a href="{{ .link }}">
                     <img src="{{ $imgUrl }}">
