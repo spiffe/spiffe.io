@@ -1,4 +1,4 @@
-FROM klakegg/hugo:0.68.3-ext
+FROM docker.io/klakegg/hugo:0.68.3-ext
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE 1
