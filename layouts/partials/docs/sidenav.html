@@ -5,7 +5,8 @@
 
 {{ $spireAbout         := where $allDocs ".Params.kind" "eq" "spire-about" }}
 
-{{ $spireHelmChartsHardenedAbout := where $allDocs ".Params.kind" "eq" "spire-helm-charts-hardened-about" }}
+{{ $spireHelmChartsHardenedAbout         := where $allDocs ".Params.kind" "eq" "spire-helm-charts-hardened-about" }}
+{{ $spireHelmChartsHardenedArchitecture := where $allDocs ".Params.kind" "eq" "spire-helm-charts-hardened-architecture" }}
 
 {{ $spirePlanning      := where $allDocs ".Params.kind" "eq" "planning" }}
 {{ $spireTry           := where $allDocs ".Params.kind" "eq" "try" }}  
@@ -60,6 +61,7 @@
   Helm Charts Hardened
 </span>
 {{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireHelmChartsHardenedAbout "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireHelmChartsHardenedArchitecture "pageUrl" $pageUrl "version" $version ) }}
 
 <span class="docs-nav-section">
   Integrate SPIRE
