@@ -3,7 +3,7 @@ title: Federation
 short: Federation
 description: How to setup a SPIRE Federation using the SPIRE Helm charts
 kind: spire-helm-charts-hardened-architecture
-weight: 100
+weight: 200
 aliases:
     - /docs/latest/helm-charts-hardened-architecture/federation
 ---
