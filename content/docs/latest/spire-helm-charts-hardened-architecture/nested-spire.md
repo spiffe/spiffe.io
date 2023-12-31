@@ -149,14 +149,6 @@ helm upgrade --install -n spire-mgmt spire spire --repo https://spiffe.github.io
 
 spire-external-values.yaml:
 ```yaml
-global:
-  openshift: false
-  spire:
-    recommendations:
-      enabled: true
-    clusterName: production
-    trustDomain: production.other
-
 spire-server:
   upstreamAuthority:
     spire:
@@ -164,10 +156,6 @@ spire-server:
       upstreamDriver: upstream.csi.spiffe.io
       server:
         address: spire-root-server.spire-server
-  ca_subject:
-    country: US
-    organization: Production
-    common_name: production.other
   controllerManager:
     identities:
       clusterSPIFFEIDs:
