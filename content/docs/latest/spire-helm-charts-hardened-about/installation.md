@@ -51,7 +51,7 @@ oc get cm -n openshift-config-managed  console-public -o go-template="{{ .data.c
   sed 's@https://@@; s/^[^.]*\.//'
 ```
 
-Step 3: Find any additional values you might want to set based on the documentation on this site or the examples at: 
+Step 3: Find any additional values you might want to set based on the documentation on this site or the examples at:
 https://github.com/spiffe/helm-charts-hardened/tree/main/examples
 
 In particular, consider using an external database.
