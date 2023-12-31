@@ -93,8 +93,9 @@ spire-server:
 # SPIRE Federation Bundle Endpoint
 
 When setting up Federation, you need to expose the bundle endpoint outside the Kubernetes cluster so other SPIRE
-instances can contact it.  It will not work without enabling Federation as well. Please see the Federation
-documentation of the Helm Chart for all the related options to successfully deploy a Federation.
+instances can contact it.  It will not work without enabling Federation as well. Please see the
+[Federation documentation](/docs/latest/spire-helm-charts-hardened-architecture/federation/) of the Helm Chart for
+all the related options to successfully deploy a Federation.
 
 your-values.yaml snippet:
 ```yaml

@@ -2,7 +2,7 @@
 ---
 title: Upgrading
 short: Upgrading
-description: How to upgrade the SPIRE Helm chart
+description: How to upgrade the SPIRE stack using the Helm charts
 kind: spire-helm-charts-hardened-about
 weight: 110
 aliases:
@@ -15,7 +15,7 @@ The chart has its own version number following the semver scheme of:
 
 `Major`.`Minor`.`Patch` versioning.
 
-# Prerequisite
+# Prerequisites
 
 ## Version upgrades
 We only support upgrading one Major/Minor version at a time. Version skipping isn't supported except for patch versions.
