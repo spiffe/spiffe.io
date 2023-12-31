@@ -4,7 +4,7 @@ title: Upgrading
 short: Upgrading
 description: How to upgrade the SPIRE stack using the Helm charts
 kind: spire-helm-charts-hardened-about
-weight: 110
+weight: 100
 aliases:
     - /docs/latest/helm-charts-hardened/upgrading
 ---

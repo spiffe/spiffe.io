@@ -8,7 +8,7 @@ aliases:
     - /docs/latest/helm-charts-hardened/installation
 ---
 
-# Non Production Deployment
+## Non Production Deployment
 
 To do a quick non production install suitable for quick testing in something like minikube:
 
@@ -20,7 +20,7 @@ helm upgrade --install -n spire-server spire spire \
  --repo https://spiffe.github.io/helm-charts-hardened/
 ```
 
-# Production Deployment
+## Production Deployment
 
 Preparing a production deployment requires a few steps.
 
