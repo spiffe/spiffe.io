@@ -150,6 +150,19 @@ helm upgrade --install -n spire-mgmt spire spire --repo https://spiffe.github.io
 spire-external-values.yaml:
 ```yaml
 spire-server:
+  federation:
+    enabled: true
+    ingress:
+      enabled: true
+    tls:
+      spire:
+        enabled: false
+      # Pick one of certManager or externalSecret
+      #certManager:
+      #  enabled: true
+      #externalSecret:
+      #  enabled: true
+      #  secretName: "your secret here"
   upstreamAuthority:
     spire:
       enabled: true
@@ -195,3 +208,6 @@ helm upgrade --install -n spire-mgmt spire-external spire --repo https://spiffe.
   -f spire-external-values.yaml -f your-values.yaml
 ```
 
+External agents:
+
+You can configure the agent to use `trust_bundle_url` set to the federation ingress url from the external instance along with setting `trust_bundle_format` to `spiffe` to bootstrap using the hosts built in trust bundle to simplify bootstrapping.
