@@ -170,14 +170,7 @@ spire-server:
       server:
         address: spire-root-server.spire-server
   controllerManager:
-    identities:
-      clusterSPIFFEIDs:
-        default:
-          spiffeIDTemplate: spiffe://{{ .TrustDomain }}/k8s/{{ .ClusterName }}/ns/{{ .PodMeta.Namespace }}/sa/{{ .PodSpec.ServiceAccountName }}
-        oidc-discovery-provider:
-          enabled: false
-        test-keys:
-          enabled: false
+    enabled: false
   unsupportedBuiltInPlugins:
     nodeAttestor:
       join_token:
