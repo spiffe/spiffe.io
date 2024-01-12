@@ -1,0 +1,75 @@
+digraph G {
+  subgraph cluster_security_k8s {
+    label="Cluster: Security K8S";
+    subgraph cluster_root_release {
+      label="Helm Release: Namespace=spire-mgmt Name=spire-root";
+      subgraph cluster_ns_root_server {
+        label="Namespace: spire-server"
+        spireRoot [label="Root Spire Server"];
+      }
+      subgraph cluster_ns_1_system {
+        label="Namespace: spire-system"
+        spireUpstreamAgent1 [label="Upstream Spire Agent/CSI"];
+      }
+    }
+    subgraph cluster_nested1_release {
+      label="Helm Release: Namespace=spire-mgmt Name=spire-a"
+      subgraph cluster_ns_nested_server {
+        label="Namespace: spire-server";
+        spireServerNested1 [label="Workload A Nested Spire Server"];
+      }
+    }
+    subgraph cluster_nested2_release {
+      label="Helm Release: Namespace=spire-mgmt Name=spire-b"
+      subgraph cluster_ns_nested2_server {
+        label="Namespace: spire-server";
+        spireServerNested2 [label="Workload B Nested Spire Server"];
+      }
+    }
+  }
+  subgraph cluster_workload_a_k8s {
+    label="Cluster: Workload K8S A";
+    subgraph cluster_workload_release {
+      label="Helm Release: Namespace=spire-mgmt Name=spire"
+      subgraph cluster_ns_nested_system {
+        label="Namespace: spire-system";
+        spireDownstreamAgent1 [label="Downstream Spire Agent/CSI"];
+      }
+    }
+    subgraph cluster_ns_nested_system {
+      label="Namespace: user";
+      userWorkload1 [label="User Workload"];
+    }
+    subgraph cluster_ns_nested2_system {
+      label="Namespace: user-other";
+      userWorkload2 [label="Other User Workload"];
+    }
+  }
+  subgraph cluster_workload_b_k8s {
+    label="Cluster: Workload K8S B";
+    subgraph cluster_workload_b_release {
+      label="Helm Release: Namespace=spire-mgmt Name=spire"
+      subgraph cluster_ns_nested_b_system {
+        label="Namespace: spire-system";
+        spireDownstreamAgent2 [label="Downstream Spire Agent/CSI"];
+      }
+    }
+    subgraph cluster_ns_nested3_system {
+      label="Namespace: user";
+      userWorkload3 [label="User Workload"];
+    }
+    subgraph cluster_ns_nested4_system {
+      label="Namespace: user-other";
+      userWorkload4 [label="Other User Workload"];
+    }
+    spireRoot -> spireUpstreamAgent1;
+    spireUpstreamAgent1 -> spireServerNested1;
+    spireServerNested1 -> spireDownstreamAgent1;
+    spireDownstreamAgent1 -> userWorkload1;
+    spireDownstreamAgent1 -> userWorkload2;
+    spireUpstreamAgent1 -> spireServerNested2;
+    spireServerNested2 -> spireDownstreamAgent2;
+    spireDownstreamAgent2 -> userWorkload3;
+    spireDownstreamAgent2 -> userWorkload4;
+  }
+}

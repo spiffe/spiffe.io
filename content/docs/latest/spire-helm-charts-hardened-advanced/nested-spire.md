@@ -16,9 +16,19 @@ The charts can be used to deploy mutiple styles of Nested SPIRE. A few possibili
 
 Example: TODO
 
+## Security Cluster
+
+![Image](/img/spire-helm-charts-hardened/securitycluster.png)
+
+In some cases, you may have a seperate Kubernetes Cluster just for security related services that sits along side one or more workload Kubernetes Clusters. The clusters share the same Datacenter, Availability Zone, Region or wthever other term that is used to denote the same locality.
+
+Example: TODO
+
 ## Single Cluster Hardened
 
 ![Image](/img/spire-helm-charts-hardened/singlehardened.png)
+
+Sometimes you have a mix of workloads in Kubernetes and on bare metal or in virtual machines. You can use the Kubernetes cluster to host spire instances for both the Kubernetes clusters workload and the external workloads within the same Kubernetes cluster.
 
 ### Example K8s Root Instance
 
