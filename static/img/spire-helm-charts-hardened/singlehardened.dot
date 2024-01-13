@@ -1,46 +1,82 @@
 digraph G {
   subgraph cluster_baremetal {
-     label="(Bare Metal|Virtual) Node"
-    spireDownstreamAgent3 [label="Downstream Spire Agent"];
-    userWorkload3 [label="External User Workload"];
+    label="(Bare Metal|Virtual) Node"
+    style="filled,solid,bold";
+    color="#b3b3b3";
+    fillcolor="#f5f5f5";
+    spireDownstreamAgent3 [label="Downstream Spire Agent",shape="box",style="rounded,solid,filled,bold",color="#82b366",fillcolor="#d5e8d4"];
+    userWorkload3 [label="External User Workload",shape="box",style="rounded,solid,filled,bold",color="#d6b656",fillcolor="#fff2cc"];
   }
   subgraph cluster_k8s {
     label="Cluster: K8S";
+    style="filled,solid,bold";
+    color="#b3b3b3";
+    fillcolor="#f5f5f5";
     subgraph cluster_root_release {
       label="Helm Release: Namespace=spire-mgmt Name=spire-root";
+      style="filled,dashed,bold";
+      color="#a3a3a3";
+      fillcolor="#e5e5e5";
       subgraph cluster_ns_root_server {
+        style="filled,dashed,bold";
+        color="#939393";
+        fillcolor="#d5d5d5";
         label="Namespace: spire-server"
-        spireRoot [label="Root Spire Server"];
+        spireRoot [label="Root Spire Server",shape="box",style="rounded,solid,filled,bold",color="#6c8ebf",fillcolor="#dae8fc"];
       }
       subgraph cluster_ns_1_system {
+        style="filled,dashed,bold";
+        color="#939393";
+        fillcolor="#d5d5d5";
         label="Namespace: spire-system"
-        spireUpstreamAgent1 [label="Upstream Spire Agent/CSI"];
+        spireUpstreamAgent1 [label="Upstream Spire Agent/CSI",shape="box",style="rounded,solid,filled,bold",color="#82b366",fillcolor="#d5e8d4"];
       }
     }
     subgraph cluster_nested1_release {
       label="Helm Release: Namespace=spire-mgmt Name=spire"
+      style="filled,dashed,bold";
+      color="#a3a3a3";
+      fillcolor="#e5e5e5";
       subgraph cluster_ns_nested_server {
+        style="filled,dashed,bold";
+        color="#939393";
+        fillcolor="#d5d5d5";
         label="Namespace: spire-server";
-        spireServerNested1 [label="Internal Nested Spire Server"];
+        spireServerNested1 [label="Internal Nested Spire Server",shape="box",style="rounded,solid,filled,bold",color="#6c8ebf",fillcolor="#dae8fc"];
       }
       subgraph cluster_ns_nested_system {
+        style="filled,dashed,bold";
+        color="#939393";
+        fillcolor="#d5d5d5";
         label="Namespace: spire-system";
-        spireDownstreamAgent1 [label="Downstream Spire Agent/CSI"];
+        spireDownstreamAgent1 [label="Downstream Spire Agent/CSI",shape="box",style="rounded,solid,filled,bold",color="#82b366",fillcolor="#d5e8d4"];
       }
     }
     subgraph cluster_ns_nested_system {
+      style="filled,dashed,bold";
+      color="#939393";
+      fillcolor="#d5d5d5";
       label="Namespace: user";
-      userWorkload1 [label="User Workload"];
+      userWorkload1 [label="User Workload",shape="box",style="rounded,solid,filled,bold",color="#d6b656",fillcolor="#fff2cc"];
     }
     subgraph cluster_ns_nested2_system {
+      style="filled,dashed,bold";
+      color="#939393";
+      fillcolor="#d5d5d5";
       label="Namespace: user-other";
-      userWorkload2 [label="Other User Workload"];
+      userWorkload2 [label="Other User Workload",shape="box",style="rounded,solid,filled,bold",color="#d6b656",fillcolor="#fff2cc"];
     }
     subgraph cluster_nested3_release {
       label="Helm Release: Namespace=spire-mgmt Name=spire-external"
+      style="filled,dashed,bold";
+      color="#a3a3a3";
+      fillcolor="#e5e5e5";
       subgraph cluster_ns_nested2_system {
+        style="filled,dashed,bold";
+        color="#939393";
+        fillcolor="#d5d5d5";
         label="Namespace: spire-server";
-        spireServerNested2 [label="External Nested Spire Server"];
+        spireServerNested2 [label="External Nested Spire Server",shape="box",style="rounded,solid,filled,bold",color="#6c8ebf",fillcolor="#dae8fc"];
       }
     }
     spireRoot -> spireUpstreamAgent1;
