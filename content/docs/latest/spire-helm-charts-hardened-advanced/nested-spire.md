@@ -10,9 +10,33 @@ aliases:
 
 The charts can be used to deploy mutiple styles of Nested SPIRE. A few possibilities are explained below.
 
+## Nested Considerations
+
+### SPIRE Controller Manager
+
+Node registration management can be done either manually or by the SPIRE Controller Manager but not both. External facing SPIRE Servers should have the Controller Manager disabled.
+
+When multiple charts are installed at the same time with it enabled, they must use different classes. This is setup by default. Do not override without understanding the situation.
+
+### TTLs
+
+
+*fixme* note here about tradeoffs between longer ca's more stable less risky for networking. longer ca time more risk of security issues.
+
+
+The TTL of the workload certificates is limited by the root instances `spire-server.caTTL` and the TTL of the intermediate CA's it produces, default `spire-server.controllerManager.identity.default.ttl`
+
+The root CA will generate a new root at about 1/2 the `spire-server.caTTL`.
+
 ## Multi-Cluster
 
+### Regular
 ![Image](/img/spire-helm-charts-hardened/multicluster.png)
+
+Example: TODO
+
+### Alternate
+![Image](/img/spire-helm-charts-hardened/multicluster-alternate.png)
 
 Example: TODO
 
@@ -42,6 +66,12 @@ helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
 
 Write out your-values.yaml as described in the [Install](http://localhost:1313/docs/latest/spire-helm-charts-hardened-about/installation/#production-deployment) instructions steps 1 & 2.
 
+Remove the lines from your-values.yaml:
+```
+    namespaces:
+      create: true
+```
+
 spire-root-values.yaml:
 ```yaml
 global:
@@ -63,20 +93,6 @@ spire-server:
               values: [spire-server]
           podSelector:
             matchLabels:
-              release: spire
-              release-namespace: spire-mgmt
-              component: server
-          downstream: true
-        external:
-          type: raw
-          namespaceSelector:
-            matchExpressions:
-            - key: "kubernetes.io/metadata.name"
-              operator: In
-              values: [spire-server]
-          podSelector:
-            matchLabels:
-              release: spire-external
               release-namespace: spire-mgmt
               component: server
           downstream: true
@@ -89,9 +105,6 @@ spire-server:
       serviceAccountAllowList:
         - spire-system:spire-agent-upstream
   bundleConfigMap: spire-bundle-upstream
-  notifier:
-    k8sbundle:
-      namespace: spire-system
 
 spiffe-oidc-discovery-provider:
   enabled: false
@@ -135,8 +148,6 @@ spire-server:
       upstreamDriver: upstream.csi.spiffe.io
       server:
         address: spire-root-server.spire-server
-  ingress:
-    enabled: true
   controllerManager:
     identities:
       clusterSPIFFEIDs:
@@ -207,7 +218,7 @@ spiffe-oidc-discovery-provider:
 Install spire-external:
 
 ```shell
-helm upgrade --install -n spire-mgmt spire-external spire --repo https://spiffe.github.io/helm-charts-hardened/
+helm upgrade --install -n spire-mgmt spire-external spire --repo https://spiffe.github.io/helm-charts-hardened/ \
   -f spire-external-values.yaml -f your-values.yaml
 ```
 
