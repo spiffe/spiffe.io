@@ -28,15 +28,14 @@ The TTL of the workload certificates is limited by the root instances `spire-ser
 
 The root CA will generate a new root at about 1/2 the `spire-server.caTTL`.
 
+# K8s Integrated Root
+
+There are several advantages to having the Root server integrated with the root K8s cluster. It is easier to configure and establish trust with the other spire instances within the same cluster.
+
 ## Multi-Cluster
 
-### Regular
 ![Image](/img/spire-helm-charts-hardened/multicluster.png)
 
-Example: TODO
-
-### Alternate
-![Image](/img/spire-helm-charts-hardened/multicluster-alternate.png)
 
 Example: TODO
 
@@ -225,3 +224,12 @@ helm upgrade --install -n spire-mgmt spire-external spire --repo https://spiffe.
 External agents:
 
 You can configure the agent to use `trust_bundle_url` set to the federation ingress url from the external instance along with setting `trust_bundle_format` to `spiffe` to bootstrap using the hosts built in trust bundle to simplify bootstrapping.
+
+
+# Non K8s Integrated Root
+
+## Multi-Cluster
+![Image](/img/spire-helm-charts-hardened/multicluster-alternate.png)
+
+Example: TODO
+

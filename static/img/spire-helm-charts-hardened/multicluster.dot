@@ -162,16 +162,11 @@ digraph G {
       userWorkload2 [label="Other User Workload",shape="box",style="rounded,solid,filled,bold",color="#d6b656",fillcolor="#fff2cc"];
     }
   }
-  //spireRoot -> spireUpstreamAgent1 [ltail=cluster_ns_root_server_obj];
-  //spireRoot -> spireUpstreamAgent2 [ltail=cluster_ns_root_server_obj];
   spireRoot -> spireRootUpstreamAgent1 [ltail=cluster_ns_root_server_obj];
-
   spireRootUpstreamAgent1 -> spireRootNested1 [lhead=cluster_ns_nested_server1_obj];
   spireRootUpstreamAgent1 -> spireRootNested2 [lhead=cluster_ns_nested_server2_obj];
-
   spireRootNested1 -> spireUpstreamAgent1 [ltail=cluster_ns_nested_server1_obj];
   spireRootNested2 -> spireUpstreamAgent2 [ltail=cluster_ns_nested_server2_obj];
-
   spireUpstreamAgent1 -> spireServerNested1 [lhead=cluster_ns_nested1_server_obj];
   spireServerNested1 -> spireDownstreamAgent1 [ltail=cluster_ns_nested1_server_obj];
   spireDownstreamAgent1 -> userWorkload1;
