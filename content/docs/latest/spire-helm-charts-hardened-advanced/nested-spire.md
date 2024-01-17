@@ -28,32 +28,13 @@ The TTL of the workload certificates is limited by the root instances `spire-ser
 
 The root CA will generate a new root at about 1/2 the `spire-server.caTTL`.
 
-# K8s Integrated Root
+# Kubernetes Integrated Root
 
-There are several advantages to having the Root server integrated with the root K8s cluster. It is easier to configure and establish trust with the other spire instances within the same cluster.
+There are several advantages to having the Root server integrated with the root Kubernetes cluster. It is easier to configure and establish trust with the other SPIRE instances within the same cluster. Here we take a building block aproach to deployment. First, we deploy the Root server. Next we integrate the root cluster with it. Then we have options for adding non Kubernetes SPIRES, using the Root for with regularly nested Kubernetes clusters, or setup security clusters.
 
-## Multi-Cluster
+## Setup Root Instance
 
-![Image](/img/spire-helm-charts-hardened/multicluster.png)
-
-
-Example: TODO
-
-## Security Cluster
-
-![Image](/img/spire-helm-charts-hardened/securitycluster.png)
-
-In some cases, you may have a seperate Kubernetes Cluster just for security related services that sits along side one or more workload Kubernetes Clusters. The clusters share the same Datacenter, Availability Zone, Region or wthever other term that is used to denote the same locality.
-
-Example: TODO
-
-## Single Cluster Hardened
-
-![Image](/img/spire-helm-charts-hardened/singlehardened.png)
-
-Sometimes you have a mix of workloads in Kubernetes and on bare metal or in virtual machines. You can use the Kubernetes cluster to host spire instances for both the Kubernetes clusters workload and the external workloads within the same Kubernetes cluster.
-
-### Example K8s Root Instance
+![Image](/img/spire-helm-charts-hardened/root-k8s.png)
 
 Install the CRDs.
 ```shell
@@ -61,7 +42,6 @@ helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
  --repo https://spiffe.github.io/helm-charts-hardened/
 ```
 
-### Setup your-values.yaml
 
 Write out your-values.yaml as described in the [Install](http://localhost:1313/docs/latest/spire-helm-charts-hardened-about/installation/#production-deployment) instructions steps 1 & 2.
 
@@ -137,6 +117,28 @@ helm upgrade --install -n spire-mgmt spire-root spire --repo https://spiffe.gith
   -f spire-root-values.yaml -f your-values.yaml
 ```
 
+
+## Multi-Cluster
+
+![Image](/img/spire-helm-charts-hardened/multicluster.png)
+
+
+Example: TODO
+
+## Security Cluster
+
+![Image](/img/spire-helm-charts-hardened/securitycluster.png)
+
+In some cases, you may have a seperate Kubernetes Cluster just for security related services that sits along side one or more workload Kubernetes Clusters. The clusters share the same Datacenter, Availability Zone, Region or wthever other term that is used to denote the same locality.
+
+Example: TODO
+
+## Single Cluster Hardened
+
+![Image](/img/spire-helm-charts-hardened/singlehardened.png)
+
+Sometimes you have a mix of workloads in Kubernetes and on bare metal or in virtual machines. You can use the Kubernetes cluster to host spire instances for both the Kubernetes clusters workload and the external workloads within the same Kubernetes cluster.
+
 ### Example K8s Workload Instance
 
 ```yaml
@@ -191,10 +193,9 @@ spire-server:
         address: spire-root-server.spire-server
   controllerManager:
     enabled: false
-  unsupportedBuiltInPlugins:
-    nodeAttestor:
-      join_token:
-        plugin_data: {}
+  nodeAttestor:
+    joinToken:
+      enabled: true
 
   nodeAttestor:
     k8sPsat:
