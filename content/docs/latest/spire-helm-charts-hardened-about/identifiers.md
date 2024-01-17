@@ -89,6 +89,8 @@ spire-server:
 
 # Static SVIDs
 
+## Regular SVIDs
+
 Generally, loading Static SVIDS is only useful when using a workload attestor that is not the Kubernetes attestor. (non default settings)
 
 Example: Add a SVID that matches processes running under gid `1000` on node `x` and give it a spiffeID of `spiffe://example.com/frontend` with dns name `frontend.example.com`
@@ -106,4 +108,34 @@ spire-server:
           - unix:gid:1000
           dnsNameTemplates:
           - frontend.example.com
+```
+
+## Node SVIDs
+
+When using a node attestor other then k8sPsat, you may need to add some node entries to the database. You can make static entries for them by using the spire server's identity
+as the parent. To link up to the k8sPsat
+
+Example:
+
+your-values.yaml snippet:
+```yaml
+spire-server:
+  controllerManager:
+    identities:
+      clusterStaticEntries:
+        node1:
+          parentID: spiffe://example.org/spire/server
+          spiffeID: spiffe://example.org/spire/agent/k8s_psat/example-cluster/e860cb09-8533-4f2e-80dc-8286d768c992
+          selectors:
+          - tpm:pub_hash:646789aab7a9028713b8fa5197cf6be0e935d7da048866f86224ec64c50d590c
+        node2:
+          parentID: spiffe://example.org/spire/server
+          spiffeID: spiffe://example.org/spire/agent/k8s_psat/example-cluster/8494d54e-6ad5-4c8e-87d1-2e6b7c2315cc
+          selectors:
+          - tpm:pub_hash:d2f0ac3a4ad72e0f14f3cd7d6b5cab16c06dc05a6b847a03c8771d640709eadd
+        node3:
+          parentID: spiffe://example.org/spire/server
+          spiffeID: spiffe://example.org/spire/agent/k8s_psat/example-cluster/5afebd69-7c67-4998-a953-f491c156ee35
+          selectors:
+          - tpm:pub_hash:ac951f972127d8176c367bba4684e57da3589d1f0e072a608d53977255503c7f
 ```
