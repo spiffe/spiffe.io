@@ -139,3 +139,19 @@ spire-server:
           selectors:
           - tpm:pub_hash:ac951f972127d8176c367bba4684e57da3589d1f0e072a608d53977255503c7f
 ```
+
+## Join Tokens
+
+When using the spire-controller-manager, do not use the `-spiffeID` flag to `spire-server token generate`. It will get undone by the controller manager. To use, generate the token
+then add to your-values.yaml
+```
+spire-server:
+  controllerManager:
+    identities:
+      clusterStaticEntries:
+        node123:
+          spiffeID: spiffe://example.org/your-identifier-here
+          parentID: spiffe://example.org/spire/agent/join_token/3b6c7dcf-10de-406c-9733-f22846f3addb
+          selectors:
+          - spiffe_id:spiffe://example.org/spire/agent/join_token/3b6c7dcf-10de-406c-9733-f22846f3addb
+```
