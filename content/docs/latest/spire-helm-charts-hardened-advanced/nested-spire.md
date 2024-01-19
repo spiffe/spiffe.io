@@ -14,7 +14,9 @@ The charts can be used to deploy mutiple styles of Nested SPIRE. A few possibili
 
 ### SPIRE Controller Manager
 
-Node registration management can be done either manually or by the SPIRE Controller Manager but not both. External facing SPIRE Servers should have the Controller Manager disabled.
+Node registration management can be done either manually or by the SPIRE Controller Manager but not both.
+
+If you need join tokens, see the usage [here](../../spire-helm-charts-hardened-about/identifiers/#join-tokens)
 
 When multiple charts are installed at the same time with it enabled, they must use different classes. This is setup by default. Do not override without understanding the situation.
 
@@ -43,7 +45,7 @@ helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
 ```
 
 
-Write out your-values.yaml as described in the [Install](http://localhost:1313/docs/latest/spire-helm-charts-hardened-about/installation/#production-deployment) instructions steps 1 & 2.
+Write out your-values.yaml as described in the [Install](../../spire-helm-charts-hardened-about/installation/#production-deployment) instructions steps 1 through 3.
 
 Remove the lines from your-values.yaml:
 ```
