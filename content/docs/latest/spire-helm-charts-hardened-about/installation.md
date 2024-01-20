@@ -24,7 +24,7 @@ helm upgrade --install -n spire-server spire spire \
 
 Preparing a production deployment requires a few steps.
 
-Step 1: Save the following to your-values.yaml, ideally in your git repo.
+1. Save the following to your-values.yaml, ideally in your git repo.
 ```yaml
 global:
   openshift: false # If running on openshift, set to true
@@ -45,25 +45,23 @@ spire-server:
     common_name: example.org
 ```
 
-Step 2: If you need a non default storageClass, append the following to the spire-server section and update:
+2. If you need a non default storageClass, append the following to the spire-server section and update:
 ```
   persistence:
     storageClass: your-storage-class
 ```
 
-Step 3: If your Kubernetes cluster is OpenShift based, use the output of the following command for your trustDomain:
+3. If your Kubernetes cluster is OpenShift based, use the output of the following command to update the trustDomain setting:
 ```shell
 oc get cm -n openshift-config-managed  console-public -o go-template="{{ .data.consoleURL }}" | \
   sed 's@https://@@; s/^[^.]*\.//'
 ```
 
-Step 4: Find any additional values you might want to set based on the documentation on this site or the [examples](https://github.com/spiffe/helm-charts-hardened/tree/main/examples)
+4. Find any additional values you might want to set based on the documentation on this site or the [examples](https://github.com/spiffe/helm-charts-hardened/tree/main/examples)
 
 In particular, consider using an external database.
 
-Step 5: Edit your-values.yaml with the appropriate values.
-
-Step 6: Deploy
+6. Deploy
 
 ```shell
 helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
