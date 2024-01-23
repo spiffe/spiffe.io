@@ -61,7 +61,7 @@ oc get cm -n openshift-config-managed  console-public -o go-template="{{ .data.c
 
 In particular, consider using an external database.
 
-6. Deploy
+5. Deploy
 
 ```shell
 helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
