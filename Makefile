@@ -1,6 +1,4 @@
 HUGO_VERSION ?= 0.68.3
-# Run podman with CONTAINER_RUNTIME=podman on the commandline
-CONTAINER_RUNTIME ?= docker
 
 setup:
 	pipenv install --dev
@@ -32,20 +30,20 @@ preview-build: ci-check-links
 		--baseURL $(DEPLOY_PRIME_URL)
 
 docker-build:
-	$(CONTAINER_RUNTIME) build . \
+	docker build . \
 		--rm \
 		-t spiffe.io:latest \
 		-f Dockerfile.dev
 
 docker-serve: docker-build
-	$(CONTAINER_RUNTIME) run --rm -it \
+	docker run --rm -it \
 		-v $(PWD):/app \
 		-p 1313:1313 \
 		-e HIDE_RELEASES=true \
 		spiffe.io:latest
 
 docker-serve-with-releases: docker-build
-	$(CONTAINER_RUNTIME) run --rm -it \
+	docker run --rm -it \
 		-v $(PWD):/app \
 		-p 1313:1313 \
 		spiffe.io:latest
@@ -66,7 +64,7 @@ check-links:
 	pipenv run linkchecker -f linkcheckerrc http://localhost:1313
 
 docker-check-links-build:
-	$(CONTAINER_RUNTIME) build -f Dockerfile.linkchecker -t linkchecker .
+	docker build -f Dockerfile.linkchecker -t linkchecker .
 
 docker-check-links: docker-check-links-build
-	$(CONTAINER_RUNTIME) run --rm -it -u $(shell id -u):$(shell id -g) --net host linkchecker -f linkcheckerrc http://localhost:1313
+	docker run --rm -it -u $(shell id -u):$(shell id -g) --net host linkchecker -f linkcheckerrc http://localhost:1313
