@@ -1,4 +1,5 @@
 HUGO_VERSION ?= 0.68.3
+
 # Run podman with CONTAINER_RUNTIME=podman on the commandline
 CONTAINER_RUNTIME ?= docker
 
