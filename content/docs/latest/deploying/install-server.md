@@ -181,10 +181,10 @@ When you deploy the server it automatically configures a livenessProbe on the SP
 
 When the server deploys, it binds in the volumes summarized in the following table:
 
-| Volume | Description | Mount Location |
-| :------ |:---------- | :------------- |
+| Volume           | Description                                                                | Mount Location        |
+|:-----------------|:---------------------------------------------------------------------------|:----------------------|
 | **spire-config** | A reference to the **spire-server** configmap created in the previous step | **/run/spire/config** |
-| **spire-data** | The hostPath for the server's SQLite database and keys file | **/run/spire/data** |
+| **spire-data**   | The hostPath for the server's SQLite database and keys file                | **/run/spire/data**   |
 
 ### Create Server Service
 

@@ -31,11 +31,9 @@
 <nav class="navbar is-fixed-top is-light">
   <div class="container {{ if $isDocsPage }}is-fluid{{ end }} ">
     <div class="navbar-brand">
-      {{- if not $isHome }}
       <a class="navbar-item" href="{{ .Site.BaseURL }}">
         <img src="{{ $logoUrl }}">
       </a>
-      {{- end }}
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target=".navbar-top">
         <span aria-hidden="true"></span>

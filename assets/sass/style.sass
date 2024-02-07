@@ -43,7 +43,11 @@ $light-separator: #e2e2e2
 @import "toc"
 
 .hero
-  margin: .8rem 1rem .9rem 1rem
+  margin: 2.5rem 1rem
+  border-bottom: 1px solid #D9DCE0
+
+.hero-docs
+  margin: 0.8rem 1rem 0.9rem 1rem
 
 .hero.is-light
   background-color: inherit
@@ -51,6 +55,7 @@ $light-separator: #e2e2e2
 .hero-body
   padding-bottom: 4em !important
   padding-top: 4em !important
+  max-width: 1344px
   .title
     margin-bottom: 0
     line-height: 1.5
@@ -63,6 +68,22 @@ $light-separator: #e2e2e2
     margin-top: 20px
     .button .is-dark
       background-color: lighten($dark, 50%)
+
+.hero-body > div:first-child
+  width: 40%
+  +mobile
+    width: 100%
+
+.spiffe-bg
+  object-fit: cover
+  width: 50%
+  +mobile
+    width: 100%
+
+.spiffe-turtle
+  width: 100%
+  height: 100%
+ 
 
 figure
   img
@@ -153,11 +174,128 @@ figure
 body.is-home-page
   section
     &.use-cases
-      p
+      div
         &.image
-          width: 75%
+          width: 60%
           margin: auto
           padding-bottom: 1em
+
+.width-md
+  width: 60%
+
+.width-lg
+  width: 80%
+
+.fullwidth
+  width: 100%
+
+.img-container-lg
+  flex: 1
+  width: 300px
+  height: 200px
+
+.img-container-md
+  width: 60%
+  height: 200px
+  margin: 0 auto
+
+.img-container-sm
+  width: 150px
+  height: 100px
+
+.img-container-xsm
+  width: 100px
+  height: 100px
+
+.img-long 
+    width: 100%
+    height: 500px
+
+.content
+  width: 70%
+
+.img-container-lg, .img-container-md, .img-container-sm, .img-container-xsm, .img-long
+  img
+    width: 100%
+    height: 100%
+    object-fit: contain
+
+
+.margin-md-top-bottom
+  margin: 30px 0px
+
+.margin-md-top-bottom-mobile
+  +mobile
+    margin: 30px 0px
+
+.is-columns-centered
+  margin: 0 auto
+
+.is-align-items-center
+  align-items: center
+
+.is-justify-content-center
+  justify-content: center
+
+.is-space-between
+  justify-content: space-between
+
+.gap-md
+  gap: 100px
+
+.gap-sm
+  gap: 30px
+
+.btn-wide
+  width: 10%
+
+.btn-wide
+  +mobile
+   width: 40%
+
+.slideshow-container
+  position: relative
+  margin: auto
+
+.mySlides
+  display: none
+
+.prev, .next
+  cursor: pointer
+  position: absolute
+  top: 50%
+  width: auto
+  margin-top: -22px
+  padding: 16px
+  color: white
+  font-weight: bold
+  font-size: 18px
+  transition: 0.6s ease
+  border-radius: 0 3px 3px 0
+  user-select: none
+
+.next
+  right: 0
+  border-radius: 3px 0 0 3px
+
+.prev
+  left: 0
+  border-radius: 3px 0 0 3px
+
+.prev:hover, .next:hover
+  background-color: rgba(0,0,0,0.8)
+
+.active
+  background-color: #717171
+
+.fade
+  animation-name: fade
+  animation-duration: 1.5s
+
+@keyframes fade
+  from {opacity: .4}
+  to {opacity: 1}
+
 
 .is-home-desktop-logo
   width: 50%
@@ -215,11 +353,20 @@ body.is-home-page
     *
       color: $white
 
+.section
+  border-bottom: 1px solid #D9DCE0
+
+.is-space-between
+  justify-content: space-between
+
 .is-hero-logo
   +logo(40%, 60%)
 
 .footer
   z-index: 2
+  padding: 3rem 1.5rem
+  +mobile
+    text-align: center
 
   li a
     color: $white-bis
@@ -230,6 +377,10 @@ body.is-home-page
     a
       color: darken($white-bis, 60%)
 
+.is-columns-stacked-mobile
+  +mobile
+    flex-direction: column
+
 .is-footer-logo
   +mobile
     width: 40%
@@ -237,8 +388,30 @@ body.is-home-page
   +tablet
     width: 15%
 
+  +desktop
+    width: 30%
+
+.flex-column-mobile
+  +mobile
+    flex-direction: column
+
+.flex-column-mobile-reverse
+  +mobile
+    flex-direction: column-reverse
+
+.text-container
+  +mobile
+    text-align: center
+
+.fullwidth-mobile
+  +mobile
+    width: 100%
+
 section.news
   padding: 5px
+  position: fixed
+  width: 100%
+  z-index: 100
   background-color: $spiffe-green
   color: $grey-dark
   a
@@ -305,6 +478,11 @@ hr
   +touch
     width: 80%
 
+.copyright
+  text-align: right
+  +mobile
+    text-align: center
+
 .presentation
   clear: both
 
@@ -317,3 +495,45 @@ hr
 
   .description
     font-size: 0.8em
+
+.subtitle-text
+  padding: 3em 0
+
+.grid
+  display: grid
+  grid-template-columns: repeat(40, 1fr)
+  gap: 10px
+  grid-template-rows: 1fr
+
+.image-barrier
+  overflow: hidden
+  position: relative
+
+#infinite div.image-barrier
+  background:#fff
+  
+  &::before, &::after
+    content: " "
+    position: absolute
+    z-index: 9
+    width: 180px
+    height: 100%
+
+  &::before
+    top: 0
+    left: 0
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)
+
+  &::after
+    top: 0
+    right: 0
+    background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)
+
+.image-lane
+  width: calc(180px * 40)
+
+  .image-item
+    animation: marquee 35s linear infinite
+
+@keyframes marquee
+    100% { transform: translateX(calc(-180px * 20));  }
