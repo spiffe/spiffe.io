@@ -17,6 +17,18 @@ helm template spire --repo https://spiffe.github.io/helm-charts-hardened/ -f you
  | sort -u
 ```
 
+Example output:
+```
+cgr.dev/chainguard/bash:latest
+cgr.dev/chainguard/kubectl:latest
+cgr.dev/chainguard/wait-for-it:latest-20230113
+ghcr.io/spiffe/spiffe-csi-driver:0.2.3
+ghcr.io/spiffe/spire-agent:1.6.3
+ghcr.io/spiffe/spire-controller-manager:0.2.2
+ghcr.io/spiffe/spire-server:1.6.3
+registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.6.2
+```
+
 ## Mirror Containers
 
 Copy each container to your local repository, replacing the server name but keeping the paths.
