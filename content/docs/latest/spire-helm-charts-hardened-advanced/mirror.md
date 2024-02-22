@@ -45,8 +45,8 @@ helm pull spire --repo https://spiffe.github.io/helm-charts-hardened/
 
 Push up charts to registry
 ```shell
-helm push spire-crds*.tgz oci://<your registry url>/helm-charts
-helm push spire-0*.tgz oci://<your registry url>/helm-charts
+helm push spire-crds*.tgz oci://<your registry url>/helm-charts-hardened/spire-crds
+helm push spire-0*.tgz oci://<your registry url>/helm-charts-hardened/spire
 ```
 
 ## Configuration
