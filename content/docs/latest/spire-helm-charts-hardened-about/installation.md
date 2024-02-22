@@ -13,10 +13,10 @@ aliases:
 To do a quick install suitable for non production environments such as [minikube](https://minikube.sigs.k8s.io/docs/):
 
 ```
-helm upgrade --install --create-namespace -n spire-server spire-crds spire-crds \
+helm upgrade --install --create-namespace -n spire spire-crds spire-crds \
  --repo https://spiffe.github.io/helm-charts-hardened/
 
-helm upgrade --install -n spire-server spire spire \
+helm upgrade --install -n spire spire spire \
  --repo https://spiffe.github.io/helm-charts-hardened/
 ```
 
