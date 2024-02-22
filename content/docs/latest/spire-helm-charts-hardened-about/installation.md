@@ -8,9 +8,9 @@ aliases:
     - /docs/latest/helm-charts-hardened/installation
 ---
 
-## Non Production Deployment
+## Quick start
 
-To do a quick install suitable for testing in something like minikube:
+To do a quick install suitable for non production environments such as [minikube](https://minikube.sigs.k8s.io/docs/):
 
 ```
 helm upgrade --install --create-namespace -n spire-server spire-crds spire-crds \
@@ -22,7 +22,7 @@ helm upgrade --install -n spire-server spire spire \
 
 ## Production Deployment
 
-Preparing a production deployment requires a few steps.
+Preparing a production deployment requires a few extra steps.
 
 1. Save the following to your-values.yaml, ideally in your git repo.
 ```yaml
@@ -57,9 +57,7 @@ oc get cm -n openshift-config-managed  console-public -o go-template="{{ .data.c
   sed 's@https://@@; s/^[^.]*\.//'
 ```
 
-4. Find any additional values you might want to set based on the documentation on this site or the [examples](https://github.com/spiffe/helm-charts-hardened/tree/main/examples)
-
-In particular, consider using an external database.
+4. Find any additional values you might want to set based on the documentation on this site or the [examples](https://github.com/spiffe/helm-charts-hardened/tree/main/examples). In particular, consider using an external database.
 
 5. Deploy
 
