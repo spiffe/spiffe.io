@@ -10,7 +10,7 @@ aliases:
 
 ## 3 Namespace Configuration
 
-This is the recommended configuration, it automatically creates all the necessary namespaces.
+This is the recommended configuration, it automatically creates and deploys SPIRE across 3 namespaces.
 
 your-values.yaml snippet:
 ```yaml
