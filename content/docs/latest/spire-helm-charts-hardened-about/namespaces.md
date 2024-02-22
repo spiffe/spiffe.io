@@ -10,7 +10,7 @@ aliases:
 
 ## 3 Namespace Configuration
 
-This is the recommended configuration.
+This is the recommended configuration, it automatically creates all the necessary namespaces.
 
 your-values.yaml snippet:
 ```yaml
