@@ -38,7 +38,7 @@ For ingress-nginx, set `global.spire.ingressControllerType=ingress-nginx`
 
 For OpenShift, set `global.openshift=true`
 
-Any other Ingress Controller is unsupported, but the chart can be configured to use them anyway. Set the
+Other Ingress Controllers may work but are untested and unsupported. Set the
 `ingress.annotations` values as appropriate for your Ingress Controller. Please consider letting the team know what
 options you needed to use so support for your chosen Ingress Controller can be added in the future.
 
