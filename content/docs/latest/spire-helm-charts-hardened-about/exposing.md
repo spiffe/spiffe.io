@@ -39,14 +39,13 @@ For ingress-nginx, set `global.spire.ingressControllerType=ingress-nginx`
 For OpenShift, set `global.openshift=true`
 
 Other Ingress Controllers may work but are untested and unsupported. Set the
-`ingress.annotations` values as appropriate for your Ingress Controller. Please consider letting the team know what
-options you needed to use so support for your chosen Ingress Controller can be added in the future.
+`ingress.annotations` values as appropriate for your Ingress Controller. Please consider [submitting a PR](https://github.com/spiffe/helm-charts-hardened/pulls) if you're able to get another Ingress to work.
 
 # Generic Ingress Config
 
-Each Ingress that is enabled `ingress.enabled=true` will by default virtual host with a dns name like
+Each Ingress that is enabled by setting `ingress.enabled=true` will by default create a virtual host with a DNS name like
 `$serviceName.$trustDomain`. You can override the host under the services ingress section with key host. If the host
-value does not have a `.` in it, $trustDomain will automatically be added.
+value doesn't have a `.` in it, $trustDomain will automatically be added.
 
 Example: Overriding the spire-server-federation host to be `example-fed.$trustDomain`
 
