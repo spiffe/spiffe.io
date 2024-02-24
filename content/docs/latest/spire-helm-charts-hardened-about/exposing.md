@@ -8,6 +8,7 @@ aliases:
     - /docs/latest/helm-charts-hardened/exposing
 ---
 
+# Default
 
 By default no SPIRE services are exposed outside the Kubernetes cluster. The below sections cover how to expose them.
 
