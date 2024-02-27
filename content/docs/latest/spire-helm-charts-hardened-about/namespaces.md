@@ -71,4 +71,4 @@ helm upgrade --install -n spire-server spire spire \
 
 ## Single Namespace Configuration
 
-This is only recommended for non production deployments.
+This is only recommended for non production deployments as described in the [quick start.](/docs/latest/spire-helm-charts-hardened-about/installation/#quick-start)
