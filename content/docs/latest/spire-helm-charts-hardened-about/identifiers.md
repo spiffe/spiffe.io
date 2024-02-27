@@ -10,11 +10,9 @@ aliases:
 
 ## Defaults
 
-By default the chart deploys the SPIRE Controller Manager that enables management of SPIFFE Identifiers by Kubernetes Custom Resources.
-
-The chart itself by default deploys a ClusterSPIFFEID Custom Resource that gives an identifier to all pods.
-
-Out of the box, in a lot of use cases you do not need to add additional identifiers.
+- The chart deploys [SPIRE Controller Manager](https://github.com/spiffe/spire-controller-manager) to manage SPIFFE Identifiers by Kubernetes Custom Resources.
+- The chart deploys a ClusterSPIFFEID Custom Resource that gives an identifier to all pods or the form `spiffe://{{ .TrustDomain }}/ns/{{ .PodMeta.Namespace }}/sa/{{ .PodSpec.ServiceAccountName }}`.
+- For a lot of use cases you don't need to add additional identifiers.
 
 ## Custom / Additional Identifiers
 
