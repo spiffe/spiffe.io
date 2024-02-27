@@ -18,10 +18,10 @@ aliases:
 
 In some cases you may want to customize your identifiers or add additional ones.
 
-While you can manage identities using the Kubernetes Custom Resources via https://github.com/spiffe/spire-controller-manager?tab=readme-ov-file#custom-resources directly
-we do not recommend doing that as it takes care to not misconfigure.
+The chart supports managing the Custom Resources from the charts values file for even easier management. We recommend using values for customization.
 
-The chart supports managing the Custom Resources from the charts values file for even easier management. We recommend using that mechanism.
+While you can manage identities using the [Kubernetes Custom Resources](https://github.com/spiffe/spire-controller-manager?tab=readme-ov-file#custom-resources) directly,
+we do not recommend doing that as it takes care to not misconfigure.
 
 ## Restricting the default SVIDs.
 
