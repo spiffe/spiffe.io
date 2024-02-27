@@ -18,7 +18,7 @@ Out of the box, in a lot of use cases you do not need to add additional identifi
 
 ## Custom / Additional Identifiers
 
-But, in some cases you may want to customize your identifiers or add additional ones.
+In some cases you may want to customize your identifiers or add additional ones.
 
 While you can manage identities using the Kubernetes Custom Resources via https://github.com/spiffe/spire-controller-manager?tab=readme-ov-file#custom-resources directly
 we do not recommend doing that as it takes care to not misconfigure.

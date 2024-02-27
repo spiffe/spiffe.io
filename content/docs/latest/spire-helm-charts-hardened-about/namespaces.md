@@ -8,7 +8,7 @@ aliases:
     - /docs/latest/helm-charts-hardened/namespaces
 ---
 
-## 3 Namespace Configuration
+## Three Namespace Configuration
 
 This is the recommended configuration, it automatically creates and deploys SPIRE across 3 namespaces.
 
@@ -31,7 +31,7 @@ as provided by the [spire-crds](https://artifacthub.io/packages/helm/spiffe/spir
 needs to store to manage the installation. This management namespace is specified
 directly to helm when installing/upgrading the release.
 
-## 2 Namespace Configuration
+## Two Namespace Configuration
 
 It's not possible to have the SPIRE helm chart create and manage the labels of
 the namespace in which it is directly installed into. On some clusters, it's necessary
@@ -69,6 +69,6 @@ helm upgrade --install -n spire-server spire spire \
  -f your-values.yaml
 ```
 
-## 1 Namespace Configuration
+## Single Namespace Configuration
 
 This is only recommended for non production deployments.
