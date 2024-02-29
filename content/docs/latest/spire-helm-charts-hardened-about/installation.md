@@ -37,12 +37,10 @@ global:
     # Update these
     clusterName: example-cluster
     trustDomain: example.org
-spire-server:
-  ca_subject:
-    # Update these
-    country: ARPA
-    organization: Example
-    common_name: example.org
+    caSubject:
+      country: ARPA
+      organization: Example
+      commonName: example.org
 ```
 
 2. If you need a non default storageClass, append the following to the spire-server section and update:
