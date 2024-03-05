@@ -1,7 +1,7 @@
 ---
 title: Namespaces
 short: Namespaces
-description: Which namespaces to use to install the SPIRE Helm charts
+description: Which namespaces to install the SPIRE Helm charts to
 kind: spire-helm-charts-hardened-about
 weight: 210
 aliases:
@@ -29,14 +29,11 @@ services appropriately.
 A third namespace is needed to house the Kubernetes Custom Resource Definitions
 as provided by the [spire-crds](https://artifacthub.io/packages/helm/spiffe/spire-crds) chart, as well as any Release information helm
 needs to store to manage the installation. This management namespace is specified
-directly to helm when installing/upgrading the release.
+directly to helm when installing/upgrading the release. We used `spire-mgmt` as the namespace in the installation section.
 
 ## Two Namespace Configuration
 
-It's not possible to have the SPIRE helm chart create and manage the labels of
-the namespace in which it is directly installed into. On some clusters, it's necessary
-for the spire-server and/or spire-system namespaces to be created outside the chart
-though.
+In some cases, it's necessary to create the `spire-server` and/or `spire-system` namespaces outside the chart. For example if a different team is responsible for creating one of the namespaces. This section will cover deployments where some or all of the namespaces can't be managed by the SPIRE helm chart.
 
 ### Manual spire-server, Automatic spire-system
 
