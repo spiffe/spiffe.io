@@ -28,6 +28,10 @@ consumers:
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Ghostunnel proxies with built-in support for obtaining X.509-SVID identities via the [SPIFFE Workload API](/docs/latest/spiffe-about/spiffe-concepts/#spiffe-workload-api)
     link: https://github.com/square/ghostunnel
     logo: square.jpg
+  - name: VMware Secrets Manager
+    description: VMware Secrets Manager is a Kubernetes-first, secure-by-default, cloud-native secrets management solution that uses SPIFFE and SPIRE as its identity control plane.
+    link: https://vsecm.com/
+    logo: vsecm.png
 adopters:
   - name: Amazon
     logo: Amazon-logo.svg
