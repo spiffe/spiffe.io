@@ -23,7 +23,7 @@ The chart supports managing the Custom Resources from the charts values file for
 While you can manage identities using the [Kubernetes Custom Resources](https://github.com/spiffe/spire-controller-manager?tab=readme-ov-file#custom-resources) directly,
 we do not recommend doing that as it takes care to not misconfigure.
 
-## Restricting the default SVIDs.
+## Restricting the default SVIDs
 
 Some workloads only reliably support one SVID at a time. To support customization you can do either two things:
 
