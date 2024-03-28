@@ -27,10 +27,10 @@ we do not recommend doing that as it takes care to not misconfigure.
 
 Some workloads only reliably support one SVID at a time. To support customization you can do either two things:
 
-1. You can disable the default ClusterSVID entirely and load in individual ClusterSVIDs for each workload/namespace.
-2. Restrict the namespaces the default ClusterSVID applies to, so new ClusterSVIDs can uniquely match the workload in the excluded namespaces.
+1. You can disable the default ClusterSPIFFEID entirely and load in individual ClusterSPIFFEIDs for each workload/namespace.
+2. Restrict the namespaces the default ClusterSPIFFEID applies to, so new ClusterSPIFFEIDs can uniquely match the workload in the excluded namespaces.
 
-### Disabling the default ClusterSVID
+### Disabling the default ClusterSPIFFEIDs
 
 your-values.yaml snippet:
 ```yaml
@@ -42,7 +42,7 @@ spire-server:
           enabled: false
 ```
 
-### Restricting the default ClusterSVID
+### Restricting the default ClusterSPIFFEIDs
 
 Example: Exclude the default ClusterSPIFFEID from getting applied to the `dev` and `test` namespaces
 
@@ -62,7 +62,7 @@ spire-server:
 
 # Dynamic SVIDs
 
-Additional ClusterSVIDs can be added to the cluster by adding additional keys / values under the `spire-server.controllerManager.identities.clusterSPIFFEIDs` dictionary.
+Additional ClusterSPIFFEIDs can be added to the cluster by adding additional keys / values under the `spire-server.controllerManager.identities.clusterSPIFFEIDs` dictionary.
 
 Example: Add a SVID that matches the workload labeled `app: frontend` in namespace `test` and add a DNS entry to it named `frontend.example.com`:
 
