@@ -32,98 +32,88 @@ The root CA will generate a new root at about 1/2 the `spire-server.caTTL`.
 
 # Kubernetes Integrated Root
 
-There are several advantages to having the Root server integrated with the root Kubernetes cluster. It is easier to configure and establish trust with the other SPIRE instances within the same cluster. Here we take a building block aproach to deployment. First, we deploy the Root server. Next we integrate the root cluster with it. Then we have options for adding non Kubernetes SPIRES, using the Root for with regularly nested Kubernetes clusters, or setup security clusters.
+If your thinking about using nesting in the future, its easiest to start with a nested root deployment rather then a standalone instance.
+
+We start with deploying the spire instance that includes a root server.
 
 ## Setup Root Instance
 
 ![Image](/img/spire-helm-charts-hardened/root-k8s.png)
 
-Install the CRDs.
+
+### Install the CRDs.
 ```shell
 helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
  --repo https://spiffe.github.io/helm-charts-hardened/
 ```
 
-
 Write out your-values.yaml as described in the [Install](../../spire-helm-charts-hardened-about/installation/#production-deployment) instructions steps 1 through 3.
 
-Remove the lines from your-values.yaml:
+Create a file named root-values.yaml
+
+### No child clusters/vms
+If you do not have a need for any child clusters or vms, you can turn off the external spire server instance by adding the following to root-values.yaml:
 ```
-    namespaces:
-      create: true
-```
-
-spire-root-values.yaml:
-```yaml
-global:
-  spire:
-    namespaces:
-      create: true
-
-spire-server:
-  controllerManager:
-    identities:
-      clusterSPIFFEIDs:
-        default:
-          type: raw
-          spiffeIDTemplate: spiffe://{{ .TrustDomain }}/k8s/{{ .ClusterName }}/ns/{{ .PodMeta.Namespace }}/sa/{{ .PodSpec.ServiceAccountName }}
-          namespaceSelector:
-            matchExpressions:
-            - key: "kubernetes.io/metadata.name"
-              operator: In
-              values: [spire-server]
-          podSelector:
-            matchLabels:
-              release-namespace: spire-mgmt
-              component: server
-          downstream: true
-        oidc-discovery-provider:
-          enabled: false
-        test-keys:
-          enabled: false
-  nodeAttestor:
-    k8sPsat:
-      serviceAccountAllowList:
-        - spire-system:spire-agent-upstream
-  bundleConfigMap: spire-bundle-upstream
-
-spiffe-oidc-discovery-provider:
+external-spire-server:
   enabled: false
-
-spire-agent:
-  server:
-    address: spire-root-server.spire-server
-  nameOverride: agent-upstream
-  bundleConfigMap: spire-bundle-upstream
-  socketPath: /run/spire/agent-sockets-upstream/spire-agent.sock
-  serviceAccount:
-    name: spire-agent-upstream
-  healthChecks:
-    port: 9981
-  telemetry:
-    prometheus:
-      port: 9989
-
-spiffe-csi-driver:
-  pluginName: upstream.csi.spiffe.io
-  agentSocketPath: /run/spire/agent-sockets-upstream/spire-agent.sock
-  healthChecks:
-    port: 9810
-
 ```
 
-Install spire-root:
+### Child clusters/vms
+If you do want to have child clusters or vms, it should be exposed outside the cluster. Ingress is the most common/easy way to do so. Add the following to root-values.yaml:
+```
+external-spire-server:
+  ingress:
+    enabled: true
+```
+
+Also, ensure spire-server.$trustdomain is setup in your dns environment to point at your ingress controller, or update the ingress related [settings](../../spire-helm-charts-hardened-about/exposing) 
+
+### Install
+
+Install the root server:
 
 ```shell
-helm upgrade --install -n spire-mgmt spire-root spire --repo https://spiffe.github.io/helm-charts-hardened/ \
-  -f spire-root-values.yaml -f your-values.yaml
+helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.github.io/helm-charts-hardened/ \
+  -f root-values.yaml -f your-values.yaml
 ```
-
 
 ## Multi-Cluster
 
-![Image](/img/spire-helm-charts-hardened/multicluster.png)
+![Image](/img/spire-helm-charts-hardened/multicluster-alternate3.png)
 
+Configure the root server as described above.
+
+Write out a configuration file named child-values.yaml
+```
+global:
+  spire:
+    #Update these two values
+    clusterName: changeme
+    upstreamSpireAddress: spire-server.changeme
+
+root-spire-server:
+  kind: none
+  controllerManager:
+    className: spire-mgmt-external-server
+
+external-spire-server:
+  enabled: false
+```
+
+Make sure you update the two values mentioned in the file. Each cluster should have a unique clusterName, and the upstreamSpireAddress should match the dns entry you set up for the root server.
+
+Install the child server onto the child cluster:
+
+```shell
+helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
+ --repo https://spiffe.github.io/helm-charts-hardened/
+helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.github.io/helm-charts-hardened/ \
+  -f child-values.yaml -f your-values.yaml
+```
+
+It will fail to start some services at this point, as the root server doesn't have have a trust established yet. This is expected.
+
+Next, establish we will establish the trust between instances.
 
 Example: TODO
 
@@ -133,106 +123,15 @@ Example: TODO
 
 In some cases, you may have a seperate Kubernetes Cluster just for security related services that sits along side one or more workload Kubernetes Clusters. The clusters share the same Datacenter, Availability Zone, Region or wthever other term that is used to denote the same locality.
 
-Example: TODO
-
-## Single Cluster Hardened
-
-![Image](/img/spire-helm-charts-hardened/singlehardened.png)
-
-Sometimes you have a mix of workloads in Kubernetes and on bare metal or in virtual machines. You can use the Kubernetes cluster to host spire instances for both the Kubernetes clusters workload and the external workloads within the same Kubernetes cluster.
-
-### Example K8s Workload Instance
-
-```yaml
-spire-server:
-  upstreamAuthority:
-    spire:
-      enabled: true
-      upstreamDriver: upstream.csi.spiffe.io
-      server:
-        address: spire-root-server.spire-server
-  controllerManager:
-    identities:
-      clusterSPIFFEIDs:
-        default:
-          spiffeIDTemplate: spiffe://{{ .TrustDomain }}/k8s/{{ .ClusterName }}/ns/{{ .PodMeta.Namespace }}/sa/{{ .PodSpec.ServiceAccountName }}
-
-spiffe-oidc-discovery-provider:
-  ingress:
-    enabled: true
+Configure the root server as described above, adding the following additional configuration to root-values.yaml:
 ```
-
-Install spire:
-
-```shell
-helm upgrade --install -n spire-mgmt spire spire --repo https://spiffe.github.io/helm-charts-hardened/ \
-  -f spire-values.yaml -f your-values.yaml
-```
-
-### Example External Workload Instance
-
-spire-external-values.yaml:
-```yaml
-spire-server:
-  federation:
-    enabled: true
-    ingress:
-      enabled: true
-    tls:
-      spire:
-        enabled: false
-      # Pick one of certManager or externalSecret
-      #certManager:
-      #  enabled: true
-      #externalSecret:
-      #  enabled: true
-      #  secretName: "your secret here"
-  upstreamAuthority:
-    spire:
-      enabled: true
-      upstreamDriver: upstream.csi.spiffe.io
-      server:
-        address: spire-root-server.spire-server
-  controllerManager:
-    enabled: false
+external-spire-server:
   nodeAttestor:
-    joinToken:
-      enabled: true
-
-  nodeAttestor:
-    k8sPsat:
-      enabled: false
-  bundleConfigMap: spire-bundle-external
-  notifier:
-    k8sbundle:
-      namespace: spire-system
-
-spire-agent:
-  enabled: false
-
-spiffe-csi-driver:
-  enabled: false
-
-spiffe-oidc-discovery-provider:
-  enabled: false
+    externalK8sPsat:
+      defaults:
+        serviceAccountAllowList:
+          - spire-system:spire-agent
 ```
-
-Install spire-external:
-
-```shell
-helm upgrade --install -n spire-mgmt spire-external spire --repo https://spiffe.github.io/helm-charts-hardened/ \
-  -f spire-external-values.yaml -f your-values.yaml
-```
-
-External agents:
-
-You can configure the agent to use `trust_bundle_url` set to the federation ingress url from the external instance along with setting `trust_bundle_format` to `spiffe` to bootstrap using the hosts built in trust bundle to simplify bootstrapping.
-
-
-# Non K8s Integrated Root
-
-## Multi-Cluster
-![Image](/img/spire-helm-charts-hardened/multicluster-alternate.png)
 
 Example: TODO
 
