@@ -80,7 +80,7 @@ happening.
 
 ## Prometheus
 
-Option `global.spire.recommendations.prometheus` enables prometheus style exporters to be exposed out of the relvant pods. This enables Prometheus or
+Option `global.spire.recommendations.prometheus` enables prometheus style exporters to be exposed out of the relevant pods. This enables Prometheus or
 other compatable services to gather metrics from the various services.
 
 ## Strict Mode
@@ -89,6 +89,6 @@ Option `global.spire.recommendations.strictMode` adds additional checks on the c
 
 ## Security Contexts
 
-Option `global.spire.recommendations.securityContexts` sets the Kubernetes pod securityContext and container securityContext settings to settings that
+Option `global.spire.recommendations.securityContexts` sets the Kubernetes pod securityContext and container securityContext to settings that
 meet the required [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) as well as addition
 settings that tighten security as much as the maintainers know how.

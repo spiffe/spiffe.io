@@ -64,7 +64,7 @@ spire-server:
 
 Additional ClusterSVIDs can be added to the cluster by adding additional keys / values under the `spire-server.controllerManager.identities.clusterSPIFFEIDs` dictionary.
 
-Example: Add a SVID that matches the workload labeled `app: frontend` in namespace `test` and add a dns entry to it named `frontend.example.com`:
+Example: Add a SVID that matches the workload labeled `app: frontend` in namespace `test` and add a DNS entry to it named `frontend.example.com`:
 
 your-values.yaml snippet:
 ```yaml
@@ -110,7 +110,7 @@ spire-server:
 
 ## Node SVIDs
 
-When using a node attestor other then k8sPsat, you may need to add some node entries to the database. You can make static entries for them by using the spire server's identity
+When using a node attestor other then k8sPsat, you may need to add some node entries to the database. You can make static entries for them by using the SPIRE Server's identity
 as the parent. To link up to the k8sPsat
 
 Example:
@@ -142,7 +142,7 @@ spire-server:
 
 When using the spire-controller-manager, do not use the `-spiffeID` flag to `spire-server token generate`. It will get undone by the controller manager. To use, generate the token
 then add to your-values.yaml
-```
+```yaml
 spire-server:
   controllerManager:
     identities:

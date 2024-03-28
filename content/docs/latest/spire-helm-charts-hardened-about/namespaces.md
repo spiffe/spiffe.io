@@ -22,7 +22,7 @@ global:
       create: true
 ```
 
-This will create `spire-server` and `spire system` namespaces, label them
+This will create `spire-server` and `spire-system` namespaces, label them
 for proper Kubernetes Pod Security Standards operations, and deploy the various
 services appropriately.
 

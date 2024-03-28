@@ -73,7 +73,7 @@ spire-server:
 
 The most likely service you will want to expose outside the Kubernetes Cluster is the the SPIFFE OIDC Discovery Provider.
 
-In order to check the integrety of a JWT, an external service needs information about the server used to sign the
+In order to check the integrity of a JWT, an external service needs information about the server used to sign the
 JWT. This info can be retrieved from the SPIFFE OIDC Discovery Provider. It will need to be exposed to any other
 service needing to validate JWT's.
 
@@ -93,7 +93,7 @@ spire-server:
 
 When setting up Federation, you need to expose the bundle endpoint outside the Kubernetes cluster so other SPIRE
 instances can contact it.  It will not work without enabling Federation as well. Please see the
-[Federation documentation](/docs/latest/spire-helm-charts-hardened-architecture/federation/) of the Helm Chart for
+[Federation documentation](/docs/latest/spire-helm-charts-hardened-advanced/federation/) of the Helm Chart for
 all the related options to successfully deploy a Federation.
 
 your-values.yaml snippet:

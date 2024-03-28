@@ -37,7 +37,7 @@ This is easiest to do with [skopeo](https://github.com/containers/skopeo) or [cr
 
 ## Mirror the Charts to the Registry
 
-Pull down spire charts
+Pull down SPIRE charts
 ```shell
 helm pull spire-crds --repo https://spiffe.github.io/helm-charts-hardened/
 helm pull spire --repo https://spiffe.github.io/helm-charts-hardened/
