@@ -61,7 +61,7 @@ are created with the chart via:
 | Value                                 | Default Value | Description                                                                                 |
 | ------------------------------------- | ------------- | ------------------------------------------------------------------------------------------- |
 | global.spire.namespaces.create        | false         | Create both recommeded namespaces                                                           |
-| global.spire.namespaces.spire.create  | false         | Create the namespace specified by global.spire.namespaces.spire.name (default spire-server) |
+| global.spire.namespaces.server.create  | false         | Create the namespace specified by global.spire.namespaces.server.name (default spire-server) |
 | global.spire.namespaces.system.create | false         | Create the namespace specified by global.spire.namespaces.spire.name (default spire-server) |
 
 On creation, the following Namespaces are assigned their Pod Security Standard:
