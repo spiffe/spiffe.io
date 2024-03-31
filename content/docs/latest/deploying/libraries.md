@@ -37,4 +37,4 @@ This library is not yet part of the official SPIFFE repo and is still under deve
 
 # Python
 
-See the [spiffe](https://pypi.org/project/spiffe/) and [spiffe-tls](https://pypi.org/project/spiffe-tls/) for more information about the SPIFFE Python library. This library is not yet part of the official SPIFFE repo.
+See the [spiffe](https://pypi.org/project/spiffe/) and [spiffe-tls](https://pypi.org/project/spiffe-tls/) for more information about the SPIFFE Python libraries. This libraries are not yet part of the official SPIFFE repo.
