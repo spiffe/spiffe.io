@@ -56,7 +56,8 @@ across the two recommended namespaces for the services:
 
 Option `global.spire.recommendations.namespacePSS` sets the chart to set the recommended
 [Kubernetes Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/) labels when namespaces
-are created with the chart via:
+are created with the chart via any of the namespace flags as described in the [namespace documentation](../namespaces/#namespace-creation-options.)
+
 
 On creation, the following Namespaces are assigned their Pod Security Standard:
 
