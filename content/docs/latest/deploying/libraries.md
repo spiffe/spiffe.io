@@ -34,3 +34,7 @@ See the [java-spiffe library GitHub page](https://github.com/spiffe/java-spiffe)
 
 See the [spiffe crate](https://crates.io/crates/spiffe) for more information about the SPIFFE Rust library.
 This library is not yet part of the official SPIFFE repo and is still under development. 
+
+# Python
+
+See the [spiffe](https://pypi.org/project/spiffe/) and [spiffe-tls](https://pypi.org/project/spiffe-tls/) for more information about the SPIFFE Python libraries. This libraries are not yet part of the official SPIFFE repo.
