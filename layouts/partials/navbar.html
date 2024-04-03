@@ -19,6 +19,9 @@
 
 {{ $spireAbout         := where site.Pages ".Params.kind" "eq" "spire-about" }}
 
+{{ $spireHelmChartsHardenedAbout        := where site.Pages ".Params.kind" "eq" "spire-helm-charts-hardened-about" }}
+{{ $spireHelmChartsHardenedAdvanced := where site.Pages ".Params.kind" "eq" "spire-helm-charts-hardened-advanced" }}
+
 {{ $spirePlanning      := where site.Pages ".Params.kind" "eq" "planning" }}
 {{ $spireTry           := where site.Pages ".Params.kind" "eq" "try" }}  
 {{ $spireDeploying     := where site.Pages ".Params.kind" "eq" "deploying" }}
@@ -117,6 +120,13 @@
           {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Plan" "section" $spirePlanning "pageUrl" $pageUrl "version" $version ) }}
           {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Deploy" "section" $spireDeploying "pageUrl" $pageUrl "version" $version ) }}
           {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "Maintain" "section" $spireMaintenance "pageUrl" $pageUrl "version" $version ) }}
+
+	  <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
+            Helm Chart Hardened
+          </span>
+
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "About" "section" $spireHelmChartsHardenedAbout "pageUrl" $pageUrl "version" $version ) }}
+          {{ partial "docs/navbar-section.html" ( dict "ctx" . "sectionTitle" "About" "section" $spireHelmChartsHardenedAdvanced "pageUrl" $pageUrl "version" $version ) }}
           
           <span class="navbar-item is-size-3 has-text-weight-light is-uppercase">
             Integrate SPIRE
