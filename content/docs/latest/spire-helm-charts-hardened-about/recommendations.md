@@ -60,7 +60,7 @@ are created with the chart via:
 
 On creation, the following Namespaces are assigned their Pod Security Standard:
 
-| Namespace Type | Pod Secuirty Standard |
+| Namespace Type | Pod Security Standard |
 | -------------- | --------------------- |
 | Server         | Restricted            |
 | System         | Privileged            |
