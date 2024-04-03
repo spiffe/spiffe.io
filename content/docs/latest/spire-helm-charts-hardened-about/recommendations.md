@@ -58,12 +58,6 @@ Option `global.spire.recommendations.namespacePSS` sets the chart to set the rec
 [Kubernetes Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/) labels when namespaces
 are created with the chart via:
 
-| Value                                 | Default Value | Description                                                                                 |
-| ------------------------------------- | ------------- | ------------------------------------------------------------------------------------------- |
-| global.spire.namespaces.create        | false         | Create both recommeded namespaces                                                           |
-| global.spire.namespaces.server.create  | false         | Create the namespace specified by global.spire.namespaces.server.name (default spire-server) |
-| global.spire.namespaces.system.create | false         | Create the namespace specified by global.spire.namespaces.spire.name (default spire-server) |
-
 On creation, the following Namespaces are assigned their Pod Security Standard:
 
 | Namespace Type | Pod Secuirty Standard |
@@ -85,7 +79,8 @@ other compatable services to gather metrics from the various services.
 
 ## Strict Mode
 
-Option `global.spire.recommendations.strictMode` adds additional checks on the configuration to help ensure your configuration is production ready.
+Option `global.spire.recommendations.strictMode` adds additional checks on the configuration to help ensure your configuration is production ready. These are
+settings that are recommended as part of the [install instructions.](..//installation/#production-deployment)
 
 ## Security Contexts
 
