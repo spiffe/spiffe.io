@@ -82,7 +82,7 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 {{< /warning >}}
 8. The server calls the AWS API to validate the proof.
 9. AWS acknowledges the document is valid.
-10. The server performs node resolution, to verify additional properties about the agent node and update its registration entries accordingly. For example, if the node was attested using  Microsoft Azure Managed Service Identity (MSI), then the resolver extracts the Tenant ID and Principal ID from the agent SPIFFE ID and uses the various Azure services to get information for building an additional set of selectors.
+10. The server performs additional attestation steps to verify further properties about the agent node and update its registration entries accordingly. For example, if the node was attested using an AWS Instance Identity Document (IID), the attestor will perform AWS API requests to get further information for building an additional set of selectors, e.g. autoscale group or instance tag information.
 11. The server issues an SVID to the agent, representing the identity of the agent itself.  
 12. The agent contacts the server (using its SVID as its TLS client certificate) to obtain the registration entries it is authorized for.
 13. The server authenticates the agent using the agent's SVID. The agent, in turn, completes the mTLS handshake and authenticates the server using the bootstrap bundle.
