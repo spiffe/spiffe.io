@@ -8,15 +8,13 @@ aliases:
     - /docs/latest/helm-charts-hardened-advanced/nested-spire
 ---
 
-The charts can be used to deploy mutiple styles of Nested SPIRE. A few possibilities are explained below.
-
 ## Nested Considerations
 
+### Architectures
+
+The charts can be used to deploy many different styles of Nested SPIRE. A few possibilities are explained below.
+
 ### SPIRE Controller Manager
-
-Node registration management can be done either manually or by the SPIRE Controller Manager but not both.
-
-If you need join tokens, see the usage [here](../../spire-helm-charts-hardened-about/identifiers/#join-tokens)
 
 When multiple charts are installed at the same time with it enabled, they must use different classes. This is setup by default. Do not override without understanding the situation.
 
@@ -34,7 +32,7 @@ The root CA will generate a new root at about 1/2 the `spire-server.caTTL`.
 
 If your thinking about using nesting in the future, its easiest to start with a nested root deployment rather then a standalone instance.
 
-We start with deploying the spire instance that includes a root server.
+We start with deploying the SPIRE instance that includes a root server.
 
 ## Setup Root Instance
 
@@ -51,16 +49,33 @@ Write out your-values.yaml as described in the [Install](../../spire-helm-charts
 
 Create a file named root-values.yaml
 
-### No child clusters/vms
-If you do not have a need for any child clusters or vms, you can turn off the external spire server instance by adding the following to root-values.yaml:
+### No child clusters/VMs
+If you do not have a need for any child clusters or VMs, you can turn off the external SPIRE server instance by adding the following to root-values.yaml:
 ```
+tags:
+  nestedRoot: true
+
 external-spire-server:
   enabled: false
 ```
 
-### Child clusters/vms
-If you do want to have child clusters or vms, it should be exposed outside the cluster. Ingress is the most common/easy way to do so. Add the following to root-values.yaml:
+Install the root server:
+
+```shell
+helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.github.io/helm-charts-hardened/ \
+  -f your-values.yaml -f root-values.yaml
 ```
+
+### Child clusters/VMs
+If you do want to have child clusters or VMs, it should be exposed outside the cluster. Ingress is the most common/easy way to do so. Add the following to root-values.yaml:
+```
+tags:
+  nestedRoot: true
+
+spiffe-oidc-discovery-provider:
+  ingress:
+    enabled: true
+
 external-spire-server:
   ingress:
     enabled: true
@@ -68,36 +83,36 @@ external-spire-server:
 
 Also, ensure spire-server.$trustdomain is setup in your dns environment to point at your ingress controller, or update the ingress related [settings](../../spire-helm-charts-hardened-about/exposing) 
 
-### Install
+For each child cluster, run the following on a control plane node and copy the generated content to a file named `<child cluster name>.kubeconfig` where you are installing the root server:
+```
+kubeadm kubeconfig user --client-name=spire-root | tr '\n' ' ' | sed 's/ //g'; echo
+```
 
 Install the root server:
 
 ```shell
 helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.github.io/helm-charts-hardened/ \
-  -f root-values.yaml -f your-values.yaml
+  # Use as many of these lines as you have child clusters. Substitute <child cluster name> for its short name:
+  --set "external-spire-server.kubeConfigs.<child cluster name>.kubeConfigBase64=$(cat <child cluster name>.kubeconfig)" \
+  -f your-values.yaml -f root-values.yaml
 ```
 
 ## Multi-Cluster
 
 ![Image](/img/spire-helm-charts-hardened/multicluster-alternate3.png)
 
-Configure the root server as described above.
+Deploy the root server as described above.
 
 Write out a configuration file named child-values.yaml
 ```
+tags:
+  nestedChildFull: true
+
 global:
   spire:
     #Update these two values
     clusterName: changeme
     upstreamSpireAddress: spire-server.changeme
-
-root-spire-server:
-  kind: none
-  controllerManager:
-    className: spire-mgmt-external-server
-
-external-spire-server:
-  enabled: false
 ```
 
 Make sure you update the two values mentioned in the file. Each cluster should have a unique clusterName, and the upstreamSpireAddress should match the dns entry you set up for the root server.
@@ -108,12 +123,13 @@ Install the child server onto the child cluster:
 helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
  --repo https://spiffe.github.io/helm-charts-hardened/
 helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.github.io/helm-charts-hardened/ \
-  -f child-values.yaml -f your-values.yaml
+  -f your-values.yaml -f child-values.yaml
 ```
 
-It will fail to start some services at this point, as the root server doesn't have have a trust established yet. This is expected.
+> **Note**
+> The child cluster will fail to start some services at this point, as the root server doesn't have have a trust established yet. This is expected.
 
-Next, establish we will establish the trust between instances.
+Next, we will establish the trust between instances.
 
 Example: TODO
 
@@ -121,17 +137,36 @@ Example: TODO
 
 ![Image](/img/spire-helm-charts-hardened/securitycluster.png)
 
-In some cases, you may have a seperate Kubernetes Cluster just for security related services that sits along side one or more workload Kubernetes Clusters. The clusters share the same Datacenter, Availability Zone, Region or wthever other term that is used to denote the same locality.
+In some cases, you may have a seperate Kubernetes Cluster just for security related services that sits along side one or more workload Kubernetes Clusters. The clusters share the same Datacenter, Availability Zone, Region or whatthever other term that is used to denote the same locality.
 
-Configure the root server as described above, adding the following additional configuration to root-values.yaml:
+Deploy the root server as described above
+
+Write out a configuration file named child-values.yaml
+
 ```
-external-spire-server:
-  nodeAttestor:
-    externalK8sPsat:
-      defaults:
-        serviceAccountAllowList:
-          - spire-system:spire-agent
+global:
+  spire:
+    # Update this value
+    clusterName: changeme
+
+tags:
+  nestedChildSecurity: true
+
+downstream-spire-agent-security:
+  serviceAccount:
+    server:
+      # Update this value
+      address: spire-server.changeme
 ```
 
-Example: TODO
+Install the child server onto the child cluster:
 
+```shell
+helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
+ --repo https://spiffe.github.io/helm-charts-hardened/
+helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.github.io/helm-charts-hardened/ \
+  -f your-values.yaml -f child-values.yaml
+```
+
+> **Note**
+> The child cluster will fail to start some services at this point, as the root server doesn't have have a trust established yet. This is expected.
