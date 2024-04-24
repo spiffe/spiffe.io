@@ -18,7 +18,7 @@ values.
 | Service Name                   | Value                                       | Enabled by Default |
 | ------------------------------ | ------------------------------------------- | ------------------ |
 | SPIRE Server                   | spire-server.enabled                        | true               |
-| SPIRE Agent                    | sprire-agent.enabled                        | true               |
+| SPIRE Agent                    | spire-agent.enabled                         | true               |
 | SPIRE Controller Manager       | spire-server.spireControllerManager.enabled | true               |
 | SPIFFE OIDC Discovery Provider | spiffe-oidc-discovery-provider.enabled      | true               |
 | SPIFFE CSI Driver              | spiffe-csi-driver.enabled                   | true               |

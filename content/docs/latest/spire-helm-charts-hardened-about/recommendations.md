@@ -56,17 +56,12 @@ across the two recommended namespaces for the services:
 
 Option `global.spire.recommendations.namespacePSS` sets the chart to set the recommended
 [Kubernetes Pod Security Standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/) labels when namespaces
-are created with the chart via:
+are created with the chart via any of the namespace flags as described in the [namespace documentation](../namespaces/#namespace-creation-options.)
 
-| Value                                 | Default Value | Description                                                                                 |
-| ------------------------------------- | ------------- | ------------------------------------------------------------------------------------------- |
-| global.spire.namespaces.create        | false         | Create both recommeded namespaces                                                           |
-| global.spire.namespaces.spire.create  | false         | Create the namespace specified by global.spire.namespaces.spire.name (default spire-server) |
-| global.spire.namespaces.system.create | false         | Create the namespace specified by global.spire.namespaces.spire.name (default spire-server) |
 
 On creation, the following Namespaces are assigned their Pod Security Standard:
 
-| Namespace Type | Pod Secuirty Standard |
+| Namespace Type | Pod Security Standard |
 | -------------- | --------------------- |
 | Server         | Restricted            |
 | System         | Privileged            |
@@ -80,15 +75,16 @@ happening.
 
 ## Prometheus
 
-Option `global.spire.recommendations.prometheus` enables prometheus style exporters to be exposed out of the relvant pods. This enables Prometheus or
+Option `global.spire.recommendations.prometheus` enables prometheus style exporters to be exposed out of the relevant pods. This enables Prometheus or
 other compatable services to gather metrics from the various services.
 
 ## Strict Mode
 
-Option `global.spire.recommendations.strictMode` adds additional checks on the configuration to help ensure your configuration is production ready.
+Option `global.spire.recommendations.strictMode` adds additional checks on the configuration to help ensure your configuration is production ready. These are
+settings that are recommended as part of the [install instructions.](..//installation/#production-deployment)
 
 ## Security Contexts
 
-Option `global.spire.recommendations.securityContexts` sets the Kubernetes pod securityContext and container securityContext settings to settings that
+Option `global.spire.recommendations.securityContexts` sets the Kubernetes pod securityContext and container securityContext to settings that
 meet the required [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) as well as addition
 settings that tighten security as much as the maintainers know how.

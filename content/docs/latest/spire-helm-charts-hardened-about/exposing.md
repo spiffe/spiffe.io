@@ -10,8 +10,7 @@ aliases:
 
 # Default
 
-By default no services are exposed outside the Kubernetes cluster.
-
+By default no SPIRE services are exposed outside the Kubernetes cluster. The below sections cover how to expose them.
 
 # Exposable Services
 
@@ -38,15 +37,14 @@ For ingress-nginx, set `global.spire.ingressControllerType=ingress-nginx`
 
 For OpenShift, set `global.openshift=true`
 
-Any other Ingress Controller is unsupported, but the chart can be configured to use them anyway. Set the
-`ingress.annotations` values as appropriate for your Ingress Controller. Please consider letting the team know what
-options you needed to use so support for your chosen Ingress Controller can be added in the future.
+Other Ingress Controllers may work but are untested and unsupported. Set the
+`ingress.annotations` values as appropriate for your Ingress Controller. Please consider [submitting a PR](https://github.com/spiffe/helm-charts-hardened/pulls) if you're able to get another Ingress to work.
 
 # Generic Ingress Config
 
-Each Ingress that is enabled `ingress.enabled=true` will by default virtual host with a dns name like
+Each Ingress that is enabled by setting `ingress.enabled=true` will by default create a virtual host with a DNS name like
 `$serviceName.$trustDomain`. You can override the host under the services ingress section with key host. If the host
-value does not have a `.` in it, $trustDomain will automatically be added.
+value doesn't have a `.` in it, $trustDomain will automatically be added.
 
 Example: Overriding the spire-server-federation host to be `example-fed.$trustDomain`
 
@@ -74,7 +72,7 @@ spire-server:
 
 The most likely service you will want to expose outside the Kubernetes Cluster is the the SPIFFE OIDC Discovery Provider.
 
-In order to check the integrety of a JWT, an external service needs information about the server used to sign the
+In order to check the integrity of a JWT, an external service needs information about the server used to sign the
 JWT. This info can be retrieved from the SPIFFE OIDC Discovery Provider. It will need to be exposed to any other
 service needing to validate JWT's.
 
@@ -94,7 +92,7 @@ spire-server:
 
 When setting up Federation, you need to expose the bundle endpoint outside the Kubernetes cluster so other SPIRE
 instances can contact it.  It will not work without enabling Federation as well. Please see the
-[Federation documentation](/docs/latest/spire-helm-charts-hardened-architecture/federation/) of the Helm Chart for
+[Federation documentation](/docs/latest/spire-helm-charts-hardened-advanced/federation/) of the Helm Chart for
 all the related options to successfully deploy a Federation.
 
 your-values.yaml snippet:

@@ -10,29 +10,27 @@ aliases:
 
 ## Defaults
 
-By default the chart deploys the SPIRE Controller Manager that enables management of SPIFFE Identifiers by Kubernetes Custom Resources.
-
-The chart itself by default deploys a ClusterSPIFFEID Custom Resource that gives an identifier to all pods.
-
-Out of the box, in a lot of use cases you do not need to add additional identifiers.
+- The chart deploys [SPIRE Controller Manager](https://github.com/spiffe/spire-controller-manager) to manage SPIFFE Identifiers by Kubernetes Custom Resources.
+- The chart deploys a ClusterSPIFFEID Custom Resource that gives an identifier to all pods of the form `spiffe://{{ .TrustDomain }}/ns/{{ .PodMeta.Namespace }}/sa/{{ .PodSpec.ServiceAccountName }}`.
+- For a lot of use cases you don't need to add additional identifiers.
 
 ## Custom / Additional Identifiers
 
-But, in some cases you may want to customize your identifiers or add additional ones.
+In some cases you may want to customize your identifiers or add additional ones.
 
-While you can manage identities using the Kubernetes Custom Resources via https://github.com/spiffe/spire-controller-manager?tab=readme-ov-file#custom-resources directly
+The chart supports managing the Custom Resources from the charts values file for even easier management. We recommend using values for customization.
+
+While you can manage identities using the [Kubernetes Custom Resources](https://github.com/spiffe/spire-controller-manager?tab=readme-ov-file#custom-resources) directly,
 we do not recommend doing that as it takes care to not misconfigure.
 
-The chart supports managing the Custom Resources from the charts values file for even easier management. We recommend using that mechanism.
-
-## Restricting the default SVIDs.
+## Restricting the default SVIDs
 
 Some workloads only reliably support one SVID at a time. To support customization you can do either two things:
 
-1. You can disable the default ClusterSVID entirely and load in individual ClusterSVIDs for each workload/namespace.
-2. Restrict the namespaces the default ClusterSVID applies to, so new ClusterSVIDs can uniquely match the workload in the excluded namespaces.
+1. You can disable the default ClusterSPIFFEID entirely and load in individual ClusterSPIFFEIDs for each workload/namespace.
+2. Restrict the namespaces the default ClusterSPIFFEID applies to, so new ClusterSPIFFEIDs can uniquely match the workload in the excluded namespaces.
 
-### Disabling the default ClusterSVID
+### Disabling the default ClusterSPIFFEIDs
 
 your-values.yaml snippet:
 ```yaml
@@ -44,7 +42,7 @@ spire-server:
           enabled: false
 ```
 
-### Restricting the default ClusterSVID
+### Restricting the default ClusterSPIFFEIDs
 
 Example: Exclude the default ClusterSPIFFEID from getting applied to the `dev` and `test` namespaces
 
@@ -64,9 +62,9 @@ spire-server:
 
 # Dynamic SVIDs
 
-Additional ClusterSVIDs can be added to the cluster by adding additional keys / values under the `spire-server.controllerManager.identities.clusterSPIFFEIDs` dictionary.
+Additional ClusterSPIFFEIDs can be added to the cluster by adding additional keys / values under the `spire-server.controllerManager.identities.clusterSPIFFEIDs` dictionary.
 
-Example: Add a SVID that matches the workload labeled `app: frontend` in namespace `test` and add a dns entry to it named `frontend.example.com`:
+Example: Add a SVID that matches the workload labeled `app: frontend` in namespace `test` and add a DNS entry to it named `frontend.example.com`:
 
 your-values.yaml snippet:
 ```yaml
@@ -112,7 +110,7 @@ spire-server:
 
 ## Node SVIDs
 
-When using a node attestor other then k8sPsat, you may need to add some node entries to the database. You can make static entries for them by using the spire server's identity
+When using a node attestor other then k8sPsat, you may need to add some node entries to the database. You can make static entries for them by using the SPIRE Server's identity
 as the parent. To link up to the k8sPsat
 
 Example:
@@ -144,7 +142,7 @@ spire-server:
 
 When using the spire-controller-manager, do not use the `-spiffeID` flag to `spire-server token generate`. It will get undone by the controller manager. To use, generate the token
 then add to your-values.yaml
-```
+```yaml
 spire-server:
   controllerManager:
     identities:
