@@ -137,7 +137,7 @@ Example: TODO
 
 ![Image](/img/spire-helm-charts-hardened/securitycluster.png)
 
-In some cases, you may have a seperate Kubernetes Cluster just for security related services that sits along side one or more workload Kubernetes Clusters. The clusters share the same Datacenter, Availability Zone, Region or whatthever other term that is used to denote the same locality.
+In some cases, you may have a separate Kubernetes Cluster just for security-related services that sits alongside one or more workload Kubernetes Clusters. The clusters share the same Data Center, Availability Zone, Region, or whatever other term is used to denote the same locality.
 
 Deploy the root server as described above
 
@@ -169,4 +169,4 @@ helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.gi
 ```
 
 > **Note**
-> The child cluster will fail to start some services at this point, as the root server doesn't have have a trust established yet. This is expected.
+> The child cluster will fail to start some services at this point, as the root server doesn't have a trust established yet. This is expected.
