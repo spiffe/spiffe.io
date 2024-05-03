@@ -169,7 +169,7 @@ Azure MSI node attestation allows a SPIRE Server to identify and authenticate a 
 
 1.  The SPIRE Agent azure\_msi Node Attestor plugin retrieves an Azure VM's MSI token, and identifies itself to the SPIRE Server azure\_msi Node Attestor plugin.
 2.  The SPIRE Server azure\_msi Node Attestor plugin retrieves the JSON Web Key Set (JWKS) document from Azure–via an API call and uses JWKS information to validate the MSI token. 
-3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID
+3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID.
 4.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or have the SPIFFE ID of the SPIRE Agent as a parent.
 
 {{< warning >}}
