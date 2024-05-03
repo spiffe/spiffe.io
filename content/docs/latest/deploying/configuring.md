@@ -158,7 +158,7 @@ EC2 node attestation allows a SPIRE Server to identify and authenticate a SPIRE 
 
 1.  The SPIRE Agent aws\_iid Node Attestor plugin retrieves an AWS instance's instance identity document, and identifies itself to the SPIRE Server aws\_iid Node Attestor plugin.
 2.  The SPIRE Server aws\_iid Node Attestor plugin calls an AWS API to verify the validity of the document, using an AWS IAM role with limited permissions. 
-3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID
+3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID.
 4.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or Resolver, or have the SPIFFE ID of the SPIRE Agent as a parent.
 
 For more information on configuring AWS EC2 Node Attestor plugins, refer to the corresponding SPIRE documentation for the AWS [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md) on the SPIRE Server and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_aws_iid.md) on the agent.
