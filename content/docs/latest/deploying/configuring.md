@@ -147,7 +147,7 @@ Google Compute Engine (GCE) node attestation allows a SPIRE Server to identify a
 
 1.   The SPIRE Agent gcp\_iit Node Attestor plugin retrieves a GCP instance's [instance identity token](https://cloud.google.com/compute/docs/instances/verifying-instance-identity), and identifies itself to the SPIRE Server gcp\_iit Node Attestor plugin.
 2.   The SPIRE Server gcp\_iit Node Attestor plugin calls a GCP API to verify the validity of the token, if the `use_instance_metadata` configuration value is set to `true`.
-3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID
+3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID.
 4.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor, or have the SPIFFE ID of the SPIRE Agent as a parent.
 
 To use GCP IIT Node Attestation, configure and enable the gcp_iit Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_gcp_iit.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_gcp_iit.md).
