@@ -19,7 +19,7 @@ A workload is a single piece of software, deployed with a particular configurati
 * A worker program processing items on a queue.  
 * A collection of independently deployed systems that work together, such as a web application that uses a database service. The web application and database could also individually be considered workloads.
 
-For SPIFFE’s purposes, a workload may often be more fine-grained than a physical or virtual node -- often as fine grained as individual processes on the node. This is crucial for workloads that, for example, are hosted in a container orchestrator, where several workloads may be coexist in (yet be isolated from each other) on a single node.
+For SPIFFE’s purposes, a workload may often be more fine-grained than a physical or virtual node -- often as fine grained as individual processes on the node. This is crucial for workloads that, for example, are hosted in a container orchestrator, where several workloads may be coexisting (yet be isolated from each other) on a single node.
 
 For SPIFFE’s purposes, a workload may also span many nodes -- for example, an elastically scaled web server that may be running on many machines simultaneously.
 
