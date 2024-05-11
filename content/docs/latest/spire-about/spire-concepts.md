@@ -33,8 +33,6 @@ The behavior of the server is determined through a series of plugins. SPIRE come
 
 **Node attestor plugins** which, together with agent node attestors, verify the identity of the node the agent is running on. See the section [Node Attestation](#node-attestation) for more information.
 
-**Node resolver plugins** which expand the set of selectors the server can use to identify the node by verifying additional properties about the node. See the section [Node Resolution](#node-resolution) for more information.
-
 **Datastore plugins**, which the server uses to store, query, and update various pieces of information, such as [registration entries](#workload-registration), which nodes have attested, what the selectors for those nodes are. There is one built-in datastore plugin which can use a MySQL, SQLite 3, or PostgresSQL database to store the necessary data. By default it uses SQLite 3.
 
 **Key manager plugins**, which control how the server stores private keys used to sign X.509-SVIDs and JWT-SVIDs. 
@@ -84,7 +82,7 @@ This bootstrap bundle is a default configuration, and should be replaced with cu
 {{< /warning >}}
 8. The server calls the AWS API to validate the proof.
 9. AWS acknowledges the document is valid.
-10. The server performs node resolution, to verify additional properties about the agent node and update its registration entries accordingly. For example, if the node was attested using  Microsoft Azure Managed Service Identity (MSI). The resolver extracts the Tenant ID and Principal ID from the agent SPIFFE ID and uses the various Azure services to get information for building an additional set of selectors.
+10. The server performs additional attestation steps to verify further properties about the agent node and update its registration entries accordingly. For example, if the node was attested using an AWS Instance Identity Document (IID), the attestor will perform AWS API requests to get further information for building an additional set of selectors, e.g. autoscale group or instance tag information.
 11. The server issues an SVID to the agent, representing the identity of the agent itself.  
 12. The agent contacts the server (using its SVID as its TLS client certificate) to obtain the registration entries it is authorized for.
 13. The server authenticates the agent using the agent's SVID. The agent, in turn, completes the mTLS handshake and authenticates the server using the bootstrap bundle.
@@ -146,8 +144,8 @@ Examples of proof of the node’s identity include:
 * identification credentials provisioned by a multi-node software system when it was installed on the node (such as a Kubernetes Service Account token)  
 * other proof of machine identity (such as a deployed server certificate) 
 
-Node attestors return an (optional) set of node selectors to the server that identify a specific machine (such as an Amazon Instance ID). Since the specific identity of a single machine is often not useful when defining the identity of a workload, SPIRE queries a [node resolver](#node-resolution) (if there is one) to see what additional properties of the attested node can be verified (for example, if the node is a member of an AWS Security Group). The set of selectors from both attestor and resolver become the set of selectors associated with the agent node’s SPIFFE ID.  
- 
+Node attestors return an (optional) set of node selectors to the server that identify a specific machine (such as an Amazon Instance ID). The set of selectors from attestor become the set of selectors associated with the agent node’s SPIFFE ID.
+
 {{< info >}}
 Node selectors are not required for node attestation unless you are [mapping workloads to multiple nodes](https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes).
 {{< /info >}}
@@ -178,17 +176,6 @@ For cases where there is no platform that can directly identify a node, SPIRE in
 **with server-generated join tokens** -- A join token is a pre-shared key between a SPIRE Server and Agent. The server can generate join tokens once installed that can be used to verify an agent when it starts. To help protect against misuse, join tokens expire immediately after use.
 
 **using an existing X.509 certificate** -- For information on configuring node attestors, see the [SPIRE Server Configuration Reference](/docs/latest/deploying/spire_server/) and [SPIRE Agent Configuration Reference](/docs/latest/deploying/spire_agent/).
-
-#### Node Resolution
-
-Once the individual node’s identity has been verified, “node resolver” plugins expands the set of selectors that can be used to identify the node by verifying additional properties about the node (for example, if the node is a member of a particular AWS security group, or has a particular tag associated with it). Only the server participates in node resolving. SPIRE runs node resolvers just once, directly after attestation.
-
-#### Node Resolvers
-
-The server supports node resolver plugins for the following platforms:
-
-* Amazon Web Services
-* Microsoft Azure
 
 ### Workload Attestation
 

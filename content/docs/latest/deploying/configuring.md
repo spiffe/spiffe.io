@@ -57,7 +57,7 @@ If this configuration is changed from the default on the server, then the config
 # Configuring node attestation
 _This configuration applies to the SPIRE Server and SPIRE Agent_
 
-A SPIFFE Server identifies and attests Agents through the process of *node attestation* and *resolution* (read more about this in [SPIRE Concepts](/docs/latest/spire/understand/concepts/)). This is accomplished through Node Attestor and Node Resolver plugins, which you configure and enable in the server. 
+A SPIFFE Server identifies and attests Agents through the process of *node attestation* (read more about this in [SPIRE Concepts](/docs/latest/spire/understand/concepts/)). This is accomplished through Node Attestor plugins, which you configure and enable in the server. 
 
 Your choice of node attestation method determines which node-attestor plugins you configure SPIRE to use in Server Plugins and Agent Plugins sections of the SPIRE configuration files. You must configure _at least one_ node attestor on the server and _only one_ node attestor on each Agent.
 
@@ -143,37 +143,34 @@ Many cloud providers offer privileged APIs that allow a process running on a par
 
 ### Google Compute Engine Instances
 
-Google Compute Engine (GCE) node attestation and resolution allows a SPIRE Server to identify and authenticate a SPIRE Agent running on a GCP GCE instance automatically. In brief, it is accomplished through the following:
+Google Compute Engine (GCE) node attestation allows a SPIRE Server to identify and authenticate a SPIRE Agent running on a GCP GCE instance automatically. In brief, it is accomplished through the following:
 
 1.   The SPIRE Agent gcp\_iit Node Attestor plugin retrieves a GCP instance's [instance identity token](https://cloud.google.com/compute/docs/instances/verifying-instance-identity), and identifies itself to the SPIRE Server gcp\_iit Node Attestor plugin.
 2.   The SPIRE Server gcp\_iit Node Attestor plugin calls a GCP API to verify the validity of the token, if the `use_instance_metadata` configuration value is set to `true`.
-3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID
-4.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or Resolver, or have the SPIFFE ID of the SPIRE Agent as a parent.
+3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID.
+4.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor, or have the SPIFFE ID of the SPIRE Agent as a parent.
 
 To use GCP IIT Node Attestation, configure and enable the gcp_iit Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_gcp_iit.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_gcp_iit.md).
 
 ### Amazon EC2 Instances
 
-EC2 node attestation and resolution allows a SPIRE Server to identify and authenticate a SPIRE Agent running on an AWS EC2 Instance automatically. In brief, it is accomplished through the following:
+EC2 node attestation allows a SPIRE Server to identify and authenticate a SPIRE Agent running on an AWS EC2 Instance automatically. In brief, it is accomplished through the following:
 
 1.  The SPIRE Agent aws\_iid Node Attestor plugin retrieves an AWS instance's instance identity document, and identifies itself to the SPIRE Server aws\_iid Node Attestor plugin.
 2.  The SPIRE Server aws\_iid Node Attestor plugin calls an AWS API to verify the validity of the document, using an AWS IAM role with limited permissions. 
-3.  If the aws_iid Node Resolver plugin is configured, then SPIRE will use the verified identity of the node to look up additional information about the node. This metadata can be used as a selector in a registration entry.
-4.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID
-5.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or Resolver, or have the SPIFFE ID of the SPIRE Agent as a parent.
+3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID.
+4.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or Resolver, or have the SPIFFE ID of the SPIRE Agent as a parent.
 
-For more information on configuring AWS EC2 Node Attestors or Resolver plugins, refer to the corresponding SPIRE documentation for the AWS [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md) and [SPIRE Server  Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_aws_iid.md) on the SPIRE Server, and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_aws_iid.md) on the agent.
+For more information on configuring AWS EC2 Node Attestor plugins, refer to the corresponding SPIRE documentation for the AWS [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md) on the SPIRE Server and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_aws_iid.md) on the agent.
 
 ### Azure Virtual Machines
 
-Azure MSI node attestation and resolution
-allows a SPIRE Server to identify and authenticate a SPIRE Agent running on an Azure VM automatically. SPIRE uses MSI tokens in order to attest the agent. The MSI tokens must be scoped to mitigate abuse if intercepted. In brief, it is accomplished through the following:
+Azure MSI node attestation allows a SPIRE Server to identify and authenticate a SPIRE Agent running on an Azure VM automatically. SPIRE uses MSI tokens in order to attest the agent. The MSI tokens must be scoped to mitigate abuse if intercepted. In brief, it is accomplished through the following:
 
 1.  The SPIRE Agent azure\_msi Node Attestor plugin retrieves an Azure VM's MSI token, and identifies itself to the SPIRE Server azure\_msi Node Attestor plugin.
 2.  The SPIRE Server azure\_msi Node Attestor plugin retrieves the JSON Web Key Set (JWKS) document from Azure–via an API call and uses JWKS information to validate the MSI token. 
-3.  The SPIRE Server azure\_msi Node Resolver plugin interacts with Azure to obtain information about the agent VM--such as subscription ID, VM name, network security group, virtual network, and virtual network subnet–to build up a set of attributes about the agent VM that can then be used as node selectors for the Azure node set.
-4.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID
-5.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or Resolver, or have the SPIFFE ID of the SPIRE Agent as a parent.
+3.  Once verification takes place, the SPIRE Agent is considered attested, and issued its own SPIFFE ID.
+4.  Finally, SPIRE issues SVIDs to workloads on the nodes if they match a registration entry. The registration entry may include selectors exposed by the Node Attestor or have the SPIFFE ID of the SPIRE Agent as a parent.
 
 {{< warning >}}
 The default resource–assigned by the agent plugin–is scoped relatively widely; it uses the Azure Resource Manager(`https://management.azure.com` endpoint)'s resource id. For security reasons, consider using a custom resource id, to scope more narrowly. 
@@ -181,7 +178,7 @@ The default resource–assigned by the agent plugin–is scoped relatively widel
 If you configure a custom resource ID in the agent configuration file, you must specify custom resource IDs for each tenant, in the `NodeAttestor` stanza of the `server.conf` configuration file.
 {{< /warning >}}
 
-For more information on configuring Azure MSI Node Attestors or Resolver plugins, refer to the corresponding SPIRE documentation for the Azure MSI [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_azure_msi.md) and [SPIRE Server  Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_azure_msi.md) on the SPIRE Server, and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_azure_msi.md) on the agent.
+For more information on configuring Azure MSI Node Attestor plugins, refer to the corresponding SPIRE documentation for the Azure MSI [SPIRE Server Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_azure_msi.md)  on the SPIRE Server and the [SPIRE Agent Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_azure_msi.md) on the agent.
 
 # Configuring workload attestation
 _This configuration applies to the SPIRE Agent_

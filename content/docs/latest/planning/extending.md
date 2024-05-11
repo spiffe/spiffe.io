@@ -27,14 +27,6 @@ In addition, known third-party Node Attestor plugins include:
 
 * https://github.com/zlabjp/spire-openstack-plugin - This plugin allows SPIRE to attest to nodes deployed by OpenStack and identify them by the OpenStack project ID and instance ID. 
 
-# Node Resolver plugins
-
-Once the identity of an individual node has been determined, in some cases it is valuable to be able to expose additional verified metadata about that node as selectors for registration entries. For example, the AWS EC2 IID Node Attestor plugin can be used to prove the Instance ID of a given EC2 instance, but the AWS EC2 IID Node Resolver plugin will - by looking up additional instance metadata in AWS - expose additional selectors (such as instance tag or label) based on this verified metadata.
-
-Node Resolver plugins are typically coupled to a specific Node Attestor plugin (such as the AWS EC2 IID Node Attestor), since they will rely on that plugin to verify the initial identity of the node.
-
-SPIRE comes with a set of built-in Node Resolver plugins for the [Server](/docs/latest/deploying/spire_server/).
-
 # Workload Attestor plugins
 
 While Node Attestors help SPIRE verify the identity of a node running a workload, Workload Attestors identify a specific workload running on that node. Workload attestors run on the Agent. A workload attestor may leverage kernel metadata retrieved during a call to the Workload API to determine the identity of a workload, but it may also choose to interrogate other local sources (such as the calling binary, the Docker daemon or the Kubernetes kubelet) to verify the identity of a workload. As with Node Attestor plugins, Workload Attestor plugins expose selectors that allow registration entries to be created for workloads based on the properties of the workload that the attestor verified.
@@ -57,7 +49,7 @@ SPIRE comes with a set of built-in Key Manager plugins for the [Server](/docs/la
 
 Notifier plugins allow actions to be triggered in other systems when certain events occur on the SPIRE Server, and in some cases interrupt the event itself. Notifier plugins can support a number of different use cases, such as when certificate rotation events occur.
 
-SPIRE comes with a set of built-in Notifier plugins for the [Server](/docs/latest/deploying/spire_server/).
+SPIRE comes with a set of built-in Notifier plugins for the [Server](/docs/latest/deploying/spire_server/) and [Agent](/docs/latest/deploying/spire_agent/).
 
 # Working with first-party plugins
 
