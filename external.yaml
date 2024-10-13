@@ -46,7 +46,7 @@ deploying:
         - doc/using_spire.md
         - doc/spire_agent.md
         - doc/spire_server.md
-        - doc/telemetry_config.md
+        - doc/telemetry/telemetry_config.md
     transform:
         using_spire.md:
             frontMatter:
