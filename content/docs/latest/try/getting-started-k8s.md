@@ -245,3 +245,5 @@ As configured, the SPIRE agent does not verify the identity of the Kubernetes ku
 # Next steps
 
 * [Review the SPIRE Documentation](/docs/latest/spire/using/) to learn how to configure SPIRE for your environment.
+
+{{< scarf/pixels/medium-interest >}}

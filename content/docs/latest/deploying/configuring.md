@@ -427,3 +427,5 @@ By default, SPIRE logs go to STDOUT. However the SPIRE Agent and Server can be c
 # Where next?
 
 Once you've configured your Server and Agents, consider reviewing the guide on [Registering Workloads](/docs/latest/spire/using/registering/).
+
+{{< scarf/pixels/high-interest >}}

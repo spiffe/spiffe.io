@@ -47,3 +47,5 @@ To use SPIRE to authenticate workloads using JWTs requires the following:
 3.   [Configure Node Attestation](/docs/latest/spire/using/configuring/#configuring-node-attestation) and [Workload Attestation](/docs/latest/spire/using/configuring/#configuring-workload-attestation).
 4.   Create registration entries to identify specific workloads in the target environment.
 5.   Configure each workload to generate or verify JWTs delivered via the SPIFFE Workload API exposed by the SPIRE Agent. This may be accomplished by [having the workload retrieve and interact with these JWT-SVIDs directly](/docs/latest/spiffe/concepts/#spiffe-verifiable-identity-document-svid), OR using a proxy ([such as Envoy](/docs/latest/spire-integrations/envoy/envoy/)) to attach and verify JWTs to messages on behalf of the workload automatically.
+
+{{< scarf/pixels/medium-interest >}}

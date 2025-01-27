@@ -48,3 +48,5 @@ A service mesh aims to simplify communication between workloads by providing fea
 Many service mesh implementations have adopted partial implementations of the SPIFFE specification (including Istio and Consul) and thus can be considered SPIFFE identity providers, and some (such as Grey Matter or Open Service Mesh) actually incorporate SPIRE as a component of their solution. 
 
 Service mesh solutions that specifically implement the SPIFFE Workload API should be able to support any software that expects this API to be available. Service mesh solutions that can deliver SVIDs to their workloads _and_ support the SPIFFE Federation API can establish trust automatically between mesh-identified workloads and workloads running SPIRE, or running on different mesh implementations.
+
+{{< scarf/pixels/medium-interest >}}

@@ -12,6 +12,7 @@ try:
                 weight: 55
                 aliases:
                     - /docs/latest/spire/installing/spire101/
+            beacon: "{{< scarf/pixels/medium-interest >}}"
 maintenance:
     source: https://github.com/spiffe/spire
     pullFiles:
@@ -25,6 +26,7 @@ maintenance:
                 weight: 80
                 aliases:
                     - /spire/docs/upgrading
+            beacon: "{{< scarf/pixels/high-interest >}}"
 planning:
     source: https://github.com/spiffe/spire
     pullFiles:
@@ -40,6 +42,7 @@ planning:
                     - /spire/docs/scaling_spire
                     - /spire/docs/scaling-spire
                     - /docs/latest/spire/using/scaling_spire/
+            beacon: "{{< scarf/pixels/high-interest >}}"
 deploying:
     source: https://github.com/spiffe/spire
     pullFiles:
@@ -56,6 +59,7 @@ deploying:
                 weight: 10
                 aliases:
                     - /docs/latest/spire/installing/using_spire/
+            beacon: "{{< scarf/pixels/high-interest >}}"
         spire_agent.md:
             frontMatter:
                 title: SPIRE Agent Configuration Reference
@@ -64,6 +68,7 @@ deploying:
                 weight: 300
                 aliases:
                     - /docs/latest/spire/using/spire_agent/
+            beacon: "{{< scarf/pixels/high-interest >}}"
         spire_server.md:
             frontMatter:
                 title: SPIRE Server Configuration Reference
@@ -72,6 +77,7 @@ deploying:
                 weight: 400
                 aliases:
                     - /docs/latest/spire/using/spire_server/
+            beacon: "{{< scarf/pixels/high-interest >}}"
         telemetry_config.md:
             frontMatter:
                 title: SPIRE Telemetry Configuration
@@ -80,6 +86,7 @@ deploying:
                 weight: 500
                 aliases:
                     - /docs/latest/spire/using/telemetry_config/
+            beacon: "{{< scarf/pixels/high-interest >}}"
 keyless/vault:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
@@ -92,6 +99,7 @@ keyless/vault:
                 kind: keyless
                 description: Using SPIRE JWT-SVIDs to Authenticate to Hashicorp Vault
                 weight: 200
+            beacon: "{{< scarf/pixels/high-interest >}}"
 architecture/nested:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
@@ -105,6 +113,7 @@ architecture/nested:
                 kind: architecture
                 description: Chaining SPIRE Servers to Use the Same Trust Domain
                 weight: 100
+            beacon: "{{< scarf/pixels/high-interest >}}"
 architecture/federation:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
@@ -118,6 +127,7 @@ architecture/federation:
                 kind: architecture
                 description: Federating SPIRE Servers with Different Trust Domains
                 weight: 200
+            beacon: "{{< scarf/pixels/high-interest >}}"
 microservices/envoy-x509:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
@@ -131,6 +141,7 @@ microservices/envoy-x509:
                 kind: microservices
                 description: Securing Microservice Communication with Envoy Using X.509 SPIFFE IDs
                 weight: 100
+            beacon: "{{< scarf/pixels/high-interest >}}"
 microservices/envoy-jwt:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
@@ -144,6 +155,7 @@ microservices/envoy-jwt:
                 kind: microservices
                 description: Securing Microservice Communication with Envoy Using JWT SPIFFE IDs
                 weight: 200
+            beacon: "{{< scarf/pixels/high-interest >}}"
 microservices/envoy-opa:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
@@ -157,6 +169,7 @@ microservices/envoy-opa:
                 kind: microservices
                 description: Secure Communication Using Envoy with X.509-SVIDs and Open Policy Agent Authorization
                 weight: 300
+            beacon: "{{< scarf/pixels/high-interest >}}"
 microservices/envoy-jwt-opa:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
@@ -170,3 +183,4 @@ microservices/envoy-jwt-opa:
                 kind: microservices
                 description: Secure Communication Using Envoy with JWT-SVIDs and Open Policy Agent Authorization
                 weight: 400
+            beacon: "{{< scarf/pixels/high-interest >}}"

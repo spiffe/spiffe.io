@@ -31,3 +31,5 @@ The following tools implement some or all of the SPIFFE specification, and issue
 The following tools include built-in integrations to consume SPIFFE IDs:
 
 {{< spiffe/consumers >}}
+
+{{< scarf/pixels/medium-interest >}}

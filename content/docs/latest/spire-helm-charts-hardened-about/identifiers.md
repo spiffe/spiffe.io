@@ -153,3 +153,5 @@ spire-server:
           selectors:
           - spiffe_id:spiffe://example.org/spire/agent/join_token/3b6c7dcf-10de-406c-9733-f22846f3addb
 ```
+
+{{< scarf/pixels/high-interest >}}

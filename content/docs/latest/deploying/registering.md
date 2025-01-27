@@ -126,3 +126,5 @@ spire-server entry create -node -spiffeID spiffe://acme.org/mynodealias -selecto
 # Where next?
 
 Once you've learned how to create, update and delete registration entries, consider reviewing the guide on [How to use SVIDs](/docs/latest/spire/developing/svids/).
+
+{{< scarf/pixels/high-interest >}}
