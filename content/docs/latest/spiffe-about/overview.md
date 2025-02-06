@@ -28,23 +28,23 @@ SPIFFE comprises many specifications, each providing different parts of the SPIF
 
 ## Open Source Software That Implements SPIFFE
 
-| Software | X.509 SVID | JWT SVID | Attestation-based Issuance | Workload API | SDS API | SPIFFE Federation | OIDC Federation | PKI Integration | Kubernetes Support | VM and Bare Metal Support | Serverless Support |
-|:----------------------------------------------------------------------------|---|---|---|---|---|---|---|---|---|---|------|
-| ![SPIRE logo](/img/logos/spire/stacked/color/spire-stacked-color.svg) SPIRE | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔    |
-| ![Cert-manager logo](/img/logos/cert-manager.png) Cert-manager              | ✔ |   | ✔ |   |   |   |   | ✔ | ✔ |   |      |
-| ![Consul logo](/img/logos/consul.svg) Consul                                | ✔ |   |   |   |   |   |   | ✔ | ✔ | ✔ | Beta |
-| ![Dapr logo](/img/logos/Dapr_logo.svg) Dapr                                 | ✔ | ✔ |   |   |   |   |   | ✔ | ✔ | ✔ |      |
-| ![Istio logo](/img/logos/istio.svg) Istio                                   | ✔ |   | ✔ |   | ✔ |   |   | ✔ | ✔ | ✔ |      |
+| Software     | X.509 SVID | JWT SVID | Attestation-based Issuance | Workload API | SDS API | SPIFFE Federation | OIDC Federation | PKI Integration | Kubernetes Support | VM and Bare Metal Support | Serverless Support |
+|:-------------|:----------:|:--------:|:--------------------------:|:------------:|:-------:|:-----------------:|:---------------:|:---------------:|:------------------:|:-------------------------:|:------------------:|
+| SPIRE        | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               | ✔               | ✔                  | ✔                         | ✔                  |
+| Cert-manager | ✔          |          | ✔                          |              |         |                   |                 | ✔               | ✔                  |                           |                    |
+| Consul       | ✔          |          |                            |              |         |                   |                 | ✔               | ✔                  | ✔                         | Beta               |
+| Dapr         | ✔          | ✔        |                            |              |         |                   |                 | ✔               | ✔                  | ✔                         |                    |
+| Istio        | ✔          |          | ✔                          |              | ✔       |                   |                 | ✔               | ✔                  | ✔                         |                    |
 
 ## Commercial Software That Implements SPIFFE
 
-| Software | X.509 SVID | JWT SVID | Attestation-based Issuance | Workload API | SDS API | SPIFFE Federation | OIDC Federation | PKI Integration | Kubernetes Support | VM and Bare Metal Support | Serverless Support |
-|:--------------------------------------------------------------------|---|---|---|---|---|---|---|---|---|---|---|
-| ![GCP logo](/img/logos/google-cloud.png) GCP                        | ✔ |   | ✔ |   |   |   |   | ✔ | ✔ | ✔ |   |
-| ![Greymatter.io logo](/img/logos/Greymatter-logo.svg) Greymatter.io | ✔ | ✔ | ✔ | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ |
-| ![SPIRL logo](/img/logos/SPIRL-logo.svg) SPIRL                      | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| ![Teleport logo](/img/logos/teleport_logo.svg) Teleport             | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   |
-| ![Venafi logo](/img/logos/Venafi-logo.svg) Venafi                   | ✔ |   | ✔ |   |   |   |   |   | ✔ | ✔ |   |
+| Software      | X.509 SVID | JWT SVID | Attestation-based Issuance | Workload API | SDS API | SPIFFE Federation | OIDC Federation | PKI Integration | Kubernetes Support | VM and Bare Metal Support | Serverless Support |
+|:--------------|:----------:|:--------:|:--------------------------:|:------------:|:-------:|:-----------------:|:---------------:|:---------------:|:------------------:|:-------------------------:|:------------------:|
+| GCP           | ✔          |          | ✔                          |              |         |                   |                 | ✔               | ✔                  | ✔                         |                    |
+| Greymatter.io | ✔          | ✔        | ✔                          | ✔            | ✔       |                   |                 | ✔               | ✔                  | ✔                         | ✔                  |
+| SPIRL         | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               | ✔               | ✔                  | ✔                         | ✔                  |
+| Teleport      | ✔          |          | ✔                          | ✔            | ✔       | ✔                 | ✔               |                 | ✔                  | ✔                         |                    |
+| Venafi        | ✔          |          | ✔                          |              |         |                   |                 |                 | ✔                  | ✔                         |                    |
 
 ### Explanation of Columns - Software that Implements SPIFFE
 
@@ -87,20 +87,20 @@ SPIFFE enjoys a broad ecosystem, with many software projects, products, and plat
 
 ### Open Source Software that Works with SPIFFE
 
-| Software | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
-|------------------------------------------------------|---|---|---|---|
-| ![Envoy logo](/img/logos/envoy.svg) Envoy            | ✔ | ✔ | ✔ |   |
-| ![Ghostunnel logo](/img/logos/square.jpg) Ghostunnel | ✔ |   | ✔ | ✔ |
-| ![Istio logo](/img/logos/istio.svg) Istio            | ✔ | ✔ | ✔ |   |
-| ![Knox logo](/img/logos/pinterest.png) Knox          | ✔ |   | ✔ |   |
+| Software   | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
+|:-----------|:----------:|:--------:|:---------------------:|:------------:|
+| Envoy      | ✔          | ✔        | ✔                     |              |
+| Ghostunnel | ✔          |          | ✔                     | ✔            |
+| Istio      | ✔          | ✔        | ✔                     |              |
+| Knox       | ✔          |          | ✔                     |              |
 
 ### Commercial Software that Works with SPIFFE
 
-| Software | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
-|-----------------------------------------------------------------------------|---|---|---|---|
-| ![AWS logo](/img/logos/Amazon-Web-Services-logo.svg) AWS IAM Roles Anywhere | ✔ |   |   |   |
-| ![Greymatter.io logo](/img/logos/Greymatter-logo.svg) Greymatter.io         | ✔ | ✔ | ✔ | ✔ |
-| ![VMware logo](/img/logos/VMware-Inc.-logo.svg) VMware Secrets Manager      | ✔ |   | ✔ | ✔ |
+| Software               | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
+|:-----------------------|:----------:|:--------:|:---------------------:|:------------:|
+| AWS IAM Roles Anywhere | ✔          |          |                       |              |
+| Greymatter.io          | ✔          | ✔        | ✔                     | ✔            |
+| VMware Secrets Manager | ✔          |          | ✔                     | ✔            |
 
 ### Explanation of Columns - Software that Works with SPIFFE
 
