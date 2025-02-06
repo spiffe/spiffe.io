@@ -43,7 +43,7 @@ SPIFFE comprises many specifications, each providing different parts of the SPIF
 | ![GCP logo](/img/logos/google-cloud.png) GCP                        | ✔ |   | ✔ |   |   |   |   | ✔ | ✔ | ✔ |   |
 | ![Greymatter.io logo](/img/logos/Greymatter-logo.svg) Greymatter.io | ✔ | ✔ | ✔ | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ |
 | ![SPIRL logo](/img/logos/SPIRL-logo.svg) SPIRL                      | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
-| ![Teleport logo](/img/logos/teleport_logo.svg) Teleport             | ✔ |   | ✔ | ✔ | ✔ | ✔ |   |   | ✔ | ✔ |   |
+| ![Teleport logo](/img/logos/teleport_logo.svg) Teleport             | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   |
 | ![Venafi logo](/img/logos/Venafi-logo.svg) Venafi                   | ✔ |   | ✔ |   |   |   |   |   | ✔ | ✔ |   |
 
 ### Explanation of Columns - Software that Implements SPIFFE
