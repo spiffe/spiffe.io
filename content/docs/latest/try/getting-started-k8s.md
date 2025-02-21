@@ -153,9 +153,9 @@ In order to enable SPIRE to perform workload attestation -- which allows the age
     $ kubectl exec -n spire spire-server-0 -- \
         /opt/spire/bin/spire-server entry create \
         -spiffeID spiffe://example.org/ns/spire/sa/spire-agent \
-        -selector k8s_sat:cluster:demo-cluster \
-        -selector k8s_sat:agent_ns:spire \
-        -selector k8s_sat:agent_sa:spire-agent \
+        -selector k8s_psat:cluster:demo-cluster \
+        -selector k8s_psat:agent_ns:spire \
+        -selector k8s_psat:agent_sa:spire-agent \
         -node
     ```
 
@@ -230,17 +230,6 @@ $ minikube start \
 {{< info >}}
 For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`. Besides, for older versions of Kubernetes you should use `apiserver.service-account-api-audiences` configuration flag instead of `apiserver.api-audiences`.
 {{< /info >}}
-
-# Considerations For A Production Environment
-
-When deploying SPIRE in a production environment the following considerations should be made.
-
-In the [Create Server Configmap](#create-server-configmap) step: set the the cluster name in the `k8s_sat NodeAttestor` entry to the name you provide in the **agent-configmap.yaml** configuration file.
-
-If your Kubernetes cluster supports projected service account tokens, consider using the built-in 
-[Projected Service Account Token k8s Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_psat.md) for authenticating the SPIRE agent to the server. Projected Service Account Tokens are more tightly scoped than regular service account tokens, and thus more secure.
-
-As configured, the SPIRE agent does not verify the identity of the Kubernetes kubelet when requesting metadata for workload attestation. For additional security, you may wish to configure the Kubernetes workload attestor to perform this verification on compatible Kubernetes distributions by setting `skip_kubelet_verification` to `false`. [Read more](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_k8s.md)
 
 # Next steps
 
