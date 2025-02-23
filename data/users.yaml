@@ -35,6 +35,11 @@ consumers:
     description: VMware Secrets Manager is a Kubernetes-first, secure-by-default, cloud-native secrets management solution that uses SPIFFE and SPIRE as its identity control plane.
     link: https://vsecm.com/
     logo: vsecm.png
+  - name: SPIKE
+    description: SPIKE is a lightweight secrets store that uses SPIFFE as its identity control plane. SPIKE protects your secrets and helps your ops, SREs, and sysadmins #sleepmore.
+    link: https://spike.ist/
+    logo: spike.png
+
 adopters:
   - name: Amazon
     logo: Amazon-logo.svg

@@ -1,8 +1,9 @@
-# macOS
+j# macOS
 .DS_Store
 
 # IDEs
 .vscode
+.idea
 
 # Hugo-generated assets
 public/
