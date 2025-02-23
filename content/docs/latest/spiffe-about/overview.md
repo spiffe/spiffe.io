@@ -87,12 +87,14 @@ SPIFFE enjoys a broad ecosystem, with many software projects, products, and plat
 
 ### Open Source Software that Works with SPIFFE
 
-| Software   | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
-|:-----------|:----------:|:--------:|:---------------------:|:------------:|
-| Envoy      | ✔          | ✔        | ✔                     |              |
-| Ghostunnel | ✔          |          | ✔                     | ✔            |
-| Istio      | ✔          | ✔        | ✔                     |              |
-| Knox       | ✔          |          | ✔                     |              |
+| Software               | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
+|:-----------------------|:----------:|:--------:|:---------------------:|:------------:|
+| Envoy                  |     ✔      |    ✔     |           ✔           |              |
+| Ghostunnel             |     ✔      |          |           ✔           |      ✔       |
+| Istio                  |     ✔      |    ✔     |           ✔           |              |
+| Knox                   |     ✔      |          |           ✔           |              |
+| VMware Secrets Manager |     ✔      |          |           ✔           |      ✔       |
+| SPIKE                  |     ✔      |          |           ✔           |      ✔       |
 
 ### Commercial Software that Works with SPIFFE
 
@@ -100,7 +102,6 @@ SPIFFE enjoys a broad ecosystem, with many software projects, products, and plat
 |:-----------------------|:----------:|:--------:|:---------------------:|:------------:|
 | AWS IAM Roles Anywhere | ✔          |          |                       |              |
 | Greymatter.io          | ✔          | ✔        | ✔                     | ✔            |
-| VMware Secrets Manager | ✔          |          | ✔                     | ✔            |
 
 ### Explanation of Columns - Software that Works with SPIFFE
 
