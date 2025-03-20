@@ -69,9 +69,13 @@ Service Account Tokens can be validated using the Kubernetes [Token Review API](
 
 ### Projected Service Account Tokens
 
-Node attestation using Kubernetes [Projected Service Account Tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection) (PSATs) allows a SPIRE Server to verify the identity of a SPIRE Agent running on a Kubernetes Cluster. Projected Service Account Tokens provide additional security guarantees over traditional Kubernetes Service Account Tokens and when supported by a Kubernetes cluster, PSAT is the recommended attestation strategy.
+Node attestation using Kubernetes [Projected Service Account Tokens](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection) (PSATs) allows a SPIRE Server to verify the identity of a SPIRE Agent running on a Kubernetes Cluster.
 
 To use PSAT Node Attestation, configure enable the PSAT Node Attestor plugin on the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_psat.md) and [SPIRE Agent](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_nodeattestor_k8s_psat.md).
+
+{{< info >}}
+SAT based node attestation, an earlier alternative to PSAT, is no longer supported as of SPIRE 1.12.0.
+{{< /info >}}
 
 ## Attestation of nodes running Linux {#customize-server-linux-attestation}
 
