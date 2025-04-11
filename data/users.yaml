@@ -17,7 +17,7 @@ issuers:
     logo: Kubernetes_logo.png
   - name: Teleport Workload Identity
     logo: teleport_logo.svg
-    link: https://goteleport.com/platform/teleport-workload-identity/
+    link: https://goteleport.com/platform/machine-and-workload-identity/
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
