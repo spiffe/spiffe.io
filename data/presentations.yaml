@@ -536,7 +536,7 @@
   category: advanced-tutorial
   date: 17-Nov-2020
   venue: SPIFFE Production Identity Day, KubeCon NA 2020
-  description: Using a live demo, Andrey explains how an SGX workload attestor can improve the strength of application identities. 
+  description: Using a live demo, Andrey explains how an SGX workload attestor can improve the strength of application identities.
 - title: "How to authenticate m2m without secrets by Spiffe/Spire TLS or JWT + Oidc provider(jwks)"
   link: https://gawsoft.com/blog/spiffe-spire-tls-jwt-jwks-oidc/
   presenters: "Peter Gaweda"
