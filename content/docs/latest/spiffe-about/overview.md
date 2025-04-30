@@ -43,7 +43,7 @@ SPIFFE comprises many specifications, each providing different parts of the SPIF
 | GCP           | ✔          |          | ✔                          |              |         |                   |                 | ✔               | ✔                  | ✔                         |                    |
 | Greymatter.io | ✔          | ✔        | ✔                          | ✔            | ✔       |                   |                 | ✔               | ✔                  | ✔                         | ✔                  |
 | SPIRL         | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               | ✔               | ✔                  | ✔                         | ✔                  |
-| Teleport      | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               |                 | ✔                  | ✔                         |                    |
+| Teleport      | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               | ✔               | ✔                  | ✔                         |                    |
 | Venafi        | ✔          |          | ✔                          |              |         |                   |                 |                 | ✔                  | ✔                         |                    |
 
 ### Explanation of Columns - Software that Implements SPIFFE
