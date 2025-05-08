@@ -96,11 +96,12 @@ SPIFFE enjoys a broad ecosystem, with many software projects, products, and plat
 
 ### Commercial Software that Works with SPIFFE
 
-| Software               | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
-|:-----------------------|:----------:|:--------:|:---------------------:|:------------:|
-| AWS IAM Roles Anywhere | ✔          |          |                       |              |
-| Greymatter.io          | ✔          | ✔        | ✔                     | ✔            |
-| VMware Secrets Manager | ✔          |          | ✔                     | ✔            |
+| Software                         | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
+|:---------------------------------|:----------:|:--------:|:---------------------:|:------------:|
+| AWS IAM Roles Anywhere           | ✔          |          |                       |              |
+| Greymatter.io                    | ✔          | ✔        | ✔                     | ✔            |
+| VMware Secrets Manager           | ✔          |          | ✔                     | ✔            |
+| GCP Workload Identity Federation | ✔          | ✔        |                       |              |
 
 ### Explanation of Columns - Software that Works with SPIFFE
 
@@ -108,7 +109,7 @@ X.509 SVID
 : Supports X.509 SVID-based authentication
 
 JWT SVID
-: Supports JWT SVID based authentication
+: Supports JWT SVID-based authentication
 
 SPIFFE Authentication
 : Supports federated SPIFFE authentication based on trust domain name
