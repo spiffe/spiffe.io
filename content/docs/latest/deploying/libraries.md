@@ -17,6 +17,10 @@ The following code samples demonstrate how to use the libraries to establish and
 
 See the [c-spiffe library GitHub page](https://github.com/HewlettPackard/c-spiffe) for more information about a SPIFFE C/C++ library. This library is not yet part of the official SPIFFE repo and is still under development in June 2021. An earlier official c-spiffe library became out-of-date and was archived.
 
+# C#
+
+See the [csharp-spiffe library GitHub page](https://github.com/vurhanau/csharp-spiffe) for more information about the SPIFFE C# library.
+This library is not yet part of the official SPIFFE repo.
 
 # Go
 
@@ -30,13 +34,13 @@ See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe/tree
 
 See the [java-spiffe library GitHub page](https://github.com/spiffe/java-spiffe) for more information about the SPIFFE Java library.
 
+# Python
+
+See the [spiffe](https://pypi.org/project/spiffe/) and [spiffe-tls](https://pypi.org/project/spiffe-tls/) for more information about the SPIFFE Python libraries. This libraries are not yet part of the official SPIFFE repo.
+
 # Rust
 
 See the [spiffe crate](https://crates.io/crates/spiffe) for more information about the SPIFFE Rust library.
 This library is not yet part of the official SPIFFE repo and is still under development. 
-
-# Python
-
-See the [spiffe](https://pypi.org/project/spiffe/) and [spiffe-tls](https://pypi.org/project/spiffe-tls/) for more information about the SPIFFE Python libraries. This libraries are not yet part of the official SPIFFE repo.
 
 {{< scarf/pixels/high-interest >}}
