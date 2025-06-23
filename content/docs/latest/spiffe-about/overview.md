@@ -87,12 +87,14 @@ SPIFFE enjoys a broad ecosystem, with many software projects, products, and plat
 
 ### Open Source Software that Works with SPIFFE
 
-| Software   | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
-|:-----------|:----------:|:--------:|:---------------------:|:------------:|
-| Envoy      | ✔          | ✔        | ✔                     |              |
-| Ghostunnel | ✔          |          | ✔                     | ✔            |
-| Istio      | ✔          | ✔        | ✔                     |              |
-| Knox       | ✔          |          | ✔                     |              |
+| Software               | X.509 SVID | JWT SVID | SPIFFE Authentication | Workload API |
+|:-----------------------|:----------:|:--------:|:---------------------:|:------------:|
+| Envoy                  |     ✔      |    ✔     |           ✔           |              |
+| Ghostunnel             |     ✔      |          |           ✔           |      ✔       |
+| Istio                  |     ✔      |    ✔     |           ✔           |              |
+| Knox                   |     ✔      |          |           ✔           |              |
+| VMware Secrets Manager |     ✔      |          |           ✔           |      ✔       |
+| SPIKE                  |     ✔      |          |           ✔           |      ✔       |
 
 ### Commercial Software that Works with SPIFFE
 
@@ -101,7 +103,6 @@ SPIFFE enjoys a broad ecosystem, with many software projects, products, and plat
 | [AWS IAM Roles Anywhere](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html) |     ✔      |          |                       |              |
 | [GCP Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation)     |     ✔      |    ✔     |                       |              |
 | [Greymatter.io](https://greymatter.gitbook.io/grey-matter-documentation/usage/fabric/security/spire)   |     ✔      |    ✔     |           ✔           |      ✔       |
-| [VMware Secrets Manager](https://vsecm.com/documentation/architecture/overview/)                       |     ✔      |          |           ✔           |      ✔       |
 
 ### Explanation of Columns - Software that Works with SPIFFE
 
