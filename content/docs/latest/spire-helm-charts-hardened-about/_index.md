@@ -12,3 +12,4 @@ Out of the box, it deploys the SPIRE Server, SPIRE Agent, SPIRE Controller Manag
 cluster it is running on.
 
 {{< sectiontoc "spire-helm-charts-hardened-about" >}}
+{{< scarf/pixels/medium-interest >}}

@@ -62,7 +62,7 @@ Different selectors are available depending on the platform or architecture on w
 
 | For a list of supported selectors for this platform | Go here                                                                                                                                                                                              |
 |-----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Kubernetes**                                      | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_sat.md)                       |
+| **Kubernetes**                                      | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_psat.md)                       |
 | **AWS**                                             | The [configuration reference page for the AWS Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md)                              |
 | **Azure**                                           | The [configuration reference page for the Azure Managed Service Identity Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_azure_msi.md) |
 
@@ -126,3 +126,5 @@ spire-server entry create -node -spiffeID spiffe://acme.org/mynodealias -selecto
 # Where next?
 
 Once you've learned how to create, update and delete registration entries, consider reviewing the guide on [How to use SVIDs](/docs/latest/spire/developing/svids/).
+
+{{< scarf/pixels/high-interest >}}
