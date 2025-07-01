@@ -2,7 +2,7 @@ FROM docker.io/library/python:3.9-alpine
 
 ENV HOME /tmp
 
-RUN pip install linkchecker
+RUN pip install linkchecker urllib3==2.5.0
 
 ADD linkcheckerrc .
 
