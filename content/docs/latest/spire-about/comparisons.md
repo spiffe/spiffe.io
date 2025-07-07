@@ -16,7 +16,7 @@ Secrets managers typically control, audit and securely store sensitive informati
 
 A common architectural challenge in deploying secrets managers is how to securely store the credential that is used by the workload to access the secret store itself. This is sometimes called "credential zero", the "bootstrap credential", or more broadly, the process of "secure introduction".
 
-By contrast, while SPIRE does _generate_ SPIFFE identities that can be used to [authenticate to other systems](/docs/latest/spire-integrations/use-cases/), SPIRE does not aim to store existing keys (such as a database password) on behalf of a workload.
+By contrast, while SPIRE does _generate_ SPIFFE identities that can be used to [authenticate to other systems](/docs/latest/spire-about/use-cases/), SPIRE does not aim to store existing keys (such as a database password) on behalf of a workload.
 
 SPIRE's attestation policies provide a flexible and powerful solution for secure introduction to secrets managers. A common use of SPIRE-issued [SVIDs](/docs/latest/spiffe/concepts/#spiffe-verifiable-identity-document-svid) is to authenticate to secret stores to allow an application to retrieve secrets.
 
@@ -48,3 +48,5 @@ A service mesh aims to simplify communication between workloads by providing fea
 Many service mesh implementations have adopted partial implementations of the SPIFFE specification (including Istio and Consul) and thus can be considered SPIFFE identity providers, and some (such as Grey Matter or Open Service Mesh) actually incorporate SPIRE as a component of their solution. 
 
 Service mesh solutions that specifically implement the SPIFFE Workload API should be able to support any software that expects this API to be available. Service mesh solutions that can deliver SVIDs to their workloads _and_ support the SPIFFE Federation API can establish trust automatically between mesh-identified workloads and workloads running SPIRE, or running on different mesh implementations.
+
+{{< scarf/pixels/medium-interest >}}

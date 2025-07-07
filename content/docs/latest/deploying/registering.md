@@ -62,9 +62,9 @@ Different selectors are available depending on the platform or architecture on w
 
 | For a list of supported selectors for this platform | Go here                                                                                                                                                                                              |
 |-----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Kubernetes**                                      | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_sat.md)                       |
+| **Kubernetes**                                      | The [configuration reference page for the Kubernetes Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_psat.md)                       |
 | **AWS**                                             | The [configuration reference page for the AWS Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_aws_iid.md)                              |
-| **Azure**                                           | The [configuration reference page for the Azure Managed Service Identity Node Resolver](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_noderesolver_azure_msi.md) |
+| **Azure**                                           | The [configuration reference page for the Azure Managed Service Identity Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_azure_msi.md) |
 
 ## 2. Defining the SPIFFE ID of the Workload
 
@@ -119,6 +119,12 @@ To learn more about the `spire-server entry delete` command and options, consult
 
 A workload registration entry can have a single parent ID. This could be the SPIFFE ID of a specific node (i.e. the SPIFFE ID of an agent as given through node attestation) or it could also be the SPIFFE ID of a node registration entry (sometimes referred to as a node alias/set). A node alias (or set) is a group of nodes that share similar characteristics that are given a shared identity. The node registration entry has the node selectors that are required in order for a node to qualify for the shared identity. Meaning that any node that has at least the selectors defined by a node registration entry is given that alias (or belongs to that node set). When a workload registration entry uses the SPIFFE ID of a node alias as the parent, any node with that alias is authorized to obtain SVIDs for that workload
 
+```
+spire-server entry create -node -spiffeID spiffe://acme.org/mynodealias -selector aws_iid:tag:<TAG_NAME>:<TAG_VALUE>
+```
+
 # Where next?
 
 Once you've learned how to create, update and delete registration entries, consider reviewing the guide on [How to use SVIDs](/docs/latest/spire/developing/svids/).
+
+{{< scarf/pixels/high-interest >}}
