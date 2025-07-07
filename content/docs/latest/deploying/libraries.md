@@ -24,11 +24,15 @@ This library is not yet part of the official SPIFFE repo.
 
 # Go
 
-See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe/tree/main/v2) for more information about the SPIFFE Go library. 
+See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe) for more information about the SPIFFE Go library. 
 
-* [SPIFFE to SPIFFE authentication using X.509 SVIDs](https://github.com/spiffe/go-spiffe/tree/main/v2/examples/spiffe-tls)
+* [SPIFFE to SPIFFE authentication using X.509 SVIDs](https://github.com/spiffe/go-spiffe/tree/main/examples/spiffe-tls)
 
-* [SPIFFE to SPIFFE authentication using JWT SVIDs](https://github.com/spiffe/go-spiffe/tree/main/v2/examples/spiffe-jwt-using-proxy)
+* [SPIFFE to SPIFFE authentication using JWT SVIDs](https://github.com/spiffe/go-spiffe/tree/main/examples/spiffe-jwt-using-proxy)
+
+* [HTTP over mTLS using X.509 SVIDs](https://github.com/spiffe/go-spiffe/tree/main/examples/spiffe-http)
+
+* [gRPC over mTLS using X.509 SVIDs](https://github.com/spiffe/go-spiffe/tree/main/examples/spiffe-grpc)
 
 # Java
 
