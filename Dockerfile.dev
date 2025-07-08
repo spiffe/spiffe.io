@@ -1,4 +1,4 @@
-FROM klakegg/hugo:0.68.3-ext
+FROM docker.io/klakegg/hugo:0.68.3-ext
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -6,23 +6,36 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /app
 
-# Installs Pipenv and extra dependencies
-RUN apt update && apt install pipenv curl zlib1g-dev libssl-dev -y
+# Installs build dependecies
+RUN apt update && apt install -y curl zlib1g-dev libssl-dev build-essential libffi-dev
 
-# Installs Pyenv
-ENV PATH="/root/.pyenv/bin:${PATH}"
-RUN curl https://pyenv.run | bash
-RUN echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-
-# Adds only python and dependencies files into the image so we don't need to rebuild on content changes
-ADD [".python-version", "Pipfile*", "run.sh", "/app/"]
-
-# Installs Python and dependencies
-RUN pyenv install && pipenv install --dev
+RUN useradd -ms /bin/bash appuser
+USER appuser
 
 VOLUME ["/app"]
+WORKDIR /app
 
-ENTRYPOINT [ "/bin/bash" ]
-CMD [ "run.sh" ]
+# Installs Pyenv
+ENV PATH="/home/appuser/.pyenv/bin:/home/appuser/.local/bin:${PATH}"
+RUN curl https://pyenv.run | bash
+RUN export PATH="$(pyenv root)/shims/python:$PATH"
+RUN echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+
+# Installs Python
+ADD [".python-version", "/app/"]
+RUN pyenv install
+
+# Sets default Python version
+RUN pyenv global $(cat .python-version)
+
+#Installs Pipenv
+RUN pyenv exec pip install pipenv --user
+
+# Installs dependencies
+ADD ["Pipfile*", "/app/"]
+RUN export PIPENV_PYTHON="$(pyenv root)/shims/python"
+RUN pipenv sync --dev
+
+ENTRYPOINT [ "/bin/bash", "-c" ]
+CMD [ "pipenv run bash run.sh" ]

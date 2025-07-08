@@ -12,7 +12,7 @@ aliases:
 
 Pre-built SPIRE releases can be found on the [SPIRE downloads page](/downloads/#spire-releases). The tarballs contain both server and agent binaries.
 
-If you wish, you may also [build SPIRE from source](https://github.com/spiffe/spire/blob/master/CONTRIBUTING.md).
+If you wish, you may also [build SPIRE from source](https://github.com/spiffe/spire/blob/main/CONTRIBUTING.md).
 
 ## Step 2: Install the Server and Agent {#step-2}
 
@@ -181,10 +181,10 @@ When you deploy the server it automatically configures a livenessProbe on the SP
 
 When the server deploys, it binds in the volumes summarized in the following table:
 
-| Volume | Description | Mount Location |
-| :------ |:---------- | :------------- |
+| Volume           | Description                                                                | Mount Location        |
+|:-----------------|:---------------------------------------------------------------------------|:----------------------|
 | **spire-config** | A reference to the **spire-server** configmap created in the previous step | **/run/spire/config** |
-| **spire-data** | The hostPath for the server's SQLite database and keys file | **/run/spire/data** |
+| **spire-data**   | The hostPath for the server's SQLite database and keys file                | **/run/spire/data**   |
 
 ### Create Server Service
 
@@ -206,3 +206,5 @@ When the server deploys, it binds in the volumes summarized in the following tab
 # Where next?
 
 Once you've installed the SPIRE Server, consider reviewing the guide on [How to install SPIRE Agents](/docs/latest/spire/installing/install-agents/).
+
+{{< scarf/pixels/high-interest >}}

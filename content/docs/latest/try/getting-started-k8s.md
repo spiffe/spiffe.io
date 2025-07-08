@@ -153,9 +153,9 @@ In order to enable SPIRE to perform workload attestation -- which allows the age
     $ kubectl exec -n spire spire-server-0 -- \
         /opt/spire/bin/spire-server entry create \
         -spiffeID spiffe://example.org/ns/spire/sa/spire-agent \
-        -selector k8s_sat:cluster:demo-cluster \
-        -selector k8s_sat:agent_ns:spire \
-        -selector k8s_sat:agent_sa:spire-agent \
+        -selector k8s_psat:cluster:demo-cluster \
+        -selector k8s_psat:agent_ns:spire \
+        -selector k8s_psat:agent_sa:spire-agent \
         -node
     ```
 
@@ -184,29 +184,16 @@ You can test that the agent socket is accessible from an application container b
     $ kubectl apply -f client-deployment.yaml
     ```
 
-2. Start a shell connection to the running pod:
+2. Verify that the container can access the socket:
 
     ```bash
     $ kubectl exec -it $(kubectl get pods -o=jsonpath='{.items[0].metadata.name}' \
-       -l app=client)  -- /bin/sh
-    ```
-
-3. In the shell connection you just created, verify that the container can access the socket:
-
-    ```bash
-    $ /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
+       -l app=client)  -- /opt/spire/bin/spire-agent api fetch -socketPath /run/spire/sockets/agent.sock
     ```
 
    If the agent is not running, you’ll see an error message such as “no such file or directory" or “connection refused”.
 
    If the agent is running, you’ll see a list of SVIDs.
-
-4. Exit from `/bin/sh` on the client container:
-
-    ```bash
-    $ exit
-    ```
-
 
 # Tear Down All Components
 
@@ -237,24 +224,15 @@ $ minikube start \
     --extra-config=apiserver.service-account-signing-key-file=/var/lib/minikube/certs/sa.key \
     --extra-config=apiserver.service-account-key-file=/var/lib/minikube/certs/sa.pub \
     --extra-config=apiserver.service-account-issuer=api \
-    --extra-config=apiserver.service-account-api-audiences=api,spire-server \
+    --extra-config=apiserver.api-audiences=api,spire-server \
     --extra-config=apiserver.authorization-mode=Node,RBAC
 ```
 {{< info >}}
-For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`.
+For Kubernetes versions prior to 1.17.0 the `apiserver.authorization-mode` can be specified as `apiserver.authorization-mode=RBAC`. Besides, for older versions of Kubernetes you should use `apiserver.service-account-api-audiences` configuration flag instead of `apiserver.api-audiences`.
 {{< /info >}}
-
-# Considerations For A Production Environment
-
-When deploying SPIRE in a production environment the following considerations should be made.
-
-In the [Create Server Configmap](#create-server-configmap) step: set the the cluster name in the `k8s_sat NodeAttestor` entry to the name you provide in the **agent-configmap.yaml** configuration file.
-
-If your Kubernetes cluster supports projected service account tokens, consider using the built-in 
-[Projected Service Account Token k8s Node Attestor](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_nodeattestor_k8s_psat.md) for authenticating the SPIRE agent to the server. Projected Service Account Tokens are more tightly scoped than regular service account tokens, and thus more secure.
-
-As configured, the SPIRE agent does not verify the identity of the Kubernetes kubelet when requesting metadata for workload attestation. For additional security, you may wish to configure the Kubernetes workload attestor to perform this verification on compatible Kubernetes distributions by setting `skip_kubelet_verification` to `false`. [Read more](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_agent_workloadattestor_k8s.md)
 
 # Next steps
 
 * [Review the SPIRE Documentation](/docs/latest/spire/using/) to learn how to configure SPIRE for your environment.
+
+{{< scarf/pixels/medium-interest >}}
