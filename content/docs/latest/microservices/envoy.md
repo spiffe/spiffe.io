@@ -91,3 +91,5 @@ tls_context:
 SPIFFE and SPIRE are focused on facilitating secure authentication as a building block for authorization, not authorization itself, and as such support for authorization-related fields in the validation context (e.g. `match_subject_alt_names`) is out of scope. Instead, we recommend you leverage Envoy’s extensive filter framework for performing authorization.
 
 Additionally, you can configure Envoy to forward client certificate details to the destination service, allowing it to perform its own authorization steps, for example by using the SPIFFE ID embedded in the URI SAN of the client X.509-SVID.
+
+{{< scarf/pixels/high-interest >}}
