@@ -214,3 +214,4 @@ cat cluster-b.bundle | kubectl exec -i -n spire-server spire-server-0 -c spire-s
 cat cluster-a.bundle | kubectl exec -i -n spire-server spire-server-0 -c spire-server -- spire-server bundle set -format spiffe -id spiffe://a-org.local
 ```
 
+{{< scarf/pixels/high-interest >}}
