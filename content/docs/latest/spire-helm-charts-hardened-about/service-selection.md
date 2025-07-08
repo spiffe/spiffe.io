@@ -44,3 +44,4 @@ spiffe-csi-driver:
   enabled: false
 ```
 
+{{< scarf/pixels/high-interest >}}

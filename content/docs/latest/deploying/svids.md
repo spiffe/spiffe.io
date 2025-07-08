@@ -63,3 +63,5 @@ will:
 4.   Write the trust bundle (certificate chain) needed to validate X.509-SVIDs issued under that trust domain to `/tmp/` as well
 
 A complete list of relevant commands can be found in the [SPIRE Agent Documentation](/docs/latest/deploying/spire_agent/#command-line-options).
+
+{{< scarf/pixels/high-interest >}}

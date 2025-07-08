@@ -206,3 +206,5 @@ When the server deploys, it binds in the volumes summarized in the following tab
 # Where next?
 
 Once you've installed the SPIRE Server, consider reviewing the guide on [How to install SPIRE Agents](/docs/latest/spire/installing/install-agents/).
+
+{{< scarf/pixels/high-interest >}}

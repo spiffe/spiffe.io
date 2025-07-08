@@ -63,3 +63,5 @@ The built binaries are placed in `bin`.
 ## Getting Help
 
 If you run `make help`, you'll see a complete list of available `make` commands, along with descriptions of what those commands do.
+
+{{< scarf/pixels/high-interest >}}

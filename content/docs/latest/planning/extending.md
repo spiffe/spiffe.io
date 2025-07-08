@@ -80,3 +80,5 @@ NodeAttestor "tpm" {
 	}
 }
 ```
+
+{{< scarf/pixels/high-interest >}}
