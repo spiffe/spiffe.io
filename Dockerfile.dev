@@ -24,7 +24,7 @@ RUN echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
 
 # Installs Python
 ADD [".python-version", "/app/"]
-RUN pyenv install
+RUN pyenv install $(cat .python-version)
 
 # Sets default Python version
 RUN pyenv global $(cat .python-version)
