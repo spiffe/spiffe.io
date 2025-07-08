@@ -1,16 +1,14 @@
 [build]
 publish = "public"
-command = "pip install pipenv && make production-build"
+command = "chmod +x setup_env_pip.sh && ./setup_env_pip.sh && make production-build"
 
 [build.environment]
 HUGO_VERSION = "0.68.3"
 PYTHON_VERSION = "3.9"
-PIPENV_VENV_IN_PROJECT = "1"
-PIPENV_IGNORE_VIRTUALENVS = "1"
 NODE_VERSION = "18"
 
 [context.deploy-preview]
-command = "pip install pipenv && make preview-build"
+command = "chmod +x setup_env_pip.sh && ./setup_env_pip.sh && make preview-build"
 
 [context.branch-deploy]
-command = "pip install pipenv && make preview-build"
+command = "chmod +x setup_env_pip.sh && ./setup_env_pip.sh && make preview-build"
