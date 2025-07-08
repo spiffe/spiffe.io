@@ -8,3 +8,4 @@ aliases:
 ---
 
 {{< sectiontoc "try" >}}
+{{< scarf/pixels/medium-interest >}}

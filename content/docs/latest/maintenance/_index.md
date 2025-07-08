@@ -5,3 +5,4 @@ kind: maintenance
 ---
 
 {{< sectiontoc "maintenance" >}}
+{{< scarf/pixels/medium-interest >}}

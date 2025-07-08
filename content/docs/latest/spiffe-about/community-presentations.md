@@ -26,3 +26,5 @@ These presentations from end-users of SPIFFE and SPIRE showcase how the projects
 # Advanced Topics
 
 {{< presentations category="advanced-tutorial" >}}
+
+{{< scarf/pixels/medium-interest >}}

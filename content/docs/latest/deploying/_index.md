@@ -10,3 +10,4 @@ These pages describe how to install and configure SPIRE. This section also inclu
 For implementation examples, see [Spire Architecture](/docs/latest/architecture/), [Microservices Communication](/docs/latest/microservices), and [Keyless Authentication](/docs/latest/keyless).
 
 {{< sectiontoc "deploying" >}}
+{{< scarf/pixels/medium-interest >}}

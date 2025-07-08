@@ -205,3 +205,5 @@ Certificate:
 # Next steps
 
 * [Review the SPIRE Documentation](/docs/latest/spire/using/configuring/) to learn how to configure SPIRE for your environment.
+
+{{< scarf/pixels/medium-interest >}}
