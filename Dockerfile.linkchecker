@@ -9,6 +9,10 @@ COPY Pipfile Pipfile.lock ./
 
 RUN pipenv install --system --deploy --ignore-pipfile
 
+# Create linkchecker plugin directory with proper permissions
+RUN mkdir -p /tmp/.local/share/linkchecker/plugins && \
+    chmod -R 755 /tmp/.local/share/linkchecker
+
 ADD linkcheckerrc .
 
 ENTRYPOINT [ "linkchecker" ]
