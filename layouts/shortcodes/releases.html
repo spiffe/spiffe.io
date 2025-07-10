@@ -21,7 +21,8 @@
     {{- $latestRelease    := site.Data.releases.latest }}
     {{- $latest           := $latestRelease.tag_name }}
     {{- range $releases -}}
-    {{- $hasExtras        := (index .assets 2).name }}
+    {{- $hasArm           := (index .assets 2).name }}
+    {{- $hasWindows       := (index .assets 3).name }}
     {{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
     {{- $downloadButtons  := .Site.Params.downloads.buttons.download }}
 
@@ -30,13 +31,21 @@
     {{- $isLatest     := eq $version $latest }}
     {{- $tar          := (index .assets 0).name }}
     {{- $zip          := (index .assets 1).name }}
-    {{- $extrasChecksumUrl := "" -}}
-    {{- $extrasTarUrl      := "" -}}
-    {{- if $hasExtras }}
-      {{- $extras       := (index .assets 2).name }}
-      {{- $extrasChecksum := (index .assets 3).name }}
-      {{- $extrasTarUrl  = printf "%s/%s/%s" $downloadUrl $version $extras }}
-      {{- $extrasChecksumUrl = printf "%s/%s/%s" $downloadUrl $version $extrasChecksum }}
+    {{- $armChecksumUrl := "" -}}
+    {{- $armTarUrl      := "" -}}
+    {{- if $hasArm }}
+      {{- $arm       := (index .assets 2).name }}
+      {{- $armChecksum := (index .assets 3).name }}
+      {{- $armTarUrl  = printf "%s/%s/%s" $downloadUrl $version $arm }}
+      {{- $armChecksumUrl = printf "%s/%s/%s" $downloadUrl $version $armChecksum }}
+    {{- end }}
+    {{- $windowsChecksumUrl := "" -}}
+    {{- $windowsTarUrl      := "" -}}
+    {{- if $hasWindows }}
+    {{- $windows       := (index .assets 2).name }}
+    {{- $windowsChecksum := (index .assets 3).name }}
+    {{- $windowsTarUrl  = printf "%s/%s/%s" $downloadUrl $version $windows }}
+    {{- $windowsChecksumUrl = printf "%s/%s/%s" $downloadUrl $version $windowsChecksum }}
     {{- end }}
     {{- $binaryTarUrl := printf "%s/%s/%s" $downloadUrl $version $tar }}
     {{- $checksumsUrl := printf "%s/%s/%s" $downloadUrl $version $zip }}
@@ -57,11 +66,15 @@
 
       <td>
         <div class="buttons">
-          {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Binaries (.tar.gz)" "isDownloadButton" false "color" "dark") }}
-          {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Checksum (.txt)" "isDownloadButton" false "color" "dark") }}
-          {{- if $hasExtras -}}
-            {{ partial "downloads/download-button.html" (dict "url" $extrasTarUrl "text" "Extras (.tar.gz)" "isDownloadButton" false "color" "dark") }}
-            {{ partial "downloads/download-button.html" (dict "url" $extrasChecksumUrl "text" "Extras Checksum (.txt)" "isDownloadButton" false "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Linux amd64 binaries (.tar.gz)" "isDownloadButton" false "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Linux amd64 checksum (.txt)" "isDownloadButton" false "color" "dark") }}
+          {{- if $hasArm -}}
+            {{ partial "downloads/download-button.html" (dict "url" $armTarUrl "text" "Linux Arm (.tar.gz)" "isDownloadButton" false "color" "dark") }}
+            {{ partial "downloads/download-button.html" (dict "url" $armChecksumUrl "text" "Linux Arm Checksum (.txt)" "isDownloadButton" false "color" "dark") }}
+          {{- end }}
+          {{- if $hasWindows -}}
+          {{ partial "downloads/download-button.html" (dict "url" $windowsTarUrl "text" "Windows (.tar.gz)" "isDownloadButton" false "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $windowsChecksumUrl "text" "Windows Checksum (.txt)" "isDownloadButton" false "color" "dark") }}
           {{- end }}
           {{ partial "downloads/download-button.html" (dict "url" $sourceZipUrl "text" "Source (.zip)" "isDownloadButton" false "color" "light") }}
           {{ partial "downloads/download-button.html" (dict "url" $sourceTarUrl "text" "Source (.tar.gz)" "isDownloadButton" false "color" "light") }}
@@ -70,11 +83,15 @@
 
       <td>
         <div class="buttons">
-          {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Binaries (.tar.gz)" "isDownloadButton" true "color" "dark") }}
-          {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Checksum (.txt)" "isDownloadButton" true "color" "dark") }}
-          {{- if $hasExtras -}}
-            {{ partial "downloads/download-button.html" (dict "url" $extrasTarUrl "text" "Extras (.tar.gz)" "isDownloadButton" true "color" "dark") }}
-            {{ partial "downloads/download-button.html" (dict "url" $extrasChecksumUrl "text" "Extras Checksum (.txt)" "isDownloadButton" true "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Linux amd64 binaries (.tar.gz)" "isDownloadButton" true "color" "dark") }}
+          {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Linux amd64 checksum (.txt)" "isDownloadButton" true "color" "dark") }}
+          {{- if $hasArm -}}
+            {{ partial "downloads/download-button.html" (dict "url" $armTarUrl "text" "Linux Arm (.tar.gz)" "isDownloadButton" true "color" "dark") }}
+            {{ partial "downloads/download-button.html" (dict "url" $armChecksumUrl "text" "Linux Arm Checksum (.txt)" "isDownloadButton" true "color" "dark") }}
+          {{- end }}
+          {{- if $hasWindows -}}
+            {{ partial "downloads/download-button.html" (dict "url" $windowsTarUrl "text" "Windows (.tar.gz)" "isDownloadButton" true "color" "dark") }}
+            {{ partial "downloads/download-button.html" (dict "url" $windowsChecksumUrl "text" "Windows Checksum (.txt)" "isDownloadButton" true "color" "dark") }}
           {{- end }}
           {{ partial "downloads/download-button.html" (dict "url" $sourceZipUrl "text" "Source (.zip)" "isDownloadButton" true "color" "light") }}
           {{ partial "downloads/download-button.html" (dict "url" $sourceTarUrl "text" "Source (.tar.gz)" "isDownloadButton" true "color" "light") }}
