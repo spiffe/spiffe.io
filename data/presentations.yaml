@@ -9,14 +9,6 @@
   language: English
   description: A brief overview of how the open source project Network Service Mesh is integrating SPIFFE/SPIRE
   weight: 100
-- title: "How to prevent software supply chain attacks using SPIRE and Sigstore"
-  link: https://www.hpe.com/h22228/video-gallery/us/en/cdf4364c-1008-4478-bad9-ac15df2e7eb4/video/
-  youtube: qT09bEmQmLI
-  presenters: Daniel Feldman
-  organizations: HPE
-  category: advanced-tutorial
-  date: 10-Oct-2022
-  description: Using a live demo, Andrey explains how an SGX workload attestor can improve the strength of application identities. 
 - title: How Frontdoor is using SPIRE
   link: https://www.youtube.com/watch?v=fxtG1wuLSDw&feature=youtu.be&t=14m41s
   youtube: fxtG1wuLSDw
@@ -536,4 +528,13 @@
   category: advanced-tutorial
   date: 17-Nov-2020
   venue: SPIFFE Production Identity Day, KubeCon NA 2020
-  description: Using a live demo, Andrey explains how an SGX workload attestor can improve the strength of application identities. 
+  description: Using a live demo, Andrey explains how an SGX workload attestor can improve the strength of application identities.
+- title: "How to authenticate m2m without secrets by Spiffe/Spire TLS or JWT + Oidc provider(jwks)"
+  link: https://gawsoft.com/blog/spiffe-spire-tls-jwt-jwks-oidc/
+  presenters: "Peter Gaweda"
+  organizations: Gawsoft
+  date: 15-April-2025
+  language: English
+  thumbnail: https://gawsoft.com/static/d6d402d2649e4f8f9d99955641051617/96fd3/spiffe-spire.webp
+  category: advanced-tutorial
+  descripion: How to authenticate machine to machine with Spiffe/Spire via TLS or JWT(JWKS endpoint). Description with commands in docker-compose. Plain and simple.
