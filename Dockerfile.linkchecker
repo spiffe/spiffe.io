@@ -1,8 +1,17 @@
-FROM docker.io/library/python:3.8-alpine
+FROM docker.io/library/python:3.9-alpine
 
 ENV HOME /tmp
+ENV PIP_NO_CACHE_DIR=off
 
-RUN pip install linkchecker
+RUN pip install pipenv
+
+COPY Pipfile Pipfile.lock ./
+
+RUN pipenv install --system --deploy --ignore-pipfile
+
+# Create linkchecker plugin directory with proper permissions
+RUN mkdir -p /tmp/.local/share/linkchecker/plugins && \
+    chmod -R 755 /tmp/.local/share/linkchecker
 
 ADD linkcheckerrc .
 
