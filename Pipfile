@@ -10,13 +10,14 @@ watchdog = "*"
 argh = "*"
 
 [packages]
-pyyaml = "~=5.3"
+pyyaml = "~=6.0"
 toml = "~=0.10.1"
 requests = "~=2.32.2"
-linkchecker = "~=10.0.1"
+linkchecker = "~=10.5.0"
+urllib3 = ">=2.5.0"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
 
 [pipenv]
 allow_prereleases = true
