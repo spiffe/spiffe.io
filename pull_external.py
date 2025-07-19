@@ -63,6 +63,11 @@ def _pull_releases():
 
 def _get_releases():
     session = requests.Session()
+
+    token = os.environ.get("GITHUB_TOKEN")
+    if token is not None:
+        session.headers.update({"Authorization": "token {}".format(token)})
+
     retries = Retry(
         total=5,
         backoff_factor=0.1,
