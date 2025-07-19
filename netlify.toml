@@ -1,15 +1,16 @@
 [build]
 publish = "public"
-command = "make production-build"
+command = "pipenv install --dev --system && make production-build"
 
 [build.environment]
 HUGO_VERSION = "0.68.3"
 PYTHON_VERSION = "3.9"
+NODE_VERSION = "18"
 PIPENV_VENV_IN_PROJECT = "1"
 PIPENV_IGNORE_VIRTUALENVS = "1"
 
 [context.deploy-preview]
-command = "make preview-build"
+command = "pipenv install --dev --system && make preview-build"
 
 [context.branch-deploy]
-command = "make preview-build"
+command = "pipenv install --dev --system && make preview-build"
