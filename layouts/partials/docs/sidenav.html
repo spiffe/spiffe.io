@@ -5,6 +5,9 @@
 
 {{ $spireAbout         := where $allDocs ".Params.kind" "eq" "spire-about" }}
 
+{{ $spireHelmChartsHardenedAbout         := where $allDocs ".Params.kind" "eq" "spire-helm-charts-hardened-about" }}
+{{ $spireHelmChartsHardenedAdvanced := where $allDocs ".Params.kind" "eq" "spire-helm-charts-hardened-advanced" }}
+
 {{ $spirePlanning      := where $allDocs ".Params.kind" "eq" "planning" }}
 {{ $spireTry           := where $allDocs ".Params.kind" "eq" "try" }}  
 {{ $spireDeploying     := where $allDocs ".Params.kind" "eq" "deploying" }}
@@ -53,6 +56,12 @@
 {{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spirePlanning "pageUrl" $pageUrl "version" $version ) }}
 {{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireDeploying "pageUrl" $pageUrl "version" $version ) }}
 {{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireMaintenance "pageUrl" $pageUrl "version" $version ) }}
+
+<span class="docs-nav-section">
+  Helm Charts Hardened
+</span>
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireHelmChartsHardenedAbout "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spireHelmChartsHardenedAdvanced "pageUrl" $pageUrl "version" $version ) }}
 
 <span class="docs-nav-section">
   Integrate SPIRE
