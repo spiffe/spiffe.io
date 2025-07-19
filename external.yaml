@@ -5,9 +5,9 @@ try:
     transform:
         SPIRE101.md:
             frontMatter:
-                title: Quickstart for Docker Compose
-                short: Quickstart for Docker Compose
-                description: Quickly get SPIRE up and running on Docker Compose
+                title: Quickstart for Docker
+                short: Quickstart for Docker
+                description: Quickly get SPIRE up and running on Docker
                 kind: try
                 weight: 55
                 aliases:

@@ -1,4 +1,4 @@
-j# macOS
+# macOS
 .DS_Store
 
 # IDEs
@@ -11,6 +11,9 @@ resources/
 
 # Node.js assets
 node_modules/
+
+# Python virtual environment
+.venv/
 
 # Temporal content
 checkouts/
