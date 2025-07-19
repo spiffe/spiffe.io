@@ -72,3 +72,5 @@ helm upgrade --install -n spire-mgmt spire spire \
  --repo https://spiffe.github.io/helm-charts-hardened/ \
  -f your-values.yaml
 ```
+
+{{< scarf/pixels/high-interest >}}

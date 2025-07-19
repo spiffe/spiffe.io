@@ -131,3 +131,5 @@ When the agent deploys, it binds the volumes summarized in the following table:
 If you haven't already, see [Install SPIRE Server](/docs/latest/spire/installing/install-server/) to learn how to install the SPIRE Server.
 
 Once you've installed SPIRE Server and Agents, consider reviewing the guide on [Configuring the SPIRE Server and Agents](/docs/latest/spire/using/configuring/).
+
+{{< scarf/pixels/high-interest >}}

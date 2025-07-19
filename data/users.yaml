@@ -17,7 +17,7 @@ issuers:
     logo: Kubernetes_logo.png
   - name: Teleport Workload Identity
     logo: teleport_logo.svg
-    link: https://goteleport.com/docs/machine-id/workload-identity/
+    link: https://goteleport.com/platform/machine-and-workload-identity/
   - name: Greymatter.io
     link: https://greymatter.io/
     logo: Greymatter-logo.svg
@@ -42,6 +42,11 @@ consumers:
     description: Customers can seamlessly leverage SPIFFE IDs to establish secure [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Greymatter proxies.
     link: https://greymatter.io/
     logo: Greymatter-logo.svg
+  - name: SPIKE
+    description: SPIKE is a lightweight secrets store that uses SPIFFE as its identity control plane. SPIKE protects your secrets and helps your ops, SREs, and sysadmins #sleepmore.
+    link: https://spike.ist/
+    logo: spike.png
+
 adopters:
   - name: Amazon
     logo: Amazon-logo.svg

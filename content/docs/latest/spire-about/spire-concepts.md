@@ -205,3 +205,5 @@ The following diagram illustrates the steps in workload attestation:
 #### Workload Attestors
 
 SPIRE includes workload attestor plugins for Unix, Kubernetes, and Docker. For details on specific attestors supported by default, see the section [Attestation](#attestation). 
+
+{{< scarf/pixels/high-interest >}}

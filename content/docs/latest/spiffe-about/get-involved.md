@@ -38,3 +38,5 @@ Find SPIFFE and SPIRE logos here:
 
 * [SPIFFE](https://github.com/cncf/artwork/tree/main/projects/spiffe)
 * [SPIRE](https://github.com/cncf/artwork/tree/main/projects/spire)
+
+{{< scarf/pixels/medium-interest >}}
