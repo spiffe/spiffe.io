@@ -1,15 +1,17 @@
 [build]
 publish = "public"
-command = "python -m venv .venv && source .venv/bin/activate && pip install --upgrade pip pipenv && pipenv install --dev && make production-build"
+command = "pipenv install --dev && make production-build"
 
 [build.environment]
 HUGO_VERSION = "0.68.3"
 PYTHON_VERSION = "3.9"
 NODE_VERSION = "18"
 PIPENV_VENV_IN_PROJECT = "1"
+PIPENV_IGNORE_VIRTUALENVS = "1"
+NETLIFY_CACHE_BUST = "2025-07-19-v2"  # Change this value to bust cache
 
 [context.deploy-preview]
-command = "python -m venv .venv && source .venv/bin/activate && pip install --upgrade pip pipenv && pipenv install --dev && make preview-build"
+command = "pipenv install --dev && make preview-build"
 
 [context.branch-deploy]
-command = "python -m venv .venv && source .venv/bin/activate && pip install --upgrade pip pipenv && pipenv install --dev && make preview-build"
+command = "pipenv install --dev && make preview-build"
