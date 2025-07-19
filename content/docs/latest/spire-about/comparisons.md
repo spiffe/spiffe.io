@@ -21,7 +21,7 @@ By contrast, while SPIRE does _generate_ SPIFFE identities that can be used to [
 SPIRE's attestation policies provide a flexible and powerful solution for secure introduction to secrets managers. A common use of SPIRE-issued [SVIDs](/docs/latest/spiffe/concepts/#spiffe-verifiable-identity-document-svid) is to authenticate to secret stores to allow an application to retrieve secrets.
 
 # Identity Providers
-_e.g. ory.sh, VMWare Lightwave, WS02 Identity Server_
+_e.g. ory.sh, VMWare Lightwave, WSO2 Identity Server_
 
 Identity providers are typically responsible for generating short-lived identity documents in various formats for workloads when they interact with other systems. These may include, for example: SVIDs (for SPIFFE), access or refresh tokens (OAuth) or Service Tickets (Kerberos). If an identity provider implements the SPIFFE specification faithfully then it can be considered a SPIFFE Identity Provider. Since SPIRE implements the SPIFFE specification it may be considered a SPIFFE identity provider. 
 
@@ -48,3 +48,5 @@ A service mesh aims to simplify communication between workloads by providing fea
 Many service mesh implementations have adopted partial implementations of the SPIFFE specification (including Istio and Consul) and thus can be considered SPIFFE identity providers, and some (such as Grey Matter or Open Service Mesh) actually incorporate SPIRE as a component of their solution. 
 
 Service mesh solutions that specifically implement the SPIFFE Workload API should be able to support any software that expects this API to be available. Service mesh solutions that can deliver SVIDs to their workloads _and_ support the SPIFFE Federation API can establish trust automatically between mesh-identified workloads and workloads running SPIRE, or running on different mesh implementations.
+
+{{< scarf/pixels/medium-interest >}}

@@ -121,9 +121,9 @@ spire-server-0                 1/1     Running   0          103m
 
 When the agent deploys, it binds the volumes summarized in the following table:
 
-| Volume | Description | Mount Location |
-| :------ |:---------- | :------------- |
-| **spire-config** | The spire-agent configmap created in the  [Create Agent Configmap](#step-2-create-agent-configmap) step. | **/run/spire/config** |
+| Volume            | Description                                                                                                                                                                    | Mount Location         |
+|:------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------|
+| **spire-config**  | The spire-agent configmap created in the  [Create Agent Configmap](#step-2-create-agent-configmap) step.                                                                       | **/run/spire/config**  |
 | **spire-sockets** | The hostPath, which will be shared with all other pods running on the same worker host. It contains a UNIX domain socket that workloads use to communicate with the agent API. | **/run/spire/sockets** |
 
 # Where next?
@@ -131,3 +131,5 @@ When the agent deploys, it binds the volumes summarized in the following table:
 If you haven't already, see [Install SPIRE Server](/docs/latest/spire/installing/install-server/) to learn how to install the SPIRE Server.
 
 Once you've installed SPIRE Server and Agents, consider reviewing the guide on [Configuring the SPIRE Server and Agents](/docs/latest/spire/using/configuring/).
+
+{{< scarf/pixels/high-interest >}}

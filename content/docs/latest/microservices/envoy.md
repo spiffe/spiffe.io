@@ -13,7 +13,7 @@ Envoy is a popular open-source service proxy that is widely used to provide abst
 
 One component of this configuration system is the Secret Discovery Service protocol or SDS. Envoy uses SDS to retrieve and maintain updated “secrets” from SDS providers. In the context of TLS authentication, these secrets are the TLS certificates, private keys, and trusted CA certificates. The SPIRE Agent can be configured as an SDS provider for Envoy, allowing it to directly provide Envoy with the key material it needs to provide TLS authentication. The SPIRE Agent will also take care of re-generating the short-lived keys and certificates as required.
 
-For Kubernetes-based examples of how to integrate SPIRE with Envoy, see [Integrating with Envoy using X.509 certs](https://github.com/spiffe/spire-tutorials/tree/master/k8s/envoy-x509) and [Integrating with Envoy using JWT](https://github.com/spiffe/spire-tutorials/tree/master/k8s/envoy-jwt).
+For Kubernetes-based examples of how to integrate SPIRE with Envoy, see [Integrating with Envoy using X.509 certs](https://github.com/spiffe/spire-tutorials/tree/main/k8s/envoy-x509) and [Integrating with Envoy using JWT](https://github.com/spiffe/spire-tutorials/tree/main/k8s/envoy-jwt).
 
 # How It Works
 
@@ -91,3 +91,5 @@ tls_context:
 SPIFFE and SPIRE are focused on facilitating secure authentication as a building block for authorization, not authorization itself, and as such support for authorization-related fields in the validation context (e.g. `match_subject_alt_names`) is out of scope. Instead, we recommend you leverage Envoy’s extensive filter framework for performing authorization.
 
 Additionally, you can configure Envoy to forward client certificate details to the destination service, allowing it to perform its own authorization steps, for example by using the SPIFFE ID embedded in the URI SAN of the client X.509-SVID.
+
+{{< scarf/pixels/high-interest >}}

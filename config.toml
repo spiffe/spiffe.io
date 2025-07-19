@@ -39,7 +39,8 @@ js = [
     "jquery-3.3.1",
     "clipboard-2.0.0",
     "anchor-4.1.1",
-    "app"
+    "app",
+    "slider"
 ]
 
 [params.docs.assets]
