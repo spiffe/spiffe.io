@@ -448,3 +448,5 @@ Delete the policy, role, and S3 bucket that you configured for this tutorial.
 ## DNS Cleanup
 
 Remove the A record that you configured for the SPIRE OIDC Discovery document endpoint.
+
+{{< scarf/pixels/high-interest >}}

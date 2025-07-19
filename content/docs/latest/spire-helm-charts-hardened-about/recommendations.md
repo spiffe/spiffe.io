@@ -88,3 +88,5 @@ settings that are recommended as part of the [install instructions.](..//install
 Option `global.spire.recommendations.securityContexts` sets the Kubernetes pod securityContext and container securityContext to settings that
 meet the required [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) as well as addition
 settings that tighten security as much as the maintainers know how.
+
+{{< scarf/pixels/high-interest >}}

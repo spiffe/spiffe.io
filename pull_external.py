@@ -245,11 +245,13 @@ def _copy_file(
         content, heading = _get_file_content(abs_path_to_source_file, remove_heading)
 
         front_matter = None
+        beacon = None
         if heading:
             front_matter = {"title": heading}
 
         if transform_file:
             front_matter = {**front_matter, **transform_file.get("frontMatter", {})}
+            beacon = transform_file.get("beacon", None)
 
         if front_matter:
             target_file.writelines(_generate_yaml_front_matter(front_matter))
@@ -262,6 +264,9 @@ def _copy_file(
             source_branch=source_branch,
         )
         target_file.write(final_content)
+        
+        if beacon:
+            target_file.write(f"\n{beacon}\n")
 
         return abs_path_to_target_file
 

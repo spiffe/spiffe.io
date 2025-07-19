@@ -84,3 +84,4 @@ The public key material used to validate X.509 SVIDs is a set of certificates. T
 SPIFFE is a specification described in the following documents (maintained in the [SPIFFE GitHub repo](https://github.com/spiffe/spiffe)):
 
 {{< specs >}}
+{{< scarf/pixels/medium-interest >}}
