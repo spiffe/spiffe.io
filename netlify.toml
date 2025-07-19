@@ -6,6 +6,8 @@ command = "pipenv install --dev && make production-build"
 HUGO_VERSION = "0.68.3"
 PYTHON_VERSION = "3.9"
 NODE_VERSION = "18"
+PIPENV_VENV_IN_PROJECT = "1"
+PIPENV_IGNORE_VIRTUALENVS = "1"
 
 [context.deploy-preview]
 command = "pipenv install --dev && make preview-build"
