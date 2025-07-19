@@ -36,7 +36,7 @@ Day to day contributions are vetted by the project's maintainers. Overall projec
 
 Find SPIFFE and SPIRE logos here:
 
-* [SPIFFE](https://github.com/cncf/artwork/tree/main/projects/spiffe)
-* [SPIRE](https://github.com/cncf/artwork/tree/main/projects/spire)
+* [SPIFFE](https://branding.cncf.io/tree/master/projects/spiffe)
+* [SPIRE](https://branding.cncf.io/tree/master/projects/spire)
 
 {{< scarf/pixels/medium-interest >}}

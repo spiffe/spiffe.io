@@ -45,6 +45,8 @@ In some cases it might be desirable for SPIRE to avoid being exposed to a signin
 
 SPIRE comes with a set of built-in Key Manager plugins for the [Server](/docs/latest/deploying/spire_server/) and [Agent](/docs/latest/deploying/spire_agent/).
 
+Note that the Key Manager is **not** provided with contextual metadata about the signing operation that it is performing (e.g., X.509 Certificate Signing Request). The SPIRE Server performs any necessary policy evaluation on the signing request itself, and hands hashed data to the Key Manager plugin that is used as an input for creating a signature. This means that a Key Manager plugin cannot be developed to evaluate the request outside of the SPIRE Server (e.g., Certificate Authority (CA) service in the case of X.509). The Upstream Authority plugin is the single method of integration between SPIRE and external CAs.
+
 # Notifier plugins
 
 Notifier plugins allow actions to be triggered in other systems when certain events occur on the SPIRE Server, and in some cases interrupt the event itself. Notifier plugins can support a number of different use cases, such as when certificate rotation events occur.

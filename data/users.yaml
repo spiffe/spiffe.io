@@ -18,6 +18,9 @@ issuers:
   - name: Teleport Workload Identity
     logo: teleport_logo.svg
     link: https://goteleport.com/platform/machine-and-workload-identity/
+  - name: Greymatter.io
+    link: https://greymatter.io/
+    logo: Greymatter-logo.svg
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
@@ -35,6 +38,10 @@ consumers:
     description: VMware Secrets Manager is a Kubernetes-first, secure-by-default, cloud-native secrets management solution that uses SPIFFE and SPIRE as its identity control plane.
     link: https://vsecm.com/
     logo: vsecm.png
+  - name: Greymatter.io
+    description: Customers can seamlessly leverage SPIFFE IDs to establish secure [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Greymatter proxies.
+    link: https://greymatter.io/
+    logo: Greymatter-logo.svg
   - name: SPIKE
     description: SPIKE is a lightweight secrets store that uses SPIFFE as its identity control plane. SPIKE protects your secrets and helps your ops, SREs, and sysadmins #sleepmore.
     link: https://spike.ist/
@@ -101,3 +108,6 @@ adopters:
   - name: Yahoo
     logo: Yahoo-logo.svg
     link: https://www.yahoo.com/
+  - name: Greymatter.io
+    link: https://greymatter.io/
+    logo: Greymatter-name-logo.svg
