@@ -1,15 +1,14 @@
 [build]
 publish = "public"
-command = "PIPENV_VENV_IN_PROJECT=1 pipenv install --dev && make production-build"
+command = "pip install pipenv && pipenv requirements > requirements.txt && pipenv requirements --dev >> requirements.txt && pip install -r requirements.txt && make production-build"
 
 [build.environment]
 HUGO_VERSION = "0.68.3"
 PYTHON_VERSION = "3.9"
 NODE_VERSION = "18"
-PIPENV_VENV_IN_PROJECT = "1"
 
 [context.deploy-preview]
-command = "PIPENV_VENV_IN_PROJECT=1 pipenv install --dev && make preview-build"
+command = "pip install pipenv && pipenv requirements > requirements.txt && pipenv requirements --dev >> requirements.txt && pip install -r requirements.txt && make preview-build"
 
 [context.branch-deploy]
-command = "PIPENV_VENV_IN_PROJECT=1 pipenv install --dev && make preview-build"
+command = "pip install pipenv && pipenv requirements > requirements.txt && pipenv requirements --dev >> requirements.txt && pip install -r requirements.txt && make preview-build"
