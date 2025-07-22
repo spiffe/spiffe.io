@@ -1,15 +1,14 @@
 [build]
 publish = "public"
-command = "echo 'Debug: Python info' && which python3 && python3 --version && echo 'Debug: Environment vars' && env | grep -E '(PYTHON|PIPENV)' && echo 'Debug: Pipenv info' && pipenv --version && echo 'Debug: Installing dependencies' && pipenv install --dev --verbose && echo 'Debug: Pipenv environment' && pipenv --venv && echo 'Debug: Running build' && make production-build"
+command = "mv Pipfile Pipfile.bak && pip install pipenv && pipenv requirements > requirements.txt && pipenv requirements --dev-only >> requirements.txt && pip install -r requirements.txt && mv Pipfile.bak Pipfile && make production-build"
 
 [build.environment]
 HUGO_VERSION = "0.68.3"
 PYTHON_VERSION = "3.9"
 NODE_VERSION = "18"
-PIPENV_VENV_IN_PROJECT = "false"
 
 [context.deploy-preview]
-command = "pipenv install --dev && make preview-build"
+command = "mv Pipfile Pipfile.bak && pip install pipenv && pipenv requirements > requirements.txt && pipenv requirements --dev-only >> requirements.txt && pip install -r requirements.txt && mv Pipfile.bak Pipfile && make preview-build"
 
 [context.branch-deploy]
-command = "pipenv install --dev && make preview-build"
+command = "mv Pipfile Pipfile.bak && pip install pipenv && pipenv requirements > requirements.txt && pipenv requirements --dev-only >> requirements.txt && pip install -r requirements.txt && mv Pipfile.bak Pipfile && make preview-build"
