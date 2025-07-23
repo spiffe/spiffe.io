@@ -89,18 +89,46 @@ def _get_releases():
         return all_releases, latest_release
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 401:
-            print("GitHub API authentication failed. Please ensure GITHUB_TOKEN environment variable is set with a valid token.")
-            print("The token needs 'public_repo' scope to read public repository releases.")
-            raise SystemExit(1)
+            print("WARNING: GitHub API authentication failed. GITHUB_TOKEN not set or invalid.")
+            print("Using fallback release data. Site will build but with limited release information.")
+            return _get_fallback_releases()
         elif e.response.status_code == 403:
-            print("GitHub API rate limit exceeded or forbidden. Please check your token permissions.")
-            raise SystemExit(1)
+            print("WARNING: GitHub API rate limit exceeded or access forbidden.")
+            print("Using fallback release data. Site will build but with limited release information.")
+            return _get_fallback_releases()
         else:
-            print(f"GitHub API request failed with status {e.response.status_code}: {e}")
-            raise
+            print(f"WARNING: GitHub API request failed with status {e.response.status_code}: {e}")
+            print("Using fallback release data. Site will build but with limited release information.")
+            return _get_fallback_releases()
     except Exception as e:
-        print(f"Failed to fetch GitHub releases: {e}")
-        raise
+        print(f"WARNING: Failed to fetch GitHub releases: {e}")
+        print("Using fallback release data. Site will build but with limited release information.")
+        return _get_fallback_releases()
+
+
+def _get_fallback_releases():
+    """
+    Provide minimal fallback release data when GitHub API is unavailable.
+    This ensures the site can still build and the spire-latest shortcode works.
+    """
+    fallback_latest = {
+        "tag_name": "v1.12.4",  # Latest known stable version
+        "name": "v1.12.4",
+        "html_url": "https://github.com/spiffe/spire/releases/tag/v1.12.4",
+        "assets": [
+            {
+                "name": "spire-1.12.4-linux-amd64-musl.tar.gz",
+                "browser_download_url": "https://github.com/spiffe/spire/releases/download/v1.12.4/spire-1.12.4-linux-amd64-musl.tar.gz"
+            }
+        ],
+        "created_at": "2025-07-01T20:12:32Z",
+        "published_at": "2025-07-01T21:39:47Z"
+    }
+    
+    # Return the same structure as the API would - list of all releases and latest
+    fallback_all = [fallback_latest]
+    
+    return fallback_all, fallback_latest
 
 
 def _read_yaml(file_name: str) -> Dict:
