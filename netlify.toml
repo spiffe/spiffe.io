@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "pip install -r requirements.txt && make production-build"
+command = "pipenv install --dev && make production-build"
 
 [build.environment]
 HUGO_VERSION = "0.68.3"
@@ -9,7 +9,7 @@ NODE_VERSION = "18"
 HIDE_RELEASES = "true"
 
 [context.deploy-preview]
-command = "pip install -r requirements.txt && make preview-build"
+command = "pipenv install --dev && make preview-build"
 
 [context.branch-deploy]
-command = "pip install -r requirements.txt && make preview-build"
+command = "pipenv install --dev && make preview-build"
