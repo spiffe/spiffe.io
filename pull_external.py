@@ -62,18 +62,23 @@ def _pull_releases():
 
 
 def _get_releases():
-    session = requests.Session()
-
     token = os.environ.get("GITHUB_TOKEN")
-    if token is not None:
-        session.headers.update({"Authorization": "token {}".format(token)})
+    hide_releases = os.environ.get("HIDE_RELEASES", "").lower() == "true"
+    
+    # Skip GitHub API calls if no token or explicitly hiding releases
+    if not token or hide_releases:
+        print("WARNING: GitHub releases disabled (no token or HIDE_RELEASES=true)")
+        print("Site will build but release information will show placeholder values")
+        return [], {}
+    
+    session = requests.Session()
+    session.headers.update({"Authorization": "token {}".format(token)})
 
-    # Remove 401 from retry list - authentication errors shouldn't be retried
     retries = Retry(
         total=3,
         backoff_factor=0.1,
         raise_on_status=True,
-        status_forcelist=[403, 500, 502, 503, 504],
+        status_forcelist=[500, 502, 503, 504],
     )
     session.mount("https://", HTTPAdapter(max_retries=retries))
 
@@ -87,48 +92,10 @@ def _get_releases():
         latest_release = latest_release_response.json()
         
         return all_releases, latest_release
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 401:
-            print("WARNING: GitHub API authentication failed. GITHUB_TOKEN not set or invalid.")
-            print("Using fallback release data. Site will build but with limited release information.")
-            return _get_fallback_releases()
-        elif e.response.status_code == 403:
-            print("WARNING: GitHub API rate limit exceeded or access forbidden.")
-            print("Using fallback release data. Site will build but with limited release information.")
-            return _get_fallback_releases()
-        else:
-            print(f"WARNING: GitHub API request failed with status {e.response.status_code}: {e}")
-            print("Using fallback release data. Site will build but with limited release information.")
-            return _get_fallback_releases()
     except Exception as e:
-        print(f"WARNING: Failed to fetch GitHub releases: {e}")
-        print("Using fallback release data. Site will build but with limited release information.")
-        return _get_fallback_releases()
-
-
-def _get_fallback_releases():
-    """
-    Provide minimal fallback release data when GitHub API is unavailable.
-    This ensures the site can still build and the spire-latest shortcode works.
-    """
-    fallback_latest = {
-        "tag_name": "v1.12.4",  # Latest known stable version
-        "name": "v1.12.4",
-        "html_url": "https://github.com/spiffe/spire/releases/tag/v1.12.4",
-        "assets": [
-            {
-                "name": "spire-1.12.4-linux-amd64-musl.tar.gz",
-                "browser_download_url": "https://github.com/spiffe/spire/releases/download/v1.12.4/spire-1.12.4-linux-amd64-musl.tar.gz"
-            }
-        ],
-        "created_at": "2025-07-01T20:12:32Z",
-        "published_at": "2025-07-01T21:39:47Z"
-    }
-    
-    # Return the same structure as the API would - list of all releases and latest
-    fallback_all = [fallback_latest]
-    
-    return fallback_all, fallback_latest
+        print(f"WARNING: GitHub API request failed: {e}")
+        print("Site will build but release information will show placeholder values")
+        return [], {}
 
 
 def _read_yaml(file_name: str) -> Dict:
