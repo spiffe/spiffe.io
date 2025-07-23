@@ -4,7 +4,7 @@ HUGO_VERSION ?= 0.68.3
 CONTAINER_RUNTIME ?= docker
 
 setup:
-	pipenv install --dev
+	pip install -r requirements.txt
 	npm install
 
 serve:
@@ -52,19 +52,19 @@ docker-serve-with-releases: docker-build
 		spiffe.io:latest
 
 pull-external-content:
-	pipenv run python ./pull_external.py
+	python ./pull_external.py
 
 ci-check-links: pull-external-content
 	echo "Running Hugo server..." && \
 	hugo server -p 1212 & \
 	sleep 2 && \
 	echo "Running links checker..." && \
-	pipenv run linkchecker -f linkcheckerrc http://localhost:1212; \
+	linkchecker -f linkcheckerrc http://localhost:1212; \
 	echo "Stopping Hugo server..." && \
 	pkill hugo || true
 
 check-links:
-	pipenv run linkchecker -f linkcheckerrc http://localhost:1313
+	linkchecker -f linkcheckerrc http://localhost:1313
 
 docker-check-links-build:
 	$(CONTAINER_RUNTIME) build -f Dockerfile.linkchecker -t linkchecker .

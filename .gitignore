@@ -14,6 +14,10 @@ node_modules/
 
 # Python virtual environment
 .venv/
+venv/
+.env
+*.pyc
+__pycache__/
 
 # Temporal content
 checkouts/
