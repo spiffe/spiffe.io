@@ -52,19 +52,31 @@ docker-serve-with-releases: docker-build
 		spiffe.io:latest
 
 pull-external-content:
-	pipenv run python ./pull_external.py
+	@if command -v pipenv >/dev/null 2>&1 && pipenv --venv >/dev/null 2>&1; then \
+		pipenv run python ./pull_external.py; \
+	else \
+		python ./pull_external.py; \
+	fi
 
 ci-check-links: pull-external-content
 	echo "Running Hugo server..." && \
 	hugo server -p 1212 & \
 	sleep 2 && \
 	echo "Running links checker..." && \
-	pipenv run linkchecker -f linkcheckerrc http://localhost:1212; \
+	if command -v pipenv >/dev/null 2>&1 && pipenv --venv >/dev/null 2>&1; then \
+		pipenv run linkchecker -f linkcheckerrc http://localhost:1212; \
+	else \
+		linkchecker -f linkcheckerrc http://localhost:1212; \
+	fi; \
 	echo "Stopping Hugo server..." && \
 	pkill hugo || true
 
 check-links:
-	pipenv run linkchecker -f linkcheckerrc http://localhost:1313
+	@if command -v pipenv >/dev/null 2>&1 && pipenv --venv >/dev/null 2>&1; then \
+		pipenv run linkchecker -f linkcheckerrc http://localhost:1313; \
+	else \
+		linkchecker -f linkcheckerrc http://localhost:1313; \
+	fi
 
 docker-check-links-build:
 	$(CONTAINER_RUNTIME) build -f Dockerfile.linkchecker -t linkchecker .
