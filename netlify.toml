@@ -4,7 +4,6 @@ command = "pipenv install --dev --deploy && make production-build"
 
 [build.environment]
 HUGO_VERSION = "0.68.3"
-PYTHON_VERSION = "3.9"
 NODE_VERSION = "18"
 HIDE_RELEASES = "true"
 PIPENV_VENV_IN_PROJECT = "1"
