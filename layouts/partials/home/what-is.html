@@ -1,51 +1,30 @@
 {{- $whatIsSpiffe := .Site.Params.home.whatis.spiffe | markdownify }}
 {{- $whatIsSpire  := .Site.Params.home.whatis.spire  | markdownify }}
-<section class="section what-is">
-  <div class="container">
-    <div class="columns is-vcentered">
-      <div class="column is-9">
-        <p class="title is-size-3 is-size-4-mobile has-text-white-bis">
-          What is SPIFFE?
-        </p>
-
-        <p class="is-size-5 is-size-6-mobile">
-          {{ $whatIsSpiffe }} &#8226; <strong><a href="/docs/latest/spiffe/overview/">Read more</a></strong>
-        </p>
-      </div> <!-- .column -->
-
-      <div class="column has-text-right is-hidden-mobile">
-        <img class="is-home-desktop-logo" src="/img/logos/spiffe/icon/color/spiffe-icon-color.png">
-      </div> <!-- .column -->
-    </div> <!-- .columns -->
-
-    <div class="columns is-hidden-tablet">
-      <div class="column has-text-centered">
-        <img class="is-home-mobile-logo" src="/img/logos/spiffe/icon/color/spiffe-icon-color.png">
-      </div> <!-- .column -->
-    </div> <!-- .column.is-hidden-tablet -->
-
-    <hr class="is-large has-background-grey">
-
-    <div class="columns is-vcentered">
-      <div class="column has-text-left is-hidden-mobile">
-        <img class="is-home-desktop-logo" src="/img/logos/spire/icon/color/spire-icon-color.png">
-      </div> <!-- .column -->
-
-      <div class="column is-9 has-text-right">
-        <p class="title is-size-3 is-size-4-mobile has-text-white-bis">
-          What is SPIRE?
-        </p>
-
-        <p class="is-size-5 is-size-6-mobile">
-          {{ $whatIsSpire }} &#8226; <strong><a href="/docs/latest/spire/understand/concepts/">Read more</a></strong>
-        </p>
-      </div> <!-- .column -->
-    </div> <!-- .columns -->
-
-    <div class="columns is-hidden-tablet">
-      <div class="column has-text-centered is-hidden-tablet">
-        <img class="is-home-mobile-logo" src="/img/logos/spire/icon/color/spire-icon-color.png">
-      </div> <!-- .column -->
-    </div> <!-- .columns.is-hidden-tablet -->
-  </div> <!-- .container -->
-</section> <!-- .section -->
+<section class="section">
+  <h2 class="title has-text-centered">Deep Dive</h2>
+  <div class="columns is-flex margin-md-top-bottom is-columns-centered is-align-items-center width-md fullwidth-mobile flex-column-mobile">
+      <div class="column">
+          <div class="img-container-lg">
+              <img src="/img/logos/spiffe/icon/color/spiffe-icon-color.png" alt="spiffe logo">
+          </div>
+      </div>
+      <div class="text-container column content is-medium fullwidth-mobile">
+          SPIFFE, the Secure Production Identity Framework For Everyone (SPIFFE) Project defines a framework and set of standards for identifying and securing communications between application services.
+      </div>
+  </div>
+  <div class="columns is-flex margin-md-top-bottom is-columns-centered is-align-items-center width-md fullwidth-mobile flex-column-mobile">
+      <div class="column">
+          <div class="img-container-lg">
+              <img src="/img/logos/spire/icon/color/spire-icon-color.png" alt="Spire logo">
+          </div>
+      </div>
+      <div class="text-container column content is-medium fullwidth-mobile">
+          SPIRE (the SPIFFE Runtime Environment) is a toolchain of APIs for establishing trust between software systems across a wide variety of hosting platforms.
+      </div>
+  </div>
+  <div class="has-text-centered">
+    <a href="/spiffe">
+      <button class="button is-medium btn-wide is-dark margin-md-top-bottom">Learn more</button>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+{{- $users     := .Site.Data.users }}
+{{- $issuers   := $users.issuers }}
+<section class="section has-text-centered">
+    <h2 class="title is-size-3-mobile is-spaced">
+        Integrations & Implementations
+    </h2>
+    <div class="is-flex is-space-between margin-md-top-bottom">
+        {{- range $issuers }}
+        {{ partial "user.html" . }}
+        {{- end }}
+    </div>
+    <div class="has-text-centered margin-md-top-bottom">
+      <a href="/spiffe">
+        <button class="button is-medium is-dark">Learn more</button>
+      </a>
+    </div>
+</section> 

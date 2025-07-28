@@ -19,13 +19,13 @@ Developers coding a new workload that needs to interact with SPIFFE can interact
 
 * Generate short-lived keys and certificates on behalf of the workload, specifically:
  * A private key tied to that SPIFFE ID that can be used to sign data on behalf of the workload. 
- * A corresponding short-lived X.509 certificate - an [X509-SVID](https://github.com/spiffe/spiffe/blob/master/standards/X509-SVID.md). This can be used to establish TLS or otherwise authenticate to other workloads.
+ * A corresponding short-lived X.509 certificate - an [X509-SVID](https://github.com/spiffe/spiffe/blob/main/standards/X509-SVID.md). This can be used to establish TLS or otherwise authenticate to other workloads.
  * A set of certificates – known as a [trust bundle](/docs/latest/spiffe/concepts/#trust-bundle) – that a workload can use to verify an X.509-SVID presented by another workload in the same trust domain or a federated trust domain.
-* Generate or validate JSON Web Tokens ([JWT-SVIDs](https://github.com/spiffe/spiffe/blob/master/standards/JWT-SVID.md)) issued on behalf of the workload or another workload in the same trust domain or a federated trust domain.
+* Generate or validate JSON Web Tokens ([JWT-SVIDs](https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md)) issued on behalf of the workload or another workload in the same trust domain or a federated trust domain.
 
 The Workload API doesn't require any explicit authentication (such as a secret). Rather, the SPIFFE specification leaves it to implementation of the SPIFFE Workload API to determine how to authenticate the workload. In the case of SPIRE, this is achieved by inspecting the Unix kernel metadata collected by the SPIRE Agent when a workload calls the API.
 
-The API is a gRPC API, derived [from a protobuf](https://github.com/spiffe/go-spiffe/blob/master/proto/spiffe/workload/workload.proto). The [gRPC project](https://grpc.io/) provides tools to generate client libraries from a protobuf in a variety of languages.
+The API is a gRPC API, derived [from a protobuf](https://github.com/spiffe/go-spiffe/blob/main/v2/proto/spiffe/workload/workload.proto). The [gRPC project](https://grpc.io/) provides tools to generate client libraries from a protobuf in a variety of languages.
 
 ## Working with SVIDs in Go 
 
@@ -63,3 +63,5 @@ will:
 4.   Write the trust bundle (certificate chain) needed to validate X.509-SVIDs issued under that trust domain to `/tmp/` as well
 
 A complete list of relevant commands can be found in the [SPIRE Agent Documentation](/docs/latest/deploying/spire_agent/#command-line-options).
+
+{{< scarf/pixels/high-interest >}}

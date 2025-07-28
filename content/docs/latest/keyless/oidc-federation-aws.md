@@ -232,8 +232,7 @@ The following simple AWS IAM policy governs access to the S3 bucket used in this
                    "s3:GetAccountPublicAccessBlock",
                    "s3:ListAllMyBuckets",
                    "s3:ListJobs",
-                   "s3:CreateJob",
-                   "s3:HeadBucket"
+                   "s3:CreateJob"
                ],
                "Resource": "*"
            },
@@ -449,3 +448,5 @@ Delete the policy, role, and S3 bucket that you configured for this tutorial.
 ## DNS Cleanup
 
 Remove the A record that you configured for the SPIRE OIDC Discovery document endpoint.
+
+{{< scarf/pixels/high-interest >}}

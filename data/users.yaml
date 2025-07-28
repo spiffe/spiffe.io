@@ -1,20 +1,26 @@
 issuers:
-  - name: The SPIRE project
-    description: SPIRE is an open-source toolchain that implements the SPIFFE specification in a wide variety of environments
-    link: /docs/latest/spire/understand/concepts/
-    logo: spire/icon/color/spire-icon-color.png
-  - name: Istio
-    description: The Istio control plane issues SPIFFE IDs for all workloads
-    link: https://istio.io/latest/docs/concepts/security/#pki
-    logo: istio.svg
+  - name: AWS
+    logo: Amazon-Web-Services-logo.svg
+  - name: Azure
+    logo: azure.png
+  - name: cert-manager CSI driver
+    logo: cert-manager.png
+  - name: Dapr
+    logo: Dapr_logo.svg
+  - name: GCP
+    logo: google-cloud.png
   - name: HashiCorp Consul
-    description: The Consul Connect service mesh uses the SPIFFE specification for establishing service identities, enabling Consul Connect services to connect with other SPIFFE-compliant systems
-    link: https://www.consul.io/segmentation.html
     logo: consul.svg
-  - name: Kuma
-    description: Kuma automatically generates SPIFFE-compatible certificates that identify all the services and workloads running in the service mesh, and encrypts all the traffic generated between them
-    link: https://kuma.io
-    logo: kuma.svg
+  - name: Istio
+    logo: istio.svg
+  - name: Kubernetes
+    logo: Kubernetes_logo.png
+  - name: Teleport Workload Identity
+    logo: teleport_logo.svg
+    link: https://goteleport.com/platform/machine-and-workload-identity/
+  - name: Greymatter.io
+    link: https://greymatter.io/
+    logo: Greymatter-logo.svg
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
@@ -28,3 +34,80 @@ consumers:
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Ghostunnel proxies with built-in support for obtaining X.509-SVID identities via the [SPIFFE Workload API](/docs/latest/spiffe-about/spiffe-concepts/#spiffe-workload-api)
     link: https://github.com/square/ghostunnel
     logo: square.jpg
+  - name: VMware Secrets Manager
+    description: VMware Secrets Manager is a Kubernetes-first, secure-by-default, cloud-native secrets management solution that uses SPIFFE and SPIRE as its identity control plane.
+    link: https://vsecm.com/
+    logo: vsecm.png
+  - name: Greymatter.io
+    description: Customers can seamlessly leverage SPIFFE IDs to establish secure [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Greymatter proxies.
+    link: https://greymatter.io/
+    logo: Greymatter-logo.svg
+  - name: SPIKE
+    description: SPIKE is a lightweight secrets store that uses SPIFFE as its identity control plane. SPIKE protects your secrets and helps your ops, SREs, and sysadmins #sleepmore.
+    link: https://spike.ist/
+    logo: spike.png
+
+adopters:
+  - name: Amazon
+    logo: Amazon-logo.svg
+    link: https://www.amazon.com/
+  - name: Anthem
+    logo: Anthem-Inc.-logo.svg
+    link: https://www.anthem.com/
+  - name: Arm
+    logo: ARM-architecture-logo.svg
+    link: https://www.arm.com/
+  - name: Bloomberg
+    logo: Bloomberg-L.P.-logo.svg
+    link: https://www.bloomberg.com/
+  - name: Cisco Systems
+    logo: Cisco-Systems-logo.svg
+    link: https://www.cisco.com/
+  - name: Duke Energy
+    logo: Duke_Energy_logo.svg
+    link: https://www.duke-energy.com/
+  - name: Google
+    logo: Google-logo.svg
+    link: https://www.google.com/
+  - name: Hashicorp
+    logo: HashiCorp-logo.svg
+    link: https://www.hashicorp.com/
+  - name: Hewlett-Packard Enterprise
+    logo: Hewlett-Packard-Enterprise-logo.svg
+    link: https://www.hpe.com/us/en/home.html
+  - name: IBM
+    logo: IBM-logo.svg
+    link: https://www.ibm.com/us-en/
+  - name: Indeed
+    logo: Indeed_logo.svg
+    link: https://www.indeed.com/
+  - name: Intel
+    logo: Intel-logo.svg
+    link: https://www.intel.com/content/www/us/en/homepage.html
+  - name: Netflix
+    logo: Netflix-logo.svg
+    link: https://www.netflix.com/
+  - name: SAP
+    logo: SAP-SE-logo.svg
+    link: https://www.sap.com/
+  - name: TransferWise
+    logo: TransferWise-logo.svg
+    link: https://wise.com/
+  - name: Twilio
+    logo: Twilio-logo.svg
+    link: https://www.twilio.com/
+  - name: Uber
+    logo: Uber-logo.svg
+    link: https://www.uber.com/
+  - name: Unity Technologies
+    logo: Unity-Technologies-logo.svg
+    link: https://unity.com/
+  - name: VMware
+    logo: VMware-Inc.-logo.svg
+    link: https://www.vmware.com/
+  - name: Yahoo
+    logo: Yahoo-logo.svg
+    link: https://www.yahoo.com/
+  - name: Greymatter.io
+    link: https://greymatter.io/
+    logo: Greymatter-name-logo.svg

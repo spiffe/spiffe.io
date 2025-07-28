@@ -5,6 +5,7 @@ import re
 import toml
 import subprocess
 import requests
+from requests.adapters import HTTPAdapter, Retry
 from typing import Dict, List, Set, Tuple, Pattern, Match
 from urllib.parse import urlparse
 from pathlib import Path
@@ -12,6 +13,7 @@ from pathlib import Path
 CHECKOUT_DIR = "checkouts"
 GIT_CLONE_CMD = "git clone {{}} ./{}/{{}}/{{}}".format(CHECKOUT_DIR)
 GIT_CHECKOUT_CMD = "git checkout {}"
+GITHUB_API_RELEASES = "https://api.github.com/repos/spiffe/spire/releases"
 GITHUB_API_LATEST_RELEASE = "https://api.github.com/repos/spiffe/spire/releases/latest"
 MARKDOWN_IMAGE_REFERENCE_STYLE_OPENING = "["
 RE_EXTRACT_TITLE: Pattern[str] = re.compile("([#\s]*)(?P<title>.*)")
@@ -28,11 +30,11 @@ RE_EXTRACT_GITHUB_PATH: Pattern[str] = re.compile(
 # holds the git URL and the new path for links between pulled in files
 internal_links: Dict = {}
 config: Dict = toml.load("config.toml")
-latest_release = None
+latest_release: str = None
 
 
 def main():
-    _pull_latest_release()
+    _pull_releases()
     os.system("rm -rf ./{}/".format(CHECKOUT_DIR))
     yaml_external = _read_yaml("external.yaml")
     repos_to_clone: Set[str] = set()
@@ -50,13 +52,34 @@ def main():
     _generate_gitignore(generated_files)
 
 
-def _pull_latest_release():
+def _pull_releases():
     global latest_release
-    json = _get_latest_spire_release()
-    latest_release = json.get("tag_name", "master")
+    all, latest = _get_releases()
+    latest_release = latest.get("tag_name", "main")
 
     with open("data/releases.yaml", "w") as releases_file:
-        releases_file.write(yaml.dump({"latest": json}))
+        releases_file.write(yaml.dump({"latest": latest, "all": all}))
+
+
+def _get_releases():
+    session = requests.Session()
+
+    token = os.environ.get("GITHUB_TOKEN")
+    if token is not None:
+        session.headers.update({"Authorization": "token {}".format(token)})
+
+    retries = Retry(
+        total=5,
+        backoff_factor=0.1,
+        raise_on_status=True,
+        status_forcelist=[401, 403, 404, 500, 502, 503, 504],
+    )
+    session.mount("https://", HTTPAdapter(max_retries=retries))
+
+    all_releases = session.get(GITHUB_API_RELEASES).json()
+    latest_release = session.get(GITHUB_API_LATEST_RELEASE).json()
+
+    return all_releases, latest_release
 
 
 def _read_yaml(file_name: str) -> Dict:
@@ -114,46 +137,35 @@ def _clone_repos(repos: List[str]):
         os.system(cmd)
 
 
-def _get_latest_spire_release() -> Dict:
-    global latest_release
-
-    if latest_release:
-        return latest_release
-
-    data = requests.get(GITHUB_API_LATEST_RELEASE)
-    latest_release = data.json()
-
-    return latest_release
-
-
 def _checkout_switch(content: Dict):
+    global latest_release
     source = content.get("source")
-    latest_release = _get_latest_spire_release()
     cmd = GIT_CHECKOUT_CMD.format(latest_release).split()
     repo_owner, repo_name = _get_canonical_repo_from_url(source)
     cwd = os.path.join(CHECKOUT_DIR, repo_owner, repo_name)
     subprocess.run(cmd, stdout=subprocess.PIPE, cwd=cwd)
 
 
-def _get_branch_by_repo_url(url: str) -> str:
+def _get_branch_by_repo_url(url: str, source_branch: str) -> str:
+    global latest_release
     repo_owner, repo_name = _get_canonical_repo_from_url(url)
-    branch = (
-        _get_latest_spire_release()
-        if (repo_owner, repo_name) == ("spiffe", "spire")
-        else "master"
-    )
+    if (repo_owner, repo_name) == ("spiffe", "spire"):
+        return latest_release
+    elif source_branch:
+        return source_branch
 
-    return branch
+    return "master"
 
 
 def _get_internal_links(yaml_external: Dict):
     links = {}
     for target_dir, content in yaml_external.items():
         source = content.get("source", "").strip()
+        source_branch = content.get("branch", "").strip()
         if source == config.get("spireGitHubUrl"):
             _checkout_switch(content)
         for rel_file in content.get("pullFiles", []):
-            branch = _get_branch_by_repo_url(source)
+            branch = _get_branch_by_repo_url(source, source_branch)
             full_url = "{}/blob/{}/{}".format(source, branch, rel_file)
             file_name = os.path.basename(rel_file)
             file_path = os.path.join(target_dir, file_name)
@@ -167,6 +179,7 @@ def _process_files(yaml_external: Dict) -> List[str]:
     files = []
     for target_dir, content in yaml_external.items():
         source = content.get("source", "").strip()
+        source_branch = content.get("branch", "").strip()
         pull_files: List[str] = content.get("pullFiles", [])
         repo_owner, repo_name = _get_canonical_repo_from_url(source)
 
@@ -183,6 +196,7 @@ def _process_files(yaml_external: Dict) -> List[str]:
                 transform_file=content.get("transform", {}).get(filename, None),
                 remove_heading=True,
                 source=source,
+                source_branch=source_branch,
             )
             files.append(abs_path_to_target_file)
     return files
@@ -209,6 +223,7 @@ def _copy_file(
     rel_path_to_source_file: str,
     target_dir: str,
     source: str,
+    source_branch: str,
     transform_file: Dict = {},
     remove_heading: bool = True,
 ) -> str:
@@ -235,11 +250,13 @@ def _copy_file(
         content, heading = _get_file_content(abs_path_to_source_file, remove_heading)
 
         front_matter = None
+        beacon = None
         if heading:
             front_matter = {"title": heading}
 
         if transform_file:
             front_matter = {**front_matter, **transform_file.get("frontMatter", {})}
+            beacon = transform_file.get("beacon", None)
 
         if front_matter:
             target_file.writelines(_generate_yaml_front_matter(front_matter))
@@ -249,8 +266,12 @@ def _copy_file(
             abs_path_to_source_dir=abs_path_to_repo_checkout_dir,
             rel_path_to_source_file=rel_path_to_source_file,
             source=source,
+            source_branch=source_branch,
         )
         target_file.write(final_content)
+        
+        if beacon:
+            target_file.write(f"\n{beacon}\n")
 
         return abs_path_to_target_file
 
@@ -260,6 +281,7 @@ def _process_content(
     abs_path_to_source_dir: str,
     rel_path_to_source_file: str,
     source: str,
+    source_branch: str,
 ):
     repo_owner, repo_name = _get_canonical_repo_from_url(source)
 
@@ -288,6 +310,7 @@ def _process_content(
         return figure
 
     def repl_links(m: Match[str]):
+        global latest_release
         alt = m.group("alt")
         rel = m.group("rel")
         url = m.group("url")
@@ -310,17 +333,19 @@ def _process_content(
             elif is_link_to_spire_repo:
                 github_url = RE_EXTRACT_GITHUB_PATH.search(url)
                 if github_url and github_url.group("path"):
-                    branch = _get_latest_spire_release()
                     new_url = "https://github.com/{}/{}/blob/{}/{}".format(
-                        "spiffe", "spire", branch, github_url.group("path")
+                        "spiffe", "spire", latest_release, github_url.group("path")
                     )
 
         # this is an internal relative url
         else:
             if rel == "./" or rel == "":
                 rel_url = os.path.join(os.path.dirname(rel_path_to_source_file), url)
+            rel_url = os.path.normpath(
+                os.path.join(os.path.dirname(rel_path_to_source_file), rel, url)
+            )
 
-            branch = _get_branch_by_repo_url(source)
+            branch = _get_branch_by_repo_url(source, source_branch)
 
             new_url = "https://github.com/{}/{}/blob/{}/{}".format(
                 repo_owner, repo_name, branch, rel_url

@@ -1,0 +1,38 @@
+{{- $users     := .Site.Data.users }}
+{{- $issuers   := $users.issuers }}
+{{- $consumers := $users.consumers }}
+<section class="section">
+  <div class="container">
+    <p class="title is-size-2 is-size-3-mobile is-spaced">
+      Who uses SPIFFE?
+    </p>
+
+    <p class="subtitle is-size-4 is-size-5-mobile">
+      SPIFFE is currently used by a variety of projects that both <strong>issue</strong> and <strong>consume</strong> SPIFFE IDs.
+    </p>
+
+    <br />
+
+    <div class="columns is-variable is-6">
+      <div class="column content is-medium">
+        <h2>
+          Issuers
+        </h2>
+
+        {{- range $issuers }}
+        {{ partial "user.html" . }}
+        {{- end }}
+      </div> <!-- .column -->
+
+      <div class="column content is-medium">
+        <h2>
+          Consumers
+        </h2>
+
+        {{- range $consumers }}
+        {{ partial "user.html" . }}
+        {{- end }}
+      </div> <!-- .column -->
+    </div> <!-- .columns -->
+  </div> <!-- .container -->
+</section> <!-- .section -->

@@ -19,7 +19,7 @@ A workload is a single piece of software, deployed with a particular configurati
 * A worker program processing items on a queue.  
 * A collection of independently deployed systems that work together, such as a web application that uses a database service. The web application and database could also individually be considered workloads.
 
-For SPIFFE’s purposes, a workload may often be more fine-grained than a physical or virtual node -- often as fine grained as individual processes on the node. This is crucial for workloads that, for example, are hosted in a container orchestrator, where several workloads may be coexist in (yet be isolated from each other) on a single node.
+For SPIFFE’s purposes, a workload may often be more fine-grained than a physical or virtual node -- often as fine grained as individual processes on the node. This is crucial for workloads that, for example, are hosted in a container orchestrator, where several workloads may be coexisting (yet be isolated from each other) on a single node.
 
 For SPIFFE’s purposes, a workload may also span many nodes -- for example, an elastically scaled web server that may be running on many machines simultaneously.
 
@@ -33,13 +33,13 @@ SPIFFE IDs are a [Uniform Resource Identifier (URI)](https://tools.ietf.org/html
 
 The _workload identifier_ uniquely identifies a specific workload within a [trust domain](#trust-domain).
 
-The [SPIFFE specification](https://github.com/spiffe/spiffe/blob/master/standards/SPIFFE.md) describes in detail the format and use of SPIFFE IDs.
+The [SPIFFE specification](https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE.md) describes in detail the format and use of SPIFFE IDs.
 
 ## Trust Domain
 
 The trust domain corresponds to the trust root of a system. A trust domain could represent an individual, organization, environment or department running their own independent SPIFFE infrastructure. All workloads identified in the same trust domain are issued identity documents that can be verified against the root keys of the trust domain.
 
-It is generally advised keep workloads that are in either different physical locations (such as different data centers or cloud regions) or environments where different security practices are applied (such as a staging or lab environment compared to a production environment) in distinct trust domains.
+It is generally advised to keep workloads that are in either different physical locations (such as different data centers or cloud regions) or environments where different security practices are applied (such as a staging or lab environment compared to a production environment) in distinct trust domains.
 
 ## SPIFFE Verifiable Identity Document (SVID)
 
@@ -49,7 +49,7 @@ An SVID contains a single SPIFFE ID, which represents the identity of the servic
 
 As tokens are susceptible to _replay attacks_, in which an attacker that obtains the token in transit can use it to impersonate a workload, it is advised to use X.509-SVIDs whenever possible. However, there may be some situations in which the only option is the JWT token format, for example, when your architecture has an L7 proxy or load balancer between two workloads.
 
-For detailed information on the SVID, see the [SVID specification](https://github.com/spiffe/spiffe/blob/master/standards/X509-SVID.md).
+For detailed information on the SVID, see the [SVID specification](https://github.com/spiffe/spiffe/blob/main/standards/X509-SVID.md).
 
 ## SPIFFE Workload API
 
@@ -84,3 +84,4 @@ The public key material used to validate X.509 SVIDs is a set of certificates. T
 SPIFFE is a specification described in the following documents (maintained in the [SPIFFE GitHub repo](https://github.com/spiffe/spiffe)):
 
 {{< specs >}}
+{{< scarf/pixels/medium-interest >}}
