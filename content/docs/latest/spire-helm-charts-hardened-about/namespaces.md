@@ -8,7 +8,6 @@ aliases:
     - /docs/latest/helm-charts-hardened/namespaces
 ---
 
-
 ## Namespace Creation Options
 
 | Value                                 | Default Value | Description                                                                                  |
