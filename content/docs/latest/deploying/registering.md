@@ -119,8 +119,11 @@ To learn more about the `spire-server entry delete` command and options, consult
 
 A workload registration entry can have a single parent ID. This could be the SPIFFE ID of a specific node (i.e. the SPIFFE ID of an agent as given through node attestation) or it could also be the SPIFFE ID of a node registration entry (sometimes referred to as a node alias/set). A node alias (or set) is a group of nodes that share similar characteristics that are given a shared identity. The node registration entry has the node selectors that are required in order for a node to qualify for the shared identity. Meaning that any node that has at least the selectors defined by a node registration entry is given that alias (or belongs to that node set). When a workload registration entry uses the SPIFFE ID of a node alias as the parent, any node with that alias is authorized to obtain SVIDs for that workload
 
+
+For example:
+
 ```
-spire-server entry create -node -spiffeID spiffe://acme.org/mynodealias -selector aws_iid:tag:<TAG_NAME>:<TAG_VALUE>
+spire-server entry create -node -spiffeID spiffe://devvm.local/mynodealias -selector tpm:pub_hash:xxxxx
 ```
 
 # Where next?
