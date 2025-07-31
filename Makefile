@@ -4,7 +4,7 @@ HUGO_VERSION ?= 0.68.3
 CONTAINER_RUNTIME ?= docker
 
 setup:
-	pip install -r requirements.txt
+	python3 -m pip install -r requirements.txt
 	npm install
 
 serve:
@@ -39,14 +39,14 @@ docker-build:
 		-f Dockerfile.dev
 
 docker-serve: docker-build
-	$(CONTAINER_RUNTIME) run --rm -it \
+	$(CONTAINER_RUNTIME) run --rm \
 		-v $(PWD):/app \
 		-p 1313:1313 \
 		-e HIDE_RELEASES=true \
 		spiffe.io:latest
 
 docker-serve-with-releases: docker-build
-	$(CONTAINER_RUNTIME) run --rm -it \
+	$(CONTAINER_RUNTIME) run --rm \
 		-v $(PWD):/app \
 		-p 1313:1313 \
 		spiffe.io:latest
