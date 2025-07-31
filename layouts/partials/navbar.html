@@ -13,7 +13,7 @@
 {{- $stackUrl        := $social.stackoverflow }}
 {{- $youtubeUrl      := $social.youtube }}
 {{- $version         := index (split .File.Path "/") 1 -}}
-{{- $pageUrl         := .URL -}}
+{{- $pageUrl         := .RelPermalink -}}
 
 {{ $spiffeAbout        := where site.Pages ".Params.kind" "eq" "spiffe-about" }}
 

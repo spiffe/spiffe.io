@@ -1,6 +1,6 @@
 {{- $docs := .CurrentSection.RegularPages }}     
 {{- $multipleDocs := gt (len $docs) 1 }}
-{{- $currentUrl   := .URL }}
+{{- $currentUrl   := .RelPermalink }}
 {{- $sectionCount := 3 }}
 {{- $sectionCountStringSingular := "third" }}
 {{- if .Params.toc }}

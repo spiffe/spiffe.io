@@ -5,19 +5,19 @@
 
 {{- $docs    := where .section "Section" "eq" "docs" -}}
 {{- $node    := index (where $docs "IsNode" "eq" true) 0 -}}
-{{- $pages   := where .section ".URL" "ne" $node.URL -}}
+{{- $pages   := where .section ".RelPermalink" "ne" $node.RelPermalink -}}
 
 
 {{- range $pages -}}
     {{- $scratch.Add "sectionsForVersion" (slice .) -}}
 {{- end -}}
 
-{{- if (ne ($scratch.Get "sectionsForVersion") nil) and (gt (len ($scratch.Get "sectionsForVersion")) 0) -}}
+{{- if and (ne ($scratch.Get "sectionsForVersion") nil) (gt (len ($scratch.Get "sectionsForVersion")) 0) -}}
 
 {{- if $node -}}
-    <span class="docs-nav-title">
-        <a href="{{- $node.URL -}}">{{- $node.Params.short -}}</a>
-    </span>
+<div class="sidenav-item">
+<a href="{{- $node.RelPermalink -}}">{{- $node.Params.short -}}</a>
+</div>
 {{- end -}}
 
 {{- range ($scratch.Get "sectionsForVersion") -}}

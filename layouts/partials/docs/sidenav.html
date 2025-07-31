@@ -17,8 +17,8 @@
 {{ $spireMicroservices := where $allDocs ".Params.kind" "eq" "microservices" }}
 {{ $spireKeyless       := where $allDocs ".Params.kind" "eq" "keyless" }}
 
-{{ $pageUrl    := .URL }}
-{{ $isDocsHome := eq .URL $docsHome.URL }}
+{{ $pageUrl    := .RelPermalink }}
+{{ $isDocsHome := eq .RelPermalink $docsHome.RelPermalink }}
 {{ $version    := index (split .File.Path "/") 1 }}
 {{/* $latest     := index site.Data.releases 1 */}}
 {{/* $latest     := "v0.10.0" */}}
