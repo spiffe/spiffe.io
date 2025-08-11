@@ -47,3 +47,7 @@ js = [
 js = [
     "docs"
 ]
+
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$', '^BRANCH$', '^HIDE_RELEASES$']

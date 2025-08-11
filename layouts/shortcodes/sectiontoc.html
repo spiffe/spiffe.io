@@ -1,10 +1,10 @@
 {{- $kind       := .Get 0 -}}
-{{- $currentUrl := .Page.URL }}
+{{- $currentUrl := .Page.RelPermalink }}
 <ul>
 {{ range site.Pages }}
     {{ if and (eq .Params.kind $kind) (or (eq .IsNode false) (eq .Params.toc true))  }}
-    <li class="{{- if eq .URL $currentUrl }}is-active{{- end }}">
-        <a href="{{ .URL }}">{{ .Title }}</a>
+    <li class="{{- if eq .RelPermalink $currentUrl }}is-active{{- end }}">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         <p>{{ .Description }}</p>
     </li>
     {{ end }}
