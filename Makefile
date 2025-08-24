@@ -52,7 +52,7 @@ docker-serve-with-releases: docker-build
 		spiffe.io:latest
 
 pull-external-content:
-	python ./pull_external.py
+	python3 ./pull_external.py
 
 ci-check-links: pull-external-content
 	echo "Running Hugo server..." && \
