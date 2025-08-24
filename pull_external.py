@@ -66,6 +66,7 @@ def _get_releases():
     hide_releases = os.environ.get("HIDE_RELEASES", "").lower() == "true"
     
     # Skip GitHub API calls if no token or explicitly hiding releases
+    print("token--------------------", token != "" )
     if not token:
         print("no token")
     if not token or hide_releases:
