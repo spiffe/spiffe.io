@@ -4,7 +4,7 @@
  {{/* In the current "ctx" the file path refers to the doc we are linking to, not the page we are on */}}
 {{- $title := cond (isset .ctx.Params "navtitle") (.ctx.Params.navtitle) .ctx.Title -}}
 {{- $short := cond (isset .ctx.Params "short") (.ctx.Params.short) $title -}}
-{{- $linkRef := .ctx.URL -}}
+{{- $linkRef := .ctx.RelPermalink -}}
 <a class="navbar-item" href="{{ $linkRef }}">
   {{ $short }}
 </a>

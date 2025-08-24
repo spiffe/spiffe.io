@@ -62,24 +62,40 @@ def _pull_releases():
 
 
 def _get_releases():
-    session = requests.Session()
-
     token = os.environ.get("GITHUB_TOKEN")
-    if token is not None:
-        session.headers.update({"Authorization": "token {}".format(token)})
+    hide_releases = os.environ.get("HIDE_RELEASES", "").lower() == "true"
+    
+    # Skip GitHub API calls if no token or explicitly hiding releases
+    if not token or hide_releases:
+        print("WARNING: GitHub releases disabled (no token or HIDE_RELEASES=true)")
+        print("Site will build but release information will show placeholder values")
+        return [], {}
+    
+    session = requests.Session()
+    session.headers.update({"Authorization": "token {}".format(token)})
 
     retries = Retry(
-        total=5,
+        total=3,
         backoff_factor=0.1,
         raise_on_status=True,
-        status_forcelist=[401, 403, 404, 500, 502, 503, 504],
+        status_forcelist=[500, 502, 503, 504],
     )
     session.mount("https://", HTTPAdapter(max_retries=retries))
 
-    all_releases = session.get(GITHUB_API_RELEASES).json()
-    latest_release = session.get(GITHUB_API_LATEST_RELEASE).json()
-
-    return all_releases, latest_release
+    try:
+        all_releases_response = session.get(GITHUB_API_RELEASES)
+        all_releases_response.raise_for_status()
+        all_releases = all_releases_response.json()
+        
+        latest_release_response = session.get(GITHUB_API_LATEST_RELEASE)
+        latest_release_response.raise_for_status()
+        latest_release = latest_release_response.json()
+        
+        return all_releases, latest_release
+    except Exception as e:
+        print(f"WARNING: GitHub API request failed: {e}")
+        print("Site will build but release information will show placeholder values")
+        return [], {}
 
 
 def _read_yaml(file_name: str) -> Dict:
