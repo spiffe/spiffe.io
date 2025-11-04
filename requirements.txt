@@ -1,0 +1,6 @@
+pyyaml
+requests
+beautifulsoup4
+watchdog
+toml
+linkchecker

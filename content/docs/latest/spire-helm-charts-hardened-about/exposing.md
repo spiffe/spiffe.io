@@ -104,3 +104,4 @@ spire-server:
       enabled: true
 ```
 
+{{< scarf/pixels/high-interest >}}

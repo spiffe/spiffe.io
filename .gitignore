@@ -3,6 +3,7 @@
 
 # IDEs
 .vscode
+.idea
 
 # Hugo-generated assets
 public/
@@ -10,6 +11,13 @@ resources/
 
 # Node.js assets
 node_modules/
+
+# Python virtual environment
+.venv/
+venv/
+.env
+*.pyc
+__pycache__/
 
 # Temporal content
 checkouts/

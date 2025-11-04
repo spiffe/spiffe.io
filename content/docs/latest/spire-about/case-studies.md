@@ -14,3 +14,5 @@ aliases:
 ---
 
 You can find more presentations on a variety of topics concerning SPIFFE and SPIRE on our [Community Presentations](/docs/latest/spiffe/community-presentations/) page.
+
+{{< scarf/pixels/medium-interest >}}

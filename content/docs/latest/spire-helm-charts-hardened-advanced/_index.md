@@ -10,3 +10,4 @@ The SPIRE Helm chart provided by the helm-charts-hardened project can be configu
 
 {{< sectiontoc "spire-helm-charts-hardened-advanced" >}}
 
+{{< scarf/pixels/high-interest >}}

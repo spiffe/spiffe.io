@@ -62,19 +62,40 @@ def _pull_releases():
 
 
 def _get_releases():
+    token = os.environ.get("GITHUB_TOKEN")
+    hide_releases = os.environ.get("HIDE_RELEASES", "").lower() == "true"
+    
+    # Skip GitHub API calls if no token or explicitly hiding releases
+    if not token or hide_releases:
+        print("WARNING: GitHub releases disabled (no token or HIDE_RELEASES=true)")
+        print("Site will build but release information will show placeholder values")
+        return [], {}
+    
     session = requests.Session()
+    session.headers.update({"Authorization": "token {}".format(token)})
+
     retries = Retry(
-        total=5,
+        total=3,
         backoff_factor=0.1,
         raise_on_status=True,
-        status_forcelist=[401, 403, 404, 500, 502, 503, 504],
+        status_forcelist=[500, 502, 503, 504],
     )
     session.mount("https://", HTTPAdapter(max_retries=retries))
 
-    all_releases = session.get(GITHUB_API_RELEASES).json()
-    latest_release = session.get(GITHUB_API_LATEST_RELEASE).json()
-
-    return all_releases, latest_release
+    try:
+        all_releases_response = session.get(GITHUB_API_RELEASES)
+        all_releases_response.raise_for_status()
+        all_releases = all_releases_response.json()
+        
+        latest_release_response = session.get(GITHUB_API_LATEST_RELEASE)
+        latest_release_response.raise_for_status()
+        latest_release = latest_release_response.json()
+        
+        return all_releases, latest_release
+    except Exception as e:
+        print(f"WARNING: GitHub API request failed: {e}")
+        print("Site will build but release information will show placeholder values")
+        return [], {}
 
 
 def _read_yaml(file_name: str) -> Dict:
@@ -245,11 +266,13 @@ def _copy_file(
         content, heading = _get_file_content(abs_path_to_source_file, remove_heading)
 
         front_matter = None
+        beacon = None
         if heading:
             front_matter = {"title": heading}
 
         if transform_file:
             front_matter = {**front_matter, **transform_file.get("frontMatter", {})}
+            beacon = transform_file.get("beacon", None)
 
         if front_matter:
             target_file.writelines(_generate_yaml_front_matter(front_matter))
@@ -262,6 +285,9 @@ def _copy_file(
             source_branch=source_branch,
         )
         target_file.write(final_content)
+        
+        if beacon:
+            target_file.write(f"\n{beacon}\n")
 
         return abs_path_to_target_file
 
@@ -331,6 +357,9 @@ def _process_content(
         else:
             if rel == "./" or rel == "":
                 rel_url = os.path.join(os.path.dirname(rel_path_to_source_file), url)
+            rel_url = os.path.normpath(
+                os.path.join(os.path.dirname(rel_path_to_source_file), rel, url)
+            )
 
             branch = _get_branch_by_repo_url(source, source_branch)
 

@@ -34,7 +34,8 @@ Look at the [upgrade notes](https://artifacthub.io/packages/helm/spiffe/spire#up
 
 # Upgrading
 
-Once all prerequisite steps have been performed, upgrade the instance by running the following. Make sure to use the namespace you installed the chart to:
+Once all prerequisite steps have been performed, upgrade the instance by running 
+the following. Make sure to use the namespace you installed the chart to:
 
 ```shell
 helm upgrade --install --create-namespace -n spire-mgmt spire-crds spire-crds \
@@ -44,3 +45,5 @@ helm upgrade --install -n spire-mgmt spire spire \
  --repo https://spiffe.github.io/helm-charts-hardened/ \
  -f your-values.yaml
 ```
+
+{{< scarf/pixels/high-interest >}}

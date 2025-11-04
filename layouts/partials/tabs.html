@@ -1,4 +1,4 @@
-{{- $currentUrl   := .URL }}
+{{- $currentUrl   := .RelPermalink }}
 {{- $docs         := .CurrentSection.RegularPages }}
 {{- $multipleDocs := gt (len $docs) 1 }}
 
@@ -9,15 +9,15 @@
 <nav class="tabs is-medium">
   <div class="container">
     <ul>
-      <li{{ if eq .URL $currentUrl }} class="is-active"{{ end }}>
-        <a href="{{ .URL }}">
+      <li{{ if eq .RelPermalink $currentUrl }} class="is-active"{{ end }}>
+        <a href="{{ .RelPermalink }}">
           {{ .Title }}
         </a>
       </li>
       {{- range $s2, $t2 := $taxonomy.Sections }}
       {{- $title := cond (isset $t2.Params "short") ($t2.Params.short) $t2.Title }}
-      <li{{ if eq .URL $currentUrl }} class="is-active"{{ end }}>
-        <a href="{{ $t2.URL }}">
+      <li{{ if eq .RelPermalink $currentUrl }} class="is-active"{{ end }}>
+        <a href="{{ $t2.RelPermalink }}">
           {{ $t2.Title }}
         </a>
       </li>
@@ -32,8 +32,8 @@
   <div class="container">
     <ul>
     {{ range $docs }}
-      <li class="{{- if eq .URL $currentUrl }}is-active{{- end }}">
-          <a href="{{ .URL }}">{{ .Title }}</a>
+      <li class="{{- if eq .RelPermalink $currentUrl }}is-active{{- end }}">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       </li>
     {{ end }}
     </ul>
