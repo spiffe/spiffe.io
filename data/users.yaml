@@ -21,6 +21,9 @@ issuers:
   - name: Greymatter.io
     link: https://greymatter.io/
     logo: Greymatter-logo.svg
+  - name: Red Hat Zero Trust Workload Identity Manager
+    link: https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/security_and_compliance/zero-trust-workload-identity-manager
+    logo: redhat.svg
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
