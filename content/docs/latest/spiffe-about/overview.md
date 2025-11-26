@@ -45,6 +45,9 @@ SPIFFE comprises many specifications, each providing different parts of the SPIF
 | SPIRL         | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               | ✔               | ✔                  | ✔                         | ✔                  |
 | Teleport      | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               | ✔               | ✔                  | ✔                         |                    |
 | Venafi        | ✔          |          | ✔                          |              |         |                   |                 |                 | ✔                  | ✔                         |                    |
+| Red Hat         | ✔          | ✔        | ✔                          | ✔            | ✔**       | ✔                 | ✔               | ✔               | ✔                  | ✔                         |                   |
+
+** Supported via Red Hat's OpenShift Service Mesh 3.0  
 
 ### Explanation of Columns - Software that Implements SPIFFE
 
