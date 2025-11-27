@@ -38,14 +38,14 @@ SPIFFE comprises many specifications, each providing different parts of the SPIF
 
 ## Commercial Software That Implements SPIFFE
 
-| Software      | X.509 SVID | JWT SVID | Attestation-based Issuance | Workload API | SDS API | SPIFFE Federation | OIDC Federation | PKI Integration | Kubernetes Support | VM and Bare Metal Support | Serverless Support |
-|:--------------|:----------:|:--------:|:--------------------------:|:------------:|:-------:|:-----------------:|:---------------:|:---------------:|:------------------:|:-------------------------:|:------------------:|
-| GCP           | ✔          |          | ✔                          |              |         |                   |                 | ✔               | ✔                  | ✔                         |                    |
-| Greymatter.io | ✔          | ✔        | ✔                          | ✔            | ✔       |                   |                 | ✔               | ✔                  | ✔                         | ✔                  |
-| [Defakto](https://www.defakto.security)       | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               | ✔               | ✔                  | ✔                         | ✔                  |
-| Teleport      | ✔          | ✔        | ✔                          | ✔            | ✔       | ✔                 | ✔               | ✔               | ✔                  | ✔                         |                    |
-| Venafi        | ✔          |          | ✔                          |              |         |                   |                 |                 | ✔                  | ✔                         |                    |
-| Red Hat         | ✔          | ✔        | ✔                          | ✔            | ✔**       | ✔                 | ✔               | ✔               | ✔                  | ✔                         |                   |
+| Software                                                                                                   | X.509 SVID | JWT SVID | Attestation-based Issuance | Workload API | SDS API | SPIFFE Federation | OIDC Federation | PKI Integration | Kubernetes Support | VM and Bare Metal Support | Serverless Support |
+|:-----------------------------------------------------------------------------------------------------------|:----------:|:--------:|:--------------------------:|:------------:|:-------:|:-----------------:|:---------------:|:---------------:|:------------------:|:-------------------------:|:------------------:|
+| [GCP](https://cloud.google.com/)                                                                           |     ✔      |          |             ✔              |              |         |                   |                 |        ✔        |         ✔          |             ✔             |                    |
+| [Greymatter.io](https://greymatter.io)                                                                     |     ✔      |    ✔     |             ✔              |      ✔       |    ✔    |                   |                 |        ✔        |         ✔          |             ✔             |         ✔          |
+| [Defakto](https://www.defakto.security)                                                                    |     ✔      |    ✔     |             ✔              |      ✔       |    ✔    |         ✔         |        ✔        |        ✔        |         ✔          |             ✔             |         ✔          |
+| [Teleport](https://goteleport.com/platform/machine-and-workload-identity/)                                 |     ✔      |    ✔     |             ✔              |      ✔       |    ✔    |         ✔         |        ✔        |        ✔        |         ✔          |             ✔             |                    |
+| [Venafi](https://www.cyberark.com/products/workload-identity-manager/)                                     |     ✔      |          |             ✔              |              |         |                   |                 |                 |         ✔          |             ✔             |                    |
+| [Red Hat](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) |     ✔      |    ✔     |             ✔              |      ✔       |   ✔**   |         ✔         |        ✔        |        ✔        |         ✔          |             ✔             |                    |
 
 ** Supported via Red Hat's OpenShift Service Mesh 3.0  
 
