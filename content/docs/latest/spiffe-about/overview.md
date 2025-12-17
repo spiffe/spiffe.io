@@ -106,6 +106,7 @@ SPIFFE enjoys a broad ecosystem, with many software projects, products, and plat
 | [AWS IAM Roles Anywhere](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html) |     ✔      |          |                       |              |
 | [GCP Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation)     |     ✔      |    ✔     |                       |              |
 | [Greymatter.io](https://greymatter.gitbook.io/grey-matter-documentation/usage/fabric/security/spire)   |     ✔      |    ✔     |           ✔           |      ✔       |
+| [WarpStream](https://docs.warpstream.com/warpstream/kafka/manage-security/mutual-tls-mtls) |     ✔      |          |                       |              |
 
 ### Explanation of Columns - Software that Works with SPIFFE
 
