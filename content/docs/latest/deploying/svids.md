@@ -25,7 +25,7 @@ Developers coding a new workload that needs to interact with SPIFFE can interact
 
 The Workload API doesn't require any explicit authentication (such as a secret). Rather, the SPIFFE specification leaves it to implementation of the SPIFFE Workload API to determine how to authenticate the workload. In the case of SPIRE, this is achieved by inspecting the Unix kernel metadata collected by the SPIRE Agent when a workload calls the API.
 
-The API is a gRPC API, derived [from a protobuf](https://github.com/spiffe/go-spiffe/blob/main/v2/proto/spiffe/workload/workload.proto). The [gRPC project](https://grpc.io/) provides tools to generate client libraries from a protobuf in a variety of languages.
+The API is a gRPC API, derived [from a protobuf](https://github.com/spiffe/go-spiffe/blob/main/proto/spiffe/workload/workload.proto). The [gRPC project](https://grpc.io/) provides tools to generate client libraries from a protobuf in a variety of languages.
 
 ## Working with SVIDs in Go 
 
