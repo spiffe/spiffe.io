@@ -46,6 +46,7 @@ SPIFFE comprises many specifications, each providing different parts of the SPIF
 | [Teleport](https://goteleport.com/platform/machine-and-workload-identity/)                                 |     ✔      |    ✔     |             ✔              |      ✔       |    ✔    |         ✔         |        ✔        |        ✔        |         ✔          |             ✔             |                    |
 | [Venafi](https://www.cyberark.com/products/workload-identity-manager/)                                     |     ✔      |          |             ✔              |              |         |                   |                 |                 |         ✔          |             ✔             |                    |
 | [Red Hat](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) |     ✔      |    ✔     |             ✔              |      ✔       |   ✔**   |         ✔         |        ✔        |        ✔        |         ✔          |             ✔             |                    |
+| [Cofide](https://www.cofide.io)                                                                            |     ✔      |    ✔     |             ✔              |      ✔       |    ✔    |         ✔         |        ✔        |        ✔        |         ✔          |             ✔             |         ✔          |
 
 ** Supported via Red Hat's OpenShift Service Mesh 3.0  
 
