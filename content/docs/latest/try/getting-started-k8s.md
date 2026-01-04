@@ -35,7 +35,7 @@ If you are using Kubeadm to run this tutorial, a default storage class and an as
 
 # Obtain the Required Files
 
-This guide requires a number of **.yaml** files. To obtain this directory of files clone **https://github.com/spiffe/spire-tutorials** and obtain the **.yaml** files from the **spire-tutorials/k8s/quickstart** subdirectory. Remember to run all kubectl commands in the directory in which those files reside.
+To follow this guide, you will need several YAML files. You can obtain them by cloning the SPIRE tutorials repository at https://github.com/spiffe/spire-tutorials and navigating to the `spire-tutorials/k8s/quickstart` subdirectory. Ensure that all `kubectl` commands are run from this directory.
 
 Set up a Kubernetes environment on a provider of your choice or use Minikube. Link the Kubernetes environment to the kubectl command.
 
