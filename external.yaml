@@ -218,7 +218,7 @@ spiffe-specs:
                 weight: 300
         SPIFFE-ID.md:
             frontMatter:
-                title: SPIFFE Identity and Verifiable Identity
+                title: SPIFFE Identity and Verifiable Identity Document
                 short: SPIFFE ID and Verifiable Identity Document
                 kind: spiffe-specs
                 weight: 200
