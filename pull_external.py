@@ -278,6 +278,14 @@ def _copy_file(
             front_matter = {**front_matter, **transform_file.get("frontMatter", {})}
             beacon = transform_file.get("beacon", None)
 
+        # Add external source URL for linking back to canonical source
+        branch = _get_branch_by_repo_url(source, source_branch)
+        external_source_url = "{}/blob/{}/{}".format(source, branch, rel_path_to_source_file)
+        if front_matter:
+            front_matter["externalSource"] = external_source_url
+        else:
+            front_matter = {"externalSource": external_source_url}
+
         if front_matter:
             target_file.writelines(_generate_yaml_front_matter(front_matter))
 

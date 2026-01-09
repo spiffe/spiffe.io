@@ -200,7 +200,7 @@ spiffe-specs:
     transform:
         SPIFFE.md:
             frontMatter:
-                title: Secure Production Identity Framework for Everyone (SPIFFE)
+                title: Secure Production Identity Framework for Everyone
                 short: SPIFFE
                 kind: spiffe-specs
                 weight: 100
