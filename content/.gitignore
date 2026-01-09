@@ -14,3 +14,11 @@ docs/latest/microservices/envoy-x509/README.md
 docs/latest/microservices/envoy-jwt/README.md
 docs/latest/microservices/envoy-opa/README.md
 docs/latest/microservices/envoy-jwt-opa/README.md
+docs/latest/spiffe-specs/JWT-SVID.md
+docs/latest/spiffe-specs/SPIFFE-ID.md
+docs/latest/spiffe-specs/SPIFFE.md
+docs/latest/spiffe-specs/SPIFFE_Federation.md
+docs/latest/spiffe-specs/SPIFFE_Trust_Domain_and_Bundle.md
+docs/latest/spiffe-specs/SPIFFE_Workload_API.md
+docs/latest/spiffe-specs/SPIFFE_Workload_Endpoint.md
+docs/latest/spiffe-specs/X509-SVID.md

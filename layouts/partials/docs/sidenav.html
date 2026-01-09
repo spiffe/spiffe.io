@@ -2,6 +2,7 @@
 {{ $allDocs    := site.Pages  }}
 
 {{ $spiffeAbout        := where $allDocs ".Params.kind" "eq" "spiffe-about" }}
+{{ $spiffeSpecs        := where $allDocs ".Params.kind" "eq" "spiffe-specs" }}
 
 {{ $spireAbout         := where $allDocs ".Params.kind" "eq" "spire-about" }}
 
@@ -47,6 +48,7 @@
   SPIFFE
 </span>
 {{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spiffeAbout "pageUrl" $pageUrl "version" $version ) }}
+{{ partial "docs/sidenav-section.html" ( dict "ctx" . "section" $spiffeSpecs "pageUrl" $pageUrl "version" $version ) }}
 
 <span class="docs-nav-section">
   SPIRE
