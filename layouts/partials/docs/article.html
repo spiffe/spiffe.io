@@ -15,6 +15,14 @@
 
     <section class="section">
       <div class="content">
+        {{ if and (eq .Params.kind "spiffe-specs") .Params.externalSource }}
+        <div class="message is-info">
+          <div class="message-body">
+            This document is part of the SPIFFE standard. The canonical version can be found at
+            <a href="{{ .Params.externalSource }}" target="_blank" rel="noopener">{{ .Params.externalSource }}</a>
+          </div>
+        </div>
+        {{ end }}
         {{ .Content }}
       </div>
     </section>
