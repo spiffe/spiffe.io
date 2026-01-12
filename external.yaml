@@ -184,3 +184,65 @@ microservices/envoy-jwt-opa:
                 description: Secure Communication Using Envoy with JWT-SVIDs and Open Policy Agent Authorization
                 weight: 400
             beacon: "{{< scarf/pixels/high-interest >}}"
+
+spiffe-specs:
+    source: https://github.com/spiffe/spiffe
+    branch: main
+    pullFiles:
+        - standards/JWT-SVID.md
+        - standards/SPIFFE-ID.md
+        - standards/SPIFFE.md
+        - standards/SPIFFE_Federation.md
+        - standards/SPIFFE_Trust_Domain_and_Bundle.md
+        - standards/SPIFFE_Workload_API.md
+        - standards/SPIFFE_Workload_Endpoint.md
+        - standards/X509-SVID.md
+    transform:
+        SPIFFE.md:
+            frontMatter:
+                title: Secure Production Identity Framework for Everyone
+                short: SPIFFE
+                kind: spiffe-specs
+                weight: 100
+        JWT-SVID.md:
+            frontMatter:
+                title: JWT-SVID
+                short: JWT-SVID
+                kind: spiffe-specs
+                weight: 300
+        X509-SVID.md:
+            frontMatter:
+                title: X509-SVID
+                short: X509-SVID
+                kind: spiffe-specs
+                weight: 300
+        SPIFFE-ID.md:
+            frontMatter:
+                title: SPIFFE Identity and Verifiable Identity Document
+                short: SPIFFE ID and Verifiable Identity Document
+                kind: spiffe-specs
+                weight: 200
+        SPIFFE_Federation.md:
+            frontMatter:
+                title: SPIFFE Federation
+                short: SPIFFE Federation
+                kind: spiffe-specs
+                weight: 500
+        SPIFFE_Trust_Domain_and_Bundle.md:
+            frontMatter:
+                title: SPIFFE Trust Domain and Bundle
+                short: SPIFFE Trust Domain and Bundle
+                kind: spiffe-specs
+                weight: 200
+        SPIFFE_Workload_API.md:
+            frontMatter:
+                title: SPIFFE Workload API
+                short: SPIFFE Workload API
+                kind: spiffe-specs
+                weight: 400
+        SPIFFE_Workload_Endpoint.md:
+            frontMatter:
+                title: SPIFFE Workload Endpoint
+                short: SPIFFE Workload Endpoint
+                kind: spiffe-specs
+                weight: 400

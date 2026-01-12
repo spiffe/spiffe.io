@@ -120,17 +120,21 @@ def _get_file_content(filename: str, remove_heading=False) -> Tuple[str, str]:
     with open(filename, "r") as f:
         raw = f.readlines()
         if not remove_heading:
-            return "".join(raw)
+            return "".join(raw), None
 
-        heading = None
+        # Find and remove only the first heading line (the title)
         for i in range(len(raw)):
             if raw[i].startswith("#"):
                 heading = RE_EXTRACT_TITLE.match(raw[i]).group("title")
                 heading = '"' + heading.replace('"', '\\"') + '"'
-                continue
+                # Return everything after this first heading line
+                return "".join(raw[i + 1:]).lstrip('\n'), heading
+            # Skip blank lines at the start
+            if raw[i].strip() != "":
+                # Non-blank, non-heading line - no title to strip
+                return "".join(raw), None
 
-            if not raw[i].startswith("#") and not raw[i].strip() == "":
-                return "".join(raw[i:]), heading
+        return "".join(raw), None
 
 
 def _generate_yaml_front_matter(front_matter: Dict = {}) -> List[str]:
@@ -273,6 +277,14 @@ def _copy_file(
         if transform_file:
             front_matter = {**front_matter, **transform_file.get("frontMatter", {})}
             beacon = transform_file.get("beacon", None)
+
+        # Add external source URL for linking back to canonical source
+        branch = _get_branch_by_repo_url(source, source_branch)
+        external_source_url = "{}/blob/{}/{}".format(source, branch, rel_path_to_source_file)
+        if front_matter:
+            front_matter["externalSource"] = external_source_url
+        else:
+            front_matter = {"externalSource": external_source_url}
 
         if front_matter:
             target_file.writelines(_generate_yaml_front_matter(front_matter))

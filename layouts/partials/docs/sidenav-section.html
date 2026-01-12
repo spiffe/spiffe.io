@@ -20,7 +20,7 @@
 </div>
 {{- end -}}
 
-{{- range ($scratch.Get "sectionsForVersion") -}}
+{{- range sort ($scratch.Get "sectionsForVersion") ".Params.weight" -}}
     {{- partial "docs/sidenav-link.html" (dict "ctx" . "pageUrl" $pageUrl "version" $version) -}}
 {{- end -}}
 
