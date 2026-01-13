@@ -23,7 +23,7 @@ In this introduction to SPIRE on Kubernetes you will learn how to:
 * Fetch an x509-SVID over the SPIFFE Workload API
 * Learn where to find resources for more complex installations
 
-The steps in this guide have been tested on these Kubernetes versions: 1.13.1, 1.12.4, and 1.10.12.
+The steps in this guide have been tested using Kubernetes versions 1.29 through 1.34.
 
 {{< info >}}
 If you are using Minikube to run this tutorial you should specify some special flags as described [here](#considerations-when-using-minikube).
