@@ -184,6 +184,19 @@ In order to enable SPIRE to perform workload attestation -- which allows the age
         -selector k8s:sa:default
     ```
 
+    After running this command, you should see output similar to the following:
+
+    ```text
+    Entry ID         : fc8312b4-4390-436f-abb3-71e15215aef8
+    SPIFFE ID        : spiffe://example.org/ns/default/sa/default
+    Parent ID        : spiffe://example.org/ns/spire/sa/spire-agent
+    Revision         : 0
+    X509-SVID TTL    : default
+    JWT-SVID TTL     : default
+    Selector         : k8s:ns:default
+    Selector         : k8s:sa:default
+    ```
+
 # Configure a Workload Container to Access SPIRE
 
 In this section, you configure a workload container to access SPIRE. Specifically, you are configuring the workload container to access the Workload API UNIX domain socket.
