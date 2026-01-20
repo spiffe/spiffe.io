@@ -44,7 +44,15 @@ See the [spiffe](https://pypi.org/project/spiffe/) and [spiffe-tls](https://pypi
 
 # Rust
 
-See the [spiffe crate](https://crates.io/crates/spiffe) for more information about the SPIFFE Rust library.
-This library is not yet part of the official SPIFFE repo and is still under development. 
+See [spiffe](https://crates.io/crates/spiffe) for a Rust library that
+implements SPIFFE workload identity, providing support for X.509 SVIDs,
+JWT-SVIDs, and trust bundles through the SPIFFE Workload API.
+
+For TLS and mTLS integrations, see
+[spiffe-rustls](https://crates.io/crates/spiffe-rustls), which provides
+SPIFFE-based authentication and identity integration for applications built on
+`rustls`.
+
+These libraries are not part of the official SPIFFE repository.
 
 {{< scarf/pixels/high-interest >}}
