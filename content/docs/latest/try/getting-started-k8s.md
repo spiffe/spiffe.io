@@ -158,6 +158,20 @@ In order to enable SPIRE to perform workload attestation -- which allows the age
         -selector k8s_psat:agent_sa:spire-agent \
         -node
     ```
+    
+    You should get an output similar to this:
+
+    ```text
+    Entry ID         : 95260e14-ea70-4e82-9fbf-32d3d4525e6b
+    SPIFFE ID        : spiffe://example.org/ns/spire/sa/spire-agent
+    Parent ID        : spiffe://example.org/spire/server
+    Revision         : 0
+    X509-SVID TTL    : default
+    JWT-SVID TTL     : default
+    Selector         : k8s_psat:agent_ns:spire
+    Selector         : k8s_psat:agent_sa:spire-agent
+    Selector         : k8s_psat:cluster:demo-cluster
+    ```
 
 2. Create a new registration entry for the workload, specifying the SPIFFE ID to allocate to the workload:
 
@@ -168,6 +182,19 @@ In order to enable SPIRE to perform workload attestation -- which allows the age
         -parentID spiffe://example.org/ns/spire/sa/spire-agent \
         -selector k8s:ns:default \
         -selector k8s:sa:default
+    ```
+
+    After running this command, you should see output similar to the following:
+
+    ```text
+    Entry ID         : fc8312b4-4390-436f-abb3-71e15215aef8
+    SPIFFE ID        : spiffe://example.org/ns/default/sa/default
+    Parent ID        : spiffe://example.org/ns/spire/sa/spire-agent
+    Revision         : 0
+    X509-SVID TTL    : default
+    JWT-SVID TTL     : default
+    Selector         : k8s:ns:default
+    Selector         : k8s:sa:default
     ```
 
 # Configure a Workload Container to Access SPIRE
