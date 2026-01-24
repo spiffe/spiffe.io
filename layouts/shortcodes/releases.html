@@ -21,8 +21,8 @@
     {{- $latestRelease    := site.Data.releases.latest }}
     {{- $latest           := $latestRelease.tag_name }}
     {{- range $releases -}}
-    {{- $hasArm           := (index .assets 2).name }}
-    {{- $hasWindows       := (index .assets 3).name }}
+    {{- $hasArm           := ge (len .assets) 4 }}
+    {{- $hasWindows       := ge (len .assets) 6 }}
     {{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
     {{- $downloadButtons  := .Site.Params.downloads.buttons.download }}
 
@@ -34,18 +34,18 @@
     {{- $armChecksumUrl := "" -}}
     {{- $armTarUrl      := "" -}}
     {{- if $hasArm }}
-      {{- $arm       := (index .assets 2).name }}
+      {{- $arm         := (index .assets 2).name }}
       {{- $armChecksum := (index .assets 3).name }}
-      {{- $armTarUrl  = printf "%s/%s/%s" $downloadUrl $version $arm }}
-      {{- $armChecksumUrl = printf "%s/%s/%s" $downloadUrl $version $armChecksum }}
+      {{- $armTarUrl        = printf "%s/%s/%s" $downloadUrl $version $arm }}
+      {{- $armChecksumUrl   = printf "%s/%s/%s" $downloadUrl $version $armChecksum }}
     {{- end }}
     {{- $windowsChecksumUrl := "" -}}
     {{- $windowsTarUrl      := "" -}}
     {{- if $hasWindows }}
-    {{- $windows       := (index .assets 2).name }}
-    {{- $windowsChecksum := (index .assets 3).name }}
-    {{- $windowsTarUrl  = printf "%s/%s/%s" $downloadUrl $version $windows }}
-    {{- $windowsChecksumUrl = printf "%s/%s/%s" $downloadUrl $version $windowsChecksum }}
+      {{- $windows         := (index .assets 4).name }}
+      {{- $windowsChecksum := (index .assets 5).name }}
+      {{- $windowsTarUrl        = printf "%s/%s/%s" $downloadUrl $version $windows }}
+      {{- $windowsChecksumUrl   = printf "%s/%s/%s" $downloadUrl $version $windowsChecksum }}
     {{- end }}
     {{- $binaryTarUrl := printf "%s/%s/%s" $downloadUrl $version $tar }}
     {{- $checksumsUrl := printf "%s/%s/%s" $downloadUrl $version $zip }}
