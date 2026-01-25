@@ -74,8 +74,6 @@
         <div class="buttons">
           {{- if $hasLinuxAmd64 -}}
             {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Linux amd64 binaries (.tar.gz)" "isDownloadButton" true "color" "dark") }}
-          {{- end -}}
-          {{- if $hasLinuxAmd64 -}}
             {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Linux amd64 checksum (.txt)" "isDownloadButton" true "color" "dark") }}
           {{- end -}}
           {{- if $hasArm -}}
