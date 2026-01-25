@@ -1,20 +1,13 @@
 {{- $downloadUrl := .downloadUrl -}}
 {{- $version := .version -}}
 {{- $assets := .assets -}}
-{{- $urls := dict
-  "linuxAmd64" ""
-  "linuxAmd64Checksum" ""
-  "linuxArm64" ""
-  "linuxArm64Checksum" ""
-  "windowsAmd64" ""
-  "windowsAmd64Checksum" ""
--}}
+{{- $urls := dict "linuxAmd64" "" "linuxAmd64Checksum" "" "linuxArm64" "" "linuxArm64Checksum" "" "windowsAmd64" "" "windowsAmd64Checksum" "" -}}
 
 {{- range $assets -}}
   {{- $name := lower .name -}}
   {{- $isMain := and (hasPrefix $name "spire-") (not (hasPrefix $name "spire-extras-")) -}}
   {{- if $isMain -}}
-    {{- $isChecksum := and (in $name "sha256") (hasSuffix $name ".txt") -}}
+    {{- $isChecksum := and (in $name "sha256") (gt (len (findRE "\\.txt$" $name)) 0) -}}
     {{- $url := printf "%s/%s/%s" $downloadUrl $version .name -}}
     {{- if in $name "linux-amd64" -}}
       {{- if $isChecksum -}}
