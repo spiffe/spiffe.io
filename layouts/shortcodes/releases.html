@@ -21,34 +21,21 @@
     {{- $latestRelease    := site.Data.releases.latest }}
     {{- $latest           := $latestRelease.tag_name }}
     {{- range $releases -}}
-    {{- $hasArm           := ge (len .assets) 4 }}
-    {{- $hasWindows       := ge (len .assets) 6 }}
     {{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
     {{- $downloadButtons  := .Site.Params.downloads.buttons.download }}
 
     {{- $version      := .tag_name }}
     {{- $versionUrl   := .html_url }}
     {{- $isLatest     := eq $version $latest }}
-    {{- $tar          := (index .assets 0).name }}
-    {{- $zip          := (index .assets 1).name }}
-    {{- $armChecksumUrl := "" -}}
-    {{- $armTarUrl      := "" -}}
-    {{- if $hasArm }}
-      {{- $arm         := (index .assets 2).name }}
-      {{- $armChecksum := (index .assets 3).name }}
-      {{- $armTarUrl        = printf "%s/%s/%s" $downloadUrl $version $arm }}
-      {{- $armChecksumUrl   = printf "%s/%s/%s" $downloadUrl $version $armChecksum }}
-    {{- end }}
-    {{- $windowsChecksumUrl := "" -}}
-    {{- $windowsTarUrl      := "" -}}
-    {{- if $hasWindows }}
-      {{- $windows         := (index .assets 4).name }}
-      {{- $windowsChecksum := (index .assets 5).name }}
-      {{- $windowsTarUrl        = printf "%s/%s/%s" $downloadUrl $version $windows }}
-      {{- $windowsChecksumUrl   = printf "%s/%s/%s" $downloadUrl $version $windowsChecksum }}
-    {{- end }}
-    {{- $binaryTarUrl := printf "%s/%s/%s" $downloadUrl $version $tar }}
-    {{- $checksumsUrl := printf "%s/%s/%s" $downloadUrl $version $zip }}
+    {{- $assetUrls := partial "downloads/release-assets.html" (dict "assets" .assets "downloadUrl" $downloadUrl "version" $version) -}}
+    {{- $binaryTarUrl := index $assetUrls "linuxAmd64" -}}
+    {{- $checksumsUrl := index $assetUrls "linuxAmd64Checksum" -}}
+    {{- $armTarUrl := index $assetUrls "linuxArm64" -}}
+    {{- $armChecksumUrl := index $assetUrls "linuxArm64Checksum" -}}
+    {{- $windowsTarUrl := index $assetUrls "windowsAmd64" -}}
+    {{- $windowsChecksumUrl := index $assetUrls "windowsAmd64Checksum" -}}
+    {{- $hasArm := and (ne $armTarUrl "") (ne $armChecksumUrl "") -}}
+    {{- $hasWindows := and (ne $windowsTarUrl "") (ne $windowsChecksumUrl "") -}}
     {{- $sourceZipUrl := printf "https://github.com/spiffe/spire/archive/%s.zip" $version }}
     {{- $sourceTarUrl := printf "https://github.com/spiffe/spire/archive/%s.tar.gz" $version }}
     <tr>

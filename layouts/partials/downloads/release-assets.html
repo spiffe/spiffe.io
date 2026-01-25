@@ -1,0 +1,41 @@
+{{- $downloadUrl := .downloadUrl -}}
+{{- $version := .version -}}
+{{- $assets := .assets -}}
+{{- $urls := dict
+  "linuxAmd64" ""
+  "linuxAmd64Checksum" ""
+  "linuxArm64" ""
+  "linuxArm64Checksum" ""
+  "windowsAmd64" ""
+  "windowsAmd64Checksum" ""
+-}}
+
+{{- range $assets -}}
+  {{- $name := lower .name -}}
+  {{- $isMain := and (hasPrefix $name "spire-") (not (hasPrefix $name "spire-extras-")) -}}
+  {{- if $isMain -}}
+    {{- $isChecksum := and (in $name "sha256") (hasSuffix $name ".txt") -}}
+    {{- $url := printf "%s/%s/%s" $downloadUrl $version .name -}}
+    {{- if in $name "linux-amd64" -}}
+      {{- if $isChecksum -}}
+        {{- $urls = merge $urls (dict "linuxAmd64Checksum" $url) -}}
+      {{- else -}}
+        {{- $urls = merge $urls (dict "linuxAmd64" $url) -}}
+      {{- end -}}
+    {{- else if in $name "linux-arm64" -}}
+      {{- if $isChecksum -}}
+        {{- $urls = merge $urls (dict "linuxArm64Checksum" $url) -}}
+      {{- else -}}
+        {{- $urls = merge $urls (dict "linuxArm64" $url) -}}
+      {{- end -}}
+    {{- else if in $name "windows-amd64" -}}
+      {{- if $isChecksum -}}
+        {{- $urls = merge $urls (dict "windowsAmd64Checksum" $url) -}}
+      {{- else -}}
+        {{- $urls = merge $urls (dict "windowsAmd64" $url) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $urls -}}
