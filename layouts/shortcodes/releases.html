@@ -21,34 +21,21 @@
     {{- $latestRelease    := site.Data.releases.latest }}
     {{- $latest           := $latestRelease.tag_name }}
     {{- range $releases -}}
-    {{- $hasArm           := (index .assets 2).name }}
-    {{- $hasWindows       := (index .assets 3).name }}
     {{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}
     {{- $downloadButtons  := .Site.Params.downloads.buttons.download }}
 
     {{- $version      := .tag_name }}
     {{- $versionUrl   := .html_url }}
     {{- $isLatest     := eq $version $latest }}
-    {{- $tar          := (index .assets 0).name }}
-    {{- $zip          := (index .assets 1).name }}
-    {{- $armChecksumUrl := "" -}}
-    {{- $armTarUrl      := "" -}}
-    {{- if $hasArm }}
-      {{- $arm       := (index .assets 2).name }}
-      {{- $armChecksum := (index .assets 3).name }}
-      {{- $armTarUrl  = printf "%s/%s/%s" $downloadUrl $version $arm }}
-      {{- $armChecksumUrl = printf "%s/%s/%s" $downloadUrl $version $armChecksum }}
-    {{- end }}
-    {{- $windowsChecksumUrl := "" -}}
-    {{- $windowsTarUrl      := "" -}}
-    {{- if $hasWindows }}
-    {{- $windows       := (index .assets 2).name }}
-    {{- $windowsChecksum := (index .assets 3).name }}
-    {{- $windowsTarUrl  = printf "%s/%s/%s" $downloadUrl $version $windows }}
-    {{- $windowsChecksumUrl = printf "%s/%s/%s" $downloadUrl $version $windowsChecksum }}
-    {{- end }}
-    {{- $binaryTarUrl := printf "%s/%s/%s" $downloadUrl $version $tar }}
-    {{- $checksumsUrl := printf "%s/%s/%s" $downloadUrl $version $zip }}
+    {{- $binaryTarUrl := partial "downloads/find-asset.html" (dict "assets" .assets "downloadUrl" $downloadUrl "version" $version "platform" "linux-amd64" "checksum" false) -}}
+    {{- $checksumsUrl := partial "downloads/find-asset.html" (dict "assets" .assets "downloadUrl" $downloadUrl "version" $version "platform" "linux-amd64" "checksum" true) -}}
+    {{- $armTarUrl := partial "downloads/find-asset.html" (dict "assets" .assets "downloadUrl" $downloadUrl "version" $version "platform" "linux-arm64" "checksum" false) -}}
+    {{- $armChecksumUrl := partial "downloads/find-asset.html" (dict "assets" .assets "downloadUrl" $downloadUrl "version" $version "platform" "linux-arm64" "checksum" true) -}}
+    {{- $windowsTarUrl := partial "downloads/find-asset.html" (dict "assets" .assets "downloadUrl" $downloadUrl "version" $version "platform" "windows-amd64" "checksum" false) -}}
+    {{- $windowsChecksumUrl := partial "downloads/find-asset.html" (dict "assets" .assets "downloadUrl" $downloadUrl "version" $version "platform" "windows-amd64" "checksum" true) -}}
+    {{- $hasLinuxAmd64 := and (ne $binaryTarUrl "") (ne $checksumsUrl "") -}}
+    {{- $hasArm := and (ne $armTarUrl "") (ne $armChecksumUrl "") -}}
+    {{- $hasWindows := and (ne $windowsTarUrl "") (ne $windowsChecksumUrl "") -}}
     {{- $sourceZipUrl := printf "https://github.com/spiffe/spire/archive/%s.zip" $version }}
     {{- $sourceTarUrl := printf "https://github.com/spiffe/spire/archive/%s.tar.gz" $version }}
     <tr>
@@ -66,8 +53,10 @@
 
       <td>
         <div class="buttons">
-          {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Linux amd64 binaries (.tar.gz)" "isDownloadButton" false "color" "dark") }}
-          {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Linux amd64 checksum (.txt)" "isDownloadButton" false "color" "dark") }}
+          {{- if $hasLinuxAmd64 -}}
+            {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Linux amd64 binaries (.tar.gz)" "isDownloadButton" false "color" "dark") }}
+            {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Linux amd64 checksum (.txt)" "isDownloadButton" false "color" "dark") }}
+          {{- end -}}
           {{- if $hasArm -}}
             {{ partial "downloads/download-button.html" (dict "url" $armTarUrl "text" "Linux Arm (.tar.gz)" "isDownloadButton" false "color" "dark") }}
             {{ partial "downloads/download-button.html" (dict "url" $armChecksumUrl "text" "Linux Arm Checksum (.txt)" "isDownloadButton" false "color" "dark") }}
@@ -83,8 +72,10 @@
 
       <td>
         <div class="buttons">
-          {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Linux amd64 binaries (.tar.gz)" "isDownloadButton" true "color" "dark") }}
-          {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Linux amd64 checksum (.txt)" "isDownloadButton" true "color" "dark") }}
+          {{- if $hasLinuxAmd64 -}}
+            {{ partial "downloads/download-button.html" (dict "url" $binaryTarUrl "text" "Linux amd64 binaries (.tar.gz)" "isDownloadButton" true "color" "dark") }}
+            {{ partial "downloads/download-button.html" (dict "url" $checksumsUrl "text" "Linux amd64 checksum (.txt)" "isDownloadButton" true "color" "dark") }}
+          {{- end -}}
           {{- if $hasArm -}}
             {{ partial "downloads/download-button.html" (dict "url" $armTarUrl "text" "Linux Arm (.tar.gz)" "isDownloadButton" true "color" "dark") }}
             {{ partial "downloads/download-button.html" (dict "url" $armChecksumUrl "text" "Linux Arm Checksum (.txt)" "isDownloadButton" true "color" "dark") }}
