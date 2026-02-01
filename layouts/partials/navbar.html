@@ -5,6 +5,7 @@
 {{- $spiffeLogo      := "/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png" | relURL }}
 {{- $spireLogo       := "/img/logos/spire/horizontal/color/spire-horizontal-color.png" | relURL }}
 {{- $logoUrl         := cond $isSpirePage $spireLogo $spiffeLogo }}
+{{- $logoAlt         := cond $isSpirePage "SPIRE Logo" "SPIFFE Logo" }}
 {{- $social          := .Site.Params.socialmedia }}
 {{- $twitterUrl      := printf "https://twitter.com/%s" $social.twitter }}
 {{- $slackUrl        := $social.slack }}
@@ -35,7 +36,7 @@
   <div class="container {{ if $isDocsPage }}is-fluid{{ end }} ">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{ .Site.BaseURL }}">
-        <img src="{{ $logoUrl }}">
+        <img src="{{ $logoUrl }}" alt="{{ default "Logo" $logoAlt }}">
       </a>
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target=".navbar-top">
@@ -70,31 +71,31 @@
               </span>
             </a>
 
-            <a class="button is-twitter-blue" href="{{ $twitterUrl }}">
+            <a class="button is-twitter-blue" href="{{ $twitterUrl }}" aria-label="Twitter">
               <span class="icon">
                 <i class="fab fa-twitter"></i>
               </span>
             </a>
 
-            <a class="button is-black" href="{{ $githubUrl }}">
+            <a class="button is-black" href="{{ $githubUrl }}" aria-label="GitHub">
               <span class="icon">
                 <i class="fab fa-github"></i>
               </span>
             </a>
 
-            <a class="button is-slack-green" href="{{ $slackUrl }}">
+            <a class="button is-slack-green" href="{{ $slackUrl }}" aria-label="Slack">
               <span class="icon">
                 <i class="fab fa-slack"></i>
               </span>
             </a>
 
-            <a class="button is-stack-overflow-orange" href="{{ $stackUrl }}">
+            <a class="button is-stack-overflow-orange" href="{{ $stackUrl }}" aria-label="Stack Overflow">
               <span class="icon">
                 <i class="fab fa-stack-overflow"></i>
               </span>
             </a>
 
-            <a class="button is-youtube-red" href="{{ $youtubeUrl }}">
+            <a class="button is-youtube-red" href="{{ $youtubeUrl }}" aria-label="YouTube">
               <span class="icon">
                 <i class="fab fa-youtube"></i>
               </span>
