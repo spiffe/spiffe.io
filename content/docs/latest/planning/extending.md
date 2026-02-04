@@ -23,7 +23,7 @@ SPIRE comes with a set of built-in Node Attestor plugins for the [Server](/docs/
 
 In addition, known third-party Node Attestor plugins include:
 
-* https://github.com/bloomberg/spire-tpm-plugin - This plugin allows SPIRE to attest to machines with a TPMv2 compatible Trusted Platform Module installed. The TPM holds the proof of identity of the machine, and SPIRE will require the TPM to provide a specific signed quote to prove it.
+* https://github.com/spiffe/spire-tpm-plugin - This plugin allows SPIRE to attest to machines with a TPMv2 compatible Trusted Platform Module installed. The TPM holds the proof of identity of the machine, and SPIRE will require the TPM to provide a specific signed quote to prove it. Maintained by the SPIFFE community.
 
 * https://github.com/zlabjp/spire-openstack-plugin - This plugin allows SPIRE to attest to nodes deployed by OpenStack and identify them by the OpenStack project ID and instance ID. 
 
