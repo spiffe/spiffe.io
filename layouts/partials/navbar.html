@@ -7,7 +7,7 @@
 {{- $logoUrl         := cond $isSpirePage $spireLogo $spiffeLogo }}
 {{- $logoAlt         := cond $isSpirePage "SPIRE Logo" "SPIFFE Logo" }}
 {{- $social          := .Site.Params.socialmedia }}
-{{- $twitterUrl      := printf "https://twitter.com/%s" $social.twitter }}
+{{- $xUrl            := printf "https://x.com/%s" $social.twitter }}
 {{- $slackUrl        := $social.slack }}
 {{- $blogUrl         := $social.medium }}
 {{- $githubUrl       := $social.github }}
@@ -71,9 +71,9 @@
               </span>
             </a>
 
-            <a class="button is-twitter-blue" href="{{ $twitterUrl }}" aria-label="Twitter">
+            <a class="button is-black" href="{{ $xUrl }}" aria-label="X (formerly Twitter)">
               <span class="icon">
-                <i class="fab fa-twitter"></i>
+                <i class="fab fa-x-twitter"></i>
               </span>
             </a>
 
