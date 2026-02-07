@@ -131,7 +131,33 @@ helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.gi
 
 Next, we will establish the trust between instances.
 
-Example: TODO
+### On the root server cluster, retrieve the trust bundle
+
+```shell
+kubectl exec -it -n spire-mgmt spire-server-0 -c spire-server -- spire-server bundle show -format spiffe > root.bundle
+```
+
+### On the child server cluster, retrieve the trust bundle
+
+```shell
+kubectl exec -it -n spire-mgmt spire-server-0 -c spire-server -- spire-server bundle show -format spiffe > child.bundle
+```
+
+### On the root server cluster, load the child's trust bundle
+
+```shell
+cat child.bundle | kubectl exec -i -n spire-mgmt spire-server-0 -c spire-server -- spire-server bundle set -format spiffe -id spiffe://<child-trust-domain>
+```
+
+Replace `<child-trust-domain>` with the trust domain configured for the child cluster.
+
+### On the child server cluster, load the root's trust bundle
+
+```shell
+cat root.bundle | kubectl exec -i -n spire-mgmt spire-server-0 -c spire-server -- spire-server bundle set -format spiffe -id spiffe://<root-trust-domain>
+```
+
+Replace `<root-trust-domain>` with the trust domain configured for the root cluster.
 
 ## Security Cluster
 
