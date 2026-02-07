@@ -365,6 +365,27 @@ The SPIRE Server can be configured to load CA credentials from the Workload API 
 
 A full treatment for Nested SPIRE is beyond the scope of this guide. However this strategy can be managed by enabling and configuring the `spire` UpstreamAuthority plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_upstreamauthority_spire.md).
 
+# Configuring trust bundle publishing
+_This configuration applies to the SPIRE Server_
+
+BundlePublisher plugins allow the SPIRE Server to automatically publish its trust bundle to external systems, keeping it updated whenever the bundle changes. This is useful for making the trust bundle available to systems that need to validate SPIFFE identities but don't have direct access to the SPIRE Server.
+
+Multiple BundlePublisher plugins can be configured simultaneously to publish the trust bundle to different destinations. The SPIRE Server will automatically invoke all configured BundlePublisher plugins whenever the trust bundle is updated.
+
+SPIRE supports publishing trust bundles to various destinations:
+
+* **Kubernetes ConfigMap**: Publishes the trust bundle to Kubernetes ConfigMaps, making it available to workloads running in Kubernetes clusters. This is managed by enabling and configuring the `k8s_configmap` BundlePublisher plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_bundlepublisher_k8s_configmap.md).
+
+* **AWS S3**: Publishes the trust bundle to an Amazon S3 bucket, making it accessible to workloads that can read from S3. This is managed by enabling and configuring the `aws_s3` BundlePublisher plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_bundlepublisher_aws_s3.md).
+
+* **AWS IAM Roles Anywhere Trust Anchor**: Publishes the trust bundle to an AWS IAM Roles Anywhere trust anchor, enabling workloads with SPIFFE identities to obtain AWS IAM credentials. This is managed by enabling and configuring the `aws_rolesanywhere_trustanchor` BundlePublisher plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_bundlepublisher_aws_rolesanywhere_trustanchor.md).
+
+* **GCP Cloud Storage**: Publishes the trust bundle to a Google Cloud Storage bucket, making it accessible to workloads that can read from GCS. This is managed by enabling and configuring the `gcp_cloudstorage` BundlePublisher plugin for the [SPIRE Server](https://github.com/spiffe/spire/blob/{{< spire-latest "tag" >}}/doc/plugin_server_bundlepublisher_gcp_cloudstorage.md).
+
+{{< info >}}
+Trust bundles can be published in different formats (SPIFFE, JWKS, or PEM) depending on the requirements of the consuming system. Refer to the individual plugin documentation for supported formats.
+{{< /info >}}
+
 # Export Metrics for Monitoring
 _This configuration applies to the SPIRE Server and SPIRE Agent_
 
