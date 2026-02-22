@@ -1,0 +1,21 @@
+{{- $assets := .assets -}}
+{{- $downloadUrl := .downloadUrl -}}
+{{- $version := .version -}}
+{{- $platform := .platform -}}
+{{- $wantChecksum := .checksum -}}
+{{- $result := "" -}}
+
+{{- range $assets -}}
+  {{- if eq $result "" -}}
+    {{- $name := lower .name -}}
+    {{- $isMain := and (hasPrefix $name "spire-") (not (hasPrefix $name "spire-extras-")) -}}
+    {{- if $isMain -}}
+      {{- $isChecksum := and (in $name "sha256") (in $name ".txt") -}}
+      {{- if and (in $name $platform) (eq $isChecksum $wantChecksum) -}}
+        {{- $result = printf "%s/%s/%s" $downloadUrl $version .name -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $result -}}
