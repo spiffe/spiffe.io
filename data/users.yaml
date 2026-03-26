@@ -93,8 +93,8 @@ adopters:
   - name: SAP
     logo: SAP-SE-logo.svg
     link: https://www.sap.com/
-  - name: TransferWise
-    logo: TransferWise-logo.svg
+  - name: Wise
+    logo: Wise-logo.svg
     link: https://wise.com/
   - name: Twilio
     logo: Twilio-logo.svg
