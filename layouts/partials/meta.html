@@ -1,2 +1,82 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{- /* The site is built with baseURL "/", so .Permalink is only root-relative.
+       Use publicUrl to build absolute URLs for canonical / Open Graph / Twitter. */ -}}
+{{- $base := .Site.Params.publicUrl | default "" -}}
+{{- $pageURL := printf "%s%s" $base .RelPermalink -}}
+
+{{- /* Description: page description, then summary, then site default. */ -}}
+{{- $desc := "" -}}
+{{- with .Description -}}
+  {{- $desc = . -}}
+{{- else -}}
+  {{- with .Summary -}}{{ $desc = . | plainify | truncate 200 }}{{ end -}}
+{{- end -}}
+{{- if not $desc -}}{{ $desc = .Site.Params.description }}{{ end -}}
+{{- $desc = $desc | plainify | chomp -}}
+
+{{- /* Title used for social cards (page title, or site title on the home page). */ -}}
+{{- $ogTitle := cond .IsHome .Site.Title .Title -}}
+
+{{- /* Resolve the social image to an absolute URL: a page-bundle resource,
+       a page param (absolute or site-relative), or the site default. */ -}}
+{{- $image := "" -}}
+{{- with .Params.images -}}
+  {{- $first := index . 0 -}}
+  {{- with ($.Resources.GetMatch $first) -}}
+    {{- $image = printf "%s%s" $base .RelPermalink -}}
+  {{- else -}}
+    {{- if strings.HasPrefix $first "http" -}}
+      {{- $image = $first -}}
+    {{- else -}}
+      {{- $image = printf "%s/%s" $base $first -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- with .Site.Params.images -}}{{ $image = printf "%s/%s" $base (index . 0) }}{{ end -}}
+{{- end -}}
+
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ $pageURL }}">
+
+{{- /* Open Graph */}}
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ $ogTitle }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ $pageURL }}">
+{{- $isArticle := and (eq .Section "blog") .IsPage }}
+<meta property="og:type" content="{{ cond $isArticle "article" "website" }}">
+{{- with $image }}
+<meta property="og:image" content="{{ . }}">
+{{- end }}
+{{- if $isArticle }}
+{{- if not .Date.IsZero }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}
+{{- if not .Lastmod.IsZero }}
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}
+{{- with .Params.author }}
+<meta property="article:author" content="{{ . }}">
+{{- end }}
+{{- range .Params.tags }}
+<meta property="article:tag" content="{{ . }}">
+{{- end }}
+{{- end }}
+
+{{- /* Twitter card */}}
+<meta name="twitter:card" content="{{ cond (ne $image "") "summary_large_image" "summary" }}">
+{{- with .Site.Params.socialmedia.twitter }}
+<meta name="twitter:site" content="@{{ . }}">
+{{- end }}
+<meta name="twitter:title" content="{{ $ogTitle }}">
+<meta name="twitter:description" content="{{ $desc }}">
+{{- with $image }}
+<meta name="twitter:image" content="{{ . }}">
+{{- end }}
+
+{{- /* RSS / alternate feed autodiscovery */}}
+{{- range .AlternativeOutputFormats }}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ printf "%s%s" $base .RelPermalink | safeURL }}" title="{{ $.Site.Title }} &ndash; {{ $.Title }}">
+{{- end }}

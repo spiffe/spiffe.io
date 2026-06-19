@@ -1,0 +1,6 @@
+{{- $df := .Site.Params.dateformat | default "January 2, 2006" -}}
+<p class="blog-byline has-text-grey">
+  {{- with .Params.author }}By {{ . }}{{ end -}}
+  {{- if not .Date.IsZero }}{{ if .Params.author }} &bullet; {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format $df }}</time>{{ end -}}
+  {{- with .ReadingTime }} &bullet; {{ . }} min read{{ end -}}
+</p>
