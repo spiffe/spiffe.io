@@ -1,6 +1,6 @@
 ---
 title: "Hardening Istio security with SPIRE"
-description: "In the era of cloud-native applications and microservice architectures, new challenges and needs arise as well as technologies that address these…"
+description: "Integrating SPIRE with the Istio service mesh brings a uniform, SPIFFE-based identity framework and fine-grained policy management to distributed, multi-cloud, and edge-to-cloud deployments. This post explains how the integration works — letting Envoy's Secret Discovery Service consume identities issued by SPIRE — and points to the resources for trying it out."
 date: 2022-06-16
 author: "Nathalia Satie Gomazako"
 tags: ["SPIRE"]

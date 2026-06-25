@@ -1,6 +1,6 @@
 ---
 title: "SPIFFE/SPIRE move to CNCF Incubation-level hosted projects!"
-description: "SPIFFE/SPIRE move to CNCF Incubation-level hosted projects!"
+description: "SPIFFE and SPIRE have been promoted from sandbox to incubation-level hosted projects by the CNCF Technical Oversight Committee. This post details the milestones that earned the promotion, including a CII Best Practices passing badge, a CNCF SIG-Security-vetted security self-assessment, and a comprehensive incubation due-diligence review."
 date: 2020-06-22
 author: "Andrés Vega"
 tags: ["SPIFFE", "Community"]

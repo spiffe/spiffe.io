@@ -1,6 +1,6 @@
 ---
 title: "[Re-Cap] SPIFFE Community Day: Fall 2019"
-description: "Last month Uber and Scytale hosted our Fall 2019 SPIFFE Community Day, an opportunity for our project committers (which now include Bloomberg and Amazon),…"
+description: "A recap of the Fall 2019 SPIFFE Community Day, hosted by Uber and Scytale and the largest to date with 200+ attendees. Talks covered TPM-based node attestation at Bloomberg, authenticating Hadoop workloads at Uber, and using SPIRE as the identity foundation for service meshes from NGINX (F5 Networks) and Decipher Technology Studios."
 date: 2020-06-12
 author: "Umair M. Khan"
 tags: ["Community"]

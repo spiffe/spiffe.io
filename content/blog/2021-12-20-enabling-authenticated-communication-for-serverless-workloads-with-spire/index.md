@@ -1,6 +1,6 @@
 ---
 title: "Enabling Authenticated Communication for Serverless Workloads with SPIRE"
-description: "This blog is co-authored by Agustín Martínez Fayó and Marcos Yacob"
+description: "Serverless platforms like AWS Lambda and Google Cloud Functions can't run a SPIRE Agent alongside the workload, breaking SPIRE's usual model for delivering identities. This post introduces the new SVIDStore agent plugin, which solves the problem with a push model that writes X.509-SVIDs to external stores such as AWS Secrets Manager for serverless functions to consume."
 date: 2021-12-20
 author: "Agustín Martínez Fayó"
 tags: ["SPIRE"]

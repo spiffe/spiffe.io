@@ -1,6 +1,6 @@
 ---
 title: "[Re-Cap] SPIFFE Community Day: Spring 2020"
-description: "On April 24, 2020, the SPIFFE community held its largest gathering of contributors and users to date. This gathering connects project committers,…"
+description: "A recap of the Spring 2020 SPIFFE Community Day — the community's largest gathering yet and its first held entirely online, drawing 300+ attendees from 120 organizations. End users including ByteDance, Square, TransferWise, and Uber shared their deployments, alongside a demo combining SPIRE and Open Policy Agent for integrated authentication and authorization."
 date: 2020-06-18
 author: "Umair M. Khan"
 tags: ["Community"]

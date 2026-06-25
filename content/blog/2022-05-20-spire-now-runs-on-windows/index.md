@@ -1,6 +1,6 @@
 ---
 title: "SPIRE now runs on Windows!"
-description: "At its heart, the SPIRE project aims to solve the problem of securely issuing workload identities at scale, no matter where the workload is running. It…"
+description: "SPIRE 1.3.0 introduces experimental support for running both the SPIRE Server and Agent on Windows, extending workload identity beyond Linux for the first time. This post covers what the initial release includes — including a new Windows-specific workload attestor — and the work still ahead to reach feature parity with Linux."
 date: 2022-05-20
 author: "Agustín Martínez Fayó"
 tags: ["SPIRE"]

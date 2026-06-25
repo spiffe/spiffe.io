@@ -1,6 +1,6 @@
 ---
 title: "[Re-Cap] SPIFFE Community Day: Spring 2019"
-description: "Over the past few months, we’ve watched the SPIFFE and SPIRE projects grow in popularity and maturity as more and more organizations look at these…"
+description: "A recap of the May 2019 SPIFFE Community Day, hosted by Pinterest and Scytale as the projects roughly doubled in size over the prior year. The event featured case studies from Uber and Square alongside demos integrating SPIRE with Kubernetes, Calico, Envoy, and the Istio service mesh."
 date: 2020-06-09
 author: "Umair M. Khan"
 tags: ["Community"]

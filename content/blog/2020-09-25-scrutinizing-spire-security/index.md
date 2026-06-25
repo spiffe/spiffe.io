@@ -1,6 +1,6 @@
 ---
 title: "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part One)"
-description: "Justin Cappos, Evan Gilman, Matt Moyer, Enrico Schiattarella"
+description: "Part one of a two-part security analysis of the SPIFFE Runtime Environment (SPIRE). This post introduces SPIRE's architecture and the security properties expected of a SPIFFE deployment, then establishes a threat model and methodology for systematically estimating the likelihood and severity of potential attacks."
 date: 2020-09-25
 author: "Matt Moyer"
 tags: ["SPIRE"]
