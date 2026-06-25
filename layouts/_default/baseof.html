@@ -5,7 +5,7 @@
 <html lang="{{ .Site.LanguageCode }}">
   <head>
     {{ partial "meta.html" . }}
-    <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }} &ndash; {{ .Site.Params.acronym }}{{ else }}{{ .Title }} &ndash; {{ .Site.Title }}{{ end }}{{ end }}</title>
+    <title>{{ block "title" . }}{{ .Site.Title }} &ndash; {{ .Site.Params.acronym }}{{ end }}</title>
     <link rel="shortcut icon" href="{{ $favicon }}" type="image/x-icon">
     {{ partial "css.html" . }}
     <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>

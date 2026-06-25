@@ -1,6 +1,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+{{- /* The richer canonical / description / Open Graph / Twitter metadata below is
+       scoped to the blog for now; a follow-up can roll it out across the whole site. */ -}}
+{{- if eq .Section "blog" -}}
 {{- /* The site is built with baseURL "/", so .Permalink is only root-relative.
        Use publicUrl to build absolute URLs for canonical / Open Graph / Twitter. */ -}}
 {{- $base := .Site.Params.publicUrl | default "" -}}
@@ -79,4 +82,5 @@
 {{- /* RSS / alternate feed autodiscovery */}}
 {{- range .AlternativeOutputFormats }}
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ printf "%s%s" $base .RelPermalink | safeURL }}" title="{{ $.Site.Title }} &ndash; {{ $.Title }}">
+{{- end }}
 {{- end }}
