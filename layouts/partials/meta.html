@@ -22,8 +22,9 @@
 {{- /* Title used for social cards (page title, or site title on the home page). */ -}}
 {{- $ogTitle := cond .IsHome .Site.Title .Title -}}
 
-{{- /* Resolve the social image to an absolute URL: a page-bundle resource,
-       a page param (absolute or site-relative), or the site default. */ -}}
+{{- /* Resolve the page's own social image to an absolute URL: a page-bundle
+       resource, or a page param (absolute or site-relative). Pages with no image
+       of their own emit no og:image/twitter:image and render as a plain summary card. */ -}}
 {{- $image := "" -}}
 {{- with .Params.images -}}
   {{- $first := index . 0 -}}
@@ -36,8 +37,6 @@
       {{- $image = printf "%s/%s" $base $first -}}
     {{- end -}}
   {{- end -}}
-{{- else -}}
-  {{- with .Site.Params.images -}}{{ $image = printf "%s/%s" $base (index . 0) }}{{ end -}}
 {{- end -}}
 
 <meta name="description" content="{{ $desc }}">
