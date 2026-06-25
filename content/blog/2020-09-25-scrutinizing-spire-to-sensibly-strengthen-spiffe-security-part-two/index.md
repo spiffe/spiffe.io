@@ -1,6 +1,6 @@
 ---
 title: "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part Two)"
-description: "Part two of the SPIRE security analysis applies the threat-modeling methodology from part one, scoring and ranking attacks by impact and likelihood. The findings reveal that the highest-risk attacks stem from SPIRE's centralized signing architecture rather than code vulnerabilities, and point to pragmatic, low-effort mitigations such as rate limiting."
+description: "Part two scores and ranks attacks on SPIRE by impact and likelihood, finding the biggest risks stem from its centralized signing, plus low-effort mitigations."
 date: 2020-09-25
 author: "Matt Moyer"
 tags: ["SPIRE"]

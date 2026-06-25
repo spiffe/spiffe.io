@@ -1,6 +1,6 @@
 ---
 title: "[Re-Cap] SPIFFE Community Day: Fall 2018"
-description: "A recap of SPIFFE's seventh community day, held in November 2018 across San Francisco, New York, and online for 150+ attendees. The event featured project updates, demos, and talks from Pinterest, Square, and VMware, with a spotlight on two emerging capabilities: SPIFFE Federation for establishing trust across identity namespaces, and JWT-SVID support for token-based service authentication."
+description: "A recap of SPIFFE's seventh Community Day (November 2018): project updates, demos, and talks from Pinterest, Square, and VMware, plus Federation and JWT-SVIDs."
 date: 2020-06-08
 author: "Umair M. Khan"
 tags: ["Community"]

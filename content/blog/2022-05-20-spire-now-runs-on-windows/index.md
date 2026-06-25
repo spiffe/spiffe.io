@@ -1,6 +1,6 @@
 ---
 title: "SPIRE now runs on Windows!"
-description: "SPIRE 1.3.0 introduces experimental support for running both the SPIRE Server and Agent on Windows, extending workload identity beyond Linux for the first time. This post covers what the initial release includes — including a new Windows-specific workload attestor — and the work still ahead to reach feature parity with Linux."
+description: "SPIRE 1.3.0 adds experimental support for running the Server and Agent on Windows, extending workload identity beyond Linux with a Windows workload attestor."
 date: 2022-05-20
 author: "Agustín Martínez Fayó"
 tags: ["SPIRE"]

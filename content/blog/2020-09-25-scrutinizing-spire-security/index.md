@@ -1,6 +1,6 @@
 ---
 title: "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part One)"
-description: "Part one of a two-part security analysis of the SPIFFE Runtime Environment (SPIRE). This post introduces SPIRE's architecture and the security properties expected of a SPIFFE deployment, then establishes a threat model and methodology for systematically estimating the likelihood and severity of potential attacks."
+description: "Part one of a security analysis of the SPIFFE Runtime Environment (SPIRE): its architecture, security properties, and a threat model for assessing attacks."
 date: 2020-09-25
 author: "Matt Moyer"
 tags: ["SPIRE"]
