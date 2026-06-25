@@ -57,11 +57,12 @@
         <a class="navbar-item has-text-weight-bold" href="/docs/latest/">
           Documentation
         </a>
+        {{- end -}}
 
+        {{- /* Blog stays outside the docs condition so it's reachable from docs pages too. */ -}}
         <a class="navbar-item has-text-weight-bold" href="/blog/">
           Blog
         </a>
-        {{- end -}}
 
         <div class="navbar-item">
           <p class="control">
