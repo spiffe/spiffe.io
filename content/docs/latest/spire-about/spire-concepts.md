@@ -1,7 +1,7 @@
 ---
 title: SPIRE Concepts
 short: Concepts
-kind: spire-about
+navgroup: spire-about
 description: An overview of SPIRE's architecture and fundamentals
 weight: 20
 aliases:

@@ -1,4 +1,4 @@
-{{- $presentations := .Site.Data.presentations }}
+{{- $presentations := hugo.Data.presentations }}
 {{- $category := .Get "category" }} 
 
 {{- range sort $presentations "weight" }}

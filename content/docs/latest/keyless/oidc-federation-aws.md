@@ -1,7 +1,7 @@
 ---
 title: AWS OIDC Authentication
 description: Using SPIRE and OIDC to Authenticate Workloads on Kubernetes to AWS S3
-kind: keyless
+navgroup: keyless
 weight: 10
 aliases:
    - /spire/try/oidc-federation-aws

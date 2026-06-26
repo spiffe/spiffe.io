@@ -1,6 +1,6 @@
 {{- $displayReleases  := ne (getenv "HIDE_RELEASES") "true" }}
 {{- if $displayReleases -}}
-  {{- $latest := site.Data.releases.latest -}}
+  {{- $latest := hugo.Data.releases.latest -}}
 
   {{- if eq (.Get 0) "tag" }}
     {{- $latest.tag_name -}}

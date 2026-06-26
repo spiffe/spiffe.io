@@ -2,7 +2,7 @@
 title: SPIFFE Library Usage Examples
 short: SPIFFE Library Usage Examples
 description: Writing code in your applications to create SPIFFE-enabled connections
-kind: deploying
+navgroup: deploying
 weight: 135
 aliases:
     - /spire/try/spiffe-library-usage-examples

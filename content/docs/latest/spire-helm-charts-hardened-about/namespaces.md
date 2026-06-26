@@ -2,7 +2,7 @@
 title: Namespaces
 short: Namespaces
 description: Which namespaces to install the SPIRE Helm charts to
-kind: spire-helm-charts-hardened-about
+navgroup: spire-helm-charts-hardened-about
 weight: 210
 aliases:
     - /docs/latest/helm-charts-hardened/namespaces

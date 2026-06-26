@@ -2,7 +2,7 @@
 title: Service Selection
 short: Service Selection
 description: How to enable/disable individual services
-kind: spire-helm-charts-hardened-about
+navgroup: spire-helm-charts-hardened-about
 weight: 110
 aliases:
     - /docs/latest/helm-charts-hardened/service-selection

@@ -2,7 +2,7 @@
 title: Identifiers
 short: Identifiers
 description: How to configure SPIFFE IDs
-kind: spire-helm-charts-hardened-about
+navgroup: spire-helm-charts-hardened-about
 weight: 200
 aliases:
     - /docs/latest/helm-charts-hardened/identifiers

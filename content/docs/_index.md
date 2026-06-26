@@ -1,6 +1,6 @@
 ---
 title: Docs Redirect
-_build:
+build:
   render: false
   list: never
   publishResources: false

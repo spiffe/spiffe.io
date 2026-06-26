@@ -1,7 +1,7 @@
 ---
 title: SPIRE Helm Charts Hardened Advanced Configuration
 short: Advanced
-kind: spire-helm-charts-hardened-advanced
+navgroup: spire-helm-charts-hardened-advanced
 aliases:
     - /spire-helm-charts-hardened-advanced
 ---

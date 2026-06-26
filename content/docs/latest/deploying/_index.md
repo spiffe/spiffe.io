@@ -1,7 +1,7 @@
 ---
 title: Deploying SPIRE
 short: Deploy
-kind: deploying
+navgroup: deploying
 aliases:
     - /docs/latest/spire/using
 ---

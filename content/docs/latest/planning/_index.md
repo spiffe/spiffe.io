@@ -1,7 +1,7 @@
 ---
 title: Planning a SPIRE Deployment
 short: Plan
-kind: planning
+navgroup: planning
 ---
 
 {{< sectiontoc "planning" >}}

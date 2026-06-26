@@ -1,7 +1,7 @@
 ---
 title: Install SPIRE Agents
 short: Install Agent
-kind: deploying
+navgroup: deploying
 description: How to install the SPIRE Agents on Linux and Kubernetes
 weight: 70
 aliases:

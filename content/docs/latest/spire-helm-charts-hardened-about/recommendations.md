@@ -2,7 +2,7 @@
 title: Recommendations
 short: Recommendations
 description: Recommended Configuration
-kind: spire-helm-charts-hardened-about
+navgroup: spire-helm-charts-hardened-about
 weight: 120
 aliases:
     - /docs/latest/helm-charts-hardened/recommendations

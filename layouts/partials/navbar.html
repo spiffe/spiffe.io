@@ -12,24 +12,25 @@
 {{- $githubUrl       := $social.github }}
 {{- $stackUrl        := $social.stackoverflow }}
 {{- $youtubeUrl      := $social.youtube }}
-{{- $version         := index (split .File.Path "/") 1 -}}
+{{- $version := "" -}}
+{{- with .File -}}{{- $version = index (split .Path "/") 1 -}}{{- end -}}
 {{- $pageUrl         := .RelPermalink -}}
 
-{{ $spiffeAbout        := where site.Pages ".Params.kind" "eq" "spiffe-about" }}
+{{ $spiffeAbout        := where site.Pages ".Params.navgroup" "eq" "spiffe-about" }}
 
-{{ $spireAbout         := where site.Pages ".Params.kind" "eq" "spire-about" }}
+{{ $spireAbout         := where site.Pages ".Params.navgroup" "eq" "spire-about" }}
 
-{{ $spireHelmChartsHardenedAbout        := where site.Pages ".Params.kind" "eq" "spire-helm-charts-hardened-about" }}
-{{ $spireHelmChartsHardenedAdvanced := where site.Pages ".Params.kind" "eq" "spire-helm-charts-hardened-advanced" }}
+{{ $spireHelmChartsHardenedAbout        := where site.Pages ".Params.navgroup" "eq" "spire-helm-charts-hardened-about" }}
+{{ $spireHelmChartsHardenedAdvanced := where site.Pages ".Params.navgroup" "eq" "spire-helm-charts-hardened-advanced" }}
 
-{{ $spirePlanning      := where site.Pages ".Params.kind" "eq" "planning" }}
-{{ $spireTry           := where site.Pages ".Params.kind" "eq" "try" }}  
-{{ $spireDeploying     := where site.Pages ".Params.kind" "eq" "deploying" }}
-{{ $spireMaintenance   := where site.Pages ".Params.kind" "eq" "maintenance" }}
+{{ $spirePlanning      := where site.Pages ".Params.navgroup" "eq" "planning" }}
+{{ $spireTry           := where site.Pages ".Params.navgroup" "eq" "try" }}  
+{{ $spireDeploying     := where site.Pages ".Params.navgroup" "eq" "deploying" }}
+{{ $spireMaintenance   := where site.Pages ".Params.navgroup" "eq" "maintenance" }}
 
-{{ $spireArchitecture  := where site.Pages ".Params.kind" "eq" "architecture" }}
-{{ $spireMicroservices := where site.Pages ".Params.kind" "eq" "microservices" }}
-{{ $spireKeyless       := where site.Pages ".Params.kind" "eq" "keyless" }}
+{{ $spireArchitecture  := where site.Pages ".Params.navgroup" "eq" "architecture" }}
+{{ $spireMicroservices := where site.Pages ".Params.navgroup" "eq" "microservices" }}
+{{ $spireKeyless       := where site.Pages ".Params.navgroup" "eq" "keyless" }}
 
 <nav class="navbar is-fixed-top is-light">
   <div class="container {{ if $isDocsPage }}is-fluid{{ end }} ">

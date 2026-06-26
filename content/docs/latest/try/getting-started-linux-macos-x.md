@@ -1,7 +1,7 @@
 ---
 title: Quickstart for Linux and MacOS X
 description: Quickly get SPIRE up and running on Unix and MacOS X
-kind: try
+navgroup: try
 weight: 40
 aliases:
     - /spire/try/getting-started-linux-macos-x

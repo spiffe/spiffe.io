@@ -2,7 +2,7 @@
 title: Local Mirrors
 short: Local Mirrors
 description: How to setup a local mirror for SPIRE images
-kind: spire-helm-charts-hardened-advanced
+navgroup: spire-helm-charts-hardened-advanced
 weight: 200
 aliases:
     - /docs/latest/helm-charts-hardened-architecture/mirror
