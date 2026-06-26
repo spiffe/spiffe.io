@@ -113,6 +113,14 @@ a
   cursor: default
 
 .community-day
+  // The global `.section` rule draws a 1px bottom border as a separator; this
+  // standalone page doesn't want the floating line under its content.
+  &.section
+    border-bottom: none
+  // Cap the centered column at a comfortable reading width so it doesn't sprawl
+  // on wide screens (the .columns.is-centered parent keeps it centred).
+  .column
+    max-width: 820px
   // The site sets a global `.content` width of 70% (style.sass); in this
   // centered layout the body text should fill the reading column instead of
   // hugging the left.
