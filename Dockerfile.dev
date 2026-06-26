@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
@@ -26,7 +26,9 @@ WORKDIR /app
 
 # Pre-install dependencies during build (optional optimization)
 COPY requirements.txt /tmp/requirements.txt
-RUN python3 -m pip install --user -r /tmp/requirements.txt
+# ubuntu:24.04 ships a PEP 668 "externally managed" Python; --break-system-packages
+# is safe here since the container is single-purpose and disposable.
+RUN python3 -m pip install --user --break-system-packages -r /tmp/requirements.txt
 
 # Start with a simple script
-CMD ["sh", "-c", "bash run.sh --bind 0.0.0.0 --buildDrafts --buildFuture --disableFastRender --ignoreCache --noHTTPCache"]
+CMD ["bash", "run.sh", "--bind", "0.0.0.0", "--buildDrafts", "--buildFuture", "--disableFastRender", "--ignoreCache", "--noHTTPCache"]
