@@ -21,12 +21,12 @@ serve-with-releases:
 		--buildFuture \
 		--disableFastRender
 
-production-build: ci-check-links
+production-build: pull-external-content
 	hugo \
 		--gc \
 		--ignoreCache
 
-preview-build: ci-check-links
+preview-build: pull-external-content
 	hugo \
 		--gc \
 		--ignoreCache \
@@ -53,21 +53,3 @@ docker-serve-with-releases: docker-build
 
 pull-external-content:
 	python3 ./pull_external.py
-
-ci-check-links: pull-external-content
-	echo "Running Hugo server..." && \
-	hugo server -p 1212 & \
-	sleep 2 && \
-	echo "Running links checker..." && \
-	linkchecker -f linkcheckerrc http://localhost:1212; \
-	echo "Stopping Hugo server..." && \
-	pkill hugo || true
-
-check-links:
-	linkchecker -f linkcheckerrc http://localhost:1313
-
-docker-check-links-build:
-	$(CONTAINER_RUNTIME) build -f Dockerfile.linkchecker -t linkchecker .
-
-docker-check-links: docker-check-links-build
-	$(CONTAINER_RUNTIME) run --rm -it -u $(shell id -u):$(shell id -g) --net host linkchecker -f linkcheckerrc http://localhost:1313

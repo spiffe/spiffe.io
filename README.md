@@ -70,21 +70,9 @@ The website is now available at [`http://localhost:1313`](http://localhost:1313)
 
 It is common that URLs you are pointing to get deprecated or moved somewhere else over time, leading to broken links on our website.
 
-In order to avoid this, there is a tool that lets you check whether there are broken links in the whole website or not.
+Link checking runs automatically in CI via the [Link check](.github/workflows/link-check.yml) GitHub Actions workflow, on every pull request and on pushes to `master`. It builds the site and runs [lychee](https://github.com/lycheeverse/lychee) over the rendered output.
 
-First, make sure you are serving the website locally using the `-with-releases` form of the script (`make docker-serve-with-releases` or `make serve-with-releases`), and that it is accessible at `http://localhost:1313`, then run the following command:
-
-```shell
-make docker-check-links # if you are using Docker to serve the website
-```
-
-or
-
-```shell
-make check-links # if you are using a local toolchain to serve the website
-```
-
-The tool will crawl your local website and report if there's any broken link on it. If there's any, and you can't create a PR to fix the link right away, please [file an issue on GitHub](https://github.com/spiffe/spiffe.io/issues/new)
+The check is **report-only** — it never fails the build. Results are published to the workflow run's job summary, so look there for any broken links. If you find one and can't create a PR to fix it right away, please [file an issue on GitHub](https://github.com/spiffe/spiffe.io/issues/new).
 
 ## Publishing the site
 
