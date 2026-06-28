@@ -1,4 +1,4 @@
-HUGO_VERSION ?= 0.68.3
+HUGO_VERSION ?= 0.163.3
 
 # Run podman with CONTAINER_RUNTIME=podman on the commandline
 CONTAINER_RUNTIME ?= docker
@@ -39,14 +39,14 @@ docker-build:
 		-f Dockerfile.dev
 
 docker-serve: docker-build
-	$(CONTAINER_RUNTIME) run --rm \
+	$(CONTAINER_RUNTIME) run --init --rm \
 		-v $(PWD):/app \
 		-p 1313:1313 \
 		-e HIDE_RELEASES=true \
 		spiffe.io:latest
 
 docker-serve-with-releases: docker-build
-	$(CONTAINER_RUNTIME) run --rm \
+	$(CONTAINER_RUNTIME) run --init --rm \
 		-v $(PWD):/app \
 		-p 1313:1313 \
 		spiffe.io:latest

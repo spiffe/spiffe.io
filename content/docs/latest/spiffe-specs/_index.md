@@ -1,7 +1,7 @@
 ---
 title: The SPIFFE Standard
 short: Standards
-kind: spiffe-specs
+navgroup: spiffe-specs
 ---
 
 **SPIFFE**, the Secure Production Identity Framework for Everyone, is a set of open-source standards for securely identifying software systems in dynamic and heterogeneous environments.

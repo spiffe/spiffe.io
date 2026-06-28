@@ -1,7 +1,7 @@
 ---
 title: Install the SPIRE Server
 short: Install Server
-kind: deploying
+navgroup: deploying
 description: How to install the SPIRE Server on Linux and Kubernetes
 weight: 60
 aliases:

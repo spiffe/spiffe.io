@@ -1,7 +1,7 @@
 ---
 title: Extend SPIRE
 short: Extending
-kind: planning
+navgroup: planning
 description: Learn how to extend SPIRE with plugins
 weight: 100
 aliases:

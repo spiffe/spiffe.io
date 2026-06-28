@@ -1,7 +1,7 @@
 ---
 title: Quickstart for Kubernetes
 description: Quickly get SPIRE up and running on a Kubernetes cluster
-kind: try
+navgroup: try
 weight: 50
 aliases:
     - /tutorial-spire-on-kubernetes

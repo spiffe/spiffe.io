@@ -2,7 +2,7 @@
 {{- $currentUrl := .Page.RelPermalink }}
 <ul>
 {{ range site.Pages }}
-    {{ if and (eq .Params.kind $kind) (or (eq .IsNode false) (eq .Params.toc true))  }}
+    {{ if and (eq .Params.navgroup $kind) (or (eq .IsNode false) (eq .Params.toc true))  }}
     <li class="{{- if eq .RelPermalink $currentUrl }}is-active{{- end }}">
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         <p>{{ .Description }}</p>

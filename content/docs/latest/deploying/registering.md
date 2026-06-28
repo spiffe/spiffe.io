@@ -1,7 +1,7 @@
 ---
 title: Registering workloads
 short: Registering workloads
-kind: deploying
+navgroup: deploying
 description: Registering workloads with SPIFFE IDs in the SPIRE Server
 weight: 90
 aliases:

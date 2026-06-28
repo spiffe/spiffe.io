@@ -1,7 +1,8 @@
-{{ $releases   := site.Data.releases }}
+{{ $releases   := hugo.Data.releases }}
 {{/* $latest     := printf "%s" (index $releases 1) */}}
 {{ $latest     := "v0.10.0" }}
-{{ $version    := index (split .File.Path "/") 1 }}
+{{ $version := "" }}
+{{ with .File }}{{ $version = index (split .Path "/") 1 }}{{ end }}
 <article class="article">
   {{ with (eq $version "edge") }}
   <div class="message is-danger">
@@ -15,7 +16,7 @@
 
     <section class="section">
       <div class="content">
-        {{ if and (eq .Params.kind "spiffe-specs") .Params.externalSource }}
+        {{ if and (eq .Params.navgroup "spiffe-specs") .Params.externalSource }}
         <div class="message is-info">
           <div class="message-body">
             This document is part of the SPIFFE standard. The canonical version can be found at

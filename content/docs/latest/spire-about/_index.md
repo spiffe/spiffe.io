@@ -1,7 +1,7 @@
 ---
 title: About SPIRE
 short: About
-kind: spire-about
+navgroup: spire-about
 aliases:
     - /spire
     - /spire/docs

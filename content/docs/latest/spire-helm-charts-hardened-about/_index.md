@@ -1,7 +1,7 @@
 ---
 title: About SPIRE Helm Charts Hardened
 short: About
-kind: spire-helm-charts-hardened-about
+navgroup: spire-helm-charts-hardened-about
 aliases:
     - /spire-helm-charts-hardened
 ---

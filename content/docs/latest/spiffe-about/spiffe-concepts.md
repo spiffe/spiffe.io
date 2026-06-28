@@ -2,7 +2,7 @@
 title: SPIFFE Concepts
 short: Concepts
 weight: 200
-kind: spiffe-about
+navgroup: spiffe-about
 aliases:
     - /spiffe/concepts
     - /docs/latest/spiffe/concepts

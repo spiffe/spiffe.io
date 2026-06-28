@@ -1,7 +1,7 @@
 ---
 title: Get Involved
 short: Get Involved
-kind: spiffe-about
+navgroup: spiffe-about
 description: How to navigate and connect with the SPIFFE community
 weight: 400
 aliases:

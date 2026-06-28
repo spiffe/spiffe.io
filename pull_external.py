@@ -16,15 +16,15 @@ GIT_CHECKOUT_CMD = "git checkout {}"
 GITHUB_API_RELEASES = "https://api.github.com/repos/spiffe/spire/releases"
 GITHUB_API_LATEST_RELEASE = "https://api.github.com/repos/spiffe/spire/releases/latest"
 MARKDOWN_IMAGE_REFERENCE_STYLE_OPENING = "["
-RE_EXTRACT_TITLE: Pattern[str] = re.compile("([#\s]*)(?P<title>.*)")
+RE_EXTRACT_TITLE: Pattern[str] = re.compile(r"([#\s]*)(?P<title>.*)")
 RE_EXTRACT_IMAGES: Pattern[str] = re.compile(
-    "\!\[(?P<alt>.*)\](?P<style>[\(\[])(?P<url>.*)[\)\]]"
+    r"\!\[(?P<alt>.*)\](?P<style>[\(\[])(?P<url>.*)[\)\]]"
 )
 RE_EXTRACT_LINKS: Pattern[str] = re.compile(
-    "\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?P<domain>https?:\/\/(?P<host>[a-zA-Z\.0-9-]+))?(?!#)\S+)\)"
+    r"\[(?P<alt>[^\]]*)\]\((?P<rel>[\.\/]*)(?P<url>(?P<domain>https?:\/\/(?P<host>[a-zA-Z\.0-9-]+))?(?!#)\S+)\)"
 )
 RE_EXTRACT_GITHUB_PATH: Pattern[str] = re.compile(
-    "https?:\/\/github\.com\/\w+\/\w+\/\w+\/\w+\/(?P<path>.*)"
+    r"https?:\/\/github\.com\/\w+\/\w+\/\w+\/\w+\/(?P<path>.*)"
 )
 
 # holds the git URL and the new path for links between pulled in files
@@ -320,7 +320,7 @@ def _process_content(
         title = None
 
         if style == MARKDOWN_IMAGE_REFERENCE_STYLE_OPENING:
-            image_reference_regex = '\[{}\]: *(?P<url>.*) "(?P<title>.*)"'.format(url)
+            image_reference_regex = r'\[{}\]: *(?P<url>.*) "(?P<title>.*)"'.format(url)
             ref_match = re.search(image_reference_regex, m.string)
             url = ref_match.group("url")
             title = ref_match.group("title")

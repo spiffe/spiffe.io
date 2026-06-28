@@ -1,7 +1,7 @@
 ---
 title: Configuring SPIRE
 short: Configuring
-kind: deploying
+navgroup: deploying
 description: How to configure SPIRE for your environment
 weight: 80
 aliases:

@@ -1,7 +1,7 @@
 ---
 title: Working with SVIDs
 short: Working with SVIDs
-kind: deploying
+navgroup: deploying
 description: How to write code to work with SPIFFE SVIDs
 weight: 130
 aliases:

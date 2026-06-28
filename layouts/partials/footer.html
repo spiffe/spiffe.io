@@ -28,7 +28,7 @@
     <div class="column has-text-centered github-link">
       Last modified on {{ .Lastmod }}
       &bullet;
-      <a href="{{ $sourceGithubURL }}/content/{{ .File.Path}}">
+      <a href="{{ $sourceGithubURL }}/content/{{ with .File }}{{ .Path }}{{ end }}">
         Edit this page on GitHub
       </a>
       <br />

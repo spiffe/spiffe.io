@@ -1,7 +1,7 @@
 ---
 title: Maintaining SPIRE
 short: Maintain
-kind: maintenance
+navgroup: maintenance
 ---
 
 {{< sectiontoc "maintenance" >}}

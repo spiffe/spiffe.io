@@ -2,7 +2,7 @@
 title: Installation
 short: Installation
 description: How to install the SPIRE stack using the SPIRE Helm charts
-kind: spire-helm-charts-hardened-about
+navgroup: spire-helm-charts-hardened-about
 weight: 100
 aliases:
     - /docs/latest/helm-charts-hardened/installation

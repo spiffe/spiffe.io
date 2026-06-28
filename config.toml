@@ -1,17 +1,16 @@
 title        = "SPIFFE"
 baseURL      = "/"
-languageCode = "en-us"
+locale = "en-us"
 pygmentsStyle = "monokai"
 pygmentsCodefences = true
 canonifyurls = true
-googleAnalytics = "UA-99605331-1"
 enableGitInfo = true
 publicUrl = "https://spiffe.io"
 spireGitHubUrl = "https://github.com/spiffe/spire"
 
 # Blog posts may carry `tags` for display, but we don't generate taxonomy
 # listing pages for them, so disable the taxonomy page kinds.
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy", "term"]
 
 [markup]
   [markup.tableOfContents]
@@ -63,5 +62,8 @@ js = [
 ]
 
 [security]
+  # Allow first-party HTML content files (e.g. content/book/index.html). Hugo
+  # denies text/html content by default (security.allowContent) since v0.155.
+  allowContent = ['.*']
   [security.funcs]
     getenv = ['^HUGO_', '^CI$', '^BRANCH$', '^HIDE_RELEASES$']
