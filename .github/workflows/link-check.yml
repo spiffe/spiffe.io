@@ -1,0 +1,79 @@
+name: Link check
+
+# Builds the site the same way Netlify does and runs lychee over the rendered
+# output. This is report-only: broken links are surfaced in the run's job
+# summary but never fail the workflow (`fail: false` below), mirroring the
+# previous advisory link check that used to run during the Netlify build.
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Bulma SASS is imported from node_modules during the Hugo build, so the
+      # node deps must be installed first (Netlify does this automatically when
+      # it detects package.json; Actions does not).
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: npm ci
+
+      # pull_external.py (run by `make production-build`) needs these deps.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: pip install -r requirements.txt
+
+      # Hugo extended is required to compile SASS via Hugo Pipes (toCSS).
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 0.163.3
+          extended: true
+
+      # Build the production site into ./public. This also pulls in external
+      # content. GITHUB_TOKEN authenticates pull_external.py's GitHub releases
+      # API calls: without a token it skips release generation entirely, which
+      # would otherwise show up as false broken links in the report.
+      - run: make production-build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Persist lychee's on-disk result cache across runs to speed up the
+      # (network-bound) external link checks.
+      - uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.run_id }}
+          restore-keys: lychee-
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # --root-dir resolves root-relative links against the built ./public
+          # tree (the site is built with baseURL "/"). letsencrypt.org is
+          # excluded because it blocks automated requests. 403/429 are accepted
+          # so that bot-blocking or rate-limited external hosts don't read as
+          # broken links.
+          args: >-
+            --no-progress
+            --root-dir "${{ github.workspace }}/public"
+            --exclude 'letsencrypt\.org'
+            --cache --max-cache-age 1d
+            --accept '100..=103,200..=299,403,429'
+            public
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail: false
