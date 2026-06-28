@@ -146,3 +146,31 @@ Here's some important info regarding the SPIFFE project.
 ```
 
 Admonition blocks support Markdown.
+
+## Writing for the blog
+
+The blog lives at [`/blog/`](https://spiffe.io/blog/) and is generated from
+Markdown under [`content/blog/`](content/blog). Each post is a folder named
+`YYYY-MM-DD-slug` (the date prefix keeps posts ordered in the filesystem and
+becomes part of the URL) containing an `index.md` and any images it uses:
+
+```
+content/blog/
+  2026-06-19-my-post/
+    index.md        # front matter + body
+    diagram.png     # images live alongside the post
+```
+
+**The fastest way to write a post is to copy the annotated example,
+[`content/blog/2026-06-19-writing-a-blog-post/`](content/blog/2026-06-19-writing-a-blog-post/index.md),
+rename the folder, and replace the contents.** That post is a `draft` (so it
+only shows in local previews) and documents the front matter, images, tags, and
+publishing flow as it goes - read it for the full walkthrough. Posts are tagged
+with one or more of three tags: `SPIFFE`, `SPIRE`, and `Community`.
+
+To preview locally, run the site (`make docker-serve` or `make serve`, both of
+which build drafts) and open
+[`http://localhost:1313/blog/`](http://localhost:1313/blog/). SEO metadata
+(title, description, canonical URL, Open Graph and Twitter Card tags) and the
+[RSS feed](https://spiffe.io/blog/index.xml) are generated automatically; you
+don't need to add them by hand.

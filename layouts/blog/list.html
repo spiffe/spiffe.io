@@ -1,0 +1,31 @@
+{{ define "title" }}{{ .Site.Title }} | {{ .Title }}{{ end }}
+{{ define "main" }}
+{{ partial "hero.html" . }}
+<section class="section">
+  <div class="container">
+    {{- with .Content }}
+    <div class="content">{{ . }}</div>
+    {{- end }}
+
+    <div class="blog-list">
+      {{- range .RegularPages.ByDate.Reverse }}
+      <article class="blog-summary">
+        <h2 class="title is-4">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h2>
+        {{ partial "blog/byline.html" . }}
+        <p>{{ .Description | default .Summary | plainify }}</p>
+        {{- with .Params.tags }}
+        <p class="blog-tags">
+          {{- range . }}<span class="tag is-light">{{ . }}</span> {{ end -}}
+        </p>
+        {{- end }}
+        <a class="has-text-weight-semibold" href="{{ .RelPermalink }}">Read more &rarr;</a>
+      </article>
+      {{- else }}
+      <p>No posts yet. Check back soon.</p>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{ end }}

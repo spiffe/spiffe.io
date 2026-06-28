@@ -9,6 +9,10 @@ enableGitInfo = true
 publicUrl = "https://spiffe.io"
 spireGitHubUrl = "https://github.com/spiffe/spire"
 
+# Blog posts may carry `tags` for display, but we don't generate taxonomy
+# listing pages for them, so disable the taxonomy page kinds.
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
 [markup]
   [markup.tableOfContents]
     startLevel = 1
@@ -17,6 +21,16 @@ spireGitHubUrl = "https://github.com/spiffe/spire"
 acronym = "Secure Production Identity Framework for Everyone"
 assetintegritychecking = false
 githuburl = "https://github.com/spiffe/spiffe.io/tree/master"
+# Production base URL, used to build absolute canonical/Open Graph/Twitter URLs
+# (the site is built with baseURL "/", so .Permalink alone is root-relative).
+# Mirrors the top-level publicUrl key, which is consumed by pull_external.py.
+publicUrl = "https://spiffe.io"
+# Default meta description used for pages that don't set their own.
+description = "A universal identity control plane for distributed systems."
+# Default Open Graph / Twitter card image (used when a page sets no image).
+images = ["img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png"]
+# Default date format for blog post bylines (Go reference time layout).
+dateformat = "January 2, 2006"
 
 [params.home]
 acronym     = "**S**ecure **P**roduction **I**dentity **F**ramework **f**or **E**veryone"
@@ -29,7 +43,7 @@ spire = "**SPIRE**, the SPIFFE Runtime Environment, is an extensible system that
 [params.socialmedia]
 twitter       = "SPIFFEio"
 slack         = "https://slack.spiffe.io/"
-medium        = "https://blog.spiffe.io/"
+medium        = "https://medium.com/spiffe"
 github        = "https://github.com/spiffe"
 stackoverflow = "https://stackoverflow.com/questions/tagged/spiffe"
 youtube       = "https://www.youtube.com/channel/UCVzeW7j02FDNggkI5JKPvJg/f"

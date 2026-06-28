@@ -9,7 +9,6 @@
 {{- $social          := .Site.Params.socialmedia }}
 {{- $xUrl            := printf "https://x.com/%s" $social.twitter }}
 {{- $slackUrl        := $social.slack }}
-{{- $blogUrl         := $social.medium }}
 {{- $githubUrl       := $social.github }}
 {{- $stackUrl        := $social.stackoverflow }}
 {{- $youtubeUrl      := $social.youtube }}
@@ -60,17 +59,13 @@
         </a>
         {{- end -}}
 
+        {{- /* Blog stays outside the docs condition so it's reachable from docs pages too. */ -}}
+        <a class="navbar-item has-text-weight-bold" href="/blog/">
+          Blog
+        </a>
+
         <div class="navbar-item">
           <p class="control">
-            <a class="button is-black" href="{{ $blogUrl }}">
-              <span class="icon">
-                <i class="fab fa-medium"></i>
-              </span>
-              <span>
-                Blog
-              </span>
-            </a>
-
             <a class="button is-black" href="{{ $xUrl }}" aria-label="X (formerly Twitter)">
               <span class="icon">
                 <i class="fab fa-x-twitter"></i>

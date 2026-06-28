@@ -1,0 +1,32 @@
+{{ define "title" }}{{ .Site.Title }} | {{ .Title }}{{ end }}
+{{ define "main" }}
+<section class="hero-docs is-light">
+  <div class="container">
+    <div class="hero-body">
+      <p class="title is-size-2 is-size-2-mobile has-text-weight-light is-spaced">
+        {{ .Title }}
+      </p>
+      {{ partial "blog/byline.html" . }}
+    </div>
+  </div>
+</section>
+
+<article class="article">
+  <div class="container">
+    <div class="content">
+      <section class="is-inner-content">
+        {{ .Content }}
+      </section>
+      {{- with .Params.tags }}
+      <hr>
+      <p class="blog-tags">
+        {{- range . }}<span class="tag is-light">{{ . }}</span> {{ end -}}
+      </p>
+      {{- end }}
+    </div>
+    <p class="mt-5">
+      <a href="{{ "/blog/" | relURL }}">&larr; Back to all posts</a>
+    </p>
+  </div>
+</article>
+{{ end }}
