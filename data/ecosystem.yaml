@@ -116,7 +116,7 @@ categories:
         link: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
         description: Secrets manager with support for SPIFFE authentication.
 
-  - name: Service Meshes and Proxies
+  - name: Service Meshes & Proxies
     weight: 500
     description: Service meshes and proxies that use SPIFFE identities to authenticate and secure traffic between workloads.
     projects:
