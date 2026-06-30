@@ -11,7 +11,7 @@
 # under and whether the SPIFFE functionality is gated behind enterprise
 # licensing. Err on the side of "commercial" if it is not clearly FOSS.
 categories:
-  - name: SPIRE and Plugins
+  - name: SPIRE & Plugins
     weight: 100
     description: SPIRE, the reference implementation of SPIFFE, along with the plugins and tooling that extend and operate it.
     projects:
@@ -60,11 +60,6 @@ categories:
         weight: 200
         link: https://github.com/spiffe/java-spiffe
         description: SPIFFE SDK for Java.
-      - name: c-spiffe
-        type: official
-        weight: 300
-        link: https://github.com/spiffe/c-spiffe
-        description: SPIFFE SDK for C and C++.
       - name: py-spiffe
         type: community
         weight: 400
