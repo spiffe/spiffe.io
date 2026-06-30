@@ -110,6 +110,11 @@ categories:
         weight: 200
         link: https://developer.hashicorp.com/vault/docs/auth/spiffe
         description: Secrets manager with support for SPIFFE authentication.
+      - name: Infisical
+        type: commercial
+        weight: 200
+        link: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
+        description: Secrets manager with support for SPIFFE authentication.
 
   - name: Service Meshes and Proxies
     weight: 500
