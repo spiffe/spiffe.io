@@ -126,3 +126,22 @@ a
   // hugging the left.
   .content
     width: 100%
+
+// Ecosystem page (content/docs/latest/spiffe-about/ecosystem.md). Scoped under
+// `.content` so these beat Bulma's `.content ul` / `.content .icon` rules on
+// specificity (the listing renders inside the docs article `.content`).
+.content
+  // Give the legend's wrapped icon/label pairs a little vertical gap on narrow
+  // screens (they sit inline with `mr-4` otherwise).
+  .ecosystem-legend .icon-text
+    margin-bottom: .25rem
+
+  // A tight, one-line-per-project list: drop the default disc bullet and 2em
+  // indent so the type icon acts as the marker.
+  .ecosystem-list
+    list-style: none
+    margin-left: 0
+
+    .icon
+      vertical-align: middle
+      margin-right: .35rem

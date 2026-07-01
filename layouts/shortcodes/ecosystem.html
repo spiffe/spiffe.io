@@ -1,0 +1,39 @@
+{{- /* Renders the SPIFFE Ecosystem listing from data/ecosystem.yaml.
+       Categories and the projects within them are ordered by `weight`.
+       Each project's `type` selects a legend icon. Used by
+       content/docs/latest/spiffe-about/ecosystem.md. */ -}}
+{{- $types := dict
+      "official"   (dict "icon" "fa-star"         "color" "has-text-warning" "label" "SPIFFE official project")
+      "community"  (dict "icon" "fa-people-group" "color" "has-text-info"    "label" "Community project")
+      "commercial" (dict "icon" "fa-sack-dollar"  "color" "has-text-success" "label" "Commercial project")
+-}}
+
+<p class="ecosystem-legend">
+  <strong>Key:</strong>
+  {{- range $key := slice "official" "community" "commercial" }}
+    {{- $t := index $types $key }}
+    <span class="icon-text mr-4">
+      <span class="icon {{ $t.color }}" role="img" aria-label="{{ $t.label }}" title="{{ $t.label }}">
+        <i class="fas {{ $t.icon }}" aria-hidden="true"></i>
+      </span>
+      <span>{{ $t.label }}</span>
+    </span>
+  {{- end }}
+</p>
+
+{{- range sort hugo.Data.ecosystem.categories "weight" }}
+  <h2 id="{{ .name | urlize }}">{{ .name }}</h2>
+  {{- with .description }}
+  <p>{{ . | markdownify }}</p>
+  {{- end }}
+  <ul class="ecosystem-list">
+    {{- range sort .projects "weight" }}
+      {{- $t := index $types .type }}
+      {{- if not $t }}{{ $t = index $types "community" }}{{ end }}
+      <li>
+        <span class="icon {{ $t.color }}" role="img" aria-label="{{ $t.label }}" title="{{ $t.label }}"><i class="fas {{ $t.icon }}" aria-hidden="true"></i></span>
+        <a href="{{ .link }}"><strong>{{ .name }}</strong></a>{{ with .description }} - {{ . | markdownify }}{{ end }}
+      </li>
+    {{- end }}
+  </ul>
+{{- end }}
