@@ -8,7 +8,7 @@ try:
                 title: Quickstart for Docker
                 short: Quickstart for Docker
                 description: Quickly get SPIRE up and running on Docker
-                kind: try
+                navgroup: try
                 weight: 55
                 aliases:
                     - /docs/latest/spire/installing/spire101/
@@ -21,7 +21,7 @@ maintenance:
         upgrading.md:
             frontMatter:
                 short: Upgrade/Downgrade SPIRE
-                kind: maintenance
+                navgroup: maintenance
                 description: SPIRE Server and Agent version compatibility
                 weight: 80
                 aliases:
@@ -36,7 +36,7 @@ planning:
             frontMatter:
                 title: Scaling SPIRE
                 description: Supported SPIRE topologies, identity federation, and sizing considerations
-                kind: planning
+                navgroup: planning
                 weight: 80
                 aliases:
                     - /spire/docs/scaling_spire
@@ -55,7 +55,7 @@ deploying:
             frontMatter:
                 title: Getting SPIRE
                 description: Platforms on Which SPIRE is Supported
-                kind: deploying
+                navgroup: deploying
                 weight: 10
                 aliases:
                     - /docs/latest/spire/installing/using_spire/
@@ -64,7 +64,7 @@ deploying:
             frontMatter:
                 title: SPIRE Agent Configuration Reference
                 description: Command line options, agent.conf settings, and built-in plugins for SPIRE Agent
-                kind: deploying
+                navgroup: deploying
                 weight: 300
                 aliases:
                     - /docs/latest/spire/using/spire_agent/
@@ -73,7 +73,7 @@ deploying:
             frontMatter:
                 title: SPIRE Server Configuration Reference
                 description: Command line options, server.conf settings, and built-in plugins for SPIRE Server
-                kind: deploying
+                navgroup: deploying
                 weight: 400
                 aliases:
                     - /docs/latest/spire/using/spire_server/
@@ -82,7 +82,7 @@ deploying:
             frontMatter:
                 title: SPIRE Telemetry Configuration
                 description: Configure SPIRE Agent and Server metrics output to supported sinks
-                kind: deploying
+                navgroup: deploying
                 weight: 500
                 aliases:
                     - /docs/latest/spire/using/telemetry_config/
@@ -96,7 +96,7 @@ keyless/vault:
         README.md:
             frontMatter:
                 short: Vault Integration Example
-                kind: keyless
+                navgroup: keyless
                 description: Using SPIRE JWT-SVIDs to Authenticate to Hashicorp Vault
                 weight: 200
             beacon: "{{< scarf/pixels/high-interest >}}"
@@ -110,7 +110,7 @@ architecture/nested:
             frontMatter:
                 title: Deploying a Nested SPIRE Architecture
                 short: Nested SPIRE Example
-                kind: architecture
+                navgroup: architecture
                 description: Chaining SPIRE Servers to Use the Same Trust Domain
                 weight: 100
             beacon: "{{< scarf/pixels/high-interest >}}"
@@ -124,7 +124,7 @@ architecture/federation:
             frontMatter:
                 title: Deploying a Federated SPIRE Architecture
                 short: SPIRE Federation Example
-                kind: architecture
+                navgroup: architecture
                 description: Federating SPIRE Servers with Different Trust Domains
                 weight: 200
             beacon: "{{< scarf/pixels/high-interest >}}"
@@ -138,7 +138,7 @@ microservices/envoy-x509:
             frontMatter:
                 title: Using Envoy with X.509-SVIDs
                 short: SPIRE with Envoy and X.509-SVIDs
-                kind: microservices
+                navgroup: microservices
                 description: Securing Microservice Communication with Envoy Using X.509 SPIFFE IDs
                 weight: 100
             beacon: "{{< scarf/pixels/high-interest >}}"
@@ -152,7 +152,7 @@ microservices/envoy-jwt:
             frontMatter:
                 title: Using Envoy with JWT-SVIDs
                 short: SPIRE with Envoy and JWT-SVIDs
-                kind: microservices
+                navgroup: microservices
                 description: Securing Microservice Communication with Envoy Using JWT SPIFFE IDs
                 weight: 200
             beacon: "{{< scarf/pixels/high-interest >}}"
@@ -166,7 +166,7 @@ microservices/envoy-opa:
             frontMatter:
                 title: OPA Authorization with Envoy and X.509-SVIDs
                 short: Spire with OPA + Envoy + X.509-SVIDs
-                kind: microservices
+                navgroup: microservices
                 description: Secure Communication Using Envoy with X.509-SVIDs and Open Policy Agent Authorization
                 weight: 300
             beacon: "{{< scarf/pixels/high-interest >}}"
@@ -180,7 +180,7 @@ microservices/envoy-jwt-opa:
             frontMatter:
                 title: OPA Authorization with Envoy and JWT-SVIDs
                 short: Spire with OPA + Envoy + JWT-SVIDs
-                kind: microservices
+                navgroup: microservices
                 description: Secure Communication Using Envoy with JWT-SVIDs and Open Policy Agent Authorization
                 weight: 400
             beacon: "{{< scarf/pixels/high-interest >}}"
@@ -202,47 +202,47 @@ spiffe-specs:
             frontMatter:
                 title: Secure Production Identity Framework for Everyone
                 short: SPIFFE
-                kind: spiffe-specs
+                navgroup: spiffe-specs
                 weight: 100
         JWT-SVID.md:
             frontMatter:
                 title: JWT-SVID
                 short: JWT-SVID
-                kind: spiffe-specs
+                navgroup: spiffe-specs
                 weight: 300
         X509-SVID.md:
             frontMatter:
                 title: X509-SVID
                 short: X509-SVID
-                kind: spiffe-specs
+                navgroup: spiffe-specs
                 weight: 300
         SPIFFE-ID.md:
             frontMatter:
                 title: SPIFFE Identity and Verifiable Identity Document
                 short: SPIFFE ID and Verifiable Identity Document
-                kind: spiffe-specs
+                navgroup: spiffe-specs
                 weight: 200
         SPIFFE_Federation.md:
             frontMatter:
                 title: SPIFFE Federation
                 short: SPIFFE Federation
-                kind: spiffe-specs
+                navgroup: spiffe-specs
                 weight: 500
         SPIFFE_Trust_Domain_and_Bundle.md:
             frontMatter:
                 title: SPIFFE Trust Domain and Bundle
                 short: SPIFFE Trust Domain and Bundle
-                kind: spiffe-specs
+                navgroup: spiffe-specs
                 weight: 200
         SPIFFE_Workload_API.md:
             frontMatter:
                 title: SPIFFE Workload API
                 short: SPIFFE Workload API
-                kind: spiffe-specs
+                navgroup: spiffe-specs
                 weight: 400
         SPIFFE_Workload_Endpoint.md:
             frontMatter:
                 title: SPIFFE Workload Endpoint
                 short: SPIFFE Workload Endpoint
-                kind: spiffe-specs
+                navgroup: spiffe-specs
                 weight: 400

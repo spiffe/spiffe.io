@@ -1,27 +1,28 @@
 {{ $docsHome   := .CurrentSection }}
 {{ $allDocs    := site.Pages  }}
 
-{{ $spiffeAbout        := where $allDocs ".Params.kind" "eq" "spiffe-about" }}
-{{ $spiffeSpecs        := where $allDocs ".Params.kind" "eq" "spiffe-specs" }}
+{{ $spiffeAbout        := where $allDocs ".Params.navgroup" "eq" "spiffe-about" }}
+{{ $spiffeSpecs        := where $allDocs ".Params.navgroup" "eq" "spiffe-specs" }}
 
-{{ $spireAbout         := where $allDocs ".Params.kind" "eq" "spire-about" }}
+{{ $spireAbout         := where $allDocs ".Params.navgroup" "eq" "spire-about" }}
 
-{{ $spireHelmChartsHardenedAbout         := where $allDocs ".Params.kind" "eq" "spire-helm-charts-hardened-about" }}
-{{ $spireHelmChartsHardenedAdvanced := where $allDocs ".Params.kind" "eq" "spire-helm-charts-hardened-advanced" }}
+{{ $spireHelmChartsHardenedAbout         := where $allDocs ".Params.navgroup" "eq" "spire-helm-charts-hardened-about" }}
+{{ $spireHelmChartsHardenedAdvanced := where $allDocs ".Params.navgroup" "eq" "spire-helm-charts-hardened-advanced" }}
 
-{{ $spirePlanning      := where $allDocs ".Params.kind" "eq" "planning" }}
-{{ $spireTry           := where $allDocs ".Params.kind" "eq" "try" }}  
-{{ $spireDeploying     := where $allDocs ".Params.kind" "eq" "deploying" }}
-{{ $spireMaintenance   := where $allDocs ".Params.kind" "eq" "maintenance" }}
+{{ $spirePlanning      := where $allDocs ".Params.navgroup" "eq" "planning" }}
+{{ $spireTry           := where $allDocs ".Params.navgroup" "eq" "try" }}  
+{{ $spireDeploying     := where $allDocs ".Params.navgroup" "eq" "deploying" }}
+{{ $spireMaintenance   := where $allDocs ".Params.navgroup" "eq" "maintenance" }}
 
-{{ $spireArchitecture  := where $allDocs ".Params.kind" "eq" "architecture" }}
-{{ $spireMicroservices := where $allDocs ".Params.kind" "eq" "microservices" }}
-{{ $spireKeyless       := where $allDocs ".Params.kind" "eq" "keyless" }}
+{{ $spireArchitecture  := where $allDocs ".Params.navgroup" "eq" "architecture" }}
+{{ $spireMicroservices := where $allDocs ".Params.navgroup" "eq" "microservices" }}
+{{ $spireKeyless       := where $allDocs ".Params.navgroup" "eq" "keyless" }}
 
 {{ $pageUrl    := .RelPermalink }}
 {{ $isDocsHome := eq .RelPermalink $docsHome.RelPermalink }}
-{{ $version    := index (split .File.Path "/") 1 }}
-{{/* $latest     := index site.Data.releases 1 */}}
+{{ $version := "" }}
+{{ with .File }}{{ $version = index (split .Path "/") 1 }}{{ end }}
+{{/* $latest     := index hugo.Data.releases 1 */}}
 {{/* $latest     := "v0.10.0" */}}
 
 {{/*}}

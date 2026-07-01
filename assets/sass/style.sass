@@ -537,3 +537,38 @@ hr
 
 @keyframes marquee
     100% { transform: translateX(calc(-180px * 20));  }
+
+// Blog: center the reading column and tidy the byline/tags spacing.
+body.is-blog-page
+  .is-main .container
+    max-width: 860px
+    margin-left: auto
+    margin-right: auto
+  // The site sets .content to 70% width for its other layouts; on the blog the
+  // content should fill the centered reading column instead of hugging the left.
+  .content
+    width: 100%
+
+.blog-byline
+  margin-top: 0.6rem
+  margin-bottom: 0
+  font-size: 0.9rem
+
+.blog-tags
+  margin-top: 0.75rem
+  .tag
+    margin-right: 0.4rem
+
+.blog-list
+  .blog-summary
+    .title
+      margin-bottom: 0.35rem
+    .blog-byline
+      margin-bottom: 0.75rem
+    p
+      margin-bottom: 0.75rem
+    // Separate posts with a rule instead of wrapping each in a card.
+    &:not(:first-child)
+      margin-top: 2rem
+      padding-top: 2rem
+      border-top: 2px solid #d9dce0

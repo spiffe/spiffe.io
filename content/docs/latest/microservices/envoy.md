@@ -2,7 +2,7 @@
 title: Using Envoy with SPIRE
 short: Using Envoy with SPIRE
 description: How to configure the Envoy proxy with SPIFFE and SPIRE
-kind: microservices
+navgroup: microservices
 weight: 10
 aliases:
     - /spire/docs/envoy

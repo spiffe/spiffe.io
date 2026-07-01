@@ -2,7 +2,7 @@
 title: Community Presentations
 description: Resources presented by the SPIFFE community
 short: Community Presentations
-kind: spiffe-about
+navgroup: spiffe-about
 weight: 300
 aliases:
     - /community/presentations

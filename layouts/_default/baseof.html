@@ -2,10 +2,10 @@
 {{- $isDocsPage := eq .Section "docs" }}
 {{- $favicon    := "favicon.ico" | relURL }}
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
+<html lang="{{ .Site.Language.Locale }}">
   <head>
     {{ partial "meta.html" . }}
-    <title>{{ block "title" . }}{{ .Site.Title }} &ndash; {{ .Site.Params.acronym }}{{ end }}</title>
+    <title>{{ block "title" . }}{{ if .Params.titleTag }}{{ .Params.titleTag }} | {{ .Site.Title }}{{ else if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.acronym }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}{{ end }}</title>
     <link rel="shortcut icon" href="{{ $favicon }}" type="image/x-icon">
     {{ partial "css.html" . }}
     <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
@@ -21,19 +21,5 @@
       {{ partial "footer.html" . }}
     {{- end -}}
     {{ partial "javascript.html" . }}
-    {{ template "_internal/google_analytics_async.html" . }}
-    <script>
-      ga('send', 'pageview', {
-        'Branch':  '{{ getenv "BRANCH" }}'
-      });
-    </script>
-    <script>
-      var captureOutboundLink = function(url) {
-        ga('send', 'event', 'outbound', 'click', url, {
-          'transport': 'beacon',
-          'hitCallback': function(){ document.location = url; }
-        });
-      }
-    </script> 
   </body>
 </html>

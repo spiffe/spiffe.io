@@ -1,7 +1,7 @@
 ---
 title: Try SPIRE
 short: Try
-kind: try
+navgroup: try
 aliases:
     - /spire/try
     - /docs/latest/spire/installing

@@ -2,7 +2,7 @@
 title: Nested SPIRE
 short: Nested SPIRE
 description: Nested SPIRE Architectures
-kind: spire-helm-charts-hardened-advanced
+navgroup: spire-helm-charts-hardened-advanced
 weight: 100
 aliases:
     - /docs/latest/helm-charts-hardened-advanced/nested-spire

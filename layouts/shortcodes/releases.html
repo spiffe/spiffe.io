@@ -17,8 +17,8 @@
     </tr>
   </thead>
   <tbody>
-    {{- $releases         := sort site.Data.releases.all "created_at" "desc" }}
-    {{- $latestRelease    := site.Data.releases.latest }}
+    {{- $releases         := sort hugo.Data.releases.all "created_at" "desc" }}
+    {{- $latestRelease    := hugo.Data.releases.latest }}
     {{- $latest           := $latestRelease.tag_name }}
     {{- range $releases -}}
     {{- $clipboardButtons := .Site.Params.downloads.buttons.clipboard }}

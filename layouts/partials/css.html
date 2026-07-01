@@ -1,4 +1,4 @@
-{{- $inServerMode := .Site.IsServer }}
+{{- $inServerMode := hugo.IsServer }}
 {{- $integCheck   := .Site.Params.assetintegritychecking }}
 {{- $sass         := "sass/style.sass" }}
 {{- $cssOutput    := "css/style.css" }}

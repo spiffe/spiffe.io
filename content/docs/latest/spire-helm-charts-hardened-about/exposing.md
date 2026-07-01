@@ -2,7 +2,7 @@
 title: Exposing Services
 short: Exposing Services
 description: How to expose SPIFFE/SPIRE services outside of Kubernetes
-kind: spire-helm-charts-hardened-about
+navgroup: spire-helm-charts-hardened-about
 weight: 150
 aliases:
     - /docs/latest/helm-charts-hardened/exposing

@@ -2,7 +2,7 @@
 title: SPIRE Case Studies
 short: Case Studies
 description: Real world examples of how SPIFFE and SPIRE are being used
-kind: spire-about
+navgroup: spire-about
 weight: 200
 aliases:
     - /spiffe/casestudies
