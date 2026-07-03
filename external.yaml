@@ -192,10 +192,14 @@ spiffe-specs:
         - standards/JWT-SVID.md
         - standards/SPIFFE-ID.md
         - standards/SPIFFE.md
+        - standards/SPIFFE_Broker_API.md
+        - standards/SPIFFE_Broker_Endpoint.md
         - standards/SPIFFE_Federation.md
         - standards/SPIFFE_Trust_Domain_and_Bundle.md
         - standards/SPIFFE_Workload_API.md
         - standards/SPIFFE_Workload_Endpoint.md
+        - standards/STABILITY.md
+        - standards/WIT-SVID.md
         - standards/X509-SVID.md
     transform:
         SPIFFE.md:
@@ -246,3 +250,27 @@ spiffe-specs:
                 short: SPIFFE Workload Endpoint
                 navgroup: spiffe-specs
                 weight: 400
+        WIT-SVID.md:
+            frontMatter:
+                title: WIT-SVID
+                short: WIT-SVID
+                navgroup: spiffe-specs
+                weight: 350
+        SPIFFE_Broker_API.md:
+            frontMatter:
+                title: SPIFFE Broker API
+                short: SPIFFE Broker API
+                navgroup: spiffe-specs
+                weight: 450
+        SPIFFE_Broker_Endpoint.md:
+            frontMatter:
+                title: SPIFFE Broker Endpoint
+                short: SPIFFE Broker Endpoint
+                navgroup: spiffe-specs
+                weight: 460
+        STABILITY.md:
+            frontMatter:
+                title: SPIFFE Specification Stability
+                short: Specification Stability
+                navgroup: spiffe-specs
+                weight: 600
