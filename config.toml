@@ -61,6 +61,11 @@ js = [
     "docs"
 ]
 
+# Google Analytics 4 measurement ID. Consumed by Hugo's internal
+# `_internal/google_analytics.html` template, invoked from baseof.html.
+[services.googleAnalytics]
+  ID = "G-SC8WXCFW6M"
+
 [security]
   # Allow first-party HTML content files (e.g. content/book/index.html). Hugo
   # denies text/html content by default (security.allowContent) since v0.155.

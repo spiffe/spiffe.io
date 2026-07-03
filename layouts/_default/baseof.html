@@ -5,6 +5,10 @@
 <html lang="{{ .Site.Language.Locale }}">
   <head>
     {{ partial "meta.html" . }}
+    {{- /* Google Analytics: only on production builds of the master branch, so
+           local `hugo server` and Netlify deploy-previews/branch-deploys don't
+           report. */ -}}
+    {{ if and hugo.IsProduction (eq (os.Getenv "BRANCH") "master") }}{{ template "_internal/google_analytics.html" . }}{{ end }}
     <title>{{ block "title" . }}{{ if .Params.titleTag }}{{ .Params.titleTag }} | {{ .Site.Title }}{{ else if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.acronym }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}{{ end }}</title>
     <link rel="shortcut icon" href="{{ $favicon }}" type="image/x-icon">
     {{ partial "css.html" . }}
