@@ -4,11 +4,15 @@
 {{ $latest     := hugo.Data.releases.latest }}
 
 <div class="dashboard-panel left has-background-white-bis is-hidden-mobile">
-  <div class="dashboard-panel-header has-text-centered">
+  <div class="dashboard-panel-content is-scrollable">
+      {{ partial "docs/sidenav.html" . }}
+  </div>
+
+  <div class="dashboard-panel-footer has-text-centered">
     <div class="dropdown is-left">
       <div class="dropdown-trigger">
         <span class="non-actionable button is-dark" >
-          <span> 
+          <span>
             <strong>
               {{ $latest.name }}
             </strong>
@@ -19,9 +23,5 @@
         </span>
       </div>
     </div>
-  </div>
-
-  <div class="dashboard-panel-content is-scrollable">
-      {{ partial "docs/sidenav.html" . }}
   </div>
 </div>
