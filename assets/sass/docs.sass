@@ -1,5 +1,3 @@
-$panel-header-logo-width: 85%
-
 html
   overflow: auto
 
@@ -29,21 +27,20 @@ html
   &-panel
     +column
     padding-top: 1rem
-    padding-bottom: 4rem
+    padding-bottom: 1rem
     flex: 0 0 20%
 
-    &-header
-      margin-bottom: 1.5rem
+    &-footer
+      margin-top: 1rem
 
-      &-logo
-        width: $panel-header-logo-width
-        margin: 0.5rem auto 0.5rem auto
-
+    // Horizontal inset is padding (not margin) so the scrollable box spans the
+    // full panel width and its scrollbar sits at the panel edge.
     &-content
+      flex: 1
       +desktop
-        margin: 0 2rem
+        padding: 0 2rem
       +touch
-        margin: 0 1rem
+        padding: 0 1rem
 
 //  Work around for bulma css weird jumbo sized default margin-bottom
 .title:not(:last-child)
