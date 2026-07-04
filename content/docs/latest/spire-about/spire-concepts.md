@@ -78,7 +78,7 @@ This section walks through a “day in the life” of how SPIRE issues an identi
 6. The agent performs node attestation, to prove to the server the identity of the node it is running on. For example, when running on an AWS EC2 Instance it would typically perform node attestation by supplying an [AWS Instance Identity Document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html) to the server.  
 7. The agent presents this proof of identity to the server over a TLS connection authenticated via the bootstrap bundle the agent is configured with.
 {{< warning >}}
-This bootstrap bundle is a default configuration, and should be replaced with customer-supplied credentials in production.
+SPIRE ships with a default bootstrap bundle, which the agent uses in step 7 to authenticate the server. In production, replace this default bundle with your own credentials.
 {{< /warning >}}
 8. The server calls the AWS API to validate the proof.
 9. AWS acknowledges the document is valid.
