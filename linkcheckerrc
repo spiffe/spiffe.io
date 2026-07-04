@@ -1,6 +1,0 @@
-[filtering]
-checkextern=1
-ignore=letsencrypt\.org
-
-[output]
-status=0
