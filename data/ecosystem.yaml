@@ -1,0 +1,142 @@
+# Drives the SPIFFE Ecosystem page (content/docs/latest/spiffe-about/ecosystem.md)
+# via the {{< ecosystem >}} shortcode.
+#
+# Categories and the projects within them are both ordered by `weight`
+# (ascending). Each project's `type` selects its legend icon:
+#   official   - maintained by the SPIFFE project
+#   community  - maintained by the wider community
+#   commercial - a vendor product or managed service
+#
+# For community vs commercial. Consider what license the project is released
+# under and whether the SPIFFE functionality is gated behind enterprise
+# licensing. Err on the side of "commercial" if it is not clearly FOSS.
+categories:
+  - name: SPIRE & Plugins
+    weight: 100
+    description: SPIRE, the reference implementation of SPIFFE, along with the plugins and tooling that extend and operate it.
+    projects:
+      - name: SPIRE
+        type: official
+        weight: 100
+        link: https://github.com/spiffe/spire
+        description: The SPIFFE Runtime Environment - the reference implementation of SPIFFE, handling node and workload attestation and SVID issuance and rotation.
+      - name: SPIRE Controller Manager
+        type: official
+        weight: 200
+        link: https://github.com/spiffe/spire-controller-manager
+        description: Manages SPIRE registration entries and federation relationships from Kubernetes custom resources.
+      - name: SPIRE Hardened Helm Charts
+        type: official
+        weight: 300
+        link: https://github.com/spiffe/helm-charts-hardened
+        description: A suite of production-hardened Helm charts for deploying SPIRE on Kubernetes.
+      - name: SPIRE Identity Exchange
+        type: official
+        weight: 400
+        link: https://github.com/spiffe/spire-identity-exchange
+        description: Standalone service that allows platform-native tokens, such as GitHub Actions or GitLab OIDC tokens, to be exchanged for SPIRE-issued SVIDs.
+      - name: Tornjak
+        type: official
+        weight: 500
+        link: https://github.com/spiffe/tornjak
+        description: A management UI that provides visibility and governance across one or more SPIRE deployments.
+      - name: SPIRE TPM Plugin
+        type: official
+        weight: 600
+        link: https://github.com/spiffe/spire-tpm-plugin
+        description: Agent and server plugins that add TPM 2.0-based node attestation to SPIRE.
+
+  - name: SDKs & Libraries
+    weight: 200
+    description: Fetch and validate SPIFFE identities directly from your application code.
+    projects:
+      - name: go-spiffe
+        type: official
+        weight: 100
+        link: https://github.com/spiffe/go-spiffe
+        description: SPIFFE SDK for Go.
+      - name: java-spiffe
+        type: official
+        weight: 200
+        link: https://github.com/spiffe/java-spiffe
+        description: SPIFFE SDK for Java.
+      - name: py-spiffe
+        type: community
+        weight: 400
+        link: https://github.com/HewlettPackard/py-spiffe
+        description: SPIFFE SDK for Python.
+      - name: rust-spiffe
+        type: community
+        weight: 500
+        link: https://github.com/maxlambrecht/rust-spiffe
+        description: SPIFFE SDK for Rust.
+
+  - name: Deployment & Workload Helpers
+    weight: 300
+    description: Deliver SPIFFE identities to workloads, and bridge them to platforms that do not speak the Workload API natively.
+    projects:
+      - name: SPIFFE CSI Driver
+        type: official
+        weight: 100
+        link: https://github.com/spiffe/spiffe-csi
+        description: A Kubernetes CSI driver that exposes the SPIFFE Workload API socket to pods.
+      - name: SPIFFE Helper
+        type: official
+        weight: 200
+        link: https://github.com/spiffe/spiffe-helper
+        description: Fetches and rotates SVIDs to disk for workloads that cannot call the Workload API themselves.
+      - name: AWS SPIFFE Workload Helper
+        type: official
+        weight: 300
+        link: https://github.com/spiffe/aws-spiffe-workload-helper
+        description: Exchanges SPIFFE SVIDs for AWS credentials via IAM Roles Anywhere.
+
+  - name: Secrets Management
+    weight: 400
+    description: Secrets managers that can store secrets and support SPIFFE-authenticated workloads to retrieving them.
+    projects:
+      - name: SPIKE
+        type: official
+        weight: 100
+        link: https://github.com/spiffe/spike
+        description: A SPIFFE-native secrets manage that allows workloads to use SPIFFE authentication to retrieve secrets.
+      - name: VMware Secrets Manager
+        type: community
+        weight: 200
+        link: https://github.com/vmware-tanzu/secrets-manager
+        description: A Kubernetes-native secrets manager with support for SPIFFE authentication.
+      - name: HashiCorp Vault
+        type: commercial
+        weight: 200
+        link: https://developer.hashicorp.com/vault/docs/auth/spiffe
+        description: Secrets manager with support for SPIFFE authentication.
+      - name: Infisical
+        type: commercial
+        weight: 200
+        link: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
+        description: Secrets manager with support for SPIFFE authentication.
+
+  - name: Service Meshes & Proxies
+    weight: 500
+    description: Service meshes and proxies that use SPIFFE identities to authenticate and secure traffic between workloads.
+    projects:
+      - name: Envoy
+        type: community
+        weight: 100
+        link: https://www.envoyproxy.io/
+        description: Service proxy that can consume SVIDs over the Envoy SDS API to establish mTLS.
+      - name: Istio
+        type: community
+        weight: 200
+        link: https://istio.io/
+        description: Service mesh that issues SPIFFE identities to the workloads in the mesh.
+      - name: Ghostunnel
+        type: community
+        weight: 300
+        link: https://github.com/ghostunnel/ghostunnel
+        description: A TLS proxy that attaches to the SPIFFE Workload API to authenticate connections.
+      - name: HashiCorp Consul
+        type: community
+        weight: 400
+        link: https://www.consul.io/
+        description: Service mesh that can issue SPIFFE identities to the services it manages.
