@@ -5,6 +5,7 @@ command = "pip install -r requirements.txt && make production-build"
 [build.environment]
 HUGO_VERSION = "0.163.3"
 NODE_VERSION = "22"
+PYTHON_VERSION = "3.12"
 
 [context.deploy-preview]
 command = "pip install -r requirements.txt && make preview-build"
