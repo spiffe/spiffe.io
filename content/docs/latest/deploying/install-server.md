@@ -108,7 +108,7 @@ See the following sections for details.
     $ kubectl get serviceaccount --namespace spire
     ```
 
-### Create Server Bundle Configmap, Role & ClusterRoleBinding
+### Create Server Bundle Configmap, Role & ClusterRole
 
 For the server to function, it is necessary for it to provide agents with certificates that they can use to verify the identity of the server when establishing a connection.
 
@@ -126,9 +126,9 @@ In a deployment such as this, where the agent and server share the same cluster,
     $ kubectl get configmaps --namespace spire | grep spire
     ```
 
-To allow the server to read and write to this configmap, a ClusterRole must be created that confers the appropriate entitlements to Kubernetes RBAC, and that ClusterRoleBinding must be associated with the service account created in the previous step.
+To allow the server to read and write to this configmap, a Role must be created that confers the appropriate entitlements to Kubernetes RBAC in the `spire` namespace. The server also needs cluster-wide permissions to perform node attestation: a ClusterRole grants it the ability to get pod and node information and to create tokenreviews, which the server uses to validate agent service account tokens with the Kubernetes Token Review API. A RoleBinding and a ClusterRoleBinding associate the Role and the ClusterRole, respectively, with the service account created in the previous step.
 
-1. Create a ClusterRole named **spire-server-trust-role** and a corresponding ClusterRoleBinding by applying the **server-cluster-role.yaml** configuration file:
+1. Create a Role named **spire-server-configmap-role** and a ClusterRole named **spire-server-trust-role**, together with their corresponding RoleBinding and ClusterRoleBinding, by applying the **server-cluster-role.yaml** configuration file:
 
     ```console
     $ kubectl apply -f server-cluster-role.yaml
