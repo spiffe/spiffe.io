@@ -1,0 +1,44 @@
+name: Documentation issue
+description: Report a problem with a page on spiffe.io (broken link, outdated content, typo, rendering issue)
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve spiffe.io! Before filing, please note that
+        **some documentation pages are pulled from other repositories at build
+        time** (see [`external.yaml`](https://github.com/spiffe/spiffe.io/blob/master/external.yaml)).
+        Problems with those pages should be reported upstream instead:
+
+        * SPIRE configuration references, upgrading, scaling, quickstart → [spiffe/spire](https://github.com/spiffe/spire/issues)
+        * Envoy / OPA / Vault / federation / nested-SPIRE tutorials → [spiffe/spire-tutorials](https://github.com/spiffe/spire-tutorials/issues)
+        * SPIFFE specifications → [spiffe/spiffe](https://github.com/spiffe/spiffe/issues)
+  - type: input
+    id: page-url
+    attributes:
+      label: Affected page URL
+      description: The full URL of the spiffe.io page where you found the problem.
+      placeholder: https://spiffe.io/docs/latest/deploying/configuring/
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What's wrong?
+      description: Describe the problem — what the page says now, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested-fix
+    attributes:
+      label: Suggested fix (optional)
+      description: If you know how the content should read, or want to submit a PR yourself, mention it here.
+    validations:
+      required: false
+  - type: checkboxes
+    id: upstream-check
+    attributes:
+      label: External content check
+      options:
+        - label: I checked [`external.yaml`](https://github.com/spiffe/spiffe.io/blob/master/external.yaml) and this page is not pulled from an external repository (or I'm not sure).
+          required: true
