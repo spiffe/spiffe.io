@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions and discussion — SPIFFE Slack
+    url: https://slack.spiffe.io/
+    about: The fastest way to get help or discuss an idea with the SPIFFE community and maintainers.
+  - name: SPIFFE project (not website) issues
+    url: https://github.com/spiffe/spiffe/issues
+    about: For questions or problems with the SPIFFE specifications or the wider project, use the community repository.
