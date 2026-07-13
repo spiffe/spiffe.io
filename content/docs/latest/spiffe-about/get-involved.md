@@ -32,6 +32,18 @@ While anyone is welcome to propose contributions via pull requests, we strongly 
 
 Day to day contributions are vetted by the project's maintainers. Overall project direction, guidance and conflict resolution is overseen by the projects' Technical Steering Committee. Full details on this process can be found [in the project GOVERNANCE page](https://github.com/spiffe/spiffe/blob/main/GOVERNANCE.md).
 
+### Add SPIFFE Support to Other Projects
+
+Contributions don't have to land in the SPIFFE and SPIRE repositories to move the project forward. Adding SPIFFE support to other tools, libraries, and platforms is one of the most valuable ways to grow the [SPIFFE ecosystem](/docs/latest/spiffe-about/ecosystem/). Some good starting points:
+
+* **Consume SPIFFE identities in your application or library** --- add support for fetching identities from the [SPIFFE Workload API](/docs/latest/spiffe-about/spiffe-concepts/#spiffe-workload-api), for example by building on one of the SDKs listed on the ecosystem page.
+
+* **Accept SVIDs in a tool you maintain or use** --- allow workloads to authenticate to a database, proxy, message broker, or other service with an X.509-SVID or JWT-SVID instead of a shared secret.
+
+* **List a project on the ecosystem page** --- if a project already supports SPIFFE but isn't listed, add an entry to [`data/ecosystem.yaml`](https://github.com/spiffe/spiffe.io/blob/master/data/ecosystem.yaml) and open a pull request against [spiffe/spiffe.io](https://github.com/spiffe/spiffe.io).
+
+If you're unsure where to start, ask in the [SPIFFE Slack](https://slack.spiffe.io/) channels or bring your idea to one of the SIGs or WGs listed above --- the community is happy to help scope out an integration.
+
 ## SPIFFE and SPIRE Branding Media Library
 
 Find SPIFFE and SPIRE logos here:
