@@ -29,7 +29,7 @@ As of SPIRE version v0.10, SDS support is enabled in SPIRE by default, so no SPI
 
 # Configuring Envoy
 
-The following examples use the Envoy v3 API, which is required by Envoy 1.17 and later (the deprecated v2 API has been removed from Envoy).
+The following examples use the Envoy v3 API, which is required by Envoy 1.17 and later.
 
 ## SPIRE Agent Cluster
 
