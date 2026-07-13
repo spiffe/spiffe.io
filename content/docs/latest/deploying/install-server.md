@@ -58,6 +58,10 @@ See [Install SPIRE Agents](/docs/latest/spire/installing/install-agents/) to lea
 
 This section walks you step-by-step through getting a server running in your Kubernetes cluster and configuring a workload container to access SPIRE.
 
+{{< info >}}
+This walkthrough uses static Kubernetes manifests to teach you how the SPIRE Server's components fit together. For production deployments, use the [SPIRE Helm charts](/docs/latest/spire-helm-charts-hardened-about/), which are the easiest and supported way to deploy and maintain a complete SPIRE stack on Kubernetes.
+{{< /info >}}
+
 {{< warning >}}
 You must run all commands from the directory containing the **.yaml** files used for configuration.
 {{< /warning >}}
