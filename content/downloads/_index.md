@@ -25,6 +25,32 @@ Starting with SPIRE v0.10.0, a `spire-extras` tarball is available that contains
 
 {{< releases >}}
 
+# Container Images
+
+Official SPIRE container images are published to the GitHub Container Registry with each release:
+
+* [`ghcr.io/spiffe/spire-server`](https://github.com/spiffe/spire/pkgs/container/spire-server)
+* [`ghcr.io/spiffe/spire-agent`](https://github.com/spiffe/spire/pkgs/container/spire-agent)
+* [`ghcr.io/spiffe/oidc-discovery-provider`](https://github.com/spiffe/spire/pkgs/container/oidc-discovery-provider)
+
+Images are tagged with the release version number, without the leading `v`. For example, to pull the SPIRE Server and SPIRE Agent images for the latest release ({{< spire-latest "tag" >}}):
+
+```bash
+$ docker pull ghcr.io/spiffe/spire-server:{{< spire-latest "version" >}}
+$ docker pull ghcr.io/spiffe/spire-agent:{{< spire-latest "version" >}}
+```
+
+# Helm Charts
+
+For Kubernetes, the SPIRE stack is packaged as Helm charts by the [helm-charts-hardened](https://github.com/spiffe/helm-charts-hardened) project and published to the Helm repository at `https://spiffe.github.io/helm-charts-hardened/` (also browsable on [Artifact Hub](https://artifacthub.io/packages/helm/spiffe/spire)). This is the easiest and supported way to deploy a complete SPIRE stack in Kubernetes:
+
+```bash
+$ helm repo add spiffe https://spiffe.github.io/helm-charts-hardened/
+$ helm repo update
+```
+
+See [About SPIRE Helm Charts Hardened](/docs/latest/spire-helm-charts-hardened-about/) for installation and configuration instructions.
+
 # Build from Source
 
 To build SPIRE from source on Linux, you'll need:
