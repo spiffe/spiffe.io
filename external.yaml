@@ -1,5 +1,6 @@
 try:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/SPIRE101.md
         - doc/getting-started-linux-macos-x.md
@@ -39,7 +40,8 @@ try:
                     - /docs/latest/spire/installing/getting-started-k8s
             beacon: "{{< scarf/pixels/medium-interest >}}"
 maintenance:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/upgrading.md
     transform:
@@ -53,7 +55,8 @@ maintenance:
                     - /spire/docs/upgrading
             beacon: "{{< scarf/pixels/high-interest >}}"
 planning:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/scaling_spire.md
         - doc/extending.md
@@ -81,7 +84,8 @@ planning:
                     - /docs/latest/spire/developing/extending
             beacon: "{{< scarf/pixels/high-interest >}}"
 deploying:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/using_spire.md
         - doc/spire_agent.md
@@ -173,7 +177,8 @@ deploying:
                     - /docs/latest/spire/using/registering
             beacon: "{{< scarf/pixels/high-interest >}}"
 spire-about:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/spire-concepts.md
         - doc/use-cases.md
