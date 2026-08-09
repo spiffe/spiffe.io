@@ -157,10 +157,8 @@ def _clone_repos(repos: List[str]):
         os.system(cmd)
 
 
-def _checkout_switch(content: Dict):
-    global latest_release
-    source = content.get("source")
-    cmd = GIT_CHECKOUT_CMD.format(latest_release).split()
+def _checkout_branch(source: str, branch: str):
+    cmd = GIT_CHECKOUT_CMD.format(branch).split()
     repo_owner, repo_name = _get_canonical_repo_from_url(source)
     cwd = os.path.join(CHECKOUT_DIR, repo_owner, repo_name)
     subprocess.run(cmd, stdout=subprocess.PIPE, cwd=cwd)
@@ -182,8 +180,6 @@ def _get_internal_links(yaml_external: Dict):
     for target_dir, content in yaml_external.items():
         source = content.get("source", "").strip()
         source_branch = content.get("branch", "").strip()
-        if source == config.get("spireGitHubUrl"):
-            _checkout_switch(content)
         for rel_file in content.get("pullFiles", []):
             branch = _get_branch_by_repo_url(source, source_branch)
             full_url = "{}/blob/{}/{}".format(source, branch, rel_file)
@@ -202,6 +198,9 @@ def _process_files(yaml_external: Dict) -> List[str]:
         source_branch = content.get("branch", "").strip()
         pull_files: List[str] = content.get("pullFiles", [])
         repo_owner, repo_name = _get_canonical_repo_from_url(source)
+
+        branch = _get_branch_by_repo_url(source, source_branch)
+        _checkout_branch(source, branch)
 
         # processes and copies content from the git checkout to the desired location
         for rel_file in pull_files:
