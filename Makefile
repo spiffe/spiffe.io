@@ -43,12 +43,14 @@ docker-serve: docker-build
 		-v $(PWD):/app \
 		-p 1313:1313 \
 		-e HIDE_RELEASES=true \
+		-u $(shell id -u):$(shell id -g) \
 		spiffe.io:latest
 
 docker-serve-with-releases: docker-build
 	$(CONTAINER_RUNTIME) run --init --rm \
 		-v $(PWD):/app \
 		-p 1313:1313 \
+		-u $(shell id -u):$(shell id -g) \
 		spiffe.io:latest
 
 pull-external-content:
