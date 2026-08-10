@@ -6,7 +6,6 @@ pygmentsCodefences = true
 canonifyurls = true
 enableGitInfo = true
 publicUrl = "https://spiffe.io"
-spireGitHubUrl = "https://github.com/spiffe/spire"
 
 # Blog posts may carry `tags` for display, but we don't generate taxonomy
 # listing pages for them, so disable the taxonomy page kinds.
