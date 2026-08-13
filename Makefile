@@ -21,12 +21,12 @@ serve-with-releases:
 		--buildFuture \
 		--disableFastRender
 
-production-build: ci-check-links
+production-build: pull-external-content
 	hugo \
 		--gc \
 		--ignoreCache
 
-preview-build: ci-check-links
+preview-build: pull-external-content
 	hugo \
 		--gc \
 		--ignoreCache \

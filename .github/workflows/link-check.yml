@@ -1,0 +1,45 @@
+name: Link check
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Bulma SASS is imported from node_modules during the Hugo build.
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: npm ci
+
+      # Installs linkchecker and pull_external.py's dependencies.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.163.3'
+          extended: true
+
+      # The same advisory check that previously ran during the Netlify build:
+      # serves the site with `hugo server` and crawls it with linkchecker.
+      # GITHUB_TOKEN lets pull_external.py generate the SPIRE releases pages,
+      # which would otherwise be skipped and reported as broken links.
+      - run: make ci-check-links
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
