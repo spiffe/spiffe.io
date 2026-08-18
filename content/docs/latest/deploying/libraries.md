@@ -24,7 +24,7 @@ This library is not yet part of the official SPIFFE repo.
 
 # Go
 
-See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe) for more information about the SPIFFE Go library. 
+See the [go-spiffe library GitHub page](https://github.com/spiffe/go-spiffe) for more information about the SPIFFE Go library.
 
 * [SPIFFE to SPIFFE authentication using X.509 SVIDs](https://github.com/spiffe/go-spiffe/tree/main/examples/spiffe-tls)
 
@@ -54,5 +54,9 @@ SPIFFE-based authentication and identity integration for applications built on
 `rustls`.
 
 These libraries are not part of the official SPIFFE repository.
+
+# TypeScript/JavaScript
+
+See [`@jeengbe/spiffe`](https://github.com/jeengbe/ts-packages/tree/master/packages/spiffe#readme) for a TypeScript implementation.
 
 {{< scarf/pixels/high-interest >}}

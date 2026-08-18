@@ -70,6 +70,11 @@ categories:
         weight: 500
         link: https://github.com/maxlambrecht/rust-spiffe
         description: SPIFFE SDK for Rust.
+      - name: '@jeengbe/spiffe'
+        type: community
+        weight: 600
+        link: https://github.com/jeengbe/ts-packages/tree/master/packages/spiffe
+        description: SPIFFE SDK for TypeScript.
 
   - name: Deployment & Workload Helpers
     weight: 300
