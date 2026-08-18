@@ -1,3 +1,9 @@
+# More workers and a shorter timeout keep the CI run fast: with the defaults
+# (10 threads, 60s timeout) a handful of dead hosts stretch the crawl to ~8min.
+[checking]
+threads=20
+timeout=15
+
 [filtering]
 checkextern=1
 ignore=letsencrypt\.org
