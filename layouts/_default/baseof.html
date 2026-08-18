@@ -4,6 +4,15 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Locale }}">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SC8WXCFW6M"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-SC8WXCFW6M');
+    </script>
     {{ partial "meta.html" . }}
     <title>{{ block "title" . }}{{ if .Params.titleTag }}{{ .Params.titleTag }} | {{ .Site.Title }}{{ else if .IsHome }}{{ .Site.Title }} | {{ .Site.Params.acronym }}{{ else if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}{{ end }}</title>
     <link rel="shortcut icon" href="{{ $favicon }}" type="image/x-icon">
