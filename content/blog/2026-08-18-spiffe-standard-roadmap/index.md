@@ -1,10 +1,9 @@
 ---
 title: "The SPIFFE Standard Roadmap"
 description: "The SPIFFE specification is evolving. Here is what is currently being worked on and what's ahead."
-date: 2026-08-10
+date: 2026-08-18
 author: "Arndt Schwenkschuster"
 tags: ["SPIFFE", "Community"]
-draft: true
 ---
 
 # Intro
