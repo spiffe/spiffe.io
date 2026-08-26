@@ -94,7 +94,7 @@ categories:
         type: official
         weight: 400
         link: https://github.com/spiffe/k8s-spiffe-workload-jwt-exec-auth
-        description: Obtains SPIFFE JWT-SVIDs for Kubernetes authentication via an exec credential plugin, by default from the Workload API with optional minting through the SPIRE Server admin API.
+        description: Bridges Kubernetes clients to the SPIFFE Workload API for authentication to the Kubernetes API.
 
   - name: Secrets Management
     weight: 400
