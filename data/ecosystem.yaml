@@ -65,7 +65,7 @@ categories:
         weight: 400
         link: https://github.com/HewlettPackard/py-spiffe
         description: SPIFFE SDK for Python.
-      - name: maclambrecht/rust-spiffe
+      - name: maxlambrecht/rust-spiffe
         type: community
         weight: 500
         link: https://github.com/maxlambrecht/rust-spiffe
