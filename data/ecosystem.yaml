@@ -60,17 +60,17 @@ categories:
         weight: 200
         link: https://github.com/spiffe/java-spiffe
         description: SPIFFE SDK for Java.
-      - name: py-spiffe
+      - name: HewlettPackard/py-spiffe
         type: community
         weight: 400
         link: https://github.com/HewlettPackard/py-spiffe
         description: SPIFFE SDK for Python.
-      - name: rust-spiffe
+      - name: maclambrecht/rust-spiffe
         type: community
         weight: 500
         link: https://github.com/maxlambrecht/rust-spiffe
         description: SPIFFE SDK for Rust.
-      - name: '@jeengbe/spiffe'
+      - name: 'jeengbe/spiffe'
         type: community
         weight: 600
         link: https://github.com/jeengbe/ts-packages/tree/master/packages/spiffe
