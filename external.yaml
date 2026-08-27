@@ -1,7 +1,10 @@
 try:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/SPIRE101.md
+        - doc/getting-started-linux-macos-x.md
+        - doc/getting-started-k8s.md
     transform:
         SPIRE101.md:
             frontMatter:
@@ -13,8 +16,32 @@ try:
                 aliases:
                     - /docs/latest/spire/installing/spire101/
             beacon: "{{< scarf/pixels/medium-interest >}}"
+        getting-started-linux-macos-x.md:
+            frontMatter:
+                title: Quickstart for Linux and MacOS X
+                description: Quickly get SPIRE up and running on Unix and MacOS X
+                navgroup: try
+                weight: 40
+                aliases:
+                    - /spire/try/getting-started-linux-macos-x
+                    - /spire/try/getting-started-linux
+                    - /docs/latest/spire/installing/getting-started-linux-macos-x
+            beacon: "{{< scarf/pixels/medium-interest >}}"
+        getting-started-k8s.md:
+            frontMatter:
+                title: Quickstart for Kubernetes
+                description: Quickly get SPIRE up and running on a Kubernetes cluster
+                navgroup: try
+                weight: 50
+                aliases:
+                    - /tutorial-spire-on-kubernetes
+                    - /spire/try/getting-started-k8s
+                    - /spire/getting-started-k8s
+                    - /docs/latest/spire/installing/getting-started-k8s
+            beacon: "{{< scarf/pixels/medium-interest >}}"
 maintenance:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/upgrading.md
     transform:
@@ -28,9 +55,11 @@ maintenance:
                     - /spire/docs/upgrading
             beacon: "{{< scarf/pixels/high-interest >}}"
 planning:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/scaling_spire.md
+        - doc/extending.md
     transform:
         scaling_spire.md:
             frontMatter:
@@ -43,13 +72,29 @@ planning:
                     - /spire/docs/scaling-spire
                     - /docs/latest/spire/using/scaling_spire/
             beacon: "{{< scarf/pixels/high-interest >}}"
+        extending.md:
+            frontMatter:
+                title: Extend SPIRE
+                short: Extending
+                description: Learn how to extend SPIRE with plugins
+                navgroup: planning
+                weight: 100
+                aliases:
+                    - /spire/docs/extending
+                    - /docs/latest/spire/developing/extending
+            beacon: "{{< scarf/pixels/high-interest >}}"
 deploying:
-    source: https://github.com/spiffe/spire
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
     pullFiles:
         - doc/using_spire.md
         - doc/spire_agent.md
         - doc/spire_server.md
         - doc/telemetry/telemetry_config.md
+        - doc/install-server.md
+        - doc/install-agents.md
+        - doc/configuring.md
+        - doc/registering.md
     transform:
         using_spire.md:
             frontMatter:
@@ -87,6 +132,91 @@ deploying:
                 aliases:
                     - /docs/latest/spire/using/telemetry_config/
             beacon: "{{< scarf/pixels/high-interest >}}"
+        install-server.md:
+            frontMatter:
+                title: Install the SPIRE Server
+                short: Install Server
+                description: How to install the SPIRE Server on Linux and Kubernetes
+                navgroup: deploying
+                weight: 60
+                aliases:
+                    - /spire/docs/install-server
+                    - /docs/latest/spire/installing/install-server
+            beacon: "{{< scarf/pixels/high-interest >}}"
+        install-agents.md:
+            frontMatter:
+                title: Install SPIRE Agents
+                short: Install Agent
+                description: How to install the SPIRE Agents on Linux and Kubernetes
+                navgroup: deploying
+                weight: 70
+                aliases:
+                    - /spire/docs/install-agents
+                    - /docs/latest/spire/installing/install-agents
+            beacon: "{{< scarf/pixels/high-interest >}}"
+        configuring.md:
+            frontMatter:
+                title: Configuring SPIRE
+                short: Configuring
+                description: How to configure SPIRE for your environment
+                navgroup: deploying
+                weight: 80
+                aliases:
+                    - /spire/docs/configuring
+                    - /docs/latest/spire/using/configuring
+            beacon: "{{< scarf/pixels/high-interest >}}"
+        registering.md:
+            frontMatter:
+                title: Registering workloads
+                short: Registering workloads
+                description: Registering workloads with SPIFFE IDs in the SPIRE Server
+                navgroup: deploying
+                weight: 90
+                aliases:
+                    - /spire/docs/registering
+                    - /docs/latest/spire/using/registering
+            beacon: "{{< scarf/pixels/high-interest >}}"
+spire-about:
+    source: https://github.com/sorindumitru/spire
+    branch: doc-updates
+    pullFiles:
+        - doc/spire-concepts.md
+        - doc/use-cases.md
+        - doc/comparisons.md
+    transform:
+        spire-concepts.md:
+            frontMatter:
+                title: SPIRE Concepts
+                short: Concepts
+                description: An overview of SPIRE's architecture and fundamentals
+                navgroup: spire-about
+                weight: 20
+                aliases:
+                    - /spire/concepts
+                    - /docs/latest/spire/understand/concepts
+            beacon: "{{< scarf/pixels/high-interest >}}"
+        use-cases.md:
+            frontMatter:
+                title: SPIRE Use Cases
+                short: Use Cases
+                description: How to use SPIRE to solve common problems
+                navgroup: spire-about
+                weight: 100
+                aliases:
+                    - /spire/usecases
+                    - /docs/latest/spire-integrations/use-cases/use-cases
+            beacon: "{{< scarf/pixels/medium-interest >}}"
+        comparisons.md:
+            frontMatter:
+                title: How does SPIRE compare to other tools?
+                short: Comparisons
+                description: Understand SPIRE by comparing and contrasting it to related systems
+                navgroup: spire-about
+                weight: 150
+                aliases:
+                    - /spire/comparisons
+                    - /docs/latest/spire/understand/comparisons
+            beacon: "{{< scarf/pixels/medium-interest >}}"
 keyless/vault:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
