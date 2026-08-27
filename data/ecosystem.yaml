@@ -99,7 +99,7 @@ categories:
         type: official
         weight: 500
         link: https://github.com/spiffe/k8s-spiffe-workload-auth-config
-        description: Configures Kubernetes clients to use SPIFFE Workload JWT Exec Auth for authentication to the Kubernetes API.
+        description: Injects the SPIFFE trust bundle into the Kubernetes AuthenticationConfiguration file. This allows the Kubernetes API server to read the JWKS from the OIDC discovery provider in cases where it is protected by a SPIFFE-issued certificate.
 
   - name: Secrets Management
     weight: 400
