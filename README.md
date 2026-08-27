@@ -70,7 +70,7 @@ The website is now available at [`http://localhost:1313`](http://localhost:1313)
 
 It is common that URLs you are pointing to get deprecated or moved somewhere else over time, leading to broken links on our website.
 
-In order to avoid this, there is a tool that lets you check whether there are broken links in the whole website or not.
+In order to avoid this, there is a tool that lets you check whether there are broken links in the whole website or not. It runs automatically on every pull request via the [Link check](.github/workflows/link-check.yml) GitHub Actions workflow, and you can also run it locally.
 
 First, make sure you are serving the website locally using the `-with-releases` form of the script (`make docker-serve-with-releases` or `make serve-with-releases`), and that it is accessible at `http://localhost:1313`, then run the following command:
 
