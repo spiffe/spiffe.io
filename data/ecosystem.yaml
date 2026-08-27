@@ -90,6 +90,16 @@ categories:
         weight: 300
         link: https://github.com/spiffe/aws-spiffe-workload-helper
         description: Exchanges SPIFFE SVIDs for AWS credentials via IAM Roles Anywhere.
+      - name: K8S SPIFFE Workload JWT Exec Auth
+        type: official
+        weight: 400
+        link: https://github.com/spiffe/k8s-spiffe-workload-jwt-exec-auth
+        description: Bridges Kubernetes clients to the SPIFFE Workload API for authentication to the Kubernetes API.
+      - name: K8S SPIFFE Workload Auth Config
+        type: official
+        weight: 500
+        link: https://github.com/spiffe/k8s-spiffe-workload-auth-config
+        description: Configures Kubernetes clients to use SPIFFE Workload JWT Exec Auth for authentication to the Kubernetes API.
 
   - name: Secrets Management
     weight: 400
