@@ -26,7 +26,7 @@ issuers:
     logo: redhat.svg
   - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
     link: https://www.paloaltonetworks.com/idira/machines/secrets-management
-    logo: Idira-PANW-logo.svg
+    logo: PANW-logo.svg
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
@@ -52,10 +52,10 @@ consumers:
     description: SPIKE is a lightweight secrets store that uses SPIFFE as its identity control plane. SPIKE protects your secrets and helps your ops, SREs, and sysadmins #sleepmore.
     link: https://spike.ist/
     logo: spike.png
-  - name: Idira® by Palo Alto Networks
-    description: Idira® Secrets Manager is a SaaS secrets manager supporting SPIFFE authentication.
+  - name: Palo Alto Networks
+    description: Idira® Secrets Manager by Palo Alto Networks is a SaaS secrets manager supporting SPIFFE authentication.
     link: https://www.paloaltonetworks.com/idira/machines/secrets-management
-    logo: Idira-PANW-logo.svg
+    logo: PANW-logo.svg
 
 adopters:
   - name: Amazon
@@ -102,7 +102,7 @@ adopters:
     link: https://www.netflix.com/
   - name: Palo Alto Networks
     link: https://paloaltonetworks.com/
-    logo: PANW-logo.svg
+    logo: PANW-horizontal-logo.svg
   - name: Riptides
     logo: Riptides-logo.svg
     link: https://riptides.io/
