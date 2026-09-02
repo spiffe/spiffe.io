@@ -79,6 +79,9 @@ adopters:
   - name: Google
     logo: Google-logo.svg
     link: https://www.google.com/
+  - name: Greymatter.io
+    link: https://greymatter.io/
+    logo: Greymatter-name-logo.svg
   - name: Hashicorp
     logo: HashiCorp-logo.svg
     link: https://www.hashicorp.com/
@@ -97,15 +100,15 @@ adopters:
   - name: Netflix
     logo: Netflix-logo.svg
     link: https://www.netflix.com/
+  - name: Palo Alto Networks
+    link: https://paloaltonetworks.com/
+    logo: PANW-logo.svg
   - name: Riptides
     logo: Riptides-logo.svg
     link: https://riptides.io/
   - name: SAP
     logo: SAP-SE-logo.svg
     link: https://www.sap.com/
-  - name: Wise
-    logo: Wise-logo.svg
-    link: https://wise.com/
   - name: Twilio
     logo: Twilio-logo.svg
     link: https://www.twilio.com/
@@ -118,9 +121,9 @@ adopters:
   - name: VMware
     logo: VMware-Inc.-logo.svg
     link: https://www.vmware.com/
+  - name: Wise
+    logo: Wise-logo.svg
+    link: https://wise.com/
   - name: Yahoo
     logo: Yahoo-logo.svg
     link: https://www.yahoo.com/
-  - name: Greymatter.io
-    link: https://greymatter.io/
-    logo: Greymatter-name-logo.svg
