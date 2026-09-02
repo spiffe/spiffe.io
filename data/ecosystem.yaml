@@ -105,14 +105,19 @@ categories:
         weight: 200
         link: https://github.com/vmware-tanzu/secrets-manager
         description: A Kubernetes-native secrets manager with support for SPIFFE authentication.
+      - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
+        type: commercial
+        weight: 300
+        link: https://www.paloaltonetworks.com/idira/machines/secrets-management
+        description: SaaS secrets manager supporting SPIFFE authentication that also issues SPIFFE SVIDs to workloads and AI agents.
       - name: HashiCorp Vault
         type: commercial
-        weight: 200
+        weight: 400
         link: https://developer.hashicorp.com/vault/docs/auth/spiffe
         description: Secrets manager with support for SPIFFE authentication.
       - name: Infisical
         type: commercial
-        weight: 200
+        weight: 500
         link: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
         description: Secrets manager with support for SPIFFE authentication.
 
