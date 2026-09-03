@@ -65,7 +65,7 @@ enabled=1
 gpgcheck=0
 ```
 
-Be honest with yourself about what you just added. This is community packaging, not Red Hat's, and as shipped it sets `gpgcheck=0`. For anything you care about, mirror these packages into your own repository, sign them with your own key, and pin versions. Treat this repo the way you'd treat any third-party COPR: fine for building your understanding, not something to point production at unexamined. If you want to help make these packages better, please contact the team on Slack or via GitHub issues.
+This is community packaging, not Red Hat's, and as shipped it sets `gpgcheck=0`. For anything you care about, mirror these packages into your own repository, sign them with your own key, and pin versions. Treat this repo the way you'd treat any third-party COPR: fine for building your understanding, not something to point production at unexamined. If you want to help make these packages better, please contact the team on Slack or via GitHub issues.
 
 On **both server machines**:
 
