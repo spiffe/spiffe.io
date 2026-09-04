@@ -15,7 +15,7 @@ issuers:
   - name: HashiCorp Consul
     logo: consul.svg
   - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
-    link: https://www.paloaltonetworks.com/idira/machines/secrets-management
+    link: https://www.paloaltonetworks.com/idira/machine/secrets-management
     logo: PANW-logo.svg
   - name: Istio
     logo: istio.svg
@@ -43,7 +43,7 @@ consumers:
     logo: Greymatter-logo.svg
   - name: Palo Alto Networks
     description: Idira® Secrets Manager by Palo Alto Networks is a SaaS secrets manager supporting SPIFFE authentication.
-    link: https://www.paloaltonetworks.com/idira/machines/secrets-management
+    link: https://www.paloaltonetworks.com/idira/machine/secrets-management
     logo: PANW-logo.svg
   - name: Pinterest Knox
     description: Customers can authenticate to Knox with SPIFFE IDs
