@@ -9,53 +9,54 @@ issuers:
     logo: Dapr_logo.svg
   - name: GCP
     logo: google-cloud.png
+  - name: Greymatter.io
+    link: https://greymatter.io/
+    logo: Greymatter-logo.svg
   - name: HashiCorp Consul
     logo: consul.svg
+  - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
+    link: https://www.paloaltonetworks.com/idira/machines/secrets-management
+    logo: PANW-logo.svg
   - name: Istio
     logo: istio.svg
   - name: Kubernetes
     logo: Kubernetes_logo.png
-  - name: Teleport Workload Identity
-    logo: teleport_logo.svg
-    link: https://goteleport.com/platform/machine-and-workload-identity/
-  - name: Greymatter.io
-    link: https://greymatter.io/
-    logo: Greymatter-logo.svg
   - name: Red Hat Zero Trust Workload Identity Manager
     link: https://docs.redhat.com/en/documentation/openshift_container_platform/latest/html/security_and_compliance/zero-trust-workload-identity-manager
     logo: redhat.svg
-  - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
-    link: https://www.paloaltonetworks.com/idira/machines/secrets-management
-    logo: PANW-logo.svg
+  - name: Teleport Workload Identity
+    logo: teleport_logo.svg
+    link: https://goteleport.com/platform/machine-and-workload-identity/
+
 consumers:
   - name: The Envoy proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Envoy proxies
     link: https://blog.envoyproxy.io/securing-the-service-mesh-with-spire-0-3-abb45cd79810
     logo: envoy.svg
-  - name: Pinterest Knox
-    description: Customers can authenticate to Knox with SPIFFE IDs
-    link: https://medium.com/@Pinterest_Engineering/secret-management-in-multi-tenant-environments-debc9236a744
-    logo: pinterest.png
   - name: The Ghostunnel proxy
     description: Customers can use SPIFFE IDs to establish [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Ghostunnel proxies with built-in support for obtaining X.509-SVID identities via the [SPIFFE Workload API](/docs/latest/spiffe-about/spiffe-concepts/#spiffe-workload-api)
     link: https://github.com/square/ghostunnel
     logo: square.jpg
-  - name: VMware Secrets Manager
-    description: VMware Secrets Manager is a Kubernetes-first, secure-by-default, cloud-native secrets management solution that uses SPIFFE and SPIRE as its identity control plane.
-    link: https://vsecm.com/
-    logo: vsecm.png
   - name: Greymatter.io
     description: Customers can seamlessly leverage SPIFFE IDs to establish secure [mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) connections between Greymatter proxies.
     link: https://greymatter.io/
     logo: Greymatter-logo.svg
-  - name: SPIKE
-    description: SPIKE is a lightweight secrets store that uses SPIFFE as its identity control plane. SPIKE protects your secrets and helps your ops, SREs, and sysadmins #sleepmore.
-    link: https://spike.ist/
-    logo: spike.png
   - name: Palo Alto Networks
     description: Idira® Secrets Manager by Palo Alto Networks is a SaaS secrets manager supporting SPIFFE authentication.
     link: https://www.paloaltonetworks.com/idira/machines/secrets-management
     logo: PANW-logo.svg
+  - name: Pinterest Knox
+    description: Customers can authenticate to Knox with SPIFFE IDs
+    link: https://medium.com/@Pinterest_Engineering/secret-management-in-multi-tenant-environments-debc9236a744
+    logo: pinterest.png
+  - name: SPIKE
+    description: SPIKE is a lightweight secrets store that uses SPIFFE as its identity control plane. SPIKE protects your secrets and helps your ops, SREs, and sysadmins #sleepmore.
+    link: https://spike.ist/
+    logo: spike.png
+  - name: VMware Secrets Manager
+    description: VMware Secrets Manager is a Kubernetes-first, secure-by-default, cloud-native secrets management solution that uses SPIFFE and SPIRE as its identity control plane.
+    link: https://vsecm.com/
+    logo: vsecm.png
 
 adopters:
   - name: Amazon

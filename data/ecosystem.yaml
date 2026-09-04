@@ -10,6 +10,11 @@
 # For community vs commercial. Consider what license the project is released
 # under and whether the SPIFFE functionality is gated behind enterprise
 # licensing. Err on the side of "commercial" if it is not clearly FOSS.
+#
+# Weights are used to order the projects within a category. The first project in a
+# category should have a weight of 100, the second 200, etc. This allows
+# for future insertions without having to renumber everything.
+# NOTE: All commercial options should be set to the SAME weight and listed alphabetically.
 categories:
   - name: SPIRE & Plugins
     weight: 100
@@ -120,19 +125,19 @@ categories:
         weight: 200
         link: https://github.com/vmware-tanzu/secrets-manager
         description: A Kubernetes-native secrets manager with support for SPIFFE authentication.
+      - name: HashiCorp Vault
+        type: commercial
+        weight: 300
+        link: https://developer.hashicorp.com/vault/docs/auth/spiffe
+        description: Secrets manager with support for SPIFFE authentication.
       - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
         type: commercial
         weight: 300
         link: https://www.paloaltonetworks.com/idira/machines/secrets-management
         description: SaaS secrets manager supporting SPIFFE authentication that also issues SPIFFE SVIDs to workloads and AI agents.
-      - name: HashiCorp Vault
-        type: commercial
-        weight: 400
-        link: https://developer.hashicorp.com/vault/docs/auth/spiffe
-        description: Secrets manager with support for SPIFFE authentication.
       - name: Infisical
         type: commercial
-        weight: 500
+        weight: 300
         link: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
         description: Secrets manager with support for SPIFFE authentication.
 
