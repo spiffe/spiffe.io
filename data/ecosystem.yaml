@@ -133,7 +133,7 @@ categories:
       - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
         type: commercial
         weight: 300
-        link: https://www.paloaltonetworks.com/idira/machines/secrets-management
+        link: https://www.paloaltonetworks.com/idira/machine/secrets-management
         description: SaaS secrets manager supporting SPIFFE authentication that also issues SPIFFE SVIDs to workloads and AI agents.
       - name: Infisical
         type: commercial
