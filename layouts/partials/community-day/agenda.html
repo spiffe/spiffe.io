@@ -1,11 +1,11 @@
 {{- /* Renders a Community Day page's `agenda` front matter as a timeline.
-       Items without speakers (welcome, drinks) render as slim markers. */ -}}
+       Items without speakers (e.g. drinks) render as slim markers. */ -}}
 {{- $page := . }}
 {{- with .Params.agenda }}
 <section class="agenda" id="agenda">
-  <h2 class="title is-3 has-text-weight-light has-text-centered">Agenda</h2>
+  <h2 class="title is-3 has-text-weight-light">Agenda</h2>
   {{- with .note }}
-  <p class="agenda-note has-text-centered">{{ . }}</p>
+  <p class="agenda-note">{{ . }}</p>
   {{- end }}
   <ol class="agenda-list">
     {{- range .items }}

@@ -1,9 +1,58 @@
 {{ define "main" }}
+{{- $icons := dict "date" "fa-calendar" "time" "fa-clock" "venue" "fa-location-dot" "online" "fa-video" }}
 <section class="section community-day">
-  <div class="columns is-centered">
-    <div class="column is-8-tablet">
-      {{ .Content }}
-      {{ partial "community-day/agenda.html" . }}
+  <div class="container">
+    <header class="community-day-header has-text-centered">
+      <h1 class="title is-2 is-spaced has-text-weight-light">{{ .Title }}</h1>
+      {{- with .Params.tagline }}
+      <p class="subtitle is-4 has-text-weight-light">{{ . }}</p>
+      {{- end }}
+    </header>
+
+    {{- /* The event card comes first so it sits above the intro on mobile; on
+           desktop it moves to a sticky right-hand sidebar. */}}
+    <div class="columns is-desktop">
+      {{- with .Params.event }}
+      <aside class="column is-narrow-desktop community-day-sidebar">
+        <div class="event-card">
+          <ul class="event-facts">
+            {{- range $key := slice "date" "time" "venue" "online" }}
+            {{- with index $.Params.event $key }}
+            <li>
+              <span class="icon"><i class="fas {{ index $icons $key }}" aria-hidden="true"></i></span>
+              <span>{{ . }}</span>
+            </li>
+            {{- end }}
+            {{- end }}
+          </ul>
+          {{- with .register }}
+          <a class="button is-spiffe-green is-fullwidth" target="_blank" href="{{ . }}">
+            <span class="icon"><i class="fas fa-ticket" aria-hidden="true"></i></span>
+            <span>Register to attend</span>
+          </a>
+          {{- end }}
+          {{- with .note }}
+          <p class="event-note">{{ . }}</p>
+          {{- end }}
+          {{- with .links }}
+          <div class="event-links">
+            {{- range . }}
+            <a class="button is-dark is-fullwidth" target="_blank" href="{{ .url }}">
+              <span class="icon"><i class="{{ .icon }}" aria-hidden="true"></i></span>
+              <span>{{ .text }}</span>
+            </a>
+            {{- end }}
+          </div>
+          {{- end }}
+        </div>
+      </aside>
+      {{- end }}
+      <div class="column community-day-main">
+        <div class="content is-medium">
+          {{ .Content }}
+        </div>
+        {{ partial "community-day/agenda.html" . }}
+      </div>
     </div>
   </div>
 </section>
