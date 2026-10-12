@@ -43,7 +43,7 @@ The following strings in the YAML files must be substituted for values specific 
 | MY\_EMAIL\_ADDRESS | Specify a valid email address to satisfy the terms of service for the Let's Encrypt certificate authority used in AWS OIDC federation. No email will actually be sent to this address. Example value: user@example.org | oidc-dp-configmap.yaml (1 instance) |
 | MY\_DISCOVERY\_DOMAIN | Replace with the domain that you will use in the A record for the OIDC Discovery document endpoint. See [Part 2](#part-2-configure-dns-for-the-oidc-discovery-ip-address) for details. Example value: `oidc-discovery.example.org` | ingress.yaml (2 instances), oidc-dp-configmap.yaml (1 instance), server-configmap.yaml (1 instance) |
 
-In the YAML files, instances of the `example.org` [trust domain](/docs/latest/spiffe/concepts/#trust-domain) are valid to use for this tutorial and do not need to be changed.
+In the YAML files, instances of the `example.org` [trust domain](/docs/latest/spiffe-about/spiffe-concepts/#trust-domain) are valid to use for this tutorial and do not need to be changed.
 
 ## Deploy OIDC Discovery Provider Configmap
 
