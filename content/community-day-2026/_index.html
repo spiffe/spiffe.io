@@ -2,73 +2,110 @@
 title: "Community Day 2026"
 description: "Celebrating ten years of SPIFFE. 27 October 2026, City of London & Online."
 layout: community-day
+tagline: Celebrating ten years of SPIFFE.
+event:
+  date: Tuesday 27 October 2026
+  time: Starting 2:00 pm UTC
+  venue: Bloomberg, City of London
+  online: Streamed online via Zoom
+  register: https://forms.gle/t3sjPdzTAhenWbA2A
+  note: In-person places are limited.
+  links:
+    - icon: fab fa-slack
+      text: "#community-day on Slack"
+      url: https://slack.spiffe.io/
+agenda:
+  note: Timings will be confirmed closer to the day, and the running order may change.
+  items:
+    - title: Welcome and opening remarks
+      speakers:
+        - name: Noah Stride
+          org: Teleport
+    - label: Keynote
+      speakers:
+        - name: Joe Beda
+          org: Stacklok
+    - label: Maintainer update
+      title: SPIRE Maintainers Update
+      speakers:
+        - name: Sorin Dumitru
+          org: Bloomberg
+    - label: Maintainer update
+      title: SPIFFE Maintainers Update
+      speakers:
+        - name: Noah Stride
+          org: Teleport
+        - name: Arndt Schwenkschuster
+          org: Defakto
+      abstract: |-
+        A look back at what we've done over the last six months, and what we're
+        planning to tackle in the next twelve. We'll give a high-level overview of
+        the proposed work items - if any of them would be useful to you, we'd love
+        you to get involved.
+    - title: Operating SPIRE at Wise
+      speakers:
+        - name: Taras Burko
+          org: Wise
+        - name: Matthew Kennedy
+          org: Wise
+      abstract: |-
+        SPIRE has been successfully powering our workload identity and mTLS for
+        years. In this session we're going to show how we're running it at Wise
+        scale, discuss service mesh and Kafka integrations, and share operational
+        stories.
+    - title: SPIFFE and AIMS - A foundation for Agentic Identity
+      speakers:
+        - name: Pieter Kasselman
+          org: Defakto
+      abstract: |-
+        AI agents are workloads. They're spun up on demand, act for users and for
+        other agents, and decide at runtime which tools and data to reach for.
+        Static API keys and long-lived secrets can't keep up. Agents need
+        identities and credentials that are verifiable, short-lived and tied to
+        where they run. This is a problem made for SPIFFE.
+
+        The IETF WIMSE working group recently adopted the Agent Identity
+        Management System (AIMS) model. It points to SPIFFE as a critical part of
+        an agentic identity system. This talk walks through the AIMS model layer
+        by layer and shows where SPIFFE slots in and how it enables the other
+        layers in the system. Attendees will leave with a clear picture of how
+        existing SPIFFE/SPIRE deployments become the foundation for agent
+        identity, and where the community can help shape what comes next.
+    - title: SPIFFE in Flux, or how we reached the KubernetesObjectReference SPIFFE standard
+      speakers:
+        - name: Matheus Pimenta
+          org: ControlPlane
+      abstract: |-
+        Show our quest in Flux to support SPIFFE complying to our multi-tenancy
+        model. This resulted in the Broker API that was recently introduced by
+        SPIFFE. In particular, it's the story behind the KubernetesObjectReference
+        SPIFFE standard that we contributed to support Flux.
+    - title: "After the SVID: Emerging Authorization Patterns for SPIFFE Workloads and Agents"
+      speakers:
+        - name: Kevin Sapp
+          org: Aembit
+      abstract: |-
+        SPIFFE deliberately stops at authentication. Every team that adopts it
+        then has to answer "what is this workload allowed to do?" on its own. This
+        talk maps the emerging approaches: SVIDs as OAuth credentials, token
+        exchange and Transaction Tokens, WIMSE, AuthZEN, and AAuth. It covers
+        where each fits, what's mature, and what's still a draft.
+    - title: Drinks and snacks
 ---
-<h1 class="title is-2 is-spaced has-text-weight-light has-text-centered">
-    Community Day 2026
-</h1>
-<p class="subtitle is-4 has-text-weight-light has-text-centered">
-    Celebrating ten years of SPIFFE.
+<p>
+    In 2026, SPIFFE turns ten. To mark a decade of open, vendor-neutral
+    workload identity, we're holding a SPIFFE Community Day - a chance
+    to bring the community together, celebrate how far the project has come,
+    and help shape where it goes next.
 </p>
-<p class="subtitle is-5 has-text-weight-semibold has-text-centered">
-    27 October | Starting 2:00 pm UTC | City of London &amp; Online
+<p>
+    We'll be hosted by Bloomberg in the City of London, with the event also
+    streamed online via Zoom so you can join from wherever you are.
 </p>
-
-<div class="content is-medium">
-    <p>
-        In 2026, SPIFFE turns ten. To mark a decade of open, vendor-neutral
-        workload identity, we're holding a SPIFFE Community Day - a chance
-        to bring the community together, celebrate how far the project has come,
-        and help shape where it goes next.
-    </p>
-    <p>
-        We'll be hosted by Bloomberg in the City of London, with the event also
-        streamed online via Zoom so you can join from wherever you are.
-        <strong>In-person places are limited</strong>, so if you'd like to
-        be there in the room, register now!
-    </p>
-    <p>
-        Past community days have typically blended a few things: talks from teams
-        running SPIFFE and SPIRE in production, sharing real success stories along
-        with the implementation details and lessons behind them; updates on the
-        ongoing specification work that keeps the standard moving forward; and time
-        for the more novel, exploratory topics that point to where workload identity
-        is heading. Expect a similar mix this time around, with plenty of room to
-        learn from - and talk to - the people building and using these projects.
-    </p>
-    <p>
-        The call for proposals is now closed - thank you to everyone who
-        submitted. Talks will be announced soon.
-    </p>
-</div>
-
-<div class="buttons is-centered">
-    <a class="button is-black" target="_blank"
-        href="https://forms.gle/t3sjPdzTAhenWbA2A">
-        <span class="icon">
-            <i class="fas fa-ticket"></i>
-        </span>
-        <span>
-            Register to attend
-        </span>
-    </a>
-
-    <a class="button is-black" target="_blank"
-        href="https://github.com/orgs/spiffe/discussions/405">
-        <span class="icon">
-            <i class="fab fa-github"></i>
-        </span>
-        <span>
-            Join the discussion
-        </span>
-    </a>
-
-    <a class="button is-slack-green" target="_blank"
-        href="https://slack.spiffe.io/">
-        <span class="icon">
-            <i class="fab fa-slack"></i>
-        </span>
-        <span>
-            Chat in #community-day on Slack
-        </span>
-    </a>
-</div>
+<p>
+    The afternoon mixes talks from teams running SPIFFE and SPIRE in
+    production, updates from the project maintainers, and more exploratory
+    topics on where workload identity is heading, from AI agents to
+    authorization. Expect plenty of room to learn from&nbsp;- and talk to&nbsp;- the
+    people building and using these projects.
+</p>
