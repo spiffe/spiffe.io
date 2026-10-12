@@ -1,0 +1,33 @@
+{{- /* Renders a Community Day page's `agenda` front matter as a timeline.
+       Items without speakers (welcome, drinks) render as slim markers. */ -}}
+{{- $page := . }}
+{{- with .Params.agenda }}
+<section class="agenda" id="agenda">
+  <h2 class="title is-3 has-text-weight-light has-text-centered">Agenda</h2>
+  {{- with .note }}
+  <p class="agenda-note has-text-centered">{{ . }}</p>
+  {{- end }}
+  <ol class="agenda-list">
+    {{- range .items }}
+    <li class="agenda-item{{ if not .speakers }} is-minor{{ end }}{{ with .label }} is-{{ . | urlize }}{{ end }}">
+      {{- with .label }}
+      <p class="agenda-label">{{ . }}</p>
+      {{- end }}
+      <h3 class="agenda-title">
+        {{- with .title }}{{ . }}{{ else }}<span class="agenda-tba">Title to be announced</span>{{ end -}}
+      </h3>
+      {{- with .speakers }}
+      <p class="agenda-speakers">
+        {{- range . }}
+        <span class="agenda-speaker"><strong>{{ .name }}</strong>{{ with .org }} <span class="agenda-org">{{ . }}</span>{{ end }}</span>
+        {{- end }}
+      </p>
+      {{- end }}
+      {{- with .abstract }}
+      <div class="agenda-abstract content">{{ $page.RenderString (dict "display" "block") . }}</div>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ol>
+</section>
+{{- end }}
