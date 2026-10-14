@@ -8,10 +8,14 @@
   <p class="agenda-note">{{ . }}</p>
   {{- end }}
   <ol class="agenda-list">
-    {{- range .items }}
+    {{- range $item := .items }}
     <li class="agenda-item{{ if not .speakers }} is-minor{{ end }}{{ with .label }} is-{{ . | urlize }}{{ end }}">
-      {{- with .label }}
-      <p class="agenda-label">{{ . }}</p>
+      {{- if or .start .label }}
+      <p class="agenda-meta">
+        {{- with .start }}<span class="agenda-time"><time datetime="{{ . }}">{{ . }}</time>{{ with $item.end }} - <time datetime="{{ . }}">{{ . }}</time>{{ end }}</span>{{ end }}
+        {{- if and .start .label }}<span class="agenda-sep" aria-hidden="true"> · </span>{{ end }}
+        {{- with .label }}<span class="agenda-label">{{ . }}</span>{{ end -}}
+      </p>
       {{- end }}
       <h3 class="agenda-title">
         {{- with .title }}{{ . }}{{ else }}<span class="agenda-tba">Title to be announced</span>{{ end -}}

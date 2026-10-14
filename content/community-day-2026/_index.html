@@ -5,7 +5,7 @@ layout: community-day
 tagline: Celebrating ten years of SPIFFE.
 event:
   date: Tuesday 27 October 2026
-  time: Starting 2:00 pm UTC
+  time: Starting 14:00 UTC
   venue: Bloomberg, City of London
   online: Streamed online via Zoom
   register: https://forms.gle/t3sjPdzTAhenWbA2A
@@ -15,22 +15,36 @@ event:
       text: "#community-day on Slack"
       url: https://slack.spiffe.io/
 agenda:
-  note: Timings will be confirmed closer to the day, and the running order may change.
+  note: All times are UTC, which is London time on the day. Timings are provisional and the running order may change.
   items:
-    - title: Welcome and opening remarks
+    - start: "13:30"
+      end: "14:00"
+      title: Doors open
+      abstract: |-
+        In-person attendees are welcome to arrive from 13:30. The stream starts
+        at 14:00.
+    - start: "14:00"
+      end: "14:10"
+      title: Welcome and opening remarks
       speakers:
         - name: Noah Stride
           org: Teleport
-    - label: Keynote
+    - start: "14:15"
+      end: "14:45"
+      label: Keynote
       speakers:
         - name: Joe Beda
           org: Stacklok
-    - label: Maintainer update
+    - start: "14:50"
+      end: "15:20"
+      label: Maintainer update
       title: SPIRE Maintainers Update
       speakers:
         - name: Sorin Dumitru
           org: Bloomberg
-    - label: Maintainer update
+    - start: "15:25"
+      end: "15:55"
+      label: Maintainer update
       title: SPIFFE Maintainers Update
       speakers:
         - name: Noah Stride
@@ -42,7 +56,12 @@ agenda:
         planning to tackle in the next twelve. We'll give a high-level overview of
         the proposed work items - if any of them would be useful to you, we'd love
         you to get involved.
-    - title: Operating SPIRE at Wise
+    - start: "15:55"
+      end: "16:15"
+      title: Break
+    - start: "16:15"
+      end: "16:45"
+      title: Operating SPIRE at Wise
       speakers:
         - name: Taras Burko
           org: Wise
@@ -53,7 +72,9 @@ agenda:
         years. In this session we're going to show how we're running it at Wise
         scale, discuss service mesh and Kafka integrations, and share operational
         stories.
-    - title: SPIFFE and AIMS - A foundation for Agentic Identity
+    - start: "16:50"
+      end: "17:20"
+      title: SPIFFE and AIMS - A foundation for Agentic Identity
       speakers:
         - name: Pieter Kasselman
           org: Defakto
@@ -71,7 +92,9 @@ agenda:
         layers in the system. Attendees will leave with a clear picture of how
         existing SPIFFE/SPIRE deployments become the foundation for agent
         identity, and where the community can help shape what comes next.
-    - title: SPIFFE in Flux, or how we reached the KubernetesObjectReference SPIFFE standard
+    - start: "17:25"
+      end: "17:55"
+      title: SPIFFE in Flux, or how we reached the KubernetesObjectReference SPIFFE standard
       speakers:
         - name: Matheus Pimenta
           org: ControlPlane
@@ -80,7 +103,9 @@ agenda:
         model. This resulted in the Broker API that was recently introduced by
         SPIFFE. In particular, it's the story behind the KubernetesObjectReference
         SPIFFE standard that we contributed to support Flux.
-    - title: "After the SVID: Emerging Authorization Patterns for SPIFFE Workloads and Agents"
+    - start: "18:00"
+      end: "18:30"
+      title: "After the SVID: Emerging Authorization Patterns for SPIFFE Workloads and Agents"
       speakers:
         - name: Kevin Sapp
           org: Aembit
@@ -90,7 +115,8 @@ agenda:
         talk maps the emerging approaches: SVIDs as OAuth credentials, token
         exchange and Transaction Tokens, WIMSE, AuthZEN, and AAuth. It covers
         where each fits, what's mature, and what's still a draft.
-    - title: Drinks and snacks
+    - start: "18:30"
+      title: Drinks and snacks
 ---
 <p>
     In 2026, SPIFFE turns ten. To mark a decade of open, vendor-neutral
