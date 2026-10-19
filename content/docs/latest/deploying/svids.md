@@ -9,7 +9,7 @@ aliases:
     - /docs/latest/spire/developing/svids
 ---
 
-A SPIFFE-compatible identity provider such as SPIRE will expose [SPIFFE Verifiable Identity Documents](/docs/latest/spiffe/concepts/#spiffe-verifiable-identity-document-svid) (SVIDs) via the [SPIFFE Workload API](/docs/latest/spiffe/concepts/#spiffe-workload-api). Workloads can use SVIDs retrieved from this API to verify the provenance of a message or to establish mutual TLS secured channels between two workloads. 
+A SPIFFE-compatible identity provider such as SPIRE will expose [SPIFFE Verifiable Identity Documents](/docs/latest/spiffe-about/spiffe-concepts/#spiffe-verifiable-identity-document-svid) (SVIDs) via the [SPIFFE Workload API](/docs/latest/spiffe-about/spiffe-concepts/#spiffe-workload-api). Workloads can use SVIDs retrieved from this API to verify the provenance of a message or to establish mutual TLS secured channels between two workloads. 
 
 # Interacting with the Workload API
 
@@ -20,7 +20,7 @@ Developers coding a new workload that needs to interact with SPIFFE can interact
 * Generate short-lived keys and certificates on behalf of the workload, specifically:
  * A private key tied to that SPIFFE ID that can be used to sign data on behalf of the workload. 
  * A corresponding short-lived X.509 certificate - an [X509-SVID](https://github.com/spiffe/spiffe/blob/main/standards/X509-SVID.md). This can be used to establish TLS or otherwise authenticate to other workloads.
- * A set of certificates – known as a [trust bundle](/docs/latest/spiffe/concepts/#trust-bundle) – that a workload can use to verify an X.509-SVID presented by another workload in the same trust domain or a federated trust domain.
+ * A set of certificates – known as a [trust bundle](/docs/latest/spiffe-about/spiffe-concepts/#trust-bundle) – that a workload can use to verify an X.509-SVID presented by another workload in the same trust domain or a federated trust domain.
 * Generate or validate JSON Web Tokens ([JWT-SVIDs](https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md)) issued on behalf of the workload or another workload in the same trust domain or a federated trust domain.
 
 The Workload API doesn't require any explicit authentication (such as a secret). Rather, the SPIFFE specification leaves it to implementation of the SPIFFE Workload API to determine how to authenticate the workload. In the case of SPIRE, this is achieved by inspecting the Unix kernel metadata collected by the SPIRE Agent when a workload calls the API.
