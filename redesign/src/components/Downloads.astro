@@ -1,0 +1,12 @@
+---
+import release from '../data/release.json';
+const binaries = release.assets.filter(asset => !asset.name.startsWith('spire-extras') && /\.(tar\.gz|zip)$/.test(asset.name));
+---
+<div class="not-content splash-panel">
+  <p class="eyebrow">Latest stable release / {release.publishedAt.slice(0,10)}</p>
+  <h2 id="spire-releases">SPIRE {release.version}</h2>
+  <p class="page-intro">Download the server and agent for your platform. Check the published checksum before installing.</p>
+  <div class="spec-grid">{binaries.map(asset => <div class="spec-item"><h3>{asset.name.includes('windows') ? 'Windows / x86-64' : asset.name.includes('arm64') ? 'Linux / ARM64' : 'Linux / x86-64'}</h3><p><a href={asset.url}>Download archive ↗</a></p><p><a href={release.assets.find(a => a.name === asset.name.replace(/\.(tar\.gz|zip)$/,'_sha256sum.txt'))?.url}>SHA-256 checksum ↗</a></p></div>)}</div>
+  <p><a class="text-link" href={release.url}>Release notes and all assets ↗</a></p>
+  <h2>Choose a starting point.</h2><div class="resource-grid"><a href="/docs/spire/try/getting-started-linux-macos-x/"><h3>Linux or macOS</h3><p>Run a local server and agent. Register a workload and fetch its SVID.</p><span class="text-link">Local quickstart →</span></a><a href="/docs/spire/try/getting-started-k8s/"><h3>Kubernetes</h3><p>Deploy the server and agents, then expose the Workload API to a pod.</p><span class="text-link">Kubernetes quickstart →</span></a><a href="/docs/spire/try/spire101/"><h3>Docker</h3><p>Walk through SPIRE's identity lifecycle with containers.</p><span class="text-link">Docker quickstart →</span></a></div>
+</div>

@@ -1,0 +1,290 @@
+{
+  "site": {
+    "repository": "spiffe/spiffe.io",
+    "revision": "42e7c82fc4a8117e2fc2d6933180279aae18adeb"
+  },
+  "specifications": {
+    "repository": "spiffe/spiffe",
+    "revision": "49a9cbbc018c39ec6643ad3301632f9f4549258b"
+  },
+  "spireRelease": "v1.15.5",
+  "retrieved": "2026-10-22",
+  "docs": [
+    {
+      "slug": "docs/spire/architecture",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/architecture/_index.md",
+      "old": "/docs/latest/architecture"
+    },
+    {
+      "slug": "docs/spire/deploying",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/_index.md",
+      "old": "/docs/latest/deploying"
+    },
+    {
+      "slug": "docs/spire/deploying/configuring",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/configuring.md",
+      "old": "/docs/latest/deploying/configuring"
+    },
+    {
+      "slug": "docs/spire/deploying/install-agents",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/install-agents.md",
+      "old": "/docs/latest/deploying/install-agents"
+    },
+    {
+      "slug": "docs/spire/deploying/install-server",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/install-server.md",
+      "old": "/docs/latest/deploying/install-server"
+    },
+    {
+      "slug": "docs/spire/deploying/libraries",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/libraries.md",
+      "old": "/docs/latest/deploying/libraries"
+    },
+    {
+      "slug": "docs/spire/deploying/registering",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/registering.md",
+      "old": "/docs/latest/deploying/registering"
+    },
+    {
+      "slug": "docs/spire/deploying/svids",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/svids.md",
+      "old": "/docs/latest/deploying/svids"
+    },
+    {
+      "slug": "docs/spire/integrations/platforms",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/keyless/_index.md",
+      "old": "/docs/latest/keyless"
+    },
+    {
+      "slug": "docs/spire/integrations/platforms/oidc-federation-aws",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/keyless/oidc-federation-aws.md",
+      "old": "/docs/latest/keyless/oidc-federation-aws"
+    },
+    {
+      "slug": "docs/spire/maintenance",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/maintenance/_index.md",
+      "old": "/docs/latest/maintenance"
+    },
+    {
+      "slug": "docs/spire/integrations/services",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/microservices/_index.md",
+      "old": "/docs/latest/microservices"
+    },
+    {
+      "slug": "docs/spire/integrations/services/envoy",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/microservices/envoy.md",
+      "old": "/docs/latest/microservices/envoy"
+    },
+    {
+      "slug": "docs/spire/planning",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/planning/_index.md",
+      "old": "/docs/latest/planning"
+    },
+    {
+      "slug": "docs/spire/planning/extending",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/planning/extending.md",
+      "old": "/docs/latest/planning/extending"
+    },
+    {
+      "slug": "community/presentations",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/community-presentations.md",
+      "old": "/docs/latest/spiffe-about/community-presentations"
+    },
+    {
+      "slug": "ecosystem",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md",
+      "old": "/docs/latest/spiffe-about/ecosystem"
+    },
+    {
+      "slug": "community",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/get-involved.md",
+      "old": "/docs/latest/spiffe-about/get-involved"
+    },
+    {
+      "slug": "docs/spiffe/overview",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/overview.md",
+      "old": "/docs/latest/spiffe-about/overview"
+    },
+    {
+      "slug": "docs/spiffe/concepts",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/spiffe-concepts.md",
+      "old": "/docs/latest/spiffe-about/spiffe-concepts"
+    },
+    {
+      "slug": "docs/spire/about",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/_index.md",
+      "old": "/docs/latest/spire-about"
+    },
+    {
+      "slug": "docs/spire/about/case-studies",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/case-studies.md",
+      "old": "/docs/latest/spire-about/case-studies"
+    },
+    {
+      "slug": "docs/spire/about/comparisons",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/comparisons.md",
+      "old": "/docs/latest/spire-about/comparisons"
+    },
+    {
+      "slug": "docs/spire/about/concepts",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/spire-concepts.md",
+      "old": "/docs/latest/spire-about/spire-concepts"
+    },
+    {
+      "slug": "docs/spire/about/use-cases",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/use-cases.md",
+      "old": "/docs/latest/spire-about/use-cases"
+    },
+    {
+      "slug": "docs/spire/helm",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/_index.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-about"
+    },
+    {
+      "slug": "docs/spire/helm/exposing",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/exposing.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-about/exposing"
+    },
+    {
+      "slug": "docs/spire/helm/identifiers",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/identifiers.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-about/identifiers"
+    },
+    {
+      "slug": "docs/spire/helm/installation",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/installation.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-about/installation"
+    },
+    {
+      "slug": "docs/spire/helm/namespaces",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/namespaces.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-about/namespaces"
+    },
+    {
+      "slug": "docs/spire/helm/recommendations",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/recommendations.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-about/recommendations"
+    },
+    {
+      "slug": "docs/spire/helm/service-selection",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/service-selection.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-about/service-selection"
+    },
+    {
+      "slug": "docs/spire/helm/upgrading",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/upgrading.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-about/upgrading"
+    },
+    {
+      "slug": "docs/spire/helm/advanced",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-advanced/_index.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-advanced"
+    },
+    {
+      "slug": "docs/spire/helm/advanced/federation",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-advanced/federation.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-advanced/federation"
+    },
+    {
+      "slug": "docs/spire/helm/advanced/mirror",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-advanced/mirror.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-advanced/mirror"
+    },
+    {
+      "slug": "docs/spire/helm/advanced/nested-spire",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-advanced/nested-spire.md",
+      "old": "/docs/latest/spire-helm-charts-hardened-advanced/nested-spire"
+    },
+    {
+      "slug": "docs/spire/try",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/try/_index.md",
+      "old": "/docs/latest/try"
+    },
+    {
+      "slug": "docs/spire/try/getting-started-k8s",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/try/getting-started-k8s.md",
+      "old": "/docs/latest/try/getting-started-k8s"
+    },
+    {
+      "slug": "docs/spire/try/getting-started-linux-macos-x",
+      "source": "https://raw.githubusercontent.com/spiffe/spiffe.io/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/try/getting-started-linux-macos-x.md",
+      "old": "/docs/latest/try/getting-started-linux-macos-x"
+    },
+    {
+      "slug": "docs/spire/architecture/federation",
+      "source": "https://raw.githubusercontent.com/spiffe/spire-tutorials/main/docker-compose/federation/README.md",
+      "old": "/docs/latest/architecture/federation/README"
+    },
+    {
+      "slug": "docs/spire/architecture/nested",
+      "source": "https://raw.githubusercontent.com/spiffe/spire-tutorials/main/docker-compose/nested-spire/README.md",
+      "old": "/docs/latest/architecture/nested/README"
+    },
+    {
+      "slug": "docs/spire/deploying/spire_agent",
+      "source": "https://raw.githubusercontent.com/spiffe/spire/v1.15.5/doc/spire_agent.md",
+      "old": "/docs/latest/deploying/spire_agent"
+    },
+    {
+      "slug": "docs/spire/deploying/spire_server",
+      "source": "https://raw.githubusercontent.com/spiffe/spire/v1.15.5/doc/spire_server.md",
+      "old": "/docs/latest/deploying/spire_server"
+    },
+    {
+      "slug": "docs/spire/deploying/telemetry_config",
+      "source": "https://raw.githubusercontent.com/spiffe/spire/v1.15.5/doc/telemetry/telemetry_config.md",
+      "old": "/docs/latest/deploying/telemetry_config"
+    },
+    {
+      "slug": "docs/spire/deploying/using_spire",
+      "source": "https://raw.githubusercontent.com/spiffe/spire/v1.15.5/doc/using_spire.md",
+      "old": "/docs/latest/deploying/using_spire"
+    },
+    {
+      "slug": "docs/spire/integrations/platforms/vault",
+      "source": "https://raw.githubusercontent.com/spiffe/spire-tutorials/main/k8s/oidc-vault/README.md",
+      "old": "/docs/latest/keyless/vault/README"
+    },
+    {
+      "slug": "docs/spire/maintenance/upgrading",
+      "source": "https://raw.githubusercontent.com/spiffe/spire/v1.15.5/doc/upgrading.md",
+      "old": "/docs/latest/maintenance/upgrading"
+    },
+    {
+      "slug": "docs/spire/integrations/services/envoy-jwt",
+      "source": "https://raw.githubusercontent.com/spiffe/spire-tutorials/main/k8s/envoy-jwt/README.md",
+      "old": "/docs/latest/microservices/envoy-jwt/README"
+    },
+    {
+      "slug": "docs/spire/integrations/services/envoy-jwt-opa",
+      "source": "https://raw.githubusercontent.com/spiffe/spire-tutorials/main/k8s/envoy-jwt-opa/README.md",
+      "old": "/docs/latest/microservices/envoy-jwt-opa/README"
+    },
+    {
+      "slug": "docs/spire/integrations/services/envoy-opa",
+      "source": "https://raw.githubusercontent.com/spiffe/spire-tutorials/main/k8s/envoy-opa/README.md",
+      "old": "/docs/latest/microservices/envoy-opa/README"
+    },
+    {
+      "slug": "docs/spire/integrations/services/envoy-x509",
+      "source": "https://raw.githubusercontent.com/spiffe/spire-tutorials/main/k8s/envoy-x509/README.md",
+      "old": "/docs/latest/microservices/envoy-x509/README"
+    },
+    {
+      "slug": "docs/spire/planning/scaling_spire",
+      "source": "https://raw.githubusercontent.com/spiffe/spire/v1.15.5/doc/scaling_spire.md",
+      "old": "/docs/latest/planning/scaling_spire"
+    },
+    {
+      "slug": "docs/spire/try/spire101",
+      "source": "https://raw.githubusercontent.com/spiffe/spire/v1.15.5/doc/SPIRE101.md",
+      "old": "/docs/latest/try/SPIRE101"
+    }
+  ],
+  "blogPosts": 14,
+  "specificationDocuments": 13,
+  "redirects": 205,
+  "builtHtmlPages": 300,
+  "upstreamSitemapRoutesCovered": 86,
+  "contentPages": 94
+}

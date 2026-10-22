@@ -1,0 +1,30 @@
+<section class="mechanism section-block" aria-labelledby="mechanism-heading">
+  <div class="section-heading"><div><p class="eyebrow">01 / From workload to identity</p><h2 id="mechanism-heading">Prove what is running.</h2></div><p>SPIRE checks the workload against registration policy, then delivers an identity through the local Workload API.</p></div>
+  <figure class="issuance-figure">
+    <svg class="issuance-desktop" viewBox="0 0 1120 348" role="img" aria-labelledby="flow-title flow-desc">
+      <title id="flow-title">Identity issuance and authentication with SPIRE</title>
+      <desc id="flow-desc">An attested SPIRE Agent identifies the calling workload and matches registration policy. The SPIRE Server signs an SVID. The agent delivers the SVID and trust bundles through the Workload API. The workload uses the SVID to authenticate to a peer, which applies its own authorization policy.</desc>
+      <defs><marker id="flow-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto-start-reverse"><path d="M0 0L7 3.5L0 7Z" fill="#008d9c" /></marker></defs>
+      <rect x="20" y="31" width="685" height="199" rx="3" fill="#f7fafb" stroke="#d5e1e3" stroke-dasharray="4 5" />
+      <text x="40" y="55" class="svg-kicker">NODE / AGENT ALREADY ATTESTED</text>
+      <g class="flow-node"><rect x="40" y="89" width="210" height="101" rx="3" /><text x="62" y="122" class="svg-title">Your workload</text><text x="62" y="149">payments</text><text x="62" y="171" class="svg-code">spiffe://example.org/payments</text></g>
+      <g class="flow-node"><rect x="452" y="89" width="228" height="101" rx="3" /><text x="475" y="122" class="svg-title">SPIRE Agent</text><text x="475" y="150">Identifies the caller</text><text x="475" y="172">Matches registration policy</text></g>
+      <g class="flow-node"><rect x="870" y="89" width="224" height="101" rx="3" /><text x="894" y="122" class="svg-title">SPIRE Server</text><text x="894" y="150">Signs the SVID</text><text x="894" y="172">Manages issuing authority</text></g>
+      <path d="M250 114H450" class="flow-line" marker-end="url(#flow-arrow)" /><text x="352" y="100" text-anchor="middle" class="svg-label">① Request identity</text>
+      <path d="M452 169H252" class="flow-line" marker-end="url(#flow-arrow)" /><text x="352" y="191" text-anchor="middle" class="svg-label">SVID + trust bundles</text>
+      <text x="352" y="147" text-anchor="middle" class="svg-interface">WORKLOAD API</text>
+      <path d="M680 114H868" class="flow-line" marker-end="url(#flow-arrow)" /><text x="775" y="100" text-anchor="middle" class="svg-label">② Request SVID</text>
+      <path d="M870 169H682" class="flow-line" marker-end="url(#flow-arrow)" /><text x="775" y="191" text-anchor="middle" class="svg-label">③ Signed SVID</text>
+      <path d="M145 190V293H450" class="flow-line" marker-end="url(#flow-arrow)" /><text x="270" y="279" class="svg-label">④ Authenticate with SVID</text>
+      <g class="flow-node peer"><rect x="452" y="260" width="228" height="65" rx="3" /><text x="475" y="287" class="svg-title">Peer service</text><text x="475" y="309">Verifies identity</text></g>
+      <text x="714" y="284" class="svg-note">The peer uses a trust bundle to verify.</text><text x="714" y="306" class="svg-note">Its policy decides what to allow.</text>
+    </svg>
+    <ol class="issuance-mobile">
+      <li><span>01</span><div><strong>Workload → SPIRE Agent</strong><p>The workload calls the local Workload API.</p></div></li>
+      <li><span>02</span><div><strong>Attest and match</strong><p>The agent identifies the caller and matches registration policy.</p></div></li>
+      <li><span>03</span><div><strong>SPIRE Server → Agent → Workload</strong><p>The server signs an SVID. The agent delivers it with trust bundles.</p></div></li>
+      <li><span>04</span><div><strong>Workload → Peer</strong><p>The peer verifies the identity and applies its authorization policy.</p></div></li>
+    </ol>
+    <figcaption><span>SPIRE lifecycle in one trust domain. Agents cache and rotate SVIDs.</span><a href="/docs/spire/about/concepts/">Attestation and issuance in detail →</a></figcaption>
+  </figure>
+</section>

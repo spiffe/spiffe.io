@@ -1,0 +1,224 @@
+---
+title: Install the SPIRE Server
+description: How to install the SPIRE Server on Linux and Kubernetes
+sidebar:
+  label: Install Server
+  order: 60
+editUrl: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/install-server.md
+---
+
+### Step 1: Obtain the SPIRE Binaries
+
+Pre-built SPIRE releases can be found on the [SPIRE downloads page](/downloads/#spire-releases). The tarballs contain both server and agent binaries.
+
+If you wish, you may also [build SPIRE from source](https://github.com/spiffe/spire/blob/main/CONTRIBUTING.md).
+
+<span id="step-2"></span>
+
+### Step 2: Install the Server and Agent
+
+This introductory guide describes how to install the server and agent on the same node. On a typical production deployment you will have the server installed on one node and one or more agents installed on distinct nodes. 
+
+To install the server and agent:
+
+1. Obtain the latest tarball from the [SPIRE downloads page](/downloads/#spire-releases) and then extract it into the **/opt/spire** directory using the following commands:
+
+    ```console
+    wget https://github.com/spiffe/spire/releases/download/@@SPIRE_TAG@@/@@SPIRE_TARBALL@@
+    tar zvxf @@SPIRE_TARBALL@@
+    sudo cp -r spire-@@SPIRE_VERSION@@/. /opt/spire/
+    ```
+
+2. Add `spire-server` and `spire-agent` to your $PATH for convenience:
+
+    ```console
+    sudo ln -s /opt/spire/bin/spire-server /usr/bin/spire-server
+    sudo ln -s /opt/spire/bin/spire-agent /usr/bin/spire-agent
+    ```
+
+<span id="step-3"></span>
+
+### Step 3: Configure the Server
+
+To configure the server on Linux, you:
+
+1. Configure the trust domain
+2. Configure the server certificate authority (CA), which might include configuring an UpstreamAuthority plugin
+3. Configure the node attestation plugin
+4. Configure a default **.data** directory for persisting data
+
+However, to get a simple deployment up and running for demonstration purposes, you need only go through steps 1, 2, and 3. 
+
+To configure the items in steps 1, 2, and 4, edit the server’s configuration file, located in **/opt/spire/conf/server/server.conf**.
+
+See [Configuring SPIRE](/docs/spire/deploying/configuring/) for details about how to configure SPIRE, in particular Node Attestation and Workload Attestation.
+
+Note that a SPIRE Server must be restarted once its configuration has been modified for changes to take effect.
+
+See [Install SPIRE Agents](/docs/spire/deploying/install-agents/) to learn how to install the SPIRE Agent.
+
+## How to install the SPIRE Server on Kubernetes
+
+This section walks you step-by-step through getting a server running in your Kubernetes cluster and configuring a workload container to access SPIRE.
+
+
+:::note
+This walkthrough uses static Kubernetes manifests to teach you how the SPIRE Server's components fit together. For production deployments, use the [SPIRE Helm charts](/docs/spire/helm/), which are the easiest and supported way to deploy and maintain a complete SPIRE stack on Kubernetes.
+:::
+
+
+:::caution
+You must run all commands from the directory containing the **.yaml** files used for configuration.
+:::
+
+
+<span id="section-1"></span>
+
+### Step 1: Obtain the Required Files
+
+To obtain the required **.yaml** files, clone **https://github.com/spiffe/spire-tutorials** and copy the **.yaml** files from the **spire-tutorials/k8s/quickstart** subdirectory.
+
+<span id="section-2"></span>
+
+### Step 2: Configure Kubernetes Namespace for SPIRE Components
+
+Follow these steps to configure the **spire** namespace in which SPIRE Server and SPIRE Agent are deployed.
+
+1. Create the namespace:
+
+    ```console
+    $ kubectl apply -f spire-namespace.yaml
+    ```
+
+2. Run the following command and verify that *spire* is listed in the output:
+
+    ```console
+    $ kubectl get namespaces
+    ```
+
+<span id="section-3"></span>
+
+### Step 3: Configure SPIRE Server
+
+To configure the SPIRE Server on Kubernetes, you:
+
+1. Create server service account
+2. Create server bundle configmap
+3. Create server configmap
+4. Create server statefulset
+5. Create server service
+
+See the following sections for details.
+
+#### Create Server Service Account
+
+1. Configure a service account named **spire-server** by applying the **server-account.yaml** configuration file:
+
+    ```console
+    $ kubectl apply -f server-account.yaml
+    ```
+
+2. To confirm successful creation, verify that *spire-server* appears in the output of the following command:
+
+    ```console
+    $ kubectl get serviceaccount --namespace spire
+    ```
+
+#### Create Server Bundle Configmap, Role & ClusterRole
+
+For the server to function, it is necessary for it to provide agents with certificates that they can use to verify the identity of the server when establishing a connection.
+
+In a deployment such as this, where the agent and server share the same cluster, SPIRE can be configured to automatically generate these certificates on a periodic basis and update a configmap with contents of the certificate. To do that, the server needs the ability to get and patch a configmap object in the `spire` namespace.
+
+1. Create a Configmap named **spire-bundle** by applying the **spire-bundle-configmap.yaml** configuration file:
+
+    ```console
+    $ kubectl apply -f spire-bundle-configmap.yaml
+    ```
+
+2. To confirm successful creation, verify the configmap **spire-bundle** is listed in the output of the following command:
+
+    ```console
+    $ kubectl get configmaps --namespace spire | grep spire
+    ```
+
+To allow the server to read and write to this configmap, a Role must be created that confers the appropriate entitlements to Kubernetes RBAC in the `spire` namespace. The server also needs cluster-wide permissions to perform node attestation: a ClusterRole grants it the ability to get pod and node information and to create tokenreviews, which the server uses to validate agent service account tokens with the Kubernetes Token Review API. A RoleBinding and a ClusterRoleBinding associate the Role and the ClusterRole, respectively, with the service account created in the previous step.
+
+1. Create a Role named **spire-server-configmap-role** and a ClusterRole named **spire-server-trust-role**, together with their corresponding RoleBinding and ClusterRoleBinding, by applying the **server-cluster-role.yaml** configuration file:
+
+    ```console
+    $ kubectl apply -f server-cluster-role.yaml
+    ```
+
+2. To confirm successful creation, verify that the ClusterRole **spire-server-trust-role** appears in the output of the following command:
+
+    ```console
+    $ kubectl get clusterroles --namespace spire | grep spire
+    ```
+
+#### Create Server Configmap
+
+The server is configured in the Kubernetes configmap specified in **server-configmap.yaml**, which specifies a number of important directories, notably **/run/spire/data** and **/run/spire/config**. These volumes are bound in when the server container is deployed.
+
+Follow the [Configuring SPIRE](/docs/spire/deploying/configuring/) section for full details on how to configure the SPIRE Server, in particular Node Attestation and Workload Attestation.
+
+Note that a SPIRE Server must be restarted once its configuration has been modified for changes to take effect.
+
+To applying the server configmap to your cluster, issue the following command:
+
+```console
+$ kubectl apply -f server-configmap.yaml
+```
+
+#### Create Server StatefulSet
+
+Deploy the server by applying the configuration **server-statefulset.yaml** file:
+
+```console
+$ kubectl apply -f server-statefulset.yaml
+```
+
+This creates a statefulset called **spire-server** in the **spire** namespace and starts up a **spire-server** pod, as demonstrated in the output of the following two commands:
+
+```console
+$ kubectl get statefulset --namespace spire
+
+NAME           READY   AGE
+spire-server   1/1     86m
+
+
+$ kubectl get pods --namespace spire
+
+NAME                           READY   STATUS    RESTARTS   AGE
+spire-server-0                 1/1     Running   0          86m
+```
+
+When you deploy the server it automatically configures a livenessProbe on the SPIRE server's GRPC port, which ensures availability of the container.
+
+When the server deploys, it binds in the volumes summarized in the following table:
+
+| Volume           | Description                                                                | Mount Location        |
+|:-----------------|:---------------------------------------------------------------------------|:----------------------|
+| **spire-config** | A reference to the **spire-server** configmap created in the previous step | **/run/spire/config** |
+| **spire-data**   | The hostPath for the server's SQLite database and keys file                | **/run/spire/data**   |
+
+#### Create Server Service
+
+1. Create the server service by applying the **server-service.yaml** configuration file:
+
+    ```console
+    $ kubectl apply -f server-service.yaml
+    ```
+
+2. Verify that the **spire** namespace now has a **spire-server** service in the **spire** namespace:
+
+    ```console
+    $ kubectl get services --namespace spire
+
+    NAME           TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+    spire-server   NodePort   10.107.205.29   <none>        8081:30337/TCP   88m
+    ```
+
+## Where next?
+
+Once you've installed the SPIRE Server, consider reviewing the guide on [How to install SPIRE Agents](/docs/spire/deploying/install-agents/).

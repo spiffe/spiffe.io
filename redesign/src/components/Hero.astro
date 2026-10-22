@@ -1,0 +1,22 @@
+---
+import DefaultHero from '@astrojs/starlight/components/Hero.astro';
+const home = Astro.url.pathname === '/';
+---
+{home ? <section class="home-hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="signal-dot"></span> The open standard for workload identity</p>
+    <h1 id="_top">Identity<br />workloads can prove<span class="blue-period">.</span></h1>
+    <p class="hero-description">SPIFFE is an open standard for giving software a verifiable identity, wherever it runs.</p>
+    <p class="hero-secondary">SPIRE is its open-source reference implementation.</p>
+    <div class="actions"><a class="button primary" href="/docs/spiffe/overview/">Understand SPIFFE <span aria-hidden="true">→</span></a><a class="button secondary" href="/spire/">Run SPIRE <span aria-hidden="true">→</span></a></div>
+  </div>
+  <figure class="identity-figure" aria-label="An example SPIFFE identity stays the same across deployment environments">
+    <div class="identity-kicker"><span>WORKLOAD IDENTITY</span><span class="small-cross" aria-hidden="true">+</span></div>
+    <div class="identity-mark"><img src="/img/logos/spiffe/icon/color/spiffe-icon-color.svg" width="51" height="61" alt="" /><span>payments</span><span class="id-label">SERVICE</span></div>
+    <div class="identity-uri"><span>spiffe://</span><strong>example.org</strong><span>/</span><strong>payments</strong></div>
+    <div class="uri-keys"><span>trust domain</span><span>workload path</span></div>
+    <div class="identity-rule"><span></span><span class="rule-note">same identity</span><span></span></div>
+    <div class="environment-row"><span>Kubernetes</span><span>Virtual machine</span><span>Bare metal</span></div>
+    <figcaption>The name identifies the workload.<br />An SVID is the cryptographic proof.</figcaption>
+  </figure>
+</section> : <DefaultHero />}

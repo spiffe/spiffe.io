@@ -1,0 +1,7115 @@
+{
+  "pages": [
+    {
+      "route": "/",
+      "title": "Identity workloads can prove. | SPIFFE",
+      "words": 551,
+      "headings": [
+        {
+          "level": "h1",
+          "text": "Identityworkloads can prove.",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Infrastructure moves.",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Identity stays meaningful.",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Services can authenticate.",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Prove what is running.",
+          "id": "mechanism-heading"
+        },
+        {
+          "level": "h2",
+          "text": "Four ideas to build on.",
+          "id": "primitives-heading"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE ID \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SVID \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Workload API \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Trust domain \u2197",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "A common basis for authentication.",
+          "id": "usecases-heading"
+        },
+        {
+          "level": "h3",
+          "text": "Connect serviceswith mutual TLS.",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Authenticate tothe platforms you use.",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Work acrosstrust domains.",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Start with SPIFFE. Try it with SPIRE.",
+          "id": "projects-heading"
+        },
+        {
+          "level": "h3",
+          "text": "A shared contractfor workload identity.",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Put the standardinto operation.",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Choose how you use SPIFFE.",
+          "id": "ecosystem-heading"
+        },
+        {
+          "level": "h2",
+          "text": "From an idea to a running system.",
+          "id": "resources-heading"
+        },
+        {
+          "level": "h3",
+          "text": "A first look at SPIFFE.",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Solving the Bottom Turtle.",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Build this with us.",
+          "id": null
+        }
+      ]
+    },
+    {
+      "route": "/404.html",
+      "title": "Page not found | SPIFFE",
+      "words": 41,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Page not found",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/404/",
+      "title": "Page not found | SPIFFE",
+      "words": 41,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Page not found",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/community/",
+      "title": "A standard built in the open. | SPIFFE",
+      "words": 196,
+      "headings": [
+        {
+          "level": "h1",
+          "text": "A standard built in the open.",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Community Day 2026",
+          "id": "community-day-2026"
+        },
+        {
+          "level": "h2",
+          "text": "Join the conversation",
+          "id": "join-the-conversation"
+        },
+        {
+          "level": "h2",
+          "text": "Make a contribution",
+          "id": "make-a-contribution"
+        },
+        {
+          "level": "h2",
+          "text": "Governance",
+          "id": "governance"
+        },
+        {
+          "level": "h2",
+          "text": "Learn from the community",
+          "id": "learn-from-the-community"
+        },
+        {
+          "level": "h2",
+          "text": "Branding",
+          "id": "branding"
+        }
+      ]
+    },
+    {
+      "route": "/community-day-2026/",
+      "title": "Community Day 2026 | SPIFFE",
+      "words": 605,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Community Day 2026",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Agenda",
+          "id": "agenda"
+        },
+        {
+          "level": "h3",
+          "text": "13:30 to 14:00: Doors open",
+          "id": "1330-to-1400-doors-open"
+        },
+        {
+          "level": "h3",
+          "text": "14:00 to 14:10: Welcome and opening remarks",
+          "id": "1400-to-1410-welcome-and-opening-remarks"
+        },
+        {
+          "level": "h3",
+          "text": "14:15 to 14:45: Keynote",
+          "id": "1415-to-1445-keynote"
+        },
+        {
+          "level": "h3",
+          "text": "14:50 to 15:20: SPIRE Maintainers Update",
+          "id": "1450-to-1520-spire-maintainers-update"
+        },
+        {
+          "level": "h3",
+          "text": "15:25 to 15:55: SPIFFE Maintainers Update",
+          "id": "1525-to-1555-spiffe-maintainers-update"
+        },
+        {
+          "level": "h3",
+          "text": "15:55 to 16:15: Break",
+          "id": "1555-to-1615-break"
+        },
+        {
+          "level": "h3",
+          "text": "16:15 to 16:45: Operating SPIRE at Wise",
+          "id": "1615-to-1645-operating-spire-at-wise"
+        },
+        {
+          "level": "h3",
+          "text": "16:50 to 17:20: SPIFFE and AIMS - A foundation for Agentic Identity",
+          "id": "1650-to-1720-spiffe-and-aims---a-foundation-for-agentic-identity"
+        },
+        {
+          "level": "h3",
+          "text": "17:25 to 17:55: SPIFFE in Flux, or how we reached the KubernetesObjectReference SPIFFE standard",
+          "id": "1725-to-1755-spiffe-in-flux-or-how-we-reached-the-kubernetesobjectreference-spiffe-standard"
+        },
+        {
+          "level": "h3",
+          "text": "18:00 to 18:30: After the SVID: Emerging Authorization Patterns for SPIFFE Workloads and Agents",
+          "id": "1800-to-1830-after-the-svid-emerging-authorization-patterns-for-spiffe-workloads-and-agents"
+        },
+        {
+          "level": "h3",
+          "text": "18:30: Drinks and snacks",
+          "id": "1830-drinks-and-snacks"
+        }
+      ]
+    },
+    {
+      "route": "/downloads/",
+      "title": "Get SPIRE. | SPIFFE",
+      "words": 102,
+      "headings": [
+        {
+          "level": "h1",
+          "text": "Get SPIRE.",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE 1.15.5",
+          "id": "spire-releases"
+        },
+        {
+          "level": "h3",
+          "text": "Linux / x86-64",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Linux / ARM64",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Windows / x86-64",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Choose a starting point.",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Linux or macOS",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Kubernetes",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Docker",
+          "id": null
+        }
+      ]
+    },
+    {
+      "route": "/blog/",
+      "title": "From the project. | SPIFFE",
+      "words": 448,
+      "headings": [
+        {
+          "level": "h1",
+          "text": "From the project.",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Bottom Turtle Kubernetes - SPIRE Under Kubernetes, Not Just On Top of It",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "The Bottom Turtle That Heals Itself - Deployment from Scratch",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "The SPIFFE Standard Roadmap",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "The Bottom Turtle That Heals Itself - Design",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Hardening Istio security with SPIRE",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE now runs on Windows!",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Enabling Authenticated Communication for Serverless Workloads with SPIRE",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part One)",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part Two)",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "SPIFFE/SPIRE move to CNCF Incubation-level hosted projects!",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "[Re-Cap] SPIFFE Community Day: Spring 2020",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "[Re-Cap] SPIFFE Community Day: Fall 2019",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "[Re-Cap] SPIFFE Community Day: Spring 2019",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "[Re-Cap] SPIFFE Community Day: Fall 2018",
+          "id": null
+        }
+      ]
+    },
+    {
+      "route": "/spire/",
+      "title": "Run workload identity with SPIRE. | SPIFFE",
+      "words": 208,
+      "headings": [
+        {
+          "level": "h1",
+          "text": "Run workload identity with SPIRE.",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "A server, an agent, and your workload.",
+          "id": "a-server-an-agent-and-your-workload"
+        },
+        {
+          "level": "h2",
+          "text": "Start small. Keep the same model.",
+          "id": "start-small-keep-the-same-model"
+        },
+        {
+          "level": "h2",
+          "text": "Operate it yourself.",
+          "id": "operate-it-yourself"
+        }
+      ]
+    },
+    {
+      "route": "/book/",
+      "title": "Solving the Bottom Turtle. | SPIFFE",
+      "words": 67,
+      "headings": [
+        {
+          "level": "h1",
+          "text": "Solving the Bottom Turtle.",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/ecosystem/",
+      "title": "An ecosystem built on SPIFFE. | SPIFFE",
+      "words": 521,
+      "headings": [
+        {
+          "level": "h1",
+          "text": "An ecosystem built on SPIFFE.",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE & Plugins",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIRE \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIRE Controller Manager \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIRE Hardened Helm Charts \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIRE Identity Exchange \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Tornjak \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIRE TPM Plugin \u2197",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "SDKs & Libraries",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "go-spiffe \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "java-spiffe \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "HewlettPackard/py-spiffe \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "maxlambrecht/rust-spiffe \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "jeengbe/spiffe \u2197",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Deployment & Workload Helpers",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE CSI Driver \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE Helper \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "AWS SPIFFE Workload Helper \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "K8S SPIFFE Workload JWT Exec Auth \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "K8S SPIFFE Workload Auth Config \u2197",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Secrets Management",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIKE \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "VMware Secrets Manager \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "HashiCorp Vault \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Idira\u00ae Secrets Manager, SaaS by Palo Alto Networks \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Infisical \u2197",
+          "id": null
+        },
+        {
+          "level": "h2",
+          "text": "Service Meshes & Proxies",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Envoy \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Istio \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Ghostunnel \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "HashiCorp Consul \u2197",
+          "id": null
+        }
+      ]
+    },
+    {
+      "route": "/docs/",
+      "title": "Documentation | SPIFFE",
+      "words": 93,
+      "headings": [
+        {
+          "level": "h1",
+          "text": "Documentation",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "SPIFFE: understand and implement the standard",
+          "id": "spiffe-understand-and-implement-the-standard"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE: run the reference implementation",
+          "id": "spire-run-the-reference-implementation"
+        },
+        {
+          "level": "h2",
+          "text": "Find a project or integration",
+          "id": "find-a-project-or-integration"
+        }
+      ]
+    },
+    {
+      "route": "/community/presentations/",
+      "title": "Community Presentations | SPIFFE",
+      "words": 833,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Community Presentations",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Introductions",
+          "id": "introductions"
+        },
+        {
+          "level": "h2",
+          "text": "Case Studies",
+          "id": "case-studies"
+        },
+        {
+          "level": "h2",
+          "text": "Advanced Topics",
+          "id": "advanced-topics"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2026-07-19-bottom-turtle-ha-architecture/",
+      "title": "The Bottom Turtle That Heals Itself - Design | SPIFFE",
+      "words": 4062,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "The Bottom Turtle That Heals Itself - Design",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Turtles all the way down",
+          "id": "turtles-all-the-way-down"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: Why SPIRE, not secrets, should be the bottom turtle",
+          "id": "part-1-why-spire-not-secrets-should-be-the-bottom-turtle"
+        },
+        {
+          "level": "h3",
+          "text": "The secret zero doom loop",
+          "id": "the-secret-zero-doom-loop"
+        },
+        {
+          "level": "h3",
+          "text": "Flipping the model: identity is derived, not delivered",
+          "id": "flipping-the-model-identity-is-derived-not-delivered"
+        },
+        {
+          "level": "h3",
+          "text": "What \u201cSPIRE as the bottom turtle\u201d actually means",
+          "id": "what-spire-as-the-bottom-turtle-actually-means"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Rule one ,  the bottom turtle can\u2019t stand on another CA",
+          "id": "part-2-rule-one---the-bottom-turtle-cant-stand-on-another-ca"
+        },
+        {
+          "level": "h2",
+          "text": "Part 3: Rule two ,  trust is established by attestation, anchored in hardware",
+          "id": "part-3-rule-two---trust-is-established-by-attestation-anchored-in-hardware"
+        },
+        {
+          "level": "h2",
+          "text": "Part 4: The SPIRE HA trust domain ,  two turtles, one shell",
+          "id": "part-4-the-spire-ha-trust-domain---two-turtles-one-shell"
+        },
+        {
+          "level": "h3",
+          "text": "The concept",
+          "id": "the-concept"
+        },
+        {
+          "level": "h3",
+          "text": "Registration records: one set of YAML, two standalone servers",
+          "id": "registration-records-one-set-of-yaml-two-standalone-servers"
+        },
+        {
+          "level": "h3",
+          "text": "spire-ha-agent: the stitch at the edge",
+          "id": "spire-ha-agent-the-stitch-at-the-edge"
+        },
+        {
+          "level": "h3",
+          "text": "The payoff: seamless, automatic, trust-preserving recovery",
+          "id": "the-payoff-seamless-automatic-trust-preserving-recovery"
+        },
+        {
+          "level": "h3",
+          "text": "Why this beats the alternatives",
+          "id": "why-this-beats-the-alternatives"
+        },
+        {
+          "level": "h2",
+          "text": "Part 5: Honest caveats",
+          "id": "part-5-honest-caveats"
+        },
+        {
+          "level": "h2",
+          "text": "Part 6: The pitch, restated in one paragraph",
+          "id": "part-6-the-pitch-restated-in-one-paragraph"
+        },
+        {
+          "level": "h2",
+          "text": "Note for the future",
+          "id": "note-for-the-future"
+        },
+        {
+          "level": "h2",
+          "text": "References & further reading",
+          "id": "references--further-reading"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2020-06-18-spiffe-community-day-spring-2020/",
+      "title": "[Re-Cap] SPIFFE Community Day: Spring 2020 | SPIFFE",
+      "words": 529,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "[Re-Cap] SPIFFE Community Day: Spring 2020",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Compelling case studies, increasing adoption, and big plans for the future\u00a0\u2026",
+          "id": "compelling-case-studies-increasing-adoption-and-big-plans-for-the-future"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2026-08-18-spiffe-standard-roadmap/",
+      "title": "The SPIFFE Standard Roadmap | SPIFFE",
+      "words": 928,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "The SPIFFE Standard Roadmap",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Intro",
+          "id": "intro"
+        },
+        {
+          "level": "h2",
+          "text": "Roadmap",
+          "id": "roadmap"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE Filesystem Delivery",
+          "id": "spiffe-filesystem-delivery"
+        },
+        {
+          "level": "h3",
+          "text": "Transaction Tokens",
+          "id": "transaction-tokens"
+        },
+        {
+          "level": "h3",
+          "text": "A remote Workload API",
+          "id": "a-remote-workload-api"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE in open environments",
+          "id": "spiffe-in-open-environments"
+        },
+        {
+          "level": "h3",
+          "text": "Post-quantum readiness",
+          "id": "post-quantum-readiness"
+        },
+        {
+          "level": "h3",
+          "text": "Windows support",
+          "id": "windows-support"
+        },
+        {
+          "level": "h2",
+          "text": "Collaboration",
+          "id": "collaboration"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2022-05-20-spire-now-runs-on-windows/",
+      "title": "SPIRE now runs on Windows! | SPIFFE",
+      "words": 761,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE now runs on Windows!",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "What kind of support is being introduced?",
+          "id": "what-kind-of-support-is-being-introduced"
+        },
+        {
+          "level": "h3",
+          "text": "What\u2019s the difference?",
+          "id": "whats-the-difference"
+        },
+        {
+          "level": "h3",
+          "text": "The work that we have\u00a0ahead",
+          "id": "the-work-that-we-haveahead"
+        },
+        {
+          "level": "h3",
+          "text": "We want to hear from\u00a0you",
+          "id": "we-want-to-hear-fromyou"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2026-08-23-bottom-turtle-ha-deployment/",
+      "title": "The Bottom Turtle That Heals Itself - Deployment from Scratch | SPIFFE",
+      "words": 5932,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "The Bottom Turtle That Heals Itself - Deployment from Scratch",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "From design to disk",
+          "id": "from-design-to-disk"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: What you need before you start",
+          "id": "part-1-what-you-need-before-you-start"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Installing the packages",
+          "id": "part-2-installing-the-packages"
+        },
+        {
+          "level": "h3",
+          "text": "The one mechanic you have to understand: instance templates",
+          "id": "the-one-mechanic-you-have-to-understand-instance-templates"
+        },
+        {
+          "level": "h2",
+          "text": "Part 3: The TPM, in both directions",
+          "id": "part-3-the-tpm-in-both-directions"
+        },
+        {
+          "level": "h3",
+          "text": "Half one: nodes proving themselves to servers",
+          "id": "half-one-nodes-proving-themselves-to-servers"
+        },
+        {
+          "level": "h3",
+          "text": "Half two: servers proving themselves to agents",
+          "id": "half-two-servers-proving-themselves-to-agents"
+        },
+        {
+          "level": "h3",
+          "text": "The one out-of-band step",
+          "id": "the-one-out-of-band-step"
+        },
+        {
+          "level": "h3",
+          "text": "Pre-provisioning a spare",
+          "id": "pre-provisioning-a-spare"
+        },
+        {
+          "level": "h3",
+          "text": "If you don\u2019t have TPMs for all nodes",
+          "id": "if-you-dont-have-tpms-for-all-nodes"
+        },
+        {
+          "level": "h2",
+          "text": "Part 4: The two SPIRE servers",
+          "id": "part-4-the-two-spire-servers"
+        },
+        {
+          "level": "h3",
+          "text": "Registration records",
+          "id": "registration-records"
+        },
+        {
+          "level": "h3",
+          "text": "One set of YAML, two independent servers",
+          "id": "one-set-of-yaml-two-independent-servers"
+        },
+        {
+          "level": "h3",
+          "text": "Adding a workload node",
+          "id": "adding-a-workload-node"
+        },
+        {
+          "level": "h2",
+          "text": "Part 5: The nodes ,  two agents and the stitch",
+          "id": "part-5-the-nodes---two-agents-and-the-stitch"
+        },
+        {
+          "level": "h3",
+          "text": "Sidebar: broker mode",
+          "id": "sidebar-broker-mode"
+        },
+        {
+          "level": "h2",
+          "text": "Part 6: Closing the loop with spire-trust-sync",
+          "id": "part-6-closing-the-loop-with-spire-trust-sync"
+        },
+        {
+          "level": "h3",
+          "text": "The chicken and the egg",
+          "id": "the-chicken-and-the-egg"
+        },
+        {
+          "level": "h2",
+          "text": "Part 7: Verifying it, then breaking it on purpose",
+          "id": "part-7-verifying-it-then-breaking-it-on-purpose"
+        },
+        {
+          "level": "h3",
+          "text": "Drill one: stop a side",
+          "id": "drill-one-stop-a-side"
+        },
+        {
+          "level": "h3",
+          "text": "Drill two: destroy a side\u2019s state, keeping its TPM",
+          "id": "drill-two-destroy-a-sides-state-keeping-its-tpm"
+        },
+        {
+          "level": "h3",
+          "text": "What to actually alert on",
+          "id": "what-to-actually-alert-on"
+        },
+        {
+          "level": "h2",
+          "text": "Part 8: Honest caveats for this deployment",
+          "id": "part-8-honest-caveats-for-this-deployment"
+        },
+        {
+          "level": "h2",
+          "text": "Part 9: Go stand it up",
+          "id": "part-9-go-stand-it-up"
+        },
+        {
+          "level": "h2",
+          "text": "References & further reading",
+          "id": "references--further-reading"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2020-06-08-re-cap-spiffe-community-day-fall-2018/",
+      "title": "[Re-Cap] SPIFFE Community Day: Fall 2018 | SPIFFE",
+      "words": 412,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "[Re-Cap] SPIFFE Community Day: Fall 2018",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2020-06-12-re-cap-spiffe-community-day-fall-2019/",
+      "title": "[Re-Cap] SPIFFE Community Day: Fall 2019 | SPIFFE",
+      "words": 470,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "[Re-Cap] SPIFFE Community Day: Fall 2019",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2020-06-09-re-cap-spiffe-community-day-spring-2019/",
+      "title": "[Re-Cap] SPIFFE Community Day: Spring 2019 | SPIFFE",
+      "words": 327,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "[Re-Cap] SPIFFE Community Day: Spring 2019",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects/",
+      "title": "SPIFFE/SPIRE move to CNCF Incubation-level hosted projects! | SPIFFE",
+      "words": 413,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIFFE/SPIRE move to CNCF Incubation-level hosted projects!",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two/",
+      "title": "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part Two) | SPIFFE",
+      "words": 1214,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part Two)",
+          "id": "_top"
+        },
+        {
+          "level": "h4",
+          "text": "Part II:\u00a0Findings",
+          "id": "part-iifindings"
+        },
+        {
+          "level": "h3",
+          "text": "Introduction",
+          "id": "introduction"
+        },
+        {
+          "level": "h3",
+          "text": "Prioritizing the\u00a0Attacks",
+          "id": "prioritizing-theattacks"
+        },
+        {
+          "level": "h3",
+          "text": "Analyzing the Biggest\u00a0Risks",
+          "id": "analyzing-the-biggestrisks"
+        },
+        {
+          "level": "h3",
+          "text": "Understanding the Lowest\u00a0Risks",
+          "id": "understanding-the-lowestrisks"
+        },
+        {
+          "level": "h3",
+          "text": "Going Forward",
+          "id": "going-forward"
+        },
+        {
+          "level": "h3",
+          "text": "Conclusion",
+          "id": "conclusion"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2020-09-25-scrutinizing-spire-security/",
+      "title": "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part One) | SPIFFE",
+      "words": 2072,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part One)",
+          "id": "_top"
+        },
+        {
+          "level": "h4",
+          "text": "Part I: Methodology",
+          "id": "part-i-methodology"
+        },
+        {
+          "level": "h3",
+          "text": "Introduction",
+          "id": "introduction"
+        },
+        {
+          "level": "h3",
+          "text": "SPIRE Architecture",
+          "id": "spire-architecture"
+        },
+        {
+          "level": "h4",
+          "text": "Workload API",
+          "id": "workload-api"
+        },
+        {
+          "level": "h4",
+          "text": "Node API",
+          "id": "node-api"
+        },
+        {
+          "level": "h4",
+          "text": "Critical Functions",
+          "id": "critical-functions"
+        },
+        {
+          "level": "h3",
+          "text": "Security Goals",
+          "id": "security-goals"
+        },
+        {
+          "level": "h4",
+          "text": "Attack: Misrepresentation of\u00a0Identity",
+          "id": "attack-misrepresentation-ofidentity"
+        },
+        {
+          "level": "h4",
+          "text": "Attack: Identity\u00a0Theft",
+          "id": "attack-identitytheft"
+        },
+        {
+          "level": "h4",
+          "text": "Attack: Compromise/Remote Code Execution (RCE)",
+          "id": "attack-compromiseremote-code-execution-rce"
+        },
+        {
+          "level": "h4",
+          "text": "Attack: Denial Of Service\u00a0(DoS)",
+          "id": "attack-denial-of-servicedos"
+        },
+        {
+          "level": "h3",
+          "text": "Enumerating Attacker Capabilities",
+          "id": "enumerating-attacker-capabilities"
+        },
+        {
+          "level": "h3",
+          "text": "Applying the\u00a0Attacks",
+          "id": "applying-theattacks"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2026-09-03-spire-under-kubernetes/",
+      "title": "Bottom Turtle Kubernetes - SPIRE Under Kubernetes, Not Just On Top of It | SPIFFE",
+      "words": 3670,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Bottom Turtle Kubernetes - SPIRE Under Kubernetes, Not Just On Top of It",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "The obvious objection",
+          "id": "the-obvious-objection"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: What \u201cSPIRE on top of Kubernetes\u201d roots trust in",
+          "id": "part-1-what-spire-on-top-of-kubernetes-roots-trust-in"
+        },
+        {
+          "level": "h3",
+          "text": "The ordering problem, which is worse",
+          "id": "the-ordering-problem-which-is-worse"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Chaining, not replacing",
+          "id": "part-2-chaining-not-replacing"
+        },
+        {
+          "level": "h3",
+          "text": "Installing it: one chart, four releases",
+          "id": "installing-it-one-chart-four-releases"
+        },
+        {
+          "level": "h3",
+          "text": "The bridges: Unix sockets and entries on the host",
+          "id": "the-bridges-unix-sockets-and-entries-on-the-host"
+        },
+        {
+          "level": "h3",
+          "text": "In-kubernetes agents attest with host identity, not Kubernetes identity",
+          "id": "in-kubernetes-agents-attest-with-host-identity-not-kubernetes-identity"
+        },
+        {
+          "level": "h3",
+          "text": "What the trust chain looks like when you\u2019re done",
+          "id": "what-the-trust-chain-looks-like-when-youre-done"
+        },
+        {
+          "level": "h3",
+          "text": "The best part: the in-kubernetes SPIRE servers becomes disposable",
+          "id": "the-best-part-the-in-kubernetes-spire-servers-becomes-disposable"
+        },
+        {
+          "level": "h2",
+          "text": "Part 3: The four things you can only do from underneath",
+          "id": "part-3-the-four-things-you-can-only-do-from-underneath"
+        },
+        {
+          "level": "h3",
+          "text": "1. Host services join the same trust domain",
+          "id": "1-host-services-join-the-same-trust-domain"
+        },
+        {
+          "level": "h3",
+          "text": "2. kubelet \u2192 kube-apiserver, attested to hardware",
+          "id": "2-kubelet--kube-apiserver-attested-to-hardware"
+        },
+        {
+          "level": "h3",
+          "text": "3. Image pull with no pull secret ,  which has to be on the host",
+          "id": "3-image-pull-with-no-pull-secret---which-has-to-be-on-the-host"
+        },
+        {
+          "level": "h3",
+          "text": "4. One identity plane instead of two",
+          "id": "4-one-identity-plane-instead-of-two"
+        },
+        {
+          "level": "h3",
+          "text": "5. Note, Kubernetes CA\u2019s",
+          "id": "5-note-kubernetes-cas"
+        },
+        {
+          "level": "h2",
+          "text": "Honest caveats",
+          "id": "honest-caveats"
+        },
+        {
+          "level": "h2",
+          "text": "Where this leaves you",
+          "id": "where-this-leaves-you"
+        },
+        {
+          "level": "h2",
+          "text": "References & further reading",
+          "id": "references--further-reading"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2022-06-16-hardening-istio-security-with-spire/",
+      "title": "Hardening Istio security with SPIRE | SPIFFE",
+      "words": 547,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Hardening Istio security with SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Service Meshes",
+          "id": "service-meshes"
+        },
+        {
+          "level": "h3",
+          "text": "Security Concerns",
+          "id": "security-concerns"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE and\u00a0SPIRE",
+          "id": "spiffe-andspire"
+        },
+        {
+          "level": "h3",
+          "text": "Integrating SPIRE into\u00a0Istio",
+          "id": "integrating-spire-intoistio"
+        }
+      ]
+    },
+    {
+      "route": "/blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/",
+      "title": "Enabling Authenticated Communication for Serverless Workloads with SPIRE | SPIFFE",
+      "words": 1049,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Enabling Authenticated Communication for Serverless Workloads with SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Introduction",
+          "id": "introduction"
+        },
+        {
+          "level": "h3",
+          "text": "SVIDStore plugins come to\u00a0rescue",
+          "id": "svidstore-plugins-come-torescue"
+        },
+        {
+          "level": "h3",
+          "text": "Conclusion",
+          "id": "conclusion"
+        }
+      ]
+    },
+    {
+      "route": "/ecosystem/matrix/",
+      "title": "Implementation support matrix | SPIFFE",
+      "words": 458,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Implementation support matrix",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Which Tools Implement SPIFFE?",
+          "id": "which-tools-implement-spiffe"
+        },
+        {
+          "level": "h3",
+          "text": "Open Source Software That Implements SPIFFE",
+          "id": "open-source-software-that-implements-spiffe"
+        },
+        {
+          "level": "h3",
+          "text": "Commercial Software That Implements SPIFFE",
+          "id": "commercial-software-that-implements-spiffe"
+        },
+        {
+          "level": "h4",
+          "text": "Explanation of Columns - Software that Implements SPIFFE",
+          "id": "explanation-of-columns---software-that-implements-spiffe"
+        },
+        {
+          "level": "h3",
+          "text": "Which Tools Work with SPIFFE?",
+          "id": "which-tools-work-with-spiffe"
+        },
+        {
+          "level": "h4",
+          "text": "Open Source Software that Works with SPIFFE",
+          "id": "open-source-software-that-works-with-spiffe"
+        },
+        {
+          "level": "h4",
+          "text": "Commercial Software that Works with SPIFFE",
+          "id": "commercial-software-that-works-with-spiffe"
+        },
+        {
+          "level": "h4",
+          "text": "Explanation of Columns - Software that Works with SPIFFE",
+          "id": "explanation-of-columns---software-that-works-with-spiffe"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/",
+      "title": "Specifications | SPIFFE",
+      "words": 175,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Specifications",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE framework \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE ID \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Trust domain and bundle \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "X.509-SVID \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "JWT-SVID \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Workload API \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Workload endpoint \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Federation \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "WIT-SVID \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Broker API \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Broker endpoint \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Filesystem delivery \u2197",
+          "id": null
+        },
+        {
+          "level": "h3",
+          "text": "Specification stability \u2197",
+          "id": null
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/overview/",
+      "title": "SPIFFE overview | SPIFFE",
+      "words": 250,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIFFE overview",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "What SPIFFE defines",
+          "id": "what-spiffe-defines"
+        },
+        {
+          "level": "h2",
+          "text": "What the application decides",
+          "id": "what-the-application-decides"
+        },
+        {
+          "level": "h2",
+          "text": "Choose your next step",
+          "id": "choose-your-next-step"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/concepts/",
+      "title": "SPIFFE Concepts | SPIFFE",
+      "words": 1044,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIFFE Concepts",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Workload",
+          "id": "workload"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE ID",
+          "id": "spiffe-id"
+        },
+        {
+          "level": "h3",
+          "text": "Trust Domain",
+          "id": "trust-domain"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE Verifiable Identity Document (SVID)",
+          "id": "spiffe-verifiable-identity-document-svid"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE Workload API",
+          "id": "spiffe-workload-api"
+        },
+        {
+          "level": "h3",
+          "text": "Trust Bundle",
+          "id": "trust-bundle"
+        },
+        {
+          "level": "h2",
+          "text": "Further Reading {#spec}",
+          "id": "further-reading-spec"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/broker-api/",
+      "title": "Broker API | SPIFFE",
+      "words": 5348,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Broker API",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. Extensibility",
+          "id": "2-extensibility"
+        },
+        {
+          "level": "h2",
+          "text": "3. Service Definition",
+          "id": "3-service-definition"
+        },
+        {
+          "level": "h3",
+          "text": "3.1 Workload Reference",
+          "id": "31-workload-reference"
+        },
+        {
+          "level": "h3",
+          "text": "3.1.1 Reference Resolution",
+          "id": "311-reference-resolution"
+        },
+        {
+          "level": "h3",
+          "text": "3.1.2 Reference scope",
+          "id": "312-reference-scope"
+        },
+        {
+          "level": "h3",
+          "text": "3.1.3 Builtin Reference Types",
+          "id": "313-builtin-reference-types"
+        },
+        {
+          "level": "h3",
+          "text": "3.1.4 Extensibility",
+          "id": "314-extensibility"
+        },
+        {
+          "level": "h2",
+          "text": "4. Client and Server Behavior",
+          "id": "4-client-and-server-behavior"
+        },
+        {
+          "level": "h3",
+          "text": "4.1 Authenticating and authorizing the Caller",
+          "id": "41-authenticating-and-authorizing-the-caller"
+        },
+        {
+          "level": "h3",
+          "text": "4.2 Remote procedure scope",
+          "id": "42-remote-procedure-scope"
+        },
+        {
+          "level": "h3",
+          "text": "4.3 Connection Lifetime",
+          "id": "43-connection-lifetime"
+        },
+        {
+          "level": "h3",
+          "text": "4.4 Stream Responses",
+          "id": "44-stream-responses"
+        },
+        {
+          "level": "h3",
+          "text": "4.5 Default Values and Redacted Information",
+          "id": "45-default-values-and-redacted-information"
+        },
+        {
+          "level": "h3",
+          "text": "4.6 Mandatory Fields",
+          "id": "46-mandatory-fields"
+        },
+        {
+          "level": "h3",
+          "text": "4.7 Federated Bundles",
+          "id": "47-federated-bundles"
+        },
+        {
+          "level": "h3",
+          "text": "4.8 Workload References and SVID entitlements",
+          "id": "48-workload-references-and-svid-entitlements"
+        },
+        {
+          "level": "h3",
+          "text": "4.9 Workload Lifecycle",
+          "id": "49-workload-lifecycle"
+        },
+        {
+          "level": "h2",
+          "text": "5. X.509-SVID Profile",
+          "id": "5-x509-svid-profile"
+        },
+        {
+          "level": "h3",
+          "text": "5.1 Profile Definition",
+          "id": "51-profile-definition"
+        },
+        {
+          "level": "h3",
+          "text": "5.2 Profile RPCs",
+          "id": "52-profile-rpcs"
+        },
+        {
+          "level": "h4",
+          "text": "5.2.1 SubscribeToX509SVID",
+          "id": "521-subscribetox509svid"
+        },
+        {
+          "level": "h4",
+          "text": "5.2.2 SubscribeToX509Bundles",
+          "id": "522-subscribetox509bundles"
+        },
+        {
+          "level": "h3",
+          "text": "5.3 Default Identity",
+          "id": "53-default-identity"
+        },
+        {
+          "level": "h2",
+          "text": "6. JWT-SVID Profile",
+          "id": "6-jwt-svid-profile"
+        },
+        {
+          "level": "h3",
+          "text": "6.1 Profile Definition",
+          "id": "61-profile-definition"
+        },
+        {
+          "level": "h3",
+          "text": "6.2 Profile RPCs",
+          "id": "62-profile-rpcs"
+        },
+        {
+          "level": "h4",
+          "text": "6.2.1 FetchJWTSVID",
+          "id": "621-fetchjwtsvid"
+        },
+        {
+          "level": "h4",
+          "text": "6.2.2 SubscribeToJWTBundles",
+          "id": "622-subscribetojwtbundles"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A. Sample Implementation State Machines",
+          "id": "appendix-a-sample-implementation-state-machines"
+        },
+        {
+          "level": "h3",
+          "text": "Workload State Machine",
+          "id": "workload-state-machine"
+        },
+        {
+          "level": "h3",
+          "text": "Broker State Machine",
+          "id": "broker-state-machine"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE Server State Machine",
+          "id": "spiffe-server-state-machine"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/spiffe/",
+      "title": "SPIFFE framework | SPIFFE",
+      "words": 848,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIFFE framework",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. The SPIFFE ID",
+          "id": "2-the-spiffe-id"
+        },
+        {
+          "level": "h2",
+          "text": "3. The SPIFFE Verifiable Identity Document",
+          "id": "3-the-spiffe-verifiable-identity-document"
+        },
+        {
+          "level": "h2",
+          "text": "4. The Workload API",
+          "id": "4-the-workload-api"
+        },
+        {
+          "level": "h2",
+          "text": "5. Conclusion",
+          "id": "5-conclusion"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A. List of SPIFFE Specifications",
+          "id": "appendix-a-list-of-spiffe-specifications"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/spiffe-id/",
+      "title": "SPIFFE ID | SPIFFE",
+      "words": 3252,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIFFE ID",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. SPIFFE Identity",
+          "id": "2-spiffe-identity"
+        },
+        {
+          "level": "h3",
+          "text": "2.1. Trust Domain",
+          "id": "21-trust-domain"
+        },
+        {
+          "level": "h4",
+          "text": "2.1.1. Trust Domain Name Collisions",
+          "id": "211-trust-domain-name-collisions"
+        },
+        {
+          "level": "h3",
+          "text": "2.2. Path",
+          "id": "22-path"
+        },
+        {
+          "level": "h3",
+          "text": "2.3. Maximum SPIFFE ID Length",
+          "id": "23-maximum-spiffe-id-length"
+        },
+        {
+          "level": "h3",
+          "text": "2.4. SPIFFE ID Parsing",
+          "id": "24-spiffe-id-parsing"
+        },
+        {
+          "level": "h2",
+          "text": "3. SPIFFE Verifiable Identity Document",
+          "id": "3-spiffe-verifiable-identity-document"
+        },
+        {
+          "level": "h3",
+          "text": "3.1. SVID Trust",
+          "id": "31-svid-trust"
+        },
+        {
+          "level": "h3",
+          "text": "3.2. SVID Components",
+          "id": "32-svid-components"
+        },
+        {
+          "level": "h3",
+          "text": "3.3. SVID Format",
+          "id": "33-svid-format"
+        },
+        {
+          "level": "h2",
+          "text": "4. Security Considerations",
+          "id": "4-security-considerations"
+        },
+        {
+          "level": "h3",
+          "text": "4.1. SVID Assertions",
+          "id": "41-svid-assertions"
+        },
+        {
+          "level": "h4",
+          "text": "4.1.1. Temporal Accuracy",
+          "id": "411-temporal-accuracy"
+        },
+        {
+          "level": "h4",
+          "text": "4.1.2. Scope and Influence",
+          "id": "412-scope-and-influence"
+        },
+        {
+          "level": "h4",
+          "text": "4.1.3. Interpretation",
+          "id": "413-interpretation"
+        },
+        {
+          "level": "h4",
+          "text": "4.1.4. Veracity",
+          "id": "414-veracity"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/filesystem-delivery/",
+      "title": "Filesystem delivery | SPIFFE",
+      "words": 2663,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Filesystem delivery",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Participants",
+          "id": "1-participants"
+        },
+        {
+          "level": "h2",
+          "text": "2. Credential Folder",
+          "id": "2-credential-folder"
+        },
+        {
+          "level": "h3",
+          "text": "2.1 Credential Bundle",
+          "id": "21-credential-bundle"
+        },
+        {
+          "level": "h3",
+          "text": "2.2 SPIFFE Trust Bundles",
+          "id": "22-spiffe-trust-bundles"
+        },
+        {
+          "level": "h3",
+          "text": "2.3 Redaction",
+          "id": "23-redaction"
+        },
+        {
+          "level": "h2",
+          "text": "3. Application Behavior",
+          "id": "3-application-behavior"
+        },
+        {
+          "level": "h3",
+          "text": "3.1 Loading and Refreshing the Credential Bundle",
+          "id": "31-loading-and-refreshing-the-credential-bundle"
+        },
+        {
+          "level": "h3",
+          "text": "3.2 Validating Peer SPIFFE Certificates",
+          "id": "32-validating-peer-spiffe-certificates"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A: Filesystem Delivery Versus the Workload API",
+          "id": "appendix-a-filesystem-delivery-versus-the-workload-api"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix B: Reference Example - Filesystem Delivery on Kubernetes",
+          "id": "appendix-b-reference-example---filesystem-delivery-on-kubernetes"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/trust-domain-and-bundle/",
+      "title": "Trust domain and bundle | SPIFFE",
+      "words": 2959,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Trust domain and bundle",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. Trust Domains",
+          "id": "2-trust-domains"
+        },
+        {
+          "level": "h2",
+          "text": "3. SPIFFE Bundles",
+          "id": "3-spiffe-bundles"
+        },
+        {
+          "level": "h2",
+          "text": "4. SPIFFE Bundle Format",
+          "id": "4-spiffe-bundle-format"
+        },
+        {
+          "level": "h3",
+          "text": "4.1. JWK Set",
+          "id": "41-jwk-set"
+        },
+        {
+          "level": "h4",
+          "text": "4.1.1. Sequence Number",
+          "id": "411-sequence-number"
+        },
+        {
+          "level": "h4",
+          "text": "4.1.2. Refresh Hint",
+          "id": "412-refresh-hint"
+        },
+        {
+          "level": "h4",
+          "text": "4.1.3. Keys",
+          "id": "413-keys"
+        },
+        {
+          "level": "h3",
+          "text": "4.2. JWK",
+          "id": "42-jwk"
+        },
+        {
+          "level": "h4",
+          "text": "4.2.1. Key Type",
+          "id": "421-key-type"
+        },
+        {
+          "level": "h4",
+          "text": "4.2.2. Public Key Use",
+          "id": "422-public-key-use"
+        },
+        {
+          "level": "h2",
+          "text": "5. SPIFFE Bundle Map",
+          "id": "5-spiffe-bundle-map"
+        },
+        {
+          "level": "h3",
+          "text": "5.1. SPIFFE Bundle Map Format",
+          "id": "51-spiffe-bundle-map-format"
+        },
+        {
+          "level": "h4",
+          "text": "5.1.1. Trust Domains",
+          "id": "511-trust-domains"
+        },
+        {
+          "level": "h2",
+          "text": "6. Security Considerations",
+          "id": "6-security-considerations"
+        },
+        {
+          "level": "h3",
+          "text": "6.1. SPIFFE Bundle Refresh Hint",
+          "id": "61-spiffe-bundle-refresh-hint"
+        },
+        {
+          "level": "h3",
+          "text": "6.2. Reusing Cryptographic Keys Across Trust Domains",
+          "id": "62-reusing-cryptographic-keys-across-trust-domains"
+        },
+        {
+          "level": "h3",
+          "text": "6.3. JSON Key Duplication",
+          "id": "63-json-key-duplication"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A. SPIFFE Bundle Example",
+          "id": "appendix-a-spiffe-bundle-example"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix B. SPIFFE Bundle Map Example",
+          "id": "appendix-b-spiffe-bundle-map-example"
+        },
+        {
+          "level": "h3",
+          "text": "Appendix B.1. Server/Client Behavior",
+          "id": "appendix-b1-serverclient-behavior"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/federation/",
+      "title": "Federation | SPIFFE",
+      "words": 6273,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Federation",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Background",
+          "id": "1-background"
+        },
+        {
+          "level": "h2",
+          "text": "2. Introduction",
+          "id": "2-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "3. Targeted Use Cases",
+          "id": "3-targeted-use-cases"
+        },
+        {
+          "level": "h2",
+          "text": "4. SPIFFE Bundle Endpoint",
+          "id": "4-spiffe-bundle-endpoint"
+        },
+        {
+          "level": "h3",
+          "text": "4.1. Adding and Removing Keys",
+          "id": "41-adding-and-removing-keys"
+        },
+        {
+          "level": "h3",
+          "text": "4.2. Managing Fetched Bundles",
+          "id": "42-managing-fetched-bundles"
+        },
+        {
+          "level": "h3",
+          "text": "4.3. Endpoint Address Stability",
+          "id": "43-endpoint-address-stability"
+        },
+        {
+          "level": "h2",
+          "text": "5. Serving and Consuming a SPIFFE Bundle Endpoint",
+          "id": "5-serving-and-consuming-a-spiffe-bundle-endpoint"
+        },
+        {
+          "level": "h3",
+          "text": "5.1. Endpoint Parameters",
+          "id": "51-endpoint-parameters"
+        },
+        {
+          "level": "h3",
+          "text": "5.2. Endpoint Profiles",
+          "id": "52-endpoint-profiles"
+        },
+        {
+          "level": "h4",
+          "text": "5.2.1. Web PKI (https_web)",
+          "id": "521-web-pki-https_web"
+        },
+        {
+          "level": "h5",
+          "text": "5.2.1.1. Endpoint URL Requirements",
+          "id": "5211-endpoint-url-requirements"
+        },
+        {
+          "level": "h5",
+          "text": "5.2.1.2. Endpoint Parameters",
+          "id": "5212-endpoint-parameters"
+        },
+        {
+          "level": "h5",
+          "text": "5.2.1.3. Serving a Bundle Endpoint",
+          "id": "5213-serving-a-bundle-endpoint"
+        },
+        {
+          "level": "h5",
+          "text": "5.2.1.4. Consuming a Bundle Endpoint",
+          "id": "5214-consuming-a-bundle-endpoint"
+        },
+        {
+          "level": "h4",
+          "text": "5.2.2. SPIFFE Authentication (https_spiffe)",
+          "id": "522-spiffe-authentication-https_spiffe"
+        },
+        {
+          "level": "h5",
+          "text": "5.2.2.1. Endpoint URL Requirements",
+          "id": "5221-endpoint-url-requirements"
+        },
+        {
+          "level": "h5",
+          "text": "5.2.2.2. Endpoint Parameters",
+          "id": "5222-endpoint-parameters"
+        },
+        {
+          "level": "h5",
+          "text": "5.2.2.3. Serving a Bundle Endpoint",
+          "id": "5223-serving-a-bundle-endpoint"
+        },
+        {
+          "level": "h5",
+          "text": "5.2.2.4. Consuming a Bundle Endpoint",
+          "id": "5224-consuming-a-bundle-endpoint"
+        },
+        {
+          "level": "h2",
+          "text": "6. Relationship Lifecycle",
+          "id": "6-relationship-lifecycle"
+        },
+        {
+          "level": "h3",
+          "text": "6.1. Establishing a Relationship",
+          "id": "61-establishing-a-relationship"
+        },
+        {
+          "level": "h3",
+          "text": "6.2. Maintaining a Relationship",
+          "id": "62-maintaining-a-relationship"
+        },
+        {
+          "level": "h3",
+          "text": "6.3. Terminating a Relationship",
+          "id": "63-terminating-a-relationship"
+        },
+        {
+          "level": "h3",
+          "text": "6.4. Lifecycle Diagram",
+          "id": "64-lifecycle-diagram"
+        },
+        {
+          "level": "h2",
+          "text": "7. Security Considerations",
+          "id": "7-security-considerations"
+        },
+        {
+          "level": "h3",
+          "text": "7.1. Distribution of Endpoint Parameters",
+          "id": "71-distribution-of-endpoint-parameters"
+        },
+        {
+          "level": "h3",
+          "text": "7.2. Explicitly-defined Endpoint Parameters",
+          "id": "72-explicitly-defined-endpoint-parameters"
+        },
+        {
+          "level": "h3",
+          "text": "7.3. Preserving the <Trust Domain, Bundle> Binding",
+          "id": "73-preserving-the-trust-domain-bundle-binding"
+        },
+        {
+          "level": "h3",
+          "text": "7.4. Trustworthiness of the Bundle Endpoint Server",
+          "id": "74-trustworthiness-of-the-bundle-endpoint-server"
+        },
+        {
+          "level": "h3",
+          "text": "7.5. Authenticity of the Bundle Endpoint",
+          "id": "75-authenticity-of-the-bundle-endpoint"
+        },
+        {
+          "level": "h4",
+          "text": "7.5.1. Bundle Endpoint URL Redirection",
+          "id": "751-bundle-endpoint-url-redirection"
+        },
+        {
+          "level": "h4",
+          "text": "7.5.2. Network Traffic Interception",
+          "id": "752-network-traffic-interception"
+        },
+        {
+          "level": "h4",
+          "text": "7.5.3. Endpoint Parameters",
+          "id": "753-endpoint-parameters"
+        },
+        {
+          "level": "h3",
+          "text": "7.6. Chaining Trust with https_spiffe",
+          "id": "76-chaining-trust-with-https_spiffe"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/stability/",
+      "title": "Specification stability | SPIFFE",
+      "words": 1004,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Specification stability",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. What this is",
+          "id": "1-what-this-is"
+        },
+        {
+          "level": "h2",
+          "text": "2. Stability levels",
+          "id": "2-stability-levels"
+        },
+        {
+          "level": "h3",
+          "text": "2.1. Proposed",
+          "id": "21-proposed"
+        },
+        {
+          "level": "h3",
+          "text": "2.2. Experimental",
+          "id": "22-experimental"
+        },
+        {
+          "level": "h3",
+          "text": "2.3. Incubating",
+          "id": "23-incubating"
+        },
+        {
+          "level": "h3",
+          "text": "2.4. Stable",
+          "id": "24-stable"
+        },
+        {
+          "level": "h2",
+          "text": "3. Marking stability",
+          "id": "3-marking-stability"
+        },
+        {
+          "level": "h3",
+          "text": "3.1. Marking part of a specification",
+          "id": "31-marking-part-of-a-specification"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/jwt-svid/",
+      "title": "JWT-SVID | SPIFFE",
+      "words": 1671,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "JWT-SVID",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. JOSE Header",
+          "id": "2-jose-header"
+        },
+        {
+          "level": "h3",
+          "text": "2.1. Algorithm",
+          "id": "21-algorithm"
+        },
+        {
+          "level": "h3",
+          "text": "2.2. Key ID",
+          "id": "22-key-id"
+        },
+        {
+          "level": "h3",
+          "text": "2.3. Type",
+          "id": "23-type"
+        },
+        {
+          "level": "h2",
+          "text": "3. JWT Claims",
+          "id": "3-jwt-claims"
+        },
+        {
+          "level": "h3",
+          "text": "3.1. Subject",
+          "id": "31-subject"
+        },
+        {
+          "level": "h3",
+          "text": "3.2. Audience",
+          "id": "32-audience"
+        },
+        {
+          "level": "h3",
+          "text": "3.3. Expiration Time",
+          "id": "33-expiration-time"
+        },
+        {
+          "level": "h2",
+          "text": "4. Token Signing and Validation",
+          "id": "4-token-signing-and-validation"
+        },
+        {
+          "level": "h2",
+          "text": "5. Token Transmission",
+          "id": "5-token-transmission"
+        },
+        {
+          "level": "h3",
+          "text": "5.1. Serialization",
+          "id": "51-serialization"
+        },
+        {
+          "level": "h3",
+          "text": "5.2. HTTP",
+          "id": "52-http"
+        },
+        {
+          "level": "h3",
+          "text": "5.3. gRPC",
+          "id": "53-grpc"
+        },
+        {
+          "level": "h2",
+          "text": "6. Representation in the SPIFFE Bundle",
+          "id": "6-representation-in-the-spiffe-bundle"
+        },
+        {
+          "level": "h3",
+          "text": "6.1. Publishing SPIFFE Bundle Elements",
+          "id": "61-publishing-spiffe-bundle-elements"
+        },
+        {
+          "level": "h3",
+          "text": "6.2. Consuming a SPIFFE Bundle",
+          "id": "62-consuming-a-spiffe-bundle"
+        },
+        {
+          "level": "h2",
+          "text": "7. Security Considerations",
+          "id": "7-security-considerations"
+        },
+        {
+          "level": "h3",
+          "text": "7.1. Replay Protection",
+          "id": "71-replay-protection"
+        },
+        {
+          "level": "h3",
+          "text": "7.2. Audience",
+          "id": "72-audience"
+        },
+        {
+          "level": "h3",
+          "text": "7.3. Transport Security",
+          "id": "73-transport-security"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A. Validation Reference",
+          "id": "appendix-a-validation-reference"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/workload-endpoint/",
+      "title": "Workload endpoint | SPIFFE",
+      "words": 1649,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Workload endpoint",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. Accessibility",
+          "id": "2-accessibility"
+        },
+        {
+          "level": "h2",
+          "text": "3. Transport",
+          "id": "3-transport"
+        },
+        {
+          "level": "h3",
+          "text": "3.1 Transport Security",
+          "id": "31-transport-security"
+        },
+        {
+          "level": "h2",
+          "text": "4. Locating the Endpoint",
+          "id": "4-locating-the-endpoint"
+        },
+        {
+          "level": "h2",
+          "text": "5. Authentication",
+          "id": "5-authentication"
+        },
+        {
+          "level": "h2",
+          "text": "6. Error Codes",
+          "id": "6-error-codes"
+        },
+        {
+          "level": "h2",
+          "text": "7. Extensibility and Services Rendered",
+          "id": "7-extensibility-and-services-rendered"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A. List of Error Codes",
+          "id": "appendix-a-list-of-error-codes"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/workload-api/",
+      "title": "Workload API | SPIFFE",
+      "words": 5071,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Workload API",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. Extensibility",
+          "id": "2-extensibility"
+        },
+        {
+          "level": "h2",
+          "text": "3. Service Definition",
+          "id": "3-service-definition"
+        },
+        {
+          "level": "h2",
+          "text": "4. Client and Server Behavior",
+          "id": "4-client-and-server-behavior"
+        },
+        {
+          "level": "h3",
+          "text": "4.1 Identifying the Caller",
+          "id": "41-identifying-the-caller"
+        },
+        {
+          "level": "h3",
+          "text": "4.2 Connection Lifetime",
+          "id": "42-connection-lifetime"
+        },
+        {
+          "level": "h3",
+          "text": "4.3 Stream Responses",
+          "id": "43-stream-responses"
+        },
+        {
+          "level": "h3",
+          "text": "4.4 Default Values and Redacted Information",
+          "id": "44-default-values-and-redacted-information"
+        },
+        {
+          "level": "h3",
+          "text": "4.5 Mandatory Fields",
+          "id": "45-mandatory-fields"
+        },
+        {
+          "level": "h3",
+          "text": "4.6 Federated Bundles",
+          "id": "46-federated-bundles"
+        },
+        {
+          "level": "h2",
+          "text": "5. X.509-SVID Profile",
+          "id": "5-x509-svid-profile"
+        },
+        {
+          "level": "h3",
+          "text": "5.1 Profile Definition",
+          "id": "51-profile-definition"
+        },
+        {
+          "level": "h3",
+          "text": "5.2 Profile RPCs",
+          "id": "52-profile-rpcs"
+        },
+        {
+          "level": "h4",
+          "text": "5.2.1 FetchX509SVID",
+          "id": "521-fetchx509svid"
+        },
+        {
+          "level": "h4",
+          "text": "5.2.2 FetchX509Bundles",
+          "id": "522-fetchx509bundles"
+        },
+        {
+          "level": "h2",
+          "text": "6. JWT-SVID Profile",
+          "id": "6-jwt-svid-profile"
+        },
+        {
+          "level": "h3",
+          "text": "6.1 Profile Definition",
+          "id": "61-profile-definition"
+        },
+        {
+          "level": "h3",
+          "text": "6.2 Profile RPCs",
+          "id": "62-profile-rpcs"
+        },
+        {
+          "level": "h4",
+          "text": "6.2.1 FetchJWTSVID",
+          "id": "621-fetchjwtsvid"
+        },
+        {
+          "level": "h4",
+          "text": "6.2.2 FetchJWTBundles",
+          "id": "622-fetchjwtbundles"
+        },
+        {
+          "level": "h4",
+          "text": "6.2.3 ValidateJWTSVID",
+          "id": "623-validatejwtsvid"
+        },
+        {
+          "level": "h3",
+          "text": "6.3 JWT-SVID Validation",
+          "id": "63-jwt-svid-validation"
+        },
+        {
+          "level": "h2",
+          "text": "7. WIT-SVID Profile",
+          "id": "7-wit-svid-profile"
+        },
+        {
+          "level": "h3",
+          "text": "7.1 Profile Definition",
+          "id": "71-profile-definition"
+        },
+        {
+          "level": "h3",
+          "text": "7.2 Profile RPCs",
+          "id": "72-profile-rpcs"
+        },
+        {
+          "level": "h4",
+          "text": "7.2.1 FetchWITSVID",
+          "id": "721-fetchwitsvid"
+        },
+        {
+          "level": "h4",
+          "text": "7.2.2 FetchWITBundles",
+          "id": "722-fetchwitbundles"
+        },
+        {
+          "level": "h2",
+          "text": "8. Default Identity",
+          "id": "8-default-identity"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A. Sample Implementation State Machines",
+          "id": "appendix-a-sample-implementation-state-machines"
+        },
+        {
+          "level": "h3",
+          "text": "Server State Machine",
+          "id": "server-state-machine"
+        },
+        {
+          "level": "h3",
+          "text": "Client State Machine",
+          "id": "client-state-machine"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/x509-svid/",
+      "title": "X.509-SVID | SPIFFE",
+      "words": 2137,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "X.509-SVID",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. SPIFFE ID",
+          "id": "2-spiffe-id"
+        },
+        {
+          "level": "h2",
+          "text": "3. Hierarchy",
+          "id": "3-hierarchy"
+        },
+        {
+          "level": "h3",
+          "text": "3.1. Leaf Certificates",
+          "id": "31-leaf-certificates"
+        },
+        {
+          "level": "h3",
+          "text": "3.2. Signing Certificates",
+          "id": "32-signing-certificates"
+        },
+        {
+          "level": "h2",
+          "text": "4. Constraints and Usage",
+          "id": "4-constraints-and-usage"
+        },
+        {
+          "level": "h3",
+          "text": "4.1. Basic Constraints",
+          "id": "41-basic-constraints"
+        },
+        {
+          "level": "h3",
+          "text": "4.2. Name Constraints",
+          "id": "42-name-constraints"
+        },
+        {
+          "level": "h3",
+          "text": "4.3. Key Usage",
+          "id": "43-key-usage"
+        },
+        {
+          "level": "h3",
+          "text": "4.4. Extended Key Usage",
+          "id": "44-extended-key-usage"
+        },
+        {
+          "level": "h2",
+          "text": "5. Validation",
+          "id": "5-validation"
+        },
+        {
+          "level": "h3",
+          "text": "5.1. Path Validation",
+          "id": "51-path-validation"
+        },
+        {
+          "level": "h3",
+          "text": "5.2. Leaf Validation",
+          "id": "52-leaf-validation"
+        },
+        {
+          "level": "h2",
+          "text": "6. Representation in the SPIFFE Bundle",
+          "id": "6-representation-in-the-spiffe-bundle"
+        },
+        {
+          "level": "h3",
+          "text": "6.1. Publishing SPIFFE Bundle Elements",
+          "id": "61-publishing-spiffe-bundle-elements"
+        },
+        {
+          "level": "h3",
+          "text": "6.2. Consuming a SPIFFE Bundle",
+          "id": "62-consuming-a-spiffe-bundle"
+        },
+        {
+          "level": "h2",
+          "text": "7. Conclusion",
+          "id": "7-conclusion"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A. X.509 Field Reference",
+          "id": "appendix-a-x509-field-reference"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/broker-endpoint/",
+      "title": "Broker endpoint | SPIFFE",
+      "words": 1766,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Broker endpoint",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Abstract",
+          "id": "abstract"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h2",
+          "text": "2. Accessibility",
+          "id": "2-accessibility"
+        },
+        {
+          "level": "h2",
+          "text": "3. Transport",
+          "id": "3-transport"
+        },
+        {
+          "level": "h3",
+          "text": "3.1 Transport Security",
+          "id": "31-transport-security"
+        },
+        {
+          "level": "h2",
+          "text": "4. Locating the Endpoint",
+          "id": "4-locating-the-endpoint"
+        },
+        {
+          "level": "h2",
+          "text": "5. Authentication and Authorization",
+          "id": "5-authentication-and-authorization"
+        },
+        {
+          "level": "h2",
+          "text": "6. Error Codes",
+          "id": "6-error-codes"
+        },
+        {
+          "level": "h2",
+          "text": "7. Extensibility and Services Rendered",
+          "id": "7-extensibility-and-services-rendered"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/specs/wit-svid/",
+      "title": "WIT-SVID | SPIFFE",
+      "words": 3927,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "WIT-SVID",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Status of this Memo",
+          "id": "status-of-this-memo"
+        },
+        {
+          "level": "h2",
+          "text": "Table of Contents",
+          "id": "table-of-contents"
+        },
+        {
+          "level": "h2",
+          "text": "1. Introduction",
+          "id": "1-introduction"
+        },
+        {
+          "level": "h3",
+          "text": "2. JOSE Header",
+          "id": "2-jose-header"
+        },
+        {
+          "level": "h3",
+          "text": "2.1. Key ID - kid",
+          "id": "21-key-id---kid"
+        },
+        {
+          "level": "h3",
+          "text": "2.2. Type - typ",
+          "id": "22-type---typ"
+        },
+        {
+          "level": "h3",
+          "text": "2.3. Algorithm - alg",
+          "id": "23-algorithm---alg"
+        },
+        {
+          "level": "h3",
+          "text": "2.4. Additional Header Parameters",
+          "id": "24-additional-header-parameters"
+        },
+        {
+          "level": "h3",
+          "text": "3. Claims",
+          "id": "3-claims"
+        },
+        {
+          "level": "h3",
+          "text": "3.1. Subject - sub",
+          "id": "31-subject---sub"
+        },
+        {
+          "level": "h3",
+          "text": "3.2. Confirmation - cnf",
+          "id": "32-confirmation---cnf"
+        },
+        {
+          "level": "h3",
+          "text": "3.3. JWT ID - jti",
+          "id": "33-jwt-id---jti"
+        },
+        {
+          "level": "h3",
+          "text": "3.4. Expiry - exp",
+          "id": "34-expiry---exp"
+        },
+        {
+          "level": "h3",
+          "text": "3.5. Not Before - nbf",
+          "id": "35-not-before---nbf"
+        },
+        {
+          "level": "h3",
+          "text": "3.6. Issued At - iat",
+          "id": "36-issued-at---iat"
+        },
+        {
+          "level": "h3",
+          "text": "3.7. Issuer - iss",
+          "id": "37-issuer---iss"
+        },
+        {
+          "level": "h3",
+          "text": "3.8. Additional Claims",
+          "id": "38-additional-claims"
+        },
+        {
+          "level": "h2",
+          "text": "4. Token Issuance and Validation",
+          "id": "4-token-issuance-and-validation"
+        },
+        {
+          "level": "h2",
+          "text": "5. Token Presentation",
+          "id": "5-token-presentation"
+        },
+        {
+          "level": "h2",
+          "text": "6. Representation in the SPIFFE Bundle",
+          "id": "6-representation-in-the-spiffe-bundle"
+        },
+        {
+          "level": "h3",
+          "text": "6.1 Publishing SPIFFE Bundle Elements",
+          "id": "61-publishing-spiffe-bundle-elements"
+        },
+        {
+          "level": "h3",
+          "text": "6.2 Consuming SPIFFE Bundle Elements",
+          "id": "62-consuming-spiffe-bundle-elements"
+        },
+        {
+          "level": "h2",
+          "text": "7. Security Considerations",
+          "id": "7-security-considerations"
+        },
+        {
+          "level": "h3",
+          "text": "7.1 Mandatory Proof of Possession",
+          "id": "71-mandatory-proof-of-possession"
+        },
+        {
+          "level": "h3",
+          "text": "7.2 Proof of Possession and Mitigation of Tampering and Replay",
+          "id": "72-proof-of-possession-and-mitigation-of-tampering-and-replay"
+        },
+        {
+          "level": "h3",
+          "text": "7.3 Transport Security",
+          "id": "73-transport-security"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix A. Example WIT-SVID",
+          "id": "appendix-a-example-wit-svid"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix B. Comparing WIMSE WIT with SPIFFE WIT-SVID",
+          "id": "appendix-b-comparing-wimse-wit-with-spiffe-wit-svid"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix C. Comparing the JWT-SVID and WIT-SVID",
+          "id": "appendix-c-comparing-the-jwt-svid-and-wit-svid"
+        },
+        {
+          "level": "h2",
+          "text": "Appendix D. Comparing the X509-SVID and WIT-SVID",
+          "id": "appendix-d-comparing-the-x509-svid-and-wit-svid"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/use-cases/federation/",
+      "title": "Authenticate across trust domains | SPIFFE",
+      "words": 184,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Authenticate across trust domains",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "What crosses the boundary",
+          "id": "what-crosses-the-boundary"
+        },
+        {
+          "level": "h2",
+          "text": "Establish and maintain the relationship",
+          "id": "establish-and-maintain-the-relationship"
+        },
+        {
+          "level": "h2",
+          "text": "Continue",
+          "id": "continue"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/use-cases/service-authentication/",
+      "title": "Authenticate between services | SPIFFE",
+      "words": 182,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Authenticate between services",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "The connection",
+          "id": "the-connection"
+        },
+        {
+          "level": "h2",
+          "text": "Choose an integration",
+          "id": "choose-an-integration"
+        },
+        {
+          "level": "h2",
+          "text": "Operational behavior",
+          "id": "operational-behavior"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spiffe/use-cases/platform-authentication/",
+      "title": "Authenticate to platforms | SPIFFE",
+      "words": 208,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Authenticate to platforms",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Select the credential path",
+          "id": "select-the-credential-path"
+        },
+        {
+          "level": "h2",
+          "text": "Keep identity and access policy separate",
+          "id": "keep-identity-and-access-policy-separate"
+        },
+        {
+          "level": "h2",
+          "text": "Existing applications",
+          "id": "existing-applications"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/maintenance/",
+      "title": "Maintaining SPIRE | SPIFFE",
+      "words": 17,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Maintaining SPIRE",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/try/",
+      "title": "Try SPIRE | SPIFFE",
+      "words": 27,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Try SPIRE",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/architecture/",
+      "title": "SPIRE Architectural Options | SPIFFE",
+      "words": 39,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE Architectural Options",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/",
+      "title": "Deploying SPIRE | SPIFFE",
+      "words": 56,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Deploying SPIRE",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/",
+      "title": "About SPIRE Helm Charts Hardened | SPIFFE",
+      "words": 76,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "About SPIRE Helm Charts Hardened",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/about/",
+      "title": "About SPIRE | SPIFFE",
+      "words": 50,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "About SPIRE",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/planning/",
+      "title": "Planning a SPIRE Deployment | SPIFFE",
+      "words": 21,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Planning a SPIRE Deployment",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/maintenance/upgrading/",
+      "title": "Upgrade/Downgrade SPIRE | SPIFFE",
+      "words": 859,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Upgrade/Downgrade SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Managing Upgrades/Downgrades",
+          "id": "managing-upgradesdowngrades"
+        },
+        {
+          "level": "h3",
+          "text": "SPIRE Versioning",
+          "id": "spire-versioning"
+        },
+        {
+          "level": "h4",
+          "text": "SPIRE Server Compatibility",
+          "id": "spire-server-compatibility"
+        },
+        {
+          "level": "h4",
+          "text": "SPIRE Agent Compatibility",
+          "id": "spire-agent-compatibility"
+        },
+        {
+          "level": "h4",
+          "text": "SPIRE Plugin Compatibility",
+          "id": "spire-plugin-compatibility"
+        },
+        {
+          "level": "h5",
+          "text": "Configuration and Behavior Compatibility",
+          "id": "configuration-and-behavior-compatibility"
+        },
+        {
+          "level": "h5",
+          "text": "Interface Compatibility",
+          "id": "interface-compatibility"
+        },
+        {
+          "level": "h5",
+          "text": "Deprecation Log Markers",
+          "id": "deprecation-log-markers"
+        },
+        {
+          "level": "h3",
+          "text": "Supported Upgrade Paths",
+          "id": "supported-upgrade-paths"
+        },
+        {
+          "level": "h3",
+          "text": "Supported Downgrade Paths",
+          "id": "supported-downgrade-paths"
+        },
+        {
+          "level": "h3",
+          "text": "Experimental Features",
+          "id": "experimental-features"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/try/getting-started-k8s/",
+      "title": "Quickstart for Kubernetes | SPIFFE",
+      "words": 1324,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Quickstart for Kubernetes",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Overview",
+          "id": "overview"
+        },
+        {
+          "level": "h2",
+          "text": "Obtain the Required Files",
+          "id": "obtain-the-required-files"
+        },
+        {
+          "level": "h2",
+          "text": "Configure Kubernetes Namespace for SPIRE Components",
+          "id": "configure-kubernetes-namespace-for-spire-components"
+        },
+        {
+          "level": "h2",
+          "text": "Configure SPIRE Server",
+          "id": "configure-spire-server"
+        },
+        {
+          "level": "h3",
+          "text": "Create Server Bundle Configmap, Role & ClusterRoleBinding",
+          "id": "create-server-bundle-configmap-role--clusterrolebinding"
+        },
+        {
+          "level": "h3",
+          "text": "Create Server Configmap",
+          "id": "create-server-configmap"
+        },
+        {
+          "level": "h2",
+          "text": "Configure and deploy the SPIRE Agent",
+          "id": "configure-and-deploy-the-spire-agent"
+        },
+        {
+          "level": "h2",
+          "text": "Register Workloads",
+          "id": "register-workloads"
+        },
+        {
+          "level": "h2",
+          "text": "Configure a Workload Container to Access SPIRE",
+          "id": "configure-a-workload-container-to-access-spire"
+        },
+        {
+          "level": "h2",
+          "text": "Tear Down All Components",
+          "id": "tear-down-all-components"
+        },
+        {
+          "level": "h2",
+          "text": "Considerations When Using Minikube",
+          "id": "considerations-when-using-minikube"
+        },
+        {
+          "level": "h2",
+          "text": "Next steps",
+          "id": "next-steps"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/try/spire101/",
+      "title": "Quickstart for Docker | SPIFFE",
+      "words": 762,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Quickstart for Docker",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE",
+          "id": "spire"
+        },
+        {
+          "level": "h3",
+          "text": "Overview",
+          "id": "overview"
+        },
+        {
+          "level": "h3",
+          "text": "Requirement(s)",
+          "id": "requirements"
+        },
+        {
+          "level": "h4",
+          "text": "Git Setup",
+          "id": "git-setup"
+        },
+        {
+          "level": "h4",
+          "text": "Docker Setup",
+          "id": "docker-setup"
+        },
+        {
+          "level": "h3",
+          "text": "Terminology",
+          "id": "terminology"
+        },
+        {
+          "level": "h3",
+          "text": "Walkthrough",
+          "id": "walkthrough"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/try/getting-started-linux-macos-x/",
+      "title": "Quickstart for Linux and MacOS X | SPIFFE",
+      "words": 885,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Quickstart for Linux and MacOS X",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Overview",
+          "id": "overview"
+        },
+        {
+          "level": "h2",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h2",
+          "text": "Installing SPIRE",
+          "id": "installing-spire"
+        },
+        {
+          "level": "h3",
+          "text": "Downloading SPIRE for Linux",
+          "id": "downloading-spire-for-linux"
+        },
+        {
+          "level": "h3",
+          "text": "Building SPIRE on macOS/Darwin",
+          "id": "building-spire-on-macosdarwin"
+        },
+        {
+          "level": "h2",
+          "text": "Starting the SPIRE Server",
+          "id": "starting-the-spire-server"
+        },
+        {
+          "level": "h2",
+          "text": "Creating a join token to attest the agent to the server",
+          "id": "creating-a-join-token-to-attest-the-agent-to-the-server"
+        },
+        {
+          "level": "h2",
+          "text": "Starting the SPIRE Agent",
+          "id": "starting-the-spire-agent"
+        },
+        {
+          "level": "h2",
+          "text": "Create a registration policy for your workload",
+          "id": "create-a-registration-policy-for-your-workload"
+        },
+        {
+          "level": "h2",
+          "text": "Retrieve and view a x509-SVID",
+          "id": "retrieve-and-view-a-x509-svid"
+        },
+        {
+          "level": "h2",
+          "text": "Next steps",
+          "id": "next-steps"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/architecture/federation/",
+      "title": "Deploying a Federated SPIRE Architecture | SPIFFE",
+      "words": 2793,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Deploying a Federated SPIRE Architecture",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Using SPIFFE Federation to Authenticate Workloads from Different SPIRE Servers",
+          "id": "using-spiffe-federation-to-authenticate-workloads-from-different-spire-servers"
+        },
+        {
+          "level": "h2",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h2",
+          "text": "Scenario",
+          "id": "scenario"
+        },
+        {
+          "level": "h2",
+          "text": "Configure SPIFFE Federation Endpoints",
+          "id": "configure-spiffe-federation-endpoints"
+        },
+        {
+          "level": "h3",
+          "text": "Configure a Federation Endpoint Using SPIFFE Authentication",
+          "id": "configure-a-federation-endpoint-using-spiffe-authentication"
+        },
+        {
+          "level": "h3",
+          "text": "Configure a Federation Endpoint Using Web PKI Authentication",
+          "id": "configure-a-federation-endpoint-using-web-pki-authentication"
+        },
+        {
+          "level": "h2",
+          "text": "Configure SPIRE Servers to Retrieve Trust Bundles From Each Other",
+          "id": "configure-spire-servers-to-retrieve-trust-bundles-from-each-other"
+        },
+        {
+          "level": "h3",
+          "text": "Configure Trust Bundle Location Using SPIFFE Authentication (https_spiffe)",
+          "id": "configure-trust-bundle-location-using-spiffe-authentication-https_spiffe"
+        },
+        {
+          "level": "h3",
+          "text": "Configure Trust Bundle Location Using Web PKI authentication (https_web)",
+          "id": "configure-trust-bundle-location-using-web-pki-authentication-https_web"
+        },
+        {
+          "level": "h2",
+          "text": "Bootstrap Federation",
+          "id": "bootstrap-federation"
+        },
+        {
+          "level": "h3",
+          "text": "Get the Bootstrap Trust Bundle",
+          "id": "get-the-bootstrap-trust-bundle"
+        },
+        {
+          "level": "h2",
+          "text": "Create Registration Entries for Federation",
+          "id": "create-registration-entries-for-federation"
+        },
+        {
+          "level": "h2",
+          "text": "Federation Example Using SPIFFE Authentication",
+          "id": "federation-example-using-spiffe-authentication"
+        },
+        {
+          "level": "h3",
+          "text": "Requirements",
+          "id": "requirements"
+        },
+        {
+          "level": "h3",
+          "text": "Build",
+          "id": "build"
+        },
+        {
+          "level": "h3",
+          "text": "Run",
+          "id": "run"
+        },
+        {
+          "level": "h3",
+          "text": "Start SPIRE Agents",
+          "id": "start-spire-agents"
+        },
+        {
+          "level": "h3",
+          "text": "Bootstrap Federation",
+          "id": "bootstrap-federation-1"
+        },
+        {
+          "level": "h3",
+          "text": "Create Workload Registration Entries",
+          "id": "create-workload-registration-entries"
+        },
+        {
+          "level": "h3",
+          "text": "See the Scenario Working In a Browser",
+          "id": "see-the-scenario-working-in-a-browser"
+        },
+        {
+          "level": "h3",
+          "text": "See the Configuration",
+          "id": "see-the-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "See the Registration Entries",
+          "id": "see-the-registration-entries"
+        },
+        {
+          "level": "h3",
+          "text": "Cleanup",
+          "id": "cleanup"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/architecture/nested/",
+      "title": "Deploying a Nested SPIRE Architecture | SPIFFE",
+      "words": 1598,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Deploying a Nested SPIRE Architecture",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Overview",
+          "id": "overview"
+        },
+        {
+          "level": "h2",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: Run Services",
+          "id": "part-1-run-services"
+        },
+        {
+          "level": "h3",
+          "text": "Create a Shared Directory",
+          "id": "create-a-shared-directory"
+        },
+        {
+          "level": "h3",
+          "text": "Configuring Root SPIRE Deployment",
+          "id": "configuring-root-spire-deployment"
+        },
+        {
+          "level": "h3",
+          "text": "Configuring NestedA SPIRE Deployment",
+          "id": "configuring-nesteda-spire-deployment"
+        },
+        {
+          "level": "h3",
+          "text": "Create Downstream Registration Entry",
+          "id": "create-downstream-registration-entry"
+        },
+        {
+          "level": "h3",
+          "text": "Run the Scenario",
+          "id": "run-the-scenario"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Test the Deployments",
+          "id": "part-2-test-the-deployments"
+        },
+        {
+          "level": "h3",
+          "text": "Create Workload Registration Entries",
+          "id": "create-workload-registration-entries"
+        },
+        {
+          "level": "h3",
+          "text": "Run the Test",
+          "id": "run-the-test"
+        },
+        {
+          "level": "h2",
+          "text": "Cleanup",
+          "id": "cleanup"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/libraries/",
+      "title": "SPIFFE Library Usage Examples | SPIFFE",
+      "words": 298,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIFFE Library Usage Examples",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "C, C++",
+          "id": "c-c"
+        },
+        {
+          "level": "h2",
+          "text": "C#",
+          "id": "c"
+        },
+        {
+          "level": "h2",
+          "text": "Go",
+          "id": "go"
+        },
+        {
+          "level": "h2",
+          "text": "Java",
+          "id": "java"
+        },
+        {
+          "level": "h2",
+          "text": "Python",
+          "id": "python"
+        },
+        {
+          "level": "h2",
+          "text": "Rust",
+          "id": "rust"
+        },
+        {
+          "level": "h2",
+          "text": "TypeScript/JavaScript",
+          "id": "typescriptjavascript"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/configuring/",
+      "title": "Configuring SPIRE | SPIFFE",
+      "words": 4899,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Configuring SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "How to configure SPIRE",
+          "id": "how-to-configure-spire"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring a trust domain",
+          "id": "configuring-a-trust-domain"
+        },
+        {
+          "level": "h2",
+          "text": "Configure the Port on which the Server Listens to Agents",
+          "id": "configure-the-port-on-which-the-server-listens-to-agents"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring node attestation",
+          "id": "configuring-node-attestation"
+        },
+        {
+          "level": "h3",
+          "text": "Attestation of nodes running Kubernetes",
+          "id": "attestation-of-nodes-running-kubernetes"
+        },
+        {
+          "level": "h4",
+          "text": "Projected Service Account Tokens",
+          "id": "projected-service-account-tokens"
+        },
+        {
+          "level": "h3",
+          "text": "Attestation of nodes running Linux",
+          "id": "attestation-of-nodes-running-linux"
+        },
+        {
+          "level": "h4",
+          "text": "Join Token",
+          "id": "join-token"
+        },
+        {
+          "level": "h4",
+          "text": "X.509 Certificate",
+          "id": "x509-certificate"
+        },
+        {
+          "level": "h4",
+          "text": "SSH Certificate",
+          "id": "ssh-certificate"
+        },
+        {
+          "level": "h3",
+          "text": "Attestation for Linux nodes on a Cloud Provider",
+          "id": "attestation-for-linux-nodes-on-a-cloud-provider"
+        },
+        {
+          "level": "h4",
+          "text": "Google Compute Engine Instances",
+          "id": "google-compute-engine-instances"
+        },
+        {
+          "level": "h4",
+          "text": "Amazon EC2 Instances",
+          "id": "amazon-ec2-instances"
+        },
+        {
+          "level": "h4",
+          "text": "Azure Virtual Machines",
+          "id": "azure-virtual-machines"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring workload attestation",
+          "id": "configuring-workload-attestation"
+        },
+        {
+          "level": "h3",
+          "text": "Workload Attestation for workloads scheduled by Kubernetes",
+          "id": "workload-attestation-for-workloads-scheduled-by-kubernetes"
+        },
+        {
+          "level": "h3",
+          "text": "Workload Attestation for Docker containers",
+          "id": "workload-attestation-for-docker-containers"
+        },
+        {
+          "level": "h3",
+          "text": "Workload Attestation for Unix processes",
+          "id": "workload-attestation-for-unix-processes"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring where to store agent and server data",
+          "id": "configuring-where-to-store-agent-and-server-data"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring how to store server data",
+          "id": "configuring-how-to-store-server-data"
+        },
+        {
+          "level": "h4",
+          "text": "Configure SQLite as a SPIRE data-store",
+          "id": "configure-sqlite-as-a-spire-data-store"
+        },
+        {
+          "level": "h4",
+          "text": "Configure MySQL as a Datastore",
+          "id": "configure-mysql-as-a-datastore"
+        },
+        {
+          "level": "h4",
+          "text": "Configure Postgres as a Datastore",
+          "id": "configure-postgres-as-a-datastore"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring how generated keys are stored on the Agent and Server",
+          "id": "configuring-how-generated-keys-are-stored-on-the-agent-and-server"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring which trust root / \u201cupstream authority\u201d your application will use",
+          "id": "configuring-which-trust-root--upstream-authority-your-application-will-use"
+        },
+        {
+          "level": "h5",
+          "text": "Configure an On-disk Signing Key",
+          "id": "configure-an-on-disk-signing-key"
+        },
+        {
+          "level": "h5",
+          "text": "Configure AWS Secrets Manager",
+          "id": "configure-aws-secrets-manager"
+        },
+        {
+          "level": "h5",
+          "text": "Configure AWS Certificate Manager",
+          "id": "configure-aws-certificate-manager"
+        },
+        {
+          "level": "h5",
+          "text": "Configure another SPIRE installation",
+          "id": "configure-another-spire-installation"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring trust bundle publishing",
+          "id": "configuring-trust-bundle-publishing"
+        },
+        {
+          "level": "h2",
+          "text": "Export Metrics for Monitoring",
+          "id": "export-metrics-for-monitoring"
+        },
+        {
+          "level": "h2",
+          "text": "Logging",
+          "id": "logging"
+        },
+        {
+          "level": "h2",
+          "text": "Where next?",
+          "id": "where-next"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/spire_server/",
+      "title": "SPIRE Server Configuration Reference | SPIFFE",
+      "words": 5435,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE Server Configuration Reference",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE Server Configuration Reference",
+          "id": "spire-server-configuration-reference"
+        },
+        {
+          "level": "h3",
+          "text": "Plugin types",
+          "id": "plugin-types"
+        },
+        {
+          "level": "h3",
+          "text": "Built-in plugins",
+          "id": "built-in-plugins"
+        },
+        {
+          "level": "h3",
+          "text": "Server configuration file",
+          "id": "server-configuration-file"
+        },
+        {
+          "level": "h4",
+          "text": "Profiling Names",
+          "id": "profiling-names"
+        },
+        {
+          "level": "h3",
+          "text": "Plugin configuration",
+          "id": "plugin-configuration"
+        },
+        {
+          "level": "h4",
+          "text": "Examples",
+          "id": "examples"
+        },
+        {
+          "level": "h5",
+          "text": "Built-in Plugin with Static Configuration",
+          "id": "built-in-plugin-with-static-configuration"
+        },
+        {
+          "level": "h5",
+          "text": "External Plugin with Dynamic Configuration",
+          "id": "external-plugin-with-dynamic-configuration"
+        },
+        {
+          "level": "h4",
+          "text": "Reconfiguring plugins (Posix only)",
+          "id": "reconfiguring-plugins-posix-only"
+        },
+        {
+          "level": "h3",
+          "text": "Federation configuration",
+          "id": "federation-configuration"
+        },
+        {
+          "level": "h4",
+          "text": "Configuration options for federation.bundle_endpoint",
+          "id": "configuration-options-for-federationbundle_endpoint"
+        },
+        {
+          "level": "h4",
+          "text": "Configuration options for federation.bundle_endpoint.profile",
+          "id": "configuration-options-for-federationbundle_endpointprofile"
+        },
+        {
+          "level": "h4",
+          "text": "Configuration options for federation.bundle_endpoint.profile \"https_web\".acme",
+          "id": "configuration-options-for-federationbundle_endpointprofile-https_webacme"
+        },
+        {
+          "level": "h4",
+          "text": "Configuration options for federation.bundle_endpoint.profile \"https_web\".serving_cert_file",
+          "id": "configuration-options-for-federationbundle_endpointprofile-https_webserving_cert_file"
+        },
+        {
+          "level": "h4",
+          "text": "Configuration options for federation.bundle_endpoint.profile \"https_spiffe\"",
+          "id": "configuration-options-for-federationbundle_endpointprofile-https_spiffe"
+        },
+        {
+          "level": "h4",
+          "text": "Configuration options for federation.federates_with[\"<trust domain>\"].bundle_endpoint",
+          "id": "configuration-options-for-federationfederates_withtrust-domainbundle_endpoint"
+        },
+        {
+          "level": "h3",
+          "text": "Telemetry configuration",
+          "id": "telemetry-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "Health check configuration",
+          "id": "health-check-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "Command line options",
+          "id": "command-line-options"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server run",
+          "id": "spire-server-run"
+        },
+        {
+          "level": "h5",
+          "text": "Running SPIRE Server as a Windows service",
+          "id": "running-spire-server-as-a-windows-service"
+        },
+        {
+          "level": "h6",
+          "text": "Example to create the SPIRE Server Windows service",
+          "id": "example-to-create-the-spire-server-windows-service"
+        },
+        {
+          "level": "h6",
+          "text": "Example to run the SPIRE Server Windows service",
+          "id": "example-to-run-the-spire-server-windows-service"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server token generate",
+          "id": "spire-server-token-generate"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server entry create",
+          "id": "spire-server-entry-create"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server entry update",
+          "id": "spire-server-entry-update"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server entry count",
+          "id": "spire-server-entry-count"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server entry delete",
+          "id": "spire-server-entry-delete"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server entry show",
+          "id": "spire-server-entry-show"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server bundle count",
+          "id": "spire-server-bundle-count"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server bundle show",
+          "id": "spire-server-bundle-show"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server bundle list",
+          "id": "spire-server-bundle-list"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server bundle set",
+          "id": "spire-server-bundle-set"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server bundle delete",
+          "id": "spire-server-bundle-delete"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server federation create",
+          "id": "spire-server-federation-create"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server federation delete",
+          "id": "spire-server-federation-delete"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server federation list",
+          "id": "spire-server-federation-list"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server federation refresh",
+          "id": "spire-server-federation-refresh"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server federation show",
+          "id": "spire-server-federation-show"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server federation update",
+          "id": "spire-server-federation-update"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server agent ban",
+          "id": "spire-server-agent-ban"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server agent count",
+          "id": "spire-server-agent-count"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server agent evict",
+          "id": "spire-server-agent-evict"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server agent list",
+          "id": "spire-server-agent-list"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server agent show",
+          "id": "spire-server-agent-show"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server debug getinfo",
+          "id": "spire-server-debug-getinfo"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server healthcheck",
+          "id": "spire-server-healthcheck"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server logger get",
+          "id": "spire-server-logger-get"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server logger set",
+          "id": "spire-server-logger-set"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server logger reset",
+          "id": "spire-server-logger-reset"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server validate",
+          "id": "spire-server-validate"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server x509 mint",
+          "id": "spire-server-x509-mint"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server jwt mint",
+          "id": "spire-server-jwt-mint"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority jwt activate",
+          "id": "spire-server-localauthority-jwt-activate"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority jwt prepare",
+          "id": "spire-server-localauthority-jwt-prepare"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority jwt revoke",
+          "id": "spire-server-localauthority-jwt-revoke"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority jwt show",
+          "id": "spire-server-localauthority-jwt-show"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority jwt taint",
+          "id": "spire-server-localauthority-jwt-taint"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority x509 activate",
+          "id": "spire-server-localauthority-x509-activate"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority x509 prepare",
+          "id": "spire-server-localauthority-x509-prepare"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority x509 revoke",
+          "id": "spire-server-localauthority-x509-revoke"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority x509 show",
+          "id": "spire-server-localauthority-x509-show"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server localauthority x509 taint",
+          "id": "spire-server-localauthority-x509-taint"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server upstreamauthority revoke",
+          "id": "spire-server-upstreamauthority-revoke"
+        },
+        {
+          "level": "h4",
+          "text": "spire-server upstreamauthority taint",
+          "id": "spire-server-upstreamauthority-taint"
+        },
+        {
+          "level": "h3",
+          "text": "JSON object for -data",
+          "id": "json-object-for--data"
+        },
+        {
+          "level": "h3",
+          "text": "Sample configuration file",
+          "id": "sample-configuration-file"
+        },
+        {
+          "level": "h3",
+          "text": "Further reading",
+          "id": "further-reading"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/svids/",
+      "title": "Working with SVIDs | SPIFFE",
+      "words": 631,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Working with SVIDs",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Interacting with the Workload API",
+          "id": "interacting-with-the-workload-api"
+        },
+        {
+          "level": "h3",
+          "text": "Working with SVIDs in Go",
+          "id": "working-with-svids-in-go"
+        },
+        {
+          "level": "h2",
+          "text": "Using the SPIFFE Helper utility",
+          "id": "using-the-spiffe-helper-utility"
+        },
+        {
+          "level": "h2",
+          "text": "Using the SPIRE Agent",
+          "id": "using-the-spire-agent"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/telemetry_config/",
+      "title": "SPIRE Telemetry Configuration | SPIFFE",
+      "words": 419,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE Telemetry Configuration",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Telemetry configuration",
+          "id": "telemetry-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "Telemetry configuration syntax",
+          "id": "telemetry-configuration-syntax"
+        },
+        {
+          "level": "h4",
+          "text": "Prometheus",
+          "id": "prometheus"
+        },
+        {
+          "level": "h5",
+          "text": "Prometheus.tls",
+          "id": "prometheustls"
+        },
+        {
+          "level": "h4",
+          "text": "DogStatsd",
+          "id": "dogstatsd"
+        },
+        {
+          "level": "h4",
+          "text": "Statsd",
+          "id": "statsd"
+        },
+        {
+          "level": "h4",
+          "text": "M3",
+          "id": "m3"
+        },
+        {
+          "level": "h3",
+          "text": "Supported metrics",
+          "id": "supported-metrics"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/install-agents/",
+      "title": "Install SPIRE Agents | SPIFFE",
+      "words": 743,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Install SPIRE Agents",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Step 1: Obtain the SPIRE Binaries",
+          "id": "step-1-obtain-the-spire-binaries"
+        },
+        {
+          "level": "h3",
+          "text": "Step 2: Install the Server and Agent",
+          "id": "step-2-install-the-server-and-agent"
+        },
+        {
+          "level": "h3",
+          "text": "Step 3: Configure the Agent",
+          "id": "step-3-configure-the-agent"
+        },
+        {
+          "level": "h2",
+          "text": "Installing SPIRE Agents on Kubernetes",
+          "id": "installing-spire-agents-on-kubernetes"
+        },
+        {
+          "level": "h3",
+          "text": "Step 1: Create Agent Service Account",
+          "id": "step-1-create-agent-service-account"
+        },
+        {
+          "level": "h3",
+          "text": "Step 2: Create Agent Configmap",
+          "id": "step-2-create-agent-configmap"
+        },
+        {
+          "level": "h3",
+          "text": "Step 3: Create Agent Daemonset",
+          "id": "step-3-create-agent-daemonset"
+        },
+        {
+          "level": "h2",
+          "text": "Where next?",
+          "id": "where-next"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/using_spire/",
+      "title": "Getting SPIRE | SPIFFE",
+      "words": 194,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Getting SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Start Using SPIRE",
+          "id": "start-using-spire"
+        },
+        {
+          "level": "h3",
+          "text": "Docker Compose",
+          "id": "docker-compose"
+        },
+        {
+          "level": "h3",
+          "text": "Kubernetes",
+          "id": "kubernetes"
+        },
+        {
+          "level": "h3",
+          "text": "Linux",
+          "id": "linux"
+        },
+        {
+          "level": "h3",
+          "text": "MacOS",
+          "id": "macos"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/spire_agent/",
+      "title": "SPIRE Agent Configuration Reference | SPIFFE",
+      "words": 5390,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE Agent Configuration Reference",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE Agent Configuration Reference",
+          "id": "spire-agent-configuration-reference"
+        },
+        {
+          "level": "h3",
+          "text": "Plugin types",
+          "id": "plugin-types"
+        },
+        {
+          "level": "h3",
+          "text": "Built-in plugins",
+          "id": "built-in-plugins"
+        },
+        {
+          "level": "h3",
+          "text": "Agent configuration file",
+          "id": "agent-configuration-file"
+        },
+        {
+          "level": "h4",
+          "text": "Workload API Rate Limiting",
+          "id": "workload-api-rate-limiting"
+        },
+        {
+          "level": "h4",
+          "text": "Server Attestation",
+          "id": "server-attestation"
+        },
+        {
+          "level": "h4",
+          "text": "Configuring the source for Server Attestation",
+          "id": "configuring-the-source-for-server-attestation"
+        },
+        {
+          "level": "h4",
+          "text": "Rebootstrapping",
+          "id": "rebootstrapping"
+        },
+        {
+          "level": "h4",
+          "text": "SDS Configuration",
+          "id": "sds-configuration"
+        },
+        {
+          "level": "h4",
+          "text": "Profiling Names",
+          "id": "profiling-names"
+        },
+        {
+          "level": "h4",
+          "text": "Availability Target",
+          "id": "availability-target"
+        },
+        {
+          "level": "h3",
+          "text": "Plugin configuration",
+          "id": "plugin-configuration"
+        },
+        {
+          "level": "h4",
+          "text": "Examples",
+          "id": "examples"
+        },
+        {
+          "level": "h5",
+          "text": "Built-in Plugin with Static Configuration",
+          "id": "built-in-plugin-with-static-configuration"
+        },
+        {
+          "level": "h5",
+          "text": "External Plugin with Dynamic Configuration",
+          "id": "external-plugin-with-dynamic-configuration"
+        },
+        {
+          "level": "h4",
+          "text": "Reconfiguring plugins (Posix only)",
+          "id": "reconfiguring-plugins-posix-only"
+        },
+        {
+          "level": "h3",
+          "text": "Telemetry configuration",
+          "id": "telemetry-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "Health check configuration",
+          "id": "health-check-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "Command line options",
+          "id": "command-line-options"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent run",
+          "id": "spire-agent-run"
+        },
+        {
+          "level": "h5",
+          "text": "Running SPIRE Agent as a Windows service",
+          "id": "running-spire-agent-as-a-windows-service"
+        },
+        {
+          "level": "h6",
+          "text": "Example to create the SPIRE Agent Windows service",
+          "id": "example-to-create-the-spire-agent-windows-service"
+        },
+        {
+          "level": "h6",
+          "text": "Example to run the SPIRE Agent Windows service",
+          "id": "example-to-run-the-spire-agent-windows-service"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent api fetch",
+          "id": "spire-agent-api-fetch"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent api fetch jwt",
+          "id": "spire-agent-api-fetch-jwt"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent api fetch x509",
+          "id": "spire-agent-api-fetch-x509"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent api validate jwt",
+          "id": "spire-agent-api-validate-jwt"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent api watch",
+          "id": "spire-agent-api-watch"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent debug getinfo",
+          "id": "spire-agent-debug-getinfo"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent healthcheck",
+          "id": "spire-agent-healthcheck"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent logger get",
+          "id": "spire-agent-logger-get"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent logger set",
+          "id": "spire-agent-logger-set"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent logger reset",
+          "id": "spire-agent-logger-reset"
+        },
+        {
+          "level": "h4",
+          "text": "spire-agent validate",
+          "id": "spire-agent-validate"
+        },
+        {
+          "level": "h3",
+          "text": "Sample configuration file",
+          "id": "sample-configuration-file"
+        },
+        {
+          "level": "h3",
+          "text": "Delegated Identity API",
+          "id": "delegated-identity-api"
+        },
+        {
+          "level": "h3",
+          "text": "SPIFFE Broker API",
+          "id": "spiffe-broker-api"
+        },
+        {
+          "level": "h4",
+          "text": "Transport and authentication",
+          "id": "transport-and-authentication"
+        },
+        {
+          "level": "h4",
+          "text": "Configuration",
+          "id": "configuration"
+        },
+        {
+          "level": "h3",
+          "text": "Envoy SDS Support",
+          "id": "envoy-sds-support"
+        },
+        {
+          "level": "h3",
+          "text": "OpenShift Support",
+          "id": "openshift-support"
+        },
+        {
+          "level": "h4",
+          "text": "Security Context Constraints",
+          "id": "security-context-constraints"
+        },
+        {
+          "level": "h4",
+          "text": "Associating A Security Constraint With a Workload",
+          "id": "associating-a-security-constraint-with-a-workload"
+        },
+        {
+          "level": "h3",
+          "text": "Further reading",
+          "id": "further-reading"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/install-server/",
+      "title": "Install the SPIRE Server | SPIFFE",
+      "words": 1177,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Install the SPIRE Server",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Step 1: Obtain the SPIRE Binaries",
+          "id": "step-1-obtain-the-spire-binaries"
+        },
+        {
+          "level": "h3",
+          "text": "Step 2: Install the Server and Agent",
+          "id": "step-2-install-the-server-and-agent"
+        },
+        {
+          "level": "h3",
+          "text": "Step 3: Configure the Server",
+          "id": "step-3-configure-the-server"
+        },
+        {
+          "level": "h2",
+          "text": "How to install the SPIRE Server on Kubernetes",
+          "id": "how-to-install-the-spire-server-on-kubernetes"
+        },
+        {
+          "level": "h3",
+          "text": "Step 1: Obtain the Required Files",
+          "id": "step-1-obtain-the-required-files"
+        },
+        {
+          "level": "h3",
+          "text": "Step 2: Configure Kubernetes Namespace for SPIRE Components",
+          "id": "step-2-configure-kubernetes-namespace-for-spire-components"
+        },
+        {
+          "level": "h3",
+          "text": "Step 3: Configure SPIRE Server",
+          "id": "step-3-configure-spire-server"
+        },
+        {
+          "level": "h4",
+          "text": "Create Server Service Account",
+          "id": "create-server-service-account"
+        },
+        {
+          "level": "h4",
+          "text": "Create Server Bundle Configmap, Role & ClusterRole",
+          "id": "create-server-bundle-configmap-role--clusterrole"
+        },
+        {
+          "level": "h4",
+          "text": "Create Server Configmap",
+          "id": "create-server-configmap"
+        },
+        {
+          "level": "h4",
+          "text": "Create Server StatefulSet",
+          "id": "create-server-statefulset"
+        },
+        {
+          "level": "h4",
+          "text": "Create Server Service",
+          "id": "create-server-service"
+        },
+        {
+          "level": "h2",
+          "text": "Where next?",
+          "id": "where-next"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/deploying/registering/",
+      "title": "Registering workloads | SPIFFE",
+      "words": 1024,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Registering workloads",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "How to create a registration entry",
+          "id": "how-to-create-a-registration-entry"
+        },
+        {
+          "level": "h2",
+          "text": "How to register a workload",
+          "id": "how-to-register-a-workload"
+        },
+        {
+          "level": "h3",
+          "text": "1. Defining the SPIFFE ID of the Agent",
+          "id": "1-defining-the-spiffe-id-of-the-agent"
+        },
+        {
+          "level": "h3",
+          "text": "2. Defining the SPIFFE ID of the Workload",
+          "id": "2-defining-the-spiffe-id-of-the-workload"
+        },
+        {
+          "level": "h2",
+          "text": "How to list registration entries",
+          "id": "how-to-list-registration-entries"
+        },
+        {
+          "level": "h2",
+          "text": "How to remove registration entries",
+          "id": "how-to-remove-registration-entries"
+        },
+        {
+          "level": "h2",
+          "text": "Mapping Workloads to Multiple Nodes",
+          "id": "mapping-workloads-to-multiple-nodes"
+        },
+        {
+          "level": "h2",
+          "text": "Where next?",
+          "id": "where-next"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/advanced/",
+      "title": "SPIRE Helm Charts Hardened Advanced Configuration | SPIFFE",
+      "words": 41,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE Helm Charts Hardened Advanced Configuration",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/service-selection/",
+      "title": "Service Selection | SPIFFE",
+      "words": 90,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Service Selection",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Services provided by the chart",
+          "id": "services-provided-by-the-chart"
+        },
+        {
+          "level": "h3",
+          "text": "Production Services",
+          "id": "production-services"
+        },
+        {
+          "level": "h3",
+          "text": "Experimental Services",
+          "id": "experimental-services"
+        },
+        {
+          "level": "h3",
+          "text": "Customization Examples",
+          "id": "customization-examples"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/upgrading/",
+      "title": "upgrading | SPIFFE",
+      "words": 237,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "upgrading",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "title: Upgrading\nshort: Upgrading\ndescription: How to upgrade the SPIRE stack using the Helm charts\nnavgroup: spire-helm-charts-hardened-about\nweight: 100\naliases:\n- /docs/latest/helm-charts-hardened/upgrading",
+          "id": "title-upgradingshort-upgradingdescription-how-to-upgrade-the-spire-stack-using-the-helm-chartsnavgroup-spire-helm-charts-hardened-aboutweight-100aliases--docslatesthelm-charts-hardenedupgrading"
+        },
+        {
+          "level": "h2",
+          "text": "Chart version number meaning",
+          "id": "chart-version-number-meaning"
+        },
+        {
+          "level": "h2",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h3",
+          "text": "Version upgrades",
+          "id": "version-upgrades"
+        },
+        {
+          "level": "h3",
+          "text": "Additional Upgrade Steps",
+          "id": "additional-upgrade-steps"
+        },
+        {
+          "level": "h2",
+          "text": "Upgrading",
+          "id": "upgrading"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/identifiers/",
+      "title": "Identifiers | SPIFFE",
+      "words": 523,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Identifiers",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Defaults",
+          "id": "defaults"
+        },
+        {
+          "level": "h3",
+          "text": "Custom / Additional Identifiers",
+          "id": "custom--additional-identifiers"
+        },
+        {
+          "level": "h3",
+          "text": "Restricting the default SVIDs",
+          "id": "restricting-the-default-svids"
+        },
+        {
+          "level": "h4",
+          "text": "Disabling the default ClusterSPIFFEIDs",
+          "id": "disabling-the-default-clusterspiffeids"
+        },
+        {
+          "level": "h4",
+          "text": "Restricting the default ClusterSPIFFEIDs",
+          "id": "restricting-the-default-clusterspiffeids"
+        },
+        {
+          "level": "h2",
+          "text": "Dynamic SVIDs",
+          "id": "dynamic-svids"
+        },
+        {
+          "level": "h2",
+          "text": "Static SVIDs",
+          "id": "static-svids"
+        },
+        {
+          "level": "h3",
+          "text": "Regular SVIDs",
+          "id": "regular-svids"
+        },
+        {
+          "level": "h3",
+          "text": "Node SVIDs",
+          "id": "node-svids"
+        },
+        {
+          "level": "h3",
+          "text": "Join Tokens",
+          "id": "join-tokens"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/recommendations/",
+      "title": "Recommendations | SPIFFE",
+      "words": 340,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Recommendations",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Enable Recommendations",
+          "id": "enable-recommendations"
+        },
+        {
+          "level": "h2",
+          "text": "Individual Recommentations",
+          "id": "individual-recommentations"
+        },
+        {
+          "level": "h3",
+          "text": "Namespace Layout",
+          "id": "namespace-layout"
+        },
+        {
+          "level": "h3",
+          "text": "Namespace Pod Security Standards",
+          "id": "namespace-pod-security-standards"
+        },
+        {
+          "level": "h3",
+          "text": "Priority Class Name",
+          "id": "priority-class-name"
+        },
+        {
+          "level": "h3",
+          "text": "Prometheus",
+          "id": "prometheus"
+        },
+        {
+          "level": "h3",
+          "text": "Strict Mode",
+          "id": "strict-mode"
+        },
+        {
+          "level": "h3",
+          "text": "Security Contexts",
+          "id": "security-contexts"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/installation/",
+      "title": "Installation | SPIFFE",
+      "words": 230,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Installation",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Quick start",
+          "id": "quick-start"
+        },
+        {
+          "level": "h2",
+          "text": "Production Deployment",
+          "id": "production-deployment"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/exposing/",
+      "title": "Exposing Services | SPIFFE",
+      "words": 411,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Exposing Services",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Default",
+          "id": "default"
+        },
+        {
+          "level": "h2",
+          "text": "Exposable Services",
+          "id": "exposable-services"
+        },
+        {
+          "level": "h3",
+          "text": "Production Services",
+          "id": "production-services"
+        },
+        {
+          "level": "h3",
+          "text": "Experimental Services",
+          "id": "experimental-services"
+        },
+        {
+          "level": "h2",
+          "text": "Ingress Controller Support",
+          "id": "ingress-controller-support"
+        },
+        {
+          "level": "h2",
+          "text": "Generic Ingress Config",
+          "id": "generic-ingress-config"
+        },
+        {
+          "level": "h2",
+          "text": "SPIFFE OIDC Discovery Provider",
+          "id": "spiffe-oidc-discovery-provider"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE Server",
+          "id": "spire-server"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE Federation Bundle Endpoint",
+          "id": "spire-federation-bundle-endpoint"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/namespaces/",
+      "title": "Namespaces | SPIFFE",
+      "words": 295,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Namespaces",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Namespace Creation Options",
+          "id": "namespace-creation-options"
+        },
+        {
+          "level": "h2",
+          "text": "Three Namespace Configuration",
+          "id": "three-namespace-configuration"
+        },
+        {
+          "level": "h2",
+          "text": "Two Namespace Configuration",
+          "id": "two-namespace-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "Manual spire-server, Automatic spire-system",
+          "id": "manual-spire-server-automatic-spire-system"
+        },
+        {
+          "level": "h2",
+          "text": "Single Namespace Configuration",
+          "id": "single-namespace-configuration"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/advanced/mirror/",
+      "title": "Local Mirrors | SPIFFE",
+      "words": 192,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Local Mirrors",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Identify Containers needing mirroring",
+          "id": "identify-containers-needing-mirroring"
+        },
+        {
+          "level": "h2",
+          "text": "Mirror Containers",
+          "id": "mirror-containers"
+        },
+        {
+          "level": "h2",
+          "text": "Mirror the Charts to the Registry",
+          "id": "mirror-the-charts-to-the-registry"
+        },
+        {
+          "level": "h2",
+          "text": "Configuration",
+          "id": "configuration"
+        },
+        {
+          "level": "h2",
+          "text": "Installation",
+          "id": "installation"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/advanced/federation/",
+      "title": "Federation | SPIFFE",
+      "words": 599,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Federation",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Federation Configuration",
+          "id": "federation-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "Enabling Federation",
+          "id": "enabling-federation"
+        },
+        {
+          "level": "h3",
+          "text": "Exposing Federation Bundle Endpoint outside the Kubernetes Cluster",
+          "id": "exposing-federation-bundle-endpoint-outside-the-kubernetes-cluster"
+        },
+        {
+          "level": "h3",
+          "text": "Configure local SPIRE to talk to and trust other SPIRE Instances",
+          "id": "configure-local-spire-to-talk-to-and-trust-other-spire-instances"
+        },
+        {
+          "level": "h3",
+          "text": "Configure local workloads to trust the other SPIRE",
+          "id": "configure-local-workloads-to-trust-the-other-spire"
+        },
+        {
+          "level": "h2",
+          "text": "Example Federated Installation",
+          "id": "example-federated-installation"
+        },
+        {
+          "level": "h3",
+          "text": "Kubernetes Cluster A",
+          "id": "kubernetes-cluster-a"
+        },
+        {
+          "level": "h3",
+          "text": "Kubernetes Cluster B",
+          "id": "kubernetes-cluster-b"
+        },
+        {
+          "level": "h3",
+          "text": "DNS",
+          "id": "dns"
+        },
+        {
+          "level": "h3",
+          "text": "Bootstrapping the Federation",
+          "id": "bootstrapping-the-federation"
+        },
+        {
+          "level": "h4",
+          "text": "On Cluster A, retrieve the trust bundle",
+          "id": "on-cluster-a-retrieve-the-trust-bundle"
+        },
+        {
+          "level": "h4",
+          "text": "On Cluster B, retrieve the trust bundle",
+          "id": "on-cluster-b-retrieve-the-trust-bundle"
+        },
+        {
+          "level": "h4",
+          "text": "On Cluster A, load in Cluster Bs trust bundle",
+          "id": "on-cluster-a-load-in-cluster-bs-trust-bundle"
+        },
+        {
+          "level": "h4",
+          "text": "On Cluster B, load in Cluster As trust bundle",
+          "id": "on-cluster-b-load-in-cluster-as-trust-bundle"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/helm/advanced/nested-spire/",
+      "title": "Nested SPIRE | SPIFFE",
+      "words": 720,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Nested SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Nested Considerations",
+          "id": "nested-considerations"
+        },
+        {
+          "level": "h4",
+          "text": "Architectures",
+          "id": "architectures"
+        },
+        {
+          "level": "h4",
+          "text": "SPIRE Controller Manager",
+          "id": "spire-controller-manager"
+        },
+        {
+          "level": "h4",
+          "text": "TTLs",
+          "id": "ttls"
+        },
+        {
+          "level": "h2",
+          "text": "Kubernetes Integrated Root",
+          "id": "kubernetes-integrated-root"
+        },
+        {
+          "level": "h3",
+          "text": "Setup Root Instance",
+          "id": "setup-root-instance"
+        },
+        {
+          "level": "h4",
+          "text": "Install the CRDs.",
+          "id": "install-the-crds"
+        },
+        {
+          "level": "h4",
+          "text": "No child clusters/VMs",
+          "id": "no-child-clustersvms"
+        },
+        {
+          "level": "h4",
+          "text": "Child clusters/VMs",
+          "id": "child-clustersvms"
+        },
+        {
+          "level": "h3",
+          "text": "Multi-Cluster",
+          "id": "multi-cluster"
+        },
+        {
+          "level": "h3",
+          "text": "Security Cluster",
+          "id": "security-cluster"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/about/comparisons/",
+      "title": "How does SPIRE compare to other tools? | SPIFFE",
+      "words": 902,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "How does SPIRE compare to other tools?",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Secret Stores",
+          "id": "secret-stores"
+        },
+        {
+          "level": "h2",
+          "text": "Identity Providers",
+          "id": "identity-providers"
+        },
+        {
+          "level": "h2",
+          "text": "Authorization Policy Engines",
+          "id": "authorization-policy-engines"
+        },
+        {
+          "level": "h2",
+          "text": "Service Meshes",
+          "id": "service-meshes"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/about/case-studies/",
+      "title": "SPIRE Case Studies | SPIFFE",
+      "words": 295,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE Case Studies",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/about/use-cases/",
+      "title": "SPIRE Use Cases | SPIFFE",
+      "words": 683,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE Use Cases",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Authenticating workloads in untrusted networks using mTLS",
+          "id": "authenticating-workloads-in-untrusted-networks-using-mtls"
+        },
+        {
+          "level": "h2",
+          "text": "Authenticating two workloads using JWT-based authentication",
+          "id": "authenticating-two-workloads-using-jwt-based-authentication"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/about/concepts/",
+      "title": "SPIRE Concepts | SPIFFE",
+      "words": 2592,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "SPIRE Concepts",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE Architecture and Components",
+          "id": "spire-architecture-and-components"
+        },
+        {
+          "level": "h3",
+          "text": "All about the Server",
+          "id": "all-about-the-server"
+        },
+        {
+          "level": "h3",
+          "text": "All About the Agent",
+          "id": "all-about-the-agent"
+        },
+        {
+          "level": "h3",
+          "text": "Custom Server and Agent Plugins",
+          "id": "custom-server-and-agent-plugins"
+        },
+        {
+          "level": "h2",
+          "text": "A Day in the Life of an SVID",
+          "id": "a-day-in-the-life-of-an-svid"
+        },
+        {
+          "level": "h3",
+          "text": "Authorized Registration Entries",
+          "id": "authorized-registration-entries"
+        },
+        {
+          "level": "h2",
+          "text": "SPIRE Concepts",
+          "id": "spire-concepts"
+        },
+        {
+          "level": "h3",
+          "text": "Workload Registration",
+          "id": "workload-registration"
+        },
+        {
+          "level": "h3",
+          "text": "Attestation",
+          "id": "attestation"
+        },
+        {
+          "level": "h4",
+          "text": "Node Attestation",
+          "id": "node-attestation"
+        },
+        {
+          "level": "h5",
+          "text": "Summary of Steps: Node Attestation",
+          "id": "summary-of-steps-node-attestation"
+        },
+        {
+          "level": "h5",
+          "text": "Node Attestors",
+          "id": "node-attestors"
+        },
+        {
+          "level": "h4",
+          "text": "Workload Attestation",
+          "id": "workload-attestation"
+        },
+        {
+          "level": "h5",
+          "text": "Summary of Steps: Workload Attestation",
+          "id": "summary-of-steps-workload-attestation"
+        },
+        {
+          "level": "h5",
+          "text": "Workload Attestors",
+          "id": "workload-attestors"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/planning/scaling_spire/",
+      "title": "Scaling SPIRE | SPIFFE",
+      "words": 1744,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Scaling SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Scaling SPIRE",
+          "id": "scaling-spire"
+        },
+        {
+          "level": "h3",
+          "text": "Scalability",
+          "id": "scalability"
+        },
+        {
+          "level": "h4",
+          "text": "SPIRE Servers in High Availability Mode",
+          "id": "spire-servers-in-high-availability-mode"
+        },
+        {
+          "level": "h3",
+          "text": "Choosing a SPIRE Deployment Topology",
+          "id": "choosing-a-spire-deployment-topology"
+        },
+        {
+          "level": "h4",
+          "text": "Single Trust Domain",
+          "id": "single-trust-domain"
+        },
+        {
+          "level": "h4",
+          "text": "Nested SPIRE",
+          "id": "nested-spire"
+        },
+        {
+          "level": "h4",
+          "text": "Federated SPIRE",
+          "id": "federated-spire"
+        },
+        {
+          "level": "h3",
+          "text": "Interaction with External Systems",
+          "id": "interaction-with-external-systems"
+        },
+        {
+          "level": "h4",
+          "text": "Federation with \u201cSPIFFE-Compatible\u201d Systems",
+          "id": "federation-with-spiffe-compatible-systems"
+        },
+        {
+          "level": "h4",
+          "text": "Federation with OIDC-Provider Systems",
+          "id": "federation-with-oidc-provider-systems"
+        },
+        {
+          "level": "h3",
+          "text": "Deployment Sizing Considerations",
+          "id": "deployment-sizing-considerations"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/planning/extending/",
+      "title": "Extend SPIRE | SPIFFE",
+      "words": 1001,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Extend SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Authoring SPIRE plugins",
+          "id": "authoring-spire-plugins"
+        },
+        {
+          "level": "h2",
+          "text": "Node Attestor plugins",
+          "id": "node-attestor-plugins"
+        },
+        {
+          "level": "h2",
+          "text": "Workload Attestor plugins",
+          "id": "workload-attestor-plugins"
+        },
+        {
+          "level": "h2",
+          "text": "Upstream Authority plugins",
+          "id": "upstream-authority-plugins"
+        },
+        {
+          "level": "h2",
+          "text": "Key Manager plugins",
+          "id": "key-manager-plugins"
+        },
+        {
+          "level": "h2",
+          "text": "Notifier plugins",
+          "id": "notifier-plugins"
+        },
+        {
+          "level": "h2",
+          "text": "Working with first-party plugins",
+          "id": "working-with-first-party-plugins"
+        },
+        {
+          "level": "h2",
+          "text": "Working with third party plugins",
+          "id": "working-with-third-party-plugins"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/platforms/",
+      "title": "Using SVIDs to Authenticate to Other Platforms and Applications | SPIFFE",
+      "words": 62,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Using SVIDs to Authenticate to Other Platforms and Applications",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/services/",
+      "title": "Secure Microservices Communication | SPIFFE",
+      "words": 71,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Secure Microservices Communication",
+          "id": "_top"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/platforms/oidc-federation-aws/",
+      "title": "AWS OIDC Authentication | SPIFFE",
+      "words": 2752,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "AWS OIDC Authentication",
+          "id": "_top"
+        },
+        {
+          "level": "h3",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: Configure SPIRE Components",
+          "id": "part-1-configure-spire-components"
+        },
+        {
+          "level": "h3",
+          "text": "Download Kubernetes YAML Files for this Tutorial",
+          "id": "download-kubernetes-yaml-files-for-this-tutorial"
+        },
+        {
+          "level": "h3",
+          "text": "Replace Placeholder Strings in YAML Files",
+          "id": "replace-placeholder-strings-in-yaml-files"
+        },
+        {
+          "level": "h3",
+          "text": "Deploy OIDC Discovery Provider Configmap",
+          "id": "deploy-oidc-discovery-provider-configmap"
+        },
+        {
+          "level": "h3",
+          "text": "Configure the OIDC Discovery Provider Service and Ingress",
+          "id": "configure-the-oidc-discovery-provider-service-and-ingress"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Configure DNS for the OIDC Discovery IP Address",
+          "id": "part-2-configure-dns-for-the-oidc-discovery-ip-address"
+        },
+        {
+          "level": "h3",
+          "text": "Retrieve the IP Address of the SPIRE OIDC Discovery Provider",
+          "id": "retrieve-the-ip-address-of-the-spire-oidc-discovery-provider"
+        },
+        {
+          "level": "h3",
+          "text": "Configure an A Record for the OIDC Discovery Document Endpoint",
+          "id": "configure-an-a-record-for-the-oidc-discovery-document-endpoint"
+        },
+        {
+          "level": "h3",
+          "text": "Verify the DNS A Record",
+          "id": "verify-the-dns-a-record"
+        },
+        {
+          "level": "h2",
+          "text": "Part 3: Configure AWS Components",
+          "id": "part-3-configure-aws-components"
+        },
+        {
+          "level": "h3",
+          "text": "Create an AWS S3 Bucket and Test File",
+          "id": "create-an-aws-s3-bucket-and-test-file"
+        },
+        {
+          "level": "h3",
+          "text": "Set up an OIDC Identity Provider on AWS",
+          "id": "set-up-an-oidc-identity-provider-on-aws"
+        },
+        {
+          "level": "h3",
+          "text": "Create an AWS IAM Policy",
+          "id": "create-an-aws-iam-policy"
+        },
+        {
+          "level": "h3",
+          "text": "Create an AWS IAM Role for the Identity Provider",
+          "id": "create-an-aws-iam-role-for-the-identity-provider"
+        },
+        {
+          "level": "h3",
+          "text": "Add the SPIFFE ID to the IAM Role",
+          "id": "add-the-spiffe-id-to-the-iam-role"
+        },
+        {
+          "level": "h2",
+          "text": "Part 4: Test Access to AWS S3",
+          "id": "part-4-test-access-to-aws-s3"
+        },
+        {
+          "level": "h3",
+          "text": "Troubleshooting S3 Testing",
+          "id": "troubleshooting-s3-testing"
+        },
+        {
+          "level": "h4",
+          "text": "An error occurred (403) Error",
+          "id": "an-error-occurred-403-error"
+        },
+        {
+          "level": "h4",
+          "text": "(ExpiredTokenException) Error",
+          "id": "expiredtokenexception-error"
+        },
+        {
+          "level": "h4",
+          "text": "General Troubleshooting",
+          "id": "general-troubleshooting"
+        },
+        {
+          "level": "h2",
+          "text": "Cleanup",
+          "id": "cleanup"
+        },
+        {
+          "level": "h3",
+          "text": "Kubernetes Cleanup",
+          "id": "kubernetes-cleanup"
+        },
+        {
+          "level": "h3",
+          "text": "AWS Cleanup",
+          "id": "aws-cleanup"
+        },
+        {
+          "level": "h3",
+          "text": "DNS Cleanup",
+          "id": "dns-cleanup"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/platforms/vault/",
+      "title": "Vault Integration Example | SPIFFE",
+      "words": 2678,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Vault Integration Example",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Using SPIRE and OIDC to Authenticate Workloads to Retrieve Vault Secrets",
+          "id": "using-spire-and-oidc-to-authenticate-workloads-to-retrieve-vault-secrets"
+        },
+        {
+          "level": "h3",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: Configure SPIRE Components",
+          "id": "part-1-configure-spire-components"
+        },
+        {
+          "level": "h3",
+          "text": "Download Kubernetes YAML Files for this Tutorial",
+          "id": "download-kubernetes-yaml-files-for-this-tutorial"
+        },
+        {
+          "level": "h3",
+          "text": "Replace Placeholder Strings in YAML Files",
+          "id": "replace-placeholder-strings-in-yaml-files"
+        },
+        {
+          "level": "h3",
+          "text": "Deploy the OIDC Discovery Provider Configmap",
+          "id": "deploy-the-oidc-discovery-provider-configmap"
+        },
+        {
+          "level": "h3",
+          "text": "Configure the OIDC Discovery Provider Service and Ingress",
+          "id": "configure-the-oidc-discovery-provider-service-and-ingress"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Configure DNS for the OIDC Discovery IP Address",
+          "id": "part-2-configure-dns-for-the-oidc-discovery-ip-address"
+        },
+        {
+          "level": "h3",
+          "text": "Retrieve the IP Address of the SPIRE OIDC Discovery Provider",
+          "id": "retrieve-the-ip-address-of-the-spire-oidc-discovery-provider"
+        },
+        {
+          "level": "h3",
+          "text": "Configure an A Record for the OIDC Discovery Document Endpoint",
+          "id": "configure-an-a-record-for-the-oidc-discovery-document-endpoint"
+        },
+        {
+          "level": "h3",
+          "text": "Verify the DNS A Record",
+          "id": "verify-the-dns-a-record"
+        },
+        {
+          "level": "h2",
+          "text": "Part 3: Install and Configure the Vault Server",
+          "id": "part-3-install-and-configure-the-vault-server"
+        },
+        {
+          "level": "h3",
+          "text": "Install Vault",
+          "id": "install-vault"
+        },
+        {
+          "level": "h3",
+          "text": "Create the Config File and Run the Vault Server",
+          "id": "create-the-config-file-and-run-the-vault-server"
+        },
+        {
+          "level": "h3",
+          "text": "Initialize and Unseal the Vault",
+          "id": "initialize-and-unseal-the-vault"
+        },
+        {
+          "level": "h4",
+          "text": "Enable Secrets Engine and Store a Test Secret",
+          "id": "enable-secrets-engine-and-store-a-test-secret"
+        },
+        {
+          "level": "h4",
+          "text": "Set up Vault OIDC Federation with SPIRE",
+          "id": "set-up-vault-oidc-federation-with-spire"
+        },
+        {
+          "level": "h3",
+          "text": "Get Vault Credentials",
+          "id": "get-vault-credentials"
+        },
+        {
+          "level": "h4",
+          "text": "Get the JWT-SVID",
+          "id": "get-the-jwt-svid"
+        },
+        {
+          "level": "h4",
+          "text": "Authenticate to Vault Server",
+          "id": "authenticate-to-vault-server"
+        },
+        {
+          "level": "h3",
+          "text": "Part 4: Test the Access to the Secret",
+          "id": "part-4-test-the-access-to-the-secret"
+        },
+        {
+          "level": "h2",
+          "text": "Cleanup",
+          "id": "cleanup"
+        },
+        {
+          "level": "h3",
+          "text": "Kubernetes Cleanup",
+          "id": "kubernetes-cleanup"
+        },
+        {
+          "level": "h3",
+          "text": "Vault Cleanup",
+          "id": "vault-cleanup"
+        },
+        {
+          "level": "h3",
+          "text": "DNS Cleanup",
+          "id": "dns-cleanup"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/services/envoy-opa/",
+      "title": "OPA Authorization with Envoy and X.509-SVIDs | SPIFFE",
+      "words": 2559,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "OPA Authorization with Envoy and X.509-SVIDs",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Using SPIFFE X.509 IDs with Envoy and Open Policy Agent Authorization",
+          "id": "using-spiffe-x509-ids-with-envoy-and-open-policy-agent-authorization"
+        },
+        {
+          "level": "h2",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h3",
+          "text": "External IP support",
+          "id": "external-ip-support"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: Deploy Updated and New Resources",
+          "id": "part-1-deploy-updated-and-new-resources"
+        },
+        {
+          "level": "h3",
+          "text": "Update Backend Deployment",
+          "id": "update-backend-deployment"
+        },
+        {
+          "level": "h3",
+          "text": "OPA Configuration",
+          "id": "opa-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "OPA Policy",
+          "id": "opa-policy"
+        },
+        {
+          "level": "h3",
+          "text": "Add an External Authorization Filter",
+          "id": "add-an-external-authorization-filter"
+        },
+        {
+          "level": "h3",
+          "text": "Apply the New Resource",
+          "id": "apply-the-new-resource"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Test connections",
+          "id": "part-2-test-connections"
+        },
+        {
+          "level": "h3",
+          "text": "Testing Valid Requests",
+          "id": "testing-valid-requests"
+        },
+        {
+          "level": "h3",
+          "text": "Testing Invalid Requests",
+          "id": "testing-invalid-requests"
+        },
+        {
+          "level": "h3",
+          "text": "Retesting frontend-2 with a New Policy",
+          "id": "retesting-frontend-2-with-a-new-policy"
+        },
+        {
+          "level": "h2",
+          "text": "Cleanup",
+          "id": "cleanup"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/services/envoy-jwt-opa/",
+      "title": "OPA Authorization with Envoy and JWT-SVIDs | SPIFFE",
+      "words": 2375,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "OPA Authorization with Envoy and JWT-SVIDs",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Using SPIFFE JWT IDs with Envoy and Open Policy Agent Authorization",
+          "id": "using-spiffe-jwt-ids-with-envoy-and-open-policy-agent-authorization"
+        },
+        {
+          "level": "h2",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h3",
+          "text": "External IP support",
+          "id": "external-ip-support"
+        },
+        {
+          "level": "h3",
+          "text": "Auth helper image",
+          "id": "auth-helper-image"
+        },
+        {
+          "level": "h3",
+          "text": "Previous SPIRE instalation",
+          "id": "previous-spire-instalation"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: Deploy Updated and New Resources",
+          "id": "part-1-deploy-updated-and-new-resources"
+        },
+        {
+          "level": "h3",
+          "text": "Update Deployments",
+          "id": "update-deployments"
+        },
+        {
+          "level": "h3",
+          "text": "OPA Configuration",
+          "id": "opa-configuration"
+        },
+        {
+          "level": "h3",
+          "text": "OPA Policy",
+          "id": "opa-policy"
+        },
+        {
+          "level": "h3",
+          "text": "Add a New External Authorization Filter to Envoy",
+          "id": "add-a-new-external-authorization-filter-to-envoy"
+        },
+        {
+          "level": "h3",
+          "text": "Apply the New Resources",
+          "id": "apply-the-new-resources"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Test Connections",
+          "id": "part-2-test-connections"
+        },
+        {
+          "level": "h3",
+          "text": "Testing Valid Requests",
+          "id": "testing-valid-requests"
+        },
+        {
+          "level": "h3",
+          "text": "Testing Invalid Requests",
+          "id": "testing-invalid-requests"
+        },
+        {
+          "level": "h3",
+          "text": "Retesting frontend-2 with a New Policy",
+          "id": "retesting-frontend-2-with-a-new-policy"
+        },
+        {
+          "level": "h2",
+          "text": "Cleanup",
+          "id": "cleanup"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/services/envoy-jwt/",
+      "title": "Using Envoy with JWT-SVIDs | SPIFFE",
+      "words": 2263,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Using Envoy with JWT-SVIDs",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Overview",
+          "id": "overview"
+        },
+        {
+          "level": "h2",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h3",
+          "text": "External IP support",
+          "id": "external-ip-support"
+        },
+        {
+          "level": "h3",
+          "text": "Auth helper image",
+          "id": "auth-helper-image"
+        },
+        {
+          "level": "h3",
+          "text": "Previous SPIRE instalation",
+          "id": "previous-spire-instalation"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: Deploy Updated and New Resources",
+          "id": "part-1-deploy-updated-and-new-resources"
+        },
+        {
+          "level": "h3",
+          "text": "About Envoy JWT Auth Helper",
+          "id": "about-envoy-jwt-auth-helper"
+        },
+        {
+          "level": "h3",
+          "text": "Update Deployments",
+          "id": "update-deployments"
+        },
+        {
+          "level": "h3",
+          "text": "Add an External Authorization Filter",
+          "id": "add-an-external-authorization-filter"
+        },
+        {
+          "level": "h3",
+          "text": "Apply the New Resources",
+          "id": "apply-the-new-resources"
+        },
+        {
+          "level": "h3",
+          "text": "Create Registration Entries",
+          "id": "create-registration-entries"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Test Connections",
+          "id": "part-2-test-connections"
+        },
+        {
+          "level": "h3",
+          "text": "Testing for Valid and Invalid JWT-SVIDs",
+          "id": "testing-for-valid-and-invalid-jwt-svids"
+        },
+        {
+          "level": "h3",
+          "text": "Retesting frontend-2 with a Valid JWT-SVID",
+          "id": "retesting-frontend-2-with-a-valid-jwt-svid"
+        },
+        {
+          "level": "h2",
+          "text": "Cleanup",
+          "id": "cleanup"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/services/envoy/",
+      "title": "Using Envoy with SPIRE | SPIFFE",
+      "words": 789,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Using Envoy with SPIRE",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "How It Works",
+          "id": "how-it-works"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring SPIRE",
+          "id": "configuring-spire"
+        },
+        {
+          "level": "h2",
+          "text": "Configuring Envoy",
+          "id": "configuring-envoy"
+        },
+        {
+          "level": "h3",
+          "text": "SPIRE Agent Cluster",
+          "id": "spire-agent-cluster"
+        },
+        {
+          "level": "h3",
+          "text": "TLS Certificates",
+          "id": "tls-certificates"
+        },
+        {
+          "level": "h3",
+          "text": "Validation Context",
+          "id": "validation-context"
+        }
+      ]
+    },
+    {
+      "route": "/docs/spire/integrations/services/envoy-x509/",
+      "title": "Using Envoy with X.509-SVIDs | SPIFFE",
+      "words": 2067,
+      "headings": [
+        {
+          "level": "h2",
+          "text": "On this page",
+          "id": "starlight__on-this-page"
+        },
+        {
+          "level": "h1",
+          "text": "Using Envoy with X.509-SVIDs",
+          "id": "_top"
+        },
+        {
+          "level": "h2",
+          "text": "Configure Envoy to Perform X.509 SVID Authentication",
+          "id": "configure-envoy-to-perform-x509-svid-authentication"
+        },
+        {
+          "level": "h2",
+          "text": "Prerequisites",
+          "id": "prerequisites"
+        },
+        {
+          "level": "h3",
+          "text": "External IP support",
+          "id": "external-ip-support"
+        },
+        {
+          "level": "h2",
+          "text": "Envoy SDS Support",
+          "id": "envoy-sds-support"
+        },
+        {
+          "level": "h2",
+          "text": "Part 1: Run Workloads",
+          "id": "part-1-run-workloads"
+        },
+        {
+          "level": "h3",
+          "text": "Deploy all Workloads",
+          "id": "deploy-all-workloads"
+        },
+        {
+          "level": "h4",
+          "text": "SPIRE Agent Cluster",
+          "id": "spire-agent-cluster"
+        },
+        {
+          "level": "h4",
+          "text": "TLS Certificates",
+          "id": "tls-certificates"
+        },
+        {
+          "level": "h3",
+          "text": "Create Registration Entries",
+          "id": "create-registration-entries"
+        },
+        {
+          "level": "h2",
+          "text": "Part 2: Test Connections",
+          "id": "part-2-test-connections"
+        },
+        {
+          "level": "h3",
+          "text": "Test for Successful Authentication with Valid X.509 SVIDs",
+          "id": "test-for-successful-authentication-with-valid-x509-svids"
+        },
+        {
+          "level": "h3",
+          "text": "Update the TLS Configuration So Only One Frontend Can Access the Backend",
+          "id": "update-the-tls-configuration-so-only-one-frontend-can-access-the-backend"
+        },
+        {
+          "level": "h3",
+          "text": "Apply the New Configuration for Envoy",
+          "id": "apply-the-new-configuration-for-envoy"
+        },
+        {
+          "level": "h2",
+          "text": "Extend the Scenario with a Role Based Access Control Filter",
+          "id": "extend-the-scenario-with-a-role-based-access-control-filter"
+        },
+        {
+          "level": "h2",
+          "text": "Cleanup",
+          "id": "cleanup"
+        }
+      ]
+    }
+  ],
+  "absoluteOldLinks": {
+    "https://spiffe.io/book/": [
+      "/blog/2026-07-19-bottom-turtle-ha-architecture/"
+    ],
+    "https://spiffe.io/docs/latest/": [
+      "/blog/2026-07-19-bottom-turtle-ha-architecture/"
+    ],
+    "https://spiffe.io/docs/latest/deploying/spire_agent/": [
+      "/blog/2026-07-19-bottom-turtle-ha-architecture/",
+      "/blog/2026-08-23-bottom-turtle-ha-deployment/"
+    ],
+    "https://spiffe.io/docs/latest/planning/extending/": [
+      "/blog/2026-07-19-bottom-turtle-ha-architecture/"
+    ],
+    "https://spiffe.io/": [
+      "/blog/2022-05-20-spire-now-runs-on-windows/",
+      "/blog/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects/",
+      "/blog/2020-09-25-scrutinizing-spire-security/",
+      "/blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/"
+    ],
+    "https://spiffe.io/blog/2026-07-19-bottom-turtle-ha-architecture/": [
+      "/blog/2026-08-23-bottom-turtle-ha-deployment/",
+      "/blog/2026-09-03-spire-under-kubernetes/"
+    ],
+    "https://spiffe.io/docs/latest/deploying/spire_server/": [
+      "/blog/2026-08-23-bottom-turtle-ha-deployment/"
+    ],
+    "https://spiffe.io/community/": [
+      "/blog/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two/"
+    ],
+    "https://spiffe.io/blog/2026-10-23-bottom-turtle-ha-deployment/": [
+      "/blog/2026-09-03-spire-under-kubernetes/"
+    ],
+    "https://spiffe.io/docs/latest/spire-helm-charts-hardened-advanced/nested-spire/": [
+      "/blog/2026-09-03-spire-under-kubernetes/"
+    ],
+    "https://spiffe.io/docs/latest/spiffe/concepts/#trust-domain": [
+      "/docs/spire/architecture/federation/"
+    ],
+    "https://spiffe.io/spire/docs/extending/": [
+      "/docs/spire/architecture/nested/"
+    ],
+    "https://spiffe.io/docs/latest/spire/installing/getting-started-k8s/": [
+      "/docs/spire/deploying/using_spire/"
+    ],
+    "https://spiffe.io/downloads/": [
+      "/docs/spire/deploying/using_spire/"
+    ],
+    "https://spiffe.io/docs/latest/spire/installing/getting-started-linux-macos-x/": [
+      "/docs/spire/deploying/using_spire/",
+      "/docs/spire/deploying/using_spire/"
+    ],
+    "https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes": [
+      "/docs/spire/about/concepts/",
+      "/docs/spire/about/concepts/"
+    ],
+    "https://spiffe.io/spire/try/oidc-federation-aws/": [
+      "/docs/spire/planning/scaling_spire/"
+    ],
+    "https://spiffe.io/spire/try/getting-started-k8s/": [
+      "/docs/spire/integrations/platforms/vault/",
+      "/docs/spire/integrations/platforms/vault/",
+      "/docs/spire/integrations/platforms/vault/"
+    ],
+    "https://spiffe.io/spiffe/concepts/#trust-domain": [
+      "/docs/spire/integrations/platforms/vault/"
+    ],
+    "https://spiffe.io/docs/latest/try/getting-started-k8s/": [
+      "/docs/spire/integrations/services/envoy-x509/",
+      "/docs/spire/integrations/services/envoy-x509/",
+      "/docs/spire/integrations/services/envoy-x509/"
+    ]
+  },
+  "duplicateIds": {
+    "/docs/spiffe/specs/filesystem-delivery/": {
+      "abstract": 2
+    }
+  },
+  "literalHeadingIds": [
+    {
+      "route": "/docs/spiffe/concepts/",
+      "level": "h2",
+      "text": "Further Reading {#spec}",
+      "id": "further-reading-spec"
+    }
+  ],
+  "imageAlt": [
+    {
+      "route": "/",
+      "src": "/img/logos/spiffe/icon/color/spiffe-icon-color.svg",
+      "missing": false
+    },
+    {
+      "route": "/blog/2020-06-18-spiffe-community-day-spring-2020/",
+      "src": "/blog-assets/2020-06-18-spiffe-community-day-spring-2020/image-1.png",
+      "missing": false
+    },
+    {
+      "route": "/blog/2020-06-12-re-cap-spiffe-community-day-fall-2019/",
+      "src": "/blog-assets/2020-06-12-re-cap-spiffe-community-day-fall-2019/image-1.jpg",
+      "missing": false
+    },
+    {
+      "route": "/blog/2020-06-09-re-cap-spiffe-community-day-spring-2019/",
+      "src": "/blog-assets/2020-06-09-re-cap-spiffe-community-day-spring-2019/image-1.png",
+      "missing": false
+    },
+    {
+      "route": "/blog/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects/",
+      "src": "/blog-assets/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects/image-1.png",
+      "missing": false
+    },
+    {
+      "route": "/blog/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two/",
+      "src": "/blog-assets/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two/image-1.png",
+      "missing": false
+    },
+    {
+      "route": "/blog/2020-09-25-scrutinizing-spire-security/",
+      "src": "/blog-assets/2020-09-25-scrutinizing-spire-security/image-1.png",
+      "missing": false
+    },
+    {
+      "route": "/blog/2022-06-16-hardening-istio-security-with-spire/",
+      "src": "/blog-assets/2022-06-16-hardening-istio-security-with-spire/image-1.png",
+      "missing": false
+    },
+    {
+      "route": "/blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/",
+      "src": "/blog-assets/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/image-1.png",
+      "missing": false
+    },
+    {
+      "route": "/blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/",
+      "src": "/blog-assets/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/image-2.png",
+      "missing": false
+    },
+    {
+      "route": "/blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/",
+      "src": "/blog-assets/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/image-3.jpg",
+      "missing": false
+    }
+  ],
+  "editLinks": {
+    "pinned": 64,
+    "all": 79
+  },
+  "smallPages": [
+    {
+      "route": "/404.html",
+      "words": 41
+    },
+    {
+      "route": "/404/",
+      "words": 41
+    },
+    {
+      "route": "/downloads/",
+      "words": 102
+    },
+    {
+      "route": "/book/",
+      "words": 67
+    },
+    {
+      "route": "/docs/",
+      "words": 93
+    },
+    {
+      "route": "/docs/spire/maintenance/",
+      "words": 17
+    },
+    {
+      "route": "/docs/spire/try/",
+      "words": 27
+    },
+    {
+      "route": "/docs/spire/architecture/",
+      "words": 39
+    },
+    {
+      "route": "/docs/spire/deploying/",
+      "words": 56
+    },
+    {
+      "route": "/docs/spire/helm/",
+      "words": 76
+    },
+    {
+      "route": "/docs/spire/about/",
+      "words": 50
+    },
+    {
+      "route": "/docs/spire/planning/",
+      "words": 21
+    },
+    {
+      "route": "/docs/spire/helm/advanced/",
+      "words": 41
+    },
+    {
+      "route": "/docs/spire/helm/service-selection/",
+      "words": 90
+    },
+    {
+      "route": "/docs/spire/integrations/platforms/",
+      "words": 62
+    },
+    {
+      "route": "/docs/spire/integrations/services/",
+      "words": 71
+    }
+  ],
+  "absoluteLinkChecks": [
+    {
+      "url": "https://spiffe.io/book/",
+      "target": "/book/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2026-07-19-bottom-turtle-ha-architecture/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/",
+      "target": "/docs/spiffe/overview/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2026-07-19-bottom-turtle-ha-architecture/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/deploying/spire_agent/",
+      "target": "/docs/spire/deploying/spire_agent/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2026-07-19-bottom-turtle-ha-architecture/",
+        "/blog/2026-08-23-bottom-turtle-ha-deployment/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/planning/extending/",
+      "target": "/docs/spire/planning/extending/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2026-07-19-bottom-turtle-ha-architecture/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/",
+      "target": "/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2022-05-20-spire-now-runs-on-windows/",
+        "/blog/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects/",
+        "/blog/2020-09-25-scrutinizing-spire-security/",
+        "/blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/blog/2026-07-19-bottom-turtle-ha-architecture/",
+      "target": "/blog/2026-07-19-bottom-turtle-ha-architecture/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2026-08-23-bottom-turtle-ha-deployment/",
+        "/blog/2026-09-03-spire-under-kubernetes/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/deploying/spire_server/",
+      "target": "/docs/spire/deploying/spire_server/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2026-08-23-bottom-turtle-ha-deployment/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/community/",
+      "target": "/community/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/blog/2026-10-23-bottom-turtle-ha-deployment/",
+      "target": "/blog/2026-10-23-bottom-turtle-ha-deployment/",
+      "exists": false,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2026-09-03-spire-under-kubernetes/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/spire-helm-charts-hardened-advanced/nested-spire/",
+      "target": "/docs/spire/helm/advanced/nested-spire/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/blog/2026-09-03-spire-under-kubernetes/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/spiffe/concepts/#trust-domain",
+      "target": "/docs/spiffe/concepts/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/architecture/federation/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/spire/docs/extending/",
+      "target": "/docs/spire/planning/extending/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/architecture/nested/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/spire/installing/getting-started-k8s/",
+      "target": "/docs/spire/try/getting-started-k8s/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/deploying/using_spire/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/downloads/",
+      "target": "/downloads/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/deploying/using_spire/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/spire/installing/getting-started-linux-macos-x/",
+      "target": "/docs/spire/try/getting-started-linux-macos-x/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/deploying/using_spire/",
+        "/docs/spire/deploying/using_spire/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes",
+      "target": "/docs/spire/deploying/registering/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/about/concepts/",
+        "/docs/spire/about/concepts/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/spire/try/oidc-federation-aws/",
+      "target": "/docs/spire/integrations/platforms/oidc-federation-aws/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/planning/scaling_spire/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/spire/try/getting-started-k8s/",
+      "target": "/docs/spire/try/getting-started-k8s/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/integrations/platforms/vault/",
+        "/docs/spire/integrations/platforms/vault/",
+        "/docs/spire/integrations/platforms/vault/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/spiffe/concepts/#trust-domain",
+      "target": "/docs/spiffe/concepts/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/integrations/platforms/vault/"
+      ]
+    },
+    {
+      "url": "https://spiffe.io/docs/latest/try/getting-started-k8s/",
+      "target": "/docs/spire/try/getting-started-k8s/",
+      "exists": true,
+      "fragmentExists": true,
+      "pages": [
+        "/docs/spire/integrations/services/envoy-x509/",
+        "/docs/spire/integrations/services/envoy-x509/",
+        "/docs/spire/integrations/services/envoy-x509/"
+      ]
+    }
+  ]
+}

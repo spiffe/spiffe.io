@@ -1,0 +1,30 @@
+---
+import rawData from '../data/ecosystem.yaml?raw';
+import YAML from 'yaml';
+const data = YAML.parse(rawData);
+const categories = data.categories.sort((a: any, b: any) => a.weight - b.weight);
+const total = categories.reduce((sum: number, c: any) => sum + c.projects.length, 0);
+const types: Record<string,string> = { official: 'SPIFFE project', community: 'Community project', commercial: 'Commercial' };
+---
+<div class="splash-panel not-content">
+  <p class="page-intro">Find implementations and the tools that work with them. Entries describe what each project provides; the <a href="/ecosystem/matrix/">implementation matrix</a> records support for specific interfaces.</p>
+  <div class="directory-toolbar"><label>Find a project<input id="project-query" type="search" placeholder="Name, platform, or capability" /></label><label>Maintained by<select id="project-type"><option value="all">All projects</option><option value="official">SPIFFE project</option><option value="community">Community project</option><option value="commercial">Commercial</option></select></label><p id="project-count" class="directory-count" aria-live="polite">{total} entries</p></div>
+  <p class="empty-results" id="project-empty" hidden>No matching projects. Try another term or select all projects.</p>
+  {categories.map((category: any) => <section class="directory-category"><h2>{category.name}</h2><p>{category.description}</p>{category.projects.sort((a: any,b: any) => a.weight - b.weight || a.name.localeCompare(b.name)).map((project: any) => <article class="directory-entry" data-project-type={project.type} data-search={`${project.name} ${project.description} ${category.name}`.toLowerCase()}><h3><a href={project.link}>{project.name} <span aria-hidden="true">↗</span></a></h3><p>{project.description}</p><span class="type-label">{types[project.type]}</span></article>)}</section>)}
+  <p class="source-note">Entries are maintained in the <a href="https://github.com/spiffe/spiffe.io/blob/master/data/ecosystem.yaml">SPIFFE ecosystem directory</a>. Add or update a project through a pull request.</p>
+</div>
+<script>
+  const query = document.querySelector<HTMLInputElement>('#project-query');
+  const type = document.querySelector<HTMLSelectElement>('#project-type');
+  function filter() {
+    let shown = 0;
+    document.querySelectorAll<HTMLElement>('.directory-entry').forEach((entry) => {
+      const match = (entry.dataset.search || '').includes((query?.value || '').toLowerCase().trim()) && (type?.value === 'all' || type?.value === entry.dataset.projectType);
+      entry.hidden = !match; if (match) shown++;
+    });
+    document.querySelectorAll<HTMLElement>('.directory-category').forEach((category) => { category.hidden = !category.querySelector('.directory-entry:not([hidden])'); });
+    const count = document.querySelector('#project-count'); if (count) count.textContent = `${shown} ${shown === 1 ? 'entry' : 'entries'}`;
+    const empty = document.querySelector<HTMLElement>('#project-empty'); if (empty) empty.hidden = shown > 0;
+  }
+  query?.addEventListener('input', filter); type?.addEventListener('change', filter);
+</script>

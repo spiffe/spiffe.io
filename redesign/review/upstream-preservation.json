@@ -1,0 +1,446 @@
+{
+  "repository": "https://github.com/spiffe/spiffe.io",
+  "branch": "redesign/site-refresh",
+  "baseRevision": "42e7c82fc4a8117e2fc2d6933180279aae18adeb",
+  "previousImportRevision": "42e7c82fc4a8117e2fc2d6933180279aae18adeb",
+  "checkedAt": "2026-10-22T18:36:32.096344+00:00",
+  "upstreamChangesSinceImport": [],
+  "trackedUpstreamFiles": 331,
+  "modifiedOrDeletedUpstreamFiles": [],
+  "publicContentSourcesMapped": 60,
+  "retainedDrafts": 1,
+  "unmapped": [],
+  "contentInventory": [
+    {
+      "source": "content/blog/2020-06-08-re-cap-spiffe-community-day-fall-2018/index.md",
+      "sha256": "1d22ff7aebe74a6b80c5a60378c845d988d55548356b677fee2db71c9734b412",
+      "status": "mapped",
+      "destination": "blog/2020-06-08-re-cap-spiffe-community-day-fall-2018",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2020-06-09-re-cap-spiffe-community-day-spring-2019/index.md",
+      "sha256": "fafd56ee3dc4f748f3e7818ce47990741f7836322fe8a5eab321bbb640d9f015",
+      "status": "mapped",
+      "destination": "blog/2020-06-09-re-cap-spiffe-community-day-spring-2019",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2020-06-12-re-cap-spiffe-community-day-fall-2019/index.md",
+      "sha256": "f180b9e194699b9ee21d4900e4dc1a89059cf7dac7c0076540dc9bd7fed0d2d5",
+      "status": "mapped",
+      "destination": "blog/2020-06-12-re-cap-spiffe-community-day-fall-2019",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2020-06-18-spiffe-community-day-spring-2020/index.md",
+      "sha256": "7b66db5fd243f73c9a83c7971c68e1b9b76369140ec319bb693427ca12f6ef13",
+      "status": "mapped",
+      "destination": "blog/2020-06-18-spiffe-community-day-spring-2020",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects/index.md",
+      "sha256": "b0cb4f9065efef0de836e74dcc81b33539c81aa7b3bacfb3b8fc7a69a439b4d6",
+      "status": "mapped",
+      "destination": "blog/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2020-09-25-scrutinizing-spire-security/index.md",
+      "sha256": "33c2d6fdea66da59a10fe264e36db1f2ad0c807740265de95bab23e396bda31a",
+      "status": "mapped",
+      "destination": "blog/2020-09-25-scrutinizing-spire-security",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two/index.md",
+      "sha256": "a7f8c90c9896237e5437430b1dfcfc78c3718cbb152aacf7935948ce447f5829",
+      "status": "mapped",
+      "destination": "blog/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/index.md",
+      "sha256": "dd0c941d227848f37fedc063290a2b734c7f16f26a96b617fca7f336e1dd92d2",
+      "status": "mapped",
+      "destination": "blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2022-05-20-spire-now-runs-on-windows/index.md",
+      "sha256": "14d0057eb54284c3925e021e6db61508ce20fab4381d0da90090b9af90c5b5fb",
+      "status": "mapped",
+      "destination": "blog/2022-05-20-spire-now-runs-on-windows",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2022-06-16-hardening-istio-security-with-spire/index.md",
+      "sha256": "45d196f680a29a57ae9f953e915cfa9a4bc1767012c83ebe9fbe7da2ac9fe013",
+      "status": "mapped",
+      "destination": "blog/2022-06-16-hardening-istio-security-with-spire",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2026-06-19-writing-a-blog-post/index.md",
+      "sha256": "640c49c7475022697374ed95a686092b97f1972f436a4900db5b89fbb24756f6",
+      "status": "draft-retained-upstream",
+      "destination": null,
+      "note": "Authoring template preserved at original path; Astro publishing workflow still needs adaptation."
+    },
+    {
+      "source": "content/blog/2026-07-19-bottom-turtle-ha-architecture/index.md",
+      "sha256": "064699cdab54ee9d836341996c09d17d09d5db8cd55f18d964a2456125906f21",
+      "status": "mapped",
+      "destination": "blog/2026-07-19-bottom-turtle-ha-architecture",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2026-08-18-spiffe-standard-roadmap/index.md",
+      "sha256": "b5536045c4151366d1c471b44bf2ca8f26ec4adc86ea65eee75fcbe0b10ae40c",
+      "status": "mapped",
+      "destination": "blog/2026-08-18-spiffe-standard-roadmap",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2026-08-23-bottom-turtle-ha-deployment/index.md",
+      "sha256": "4b8dbb3dcd16fa6a05e8e564d0b4bdfcaf3993e430066752762bab79f8eb6794",
+      "status": "mapped",
+      "destination": "blog/2026-08-23-bottom-turtle-ha-deployment",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/2026-09-03-spire-under-kubernetes/index.md",
+      "sha256": "a1cf10243917875207f10c9c86fd01f8da058298a8ef2a305f5cd048d56dc016",
+      "status": "mapped",
+      "destination": "blog/2026-09-03-spire-under-kubernetes",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/blog/_index.md",
+      "sha256": "93ca465d29363b170fd876cce7d1f0e6f99be907af87fcb56848348ccfaedd64",
+      "status": "mapped",
+      "destination": "blog",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/book/index.html",
+      "sha256": "60d606788215e99fa8c4553ba6a96b556d57ea84c8ce1f13f2e9d078c14446c6",
+      "status": "mapped",
+      "destination": "book",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/community-day-2026/_index.html",
+      "sha256": "72ebe05f533fd51d12a4c52bbc2cf7b5e3c8cf42a8b2d543ea0331d65596a244",
+      "status": "mapped",
+      "destination": "community-day-2026",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/_index.md",
+      "sha256": "ebcdcc8bc8254c5a38de6a70e2a5fb335d0bb3bfe83332d457300b84a0994384",
+      "status": "mapped",
+      "destination": "docs",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/architecture/_index.md",
+      "sha256": "31b59e0e0daa6cdd6d67f7f0481f77a171b4cb3b08d64a73d83758b18482d54f",
+      "status": "mapped",
+      "destination": "docs/spire/architecture",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/deploying/_index.md",
+      "sha256": "dc631ff90325a45a9cd24682fa1b94765b67273b6bf01a6575e274d16b541921",
+      "status": "mapped",
+      "destination": "docs/spire/deploying",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/deploying/configuring.md",
+      "sha256": "e4138221f2cc4e83de01bd283ad17100bcce9a6302ed3d21e5dbd58937971d6b",
+      "status": "mapped",
+      "destination": "docs/spire/deploying/configuring",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/deploying/install-agents.md",
+      "sha256": "ec9e1d1d81c6d677a9bea7b96722b2771e6fba234aa672abc448458703908e52",
+      "status": "mapped",
+      "destination": "docs/spire/deploying/install-agents",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/deploying/install-server.md",
+      "sha256": "e05399e83ba13dee8ed5daced07515fea4ce56f2787bb80f4f3008cbdf0c91e0",
+      "status": "mapped",
+      "destination": "docs/spire/deploying/install-server",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/deploying/libraries.md",
+      "sha256": "1adde40437520450118f497c36edd84b6b183136bf7e8ac82b750dc757da51f6",
+      "status": "mapped",
+      "destination": "docs/spire/deploying/libraries",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/deploying/registering.md",
+      "sha256": "ff483e96f73c74e6beb760dc6c3945fdc31fb82c555cd622cf5430b7eda414c5",
+      "status": "mapped",
+      "destination": "docs/spire/deploying/registering",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/deploying/svids.md",
+      "sha256": "79b8a60087a1afc42c091be7603f425796325593958aa41a569b2de33aaed860",
+      "status": "mapped",
+      "destination": "docs/spire/deploying/svids",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/keyless/_index.md",
+      "sha256": "415d5aefa1d030676d6107efa14fe7888b3896f08e6a1f4190de313f61809354",
+      "status": "mapped",
+      "destination": "docs/spire/integrations/platforms",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/keyless/oidc-federation-aws.md",
+      "sha256": "26a1e957a2a9fd0eefbe4cbb165bdb245028a522162c18513727125598762860",
+      "status": "mapped",
+      "destination": "docs/spire/integrations/platforms/oidc-federation-aws",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/maintenance/_index.md",
+      "sha256": "02041c25a9efc8720c9be20b9aca5c0399a63441496a4d16db5f28e9c7a0ac62",
+      "status": "mapped",
+      "destination": "docs/spire/maintenance",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/microservices/_index.md",
+      "sha256": "7b559ca27db32b74f26c630444160b6522f31016b4190b25def869ff4ff74faa",
+      "status": "mapped",
+      "destination": "docs/spire/integrations/services",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/microservices/envoy.md",
+      "sha256": "3bf9142bfaecbe6add5f9313de53e383de3fead8eedd8d6d1be32a0a47290521",
+      "status": "mapped",
+      "destination": "docs/spire/integrations/services/envoy",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/planning/_index.md",
+      "sha256": "6c53720eef0d4c4d69b9ee4bc058082e55be38778829b64c5f4a98fc297c054c",
+      "status": "mapped",
+      "destination": "docs/spire/planning",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/planning/extending.md",
+      "sha256": "2faeed59034319dbd207df9695aa2a1812d1425bf58b8749724f19908aa8a7e4",
+      "status": "mapped",
+      "destination": "docs/spire/planning/extending",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spiffe-about/community-presentations.md",
+      "sha256": "e7abc3e9185dc3f759611c36e61a7f1890a845d38505e204e0163953dc206002",
+      "status": "mapped",
+      "destination": "community/presentations",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spiffe-about/ecosystem.md",
+      "sha256": "c1cadabc2dc2a28f73c3a2d72416951eb9c40015f706496d1cc839e4219348c6",
+      "status": "mapped",
+      "destination": "ecosystem",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spiffe-about/get-involved.md",
+      "sha256": "bb9119c46253899a96e6d6e9c29fd9dd4c157e5468701af95ae64d7f73c17df2",
+      "status": "mapped",
+      "destination": "community",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spiffe-about/overview.md",
+      "sha256": "fa319e45ccd742fd1e66634dd7dcd45f119585e8e3b7074bfc87d4aa3edc72a4",
+      "status": "mapped",
+      "destination": "docs/spiffe/overview",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spiffe-about/spiffe-concepts.md",
+      "sha256": "9c0f26e19b1eca9261540b6a6272fbd958ba77fe1da900471ffa20b1f42ed664",
+      "status": "mapped",
+      "destination": "docs/spiffe/concepts",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spiffe-specs/_index.md",
+      "sha256": "53a10a18522d67a5cfc877c77590f198d65c12605520d07f50729fe5ac8dfd1c",
+      "status": "mapped",
+      "destination": "docs/spiffe/specs",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-about/_index.md",
+      "sha256": "16ce3e37674acd616d282fcdd57e17c6dc776cc1387a606187f2c571c56de9f4",
+      "status": "mapped",
+      "destination": "docs/spire/about",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-about/case-studies.md",
+      "sha256": "1c9b475f3207da044e0d73538bd5719d2ea9d38aced16d224c4c00b31754f4a9",
+      "status": "mapped",
+      "destination": "docs/spire/about/case-studies",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-about/comparisons.md",
+      "sha256": "33b61e9d73f5775c55cfeef08cb6ab39edb7f057b318a26c933808366eb56372",
+      "status": "mapped",
+      "destination": "docs/spire/about/comparisons",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-about/spire-concepts.md",
+      "sha256": "229e1600b571488902725f0066ae8a817a50a22db541d1baa18ef3d5565c460b",
+      "status": "mapped",
+      "destination": "docs/spire/about/concepts",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-about/use-cases.md",
+      "sha256": "6a9d07f2656ca822b9adfb15b3b36d38a295f35eb4cced397299577dfa31ff01",
+      "status": "mapped",
+      "destination": "docs/spire/about/use-cases",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-about/_index.md",
+      "sha256": "ee7fb65752f98cc9bf57dc10f1dad0a5c5855290812ef396dd66f9bdc085a99d",
+      "status": "mapped",
+      "destination": "docs/spire/helm",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-about/exposing.md",
+      "sha256": "8eab5e95ca3e6c0dfa634b2a19f1dc55a21ebc3c8394614f47407afd74479fc1",
+      "status": "mapped",
+      "destination": "docs/spire/helm/exposing",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-about/identifiers.md",
+      "sha256": "4f9fc52ddd2e2412448e05cd425ebc8759f79d218ca237e06f1520383c213935",
+      "status": "mapped",
+      "destination": "docs/spire/helm/identifiers",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-about/installation.md",
+      "sha256": "3b8474cb8911cc3fe485488b2c4b9018bf1d0ba4bb28ca96ae1af000060e7bcd",
+      "status": "mapped",
+      "destination": "docs/spire/helm/installation",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-about/namespaces.md",
+      "sha256": "823f083fec4fb68a8eb31d1ea0f38f44cf4976a86f598a2096fe59f11c28640f",
+      "status": "mapped",
+      "destination": "docs/spire/helm/namespaces",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-about/recommendations.md",
+      "sha256": "51a4ae6ea11378b24a6ea38e1df1ab7975f04d5d2c46f505a65887b4b821c763",
+      "status": "mapped",
+      "destination": "docs/spire/helm/recommendations",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-about/service-selection.md",
+      "sha256": "2602b2957a6585798766651f49c826bc6e779fcd2704aeb7bf840670064873b7",
+      "status": "mapped",
+      "destination": "docs/spire/helm/service-selection",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-about/upgrading.md",
+      "sha256": "c6ec3ae7019e93d23225ab37815375db45f6d0eb3529649f6706486f82e15950",
+      "status": "mapped",
+      "destination": "docs/spire/helm/upgrading",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-advanced/_index.md",
+      "sha256": "71025c9eb9af06f2669be84197b2d1f2f0ae9871c2133eca9a42de3d944155cd",
+      "status": "mapped",
+      "destination": "docs/spire/helm/advanced",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-advanced/federation.md",
+      "sha256": "e21d24d885e685cc9f0756a88a2d128421e9a70d432aa9d8c89197cd2f44488f",
+      "status": "mapped",
+      "destination": "docs/spire/helm/advanced/federation",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-advanced/mirror.md",
+      "sha256": "803ee169b21806a744e6cf26d03ac9918a221184a7662ed058cae35e0e84ec3f",
+      "status": "mapped",
+      "destination": "docs/spire/helm/advanced/mirror",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/spire-helm-charts-hardened-advanced/nested-spire.md",
+      "sha256": "bc8d4b5c3402b8649c164a225b66b39490476b1f708b26fe1b67b4832783424c",
+      "status": "mapped",
+      "destination": "docs/spire/helm/advanced/nested-spire",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/try/_index.md",
+      "sha256": "e4d9349ef4f0b57fe2503ca5ce656601c37d32fdd1fbca7557ddfa942d8f8f78",
+      "status": "mapped",
+      "destination": "docs/spire/try",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/try/getting-started-k8s.md",
+      "sha256": "aee864027b23b0dd2c3d3aefffbe8d1f6ec84e615ee2a6dd3e082fda6a9761c0",
+      "status": "mapped",
+      "destination": "docs/spire/try/getting-started-k8s",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/docs/latest/try/getting-started-linux-macos-x.md",
+      "sha256": "e633bffd7edd3d0d39793a0e5a675c50ed359c8791caba277808c9144f5798cc",
+      "status": "mapped",
+      "destination": "docs/spire/try/getting-started-linux-macos-x",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    },
+    {
+      "source": "content/downloads/_index.md",
+      "sha256": "7d8cdc68aaf0303a34529295315937074d872d2775f7408cadad410e60d18002",
+      "status": "mapped",
+      "destination": "downloads",
+      "note": "Content migrated or rewritten; semantic equivalence requires editorial review."
+    }
+  ],
+  "dataChecks": {
+    "ecosystemYamlExactMatch": true,
+    "latestAembitMatrixEntryPresent": true
+  }
+}

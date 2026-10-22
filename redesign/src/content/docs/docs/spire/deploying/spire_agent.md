@@ -1,0 +1,855 @@
+---
+title: SPIRE Agent Configuration Reference
+description: Command line options, agent.conf settings, and built-in plugins for SPIRE
+  Agent
+sidebar:
+  label: SPIRE Agent Configuration Reference
+  order: 300
+editUrl: https://github.com/spiffe/spire/blob/v1.15.5/doc/spire_agent.md
+---
+
+## SPIRE Agent Configuration Reference
+
+This document is a configuration reference for SPIRE Agent. It includes information about plugin types, built-in plugins, the agent configuration file, plugin configuration, and command line options for `spire-agent` commands.
+
+### Plugin types
+
+| Type             | Description                                                                                                                    |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| KeyManager       | Generates and stores the agent's private key. Useful for binding keys to hardware, etc.                                        |
+| NodeAttestor     | Gathers information used to attest the agent's identity to the server. Generally paired with a server plugin of the same type. |
+| WorkloadAttestor | Introspects a workload to determine its properties, generating a set of selectors associated with it.                          |
+| SVIDStore        | Stores X509-SVIDs (Private key, leaf certificate and intermediates if any), bundle, and federated bundles into a trust store.  |
+
+### Built-in plugins
+
+| Type             | Name                                                                    | Description                                                                                                                                      |
+|------------------|-------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| KeyManager       | [disk](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_keymanager_disk.md)                            | A key manager which writes the private key to disk                                                                                               |
+| KeyManager       | [memory](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_keymanager_memory.md)                        | An in-memory key manager which does not persist private keys (must re-attest after restarts)                                                     |
+| NodeAttestor     | [aws_iid](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_aws_iid.md)                    | A node attestor which attests agent identity using an AWS Instance Identity Document                                                             |
+| NodeAttestor     | [azure_imds](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_azure_imds.md)              | A node attestor which attests agent identity using the Azure Instance Metadata Service                                                           |
+| NodeAttestor     | [azure_msi](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_azure_msi.md)                | A node attestor which attests agent identity using an Azure MSI token                                                                            |
+| NodeAttestor     | [gcp_iit](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_gcp_iit.md)                    | A node attestor which attests agent identity using a GCP Instance Identity Token                                                                 |
+| NodeAttestor     | [join_token](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_jointoken.md)               | A node attestor which uses a server-generated join token                                                                                         |
+| NodeAttestor     | [k8s_psat](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_k8s_psat.md)                  | A node attestor which attests agent identity using a Kubernetes Projected Service Account token                                                  |
+| NodeAttestor     | [sshpop](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_sshpop.md)                      | A node attestor which attests agent identity using an existing ssh certificate                                                                   |
+| NodeAttestor     | [tpm_devid](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_tpm_devid.md)                | A node attestor which attests agent identity using a TPM that has been provisioned with a DevID certificate                                      |
+| NodeAttestor     | [x509pop](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_nodeattestor_x509pop.md)                    | A node attestor which attests agent identity using an existing X.509 certificate                                                                 |
+| WorkloadAttestor | [docker](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_workloadattestor_docker.md)                  | A workload attestor which allows selectors based on docker constructs such `label` and `image_id`                                                |
+| WorkloadAttestor | [k8s](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_workloadattestor_k8s.md)                        | A workload attestor which allows selectors based on Kubernetes constructs such `ns` (namespace) and `sa` (service account)                       |
+| WorkloadAttestor | [unix](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_workloadattestor_unix.md)                      | A workload attestor which generates unix-based selectors like `uid` and `gid`                                                                    |
+| WorkloadAttestor | [systemd](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_workloadattestor_systemd.md)                | A workload attestor which generates selectors based on systemd unit properties such as `Id` and `FragmentPath`                                   |
+| WorkloadAttestor | [slurm](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_workloadattestor_slurm.md)                    | A workload attestor which allows selectors based on Slurm job information                                                                        |
+| SVIDStore        | [aws_secretsmanager](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_svidstore_aws_secretsmanager.md) | An SVIDstore which stores secrets in the AWS secrets manager with the resulting X509-SVIDs of the entries that the agent is entitled to.         |
+| SVIDStore        | [gcp_secretmanager](https://github.com/spiffe/spire/blob/v1.15.5/doc/plugin_agent_svidstore_gcp_secretmanager.md)   | An SVIDStore which stores secrets in the Google Cloud Secret Manager with the resulting X509-SVIDs of the entries that the agent is entitled to. |
+
+### Agent configuration file
+
+The following table outlines the configuration options for SPIRE agent. These may be set in a top-level `agent { ... }` section of the configuration file. Most options have a corresponding CLI flag which, if set, takes precedence over values defined in the file.
+
+SPIRE configuration files may be represented in either HCL or JSON. Please see the [sample configuration file](#sample-configuration-file) section for a complete example.
+
+If the -expandEnv flag is passed to SPIRE, `$VARIABLE` or `${VARIABLE}` style environment variables are expanded before parsing.
+This may be useful for templating configuration files, for example across different trust domains, or for inserting secrets like join tokens.
+
+| Configuration                     | Description                                                                                                                                                                                                                                       | Default                          |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|
+| `admin_socket_path`               | Location to bind the admin API socket (disabled as default)                                                                                                                                                                                       |                                  |
+| `allow_unauthenticated_verifiers` | Allow agent to release trust bundles to unauthenticated verifiers                                                                                                                                                                                 | false                            |
+| `allowed_foreign_jwt_claims`      | List of trusted claims to be returned when validating foreign JWTSVIDs                                                                                                                                                                            |                                  |
+| `authorized_delegates`            | A SPIFFE ID list of the authorized delegates. See [Delegated Identity API](#delegated-identity-api) for more information                                                                                                                          |                                  |
+| `data_dir`                        | A directory the agent can use for its runtime data                                                                                                                                                                                                | $PWD                             |
+| `disable_sds_api`                 | Disable the Envoy SDS API. The public socket or named pipe remains exposed if the Workload API is enabled.                                                                                                                                        | false                            |
+| `disable_workload_api`            | Disable the SPIFFE Workload API. The public socket or named pipe remains exposed if SDS is enabled.                                                                                                                                               | false                            |
+| `experimental`                    | The experimental options that are subject to change or removal (see below)                                                                                                                                                                        |                                  |
+| `insecure_bootstrap`              | If true, the agent bootstraps without verifying the server's identity                                                                                                                                                                             | false                            |
+| `rebootstrap_mode`                | Can be one of 'never', 'auto', or 'always'                                                                                                                                                                                                        | never                            |
+| `rebootstrap_delay`               | The time to delay after seeing a x509 cert mismatch from the server before rebootstrapping                                                                                                                                                        | 10m                              |
+| `join_token`                      | An optional token which has been generated by the SPIRE server                                                                                                                                                                                    |                                  |
+| `join_token_file`                 | Path to a file containing an optional join token which has been generated by the SPIRE server                                                                                                                                                     |                                  |
+| `log_file`                        | File to write logs to                                                                                                                                                                                                                             |                                  |
+| `log_level`                       | Sets the logging level &lt;DEBUG&vert;INFO&vert;WARN&vert;ERROR&gt;                                                                                                                                                                               | INFO                             |
+| `log_format`                      | Format of logs, &lt;text&vert;json&gt;                                                                                                                                                                                                            | Text                             |
+| `log_selectors`                   | Workload selector prefixes allowed in diagnostic logs. Selector values can contain sensitive information; only configure prefixes whose values are acceptable to write to logs. Example: `["k8s:ns", "k8s:sa", "unix:user"]`                      |                                  |
+| `log_source_location`             | If true, logs include source file, line number, and method name fields (adds a bit of runtime cost)                                                                                                                                               | false                            |
+| `profiling_enabled`               | If true, enables a [net/http/pprof](https://pkg.go.dev/net/http/pprof) endpoint                                                                                                                                                                   | false                            |
+| `profiling_freq`                  | Frequency of dumping profiling data to disk. Only enabled when `profiling_enabled` is `true` and `profiling_freq` > 0.                                                                                                                            |                                  |
+| `profiling_names`                 | List of profile names that will be dumped to disk on each profiling tick, see [Profiling Names](#profiling-names)                                                                                                                                 |                                  |
+| `profiling_port`                  | Port number of the [net/http/pprof](https://pkg.go.dev/net/http/pprof) endpoint. Only used when `profiling_enabled` is `true`.                                                                                                                    |                                  |
+| `server_address`                  | DNS name or IP address of the SPIRE server                                                                                                                                                                                                        |                                  |
+| `server_port`                     | Port number of the SPIRE server                                                                                                                                                                                                                   |                                  |
+| `socket_path`                     | Location to bind the SPIRE Agent Workload API and SDS socket (Unix only). The socket is exposed unless both `disable_workload_api` and `disable_sds_api` are `true`.                                                                              | /tmp/spire-agent/public/api.sock |
+| `sds`                             | Optional SDS configuration section                                                                                                                                                                                                                |                                  |
+| `trust_bundle_path`               | Path to the SPIRE server CA bundle                                                                                                                                                                                                                |                                  |
+| `trust_bundle_url`                | URL to download the initial SPIRE server trust bundle                                                                                                                                                                                             |                                  |
+| `trust_bundle_unix_socket`        | Make the request specified via trust_bundle_url happen against the specified unix socket.                                                                                                                                                         |                                  |
+| `trust_bundle_spiffe_workload_api`| SPIFFE Workload API endpoint (e.g. `unix:///run/spire/agent.sock`) to fetch the SPIRE server trust bundle from. Useful for nested agents. `trust_bundle_format` does not apply to this source.                                                    |                                  |
+| `trust_bundle_format`             | Format of the initial trust bundle, pem or spiffe                                                                                                                                                                                                 | pem                              |
+| `trust_domain`                    | The trust domain that this agent belongs to (should be no more than 255 characters)                                                                                                                                                               |                                  |
+| `workload_x509_svid_key_type`     | The workload X509 SVID key type &lt;rsa-2048&vert;ec-p256&vert;ec-p384&gt;                                                                                                                                                                        | ec-p256                          |
+| `availability_target`             | The minimum amount of time desired to gracefully handle SPIRE Server or Agent downtime. This configurable influences how aggressively X509 SVIDs should be rotated. If set, must be at least 24h. See [Availability Target](#availability-target) |                                  |
+| `x509_svid_cache_max_size`        | Soft limit of max number of X509-SVIDs that would be stored in LRU cache                                                                                                                                                                          | 1000                             |
+| `jwt_svid_cache_max_size`         | Hard limit of max number of JWT-SVIDs that would be stored in LRU cache                                                                                                                                                                           | 1000                             |
+
+| tls_config         | Description                                                                                                                                                                                           | Default                      |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| `min_tls_version`  | Minimum TLS version for terminating agent listeners (e.g. `VersionTLS12`, `VersionTLS13`). Values below `VersionTLS12` are rejected at startup. When omitted, defaults to TLS 1.2.                    | TLS 1.2 when block is present|
+| `cipher_suites`    | Allowed TLS 1.2 cipher suites for terminating listeners. Ignored when `min_tls_version` is `VersionTLS13` or higher (Go negotiates TLS 1.3 ciphers). Insecure suite names are filtered with a warning.| Go defaults if all filtered  |
+| `curve_preferences`| Preferred key exchange curves (e.g. `X25519MLKEM768`, `X25519`, `secp256r1`). When minimum TLS is 1.2, at least one classical curve is required.                                                      |                              |
+
+`tls_config` is a top-level `agent { ... }` block (not experimental). It is parsed once at startup; invalid values prevent the agent from starting. Settings apply only to **inbound TLS listeners** ,  SPIFFE Broker API and Prometheus HTTPS (`ApplyPolicy` with `WithServerTLSConfig()`). They are **not** applied to the outbound mTLS gRPC client to the SPIRE server.
+
+When `experimental.require_pq_kem` is enabled, it overrides `min_tls_version` and `curve_preferences` on terminating listeners and also applies to the outbound server gRPC client.
+
+| experimental                  | Description                                                                                                                                                                         | Default                 |
+|:-----------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------:|
+| `named_pipe_name`             | Pipe name to bind the SPIRE Agent Workload API and SDS named pipe (Windows only). The named pipe is exposed unless both `disable_workload_api` and `disable_sds_api` are `true`.    | \spire-agent\public\api |
+| `sync_interval`               | Sync interval with SPIRE server with exponential backoff                                                                                                                            | 5 sec                   |
+| `use_sync_authorized_entries` | Use SyncAuthorizedEntries API for periodically synchronization of authorized entries                                                                                                | true                    |
+| `require_pq_kem`              | Require post-quantum-safe KEM on outbound gRPC and terminating listeners.                                                                                                           | false                   |
+| `jwt_svid_cache_hit_timeout`  | Custom gRPC timeout (between 5 and 30s) when retrieving a NewJWTSVID when a valid JWT-SVID in cache                                                                                 | 30s                     |
+| `ratelimit`                   | Optional per-caller rate limiting for Workload API and SDS methods, enforced after workload attestation. See [Workload API Rate Limiting](#workload-api-rate-limiting) for details. |                         |
+| `broker`                      | Optional SPIFFE Broker API endpoint configuration. See [SPIFFE Broker API](#spiffe-broker-api).                                                                                     |                         |
+
+#### Workload API Rate Limiting
+
+The `ratelimit` configuration block enforces per-caller rate limits on Workload API and Envoy SDS methods to protect the agent from noisy-neighbor workloads and reconnection storms.
+
+This feature is **experimental** and lives under the `experimental` block. Its configuration may change or move in a future release (targeted for promotion or removal in 1.16/1.17).
+
+**Key resolution:** Rate limits are enforced after workload attestation. The caller's attested selector set (the full set of `type:value` pairs returned by the attestor) is used as the rate-limit key ,  all workloads with the same selector set share one token bucket, and workloads with different selector sets never interfere. Callers that cannot be attested (empty selector set) share a single `<unattested>` bucket. The agent's own health probe is exempt from rate limiting.
+
+| ratelimit            | Description                                                                                 | Default      |
+| :------------------- | ------------------------------------------------------------------------------------------- | ------------ |
+| `fetch_x509_svid`    | Max stream opens per second per selector set for `FetchX509SVID`. 0 disables rate limiting. | 0 (disabled) |
+| `fetch_jwt_svid`     | Max calls per second per selector set for `FetchJWTSVID`. 0 disables rate limiting.         | 0 (disabled) |
+| `fetch_x509_bundles` | Max stream opens per second per selector set for `FetchX509Bundles`. 0 disables.            | 0 (disabled) |
+| `fetch_jwt_bundles`  | Max stream opens per second per selector set for `FetchJWTBundles`. 0 disables.             | 0 (disabled) |
+| `stream_secrets`     | Max stream opens per second per selector set for SDS `StreamSecrets`. 0 disables.           | 0 (disabled) |
+| `fetch_secrets`      | Max calls per second per selector set for SDS `FetchSecrets`. 0 disables.                   | 0 (disabled) |
+
+For streaming RPCs (`FetchX509SVID`, `FetchX509Bundles`, `FetchJWTBundles`, `StreamSecrets`), the rate limit is enforced at stream establishment (i.e., per reconnect), not per message.
+
+Example configuration:
+
+```hcl
+agent {
+    # ...
+    experimental {
+        ratelimit {
+            fetch_x509_svid    = 100
+            fetch_jwt_svid     = 500
+            fetch_x509_bundles = 20
+            fetch_jwt_bundles  = 20
+            stream_secrets     = 50
+            fetch_secrets      = 50
+        }
+    }
+}
+```
+
+Calls exceeding the rate limit receive an `Unavailable` gRPC status code.
+
+#### Server Attestation
+
+The agent needs to be able to establish trusted network connections to the server.
+
+Once trust is established, the agent will automatically fetch up to date versions of the trust bundle to keep these connections secure.
+
+There are two cases where this can not happen and Server Attestation must be performed.
+
+The first case is when bootstrapping a new agent. It's never securely talked to a SPIRE Server, so it can not download up to date trust bundles.
+
+The second case is when trust is lost and must be reestablished, known as Reboostrapping. This can happen if an agent was unable to contact a server for too long that its trust bundle is too far out of date, or the server needed to be reinstalled in a way that couldn't allow continuity in the trust bundle.
+
+#### Configuring the source for Server Attestation
+
+There are four main options and a sub option:
+
+1. If the `trust_bundle_path` option is used, the agent will read a bootstrap trust bundle from the file at that path. You need to safely copy or share the file before starting the SPIRE Agent.
+2. If the `trust_bundle_url` option is used, the agent will read the bootstrap trust bundle from the specified URL.
+    1. If trust_bundle_unix_socket is unset, **The URL must start with `https://` for security, and the server must have a valid certificate (verified with the system trust store).** This can be used to rapidly deploy SPIRE agents without having to manually share a file. Keep in mind the contents of the URL need to be kept up to date.
+    2. If trust_bundle_unix_socket is set, **The URL must start with `http://`.** This can be used along with a local service running on the socket to fetch up to date trust bundles via some site specific, secure mechanism.
+3. If the `trust_bundle_spiffe_workload_api` option is used, the agent will fetch a fresh copy of the trust bundle for its trust domain from the SPIFFE Workload API at the specified endpoint (e.g. `unix:///run/spire/agent.sock`, or `npipe:pipeName` on Windows) every time bootstrapping or rebootstrapping is needed. This is useful when nesting SPIRE Agents, such as with the `x509pop` NodeAttestor pointed at an upstream agent's Workload API, without needing a separate adapter daemon.
+4. If the `insecure_bootstrap` option is set to `true`, then the agent will not use a bootstrap trust bundle. It will connect to the SPIRE Server without authenticating it. This is not a secure configuration, because a man-in-the-middle attacker could control the SPIRE infrastructure. It is included because it is a useful option for testing and development.
+
+Only one of these four main options may be set at a time.
+
+#### Rebootstrapping
+
+There are two options that relate to rebootstrapping
+
+`rebootstrap_mode` can be set to one of `never`, `auto`, or `always`.
+
+1. When set to `never`, the agent will be prevented from automated rebootstrapping, and manual recovery will be necessary if trust is ever lost.
+2. When set to `always`, the agent will attempt to rebootstrap, attesting the server again using the `trust_bundle_path`, `trust_bundle_url`, `trust_bundle_unix_socket`, and/or `trust_bundle_spiffe_workload_api` settings when needed. The ability to rebootstrap needs to be supported by the agent NodeAttestor plugin along with the configuration of the server. The `always` mode will fail the agent if the plugin, server, and configurations are incompatible.
+3. `auto` mode functions like `always` except when unsupported, it will automatically disable rebootstrapping of the agent.
+
+The other option is `rebootstrap_delay`. It defaults to `10m`. This is the duration to wait between when a server is first seen that isn't trusted by the agents trust bundle and when to start the rebootstrapping process. No rebootstrapping is allowed during this delay period. If a secure server connection is established successfully during this delay period, the delay clock will be reset.
+
+Considerations for `rebootstrap_delay` configuration:
+
+* In an environment where it is possible for someone to attempt a man in the middle attack between the agent and server, having the duration higher will minimize agent unavailability due to needless rebootstrapping
+* Having the duration lower will allow for faster recovery of agent trust when it was offline too long or the server needed to be reinstalled in away that couldn't allow continuity in the trust bundle.
+
+#### SDS Configuration
+
+| Configuration                    | Description                                                                                                                                                                         | Default |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| `default_svid_name`              | The TLS Certificate resource name to use for the default X509-SVID with Envoy SDS                                                                                                   | default |
+| `default_bundle_name`            | The Validation Context resource name to use for the default X.509 bundle with Envoy SDS                                                                                             | ROOTCA  |
+| `default_all_bundles_name`       | The Validation Context resource name to use for all bundles (including federated) with Envoy SDS                                                                                    | ALL     |
+| `disable_spiffe_cert_validation` | Disable Envoy SDS custom validation                                                                                                                                                 | false   |
+
+#### Profiling Names
+
+These are the available profiles that can be set in the `profiling_names` configuration value:
+
+* `goroutine`
+* `threadcreate`
+* `heap`
+* `block`
+* `mutex`
+* `trace`
+* `cpu`
+
+#### Availability Target
+
+_Note: The `availability_target` only affects the agent SVIDs and workload X509-SVIDs, but not JWT-SVIDs._
+
+If the `availability_target` is set, the agent will rotate an X509 SVID when its remaining lifetime reaches the `availability_target`.
+
+To guarantee the `availability_target`, grace period (`SVID lifetime - availability_target`) must be at least 12h.
+If not satisfied, the agent will rotate the SVID by the default rotation strategy (1/2 of lifetime).
+
+### Plugin configuration
+
+The agent configuration file also contains the configuration for the agent plugins.
+Plugin configurations are under the `plugins { ... }` section, which has the following format:
+
+```hcl
+plugins {
+    pluginType "pluginName" {
+        ...
+        plugin configuration options here
+        ...
+    }
+}
+```
+
+The following configuration options are available to configure a plugin:
+
+| Configuration    | Description                                                                            |
+|------------------|----------------------------------------------------------------------------------------|
+| plugin_cmd       | Path to the plugin implementation binary (optional, not needed for built-ins)          |
+| plugin_checksum  | An optional sha256 of the plugin binary  (optional, not needed for built-ins)          |
+| enabled          | Enable or disable the plugin (enabled by default)                                      |
+| plugin_data      | Plugin-specific data (mutually exclusive with `plugin_data_file`)                      |
+| plugin_data_file | Path to a file containing plugin-specific data (mutually exclusive with `plugin_data`) |
+
+Please see the [built-in plugins](#built-in-plugins) section below for information on plugins that are available out-of-the-box.
+
+#### Examples
+
+##### Built-in Plugin with Static Configuration
+
+```hcl
+plugins {
+    SomeType "some_plugin" {
+        plugin_data = {
+            option1 = "foo"
+            option2 = 3
+        }
+    }
+}
+```
+
+##### External Plugin with Dynamic Configuration
+
+In the `agent.conf`, declare the plugin using the `plugin_data_file` option to source the plugin configuration from file.
+
+```hcl
+plugins {
+    SomeType "some_plugin" {
+        plugin_cmd = "./path/to/plugin"
+        plugin_checksum = "4e1243bd22c66e76c2ba9eddc1f91394e57f9f83"
+        plugin_data_file = "some_plugin.conf"
+    }
+}
+```
+
+And then in `some_plugin.conf` you place the plugin configuration:
+
+```hcl
+option1 = "foo"
+option2 = 3
+```
+
+#### Reconfiguring plugins (Posix only)
+
+Plugins that use dynamic configuration sources (i.e. `plugin_data_file`) can be reconfigured at runtime by sending a `SIGUSR1` signal to SPIRE Agent. This is true for both built-in and external plugins.
+
+SPIRE Agent, upon receipt of the signal, does the following:
+
+1. Reloads the plugin data
+2. Compares the plugin data to the previous data
+3. If changed, the plugin is reconfigured with the new data
+
+### Telemetry configuration
+
+Please see the [Telemetry Configuration](https://github.com/spiffe/spire/blob/v1.15.5/doc/telemetry/telemetry_config.md) guide for more information about configuring SPIRE Agent to emit telemetry.
+
+### Health check configuration
+
+The agent can expose additional endpoint that can be used for health checking. It is enabled by setting `listener_enabled = true`. Currently, it exposes 2 paths: one for liveness (is agent up) and one for readiness (is agent ready to serve requests). By default, health checking endpoint will listen on localhost:80, unless configured otherwise.
+
+```hcl
+health_checks {
+        listener_enabled = true
+        bind_address = "localhost"
+        bind_port = "8080"
+        live_path = "/live"
+        ready_path = "/ready"
+}
+```
+
+### Command line options
+
+#### `spire-agent run`
+
+All the configuration file above options have identical command-line counterparts. In addition,
+the following flags are available:
+
+| Command                          | Action                                                                                        | Default               |
+| -------------------------------- | --------------------------------------------------------------------------------------------- | --------------------- |
+| `-allowUnauthenticatedVerifiers` | Allow agent to release trust bundles to unauthenticated verifiers                             |                       |
+| `-config`                        | Path to a SPIRE config file                                                                   | conf/agent/agent.conf |
+| `-dataDir`                       | A directory the agent can use for its runtime data                                            |                       |
+| `-disableSDSAPI`                 | Disable the Envoy SDS API                                                                     | false                 |
+| `-disableWorkloadAPI`            | Disable the SPIFFE Workload API                                                               | false                 |
+| `-expandEnv`                     | Expand environment $VARIABLES in the config file                                              |                       |
+| `-joinToken`                     | An optional token which has been generated by the SPIRE server                                |                       |
+| `-joinTokenFile`                 | Path to a file containing an optional join token which has been generated by the SPIRE server |                       |
+| `-logFile`                       | File to write logs to                                                                         |                       |
+| `-logFormat`                     | Format of logs, &lt;text&vert;json&gt;                                                        |                       |
+| `-logLevel`                      | DEBUG, INFO, WARN or ERROR                                                                    |                       |
+| `-serverAddress`                 | IP address or DNS name of the SPIRE server                                                    |                       |
+| `-serverPort`                    | Port number of the SPIRE server                                                               |                       |
+| `-socketPath`                    | Location to bind the Workload API and SDS socket                                              |                       |
+| `-trustBundle`                   | Path to the SPIRE server CA bundle                                                            |                       |
+| `-trustBundleUrl`                | URL to download the SPIRE server CA bundle                                                    |                       |
+| `-trustDomain`                   | The trust domain that this agent belongs to (should be no more than 255 characters)           |                       |
+
+##### Running SPIRE Agent as a Windows service
+
+On Windows platform, SPIRE Agent can optionally be run as a Windows service. When running as a Windows service, the only command supported is the `run` command.
+
+_Note: SPIRE does not automatically create the service in the system, it must be created by the user.
+When starting the service, all the arguments to execute SPIRE Agent with the `run` command must be passed as service arguments._
+
+###### Example to create the SPIRE Agent Windows service
+
+```bash
+> sc.exe create spire-agent binpath=c:\spire\bin\spire-agent.exe
+```
+
+###### Example to run the SPIRE Agent Windows service
+
+```bash
+> sc.exe start spire-agent run -config c:\spire\conf\agent\agent.conf
+```
+
+#### `spire-agent api fetch`
+
+Calls the workload API to fetch an X509-SVID. This command is aliased to `spire-agent api fetch x509`.
+
+| Command       | Action                                | Default                          |
+|---------------|---------------------------------------|----------------------------------|
+| `-silent`     | Suppress stdout                       |                                  |
+| `-socketPath` | Path to the SPIRE Agent API socket    | /tmp/spire-agent/public/api.sock |
+| `-timeout`    | Time to wait for a response           | 1s                               |
+| `-write`      | Write SVID data to the specified path |                                  |
+
+#### `spire-agent api fetch jwt`
+
+Calls the workload API to fetch a JWT-SVID.
+
+| Command       | Action                                              | Default                          |
+|---------------|-----------------------------------------------------|----------------------------------|
+| `-audience`   | A comma separated list of audience values           |                                  |
+| `-socketPath` | Path to the SPIRE Agent API socket                  | /tmp/spire-agent/public/api.sock |
+| `-spiffeID`   | The SPIFFE ID of the JWT being requested (optional) |                                  |
+| `-timeout`    | Time to wait for a response                         | 1s                               |
+
+#### `spire-agent api fetch x509`
+
+Calls the workload API to fetch a x.509-SVID.
+
+| Command       | Action                                | Default                          |
+|---------------|---------------------------------------|----------------------------------|
+| `-silent`     | Suppress stdout                       |                                  |
+| `-socketPath` | Path to the SPIRE Agent API socket    | /tmp/spire-agent/public/api.sock |
+| `-timeout`    | Time to wait for a response           | 1s                               |
+| `-write`      | Write SVID data to the specified path |                                  |
+
+#### `spire-agent api validate jwt`
+
+Calls the workload API to validate the supplied JWT-SVID.
+
+| Command       | Action                                    | Default                          |
+|---------------|-------------------------------------------|----------------------------------|
+| `-audience`   | A comma separated list of audience values |                                  |
+| `-socketPath` | Path to the SPIRE Agent API socket        | /tmp/spire-agent/public/api.sock |
+| `-svid`       | The JWT-SVID to be validated              |                                  |
+| `-timeout`    | Time to wait for a response               | 1s                               |
+
+#### `spire-agent api watch`
+
+Attaches to the workload API and watches for X509-SVID updates, printing details when updates are received.
+
+| Command       | Action                             | Default                          |
+|---------------|------------------------------------|----------------------------------|
+| `-socketPath` | Path to the SPIRE Agent API socket | /tmp/spire-agent/public/api.sock |
+
+#### `spire-agent debug getinfo`
+
+Prints debug information about the agent, including uptime, last successful
+sync time, cached SVID counts, and the agent's own SVID chain. This command
+requires the Agent Admin API to be enabled (e.g., via `admin_socket_path` on
+Unix or `admin_named_pipe_name` on Windows).
+
+| Command       | Action                                    | Default                             |
+|:--------------|:------------------------------------------|:------------------------------------|
+| `-output`     | Desired output format (`pretty`, `json`)  | `pretty`                            |
+| `-socketPath` | Path to the SPIRE Agent admin API socket  | /tmp/spire-agent/private/admin.sock |
+
+#### `spire-agent healthcheck`
+
+Checks SPIRE agent's health.
+
+This command connects to the public Workload API/SDS endpoint. If both `disable_workload_api` and `disable_sds_api` are `true`, use the `health_checks` HTTP listener for liveness and readiness probes instead.
+
+| Command       | Action                                | Default                          |
+|:--------------|:--------------------------------------|:---------------------------------|
+| `-shallow`    | Perform a less stringent health check |                                  |
+| `-socketPath` | Path to the SPIRE Agent API socket    | /tmp/spire-agent/public/api.sock |
+| `-verbose`    | Print verbose information             |                                  |
+
+#### `spire-agent logger get`
+
+Gets the current logging level of the SPIRE Agent.
+
+| Command       | Action                                   | Default                             |
+|:--------------|:-----------------------------------------|:------------------------------------|
+| `-socketPath` | Path to the SPIRE Agent Admin API socket | /tmp/spire-agent/private/admin.sock |
+
+#### `spire-agent logger set`
+
+Sets the logging level of the SPIRE Agent.
+
+| Command       | Action                                                                    | Default                             |
+|:--------------|:--------------------------------------------------------------------------|:------------------------------------|
+| `-level`      | The new log level, one of (panic, fatal, error, warn, info, debug, trace) |                                     |
+| `-socketPath` | Path to the SPIRE Agent Admin API socket                                  | /tmp/spire-agent/private/admin.sock |
+
+#### `spire-agent logger reset`
+
+Resets the logging level of the SPIRE Agent to the level it was set to at launch.
+
+| Command       | Action                                   | Default                             |
+|:--------------|:-----------------------------------------|:------------------------------------|
+| `-socketPath` | Path to the SPIRE Agent Admin API socket | /tmp/spire-agent/private/admin.sock |
+
+#### `spire-agent validate`
+
+Validates a SPIRE agent configuration file.
+
+| Command       | Action                                                             | Default        |
+|:--------------|:-------------------------------------------------------------------|:---------------|
+| `-config`     | Path to a SPIRE agent configuration file                           | agent.conf     |
+| `-expandEnv`  | Expand environment $VARIABLES in the config file                   | false          |
+
+### Sample configuration file
+
+This section includes a sample configuration file for formatting and syntax reference
+
+```hcl
+agent {
+    trust_domain = "example.org"
+    trust_bundle_path = "/opt/spire/conf/initial_bundle.crt"
+
+    data_dir = "/opt/spire/.data"
+    log_level = "DEBUG"
+    server_address = "spire-server"
+    server_port = "8081"
+    socket_path ="/tmp/spire-agent/public/api.sock"
+}
+
+telemetry {
+    Prometheus {
+        port = 1234
+        # optional TLS for prometheus
+        tls {
+            use_spire_svid = true
+            authorized_spiffe_ids = [
+                "spiffe://example.org/monitoring/prometheus",
+            ]
+
+            # Alternatively, configure a web certificate directly:
+            # cert_file = "/path/to/cert.pem"
+            # key_file = "/path/to/key.pem"
+            # client_ca_file = "/path/to/ca.pem"
+        }
+    }
+}
+
+plugins {
+    NodeAttestor "join_token" {
+        plugin_data {
+        }
+    }
+    KeyManager "disk" {
+        plugin_data {
+            directory = "/opt/spire/.data"
+        }
+    }
+    WorkloadAttestor "k8s" {
+        plugin_data {
+            kubelet_read_only_port = "10255"
+        }
+    }
+    WorkloadAttestor "unix" {
+        plugin_data {
+        }
+    }
+}
+```
+
+### Delegated Identity API
+
+The Delegated Identity API allows an authorized (i.e. delegated) workload to obtain SVIDs and bundles on behalf of workloads that cannot be attested by SPIRE Agent directly.
+
+The Delegated Identity API is served over the SPIRE Agent's admin API endpoint.
+
+Note that this explicitly and by-design grants the authorized delegate workload the ability to impersonate any of the other workloads it can obtain SVIDs for. Any workload authorized to use the
+Delegated Identity API becomes a "trusted delegate" of the SPIRE Agent, and may impersonate and act on behalf of all workload SVIDs it obtains from the SPIRE Agent.
+
+The trusted delegate workload itself is attested by the SPIRE Agent first, and the delegate's SPIFFE ID is checked against an allowlist of authorized delegates.
+
+Once these requirements are met, the trusted delegate workload can obtain SVIDS for any workloads in the scope of the SPIRE Agent instance it is interacting with.
+
+There are two ways the trusted delegate workload can request SVIDs for other workloads from the SPIRE Agent:
+
+1. By attesting the other workload itself, building a set of selectors, and then providing SPIRE Agent those selectors over the Delegated Identity API.
+  In this approach, the trusted delegate workload is entirely responsible for attesting the other workload and building the attested selectors.
+  When those selectors are presented to the SPIRE Agent, the SPIRE Agent will simply return SVIDs for any workload registration entries that match the provided selectors.
+  No other checks or attestations will be performed by the SPIRE Agent.
+
+1. By obtaining a PID for the other workload, and providing that PID to the SPIRE Agent over the Delegated Identity API.
+   In this approach, the SPIRE Agent will do attestation for the provided PID, build the attested selectors, and return SVIDs for any workload registration entries that match the selectors the SPIRE Agent attested from that PID.
+   This differs from the previous approach in that the SPIRE Agent itself (not the trusted delegate) handles the attestation of the other workload.
+   On most platforms PIDs are not stable identifiers, so the trusted delegate workload **must** ensure that the PID it provides to the SPIRE Agent
+   via the Delegated Identity API for attestation is not recycled between the time a trusted delegate makes a Delegate Identity API request, and obtains a Delegate Identity API response.
+   How this is accomplished is platform-dependent and the responsibility of the trusted delegate (e.g. by using pidfds on Linux).
+   Attestation results obtained via the Delegated Identity API for a PID are valid until the process referred to by the PID terminates, or is re-attested - whichever comes first.
+
+To enable the Delegated Identity API, configure the admin API endpoint address and the list of SPIFFE IDs for authorized delegates. For example:
+
+Unix systems:
+
+```hcl
+agent {
+    trust_domain = "example.org"
+    ...
+    admin_socket_path = "/tmp/spire-agent/private/admin.sock"
+    authorized_delegates = [
+        "spiffe://example.org/authorized_client1",
+        "spiffe://example.org/authorized_client2",
+    ]
+}
+```
+
+Windows:
+
+```hcl
+agent {
+    trust_domain = "example.org"
+    ...
+    experimental {
+        admin_named_pipe_name = "\\spire-agent\\private\\admin"
+    }
+    authorized_delegates = [
+        "spiffe://example.org/authorized_client1",
+        "spiffe://example.org/authorized_client2",
+    ]
+}
+```
+
+### SPIFFE Broker API
+
+The SPIFFE Broker API lets an authorized infrastructure component (a "broker")
+obtain SVIDs and trust bundles on behalf of workloads that the broker
+references, rather than the workload connecting to SPIRE Agent itself. It
+implements the [SPIFFE Broker API](https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Broker_API.md)
+specification and is served from SPIRE Agent over a dedicated, mutually
+authenticated endpoint that is distinct from the Workload API.
+
+> **Status:** experimental. The Broker API is being stabilized as the
+> upstream SPIFFE specification matures; breaking changes may land before
+> this configuration moves out of `experimental`.
+
+How it differs from the existing APIs:
+
+* The **Workload API** is invoked by a workload to obtain its own SVID,
+  and the workload is attested implicitly via its socket peer credentials.
+* The **Delegated Identity API** lets an authorized delegate impersonate
+  any workload in the agent's scope; the delegate is responsible for
+  identifying the target workload (by selectors or PID).
+* The **Broker API** is also delegate-style ,  a broker presents a
+  `WorkloadReference` identifying a workload, and the agent runs its
+  configured workload attestor stack against that reference to produce
+  selectors. Unlike the Delegated Identity API, the broker never
+  hand-supplies selectors; the agent's own attestor remains the source of
+  truth for what selectors apply to a reference. This makes the Broker
+  API safe to expose across the network (over mTLS) and not just over a
+  local UDS.
+
+The specification currently defines two reference types:
+
+* `WorkloadPIDReference` ,  a process ID on the agent's node. Per
+  [SPIFFE Broker API §3.1.2](https://github.com/spiffe/spiffe/blob/main/standards/SPIFFE_Broker_API.md#312-reference-scope),
+  this is a local reference and should not cross network boundaries.
+  SPIRE Agent enforces this server-side via each broker's
+  `allowed_reference_types[].allow_over_tcp` setting (see
+  [Configuration](#configuration)), which defaults to false: TCP requests
+  are denied unless the operator explicitly opts the reference type in.
+* `KubernetesObjectReference` ,  an arbitrary Kubernetes object identified
+  by `type` (resource and group) plus `key` (namespace and name) and/or
+  `uid`. SPIRE Agent's `k8s` workload attestor can support this reference
+  type when its `allowed_reference_types` includes
+  `type.googleapis.com/spiffe.broker.KubernetesObjectReference`, and emits
+  selectors describing the object (`k8s:pod-name`, etc. for pods; or the
+  generic `k8s:resource`, `k8s:kind`, `k8s:name`, ... for any other
+  resource).
+
+When the `k8s` workload attestor handles Broker API `AttestReference` calls,
+its plugin-level `experimental.broker` block is required for every reference type. Set
+`experimental.broker.access_policy = "enforced"` to make the attestor run Kubernetes
+`SubjectAccessReview` checks against the resolved pod for
+`WorkloadPIDReference`, and against the referenced object for
+`KubernetesObjectReference`. Set `experimental.broker.access_policy = "permissive"` to
+skip those checks. The setting is required; there is no default.
+
+#### Transport and authentication
+
+The Broker API is gated by mutual TLS using X.509-SVIDs. A broker is
+expected to obtain its own SVID via the Workload API first, then use that
+SVID to dial the broker endpoint. The agent presents its own SVID and
+verifies the broker's certificate against the configured per-broker
+allowlist.
+
+Per the spec, every request must carry the `broker.spiffe.io: true` gRPC
+metadata header as an SSRF mitigation. SPIRE Agent rejects requests that
+omit it with `InvalidArgument`. This applies to _every_ method, including
+gRPC server reflection (which is only served over UDS). Tools like
+`grpcurl`/`grpcui` do not send the header by default, so reflection calls
+must set it explicitly, e.g.:
+
+```sh
+grpcurl -unix -rpc-header 'broker.spiffe.io: true' /path/to/broker.sock list
+```
+
+#### Configuration
+
+The endpoint is enabled by adding a `broker` block under `experimental`
+in the agent config. At least one of `socket_path` (POSIX-only UDS) or
+`bind_address` (TCP, all platforms) must be set; both may be set
+simultaneously.
+
+The `socket_path` must not live in the same directory as the Workload
+API socket ,  SPIRE Agent will refuse to start otherwise.
+
+Each entry in `brokers` enumerates an authorized broker's SPIFFE ID
+(cross-trust-domain identities are allowed) and the reference types it
+may use. The `allowed_reference_types` list is required and must contain
+at least one object. Each object requires `type_url`, the verbatim
+protobuf type URL. Set `allow_over_tcp = true` on an entry only when that
+reference type is safe over the network; it defaults to false, so UDS is
+allowed but TCP is denied. Use a single object with `type_url = "*"` to
+allow any reference type the agent's attestor stack understands.
+
+```hcl
+agent {
+    trust_domain = "example.org"
+    ...
+    experimental {
+        broker {
+            socket_path  = "/run/spire/broker-sockets/broker.sock"  # POSIX UDS
+            bind_address = "0.0.0.0:8443"                           # optional TCP
+
+            brokers = [
+                {
+                    id = "spiffe://example.org/some/broker"
+                    allowed_reference_types = [
+                        {
+                            type_url = "type.googleapis.com/spiffe.broker.WorkloadPIDReference"
+                        },
+                        {
+                            type_url = "type.googleapis.com/spiffe.broker.KubernetesObjectReference"
+                            allow_over_tcp = true
+                        },
+                    ]
+                },
+                {
+                    id = "spiffe://example.org/wildcard/broker"
+                    allowed_reference_types = [
+                        {
+                            type_url = "*"
+                        },
+                    ]
+                },
+            ]
+        }
+    }
+}
+```
+
+Brokers whose ID isn't in this list are rejected at the TLS layer.
+Brokers in the list but using a reference type outside their
+`allowed_reference_types` are rejected with `PermissionDenied` at the
+gRPC layer.
+
+### Envoy SDS Support
+
+SPIRE agent has support for the [Envoy](https://envoyproxy.io) [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret) (SDS).
+SDS is served over the same public SPIRE Agent socket or named pipe as the Workload API. Envoy processes connecting to SDS are attested as workloads. SDS can be disabled with `disable_sds_api`.
+
+[`tlsv3.TlsCertificate`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/common.proto#extensions-transport-sockets-tls-v3-tlscertificate)
+resources containing X509-SVIDs can be fetched using the SPIFFE ID of the workload as the resource name
+(e.g. `spiffe://example.org/database`). Alternatively, if the default name "default" is used, the `tlsv3.TlsCertificate`
+containing the default X509-SVID for the workload (i.e. Envoy) is fetched.
+The default name is configurable (see `default_svid_name` under [SDS Configuration](#sds-configuration)).
+
+[`tlsv3.CertificateValidationContext`](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/common.proto#extensions-transport-sockets-tls-v3-certificatevalidationcontext)
+resources containing trusted CA certificates can be fetched using the SPIFFE ID
+of the desired trust domain as the resource name (e.g. `spiffe://example.org`).
+In addition, two other special resource names are available. The first, which
+defaults to "ROOTCA", provides the CA certificates for the trust domain the
+agent belongs to. The second, which defaults to "ALL", returns the trusted CA
+certificates for both the trust domain the agent belongs to as well as any
+federated trust domains applicable to the Envoy workload.  The default names
+for these resource names are configurable via the `default_bundle_name` and
+`default_all_bundles_name`, respectively. The "ALL" resource name requires
+support for the [SPIFFE Certificate Validator](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls_spiffe_validator_config.proto)
+extension, which is only available starting with Envoy 1.18.
+The default name is configurable (see `default_all_bundles_name` under [SDS Configuration](#sds-configuration).
+
+The [SPIFFE Certificate Validator](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls_spiffe_validator_config.proto) configures Envoy to perform SPIFFE authentication. The validation context returned by SPIRE Agent contains this extension by default. However, if standard X.509 chain validation is desired, SPIRE Agent can be configured to omit the extension. The default behavior can be changed by configuring `disable_spiffe_cert_validation` in [SDS Configuration](#sds-configuration). Individual Envoy instances can also override the default behavior by configuring setting a `disable_spiffe_cert_validation` key in the Envoy node metadata.
+
+### OpenShift Support
+
+The default security profile of [OpenShift](https://www.openshift.com/products/container-platform) forbids access to host level resources. A custom set of policies can be applied to enable the level of access needed by Spire to operate within OpenShift.
+
+_Note: A user with `cluster-admin` privileges is required in order to apply these policies._
+
+#### Security Context Constraints
+
+Actions performed by pods are controlled by Security Context Constraints (SCC's) and every pod that is admitted is assigned a particular SCC depending on range of conditions. The following custom SCC with the name `spire` can be used to enable the necessary host level access needed by the Spire Agent
+
+```yaml
+allowHostDirVolumePlugin: true
+allowHostIPC: true
+allowHostNetwork: true
+allowHostPID: true
+allowHostPorts: true
+allowPrivilegeEscalation: true
+allowPrivilegedContainer: false
+allowedCapabilities: null
+apiVersion: security.openshift.io/v1
+defaultAddCapabilities: null
+fsGroup:
+  type: MustRunAs
+groups: []
+kind: SecurityContextConstraints
+metadata:
+  annotations:
+    include.release.openshift.io/self-managed-high-availability: "true"
+    kubernetes.io/description: Customized policy for Spire to enable host level access.
+    release.openshift.io/create-only: "true"
+  name: spire
+priority: null
+readOnlyRootFilesystem: false
+requiredDropCapabilities:
+  - KILL
+  - MKNOD
+  - SETUID
+  - SETGID
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: MustRunAs
+supplementalGroups:
+  type: RunAsAny
+users: []
+volumes:
+  - hostPath
+  - configMap
+  - downwardAPI
+  - emptyDir
+  - persistentVolumeClaim
+  - projected
+  - secret
+```
+
+#### Associating A Security Constraint With a Workload
+
+Workloads can be granted access to Security Context Constraints through Role Based Access Control Policies by associating the SCC with the Service Account referenced by the pod.
+
+In order to leverage the `spire` SCC, a _ClusterRole_ leveraging `use` verb referencing the SCC must be created:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    include.release.openshift.io/self-managed-high-availability: "true"
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  name: system:openshift:scc:spire
+rules:
+- apiGroups:
+  - security.openshift.io
+  resourceNames:
+  - spire
+  resources:
+  - securitycontextconstraints
+  verbs:
+  - use
+```
+
+Finally, associate the `system:openshift:scc:spire` _ClusterRole_ to the `spire-agent` Service account by creating a _RoleBinding_ in the `spire` namespace
+
+_Note:_ Create the `spire` namespace if it does exist prior to applying the following policy.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: system:openshift:scc:spire
+  namespace: spire
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:openshift:scc:spire
+subjects:
+  - kind: ServiceAccount
+    name: spire-agent
+    namespace: spire
+```
+
+As SCC's are applied at pod admission time, remove any existing Spire Agent pods. All newly admitted pods will make use of the `spire` SCC enabling their use within OpenShift.
+
+### Further reading
+
+* [SPIFFE Reference Implementation Architecture](https://docs.google.com/document/d/1nV8ZbYEATycdFhgjTB619pwIvamzOjU6l0SyBGbzbo4/edit#)
+* [Design Document: SPIFFE Reference Implementation (SRI)](https://docs.google.com/document/d/1RZnBfj8I5xs8Yi_BPEKBRp0K3UnIJYTDg_31rfTt4j8/edit#)

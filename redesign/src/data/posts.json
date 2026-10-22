@@ -1,0 +1,100 @@
+[
+  {
+    "slug": "2026-09-03-spire-under-kubernetes",
+    "title": "Bottom Turtle Kubernetes - SPIRE Under Kubernetes, Not Just On Top of It",
+    "author": "Claude",
+    "date": "2026-09-03",
+    "description": "Why the strongest place to put SPIRE is beneath the cluster, chaining Kubernetes identity into a trust chain rooted in hardware."
+  },
+  {
+    "slug": "2026-08-23-bottom-turtle-ha-deployment",
+    "title": "The Bottom Turtle That Heals Itself - Deployment from Scratch",
+    "author": "Claude",
+    "date": "2026-08-23",
+    "description": "Building a two-server SPIRE HA trust domain from scratch on Red Hat, with ordinary packages and systemd units."
+  },
+  {
+    "slug": "2026-08-18-spiffe-standard-roadmap",
+    "title": "The SPIFFE Standard Roadmap",
+    "author": "Arndt Schwenkschuster",
+    "date": "2026-08-18",
+    "description": "The SPIFFE specification is evolving. Here is what is currently being worked on and what's ahead."
+  },
+  {
+    "slug": "2026-07-19-bottom-turtle-ha-architecture",
+    "title": "The Bottom Turtle That Heals Itself - Design",
+    "author": "Claude",
+    "date": "2026-07-19",
+    "description": "Building a Self-Contained, Dual-Server SPIRE HA Trust Domain from the ground up."
+  },
+  {
+    "slug": "2022-06-16-hardening-istio-security-with-spire",
+    "title": "Hardening Istio security with SPIRE",
+    "author": "Nathalia Satie Gomazako",
+    "date": "2022-06-16",
+    "description": "Integrating SPIRE with Istio brings uniform, SPIFFE-based identity to service meshes by letting Envoy's Secret Discovery Service consume SPIRE identities."
+  },
+  {
+    "slug": "2022-05-20-spire-now-runs-on-windows",
+    "title": "SPIRE now runs on Windows!",
+    "author": "Agust\u00edn Mart\u00ednez Fay\u00f3",
+    "date": "2022-05-20",
+    "description": "SPIRE 1.3.0 adds experimental support for running the Server and Agent on Windows, extending workload identity beyond Linux with a Windows workload attestor."
+  },
+  {
+    "slug": "2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire",
+    "title": "Enabling Authenticated Communication for Serverless Workloads with SPIRE",
+    "author": "Agust\u00edn Mart\u00ednez Fay\u00f3",
+    "date": "2021-12-20",
+    "description": "Serverless platforms can't run a SPIRE Agent next to the workload. The SVIDStore plugin fixes this by pushing X.509-SVIDs to stores like AWS Secrets Manager."
+  },
+  {
+    "slug": "2020-09-25-scrutinizing-spire-security",
+    "title": "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part One)",
+    "author": "Matt Moyer",
+    "date": "2020-09-25",
+    "description": "Part one of a security analysis of the SPIFFE Runtime Environment (SPIRE): its architecture, security properties, and a threat model for assessing attacks."
+  },
+  {
+    "slug": "2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two",
+    "title": "Scrutinizing SPIRE to Sensibly Strengthen SPIFFE Security (Part Two)",
+    "author": "Matt Moyer",
+    "date": "2020-09-25",
+    "description": "Part two scores and ranks attacks on SPIRE by impact and likelihood, finding the biggest risks stem from its centralized signing, plus low-effort mitigations."
+  },
+  {
+    "slug": "2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects",
+    "title": "SPIFFE/SPIRE move to CNCF Incubation-level hosted projects!",
+    "author": "Andr\u00e9s Vega",
+    "date": "2020-06-22",
+    "description": "SPIFFE and SPIRE have moved from CNCF sandbox to incubation level. A look at the milestones, from a security self-assessment to due diligence, behind the move."
+  },
+  {
+    "slug": "2020-06-18-spiffe-community-day-spring-2020",
+    "title": "[Re-Cap] SPIFFE Community Day: Spring 2020",
+    "author": "Umair M. Khan",
+    "date": "2020-06-18",
+    "description": "A recap of Spring 2020 SPIFFE Community Day, the first held fully online, with 300+ attendees and deployment stories from ByteDance, Square, and Uber."
+  },
+  {
+    "slug": "2020-06-12-re-cap-spiffe-community-day-fall-2019",
+    "title": "[Re-Cap] SPIFFE Community Day: Fall 2019",
+    "author": "Umair M. Khan",
+    "date": "2020-06-12",
+    "description": "A recap of Fall 2019 SPIFFE Community Day (200+ attendees): TPM node attestation at Bloomberg, Hadoop workloads at Uber, and SPIRE-backed service meshes."
+  },
+  {
+    "slug": "2020-06-09-re-cap-spiffe-community-day-spring-2019",
+    "title": "[Re-Cap] SPIFFE Community Day: Spring 2019",
+    "author": "Umair M. Khan",
+    "date": "2020-06-09",
+    "description": "A recap of the May 2019 SPIFFE Community Day, hosted by Pinterest and Scytale: case studies from Uber and Square plus demos with Kubernetes, Envoy, and Istio."
+  },
+  {
+    "slug": "2020-06-08-re-cap-spiffe-community-day-fall-2018",
+    "title": "[Re-Cap] SPIFFE Community Day: Fall 2018",
+    "author": "Umair M. Khan",
+    "date": "2020-06-08",
+    "description": "A recap of SPIFFE's seventh Community Day (November 2018): project updates, demos, and talks from Pinterest, Square, and VMware, plus Federation and JWT-SVIDs."
+  }
+]
