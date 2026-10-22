@@ -71,7 +71,7 @@ GitHub Pages has no Cloudflare-style `_redirects` support. Astro emits static HT
 
 `npm run build` compiles the site, creates the Pagefind index, prepares redirects, and checks every output HTML page for missing local files and anchors, unresolved release tokens, and missing page titles. Results are in `review/build-checks.json`.
 
-This check does not validate external websites or execute infrastructure tutorials. Browser visual and interaction QA was blocked in the production environment used to create this handoff. See `review/REVIEW.md` for exact scope and remaining review work.
+This check does not validate external websites or execute infrastructure tutorials. Desktop and mobile browser checks are recorded in `review/ADVERSARIAL-REVIEW.md`, alongside the remaining migration findings.
 
 ## Upstream ownership
 

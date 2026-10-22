@@ -4,7 +4,13 @@
 
 ## Update after the review
 
-The commercial-directory pass adds ten documented offerings and a dedicated commercial view containing 13 entries in total, including the three upstream integrations. The directory also adds nono as a community integration for JWT-SVID authentication from a sandbox supervisor. Messier 42 appears under the same evidence and ordering rules as the other vendors. The site now has 95 content pages. This partially addresses F7; matrix consolidation and the other findings remain open. The 94-page inventory below records the original reviewed snapshot.
+The local submission pass adds Riptides, OpenAI, and Anthropic / Claude, bringing the directory to 39 entries, including 16 commercial offerings. Issuer, integration, and accepting-service labels clarify each entry's role. The Rust crate link, StrongDM ID, nono, and Quantum Helix copy are retained. Four application guides now cover assurance, signed records, encrypted data, and AI API authentication. There are 99 content pages. Source checks are recorded in `commercial-sources.md` and `assurance-content.md`.
+
+A clean Node 24 install and build passed on 22 October 2026. The local checker covered 289 HTML files and 8,939 relative references. This Mac's case-insensitive filesystem collapses 16 uppercase/lowercase redirect pairs: 205 configured redirect addresses occupy 189 files. The expected count on a case-sensitive filesystem is 305 HTML files. All 86 recorded upstream sitemap routes resolve. Upstream remains at the recorded base, with all 331 existing files unchanged.
+
+Browser inspection now covers the homepage, both documentation sections, all-project and commercial directory views, the matrix, and the new guide at 1440 × 1000 and 390 × 844. Search returned the AI guide and JWT-SVID results; directory name/type filters and the empty state worked. Mobile site navigation and the documentation project switch worked. Query strings and a valid fragment survived a legacy redirect. The old concepts `#spec` fragment still has no target. At 768 × 1024, the homepage diagram labels are visibly too small, confirming F6's sizing concern.
+
+A separate local audit included same-origin absolute links and followed redirect targets. It confirmed F4's broken blog date link and duplicate `abstract` ID. The existing checker still misses these cases. F1–F4 and F6–F8 remain open; the new API guide partially addresses F5, while thin section introductions remain. F7's role distinction is improved, but directory/matrix consolidation remains open. Infrastructure tutorials and live provider token exchanges have not been executed. The original 94-page review below is retained as a historical snapshot; its browser-blocked statements describe that earlier pass.
 
 ## Verdict
 

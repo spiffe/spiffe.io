@@ -13,6 +13,7 @@ A compatible platform can validate an SVID directly or exchange it for a platfor
 | --- | --- | --- |
 | AWS | Exchange an X.509-SVID through IAM Roles Anywhere, or use a JWT-SVID with a configured OIDC identity provider | [AWS SPIFFE Workload Helper](https://github.com/spiffe/aws-spiffe-workload-helper), [SPIRE OIDC tutorial](/docs/spire/integrations/platforms/oidc-federation-aws/) |
 | Google Cloud | Use Workload Identity Federation with a configured provider and attribute mapping | [Google Cloud documentation](https://cloud.google.com/iam/docs/workload-identity-federation) |
+| OpenAI and Anthropic / Claude | Exchange an audience-specific JWT-SVID for a provider access token | [Authenticate to AI APIs](/docs/spiffe/use-cases/ai-api-authentication/) |
 | Vault | Use its SPIFFE authentication method or a JWT authentication configuration | [Vault SPIFFE method](https://developer.hashicorp.com/vault/docs/auth/spiffe), [SPIRE JWT tutorial](/docs/spire/integrations/platforms/vault/) |
 
 ## Keep identity and access policy separate

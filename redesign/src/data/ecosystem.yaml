@@ -177,6 +177,9 @@ categories:
         type: community
         weight: 500
         link: https://github.com/nolabs-ai/nono
+        guide:
+          label: Authenticate to AI APIs
+          url: /docs/spiffe/use-cases/ai-api-authentication/
         role: Workload identity for sandboxed agents
         description: An agent runtime security tool whose supervisor retrieves JWT-SVIDs from the Workload API. Its proxy injects them into upstream requests or exchanges them for OAuth access tokens, keeping identity credentials outside the sandboxed process.
         capabilities: [Workload API client, JWT-SVID injection, OAuth token exchange]

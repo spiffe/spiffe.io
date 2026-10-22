@@ -284,9 +284,31 @@
   "blogPosts": 14,
   "specificationDocuments": 13,
   "redirects": 205,
-  "builtHtmlPages": 301,
+  "builtHtmlPages": 289,
   "upstreamSitemapRoutesCovered": 86,
-  "contentPages": 95,
+  "contentPages": 99,
   "communityIntegrationAdditions": 1,
-  "commercialOfferingAdditions": 10
+  "commercialOfferingAdditions": 13,
+  "authoredAssuranceGuides": 3,
+  "commercialOfferings": 16,
+  "ecosystemEntries": 39,
+  "authoredApiAuthenticationGuides": 1,
+  "buildFilesystem": "macOS case-insensitive; 16 case-only redirect pairs share output files",
+  "expectedHtmlPagesOnCaseSensitiveFilesystem": 305,
+  "apiAuthenticationSources": {
+    "checked": "2026-10-22",
+    "openai": [
+      "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe",
+      "https://developers.openai.com/api/reference/workload-identity-federation",
+      "https://developers.openai.com/api/docs/guides/workload-identity-federation"
+    ],
+    "anthropic": [
+      "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
+      "https://platform.claude.com/docs/en/manage-claude/wif-reference"
+    ],
+    "spire": [
+      "https://spiffe.io/docs/latest/deploying/spire_server/",
+      "https://github.com/spiffe/spire/blob/main/support/oidc-discovery-provider/README.md"
+    ]
+  }
 }

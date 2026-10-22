@@ -126,6 +126,7 @@
   },
   {
     "name": "Anthropic / Claude",
+    "guide": {"label": "Authenticate to AI APIs", "url": "/docs/spiffe/use-cases/ai-api-authentication/"},
     "identityRoles": [
       "Accepts identities"
     ],
@@ -149,6 +150,7 @@
   },
   {
     "name": "OpenAI",
+    "guide": {"label": "Authenticate to AI APIs", "url": "/docs/spiffe/use-cases/ai-api-authentication/"},
     "identityRoles": [
       "Accepts identities"
     ],
