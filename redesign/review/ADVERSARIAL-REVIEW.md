@@ -2,6 +2,10 @@
 
 22 October 2026. Review of the renewed build, checked against the current `spiffe/spiffe.io` repository.
 
+## Update after the review
+
+The commercial-directory pass adds ten documented offerings and a dedicated commercial view containing 13 entries in total, including the three upstream integrations. The directory also adds nono as a community integration for JWT-SVID authentication from a sandbox supervisor. Messier 42 appears under the same evidence and ordering rules as the other vendors. The site now has 95 content pages. This partially addresses F7; matrix consolidation and the other findings remain open. The 94-page inventory below records the original reviewed snapshot.
+
 ## Verdict
 
 **C+ overall. B for direction. D for merge readiness.** Keep the project split and the restrained presentation. Do another content and maintenance pass before asking maintainers to merge it. Visual execution remains ungraded because browser inspection was blocked by the environment's policy gate.
@@ -18,7 +22,7 @@ The working repository is now a real clone of `https://github.com/spiffe/spiffe.
 
 All **331 tracked upstream files remain byte-for-byte unchanged**. The prototype is additive under `redesign/`; the existing production source and workflow remain at the root. This is a safe review arrangement, not the proposed permanent directory structure or a completed cutover.
 
-The preservation inventory accounts for **60 public content source files and one unpublished blog-authoring template**, with no unmapped content files. All 14 published blog posts are represented. The current ecosystem YAML is an exact copy; Aembit's latest entry is present in the implementation matrix. Mapping a source to a destination proves coverage, not semantic equivalence. Rewritten introductions and auxiliary pages still need editorial comparison.
+The preservation inventory accounts for **60 public content source files and one unpublished blog-authoring template**, with no unmapped content files. All 14 published blog posts are represented. The ecosystem retains the upstream entries, with the Rust SDK link updated to its published crate. Aembit's latest entry is present in the implementation matrix. Mapping a source to a destination proves coverage, not semantic equivalence. Rewritten introductions and auxiliary pages still need editorial comparison.
 
 Before any eventual PR is merged, fetch upstream again, inspect every changed source against the inventory, and reconcile the migration. A point-in-time snapshot cannot protect future changes by itself. The `npm run check:upstream` review command now fetches upstream and fails on an advanced base or changed existing files. It is an explicit local check, not an installed upstream CI gate. No upstream push, PR, or official production deployment was made.
 

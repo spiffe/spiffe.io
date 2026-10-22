@@ -66,6 +66,7 @@ export default defineConfig({
       ]},
       { label: 'Project', items: [
         { label: 'Ecosystem', link: '/ecosystem/' },
+        { label: 'Commercial offerings', link: '/ecosystem/commercial/' },
         { label: 'Implementation matrix', slug: 'ecosystem/matrix' },
         { label: 'Community', link: '/community/' },
         { label: 'Presentations', slug: 'community/presentations' },

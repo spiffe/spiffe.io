@@ -35,7 +35,7 @@ Open `http://localhost:8000`. Opening `dist/index.html` directly as a file does 
 | SPIFFE documentation | `src/content/docs/docs/spiffe/` |
 | SPIRE documentation | `src/content/docs/docs/spire/` |
 | Specification catalog | `src/data/specs.json` |
-| Ecosystem directory | `src/data/ecosystem.yaml` |
+| Ecosystem directory | `src/data/ecosystem.yaml`; additive commercial records in `src/data/commercial-offerings.json` |
 | Blog | `src/content/docs/blog/`, `src/data/posts.json` |
 | Release metadata | `src/data/release.json`, `scripts/releases.mjs` |
 | Legacy addresses | `src/data/redirects.json` |

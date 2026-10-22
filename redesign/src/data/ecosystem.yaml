@@ -21,10 +21,11 @@ categories:
     description: SPIRE, the reference implementation of SPIFFE, along with the plugins and tooling that extend and operate it.
     projects:
       - name: SPIRE
+        identityRoles: [Identity issuer]
         type: official
         weight: 100
         link: https://github.com/spiffe/spire
-        description: The SPIFFE Runtime Environment - the reference implementation of SPIFFE, handling node and workload attestation and SVID issuance and rotation.
+        description: A production-ready SPIFFE implementation that performs node and workload attestation and manages SVID issuance and rotation.
       - name: SPIRE Controller Manager
         type: official
         weight: 200
@@ -70,10 +71,10 @@ categories:
         weight: 400
         link: https://github.com/HewlettPackard/py-spiffe
         description: SPIFFE SDK for Python.
-      - name: maxlambrecht/rust-spiffe
+      - name: spiffe (Rust)
         type: community
         weight: 500
-        link: https://github.com/maxlambrecht/rust-spiffe
+        link: https://crates.io/crates/spiffe
         description: SPIFFE SDK for Rust.
       - name: 'jeengbe/spiffe'
         type: community
@@ -116,26 +117,31 @@ categories:
     description: Secrets managers that can store secrets and support SPIFFE-authenticated workloads to retrieving them.
     projects:
       - name: SPIKE
+        identityRoles: [Accepts identities]
         type: official
         weight: 100
         link: https://github.com/spiffe/spike
         description: A SPIFFE-native secrets manage that allows workloads to use SPIFFE authentication to retrieve secrets.
       - name: VMware Secrets Manager
+        identityRoles: [Accepts identities]
         type: community
         weight: 200
         link: https://github.com/vmware-tanzu/secrets-manager
         description: A Kubernetes-native secrets manager with support for SPIFFE authentication.
       - name: HashiCorp Vault
+        identityRoles: [Accepts identities]
         type: commercial
         weight: 300
         link: https://developer.hashicorp.com/vault/docs/auth/spiffe
         description: Secrets manager with support for SPIFFE authentication.
       - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
+        identityRoles: [Identity issuer, Accepts identities]
         type: commercial
         weight: 300
         link: https://www.paloaltonetworks.com/idira/machine/secrets-management
         description: SaaS secrets manager supporting SPIFFE authentication that also issues SPIFFE SVIDs to workloads and AI agents.
       - name: Infisical
+        identityRoles: [Accepts identities]
         type: commercial
         weight: 300
         link: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
@@ -151,6 +157,7 @@ categories:
         link: https://www.envoyproxy.io/
         description: Service proxy that can consume SVIDs over the Envoy SDS API to establish mTLS.
       - name: Istio
+        identityRoles: [Identity issuer]
         type: community
         weight: 200
         link: https://istio.io/
@@ -161,7 +168,20 @@ categories:
         link: https://github.com/ghostunnel/ghostunnel
         description: A TLS proxy that attaches to the SPIFFE Workload API to authenticate connections.
       - name: HashiCorp Consul
+        identityRoles: [Identity issuer]
         type: community
         weight: 400
         link: https://www.consul.io/
         description: Service mesh that can issue SPIFFE identities to the services it manages.
+      - name: nono
+        type: community
+        weight: 500
+        link: https://github.com/nolabs-ai/nono
+        role: Workload identity for sandboxed agents
+        description: An agent runtime security tool whose supervisor retrieves JWT-SVIDs from the Workload API. Its proxy injects them into upstream requests or exchanges them for OAuth access tokens, keeping identity credentials outside the sandboxed process.
+        capabilities: [Workload API client, JWT-SVID injection, OAuth token exchange]
+        sources:
+          - label: SPIFFE integration documentation
+            url: https://github.com/nolabs-ai/nono/blob/main/docs/cli/features/spiffe.mdx
+          - label: Integration design and tracking
+            url: https://github.com/nolabs-ai/nono/issues/1095

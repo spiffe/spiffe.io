@@ -284,7 +284,9 @@
   "blogPosts": 14,
   "specificationDocuments": 13,
   "redirects": 205,
-  "builtHtmlPages": 300,
+  "builtHtmlPages": 301,
   "upstreamSitemapRoutesCovered": 86,
-  "contentPages": 94
+  "contentPages": 95,
+  "communityIntegrationAdditions": 1,
+  "commercialOfferingAdditions": 10
 }

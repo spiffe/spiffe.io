@@ -440,7 +440,11 @@
     }
   ],
   "dataChecks": {
-    "ecosystemYamlExactMatch": true,
+    "ecosystemYamlExactMatch": false,
+    "ecosystemChanges": [
+      "Rust SDK display name and destination updated to spiffe (Rust) at https://crates.io/crates/spiffe; all other inherited entries are unchanged.",
+      "Added nono as a community proxy integration, based on its current SPIFFE documentation and credential-source code."
+    ],
     "latestAembitMatrixEntryPresent": true
   }
 }

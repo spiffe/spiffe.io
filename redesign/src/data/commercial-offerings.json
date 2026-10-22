@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Aembit",
+    "identityRoles": ["Identity issuer"],
+    "link": "https://aembit.io/",
+    "role": "Identity issuance and access",
+    "description": "A workload access platform with X.509-SVID and JWT-SVID credential providers. It attests workloads, evaluates access policy, and supplies credentials for the destination service.",
+    "scope": "The documented credential providers define its SPIFFE support; serving the full Workload API is a separate capability.",
+    "capabilities": ["X.509-SVID", "JWT-SVID", "Access policy"],
+    "sources": [
+      {"label": "X.509-SVID provider", "url": "https://docs.aembit.io/user-guide/access-policies/credential-providers/about-spiffe-x509-svid/"},
+      {"label": "JWT-SVID support", "url": "https://aembit.io/press-release/aembit-introduces-spiffe-credential-provider-to-extend-secure-workload-authentication-across-cloud-native-and-ai-environments/"}
+    ]
+  },
+  {
+    "name": "Cofide Connect",
+    "identityRoles": ["Integration"],
+    "link": "https://www.cofide.io/",
+    "role": "SPIRE operations and integration",
+    "description": "A workload identity platform built around SPIRE. It manages attestation policy and trust relationships, delivers SVIDs through the Workload API, and provides application integrations and workload events.",
+    "capabilities": ["SPIRE management", "Workload API", "Trust relationships"],
+    "sources": [
+      {"label": "Workload credentials", "url": "https://docs.cofide.dev/workloads/credentials/"},
+      {"label": "Deploy Cofide SPIRE", "url": "https://docs.cofide.dev/trust-zones/deploy-spire/"}
+    ]
+  },
+  {
+    "name": "Defakto",
+    "identityRoles": ["Identity issuer"],
+    "link": "https://www.defakto.security/",
+    "role": "Identity issuance and federation",
+    "description": "A SPIFFE identity platform for workloads across Kubernetes, virtual machines, and serverless environments. Its documented integrations use SVIDs and trust domains to authenticate to services and exchange credentials with cloud platforms.",
+    "capabilities": ["SVID issuance", "Trust domains", "Cloud credential exchange"],
+    "sources": [
+      {"label": "Identity model", "url": "https://d.defakto.security/mint/concepts/terminology/"},
+      {"label": "AWS federation", "url": "https://d.defakto.security/mint/integration/tutorial-aws-federation/"},
+      {"label": "Serverless identities", "url": "https://d.defakto.security/mint/configuration/serverless-configuration/serverless-configuration-overview/"}
+    ]
+  },
+  {
+    "name": "Google Cloud managed workload identities",
+    "identityRoles": ["Identity issuer"],
+    "link": "https://docs.cloud.google.com/iam/docs/managed-workload-identity",
+    "role": "Managed identity issuance",
+    "description": "Google Cloud provisions SPIFFE-based X.509 credentials and trust anchors through Certificate Authority Service for supported Compute Engine and GKE workloads. Applications can use the credentials for mutual TLS.",
+    "scope": "The documented GKE offering is in Preview. Available features and identity formats depend on the workload environment.",
+    "capabilities": ["X.509 credentials", "Compute Engine", "GKE Preview"],
+    "sources": [
+      {"label": "Managed workload identities", "url": "https://docs.cloud.google.com/iam/docs/managed-workload-identity"}
+    ]
+  },
+  {
+    "name": "Greymatter",
+    "identityRoles": ["Integration"],
+    "link": "https://greymatter.io/",
+    "role": "Service identity and networking",
+    "description": "An application networking platform that integrates SPIRE to provision workload identities. Its service networking layer combines certificate-based mutual authentication with identity-aware traffic and access policies.",
+    "capabilities": ["SPIRE integration", "Service identity", "Mutual TLS"],
+    "sources": [
+      {"label": "SPIRE integration", "url": "https://greymatter.gitbook.io/grey-matter-documentation/usage/fabric/security/spire"},
+      {"label": "Platform scope", "url": "https://greymatter.io/blog/greymatter-vs-istio-differences/"}
+    ]
+  },
+  {
+    "name": "Idira Secure Workload Access",
+    "identityRoles": ["Identity issuer"],
+    "link": "https://www.paloaltonetworks.com/resources/techbriefs/secure-workload-access",
+    "role": "Identity issuance and secrets access",
+    "description": "Palo Alto Networks' workload identity offering attests workloads and issues SPIFFE credentials. Its agents provide a local Workload API, with documented paths for secrets access and JWT-SVID credential exchange.",
+    "capabilities": ["X.509-SVID", "JWT-SVID", "Workload API"],
+    "sources": [
+      {"label": "Workload identity overview", "url": "https://docs.cyberark.com/secrets-manager-saas/latest/en/content/conjurcloud/ccl-swa-overview.htm"},
+      {"label": "Agent and Workload API", "url": "https://docs.cyberark.com/secrets-manager-saas/latest/en/content/conjurcloud/ccl-swa-troubleshooting.htm"}
+    ]
+  },
+  {
+    "name": "Messier 42 Quantum Helix",
+    "identityRoles": ["Identity issuer", "Integration"],
+    "link": "https://messier42.com/quantum-helix/",
+    "role": "Workload identity for high-assurance environments",
+    "description": "A Kubernetes platform for high-assurance workload identity across namespaces and trust domains. It supports TPM-backed node attestation and delivers X.509-SVIDs through the SPIFFE Workload API. Namespace policies select issuing authorities. Post-quantum profiles include ML-DSA signatures and ML-KEM or hybrid key establishment. QHx Notary binds application requests and responses to workload identity, producing signed records for independent verification. Its protocol-agnostic engine supports middleware integrations for AI and messaging workflows. CABE integration adds policy-controlled access to encrypted objects.",
+    "capabilities": ["Namespace authority selection", "SPIFFE federation", "TPM attestation", "Post-quantum profiles", "Application notarization", "CABE integration"],
+    "sources": [
+      {"label": "Identity and cryptography", "url": "https://messier42.com/engineering/identity/"},
+      {"label": "Notary capture and signatures", "url": "https://messier42.com/engineering/evidence/"},
+      {"label": "CABE integration", "url": "https://messier42.com/quantum-helix/"},
+      {"label": "Security model", "url": "https://messier42.com/security/"}
+    ]
+  },
+  {
+    "name": "Red Hat Zero Trust Workload Identity Manager",
+    "identityRoles": ["Integration"],
+    "link": "https://www.redhat.com/en/technologies/cloud-computing/openshift/zero-trust-workload-identity-manager",
+    "role": "SPIRE operations on OpenShift",
+    "description": "An OpenShift operator that manages SPIRE components and workload registration. It provides a supported product path for deploying SPIFFE identities and configuring federation in Red Hat environments.",
+    "scope": "Feature maturity and support depend on the product release and OpenShift version; consult the matching release documentation.",
+    "capabilities": ["SPIRE management", "OpenShift", "Federation"],
+    "sources": [
+      {"label": "Product overview", "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift/zero-trust-workload-identity-manager"},
+      {"label": "Release documentation", "url": "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/security_and_compliance/zero-trust-workload-identity-manager"}
+    ]
+  },
+  {
+    "name": "StrongDM ID",
+    "identityRoles": ["Identity issuer"],
+    "link": "https://id.strongdm.ai",
+    "role": "JWT-SVID issuance for workloads and agents",
+    "description": "An identity service that issues audience-scoped JWT-SVIDs through an authenticated HTTP API and publishes a trust bundle for verification. Its SPIFFE client examples cover Python, Go, and TypeScript.",
+    "capabilities": ["JWT-SVID issuance", "Published trust bundles", "Agent authentication"],
+    "sources": [
+      {"label": "SPIFFE client examples", "url": "https://github.com/strongdm/agentic-auth/blob/master/examples/spiffe-client/README.md"},
+      {"label": "Identity service integration", "url": "https://github.com/strongdm/agentic-auth/blob/master/README.md"}
+    ]
+  },
+  {
+    "name": "Teleport Workload Identity",
+    "identityRoles": ["Identity issuer"],
+    "link": "https://goteleport.com/docs/machine-workload-identity/workload-identity/introduction/",
+    "role": "Identity issuance and integration",
+    "description": "Teleport issues short-lived X.509-SVIDs and JWT-SVIDs from a cluster's workload identity authority. Its tbot agent can expose the SPIFFE Workload API and deliver credentials to applications and proxies.",
+    "capabilities": ["X.509-SVID", "JWT-SVID", "Workload API"],
+    "sources": [
+      {"label": "Workload identity", "url": "https://goteleport.com/docs/machine-workload-identity/workload-identity/introduction/"},
+      {"label": "Agent configuration", "url": "https://goteleport.com/docs/reference/machine-workload-identity/machine-id/configuration/"}
+    ]
+  },
+  {
+    "name": "Anthropic / Claude",
+    "identityRoles": [
+      "Accepts identities"
+    ],
+    "link": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
+    "role": "Claude API workload identity federation",
+    "description": "Exchanges JWT-SVIDs from a configured SPIFFE issuer for Claude API access tokens. Federation rules match workload claims and select a service account, workspace, and OAuth scope.",
+    "capabilities": [
+      "JWT-SVID federation",
+      "Service account access"
+    ],
+    "sources": [
+      {
+        "label": "SPIFFE federation setup",
+        "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe"
+      },
+      {
+        "label": "Token and authorization requirements",
+        "url": "https://platform.claude.com/docs/en/manage-claude/wif-reference"
+      }
+    ]
+  },
+  {
+    "name": "OpenAI",
+    "identityRoles": [
+      "Accepts identities"
+    ],
+    "link": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe",
+    "role": "OpenAI API workload identity federation",
+    "description": "Exchanges JWT-SVIDs from a configured SPIFFE issuer for OpenAI API access tokens. Claim mappings select a project service account and can narrow its API permissions.",
+    "capabilities": [
+      "JWT-SVID federation",
+      "Service account access"
+    ],
+    "sources": [
+      {
+        "label": "SPIFFE federation setup",
+        "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe"
+      },
+      {
+        "label": "Token exchange reference",
+        "url": "https://developers.openai.com/api/reference/workload-identity-federation"
+      }
+    ]
+  },
+  {
+    "name": "Riptides",
+    "identityRoles": [
+      "Identity issuer",
+      "Integration"
+    ],
+    "link": "https://riptides.io/",
+    "role": "SVID issuance and Linux connection integration",
+    "description": "Issues X.509-SVIDs with SPIFFE IDs in URI SANs and JWT-SVIDs with SPIFFE IDs as subjects. A node daemon matches process selectors; a Linux kernel module generates X.509 private keys and requests certificates through the daemon and control plane. The module uses those credentials for transparent mutual TLS and applies connection policy.",
+    "capabilities": [
+      "X.509-SVID",
+      "JWT-SVID",
+      "Kernel-mediated mTLS"
+    ],
+    "sources": [
+      {
+        "label": "Workload identity and issuance",
+        "url": "https://docs.riptides.io/concepts/workload-identity/"
+      },
+      {
+        "label": "Platform architecture",
+        "url": "https://docs.riptides.io/concepts/architecture/"
+      },
+      {
+        "label": "Vendor article: AI agent identity",
+        "url": "https://riptides.io/blog/how-to-deliver-spiffe-identity-to-ai-agents/"
+      }
+    ]
+  }
+]
