@@ -38,6 +38,25 @@
     "checked": "2026-10-22"
   },
   {
+    "name": "Cosmian KMS",
+    "identityRoles": [
+      "Integration"
+    ],
+    "link": "https://docs.cosmian.com/versions/kms/5.26.0/integrations/spire_spiffe.html",
+    "description": "A PKI/KMS integration for SPIRE. Its Vault-compatible PKI endpoint signs intermediate CA requests through the Vault UpstreamAuthority plugin; SPIRE issues workload SVIDs. The documented configuration uses AppRole for KMS access.",
+    "sources": [
+      {
+        "label": "SPIRE integration",
+        "url": "https://docs.cosmian.com/versions/kms/5.26.0/integrations/spire_spiffe.html"
+      },
+      {
+        "label": "SPIRE Vault UpstreamAuthority",
+        "url": "https://github.com/spiffe/spire/blob/main/doc/plugin_server_upstreamauthority_vault.md"
+      }
+    ],
+    "checked": "2026-10-22"
+  },
+  {
     "name": "Defakto",
     "identityRoles": [
       "Identity issuer"
@@ -114,6 +133,72 @@
     "checked": "2026-10-22"
   },
   {
+    "name": "Messier 42 Quantum Helix",
+    "identityRoles": [
+      "Identity issuer",
+      "Integration"
+    ],
+    "link": "https://messier42.com/quantum-helix/",
+    "description": "Kubernetes workload identity with TPM node attestation, namespace-selected authorities, and X.509-SVID delivery through the Workload API. QHx Notary signs identity-bound application records through AI and messaging middleware. CABE integration controls access to encrypted objects.",
+    "sources": [
+      {
+        "label": "Identity and cryptography",
+        "url": "https://messier42.com/engineering/identity/"
+      },
+      {
+        "label": "Notary capture and signatures",
+        "url": "https://messier42.com/engineering/evidence/"
+      },
+      {
+        "label": "CABE integration",
+        "url": "https://messier42.com/quantum-helix/"
+      },
+      {
+        "label": "Security model",
+        "url": "https://messier42.com/security/"
+      }
+    ],
+    "checked": "2026-10-22"
+  },
+  {
+    "name": "Red Hat Zero Trust Workload Identity Manager",
+    "identityRoles": [
+      "Integration"
+    ],
+    "link": "https://www.redhat.com/en/technologies/cloud-computing/openshift/zero-trust-workload-identity-manager",
+    "description": "An OpenShift operator that manages SPIRE components and workload registration. It provides a supported product path for deploying SPIFFE identities and configuring federation in Red Hat environments. Feature maturity and support depend on the product release and OpenShift version; consult the matching release documentation.",
+    "sources": [
+      {
+        "label": "Product overview",
+        "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift/zero-trust-workload-identity-manager"
+      },
+      {
+        "label": "Release documentation",
+        "url": "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/security_and_compliance/zero-trust-workload-identity-manager"
+      }
+    ],
+    "checked": "2026-10-22"
+  },
+  {
+    "name": "StrongDM ID",
+    "identityRoles": [
+      "Identity issuer"
+    ],
+    "link": "https://id.strongdm.ai",
+    "description": "An identity service that issues audience-scoped JWT-SVIDs through an authenticated HTTP API and publishes a trust bundle for verification. Its SPIFFE client examples cover Python, Go, and TypeScript.",
+    "sources": [
+      {
+        "label": "SPIFFE client examples",
+        "url": "https://github.com/strongdm/agentic-auth/blob/master/examples/spiffe-client/README.md"
+      },
+      {
+        "label": "Identity service integration",
+        "url": "https://github.com/strongdm/agentic-auth/blob/master/README.md"
+      }
+    ],
+    "checked": "2026-10-22"
+  },
+  {
     "name": "Teleport Workload Identity",
     "identityRoles": [
       "Identity issuer"
@@ -128,6 +213,68 @@
       {
         "label": "Agent configuration",
         "url": "https://goteleport.com/docs/reference/machine-workload-identity/machine-id/configuration/"
+      }
+    ],
+    "checked": "2026-10-22"
+  },
+  {
+    "name": "Anthropic / Claude",
+    "identityRoles": [
+      "Accepts identities"
+    ],
+    "link": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
+    "description": "Exchanges JWT-SVIDs from a configured SPIFFE issuer for Claude API access tokens. Federation rules match workload claims and select a service account, workspace, and OAuth scope.",
+    "sources": [
+      {
+        "label": "SPIFFE federation setup",
+        "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe"
+      },
+      {
+        "label": "Token and authorization requirements",
+        "url": "https://platform.claude.com/docs/en/manage-claude/wif-reference"
+      }
+    ],
+    "checked": "2026-10-22"
+  },
+  {
+    "name": "OpenAI",
+    "identityRoles": [
+      "Accepts identities"
+    ],
+    "link": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe",
+    "description": "Exchanges JWT-SVIDs from a configured SPIFFE issuer for OpenAI API access tokens. Claim mappings select a project service account and can narrow its API permissions.",
+    "sources": [
+      {
+        "label": "SPIFFE federation setup",
+        "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe"
+      },
+      {
+        "label": "Token exchange reference",
+        "url": "https://developers.openai.com/api/reference/workload-identity-federation"
+      }
+    ],
+    "checked": "2026-10-22"
+  },
+  {
+    "name": "Riptides",
+    "identityRoles": [
+      "Identity issuer",
+      "Integration"
+    ],
+    "link": "https://riptides.io/",
+    "description": "Issues X.509-SVIDs with SPIFFE IDs in URI SANs and JWT-SVIDs with SPIFFE IDs as subjects. A node daemon matches process selectors; a Linux kernel module generates X.509 private keys and requests certificates through the daemon and control plane. The module uses those credentials for transparent mutual TLS and applies connection policy.",
+    "sources": [
+      {
+        "label": "Workload identity and issuance",
+        "url": "https://docs.riptides.io/concepts/workload-identity/"
+      },
+      {
+        "label": "Platform architecture",
+        "url": "https://docs.riptides.io/concepts/architecture/"
+      },
+      {
+        "label": "Vendor article: AI agent identity",
+        "url": "https://riptides.io/blog/how-to-deliver-spiffe-identity-to-ai-agents/"
       }
     ],
     "checked": "2026-10-22"

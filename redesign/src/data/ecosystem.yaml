@@ -208,6 +208,19 @@ categories:
         link: https://www.consul.io/
         description: Service mesh that can issue SPIFFE identities to the services it
           manages.
+      - name: nono
+        type: community
+        weight: 500
+        link: https://github.com/nolabs-ai/nono
+        description: An agent runtime security tool whose supervisor retrieves JWT-SVIDs
+          from the Workload API. Its proxy injects them into upstream requests
+          or exchanges them for OAuth access tokens, keeping identity
+          credentials outside the sandboxed process.
+        sources:
+          - label: SPIFFE integration documentation
+            url: https://github.com/nolabs-ai/nono/blob/main/docs/cli/features/spiffe.mdx
+          - label: Integration design and tracking
+            url: https://github.com/nolabs-ai/nono/issues/1095
   - name: Additional implementations and services
     weight: 600
     description: Additional projects and services that issue or accept SPIFFE identities.
