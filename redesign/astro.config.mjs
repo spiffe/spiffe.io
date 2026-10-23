@@ -39,6 +39,7 @@ export default defineConfig({
     routeMiddleware: './src/route-middleware.ts',
     components: {
       Header: './src/components/Header.astro',
+      ContentPanel: './src/components/ContentPanel.astro',
       PageTitle: './src/components/PageTitle.astro',
       Hero: './src/components/Hero.astro',
       Sidebar: './src/components/Sidebar.astro',
@@ -56,7 +57,7 @@ export default defineConfig({
       { label: 'SPIFFE', items: [
         { label: 'Overview', slug: 'docs/spiffe/overview' },
         { label: 'Concepts', slug: 'docs/spiffe/concepts' },
-        { label: 'Specifications', items: [{ autogenerate: { directory: 'docs/spiffe/specs' } }] },
+        { label: 'Specifications', items: [{ label: 'Specifications overview', slug: 'docs/spiffe/specs' }, { autogenerate: { directory: 'docs/spiffe/specs' } }] },
       ]},
       { label: 'SPIRE', items: [
         { label: 'Understand', items: [{ autogenerate: { directory: 'docs/spire/about' } }] },

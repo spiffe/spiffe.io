@@ -9,7 +9,7 @@ hero:
 
 <div class="not-content splash-panel">
 <p class="page-intro">SPIRE is the open-source reference implementation of SPIFFE. It attests nodes and workloads, issues their SVIDs, and keeps those credentials current.</p>
-<div class="actions"><a class="button primary" href="/docs/spire/try/getting-started-linux-macos-x/">Try SPIRE locally →</a><a class="button secondary" href="/downloads/">Download SPIRE →</a></div>
+<div class="actions"><a class="button primary" href="/docs/spire/about/">SPIRE documentation →</a><a class="button secondary" href="/docs/spire/try/getting-started-linux-macos-x/">Try SPIRE locally →</a><a class="button secondary" href="/downloads/">Download SPIRE →</a></div>
 </div>
 
 ## A server, an agent, and your workload.
