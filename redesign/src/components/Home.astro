@@ -2,6 +2,14 @@
 import Issuance from './Issuance.astro';
 import Adopters from './Adopters.astro';
 import release from '../data/release.json';
+const featuredProjects = [
+  { name: 'SPIRE', href: '/spire/', logo: 'spire/icon/color/spire-icon-color.svg' },
+  { name: 'Teleport', href: '/ecosystem/', logo: 'teleport_logo.svg' },
+  { name: 'Istio', href: '/ecosystem/', logo: 'istio.svg' },
+  { name: 'Consul', href: '/ecosystem/', logo: 'consul.svg' },
+  { name: 'cert-manager', href: '/ecosystem/', logo: 'cert-manager.png' },
+  { name: 'Envoy', href: '/ecosystem/', logo: 'envoy.svg' },
+];
 ---
 <div class="home-content not-content">
   <Adopters />
@@ -14,7 +22,7 @@ import release from '../data/release.json';
   <section class="primitives section-block" aria-labelledby="primitives-heading">
     <div class="section-heading"><div><p class="eyebrow">02 / Concepts</p><h2 id="primitives-heading">SPIFFE concepts</h2></div></div>
     <div class="primitive-grid">
-      <a href="/docs/spiffe/specs/spiffe-id/"><span class="primitive-number">01</span><h3>SPIFFE ID <span>↗</span></h3><p>A URI that names a workload within a trust domain.</p><code>spiffe://example.org/payments</code></a>
+      <a href="/docs/spiffe/specs/spiffe-id/"><span class="primitive-number">01</span><h3>SPIFFE ID <span>↗</span></h3><p>A URI that names a workload within a trust domain.</p><code>spiffe://example.org<wbr />/ai/model-serving</code></a>
       <a href="/docs/spiffe/specs/x509-svid/"><span class="primitive-number">02</span><h3>SVID <span>↗</span></h3><p>A verifiable identity document that binds a SPIFFE ID to a key or token.</p><code>X.509-SVID · JWT-SVID</code></a>
       <a href="/docs/spiffe/specs/workload-api/"><span class="primitive-number">03</span><h3>Workload API <span>↗</span></h3><p>A local interface for obtaining SVIDs and trust bundles.</p><code>FetchX509SVID</code></a>
       <a href="/docs/spiffe/specs/trust-domain-and-bundle/"><span class="primitive-number">04</span><h3>Trust domain <span>↗</span></h3><p>An administrative boundary with its own issuing authority.</p><code>example.org</code></a>
@@ -35,7 +43,12 @@ import release from '../data/release.json';
   </section>
   <section class="ecosystem-preview section-block" aria-labelledby="ecosystem-heading">
     <div class="section-heading"><div><p class="eyebrow">05 / An open ecosystem</p><h2 id="ecosystem-heading">SPIFFE implementations and integrations</h2></div><p>Find identity issuers, application libraries, and services that accept SPIFFE identities.</p></div>
-    <div class="ecosystem-names"><a href="/spire/">SPIRE</a><a href="/ecosystem/">Teleport</a><a href="/ecosystem/">Istio</a><a href="/ecosystem/">Consul</a><a href="/ecosystem/">cert-manager</a><a href="/ecosystem/">Envoy</a></div>
+    <div class="ecosystem-names">
+      {featuredProjects.map(({ name, href, logo }) => <a href={href}>
+        <img src={`/img/logos/${logo}`} width="64" height="56" alt="" loading="lazy" />
+        <span>{name}</span>
+      </a>)}
+    </div>
     <div class="inline-links"><a class="text-link" href="/ecosystem/">Explore the ecosystem →</a></div>
   </section>
   <section class="resources section-block" aria-labelledby="resources-heading">
