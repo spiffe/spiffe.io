@@ -8,9 +8,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/releases.mjs && astro build && node scripts/redirects.mjs && node scripts/verify.mjs",
+    "build": "node scripts/releases.mjs && astro build && node scripts/redirects.mjs && npm run check",
     "preview": "astro preview --host 0.0.0.0 --port 4173",
-    "check": "node scripts/verify.mjs",
+    "check": "node --test scripts/redirect-utils.test.mjs && node scripts/verify.mjs",
     "refresh:releases": "node scripts/releases.mjs --refresh",
     "check:upstream": "node scripts/check-upstream.mjs",
     "sources": "node scripts/sources.mjs"

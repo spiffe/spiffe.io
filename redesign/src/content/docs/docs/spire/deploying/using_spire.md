@@ -30,8 +30,8 @@ This page describes some options to get started with SPIRE.
 
 * The spiffe.io [Get SPIRE](/downloads/) page has additional download options and instructions for building SPIRE yourself
 
-* [Quickstart for Linux and MacOS X](/docs/latest/spire/installing/getting-started-linux-macos-x/) describes how to download and test a simple one-node installation of the SPIRE Server and Agent
+* [Quickstart for Linux and MacOS X](/docs/spire/try/getting-started-linux-macos-x/) describes how to download and test a simple one-node installation of the SPIRE Server and Agent
 
 ### MacOS
 
-* There are no pre-built SPIRE executables available for MacOS, but [Quickstart for Linux and MacOS X](/docs/latest/spire/installing/getting-started-linux-macos-x/) describes how to download and build SPIRE to test a simple one-node installation of the SPIRE Server and Agent
+* There are no pre-built SPIRE executables available for MacOS, but [Quickstart for Linux and MacOS X](/docs/spire/try/getting-started-linux-macos-x/) describes how to download and build SPIRE to test a simple one-node installation of the SPIRE Server and Agent
