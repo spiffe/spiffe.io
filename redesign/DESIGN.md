@@ -1,6 +1,6 @@
 # Site design
 
-SPIFFE documentation explains the identity standard and specifications. SPIRE documentation follows an operator's path through understanding, trying, planning, deploying, and maintaining an implementation. Each has its own sidebar and an explicit project switch. The homepage, ecosystem directory, blog, and community pages share the same navigation and search.
+SPIFFE documentation explains the identity standard and specifications. SPIRE documentation follows an operator's path through understanding, trying, planning, deploying, and maintaining an implementation. Each has its own sidebar and an explicit project switch. The homepage, ecosystem directory, blog, and community pages share the same header and search. Blog articles use a centered reading layout without documentation navigation.
 
 Astro generates static HTML. Starlight supplies accessible documentation navigation, code rendering, heading links, and Pagefind search. Small components handle the homepage and directory filters without a client application framework.
 

@@ -11,6 +11,10 @@ const imageCache = new Map<string, ReturnType<typeof imageMetadata>>();
 export const onRequest = defineRouteMiddleware(async (context) => {
   const route = context.locals.starlightRoute;
   const path = context.url.pathname;
+  if (path.startsWith('/blog/')) {
+    route.hasSidebar = false;
+    route.toc = undefined;
+  }
   const { image, imageAlt, title } = route.entry.data;
   const isDocs = path.startsWith('/docs/');
   const imageUrl = new URL(image || (isDocs ? '/social-docs-v1.png' : '/social-wide-v2.png'), imageOrigin);
