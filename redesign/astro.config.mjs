@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import tailwindcss from '@tailwindcss/vite';
 import { unified } from '@astrojs/markdown-remark';
 import fs from 'node:fs';
 import release from './src/data/release.json' with { type: 'json' };
@@ -24,13 +25,14 @@ export default defineConfig({
   output: 'static',
   server: { host: '0.0.0.0', port: 4173 },
   trailingSlash: 'always',
+  vite: { plugins: [tailwindcss()] },
   redirects: JSON.parse(fs.readFileSync('./src/data/redirects.json', 'utf8')),
   markdown: { processor: unified({ remarkPlugins: [releaseTokens] }) },
   integrations: [starlight({
     title: 'SPIFFE',
     description: 'The open standard for workload identity. Understand SPIFFE, run SPIRE, and build with the ecosystem.',
     favicon: '/img/logos/spiffe/icon/color/spiffe-icon-color.svg',
-    customCss: ['./src/styles/site.css'],
+    customCss: ['./src/styles/tailwind.css', './src/styles/site.css'],
     disable404Route: true,
     credits: false,
     editLink: { baseUrl: 'https://github.com/spiffe/spiffe.io/edit/master/redesign/' },
