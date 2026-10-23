@@ -138,7 +138,7 @@
       "Identity issuer",
       "Integration"
     ],
-    "link": "https://messier42.com/quantum-helix/",
+    "link": "https://messier42.com/",
     "description": "Kubernetes workload identity with TPM node attestation, namespace-selected authorities, and X.509-SVID delivery through the Workload API. QHx Notary signs identity-bound application records through AI and messaging middleware. CABE integration controls access to encrypted objects.",
     "sources": [
       {
