@@ -1,0 +1,25 @@
+---
+import DefaultHero from '@astrojs/starlight/components/Hero.astro';
+const home = Astro.url.pathname === '/';
+---
+{home ? <section class="home-hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="signal-dot"></span> The open standard for workload identity</p>
+    <h1 id="_top">Identity<br />workloads can prove<span class="blue-period">.</span></h1>
+    <p class="hero-description">SPIFFE is an open standard for giving software a verifiable identity, wherever it runs.</p>
+    <p class="hero-secondary">SPIRE is its open-source reference implementation.</p>
+    <div class="actions"><a class="button primary" href="/docs/spiffe/overview/">Understand SPIFFE <span aria-hidden="true">→</span></a><a class="button secondary" href="/spire/">Run SPIRE <span aria-hidden="true">→</span></a></div>
+  </div>
+  <figure class="identity-figure" aria-label="Model-serving requests a model; the registry verifies the caller’s SVID and decides access using its policy">
+    <h2 class="identity-headline">Prove which workload is calling.</h2>
+    <div class="identity-mark"><img src="/img/logos/spiffe/icon/color/spiffe-icon-color.svg" width="51" height="61" alt="" /><span>model-serving</span><span class="id-label">WORKLOAD</span></div>
+    <div class="identity-uri" role="img" aria-label="SPIFFE ID: spiffe://example.org/ai/model-serving. Trust domain: example.org. Workload path: /ai/model-serving."><span class="uri-scheme">spiffe://</span><strong class="uri-domain">example.org</strong><strong class="uri-path">/ai/model-serving</strong><span class="uri-label domain-label">trust domain</span><span class="uri-label path-label">workload path</span></div>
+    <div class="identity-request">
+      <svg viewBox="0 0 24 48" width="24" height="48" fill="none" aria-hidden="true"><path d="M12 1v43m-6-6 6 6 6-6" stroke="currentColor" stroke-width="1.5" /></svg>
+      <span>Request a model<small>Authenticated with SVID</small></span>
+    </div>
+    <div class="identity-registry"><strong>Model registry</strong><span>Verifies SVID · decides access</span></div>
+    <p class="identity-compatibility">Kubernetes · Virtual machines · Bare metal</p>
+    <figcaption>The model registry verifies the workload’s identity and applies its access policy. Short-lived credentials are issued and renewed automatically.</figcaption>
+  </figure>
+</section> : <DefaultHero />}

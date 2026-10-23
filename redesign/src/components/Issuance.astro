@@ -1,0 +1,11 @@
+<section class="mechanism section-block" aria-labelledby="mechanism-heading">
+  <div class="section-heading"><div><p class="eyebrow">01 / From workload to identity</p><h2 id="mechanism-heading">Prove what is running.</h2></div><p>SPIRE attests nodes and workloads, issues short-lived credentials, and keeps them current.</p></div>
+  <figure class="issuance-figure">
+    <div class="identity-flow">
+      <section><p class="eyebrow">Issuance and rotation</p><h3>SPIRE Server → Attested Agent</h3><p>The server signs X.509-SVIDs. The agent caches them and renews them before expiration.</p></section>
+      <section><p class="eyebrow">Local Workload API</p><h3>Agent → Your workload</h3><p>The agent attests the caller and matches registration selectors. It streams the authorized SVID, private key, and trust bundles from its cache.</p></section>
+      <section><p class="eyebrow">Application connection</p><h3>Your workload ↔ Peer service</h3><p>Each TLS peer validates the other's X.509-SVID and proves possession of its private key. Each service applies its own authorization policy.</p></section>
+    </div>
+    <figcaption><span>X.509-SVID example. Credential renewal runs independently of application connections.</span><a href="/docs/spire/about/concepts/">Attestation and issuance in detail →</a></figcaption>
+  </figure>
+</section>

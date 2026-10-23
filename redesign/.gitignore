@@ -1,0 +1,9 @@
+node_modules
+!public/
+!public/**
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+*.log

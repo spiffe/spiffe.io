@@ -1,0 +1,8 @@
+---
+import { getPosts } from '../data/blog';
+const posts = await getPosts();
+---
+<div class="splash-panel not-content">
+  <p><a href="/blog/index.xml">Subscribe via RSS</a></p>
+  {posts.map(({id, data: post}) => <article class="blog-row"><time datetime={post.date!.toISOString()}>{post.date!.toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric',timeZone:'UTC'})}</time><div><h2><a href={`/${id}/`}>{post.title}</a></h2><p>{post.description}</p><p class="author">{post.author} · {post.tags.join(' · ')}</p></div></article>)}
+</div>

@@ -1,0 +1,324 @@
+{
+  "site": {
+    "repository": "spiffe/spiffe.io",
+    "revision": "42e7c82fc4a8117e2fc2d6933180279aae18adeb"
+  },
+  "documents": [
+    {
+      "page": "blog/2020-06-08-re-cap-spiffe-community-day-fall-2018",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2020-06-08-re-cap-spiffe-community-day-fall-2018/index.md"
+    },
+    {
+      "page": "blog/2020-06-09-re-cap-spiffe-community-day-spring-2019",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2020-06-09-re-cap-spiffe-community-day-spring-2019/index.md"
+    },
+    {
+      "page": "blog/2020-06-12-re-cap-spiffe-community-day-fall-2019",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2020-06-12-re-cap-spiffe-community-day-fall-2019/index.md"
+    },
+    {
+      "page": "blog/2020-06-18-spiffe-community-day-spring-2020",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2020-06-18-spiffe-community-day-spring-2020/index.md"
+    },
+    {
+      "page": "blog/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2020-06-22-spiffe-spire-move-to-cncf-incubation-level-hosted-projects/index.md"
+    },
+    {
+      "page": "blog/2020-09-25-scrutinizing-spire-security",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2020-09-25-scrutinizing-spire-security/index.md"
+    },
+    {
+      "page": "blog/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2020-09-25-scrutinizing-spire-to-sensibly-strengthen-spiffe-security-part-two/index.md"
+    },
+    {
+      "page": "blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2021-12-20-enabling-authenticated-communication-for-serverless-workloads-with-spire/index.md"
+    },
+    {
+      "page": "blog/2022-05-20-spire-now-runs-on-windows",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2022-05-20-spire-now-runs-on-windows/index.md"
+    },
+    {
+      "page": "blog/2022-06-16-hardening-istio-security-with-spire",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2022-06-16-hardening-istio-security-with-spire/index.md"
+    },
+    {
+      "page": "blog/2026-07-19-bottom-turtle-ha-architecture",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2026-07-19-bottom-turtle-ha-architecture/index.md"
+    },
+    {
+      "page": "blog/2026-08-18-spiffe-standard-roadmap",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2026-08-18-spiffe-standard-roadmap/index.md"
+    },
+    {
+      "page": "blog/2026-08-23-bottom-turtle-ha-deployment",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2026-08-23-bottom-turtle-ha-deployment/index.md"
+    },
+    {
+      "page": "blog/2026-09-03-spire-under-kubernetes",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/blog/2026-09-03-spire-under-kubernetes/index.md"
+    },
+    {
+      "page": "community/presentations",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/community-presentations.md"
+    },
+    {
+      "page": "community-day-2026",
+      "source": "https://github.com/spiffe/spiffe.io/blob/master/content/community-day-2026/_index.html"
+    },
+    {
+      "page": "docs/spiffe/concepts",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/spiffe-concepts.md"
+    },
+    {
+      "page": "docs/spiffe/specs/broker-api",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Broker_API.md"
+    },
+    {
+      "page": "docs/spiffe/specs/broker-endpoint",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Broker_Endpoint.md"
+    },
+    {
+      "page": "docs/spiffe/specs/federation",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Federation.md"
+    },
+    {
+      "page": "docs/spiffe/specs/filesystem-delivery",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Filesystem_Delivery.md"
+    },
+    {
+      "page": "docs/spiffe/specs/jwt-svid",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/JWT-SVID.md"
+    },
+    {
+      "page": "docs/spiffe/specs/spiffe-id",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE-ID.md"
+    },
+    {
+      "page": "docs/spiffe/specs/spiffe",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE.md"
+    },
+    {
+      "page": "docs/spiffe/specs/stability",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/STABILITY.md"
+    },
+    {
+      "page": "docs/spiffe/specs/trust-domain-and-bundle",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Trust_Domain_and_Bundle.md"
+    },
+    {
+      "page": "docs/spiffe/specs/wit-svid",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/WIT-SVID.md"
+    },
+    {
+      "page": "docs/spiffe/specs/workload-api",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Workload_API.md"
+    },
+    {
+      "page": "docs/spiffe/specs/workload-endpoint",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Workload_Endpoint.md"
+    },
+    {
+      "page": "docs/spiffe/specs/x509-svid",
+      "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/X509-SVID.md"
+    },
+    {
+      "page": "docs/spire/about/case-studies",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/case-studies.md"
+    },
+    {
+      "page": "docs/spire/about/comparisons",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/comparisons.md"
+    },
+    {
+      "page": "docs/spire/about/concepts",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/spire-concepts.md"
+    },
+    {
+      "page": "docs/spire/about/use-cases",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/use-cases.md"
+    },
+    {
+      "page": "docs/spire/about",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-about/_index.md"
+    },
+    {
+      "page": "docs/spire/architecture/federation",
+      "source": "https://github.com/spiffe/spire-tutorials/blob/c345f877d5b6a489877357057aaf9a6ed751cebc/docker-compose/federation/README.md"
+    },
+    {
+      "page": "docs/spire/architecture/nested",
+      "source": "https://github.com/spiffe/spire-tutorials/blob/c345f877d5b6a489877357057aaf9a6ed751cebc/docker-compose/nested-spire/README.md"
+    },
+    {
+      "page": "docs/spire/architecture",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/architecture/_index.md"
+    },
+    {
+      "page": "docs/spire/deploying/configuring",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/configuring.md"
+    },
+    {
+      "page": "docs/spire/deploying/install-agents",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/install-agents.md"
+    },
+    {
+      "page": "docs/spire/deploying/install-server",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/install-server.md"
+    },
+    {
+      "page": "docs/spire/deploying/libraries",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/libraries.md"
+    },
+    {
+      "page": "docs/spire/deploying/registering",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/registering.md"
+    },
+    {
+      "page": "docs/spire/deploying/spire_agent",
+      "source": "https://github.com/spiffe/spire/blob/v1.15.5/doc/spire_agent.md"
+    },
+    {
+      "page": "docs/spire/deploying/spire_server",
+      "source": "https://github.com/spiffe/spire/blob/v1.15.5/doc/spire_server.md"
+    },
+    {
+      "page": "docs/spire/deploying/svids",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/svids.md"
+    },
+    {
+      "page": "docs/spire/deploying/telemetry_config",
+      "source": "https://github.com/spiffe/spire/blob/v1.15.5/doc/telemetry/telemetry_config.md"
+    },
+    {
+      "page": "docs/spire/deploying/using_spire",
+      "source": "https://github.com/spiffe/spire/blob/v1.15.5/doc/using_spire.md"
+    },
+    {
+      "page": "docs/spire/deploying",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/deploying/_index.md"
+    },
+    {
+      "page": "docs/spire/helm/advanced/federation",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-advanced/federation.md"
+    },
+    {
+      "page": "docs/spire/helm/advanced/mirror",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-advanced/mirror.md"
+    },
+    {
+      "page": "docs/spire/helm/advanced/nested-spire",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-advanced/nested-spire.md"
+    },
+    {
+      "page": "docs/spire/helm/advanced",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-advanced/_index.md"
+    },
+    {
+      "page": "docs/spire/helm/exposing",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/exposing.md"
+    },
+    {
+      "page": "docs/spire/helm/identifiers",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/identifiers.md"
+    },
+    {
+      "page": "docs/spire/helm/installation",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/installation.md"
+    },
+    {
+      "page": "docs/spire/helm/namespaces",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/namespaces.md"
+    },
+    {
+      "page": "docs/spire/helm/recommendations",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/recommendations.md"
+    },
+    {
+      "page": "docs/spire/helm/service-selection",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/service-selection.md"
+    },
+    {
+      "page": "docs/spire/helm/upgrading",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/upgrading.md"
+    },
+    {
+      "page": "docs/spire/helm",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spire-helm-charts-hardened-about/_index.md"
+    },
+    {
+      "page": "docs/spire/integrations/platforms/oidc-federation-aws",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/keyless/oidc-federation-aws.md"
+    },
+    {
+      "page": "docs/spire/integrations/platforms/vault",
+      "source": "https://github.com/spiffe/spire-tutorials/blob/c345f877d5b6a489877357057aaf9a6ed751cebc/k8s/oidc-vault/README.md"
+    },
+    {
+      "page": "docs/spire/integrations/platforms",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/keyless/_index.md"
+    },
+    {
+      "page": "docs/spire/integrations/services/envoy-jwt-opa",
+      "source": "https://github.com/spiffe/spire-tutorials/blob/c345f877d5b6a489877357057aaf9a6ed751cebc/k8s/envoy-jwt-opa/README.md"
+    },
+    {
+      "page": "docs/spire/integrations/services/envoy-jwt",
+      "source": "https://github.com/spiffe/spire-tutorials/blob/c345f877d5b6a489877357057aaf9a6ed751cebc/k8s/envoy-jwt/README.md"
+    },
+    {
+      "page": "docs/spire/integrations/services/envoy-opa",
+      "source": "https://github.com/spiffe/spire-tutorials/blob/c345f877d5b6a489877357057aaf9a6ed751cebc/k8s/envoy-opa/README.md"
+    },
+    {
+      "page": "docs/spire/integrations/services/envoy-x509",
+      "source": "https://github.com/spiffe/spire-tutorials/blob/c345f877d5b6a489877357057aaf9a6ed751cebc/k8s/envoy-x509/README.md"
+    },
+    {
+      "page": "docs/spire/integrations/services/envoy",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/microservices/envoy.md"
+    },
+    {
+      "page": "docs/spire/integrations/services",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/microservices/_index.md"
+    },
+    {
+      "page": "docs/spire/maintenance/upgrading",
+      "source": "https://github.com/spiffe/spire/blob/v1.15.5/doc/upgrading.md"
+    },
+    {
+      "page": "docs/spire/maintenance",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/maintenance/_index.md"
+    },
+    {
+      "page": "docs/spire/planning/extending",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/planning/extending.md"
+    },
+    {
+      "page": "docs/spire/planning/scaling_spire",
+      "source": "https://github.com/spiffe/spire/blob/v1.15.5/doc/scaling_spire.md"
+    },
+    {
+      "page": "docs/spire/planning",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/planning/_index.md"
+    },
+    {
+      "page": "docs/spire/try/getting-started-k8s",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/try/getting-started-k8s.md"
+    },
+    {
+      "page": "docs/spire/try/getting-started-linux-macos-x",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/try/getting-started-linux-macos-x.md"
+    },
+    {
+      "page": "docs/spire/try/spire101",
+      "source": "https://github.com/spiffe/spire/blob/v1.15.5/doc/SPIRE101.md"
+    },
+    {
+      "page": "docs/spire/try",
+      "source": "https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/try/_index.md"
+    }
+  ]
+}
