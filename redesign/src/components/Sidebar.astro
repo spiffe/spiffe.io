@@ -1,0 +1,10 @@
+---
+import Sidebar from '@astrojs/starlight/components/Sidebar.astro';
+const path = Astro.url.pathname;
+---
+<nav class="project-switch" aria-label="Documentation project">
+  <a href="/docs/spiffe/overview/" aria-current={path.startsWith('/docs/spiffe/') ? 'true' : undefined}>SPIFFE<span>The standard</span></a>
+  <a href="/docs/spire/about/" aria-current={path.startsWith('/docs/spire/') ? 'true' : undefined}>SPIRE<span>The implementation</span></a>
+</nav>
+<Sidebar />
+<a class="sidebar-directory" href="/docs/">All documentation →</a>

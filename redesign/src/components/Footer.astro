@@ -1,0 +1,9 @@
+---
+import Footer from '@astrojs/starlight/components/Footer.astro';
+const splash = Astro.locals.starlightRoute.entry.data.template === 'splash';
+---
+{!splash && <Footer />}
+<footer class="site-footer" data-pagefind-ignore>
+  <div><a href="/" class="footer-wordmark">SPIFFE</a><p>Secure Production Identity Framework for Everyone</p><small>© {new Date().getFullYear()} The SPIFFE authors</small></div>
+  <div class="footer-links"><a href="https://github.com/spiffe">GitHub</a><a href="https://slack.spiffe.io/">Slack</a><a href="/community/">Governance & contribution</a><a href="https://www.linuxfoundation.org/legal/privacy-policy">Privacy</a><a href="https://www.linuxfoundation.org/legal/trademark-usage">Trademarks</a><a href="https://github.com/spiffe/spiffe.io/blob/master/LICENSE">License</a></div>
+</footer>
