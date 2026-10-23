@@ -1,12 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { redirectMap, redirectScript } from './redirect-utils.mjs';
 const redirects = JSON.parse(await fs.readFile('src/data/redirects.json','utf8'));
+redirectMap(redirects);
 for (const [from,to] of Object.entries(redirects)) {
   const file=path.join('dist',from,'index.html');
   let html=await fs.readFile(file,'utf8');
   // Static hosts can serve these redirect files. Preserve inbound fragments in
   // the client redirect, with Astro's meta refresh as a no-JavaScript fallback.
-  const script=`<script>location.replace(${JSON.stringify(to)}+location.search+location.hash)</script>`;
+  const script = redirectScript(to);
   html=html.replace('<body>',script+'<body>');
   await fs.writeFile(file,html);
 }

@@ -1,9 +1,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { existsSync, statSync } from 'node:fs';
+import { normalizeRoute, redirectMap, resolveRedirect, redirectScript } from './redirect-utils.mjs';
 
 const root = path.resolve('dist');
 const redirects = JSON.parse(await fs.readFile('src/data/redirects.json', 'utf8'));
+const redirectRoutes = redirectMap(redirects);
 const legacy = JSON.parse(await fs.readFile('src/data/legacy-routes.json', 'utf8'));
 const files = [];
 async function walk(dir) {
@@ -26,15 +28,8 @@ const routeFile = pathname => {
   return existing.has(file) || !existsSync(file) ? file : caseAliases.get(file.toLowerCase()) || file;
 };
 function destination(url) {
-  const seen = new Set();
-  while (redirects[url.pathname] || redirects[url.pathname.replace(/\/$/, '')]) {
-    if (seen.has(url.pathname)) throw new Error(`Redirect loop: ${url.pathname}`);
-    seen.add(url.pathname);
-    const next = new URL(redirects[url.pathname] || redirects[url.pathname.replace(/\/$/, '')], url);
-    if (!next.hash) next.hash = url.hash;
-    url = next;
-  }
-  return url;
+  const target = redirectRoutes.get(normalizeRoute(url.pathname));
+  return target ? resolveRedirect(target, url.href) : url;
 }
 for (const file of files.filter(f => f.endsWith('.html'))) {
   const html = await fs.readFile(file, 'utf8');
@@ -50,10 +45,11 @@ for (const file of files.filter(f => f.endsWith('.html'))) {
   if (!/<title>[^<]+<\/title>/.test(html)) errors.add(`${file}: missing title`);
 }
 let links = 0;
-function check(ref, route) {
+function check(ref, route, allowRedirect = false) {
   const url = new URL(ref, 'https://spiffe.io' + route);
   if (url.origin !== 'https://spiffe.io') return;
   links++;
+  if (!allowRedirect && redirectRoutes.has(normalizeRoute(url.pathname))) errors.add(`${route}: link to redirect ${ref}; use its final destination`);
   const original = routeFile(url.pathname);
   if (!existing.has(original)) { errors.add(`${route}: missing file ${ref}`); return; }
   const target = destination(url);
@@ -68,12 +64,12 @@ for (const [file, html] of pages) {
     if (ref && !/^(?:mailto:|tel:|data:|javascript:)/.test(ref)) check(ref, route);
   }
 }
-for (const route of legacy.paths) check(route, '/');
-for (const [route, fragments] of Object.entries(legacy.fragments)) for (const fragment of fragments) check(`${route}#${fragment}`, '/');
+for (const route of legacy.paths) check(route, '/', true);
+for (const [route, fragments] of Object.entries(legacy.fragments)) for (const fragment of fragments) check(`${route}#${fragment}`, '/', true);
 for (const from of Object.keys(redirects)) {
-  check(from, '/');
+  check(from, '/', true);
   const html = pages.get(routeFile(from));
-  if (!html?.includes(`location.replace(${JSON.stringify(redirects[from])}+location.search+location.hash)`)) errors.add(`${from}: redirect must preserve query and fragment`);
+  if (!html?.includes(redirectScript(redirects[from]))) errors.add(`${from}: redirect must preserve query and fragment`);
 }
 if (!existing.has(path.join(root, 'pagefind/pagefind.js'))) errors.add('Missing Pagefind search index');
 if (errors.size) { console.error([...errors].join('\n')); process.exit(1); }

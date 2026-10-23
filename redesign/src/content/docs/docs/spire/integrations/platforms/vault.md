@@ -8,7 +8,7 @@ sidebar:
 
 ## Using SPIRE and OIDC to Authenticate Workloads to Retrieve Vault Secrets
 
-This tutorial builds on the [SPIRE from scratch on Kubernetes](/spire/try/getting-started-k8s/) guide to describe how to set up OIDC Federation between a SPIRE Server and a Vault server. This will allow a SPIRE-identified workload to authenticate against a federated Vault server by presenting no more than its JWT-SVID. Using this technique the workload won't need to authenticate itself against the Vault server using another authentication method like AppRole or Username & Password.
+This tutorial builds on the [SPIRE from scratch on Kubernetes](/docs/spire/try/getting-started-k8s/) guide to describe how to set up OIDC Federation between a SPIRE Server and a Vault server. This will allow a SPIRE-identified workload to authenticate against a federated Vault server by presenting no more than its JWT-SVID. Using this technique the workload won't need to authenticate itself against the Vault server using another authentication method like AppRole or Username & Password.
 
 In this tutorial you will learn how to:
 
@@ -22,7 +22,7 @@ In this tutorial you will learn how to:
 
 Note the following required accounts, prerequisites, and limitations before starting this tutorial:
 
-* You'll need access to the Kubernetes environment that you configured when going through [SPIRE from scratch on Kubernetes](/spire/try/getting-started-k8s/). The Kubernetes environment must be able to expose an Ingress to the public internet. _Note: This is generally not possible for local Kubernetes environments such as Minikube._
+* You'll need access to the Kubernetes environment that you configured when going through [SPIRE from scratch on Kubernetes](/docs/spire/try/getting-started-k8s/). The Kubernetes environment must be able to expose an Ingress to the public internet. _Note: This is generally not possible for local Kubernetes environments such as Minikube._
 * You'll need the ability to configure a DNS A record for the SPIRE OIDC Discovery document endpoint (see [Part 2](#part-2-configure-dns-for-the-oidc-discovery-provider-ip-address)).
 
 ## Part 1: Configure SPIRE Components
@@ -43,7 +43,7 @@ The following strings in the YAML files must be substituted for values specific 
 | `MY_DISCOVERY_DOMAIN` | Replace with the domain that you will use in the A record for the OIDC Discovery Document endpoint. See [Part 2](#part-2-configure-dns-for-the-oidc-discovery-provider-ip-address) for details. Example value: `oidc-discovery.example.org` | `ingress.yaml` (2 appearances), `oidc-dp-configmap.yaml` (1 appearance), `server-configmap.yaml` (1 appearance) |
 | `MY_CLUSTER_NAME` | Replace with the name of the Kubernetes cluster where SPIRE will be deployed. Example value: `gke_dev-prj_name-central1-c_vault-oidc-tutorial` | `server-configmap.yaml` (1 appearance) |
 
-In the YAML files, instances of the `example.org` [trust domain](/spiffe/concepts/#trust-domain) are valid to use for this tutorial and do not need to be changed.
+In the YAML files, instances of the `example.org` [trust domain](/docs/spiffe/concepts/#trust-domain) are valid to use for this tutorial and do not need to be changed.
 
 ### Deploy the OIDC Discovery Provider Configmap
 
@@ -434,7 +434,7 @@ When you are finished running this tutorial, you can use the following commands 
 
 ### Kubernetes Cleanup
 
-Keep in mind that these commands will also remove the setup that you configured in the [SPIRE from scratch on Kubernetes](/spire/try/getting-started-k8s/).
+Keep in mind that these commands will also remove the setup that you configured in the [SPIRE from scratch on Kubernetes](/docs/spire/try/getting-started-k8s/).
 
 1. Delete the workload container:
 

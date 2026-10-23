@@ -42,7 +42,7 @@ Let's say we have a stock broker's webapp that wants to display stock quotes fet
 4. The webapp renders the stock quotes page using the returned quotes and sends it to the browser.
 5. The browser displays the quotes to the user. The webapp includes some JavaScript to refresh the page every 1 second, so every second these steps are executed again.
 
-In addition to the above and for the rest of this tutorial, we are going to assume the following [trust domain](/docs/latest/spiffe/concepts/#trust-domain) names for these sample SPIRE installations: `broker.example` and `stockmarket.example`. Keep in mind that trust domains do not need to correspond to actual DNS domain names. Also, the applications access the WorkloadAPI directly to get SVIDs and trust bundles, meaning there are no proxies in the scenario described.
+In addition to the above and for the rest of this tutorial, we are going to assume the following [trust domain](/docs/spiffe/concepts/#trust-domain) names for these sample SPIRE installations: `broker.example` and `stockmarket.example`. Keep in mind that trust domains do not need to correspond to actual DNS domain names. Also, the applications access the WorkloadAPI directly to get SVIDs and trust bundles, meaning there are no proxies in the scenario described.
 
 ## Configure SPIFFE Federation Endpoints
 

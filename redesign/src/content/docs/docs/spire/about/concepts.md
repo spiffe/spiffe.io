@@ -106,7 +106,7 @@ The server only sends authorized registration entries to the agent. The server d
 3. Query the database for any registration entries that declare at least one selection on any of those _node_ selectors. \*
 4. Recursively query the database for any registration entries that declare any of the entries obtained so far as their "parent SPIFFE ID" (descend to all children).
 
-\* see also [mapping workloads to multiple nodes](/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes).
+\* see also [mapping workloads to multiple nodes](/docs/spire/deploying/registering/#mapping-workloads-to-multiple-nodes).
 
 The server sends the resulting set of _authorized_ registration entries to the agent.
 
@@ -150,7 +150,7 @@ Node attestors return an (optional) set of node selectors to the server that ide
 
 
 :::note
-Node selectors are not required for node attestation unless you are [mapping workloads to multiple nodes](/docs/latest/spire/using/registering/#mapping-workloads-to-multiple-nodes).
+Node selectors are not required for node attestation unless you are [mapping workloads to multiple nodes](/docs/spire/deploying/registering/#mapping-workloads-to-multiple-nodes).
 :::
 
 
