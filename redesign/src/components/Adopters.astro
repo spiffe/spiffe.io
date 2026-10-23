@@ -1,19 +1,7 @@
 ---
 import raw from '../../../data/users.yaml?raw';
-import presentations from '../../../data/presentations.yaml?raw';
 import YAML from 'yaml';
 const { adopters } = YAML.parse(raw);
-const talks = YAML.parse(presentations);
-// Titles refer to the maintained community presentations, not a second adopter roster.
-const adoptionTalks: Record<string, string> = {
-  Anthem: 'How doc.ai and Anthem are using SPIRE',
-  Arm: 'Parsec and SPIFFE',
-  Bloomberg: 'TPM Node Attestation with SPIRE',
-  'Greymatter.io': 'Securing Grey Matter: SPIFFE/SPIRE in a Hybrid Mesh',
-  IBM: 'Attesting Istio Workload Identities with SPIRE',
-  Uber: 'Using SPIRE in Production at Uber',
-  Wise: 'Securing Kafka with SPIFFE',
-};
 // Compensate for whitespace and differing proportions in the upstream artwork.
 const opticalScale: Record<string, number> = {
   Bloomberg: 1.8, 'Cisco Systems': 1.2, 'Duke Energy': 0.85,
@@ -25,14 +13,11 @@ const opticalScale: Record<string, number> = {
 <section class="adopters" aria-labelledby="adopters-heading">
   <h2 id="adopters-heading">SPIFFE and SPIRE adopters</h2>
   <ul role="list" aria-live="off">
-    {adopters.map(({ name, logo, link }: { name: string; logo: string; link: string }) => {
-      const talk = talks.find(({ title }: { title: string }) => title === adoptionTalks[name]);
-      const destination = new URL(talk?.link || link);
-      for (const parameter of ['feature', 'list', 'index']) destination.searchParams.delete(parameter);
-      return <li><a href={destination.href} aria-label={talk ? `${name}: ${talk.title}` : name}>
+    {adopters.map(({ name, logo }: { name: string; logo: string }) =>
+      <li><span class="adopter-logo">
         <img src={`/img/logos/${logo}`} alt={name} width="140" height="56" loading="lazy" style={`--logo-scale: ${opticalScale[name] || 1.6}`} />
-      </a></li>;
-    })}
+      </span></li>
+    )}
   </ul>
 </section>
 <script>
@@ -40,15 +25,12 @@ const opticalScale: Record<string, number> = {
   if (section) {
     const list = section.querySelector('ul')!;
     const items = Array.from(list.children) as HTMLLIElement[];
-    const logos = items.map(item => item.querySelector('a')!);
+    const logos = items.map(item => item.querySelector('span')!);
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const compact = matchMedia('(max-width: 900px)');
     let slots: HTMLLIElement[] = [];
-    let waiting: HTMLAnchorElement[] = [];
+    let waiting: HTMLSpanElement[] = [];
     let visible = false;
-    let hovered = false;
-    let focused = false;
-    let reconfigure = false;
     const timers = new Set<ReturnType<typeof setTimeout>>();
     const later = (callback: () => void, delay: number) => {
       const timer = setTimeout(() => { timers.delete(timer); callback(); }, delay);
@@ -59,7 +41,7 @@ const opticalScale: Record<string, number> = {
       timers.clear();
       slots.forEach(slot => slot.classList.remove('leaving', 'entering'));
     };
-    const running = () => waiting.length > 0 && !reducedMotion.matches && visible && !document.hidden && !hovered && !focused;
+    const running = () => waiting.length > 0 && !reducedMotion.matches && visible && !document.hidden;
     const schedule = () => {
       stop();
       if (!running()) return;
@@ -68,13 +50,13 @@ const opticalScale: Record<string, number> = {
         later(schedule, (slots.length - 1) * 90 + 500);
       }, 5500);
     };
-    // Move the original links between fixed slots. Detached links cannot receive focus,
-    // and the queue contains only organizations that are not currently displayed.
+    // Move the original logos between fixed slots. The queue contains only
+    // organizations that are not currently displayed.
     list.addEventListener('animationend', event => {
       const slot = (event.target as Element).closest('li')!;
       if (event.animationName === 'adopter-out' && running()) {
         const next = waiting.shift()!;
-        waiting.push(slot.firstElementChild as HTMLAnchorElement);
+        waiting.push(slot.firstElementChild as HTMLSpanElement);
         slot.replaceChildren(next);
         slot.classList.replace('leaving', 'entering');
       } else if (event.animationName === 'adopter-in') {
@@ -83,9 +65,6 @@ const opticalScale: Record<string, number> = {
     });
     const configure = () => {
       stop();
-      // Do not replace or move the link being read or activated.
-      if (focused || hovered) { reconfigure = true; return; }
-      reconfigure = false;
       items.forEach((item, index) => item.replaceChildren(logos[index]));
       const count = reducedMotion.matches ? items.length : Math.min(compact.matches ? 6 : 10, items.length);
       slots = items.slice(0, count);
@@ -93,13 +72,6 @@ const opticalScale: Record<string, number> = {
       list.replaceChildren(...slots);
       schedule();
     };
-    list.addEventListener('pointerenter', () => { hovered = true; stop(); });
-    list.addEventListener('pointerleave', () => { hovered = false; reconfigure ? configure() : schedule(); });
-    list.addEventListener('focusin', () => { focused = true; stop(); });
-    list.addEventListener('focusout', event => {
-      focused = list.contains(event.relatedTarget as Node | null);
-      if (!focused) reconfigure ? configure() : schedule();
-    });
     document.addEventListener('visibilitychange', schedule);
     reducedMotion.addEventListener('change', configure);
     compact.addEventListener('change', configure);
@@ -118,12 +90,11 @@ const opticalScale: Record<string, number> = {
     .adopters h2 { text-align: center; color: var(--muted); font-size: 1rem; font-weight: 500; letter-spacing: 0; margin: 0 0 2rem; }
     .adopters ul { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.6rem 2.5rem; list-style: none; padding: 0; margin: 0; }
     .adopters li { display: flex; align-items: center; justify-content: center; height: 72px; perspective: 600px; overflow: clip; overflow-clip-margin: 6px; }
-    .adopters a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border-radius: 3px; }
-    .adopters a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+    .adopter-logo { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
     .adopters img { width: 140px; max-width: 85%; height: 56px; object-fit: contain; transform: scale(var(--logo-scale)); }
     @media (prefers-reduced-motion: no-preference) {
-      .leaving a { animation: adopter-out 250ms ease-in both; }
-      .entering a { animation: adopter-in 250ms ease-out both; }
+      .leaving .adopter-logo { animation: adopter-out 250ms ease-in both; }
+      .entering .adopter-logo { animation: adopter-in 250ms ease-out both; }
     }
     @keyframes adopter-out { to { transform: translateY(-6px) rotateX(40deg); opacity: 0; } }
     @keyframes adopter-in { from { transform: translateY(6px) rotateX(-40deg); opacity: 0; } to { transform: none; opacity: 1; } }
