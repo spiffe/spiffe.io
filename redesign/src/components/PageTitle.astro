@@ -1,0 +1,12 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+const { entry } = Astro.locals.starlightRoute;
+const { date, author, tags, draft } = entry.data;
+---
+<Default><slot /></Default>
+{entry.id.startsWith('blog/') && date && <p class="post-meta">
+  {author} · <time datetime={date.toISOString()}>{date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>
+  {tags.length > 0 && <span> · {tags.join(' · ')}</span>}
+  {draft && <strong> · Draft</strong>}
+</p>}
+<style>.post-meta { color: var(--sl-color-gray-2); font-size: .85rem; }</style>

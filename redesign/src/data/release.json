@@ -1,0 +1,57 @@
+{
+  "tag": "v1.15.5",
+  "version": "1.15.5",
+  "publishedAt": "2026-10-20T18:35:18Z",
+  "url": "https://github.com/spiffe/spire/releases/tag/v1.15.5",
+  "fetchedAt": "2026-10-22T20:39:51.327Z",
+  "assets": [
+    {
+      "name": "spire-1.15.5-linux-amd64-musl.tar.gz",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-1.15.5-linux-amd64-musl.tar.gz"
+    },
+    {
+      "name": "spire-1.15.5-linux-amd64-musl_sha256sum.txt",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-1.15.5-linux-amd64-musl_sha256sum.txt"
+    },
+    {
+      "name": "spire-1.15.5-linux-arm64-musl.tar.gz",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-1.15.5-linux-arm64-musl.tar.gz"
+    },
+    {
+      "name": "spire-1.15.5-linux-arm64-musl_sha256sum.txt",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-1.15.5-linux-arm64-musl_sha256sum.txt"
+    },
+    {
+      "name": "spire-1.15.5-windows-amd64.zip",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-1.15.5-windows-amd64.zip"
+    },
+    {
+      "name": "spire-1.15.5-windows-amd64_sha256sum.txt",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-1.15.5-windows-amd64_sha256sum.txt"
+    },
+    {
+      "name": "spire-extras-1.15.5-linux-amd64-musl.tar.gz",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-extras-1.15.5-linux-amd64-musl.tar.gz"
+    },
+    {
+      "name": "spire-extras-1.15.5-linux-amd64-musl_sha256sum.txt",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-extras-1.15.5-linux-amd64-musl_sha256sum.txt"
+    },
+    {
+      "name": "spire-extras-1.15.5-linux-arm64-musl.tar.gz",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-extras-1.15.5-linux-arm64-musl.tar.gz"
+    },
+    {
+      "name": "spire-extras-1.15.5-linux-arm64-musl_sha256sum.txt",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-extras-1.15.5-linux-arm64-musl_sha256sum.txt"
+    },
+    {
+      "name": "spire-extras-1.15.5-windows-amd64.zip",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-extras-1.15.5-windows-amd64.zip"
+    },
+    {
+      "name": "spire-extras-1.15.5-windows-amd64_sha256sum.txt",
+      "url": "https://github.com/spiffe/spire/releases/download/v1.15.5/spire-extras-1.15.5-windows-amd64_sha256sum.txt"
+    }
+  ]
+}

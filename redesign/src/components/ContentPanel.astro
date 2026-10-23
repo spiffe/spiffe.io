@@ -1,0 +1,19 @@
+---
+import ContentPanel from '@astrojs/starlight/components/ContentPanel.astro';
+const isBlog = Astro.url.pathname.startsWith('/blog/');
+---
+{isBlog ? <div class="content-panel blog-panel"><div class="sl-container"><slot /></div></div> : <ContentPanel><slot /></ContentPanel>}
+
+<style>
+  @layer site {
+    .blog-panel { max-width: 64rem; margin-inline: auto; }
+    .blog-panel:first-child { padding-top: 3rem; }
+    .blog-panel:last-child { padding-bottom: 2rem; }
+    .blog-panel :global(.sl-markdown-content > :not(pre, figure, table, .expressive-code, .not-content, .sl-heading-wrapper):not(:has(> img))) {
+      max-width: 46rem;
+      margin-inline: auto;
+    }
+    .blog-panel :global(.sl-heading-wrapper), .blog-panel :global(h1), .blog-panel :global(.post-meta) { max-width: 46rem; margin-inline: auto; }
+    .blog-panel :global(.sl-markdown-content) { margin-top: 2rem; }
+  }
+</style>
