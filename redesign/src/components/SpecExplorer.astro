@@ -1,0 +1,6 @@
+---
+import specs from '../data/specs.json';
+---
+<div class="not-content spec-grid">
+  {specs.map(spec => <a class="spec-item" href={`/docs/spiffe/specs/${spec.slug}/`}><span class:list={['status',spec.status.toLowerCase()]}>{spec.status}</span><h3>{spec.title} <span aria-hidden="true">↗</span></h3><p>{spec.description}</p></a>)}
+</div>
