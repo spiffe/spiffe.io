@@ -33,7 +33,7 @@ This post will describe the architecture of a SPIFFE system and describe plausib
 
 #### Workload API
 
-The basic architecture of SPIRE is that each physical or virtual machine, or _node,_ runs a daemon called the _SPIRE agent_. The SPIRE agent is responsible for handing out identities such as X.509 certificates to applications, or _workloads_, running on that node. This interaction between a workload and SPIRE agent happens via the [_SPIFFE Workload API_](https://github.com/spiffe/spiffe/blob/master/standards/SPIFFE_Workload_API.md).
+The basic architecture of SPIRE is that each physical or virtual machine, or _node,_ runs a daemon called the _SPIRE agent_. The SPIRE agent is responsible for handing out identities such as X.509 certificates to applications, or _workloads_, running on that node. This interaction between a workload and SPIRE agent happens via the [_SPIFFE Workload API_](/docs/latest/spiffe-specs/spiffe_workload_api/).
 
 To verify that a workload is authorized for a particular identity, the SPIRE agent performs _workload attestation_. In this process, the SPIRE agent relies on locally-trusted workload attributes such as process/group ID or container runtime metadata. These attributes are read from the kernel or other trusted components on the local system. The SPIRE agent matches the attributes against configured identities, and provides each workload with all the identities for which it is authorized.
 

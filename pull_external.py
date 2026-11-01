@@ -7,7 +7,7 @@ import subprocess
 import requests
 from requests.adapters import HTTPAdapter, Retry
 from typing import Dict, List, Set, Tuple, Pattern, Match
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlsplit, urlunsplit
 from pathlib import Path
 
 CHECKOUT_DIR = "checkouts"
@@ -378,10 +378,15 @@ def _process_content(
                 repo_owner, repo_name, branch, rel_url
             )
 
-            # if this file has been already pulled in, we can use the new internal URL
-            # instead of pointing to the original github location
-            if new_url in internal_links:
-                new_url = internal_links[new_url]
+        # Match the document independently of its query and section fragment.
+        # Both relative and absolute GitHub links can point to imported pages.
+        parts = urlsplit(new_url)
+        document_url = urlunsplit(parts._replace(query="", fragment=""))
+        if document_url in internal_links:
+            target = urlsplit(internal_links[document_url])
+            new_url = urlunsplit(
+                target._replace(query=parts.query, fragment=parts.fragment)
+            )
 
         new_link = "[{}]({})".format(alt, new_url)
         return new_link
