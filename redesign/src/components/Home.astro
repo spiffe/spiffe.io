@@ -3,6 +3,7 @@ import Issuance from './Issuance.astro';
 import Adopters from './Adopters.astro';
 import HomeEcosystem from './HomeEcosystem.astro';
 import release from '../data/release.json';
+import training from '../data/training.json';
 ---
 <div class="home-content not-content">
   <Adopters />
@@ -38,6 +39,17 @@ import release from '../data/release.json';
   <section class="resources section-block" aria-labelledby="resources-heading">
     <div class="section-heading"><div><p class="eyebrow">06 / Resources</p><h2 id="resources-heading">Learn about SPIFFE</h2></div></div>
     <div class="resource-grid"><a aria-labelledby="resource-intro" href="https://www.youtube.com/watch?v=Q2SiGeebRKY"><span class="resource-type">WATCH / 10 MINUTES</span><h3 id="resource-intro">Introduction to SPIFFE</h3><p>The problem, the identity model, and where SPIRE fits.</p><span class="text-link">Watch the introduction <span aria-hidden="true">↗</span></span></a><a aria-labelledby="resource-book" href="/book/"><span class="resource-type">READ / THE SPIFFE BOOK</span><h3 id="resource-book">Solving the Bottom Turtle.</h3><p>Designing and operating workload identity in distributed systems.</p><span class="text-link">Read the book <span aria-hidden="true">→</span></span></a><a aria-labelledby="resource-community" href="/community/"><span class="resource-type">PARTICIPATE / COMMUNITY</span><h3 id="resource-community">SPIFFE community</h3><p>Meetings, discussions, and contribution guidelines.</p><span class="text-link">Community resources <span aria-hidden="true">→</span></span></a></div>
+    <section class="training-resources" aria-labelledby="training-heading">
+      <h3 id="training-heading">Training and labs</h3>
+      <div class="resource-grid training-grid">
+        {training.map(resource => <article aria-labelledby={`training-${resource.id}`}>
+          <span class="resource-type">{resource.attribution}</span>
+          <h4 id={`training-${resource.id}`}>{resource.title}</h4>
+          <p>{resource.description}</p>
+          <div class="inline-links">{resource.links.map(link => <a class="text-link" href={link.url} aria-label={`${link.label}: ${resource.title}`}>{link.label} <span aria-hidden="true">↗</span></a>)}</div>
+        </article>)}
+      </div>
+    </section>
   </section>
   <div class="cncf-strip"><img src="/img/logos/cncf-color.png" alt="Cloud Native Computing Foundation" width="148" height="48" /><p>SPIFFE and SPIRE are CNCF graduated projects.</p><a href="https://www.cncf.io/projects/spiffe/">Project information ↗</a></div>
 </div>
