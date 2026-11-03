@@ -20,6 +20,42 @@
     "organization": "aembit"
   },
   {
+    "name": "Akeyless",
+    "link": "https://www.akeyless.io/",
+    "identityRoles": [
+      "Integration"
+    ],
+    "description": "Provides SPIRE KeyManager and UpstreamAuthority plugins, plus a SecretManager plugin for storing issued X.509-SVIDs.",
+    "sources": [
+      {
+        "label": "SPIRE plugins",
+        "url": "https://docs.akeyless.io/docs/spire-plugins"
+      }
+    ],
+    "checked": "2026-11-03",
+    "organization": "akeyless"
+  },
+  {
+    "name": "Anthropic / Claude",
+    "identityRoles": [
+      "Accepts identities"
+    ],
+    "link": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
+    "description": "Exchanges JWT-SVIDs from a configured SPIFFE issuer for Claude API access tokens. Federation rules match workload claims and select a service account, workspace, and OAuth scope.",
+    "sources": [
+      {
+        "label": "SPIFFE federation setup",
+        "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe"
+      },
+      {
+        "label": "Token and authorization requirements",
+        "url": "https://platform.claude.com/docs/en/manage-claude/wif-reference"
+      }
+    ],
+    "checked": "2026-10-22",
+    "organization": "anthropic"
+  },
+  {
     "name": "Cofide Connect",
     "identityRoles": [
       "Integration"
@@ -38,26 +74,6 @@
     ],
     "checked": "2026-10-22",
     "organization": "cofide"
-  },
-  {
-    "name": "Cosmian KMS",
-    "identityRoles": [
-      "Integration"
-    ],
-    "link": "https://docs.cosmian.com/versions/kms/5.26.0/integrations/spire_spiffe.html",
-    "description": "A PKI/KMS integration for SPIRE. Its Vault-compatible PKI endpoint signs intermediate CA requests through the Vault UpstreamAuthority plugin; SPIRE issues workload SVIDs. The documented configuration uses AppRole for KMS access.",
-    "sources": [
-      {
-        "label": "SPIRE integration",
-        "url": "https://docs.cosmian.com/versions/kms/5.26.0/integrations/spire_spiffe.html"
-      },
-      {
-        "label": "SPIRE Vault UpstreamAuthority",
-        "url": "https://github.com/spiffe/spire/blob/main/doc/plugin_server_upstreamauthority_vault.md"
-      }
-    ],
-    "checked": "2026-10-22",
-    "organization": "cosmian"
   },
   {
     "name": "Defakto",
@@ -82,6 +98,62 @@
     ],
     "checked": "2026-10-22",
     "organization": "defakto"
+  },
+  {
+    "name": "Edera",
+    "link": "https://edera.dev/",
+    "identityRoles": [
+      "Integration"
+    ],
+    "description": "Runs SPIRE agents inside isolated zones, with an edera-hypervisor node attestor and delivery of workload credentials through files or a Workload API socket.",
+    "sources": [
+      {
+        "label": "Workload identity",
+        "url": "https://docs.edera.dev/technical-overview/workload-identity/"
+      }
+    ],
+    "checked": "2026-11-03",
+    "status": "SPIRE integration: Alpha",
+    "notes": "The spire-v0 integration is disabled by default. Its current zone attestation identity is self-asserted and not yet hardened.",
+    "organization": "edera"
+  },
+  {
+    "name": "Eviden KMS (formerly Cosmian KMS)",
+    "identityRoles": [
+      "Integration"
+    ],
+    "link": "https://docs.cosmian.com/key_management_system/",
+    "description": "Its Vault-compatible PKI endpoint signs SPIRE intermediate CA requests through the Vault UpstreamAuthority plugin. A native KMIP KeyManager integration stores signing keys and performs signing operations in the KMS.",
+    "sources": [
+      {
+        "label": "SPIRE integration",
+        "url": "https://docs.cosmian.com/versions/kms/5.26.0/integrations/spire_spiffe.html"
+      },
+      {
+        "label": "SPIRE Vault UpstreamAuthority",
+        "url": "https://github.com/spiffe/spire/blob/main/doc/plugin_server_upstreamauthority_vault.md"
+      },
+      {
+        "label": "Native KMIP integration",
+        "url": "https://docs.cosmian.com/key_management_system/integrations/spire_spiffe_kmip_plugin.html"
+      },
+      {
+        "label": "SPIRE KMIP KeyManager",
+        "url": "https://github.com/spiffe/spire/blob/main/doc/plugin_server_keymanager_kmip.md"
+      },
+      {
+        "label": "KMIP implementation",
+        "url": "https://github.com/spiffe/spire/pull/7235"
+      },
+      {
+        "label": "Latest tagged SPIRE release",
+        "url": "https://github.com/spiffe/spire/releases/tag/v1.15.5"
+      }
+    ],
+    "checked": "2026-11-03",
+    "organization": "cosmian",
+    "status": "Native KMIP plugin: Unreleased",
+    "notes": "The Vault-compatible configuration uses AppRole for KMS access. SPIRE KeyManager PR #7235 merged on 2026-10-02; the KMIP plugin is absent from the latest tagged SPIRE release, v1.15.5, as of 2026-11-03."
   },
   {
     "name": "Google Cloud managed workload identities",
@@ -140,6 +212,32 @@
     "organization": "palo-alto-networks"
   },
   {
+    "name": "Kong Mesh",
+    "link": "https://konghq.com/products/kong-mesh",
+    "identityRoles": [
+      "Identity issuer",
+      "Integration"
+    ],
+    "description": "A commercial distribution of Kuma. MeshIdentity supports bundled SPIFFE certificate issuance and a SPIRE provider.",
+    "sources": [
+      {
+        "label": "Bundled issuance",
+        "url": "https://developer.konghq.com/mesh/issue-identity-with-meshidentity/"
+      },
+      {
+        "label": "SPIRE provider",
+        "url": "https://developer.konghq.com/mesh/issue-identity-with-meshidentity-spire/"
+      },
+      {
+        "label": "MeshIdentity status",
+        "url": "https://developer.konghq.com/mesh/policies/meshidentity/"
+      }
+    ],
+    "checked": "2026-11-03",
+    "status": "MeshIdentity: Experimental",
+    "organization": "kong"
+  },
+  {
     "name": "Messier 42 Quantum Helix",
     "identityRoles": [
       "Identity issuer",
@@ -169,6 +267,42 @@
     "organization": "messier-42"
   },
   {
+    "name": "Microsoft Entra Workload ID",
+    "link": "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-spiffe-spire",
+    "identityRoles": [
+      "Accepts identities"
+    ],
+    "description": "Exchanges SPIFFE JWT-SVIDs for Microsoft Entra access tokens through workload identity federation, using a configured issuer, subject, and audience.",
+    "sources": [
+      {
+        "label": "SPIFFE workload identity federation",
+        "url": "https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-spiffe-spire"
+      }
+    ],
+    "checked": "2026-11-03",
+    "organization": "microsoft"
+  },
+  {
+    "name": "OpenAI",
+    "identityRoles": [
+      "Accepts identities"
+    ],
+    "link": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe",
+    "description": "Exchanges JWT-SVIDs from a configured SPIFFE issuer for OpenAI API access tokens. Claim mappings select a project service account and can narrow its API permissions.",
+    "sources": [
+      {
+        "label": "SPIFFE federation setup",
+        "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe"
+      },
+      {
+        "label": "Token exchange reference",
+        "url": "https://developers.openai.com/api/reference/workload-identity-federation"
+      }
+    ],
+    "checked": "2026-10-22",
+    "organization": "openai"
+  },
+  {
     "name": "Red Hat Zero Trust Workload Identity Manager",
     "identityRoles": [
       "Integration"
@@ -187,6 +321,31 @@
     ],
     "checked": "2026-10-22",
     "organization": "red-hat"
+  },
+  {
+    "name": "Riptides",
+    "identityRoles": [
+      "Identity issuer",
+      "Integration"
+    ],
+    "link": "https://riptides.io/",
+    "description": "Issues X.509-SVIDs with SPIFFE IDs in URI SANs and JWT-SVIDs with SPIFFE IDs as subjects. A node daemon matches process selectors; a Linux kernel module generates X.509 private keys and requests certificates through the daemon and control plane. The module uses those credentials for transparent mutual TLS and applies connection policy.",
+    "sources": [
+      {
+        "label": "Workload identity and issuance",
+        "url": "https://docs.riptides.io/concepts/workload-identity/"
+      },
+      {
+        "label": "Platform architecture",
+        "url": "https://docs.riptides.io/concepts/architecture/"
+      },
+      {
+        "label": "Vendor article: AI agent identity",
+        "url": "https://riptides.io/blog/how-to-deliver-spiffe-identity-to-ai-agents/"
+      }
+    ],
+    "checked": "2026-10-22",
+    "organization": "riptides"
   },
   {
     "name": "StrongDM ID",
@@ -229,68 +388,19 @@
     "organization": "teleport"
   },
   {
-    "name": "Anthropic / Claude",
+    "name": "Traefik Hub",
+    "link": "https://traefik.io/traefik-hub/",
     "identityRoles": [
-      "Accepts identities"
-    ],
-    "link": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
-    "description": "Exchanges JWT-SVIDs from a configured SPIFFE issuer for Claude API access tokens. Federation rules match workload claims and select a service account, workspace, and OAuth scope.",
-    "sources": [
-      {
-        "label": "SPIFFE federation setup",
-        "url": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe"
-      },
-      {
-        "label": "Token and authorization requirements",
-        "url": "https://platform.claude.com/docs/en/manage-claude/wif-reference"
-      }
-    ],
-    "checked": "2026-10-22",
-    "organization": "anthropic"
-  },
-  {
-    "name": "OpenAI",
-    "identityRoles": [
-      "Accepts identities"
-    ],
-    "link": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe",
-    "description": "Exchanges JWT-SVIDs from a configured SPIFFE issuer for OpenAI API access tokens. Claim mappings select a project service account and can narrow its API permissions.",
-    "sources": [
-      {
-        "label": "SPIFFE federation setup",
-        "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe"
-      },
-      {
-        "label": "Token exchange reference",
-        "url": "https://developers.openai.com/api/reference/workload-identity-federation"
-      }
-    ],
-    "checked": "2026-10-22",
-    "organization": "openai"
-  },
-  {
-    "name": "Riptides",
-    "identityRoles": [
-      "Identity issuer",
       "Integration"
     ],
-    "link": "https://riptides.io/",
-    "description": "Issues X.509-SVIDs with SPIFFE IDs in URI SANs and JWT-SVIDs with SPIFFE IDs as subjects. A node daemon matches process selectors; a Linux kernel module generates X.509 private keys and requests certificates through the daemon and control plane. The module uses those credentials for transparent mutual TLS and applies connection policy.",
+    "description": "A commercial API gateway that retrieves X.509-SVIDs from the Workload API to authenticate connections to backends.",
     "sources": [
       {
-        "label": "Workload identity and issuance",
-        "url": "https://docs.riptides.io/concepts/workload-identity/"
-      },
-      {
-        "label": "Platform architecture",
-        "url": "https://docs.riptides.io/concepts/architecture/"
-      },
-      {
-        "label": "Vendor article: AI agent identity",
-        "url": "https://riptides.io/blog/how-to-deliver-spiffe-identity-to-ai-agents/"
+        "label": "SPIFFE configuration",
+        "url": "https://doc.traefik.io/traefik-hub/api-gateway/reference/install/tls/ref-spiffe"
       }
     ],
-    "checked": "2026-10-22",
-    "organization": "riptides"
+    "checked": "2026-11-03",
+    "organization": "traefik-labs"
   }
 ]

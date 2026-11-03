@@ -743,6 +743,11 @@
     font-size: .75rem;
     margin-top: .55rem;
   }
+  .entry-name .entry-status {
+    color: var(--ink);
+    font-size: .7rem;
+    margin-top: .35rem;
+  }
   @media (max-width: 650px) {
     .directory-entry>.entry-copy {
       grid-column: 1 / -1;

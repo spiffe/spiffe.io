@@ -49,6 +49,38 @@ categories:
         link: https://github.com/spiffe/spire-tpm-plugin
         description: Agent and server plugins that add TPM 2.0-based node attestation to
           SPIRE.
+      - name: Confidential Containers Trustee
+        link: https://github.com/confidential-containers/trustee
+        type: community
+        identityRoles:
+          - Integration
+        description: Connects confidential-workload attestation to SPIRE. Trustee uses
+          validated workload properties to request X.509-SVIDs and deliver them
+          with trust bundles to confidential workloads.
+        sources:
+          - label: SPIRE plugin
+            url: https://github.com/confidential-containers/trustee/blob/main/kbs/docs/plugins/spire.md
+          - label: Plugin implementation
+            url: https://github.com/confidential-containers/trustee/pull/1581
+          - label: Latest tagged release
+            url: https://github.com/confidential-containers/trustee/releases/tag/v0.22.0
+        checked: 2026-11-03
+        status: "SPIRE plugin: Unreleased"
+        notes: The plugin maps validated identifiers from attestation tokens to SPIRE
+          Delegated Identity API selectors. Merged on 2026-10-16; absent from
+          the latest release, v0.22.0, as of 2026-11-03.
+      - name: Keylime SPIRE plugin
+        link: https://github.com/keylime/spire-keylime-plugin
+        type: community
+        identityRoles:
+          - Integration
+        description: Integrates Keylime with SPIRE node attestation through agent and
+          server NodeAttestor plugins.
+        sources:
+          - label: Plugin documentation
+            url: https://github.com/keylime/spire-keylime-plugin
+        checked: 2026-11-03
+        status: Experimental
   - name: SDKs & Libraries
     weight: 200
     description: Fetch and validate SPIFFE identities directly from your application code.
@@ -78,6 +110,19 @@ categories:
         weight: 600
         link: https://github.com/jeengbe/ts-packages/tree/master/packages/spiffe
         description: SPIFFE SDK for TypeScript.
+      - name: C# SPIFFE
+        link: https://www.nuget.org/packages/Spiffe/
+        type: community
+        identityRoles:
+          - Integration
+        description: A community .NET library for fetching X.509-SVIDs, JWT-SVIDs, and
+          trust bundles through the Workload API.
+        sources:
+          - label: Package
+            url: https://www.nuget.org/packages/Spiffe/
+          - label: Library documentation
+            url: https://github.com/vurhanau/csharp-spiffe
+        checked: 2026-11-03
   - name: Deployment & Workload Helpers
     weight: 300
     description: Deliver SPIFFE identities to workloads, and bridge them to
@@ -114,6 +159,20 @@ categories:
           AuthenticationConfiguration file. This allows the Kubernetes API
           server to read the JWKS from the OIDC discovery provider in cases
           where it is protected by a SPIFFE-issued certificate.
+      - name: Tekton Chains
+        link: https://tekton.dev/docs/chains/
+        type: community
+        identityRoles:
+          - Integration
+        description: Retrieves SPIRE-issued credentials to authenticate to Fulcio for
+          signing certificates. Its KMS configuration also supports SPIRE
+          authentication.
+        sources:
+          - label: Authentication
+            url: https://tekton.dev/docs/chains/authentication/
+          - label: Configuration
+            url: https://tekton.dev/docs/chains/config/
+        checked: 2026-11-03
   - name: Secrets Management
     weight: 400
     description: Secrets managers that can store secrets and support
@@ -146,11 +205,20 @@ categories:
       - name: HashiCorp Vault
         identityRoles:
           - Accepts identities
+          - Identity issuer
         type: commercial
         weight: 300
         link: https://developer.hashicorp.com/vault/docs/auth/spiffe
-        description: Secrets manager with support for SPIFFE authentication.
+        description: The SPIFFE auth method exchanges SVIDs for Vault tokens. Vault
+          Enterprise’s separate SPIFFE secrets engine issues JWT-SVIDs to
+          authenticated callers.
         organization: hashicorp
+        sources:
+          - label: SPIFFE auth method
+            url: https://developer.hashicorp.com/vault/docs/auth/spiffe
+          - label: Enterprise SPIFFE secrets engine
+            url: https://developer.hashicorp.com/vault/docs/secrets/spiffe
+        checked: 2026-11-03
       - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
         identityRoles:
           - Identity issuer
@@ -172,6 +240,17 @@ categories:
         link: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
         description: Secrets manager with support for SPIFFE authentication.
         organization: infisical
+      - name: External Secrets Operator
+        link: https://external-secrets.io/
+        type: community
+        identityRoles:
+          - Integration
+        description: The Conjur provider supports certificate authentication in SPIFFE
+          mode, deriving the Conjur host identity from the certificate URI SAN.
+        sources:
+          - label: Conjur provider certificate authentication
+            url: https://external-secrets.io/latest/provider/conjur/
+        checked: 2026-11-03
   - name: Service Meshes & Proxies
     weight: 500
     description: Service meshes and proxies that use SPIFFE identities to
@@ -203,11 +282,16 @@ categories:
         type: community
         weight: 300
         link: https://github.com/ghostunnel/ghostunnel
-        description: A TLS proxy that attaches to the SPIFFE Workload API to
-          authenticate connections.
+        description: A TLS proxy that adds mutual authentication to existing
+          applications. It retrieves rotating credentials and trust bundles from
+          the SPIFFE Workload API and supports access rules based on peer SPIFFE
+          IDs.
         sources:
-          - label: Documentation
-            url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+          - label: Project
+            url: https://github.com/ghostunnel/ghostunnel
+          - label: Workload API integration
+            url: https://github.com/ghostunnel/ghostunnel/blob/master/docs/certificates/spiffe-workload-api.md
+        checked: 2026-11-03
       - name: HashiCorp Consul
         identityRoles:
           - Identity issuer
@@ -233,21 +317,86 @@ categories:
             url: https://github.com/nolabs-ai/nono/blob/main/docs/cli/features/spiffe.mdx
           - label: Integration design and tracking
             url: https://github.com/nolabs-ai/nono/issues/1095
+      - name: Kuma
+        link: https://kuma.io/
+        type: community
+        identityRoles:
+          - Identity issuer
+          - Integration
+        description: MeshIdentity can issue SPIFFE certificates through its bundled
+          provider or retrieve credentials from SPIRE.
+        sources:
+          - label: MeshIdentity
+            url: https://kuma.io/docs/3.0.x/resources/meshidentity/
+        checked: 2026-11-03
+        status: "MeshIdentity: Experimental"
+        logo: kuma.svg
+        organization: kong
+      - name: Traefik Proxy
+        link: https://traefik.io/traefik/
+        type: community
+        identityRoles:
+          - Integration
+        description: An open-source proxy that retrieves X.509-SVIDs from the Workload
+          API to authenticate connections to backends.
+        sources:
+          - label: SPIFFE configuration
+            url: https://doc.traefik.io/traefik/reference/install-configuration/tls/spiffe/
+        checked: 2026-11-03
+        organization: traefik-labs
+      - name: Linkerd
+        link: https://linkerd.io/
+        type: community
+        identityRoles:
+          - Integration
+        description: Uses SPIRE-issued certificates for proxies on non-Kubernetes
+          workloads. ExternalWorkload identities connect those workloads to
+          Linkerd authorization policies.
+        sources:
+          - label: Non-Kubernetes workloads
+            url: https://linkerd.io/docs/tasks/adding-non-kubernetes-workloads/
+        checked: 2026-11-03
+      - name: Cilium
+        link: https://cilium.io/
+        type: community
+        identityRoles:
+          - Integration
+        description: Uses SPIRE-issued identities for out-of-band mutual authentication
+          required by network policies. Traffic encryption is configured
+          separately.
+        sources:
+          - label: Mutual authentication
+            url: https://docs.cilium.io/en/stable/network/servicemesh/mutual-authentication/mutual-authentication/
+        checked: 2026-11-03
+        status: "Mutual authentication: Beta"
+      - name: caddy-token
+        link: https://github.com/loafoe/caddy-token
+        type: community
+        identityRoles:
+          - Accepts identities
+        description: A community Caddy authentication module that validates JWT-SVIDs
+          and applies configured audience and SPIFFE ID rules.
+        sources:
+          - label: JWT-SVID authentication
+            url: https://github.com/loafoe/caddy-token
+        checked: 2026-11-03
   - name: Additional implementations and services
     weight: 600
     description: Additional projects and services that issue or accept SPIFFE identities.
     projects:
-      - name: cert-manager
-        link: https://cert-manager.io
+      - name: cert-manager CSI driver for SPIFFE
+        link: https://github.com/cert-manager/csi-driver-spiffe
         type: community
         weight: 100
         identityRoles:
           - Identity issuer
-        description: Provides SPIFFE identities for workloads.
+        description: Uses cert-manager issuers to deliver and renew X.509-SVID
+          certificate and key files in Kubernetes pods.
         sources:
-          - label: Documentation
-            url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+          - label: Driver documentation
+            url: https://github.com/cert-manager/csi-driver-spiffe
         logo: cert-manager.png
+        checked: 2026-11-03
       - name: Dapr
         link: https://docs.dapr.io
         type: community
@@ -313,3 +462,53 @@ categories:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
         organization: warpstream
+      - name: Athenz
+        link: https://www.athenz.io/
+        type: community
+        identityRoles:
+          - Identity issuer
+        description: Issues workload X.509 certificates containing SPIFFE IDs through
+          its own identity APIs.
+        sources:
+          - label: SPIFFE identity support
+            url: https://www.athenz.io/comparison.html
+          - label: Project documentation
+            url: https://github.com/AthenZ/athenz
+        checked: 2026-11-03
+      - name: Keycloak
+        link: https://www.keycloak.org/
+        type: community
+        identityRoles:
+          - Accepts identities
+        description: Accepts JWT-SVIDs for federated client authentication through its
+          SPIFFE provider, using a configured trust domain and bundle endpoint.
+        sources:
+          - label: Federated client authentication
+            url: https://www.keycloak.org/2026/01/federated-client-authentication
+          - label: Feature status
+            url: https://www.keycloak.org/server/features
+        checked: 2026-11-03
+        status: "SPIFFE provider: Preview"
+      - name: Sigstore Fulcio
+        link: https://docs.sigstore.dev/certificate_authority/overview/
+        type: community
+        identityRoles:
+          - Accepts identities
+        description: Issues signing certificates to workloads authenticated by
+          SPIFFE-based OIDC tokens from configured issuers and trust domains.
+        sources:
+          - label: OIDC providers and SPIFFE trust domains
+            url: https://docs.sigstore.dev/certificate_authority/oidc-in-fulcio/
+        checked: 2026-11-03
+      - name: Parsec
+        link: https://parallaxsecond.github.io/parsec-book/
+        type: community
+        identityRoles:
+          - Accepts identities
+        description: Accepts JWT-SVIDs to authenticate applications accessing its
+          cryptographic services, using the SPIFFE ID as the application
+          identity.
+        sources:
+          - label: Service authenticators
+            url: https://parallaxsecond.github.io/parsec-book/parsec_service/authenticators.html
+        checked: 2026-11-03

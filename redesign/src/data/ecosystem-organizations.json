@@ -3,6 +3,10 @@
     "name": "Aembit",
     "link": "https://aembit.io/"
   },
+  "akeyless": {
+    "name": "Akeyless",
+    "link": "https://www.akeyless.io/"
+  },
   "amazon-web-services": {
     "name": "Amazon Web Services",
     "logo": "Amazon-Web-Services-logo.svg",
@@ -17,12 +21,16 @@
     "link": "https://www.cofide.io/"
   },
   "cosmian": {
-    "name": "Cosmian",
-    "link": "https://docs.cosmian.com/versions/kms/5.26.0/integrations/spire_spiffe.html"
+    "name": "Eviden",
+    "link": "https://docs.cosmian.com/"
   },
   "defakto": {
     "name": "Defakto",
     "link": "https://www.defakto.security/"
+  },
+  "edera": {
+    "name": "Edera",
+    "link": "https://edera.dev/"
   },
   "google-cloud": {
     "name": "Google Cloud",
@@ -43,9 +51,17 @@
     "name": "Infisical",
     "link": "https://infisical.com/docs/documentation/platform/identities/spiffe-auth"
   },
+  "kong": {
+    "name": "Kong",
+    "link": "https://konghq.com/"
+  },
   "messier-42": {
     "name": "Messier 42",
     "link": "https://messier42.com/"
+  },
+  "microsoft": {
+    "name": "Microsoft",
+    "link": "https://www.microsoft.com/"
   },
   "openai": {
     "name": "OpenAI",
@@ -74,6 +90,10 @@
     "name": "Teleport",
     "logo": "teleport_logo.svg",
     "link": "https://goteleport.com/docs/machine-workload-identity/workload-identity/introduction/"
+  },
+  "traefik-labs": {
+    "name": "Traefik Labs",
+    "link": "https://traefik.io/"
   },
   "warpstream": {
     "name": "WarpStream",

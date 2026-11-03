@@ -20,6 +20,8 @@ export interface EcosystemProject {
   organization?: string;
   sources?: SourceLink[];
   checked?: string;
+  status?: string;
+  notes?: string;
   guide?: SourceLink;
 }
 export interface EcosystemCategory {
