@@ -372,7 +372,7 @@
     border-left: 1px solid var(--line);
     padding-left: 3rem;
   }
-  .project-logo {
+  .project-pair .project-logo {
     display: block;
     width: 145px;
     height: 55px;
@@ -997,7 +997,7 @@
     .project-pair h3 {
       font-size: 1.5rem;
     }
-    .project-logo {
+    .project-pair .project-logo {
       margin-bottom: 1.2rem;
     }
     .inline-links {
