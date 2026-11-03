@@ -1,0 +1,23 @@
+<script>
+  // Only overflowing content enters the tab order. ResizeObserver also covers
+  // font loading, zoom, and a change in the documentation sidebar width.
+  const observer = new ResizeObserver(entries => {
+    for (const { target } of entries) {
+      const element = target as HTMLElement;
+      if (element.scrollWidth > element.clientWidth) {
+        element.tabIndex = 0;
+        if (element.tagName === 'PRE') {
+          element.setAttribute('role', 'region');
+          element.setAttribute('aria-label', `${element.dataset.language || ''} code example`.trim());
+        }
+      } else {
+        element.removeAttribute('tabindex');
+        if (element.tagName === 'PRE') {
+          element.removeAttribute('role');
+          element.removeAttribute('aria-label');
+        }
+      }
+    }
+  });
+  document.querySelectorAll('main pre, main table').forEach(element => observer.observe(element));
+</script>

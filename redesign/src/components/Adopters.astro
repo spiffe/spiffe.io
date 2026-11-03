@@ -12,7 +12,8 @@ const opticalScale: Record<string, number> = {
 ---
 <section class="adopters" aria-labelledby="adopters-heading">
   <h2 id="adopters-heading">SPIFFE and SPIRE adopters</h2>
-  <ul role="list" aria-live="off">
+  <p class="sr-only">{adopters.map(({ name }: { name: string }) => name).join(', ')}.</p>
+  <ul role="list" aria-hidden="true">
     {adopters.map(({ name, logo }: { name: string; logo: string }) =>
       <li><span class="adopter-logo">
         <img src={`/img/logos/${logo}`} alt={name} width="140" height="56" loading="lazy" style={`--logo-scale: ${opticalScale[name] || 1.6}`} />
@@ -26,6 +27,7 @@ const opticalScale: Record<string, number> = {
     const list = section.querySelector('ul')!;
     const items = Array.from(list.children) as HTMLLIElement[];
     const logos = items.map(item => item.querySelector('span')!);
+    let interacting = false;
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const compact = matchMedia('(max-width: 900px)');
     let slots: HTMLLIElement[] = [];
@@ -41,7 +43,7 @@ const opticalScale: Record<string, number> = {
       timers.clear();
       slots.forEach(slot => slot.classList.remove('leaving', 'entering'));
     };
-    const running = () => waiting.length > 0 && !reducedMotion.matches && visible && !document.hidden;
+    const running = () => waiting.length > 0 && !reducedMotion.matches && visible && !document.hidden && !interacting;
     const schedule = () => {
       stop();
       if (!running()) return;
@@ -72,6 +74,14 @@ const opticalScale: Record<string, number> = {
       list.replaceChildren(...slots);
       schedule();
     };
+    const updateInteraction = () => {
+      interacting = section.matches(':hover') || section.contains(document.activeElement);
+      schedule();
+    };
+    section.addEventListener('mouseenter', updateInteraction);
+    section.addEventListener('mouseleave', updateInteraction);
+    section.addEventListener('focusin', updateInteraction);
+    section.addEventListener('focusout', () => queueMicrotask(updateInteraction));
     document.addEventListener('visibilitychange', schedule);
     reducedMotion.addEventListener('change', configure);
     compact.addEventListener('change', configure);

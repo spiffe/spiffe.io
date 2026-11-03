@@ -11,6 +11,10 @@ const imageCache = new Map<string, ReturnType<typeof imageMetadata>>();
 export const onRequest = defineRouteMiddleware(async (context) => {
   const route = context.locals.starlightRoute;
   const path = context.url.pathname;
+  const project = /^\/docs\/spiffe(?:\/|$)/.test(path) ? 'spiffe'
+    : /^(?:\/docs)?\/spire(?:\/|$)/.test(path) ? 'spire' : undefined;
+  context.locals.project = project;
+  if (project) route.head.push({ tag: 'meta', attrs: { name: 'site-project', content: project } });
   if (path.startsWith('/blog/')) {
     route.hasSidebar = false;
     route.toc = undefined;
@@ -39,7 +43,7 @@ export const onRequest = defineRouteMiddleware(async (context) => {
     { tag: 'meta', attrs: { name: 'twitter:image', content: imageUrl.href } },
     { tag: 'meta', attrs: { name: 'twitter:image:alt', content: alt } },
   );
-  const section = path.startsWith('/docs/spiffe') ? 'SPIFFE' : path.startsWith('/docs/spire') ? 'SPIRE' : 'Project';
+  const section = project?.toUpperCase() ?? 'Project';
   const group = route.sidebar.find((item) => item.type === 'group' && item.label === section);
   if (group?.type === 'group') route.sidebar = group.entries;
   // Prevent automatically generated next/previous links crossing project boundaries.
