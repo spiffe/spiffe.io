@@ -17,6 +17,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        logo: spire/icon/color/spire-icon-color.svg
       - name: SPIRE Controller Manager
         type: official
         weight: 200
@@ -129,6 +130,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        logo: spike.png
       - name: VMware Secrets Manager
         identityRoles:
           - Accepts identities
@@ -140,6 +142,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        logo: vsecm.png
       - name: HashiCorp Vault
         identityRoles:
           - Accepts identities
@@ -147,6 +150,7 @@ categories:
         weight: 300
         link: https://developer.hashicorp.com/vault/docs/auth/spiffe
         description: Secrets manager with support for SPIFFE authentication.
+        organization: hashicorp
       - name: Idira® Secrets Manager, SaaS by Palo Alto Networks
         identityRoles:
           - Identity issuer
@@ -159,6 +163,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        organization: palo-alto-networks
       - name: Infisical
         identityRoles:
           - Accepts identities
@@ -166,6 +171,7 @@ categories:
         weight: 300
         link: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
         description: Secrets manager with support for SPIFFE authentication.
+        organization: infisical
   - name: Service Meshes & Proxies
     weight: 500
     description: Service meshes and proxies that use SPIFFE identities to
@@ -180,6 +186,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        logo: envoy.svg
       - name: Istio
         identityRoles:
           - Identity issuer
@@ -191,6 +198,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        logo: istio.svg
       - name: Ghostunnel
         type: community
         weight: 300
@@ -205,9 +213,13 @@ categories:
           - Identity issuer
         type: community
         weight: 400
-        link: https://www.consul.io/
+        link: https://developer.hashicorp.com/consul
         description: Service mesh that can issue SPIFFE identities to the services it
           manages.
+        sources:
+          - label: Documentation
+            url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        logo: consul.svg
       - name: nono
         type: community
         weight: 500
@@ -235,16 +247,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
-      - name: Consul
-        link: https://developer.hashicorp.com/consul
-        type: community
-        weight: 100
-        identityRoles:
-          - Identity issuer
-        description: Provides SPIFFE identities for workloads.
-        sources:
-          - label: Documentation
-            url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        logo: cert-manager.png
       - name: Dapr
         link: https://docs.dapr.io
         type: community
@@ -255,6 +258,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        logo: Dapr_logo.svg
       - name: Red Hat OpenShift Service Mesh
         link: https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh
         type: commercial
@@ -265,6 +269,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        organization: red-hat
       - name: Knox
         link: https://github.com/pinterest/knox
         type: community
@@ -285,6 +290,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        organization: amazon-web-services
       - name: GCP Workload Identity Federation
         link: https://cloud.google.com/iam/docs/workload-identity-federation
         type: commercial
@@ -295,6 +301,7 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        organization: google-cloud
       - name: WarpStream
         link: https://docs.warpstream.com/warpstream/kafka/manage-security/mutual-tls-mtls
         type: commercial
@@ -305,3 +312,4 @@ categories:
         sources:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
+        organization: warpstream
