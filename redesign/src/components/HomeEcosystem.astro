@@ -1,27 +1,34 @@
 ---
-import { homepageProjects, commercialOrganizations } from '../data/ecosystem';
+import { homepageProjects, commercialOrganizations, projectAnchor } from '../data/ecosystem';
+const selections = homepageProjects.filter(project => project.homepage === 'project');
+const examples = homepageProjects.filter(project => project.homepage === 'example');
 const groups = [
-  { name: 'Identity issuers', description: 'Issue SPIFFE identity credentials.', projects: homepageProjects.filter(project => project.identityRoles.includes('Identity issuer')) },
-  { name: 'Integrations', description: 'Use identities in applications and infrastructure.', projects: homepageProjects.filter(project => !project.identityRoles.includes('Identity issuer')) },
+  { name: 'Identity issuers', description: 'Issue SPIFFE identity credentials.', projects: selections.filter(project => project.identityRoles.includes('Identity issuer')) },
+  { name: 'Integrations and identity-aware services', description: 'Use identities in applications and infrastructure.', projects: selections.filter(project => !project.identityRoles.includes('Identity issuer')) },
 ];
 ---
 <section class="ecosystem-preview section-block" aria-labelledby="ecosystem-heading">
   <div class="section-heading">
     <div><p class="eyebrow">05 / An open ecosystem</p><h2 id="ecosystem-heading">SPIFFE implementations and integrations</h2></div>
-    <a class="text-link" href="/ecosystem/">View all projects <span aria-hidden="true">→</span></a>
+    <a class="browse-link" href="/ecosystem/">Browse the ecosystem <span aria-hidden="true">→</span></a>
   </div>
   <div class="ecosystem-groups">
     {groups.map(group => <section class="ecosystem-group">
       <h3>{group.name}</h3><p>{group.description}</p>
       <ul role="list" class="project-logos">
-        {group.projects.map(project => <li><a href={project.link}>
-          <img src={`/img/logos/${project.logo}`} width="64" height="56" alt="" loading="lazy" />
+        {group.projects.map(project => <li><a href={`/ecosystem/#${projectAnchor(project)}`}>
+          {project.logo && <img src={`/img/logos/${project.logo}`} width="64" height="56" alt="" loading="lazy" />}
           <span>{project.name}</span>
-          <small>{project.identityRoles.includes('Accepts identities') ? 'Accepts identities' : project.identityRoles[0]}</small>
+          <small>{project.identityRoles.join(' · ')}</small>
+          {project.status && <small class="project-status">{project.status}</small>}
         </a></li>)}
       </ul>
     </section>)}
   </div>
+  {examples.map(project => <div class="integration-example">
+    <div><a href={`/ecosystem/#${projectAnchor(project)}`}>{project.name} <span aria-hidden="true">→</span></a><small>{project.identityRoles.join(' · ')} · {project.status}</small></div>
+    <p>{project.description}</p>
+  </div>)}
 </section>
 <section class="commercial-strip section-block" aria-labelledby="commercial-heading">
   <div class="section-heading">
@@ -30,15 +37,27 @@ const groups = [
   </div>
   <ul role="list" class="commercial-logos">
     {commercialOrganizations.map(organization => <li><a href={organization.link}>
-      {organization.logo && <img src={`/img/logos/${organization.logo}`} width="84" height="36" alt="" loading="lazy" />}
+      {organization.logo && <img src={`/img/logos/${organization.logo}`} width="112" height="36" alt="" loading="lazy" style={`--logo-scale: ${organization.logoScale || 1}`} />}
       <span>{organization.name}</span>
     </a></li>)}
   </ul>
 </section>
 <style>
   @layer site {
-    .section-heading>.text-link {
+    .section-heading>a {
       flex-shrink: 0;
+    }
+    .browse-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .8rem 1rem;
+      border: 1px solid var(--blue);
+      border-radius: 3px;
+      color: var(--project-accent);
+    }
+    .browse-link:hover {
+      background: var(--sl-color-gray-6);
     }
     .ecosystem-groups {
       display: grid;
@@ -75,6 +94,8 @@ const groups = [
       align-items: center;
       gap: .65rem;
       text-align: center;
+      min-height: 152px;
+      justify-content: center;
     }
     a {
       color: var(--ink);
@@ -94,6 +115,27 @@ const groups = [
       color: var(--muted);
       font-size: .65rem;
       font-weight: 400;
+    }
+    .project-status {
+      color: var(--ink);
+    }
+    .integration-example {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .integration-example small {
+      display: block;
+      margin-top: .5rem;
+    }
+    .integration-example p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .85rem;
     }
     .commercial-strip {
       padding-block: 2.5rem;
@@ -119,9 +161,10 @@ const groups = [
       text-align: center;
     }
     .commercial-logos a img {
-      width: 84px;
+      width: 112px;
       height: 36px;
       object-fit: contain;
+      transform: scale(var(--logo-scale));
     }
     @media (max-width: 900px) {
       .ecosystem-groups {
@@ -135,6 +178,15 @@ const groups = [
       }
       .commercial-logos {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .integration-example {
+        grid-template-columns: 1fr;
+        gap: .8rem;
+      }
+    }
+    @media (max-width: 650px) {
+      .browse-link {
+        margin-top: 1rem;
       }
     }
     @media (max-width: 500px) {

@@ -18,6 +18,7 @@ categories:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
         logo: spire/icon/color/spire-icon-color.svg
+        homepage: project
       - name: SPIRE Controller Manager
         type: official
         weight: 200
@@ -69,6 +70,7 @@ categories:
         notes: The plugin maps validated identifiers from attestation tokens to SPIRE
           Delegated Identity API selectors. Merged on 2026-10-16; absent from
           the latest release, v0.22.0, as of 2026-11-03.
+        homepage: example
       - name: Keylime SPIRE plugin
         link: https://github.com/keylime/spire-keylime-plugin
         type: community
@@ -173,6 +175,9 @@ categories:
           - label: Configuration
             url: https://tekton.dev/docs/chains/config/
         checked: 2026-11-03
+        homepage: project
+        logo: tekton-chains.svg
+        logoSource: https://github.com/cncf/artwork/blob/main/projects/tekton/chains/color/tekton_chains-color.svg
   - name: Secrets Management
     weight: 400
     description: Secrets managers that can store secrets and support
@@ -266,6 +271,7 @@ categories:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
         logo: envoy.svg
+        homepage: project
       - name: Istio
         identityRoles:
           - Identity issuer
@@ -278,6 +284,7 @@ categories:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
         logo: istio.svg
+        homepage: project
       - name: Ghostunnel
         type: community
         weight: 300
@@ -292,6 +299,9 @@ categories:
           - label: Workload API integration
             url: https://github.com/ghostunnel/ghostunnel/blob/master/docs/certificates/spiffe-workload-api.md
         checked: 2026-11-03
+        homepage: project
+        logo: ghostunnel.svg
+        logoSource: https://github.com/ghostunnel/ghostunnel/blob/master/website/static/favicon.svg
       - name: HashiCorp Consul
         identityRoles:
           - Identity issuer
@@ -304,6 +314,7 @@ categories:
           - label: Documentation
             url: https://github.com/spiffe/spiffe.io/blob/42e7c82fc4a8117e2fc2d6933180279aae18adeb/content/docs/latest/spiffe-about/ecosystem.md
         logo: consul.svg
+        homepage: project
       - name: nono
         type: community
         weight: 500
@@ -332,6 +343,7 @@ categories:
         status: "MeshIdentity: Experimental"
         logo: kuma.svg
         organization: kong
+        homepage: project
       - name: Traefik Proxy
         link: https://traefik.io/traefik/
         type: community
@@ -344,6 +356,9 @@ categories:
             url: https://doc.traefik.io/traefik/reference/install-configuration/tls/spiffe/
         checked: 2026-11-03
         organization: traefik-labs
+        homepage: project
+        logo: traefik-proxy.svg
+        logoSource: https://traefik.io/images/header/products/traefik-proxy.svg
       - name: Linkerd
         link: https://linkerd.io/
         type: community
@@ -397,6 +412,7 @@ categories:
             url: https://github.com/cert-manager/csi-driver-spiffe
         logo: cert-manager.png
         checked: 2026-11-03
+        homepage: project
       - name: Dapr
         link: https://docs.dapr.io
         type: community
@@ -475,6 +491,9 @@ categories:
           - label: Project documentation
             url: https://github.com/AthenZ/athenz
         checked: 2026-11-03
+        homepage: project
+        logo: athenz.svg
+        logoSource: https://github.com/cncf/artwork/blob/main/projects/athenz/icon/color/athenz-icon-color.svg
       - name: Keycloak
         link: https://www.keycloak.org/
         type: community
@@ -489,6 +508,9 @@ categories:
             url: https://www.keycloak.org/server/features
         checked: 2026-11-03
         status: "SPIFFE provider: Preview"
+        homepage: project
+        logo: keycloak.svg
+        logoSource: https://github.com/cncf/artwork/blob/main/projects/keycloak/icon/color/keycloak-icon-color.svg
       - name: Sigstore Fulcio
         link: https://docs.sigstore.dev/certificate_authority/overview/
         type: community
@@ -500,6 +522,9 @@ categories:
           - label: OIDC providers and SPIFFE trust domains
             url: https://docs.sigstore.dev/certificate_authority/oidc-in-fulcio/
         checked: 2026-11-03
+        homepage: project
+        logo: fulcio.svg
+        logoSource: https://github.com/sigstore/community/blob/main/artwork/fulcio/icons/color/sigstore_fulcio-icon-color.svg
       - name: Parsec
         link: https://parallaxsecond.github.io/parsec-book/
         type: community

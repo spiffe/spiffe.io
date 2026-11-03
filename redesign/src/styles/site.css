@@ -613,6 +613,7 @@
     font-size: .85rem;
   }
   .directory-entry {
+    scroll-margin-top: 7rem;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 1.5rem;

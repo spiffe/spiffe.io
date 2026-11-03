@@ -22,6 +22,8 @@ export interface EcosystemProject {
   checked?: string;
   status?: string;
   notes?: string;
+  homepage?: 'project' | 'example';
+  logoSource?: string;
   guide?: SourceLink;
 }
 export interface EcosystemCategory {
@@ -34,6 +36,8 @@ export interface Organization {
   name: string;
   link: string;
   logo?: string;
+  logoSource?: string;
+  logoScale?: number;
 }
 
 type InputProject = Omit<EcosystemProject, 'type' | 'weight' | 'identityRoles'> &
@@ -69,7 +73,10 @@ export const commercialOrganizations = [...new Set(projects
   .map(key => organizations[key])
   .sort((a, b) => a.name.localeCompare(b.name));
 
-// Logo examples are drawn from the directory; commercial offerings have their own strip.
+export const projectAnchor = (project: EcosystemProject) =>
+  `project-${project.name.toLowerCase().replace(/#/g, 'sharp').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '')}`;
+
+// Editorial selections stay with the directory record; commercial offerings have their own strip.
 export const homepageProjects = projects
-  .filter(project => project.type !== 'commercial' && project.logo)
+  .filter(project => project.homepage)
   .sort((a, b) => a.name.localeCompare(b.name));
