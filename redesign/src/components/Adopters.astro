@@ -96,19 +96,89 @@ const opticalScale: Record<string, number> = {
 </script>
 <style>
   @layer site {
-    .adopters { padding: 1.5rem 0 2.5rem; }
-    .adopters h2 { text-align: center; color: var(--muted); font-size: 1rem; font-weight: 500; letter-spacing: 0; margin: 0 0 2rem; }
-    .adopters ul { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.6rem 2.5rem; list-style: none; padding: 0; margin: 0; }
-    .adopters li { display: flex; align-items: center; justify-content: center; height: 72px; perspective: 600px; overflow: clip; overflow-clip-margin: 6px; }
-    .adopter-logo { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
-    .adopters img { width: 140px; max-width: 85%; height: 56px; object-fit: contain; transform: scale(var(--logo-scale)); }
-    @media (prefers-reduced-motion: no-preference) {
-      .leaving .adopter-logo { animation: adopter-out 250ms ease-in both; }
-      .entering .adopter-logo { animation: adopter-in 250ms ease-out both; }
+    .adopters {
+      padding: 1.5rem 0 2.5rem;
     }
-    @keyframes adopter-out { to { transform: translateY(-6px) rotateX(40deg); opacity: 0; } }
-    @keyframes adopter-in { from { transform: translateY(6px) rotateX(-40deg); opacity: 0; } to { transform: none; opacity: 1; } }
-    @media (max-width: 900px) { .adopters ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem 2rem; } }
-    @media (max-width: 650px) { .adopters { padding: 1rem 0 2rem; } .adopters h2 { font-size: .95rem; } .adopters ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; } }
+    .adopters h2 {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      margin: 0 0 2rem;
+    }
+    .adopters ul {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1.6rem 2.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .adopters li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 72px;
+      perspective: 600px;
+      overflow: clip;
+      overflow-clip-margin: 6px;
+    }
+    .adopter-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+    .adopters img {
+      width: 140px;
+      max-width: 85%;
+      height: 56px;
+      object-fit: contain;
+      transform: scale(var(--logo-scale));
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .leaving .adopter-logo {
+        animation: adopter-out 250ms ease-in both;
+      }
+      .entering .adopter-logo {
+        animation: adopter-in 250ms ease-out both;
+      }
+    }
+    @keyframes adopter-out {
+      to {
+        transform: translateY(-6px) rotateX(40deg);
+        opacity: 0;
+      }
+    }
+    @keyframes adopter-in {
+      from {
+        transform: translateY(6px) rotateX(-40deg);
+        opacity: 0;
+      }
+      to {
+        transform: none;
+        opacity: 1;
+      }
+    }
+    @media (max-width: 900px) {
+      .adopters ul {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem 2rem;
+      }
+    }
+    @media (max-width: 650px) {
+      .adopters {
+        padding: 1rem 0 2rem;
+      }
+      .adopters h2 {
+        font-size: .95rem;
+      }
+      .adopters ul {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 1.5rem;
+      }
+    }
   }
 </style>
