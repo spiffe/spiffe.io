@@ -26,6 +26,8 @@ Noah Stride (Teleport)
 
 ### 14:15 to 14:45: Keynote
 
+**Story time: Origins of SPIFFE**
+
 Joe Beda (Stacklok)
 
 ### 14:50 to 15:20: SPIRE Maintainers Update
