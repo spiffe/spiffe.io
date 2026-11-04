@@ -13,7 +13,7 @@ Serverless cloud computing environments such as AWS Lambda and Google Cloud Func
 
 ### Introduction
 
-[SPIRE](https://github.com/spiffe/spire/) (the [SPIFFE](https://spiffe.io/) Runtime Environment) exposes the [SPIFFE Workload API](https://github.com/spiffe/spiffe/blob/master/standards/SPIFFE_Workload_API.md), which can attest running software systems and issue platform-agnostic cryptographic identities — by way of SPIFFE IDs and SVIDs — providing the ability to securely authenticate services in dynamic and heterogeneous environments.
+[SPIRE](https://github.com/spiffe/spire/) (the [SPIFFE](https://spiffe.io/) Runtime Environment) exposes the [SPIFFE Workload API](/docs/latest/spiffe-specs/spiffe_workload_api/), which can attest running software systems and issue platform-agnostic cryptographic identities — by way of SPIFFE IDs and SVIDs — providing the ability to securely authenticate services in dynamic and heterogeneous environments.
 
 SPIRE comprises two components: the server and the agents. The server authenticates agents and mints SVIDs, while the agent is in charge of serving the SPIFFE Workload API. Providing identities to workloads is the primary purpose of SPIRE Agent, and workloads simply call the Workload API to get their identities. But what happens in environments where a SPIRE Agent can’t be deployed?
 
