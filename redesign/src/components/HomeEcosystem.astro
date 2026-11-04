@@ -1,0 +1,198 @@
+---
+import { homepageProjects, commercialOrganizations, projectAnchor } from '../data/ecosystem';
+const selections = homepageProjects.filter(project => project.homepage === 'project');
+const examples = homepageProjects.filter(project => project.homepage === 'example');
+const groups = [
+  { name: 'Identity issuers', description: 'Issue SPIFFE identity credentials.', projects: selections.filter(project => project.identityRoles.includes('Identity issuer')) },
+  { name: 'Integrations and identity-aware services', description: 'Use identities in applications and infrastructure.', projects: selections.filter(project => !project.identityRoles.includes('Identity issuer')) },
+];
+---
+<section class="ecosystem-preview section-block" aria-labelledby="ecosystem-heading">
+  <div class="section-heading">
+    <div><p class="eyebrow">05 / An open ecosystem</p><h2 id="ecosystem-heading">SPIFFE implementations and integrations</h2></div>
+    <a class="browse-link" href="/ecosystem/">Browse the ecosystem <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="ecosystem-groups">
+    {groups.map(group => <section class="ecosystem-group">
+      <h3>{group.name}</h3><p>{group.description}</p>
+      <ul role="list" class="project-logos">
+        {group.projects.map(project => <li><a href={`/ecosystem/#${projectAnchor(project)}`}>
+          {project.logo && <img src={`/img/logos/${project.logo}`} width="64" height="56" alt="" loading="lazy" />}
+          <span>{project.name}</span>
+          <small>{project.identityRoles.join(' · ')}</small>
+          {project.status && <small class="project-status">{project.status}</small>}
+        </a></li>)}
+      </ul>
+    </section>)}
+  </div>
+  {examples.map(project => <div class="integration-example">
+    <div><a href={`/ecosystem/#${projectAnchor(project)}`}>{project.name} <span aria-hidden="true">→</span></a><small>{project.identityRoles.join(' · ')} · {project.status}</small></div>
+    <p>{project.description}</p>
+  </div>)}
+</section>
+<section class="commercial-strip section-block" aria-labelledby="commercial-heading">
+  <div class="section-heading">
+    <div><h2 id="commercial-heading">Commercial products and services</h2><p>Commercial offerings that issue or work with SPIFFE identities.</p></div>
+    <a class="text-link" href="/ecosystem/commercial/">Commercial directory <span aria-hidden="true">→</span></a>
+  </div>
+  <ul role="list" class="commercial-logos">
+    {commercialOrganizations.map(organization => <li><a href={organization.link}>
+      {organization.logo && <img src={`/img/logos/${organization.logo}`} width="112" height="36" alt="" loading="lazy" style={`--logo-scale: ${organization.logoScale || 1}`} />}
+      <span>{organization.name}</span>
+    </a></li>)}
+  </ul>
+</section>
+<style>
+  @layer site {
+    .section-heading>a {
+      flex-shrink: 0;
+    }
+    .browse-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .8rem 1rem;
+      border: 1px solid var(--blue);
+      border-radius: 3px;
+      color: var(--project-accent);
+    }
+    .browse-link:hover {
+      background: var(--sl-color-gray-6);
+    }
+    .ecosystem-groups {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .ecosystem-group+section {
+      border-left: 1px solid var(--line);
+      padding-left: 2.5rem;
+    }
+    h3 {
+      margin: 0 0 .4rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .ecosystem-group>p, .commercial-strip .section-heading p {
+      margin: 0 0 1.5rem;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .project-logos, .commercial-logos {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .project-logos {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .project-logos a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .65rem;
+      text-align: center;
+      min-height: 152px;
+      justify-content: center;
+    }
+    a {
+      color: var(--ink);
+      font-size: .85rem;
+      font-weight: 550;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #007582;
+    }
+    .project-logos a img {
+      width: 64px;
+      height: 56px;
+      object-fit: contain;
+    }
+    small {
+      color: var(--muted);
+      font-size: .65rem;
+      font-weight: 400;
+    }
+    .project-status {
+      color: var(--ink);
+    }
+    .integration-example {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .integration-example small {
+      display: block;
+      margin-top: .5rem;
+    }
+    .integration-example p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .commercial-strip {
+      padding-block: 2.5rem;
+    }
+    .commercial-strip h2 {
+      font-size: 1.4rem;
+    }
+    .commercial-strip .section-heading p {
+      margin: .6rem 0 0;
+    }
+    .commercial-logos {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 1.2rem 1.5rem;
+    }
+    .commercial-logos a {
+      min-height: 90px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: .6rem;
+      text-align: center;
+    }
+    .commercial-logos a img {
+      width: 112px;
+      height: 36px;
+      object-fit: contain;
+      transform: scale(var(--logo-scale));
+    }
+    @media (max-width: 900px) {
+      .ecosystem-groups {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .ecosystem-group+section {
+        padding: 2rem 0 0;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+      .commercial-logos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .integration-example {
+        grid-template-columns: 1fr;
+        gap: .8rem;
+      }
+    }
+    @media (max-width: 650px) {
+      .browse-link {
+        margin-top: 1rem;
+      }
+    }
+    @media (max-width: 500px) {
+      .project-logos, .commercial-logos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+</style>

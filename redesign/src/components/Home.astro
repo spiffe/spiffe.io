@@ -1,0 +1,55 @@
+---
+import Issuance from './Issuance.astro';
+import Adopters from './Adopters.astro';
+import HomeEcosystem from './HomeEcosystem.astro';
+import release from '../data/release.json';
+import training from '../data/training.json';
+---
+<div class="home-content not-content">
+  <Adopters />
+  <div class="principles">
+    <div><p class="eyebrow">Workload authentication</p><h2>How does a service know who is calling?</h2><p>When a workload makes a request, the receiving service needs to establish its identity. An IP address or hostname alone does not authenticate the caller. Passwords and API keys copied into deployments must be distributed and replaced wherever they are used.</p></div>
+    <div><p class="eyebrow">The model</p><h2>SPIFFE IDs and SVIDs</h2><p>A SPIFFE ID names a workload within a trust domain. An SVID provides verifiable evidence of that identity. Applications can obtain SVIDs and trust bundles through the SPIFFE Workload API.</p></div>
+    <div><p class="eyebrow">The result</p><h2>Authentication between services</h2><p>Services verify the identity presented by a caller and use it in their access decisions. Operators choose how SPIFFE IDs map to their workloads and environments.</p></div>
+  </div>
+  <Issuance />
+  <section class="primitives section-block" aria-labelledby="primitives-heading">
+    <div class="section-heading"><div><p class="eyebrow">02 / Concepts</p><h2 id="primitives-heading">SPIFFE concepts</h2></div></div>
+    <div class="primitive-grid">
+      <a aria-labelledby="concept-id" href="/docs/spiffe/specs/spiffe-id/"><span class="primitive-number">01</span><h3 id="concept-id">SPIFFE ID <span aria-hidden="true">→</span></h3><p>A URI that names a workload within a trust domain.</p><code>spiffe://example.org<wbr />/ai/model-serving</code></a>
+      <a aria-labelledby="concept-svid" href="/docs/spiffe/concepts/#spiffe-verifiable-identity-document-svid"><span class="primitive-number">02</span><h3 id="concept-svid">SVID <span aria-hidden="true">→</span></h3><p>A verifiable identity document that binds a SPIFFE ID to a key or token.</p><code>X.509-SVID · JWT-SVID</code></a>
+      <a aria-labelledby="concept-api" href="/docs/spiffe/specs/workload-api/"><span class="primitive-number">03</span><h3 id="concept-api">Workload API <span aria-hidden="true">→</span></h3><p>A local interface for obtaining SVIDs and trust bundles.</p><code>FetchX509SVID<br />FetchJWTSVID</code></a>
+      <a aria-labelledby="concept-domain" href="/docs/spiffe/specs/trust-domain-and-bundle/"><span class="primitive-number">04</span><h3 id="concept-domain">Trust domain <span aria-hidden="true">→</span></h3><p>An administrative boundary with its own issuing authority.</p><code>example.org</code></a>
+    </div>
+  </section>
+  <section class="usecases section-block" aria-labelledby="usecases-heading">
+    <div class="section-heading"><div><p class="eyebrow">03 / Applications</p><h2 id="usecases-heading">Workload authentication</h2></div></div>
+    <div class="usecase-row"><span class="row-number">01</span><h3>Authentication between services</h3><p>Use X.509-SVIDs for mutual TLS, or audience-scoped JWT-SVIDs to authenticate HTTP and gRPC requests. The receiving service verifies the credential and applies its access policy.</p></div>
+    <div class="usecase-row"><span class="row-number">02</span><h3>Authentication to platforms</h3><p>Present an SVID to a compatible service, or exchange it for platform credentials with a scoped lifetime.</p></div>
+    <div class="usecase-row"><span class="row-number">03</span><h3>Federation between trust domains</h3><p>Exchange public trust bundles so independently operated domains can verify each other's identities.</p></div>
+  </section>
+  <section class="project-pair section-block" aria-labelledby="projects-heading">
+    <div class="section-heading"><div><p class="eyebrow">04 / Companion projects</p><h2 id="projects-heading">SPIFFE and SPIRE</h2></div></div>
+    <div class="project-pair-grid">
+      <div><img class="project-logo" src="/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.svg" alt="SPIFFE" width="154" height="52" /><span class="project-kind">OPEN STANDARD</span><h3>The workload identity standard</h3><p>SPIFFE defines how identities are named and represented, how workloads obtain them, and how trust domains interoperate.</p><a class="text-link" href="/docs/spiffe/specs/">Read the specifications →</a></div>
+      <div><img class="project-logo" src="/img/logos/spire/horizontal/color/spire-horizontal-color.svg" alt="SPIRE" width="154" height="52" /><span class="project-kind">OPEN-SOURCE IMPLEMENTATION</span><h3>Workload identity with SPIRE</h3><p>SPIRE is a CNCF graduated project that implements the SPIFFE standard. It uses node and workload attestation to issue short-lived identity credentials and keep them current. Plugins adapt attestation to your environment and connect SPIRE to existing certificate authorities and key-management systems.</p><div class="inline-links"><a class="text-link" href="/spire/">SPIRE overview →</a><a class="release-link" href="/downloads/">{release.tag}</a></div></div>
+    </div>
+  </section>
+  <HomeEcosystem />
+  <section class="resources section-block" aria-labelledby="resources-heading">
+    <div class="section-heading"><div><p class="eyebrow">06 / Resources</p><h2 id="resources-heading">Learn about SPIFFE</h2></div></div>
+    <div class="resource-grid"><a aria-labelledby="resource-intro" href="https://www.youtube.com/watch?v=Q2SiGeebRKY"><span class="resource-type">WATCH / 10 MINUTES</span><h3 id="resource-intro">Introduction to SPIFFE</h3><p>The problem, the identity model, and where SPIRE fits.</p><span class="text-link">Watch the introduction <span aria-hidden="true">↗</span></span></a><a aria-labelledby="resource-book" href="/book/"><span class="resource-type">READ / THE SPIFFE BOOK</span><h3 id="resource-book">Solving the Bottom Turtle.</h3><p>Designing and operating workload identity in distributed systems.</p><span class="text-link">Read the book <span aria-hidden="true">→</span></span></a><a aria-labelledby="resource-community" href="/community/"><span class="resource-type">PARTICIPATE / COMMUNITY</span><h3 id="resource-community">SPIFFE community</h3><p>Meetings, discussions, and contribution guidelines.</p><span class="text-link">Community resources <span aria-hidden="true">→</span></span></a></div>
+    <section class="training-resources" aria-labelledby="training-heading">
+      <h3 id="training-heading">Training and labs</h3>
+      <div class="resource-grid training-grid">
+        {training.map(resource => <article aria-labelledby={`training-${resource.id}`}>
+          <span class="resource-type">{resource.attribution}</span>
+          <h4 id={`training-${resource.id}`}>{resource.title}</h4>
+          <p>{resource.description}</p>
+          <div class="inline-links">{resource.links.map(link => <a class="text-link" href={link.url} aria-label={`${link.label}: ${resource.title}`}>{link.label} <span aria-hidden="true">↗</span></a>)}</div>
+        </article>)}
+      </div>
+    </section>
+  </section>
+  <div class="cncf-strip"><img src="/img/logos/cncf-color.png" alt="Cloud Native Computing Foundation" width="148" height="48" /><p>SPIFFE and SPIRE are CNCF graduated projects.</p><a href="https://www.cncf.io/projects/spiffe/">Project information ↗</a></div>
+</div>

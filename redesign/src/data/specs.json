@@ -1,0 +1,106 @@
+[
+  {
+    "filename": "SPIFFE.md",
+    "slug": "spiffe",
+    "title": "SPIFFE framework",
+    "description": "How the specifications fit together.",
+    "status": "Stable",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE.md"
+  },
+  {
+    "filename": "SPIFFE-ID.md",
+    "slug": "spiffe-id",
+    "title": "SPIFFE ID",
+    "description": "Identity names and verifiable identity documents.",
+    "status": "Stable",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE-ID.md"
+  },
+  {
+    "filename": "SPIFFE_Trust_Domain_and_Bundle.md",
+    "slug": "trust-domain-and-bundle",
+    "title": "Trust domain and bundle",
+    "description": "Administrative boundaries and verification material.",
+    "status": "Stable",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Trust_Domain_and_Bundle.md"
+  },
+  {
+    "filename": "X509-SVID.md",
+    "slug": "x509-svid",
+    "title": "X.509-SVID",
+    "description": "The X.509 certificate profile for workload identity.",
+    "status": "Stable",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/X509-SVID.md"
+  },
+  {
+    "filename": "JWT-SVID.md",
+    "slug": "jwt-svid",
+    "title": "JWT-SVID",
+    "description": "The JWT profile for workload identity.",
+    "status": "Stable",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/JWT-SVID.md"
+  },
+  {
+    "filename": "SPIFFE_Workload_API.md",
+    "slug": "workload-api",
+    "title": "Workload API",
+    "description": "Retrieve SVIDs and trust bundles.",
+    "status": "Stable",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Workload_API.md"
+  },
+  {
+    "filename": "SPIFFE_Workload_Endpoint.md",
+    "slug": "workload-endpoint",
+    "title": "Workload endpoint",
+    "description": "Discover and connect to the Workload API.",
+    "status": "Stable",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Workload_Endpoint.md"
+  },
+  {
+    "filename": "SPIFFE_Federation.md",
+    "slug": "federation",
+    "title": "Federation",
+    "description": "Exchange bundles across trust domains.",
+    "status": "Stable",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Federation.md"
+  },
+  {
+    "filename": "WIT-SVID.md",
+    "slug": "wit-svid",
+    "title": "WIT-SVID",
+    "description": "A proof-of-possession token profile.",
+    "status": "Incubating",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/WIT-SVID.md"
+  },
+  {
+    "filename": "SPIFFE_Broker_API.md",
+    "slug": "broker-api",
+    "title": "Broker API",
+    "description": "Retrieve identities on behalf of workloads.",
+    "status": "Incubating",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Broker_API.md"
+  },
+  {
+    "filename": "SPIFFE_Broker_Endpoint.md",
+    "slug": "broker-endpoint",
+    "title": "Broker endpoint",
+    "description": "Discover and connect to a broker endpoint.",
+    "status": "Incubating",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Broker_Endpoint.md"
+  },
+  {
+    "filename": "SPIFFE_Filesystem_Delivery.md",
+    "slug": "filesystem-delivery",
+    "title": "Filesystem delivery",
+    "description": "Deliver credentials through the filesystem.",
+    "status": "Incubating",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/SPIFFE_Filesystem_Delivery.md"
+  },
+  {
+    "filename": "STABILITY.md",
+    "slug": "stability",
+    "title": "Specification stability",
+    "description": "The compatibility commitments for each stability level.",
+    "status": "Process",
+    "source": "https://github.com/spiffe/spiffe/blob/49a9cbbc018c39ec6643ad3301632f9f4549258b/standards/STABILITY.md"
+  }
+]

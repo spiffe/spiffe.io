@@ -1,0 +1,285 @@
+---
+const examples = [
+  {
+    id: 'services', label: 'Service connections', workload: 'frontend', path: '/frontend',
+    request: 'Read orders', credential: 'X.509-SVID · mutual TLS', receiver: 'Orders service',
+    decision: 'Verifies identity · decides access',
+    caption: 'The frontend and orders service authenticate each other with X.509-SVIDs. The orders service applies its access policy.',
+  },
+  {
+    id: 'builds', label: 'CI/CD', workload: 'build-job', path: '/ci/build',
+    request: 'Publish an artifact', credential: 'JWT-SVID · repository audience', receiver: 'Artifact repository',
+    decision: 'Validates token · decides access',
+    caption: 'The repository validates the JWT-SVID signature, audience and expiration, then checks whether this build job may publish.',
+  },
+  {
+    id: 'cloud', label: 'Cloud API access', workload: 'reporting-job', path: '/jobs/reporting',
+    exchange: 'Google Cloud federation', exchangeCredential: 'X.509-SVID over mutual TLS',
+    request: 'Read an object', credential: 'Google access token', receiver: 'Cloud Storage API',
+    decision: 'Authenticates token · applies IAM policy',
+    caption: 'Google Cloud federation maps the certificate identity to an IAM principal and issues a short-lived access token. Cloud Storage receives that token.',
+    source: 'https://docs.cloud.google.com/iam/docs/workload-identity-federation-with-x509-certificates',
+  },
+  {
+    id: 'ai', label: 'AI workloads', workload: 'model-serving', path: '/ai/model-serving',
+    request: 'Request a model', credential: 'X.509-SVID · mutual TLS', receiver: 'Model registry',
+    decision: 'Verifies identity · decides access',
+    caption: 'The model registry verifies the model-serving workload’s identity and applies its access policy. Short-lived credentials are issued and renewed automatically.',
+  },
+];
+---
+<section class="identity-examples" aria-labelledby="identity-headline">
+  <h2 id="identity-headline">Prove which workload is calling.</h2>
+  <div class="example-selector" role="group" aria-label="Workload example" hidden>
+    {examples.map((example, index) => <button type="button" aria-pressed={index === 0 ? 'true' : 'false'} aria-controls={`example-${example.id}`} data-example={example.id}>{example.label}</button>)}
+  </div>
+  <div class="example-panels">
+    {examples.map((example, index) => <figure id={`example-${example.id}`} class="example-panel" data-active={index === 0 ? '' : undefined} aria-hidden={index !== 0 ? 'true' : undefined} inert={index !== 0} aria-label={`${example.label}: ${example.workload} authenticates to ${example.receiver}`}>
+      <div class="example-workload">
+        <img src="/img/logos/spiffe/icon/color/spiffe-icon-color.svg" width="32" height="40" alt="" />
+        <strong>{example.workload}</strong><span>Workload</span>
+      </div>
+      <div class="example-uri" role="img" aria-label={`SPIFFE ID: spiffe://example.org${example.path}. Trust domain: example.org. Workload path: ${example.path}.`}>
+        <span class="uri-scheme">spiffe://</span><strong class="uri-domain">example.org</strong><strong class="uri-path">{example.path}</strong>
+        <span class="uri-label domain-label">trust domain</span><span class="uri-label path-label">workload path</span>
+      </div>
+      <div class="example-flow">
+        {example.exchange && <>
+          <div class="example-connector"><span aria-hidden="true">↓</span><p>Exchange credentials<small>{example.exchangeCredential}</small></p></div>
+          <div class="example-receiver"><strong>{example.exchange}</strong><span>Verifies certificate · issues access token</span></div>
+        </>}
+        <div class="example-connector"><span aria-hidden="true">↓</span><p>{example.request}<small>{example.credential}</small></p></div>
+        <div class="example-receiver"><strong>{example.receiver}</strong><span>{example.decision}</span></div>
+      </div>
+      <figcaption>{example.caption}{example.source && <> <a href={example.source}>Configure federation <span aria-hidden="true">→</span></a></>}</figcaption>
+    </figure>)}
+  </div>
+  <p class="example-compatibility">Kubernetes · Virtual machines · Bare metal</p>
+  <p class="workload-definition">A workload is running software. Services, build jobs, model servers and AI agents are examples.</p>
+</section>
+<script>
+  const examples = document.querySelector<HTMLElement>('.identity-examples');
+  if (examples) {
+    const selector = examples.querySelector<HTMLElement>('.example-selector')!;
+    const buttons = Array.from(selector.querySelectorAll<HTMLButtonElement>('button'));
+    const panels = Array.from(examples.querySelectorAll<HTMLElement>('.example-panel'));
+    selector.hidden = false;
+    buttons.forEach(button => button.addEventListener('click', () => {
+      buttons.forEach(option => option.setAttribute('aria-pressed', String(option === button)));
+      panels.forEach(panel => {
+        const active = panel.id === button.getAttribute('aria-controls');
+        panel.toggleAttribute('data-active', active);
+        panel.inert = !active;
+        if (active) panel.removeAttribute('aria-hidden');
+        else panel.setAttribute('aria-hidden', 'true');
+      });
+    }));
+  }
+</script>
+<style>
+  @layer site {
+    .identity-examples {
+      min-width: 0;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid #cbd9dc;
+      border-radius: 3px;
+      background: #fbfdfd;
+      container-type: inline-size;
+    }
+    h2 {
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      font-weight: 600;
+      letter-spacing: -.025em;
+    }
+    .example-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .4rem;
+      margin-bottom: 1.2rem;
+    }
+    .example-selector[hidden] {
+      display: none;
+    }
+    button {
+      padding: .5rem .3rem;
+      min-height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: white;
+      color: var(--muted);
+      font: inherit;
+      font-size: .75rem;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+    button[aria-pressed='true'] {
+      border-color: #007582;
+      color: #006574;
+      background: #eaf5f7;
+      box-shadow: inset 0 -2px #007582;
+      font-weight: 600;
+    }
+    .example-panels {
+      display: grid;
+    }
+    .example-panel {
+      grid-area: 1 / 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      margin: 0;
+    }
+    .example-panel:not([data-active]) {
+      visibility: hidden;
+    }
+    .example-workload {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      padding-bottom: .9rem;
+    }
+    .example-workload img {
+      width: 32px;
+      height: 40px;
+    }
+    .example-workload strong {
+      font-size: 1.4rem;
+      font-weight: 550;
+      letter-spacing: -.03em;
+    }
+    .example-workload>span {
+      margin-left: auto;
+      color: var(--muted);
+      font: .6rem ui-monospace, monospace;
+      text-transform: uppercase;
+    }
+    .example-uri {
+      display: grid;
+      grid-template-columns: repeat(3, max-content);
+      justify-content: center;
+      padding: .8rem 0 .5rem;
+      border-top: 1px solid var(--line);
+      font: .8rem/1.8 ui-monospace, monospace;
+    }
+    .uri-scheme {
+      color: #5f6e73;
+    }
+    .example-uri strong {
+      color: #007582;
+      font-weight: 600;
+      border-bottom: 1px solid #a7cbd0;
+    }
+    .uri-label {
+      color: #566366;
+      font: .6rem/1.5 ui-monospace, monospace;
+      padding-top: .3rem;
+      text-align: center;
+    }
+    .domain-label {
+      grid-column: 2;
+    }
+    .path-label {
+      grid-column: 3;
+    }
+    .example-flow {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      padding-bottom: .5rem;
+    }
+    .example-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      padding: .5rem 0;
+      color: #007582;
+    }
+    .example-connector>span {
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .example-connector p {
+      margin: 0;
+      font-size: .78rem;
+      line-height: 1.4;
+    }
+    .example-connector small {
+      display: block;
+      margin-top: .2rem;
+      color: var(--muted);
+      font-size: .68rem;
+    }
+    .example-receiver {
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+      align-items: center;
+      padding: .6rem;
+      border: 1px solid #cbd9dc;
+      border-radius: 2px;
+      background: white;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .example-receiver strong {
+      font-size: .88rem;
+      font-weight: 600;
+    }
+    .example-receiver>span {
+      color: var(--muted);
+      font-size: .67rem;
+    }
+    figcaption {
+      margin-top: .8rem;
+      color: var(--muted);
+      font-size: .75rem;
+      line-height: 1.6;
+    }
+    figcaption a {
+      color: #007582;
+    }
+    .example-compatibility {
+      text-align: center;
+      color: var(--muted);
+      margin: .8rem 0 0;
+      font-size: .65rem;
+    }
+    .workload-definition {
+      border-top: 1px solid var(--line);
+      padding-top: .8rem;
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: .75rem;
+      line-height: 1.6;
+    }
+    @container (max-width: 380px) {
+      .example-uri {
+        grid-template-columns: max-content max-content;
+        font-size: .75rem;
+      }
+      .uri-path {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        justify-self: center;
+        margin-top: .5rem;
+      }
+      .path-label {
+        grid-column: 1 / -1;
+        grid-row: 4;
+      }
+      .example-workload>span {
+        display: none;
+      }
+    }
+    @media (max-width: 650px) {
+      .identity-examples {
+        margin-top: 2.5rem;
+        padding: 1.2rem;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,133 @@
+{
+  "aembit": {
+    "name": "Aembit",
+    "link": "https://aembit.io/",
+    "logo": "aembit.svg",
+    "logoSource": "https://aembit.io/wp-content/uploads/2023/09/aembit-logo-main-no-padding.svg"
+  },
+  "akeyless": {
+    "name": "Akeyless",
+    "link": "https://www.akeyless.io/",
+    "logo": "akeyless.svg",
+    "logoSource": "https://files.readme.io/1d0ac38-Akeyless_Logo_RGB_Main_Logo.svg"
+  },
+  "amazon-web-services": {
+    "name": "Amazon Web Services",
+    "logo": "Amazon-Web-Services-logo.svg",
+    "link": "https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html"
+  },
+  "anthropic": {
+    "name": "Anthropic",
+    "link": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
+    "logo": "anthropic.svg",
+    "logoSource": "https://www.anthropic.com/"
+  },
+  "cofide": {
+    "name": "Cofide",
+    "link": "https://www.cofide.io/",
+    "logo": "cofide.svg",
+    "logoSource": "https://www.cofide.io/"
+  },
+  "cosmian": {
+    "name": "Eviden",
+    "link": "https://docs.cosmian.com/",
+    "logo": "eviden.svg",
+    "logoSource": "https://docs.cosmian.com/eviden-logo-orange.svg"
+  },
+  "defakto": {
+    "name": "Defakto",
+    "link": "https://www.defakto.security/",
+    "logo": "defakto.svg",
+    "logoSource": "https://www.defakto.security/wp-content/themes/defakto/resources/img/logo.svg"
+  },
+  "edera": {
+    "name": "Edera",
+    "link": "https://edera.dev/",
+    "logo": "edera.svg",
+    "logoSource": "https://cdn.prod.website-files.com/68dac009699a76c0c70f4c30/68dac009699a76c0c70f4c50_edera-logo.svg"
+  },
+  "google-cloud": {
+    "name": "Google Cloud",
+    "logo": "google-cloud.png",
+    "link": "https://docs.cloud.google.com/iam/docs/managed-workload-identity"
+  },
+  "greymatter": {
+    "name": "Greymatter",
+    "logo": "Greymatter-name-logo.svg",
+    "link": "https://greymatter.io/"
+  },
+  "hashicorp": {
+    "name": "HashiCorp",
+    "logo": "HashiCorp-logo.svg",
+    "link": "https://developer.hashicorp.com/vault/docs/auth/spiffe"
+  },
+  "infisical": {
+    "name": "Infisical",
+    "link": "https://infisical.com/docs/documentation/platform/identities/spiffe-auth",
+    "logo": "infisical.svg",
+    "logoSource": "https://infisical.com/images/v2/infisical-logo.svg"
+  },
+  "kong": {
+    "name": "Kong",
+    "link": "https://konghq.com/",
+    "logo": "kong.svg",
+    "logoSource": "https://konghq.com/"
+  },
+  "messier-42": {
+    "name": "Messier 42",
+    "link": "https://messier42.com/",
+    "logo": "messier42.png",
+    "logoSource": "https://messier42.com/images/m42-wordmark-dark.png"
+  },
+  "microsoft": {
+    "name": "Microsoft",
+    "link": "https://www.microsoft.com/",
+    "logo": "microsoft.png",
+    "logoSource": "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png"
+  },
+  "openai": {
+    "name": "OpenAI",
+    "link": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe",
+    "logo": "openai.png",
+    "logoSource": "https://avatars.githubusercontent.com/u/14957082?v=4&s=400",
+    "logoScale": 1.5
+  },
+  "palo-alto-networks": {
+    "name": "Palo Alto Networks",
+    "logo": "PANW-horizontal-logo.svg",
+    "link": "https://www.paloaltonetworks.com/resources/techbriefs/secure-workload-access"
+  },
+  "red-hat": {
+    "name": "Red Hat",
+    "logo": "redhat.svg",
+    "link": "https://www.redhat.com/en/technologies/cloud-computing/openshift/zero-trust-workload-identity-manager"
+  },
+  "riptides": {
+    "name": "Riptides",
+    "logo": "Riptides-logo.svg",
+    "link": "https://riptides.io/"
+  },
+  "strongdm": {
+    "name": "StrongDM",
+    "link": "https://id.strongdm.ai",
+    "logo": "strongdm.png",
+    "logoSource": "https://avatars.githubusercontent.com/u/11929133?v=4&s=400"
+  },
+  "teleport": {
+    "name": "Teleport",
+    "logo": "teleport_logo.svg",
+    "link": "https://goteleport.com/docs/machine-workload-identity/workload-identity/introduction/"
+  },
+  "traefik-labs": {
+    "name": "Traefik Labs",
+    "link": "https://traefik.io/",
+    "logo": "traefik-labs.svg",
+    "logoSource": "https://traefik.io/"
+  },
+  "warpstream": {
+    "name": "WarpStream",
+    "link": "https://docs.warpstream.com/warpstream/kafka/manage-security/mutual-tls-mtls",
+    "logo": "warpstream.svg",
+    "logoSource": "https://cdn.prod.website-files.com/683882630fceea3de6f5776a/683882630fceea3de6f57800_Group%20(20).svg"
+  }
+}

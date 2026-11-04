@@ -77,6 +77,10 @@ adopters:
   - name: Duke Energy
     logo: Duke_Energy_logo.svg
     link: https://www.duke-energy.com/
+  - name: GitHub
+    logo: GitHub_Logo.png
+    link: https://github.com/
+    source: https://github.com/spiffe/spire/blob/main/ADOPTERS.md
   - name: Google
     logo: Google-logo.svg
     link: https://www.google.com/
@@ -98,18 +102,41 @@ adopters:
   - name: Intel
     logo: Intel-logo.svg
     link: https://www.intel.com/content/www/us/en/homepage.html
+  - name: LinkedIn
+    logo: linkedin.png
+    link: https://www.linkedin.com/
+    source: https://github.com/spiffe/spire/issues/6543
+    logoSource: https://brand.linkedin.com/downloads
   - name: Netflix
     logo: Netflix-logo.svg
     link: https://www.netflix.com/
+  - name: Niantic
+    logo: niantic.png
+    link: https://github.com/NianticLabs
+    source: https://github.com/spiffe/spire/blob/main/ADOPTERS.md
+    logoSource: https://github.com/NianticLabs
   - name: Palo Alto Networks
     link: https://paloaltonetworks.com/
     logo: PANW-horizontal-logo.svg
+  - name: Pinterest
+    logo: pinterest.png
+    link: https://www.pinterest.com/
+    source: https://github.com/spiffe/spire/blob/main/ADOPTERS.md
   - name: Riptides
     logo: Riptides-logo.svg
     link: https://riptides.io/
   - name: SAP
     logo: SAP-SE-logo.svg
     link: https://www.sap.com/
+  - name: Square
+    logo: square.jpg
+    link: https://squareup.com/
+    source: https://github.com/spiffe/spire/blob/main/ADOPTERS.md
+  - name: State Farm
+    logo: state-farm.svg
+    link: https://www.statefarm.com/
+    source: https://endusers.cncf.io/events/2025/kubecon-na/
+    logoSource: https://static1.st8fm.com/en_US/dxl-1x/prod/css/images/header/state-farm-logo-4.svg
   - name: Twilio
     logo: Twilio-logo.svg
     link: https://www.twilio.com/
@@ -128,3 +155,8 @@ adopters:
   - name: Yahoo
     logo: Yahoo-logo.svg
     link: https://www.yahoo.com/
+  - name: Z Lab Corporation
+    logo: zlab.png
+    link: https://github.com/zlabjp
+    source: https://github.com/spiffe/spire/blob/main/ADOPTERS.md
+    logoSource: https://github.com/zlabjp
