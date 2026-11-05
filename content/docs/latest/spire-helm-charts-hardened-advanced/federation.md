@@ -119,7 +119,8 @@ helm upgrade --install --create-namespace -n spire-server spire-crds spire-crds 
  --repo https://spiffe.github.io/helm-charts-hardened/
 
 helm upgrade --install -n spire-server spire spire \
- --repo https://spiffe.github.io/helm-charts-hardened/
+ --repo https://spiffe.github.io/helm-charts-hardened/ \
+ -f your-values.yaml
 ```
 
 ## Kubernetes Cluster B
@@ -172,7 +173,8 @@ helm upgrade --install --create-namespace -n spire-server spire-crds spire-crds 
  --repo https://spiffe.github.io/helm-charts-hardened/
 
 helm upgrade --install -n spire-server spire spire \
- --repo https://spiffe.github.io/helm-charts-hardened/
+ --repo https://spiffe.github.io/helm-charts-hardened/ \
+ -f your-values.yaml
 ```
 
 ## DNS
