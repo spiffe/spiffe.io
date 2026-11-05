@@ -1,0 +1,35 @@
+---
+import Default from "@astrojs/starlight/components/Footer.astro";
+import ScrollableContent from "./ScrollableContent.astro";
+---
+
+<Default />
+<footer class="site-footer" data-pagefind-ignore>
+  <a href="/" aria-label="SPIFFE home">
+    <img
+      src="/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.svg"
+      width="130"
+      alt="SPIFFE"
+    />
+  </a>
+  <nav aria-label="Legal">
+    <a href="https://www.linuxfoundation.org/terms">Terms</a> ·{" "}
+    <a href="https://www.linuxfoundation.org/privacy">Privacy</a> ·{" "}
+    <a href="https://www.linuxfoundation.org/trademark-usage">Trademarks</a> ·{" "}
+    <a href="https://github.com/spiffe/spiffe.io/tree/master/LICENSE">
+      License
+    </a>
+  </nav>
+  <p>© {new Date().getUTCFullYear()} The SPIFFE authors</p>
+</footer>
+<ScrollableContent />
+<script>
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-copy-url]")
+    .forEach((button) => {
+      button.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(button.dataset.copyUrl!);
+        button.setAttribute("aria-label", `Copied ${button.textContent}`);
+      });
+    });
+</script>

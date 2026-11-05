@@ -1,0 +1,7 @@
+---
+import Default from "@astrojs/starlight/components/Hero.astro";
+import Home from "./Home.astro";
+const home = Astro.url.pathname === "/";
+---
+
+{home ? <Home /> : <Default />}

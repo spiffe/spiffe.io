@@ -1,0 +1,311 @@
+@layer starlight, site;
+@layer site {
+  :root {
+    --sl-color-accent-low: #e5f4f5;
+    --sl-color-accent: #008b9a;
+    --sl-color-accent-high: #006875;
+    --sl-font: Arial, sans-serif;
+    --sl-content-width: 54rem;
+  }
+  .site-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100%;
+  }
+  .brand {
+    flex-shrink: 0;
+  }
+  .brand img {
+    width: 130px;
+    height: auto;
+  }
+  .primary-nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .primary-nav a,
+  .site-menu a {
+    color: var(--sl-color-text);
+    text-decoration: none;
+  }
+  .header-search {
+    margin-left: auto;
+  }
+  .header-social {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .site-menu {
+    display: none;
+  }
+  .site-menu nav {
+    position: absolute;
+    right: 1rem;
+    background: white;
+    border: 1px solid #ccd5d6;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+  }
+  .page-description {
+    font-size: 1.15rem;
+    color: var(--sl-color-gray-2);
+  }
+  .site-footer {
+    border-top: 1px solid var(--sl-color-hairline);
+    margin-top: 3rem;
+    padding: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+  }
+  .admonition {
+    padding: 1rem 1.25rem;
+    border-left: 4px solid #008b9a;
+    background: #edf7f8;
+    margin-block: 1.5rem;
+  }
+  .admonition.warning,
+  .admonition.requirement {
+    border-color: #b17b00;
+    background: #fff8e5;
+  }
+  .admonition.danger {
+    border-color: #b73d3d;
+    background: #fff1f1;
+  }
+  .sl-markdown-content figure {
+    text-align: center;
+  }
+  .sl-markdown-content figure img {
+    display: inline-block;
+  }
+  .sl-markdown-content figcaption {
+    color: var(--sl-color-gray-2);
+    font-size: 0.9rem;
+  }
+  .presentation {
+    display: flex;
+    gap: 1rem;
+    margin-block: 1.5rem;
+  }
+  .presentation > a {
+    flex-shrink: 0;
+  }
+  .project-kind {
+    display: inline-block;
+    min-width: 1.1em;
+  }
+  .official {
+    color: #916300;
+  }
+  .community {
+    color: #137ba1;
+  }
+  .commercial {
+    color: #14733b;
+  }
+  .releases button,
+  .releases td > a {
+    display: block;
+    margin-block: 0.35rem;
+  }
+  .releases button {
+    color: var(--sl-color-text-accent);
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid var(--sl-color-gray-5);
+    padding: 0.25rem;
+  }
+  .blog-row {
+    border-bottom: 1px solid var(--sl-color-hairline);
+    padding-block: 1.5rem;
+  }
+  .event-card {
+    border: 1px solid #d8e4e5;
+    padding: 1.5rem;
+    margin-block: 1.5rem;
+  }
+  .agenda-list {
+    list-style: none;
+    padding: 0;
+  }
+  .agenda-list > li {
+    border-bottom: 1px solid #d8e4e5;
+    padding-block: 1rem;
+  }
+  .home {
+    max-width: 74rem;
+    margin: auto;
+  }
+  .home section {
+    padding: 3rem 1rem;
+  }
+  .home h1 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.15;
+  }
+  .home h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .home h4 {
+    font-size: 1.2rem;
+  }
+  .home p {
+    line-height: 1.65;
+  }
+  .home .news {
+    background: #edf7f8;
+    padding: 1rem;
+    text-align: center;
+  }
+  .home .hero-body {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .home .hero-body > div {
+    flex: 1;
+    min-width: 0;
+  }
+  .home .spiffe-turtle {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+  }
+  .home .button,
+  .button {
+    display: inline-block;
+    padding: 0.7rem 1.1rem;
+    margin: 0.5rem 0.4rem 0.5rem 0;
+    background: #173e45;
+    color: white;
+    border: 0;
+    border-radius: 0.2rem;
+    text-decoration: none;
+    font: inherit;
+  }
+  .home .has-text-centered {
+    text-align: center;
+  }
+  .home .columns {
+    display: flex;
+    gap: 2rem;
+  }
+  .home .column {
+    flex: 1;
+    min-width: 0;
+  }
+  .home .use-cases img {
+    height: 150px;
+    margin: auto;
+  }
+  .home .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: center;
+    margin-block: 2rem;
+  }
+  .home .logo-grid img {
+    width: 140px;
+    height: 65px;
+    object-fit: contain;
+  }
+  .home .slideshow-container {
+    background: #f5f8f9;
+  }
+  .home .mySlides + .mySlides {
+    margin-top: 3rem;
+  }
+  .home .embed-container iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 0;
+  }
+  .home .book-cover {
+    max-height: 230px;
+    margin: auto;
+  }
+  .home .img-container-lg img {
+    height: 110px;
+    object-fit: contain;
+    margin: auto;
+  }
+  .home .img-long {
+    display: none;
+  }
+  .home .img-container-xsm img {
+    width: 60px;
+    object-fit: contain;
+  }
+  .home .gap-sm {
+    display: flex;
+    gap: 1.5rem;
+    margin-block: 1.5rem;
+    align-items: center;
+  }
+  .home .cncf-logo {
+    max-width: 300px;
+    margin: 1.5rem auto;
+  }
+  .home .margin-md-top-bottom {
+    margin-block: 2rem;
+  }
+  .home .text-container {
+    font-size: 1.15rem;
+  }
+  .sl-markdown-content .columns {
+    display: flex;
+    gap: 2rem;
+  }
+  .sl-markdown-content .column {
+    flex: 1;
+    min-width: 0;
+  }
+  @media (max-width: 60rem) {
+    .primary-nav,
+    .header-social {
+      display: none;
+    }
+    .site-menu {
+      display: block;
+    }
+    .home .logo-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 40rem) {
+    .site-header {
+      gap: 1rem;
+    }
+    .header-social {
+      display: none;
+    }
+    .brand img {
+      width: 105px;
+    }
+    .home .columns,
+    .home .hero-body,
+    .sl-markdown-content .columns {
+      flex-direction: column;
+    }
+    .home .logo-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+    .home .logo-grid img {
+      height: 48px;
+    }
+    .home section {
+      padding: 2rem 0.5rem;
+    }
+    .presentation {
+      flex-direction: column;
+    }
+  }
+}
