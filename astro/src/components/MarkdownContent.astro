@@ -1,0 +1,17 @@
+---
+import Default from "@astrojs/starlight/components/MarkdownContent.astro";
+const { entry } = Astro.locals.starlightRoute;
+const post = entry.id.startsWith("blog/") && entry.data.date;
+---
+
+<Default>
+  <slot />
+</Default>
+{post && (
+  <>
+    <p>{entry.data.tags.join(" ")}</p>
+    <p>
+      <a href="/blog/">← Back to all posts</a>
+    </p>
+  </>
+)}

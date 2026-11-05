@@ -1,0 +1,27 @@
+---
+import { getPosts } from "../data/blog";
+const posts = await getPosts();
+---
+
+{posts.map(({ id, data: post }) => (
+  <article class="blog-row">
+    <h2>
+      <a href={`/${id}/`}>{post.title}</a>
+    </h2>
+    <p>
+      {post.author && `By ${post.author} · `}
+      <time datetime={post.date!.toISOString()}>
+        {post.date!.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          timeZone: "UTC",
+        })}
+      </time>{" "}
+      · {post.readingTime} min read
+    </p>
+    <p>{post.description}</p>
+    {post.tags.length > 0 && <p>{post.tags.join(" ")}</p>}
+    <a href={`/${id}/`}>Read more →</a>
+  </article>
+))}

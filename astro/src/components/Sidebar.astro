@@ -1,0 +1,31 @@
+---
+import Default from "@astrojs/starlight/components/Sidebar.astro";
+---
+
+<nav class="mobile-site-links" aria-label="Site links">
+  <a href="/blog/">Blog</a>
+  <a href="https://x.com/SPIFFEio">X (formerly Twitter)</a>
+  <a href="https://github.com/spiffe">GitHub</a>
+  <a href="https://slack.spiffe.io/">Slack</a>
+  <a href="https://stackoverflow.com/questions/tagged/spiffe">Stack Overflow</a>
+  <a href="https://www.youtube.com/channel/UCVzeW7j02FDNggkI5JKPvJg/f">
+    YouTube
+  </a>
+</nav>
+<Default />
+<style>
+  .mobile-site-links {
+    display: none;
+  }
+  @media (max-width: 60rem) {
+    .mobile-site-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--sl-color-hairline);
+      font-size: 0.875rem;
+    }
+  }
+</style>
