@@ -8,7 +8,8 @@ NODE_VERSION = "22"
 PYTHON_VERSION = "3.12"
 
 [context.deploy-preview]
-command = "pip install -r requirements.txt && make preview-build"
+publish = "astro/dist"
+command = "pip install -r requirements.txt && make pull-external-content && npm --prefix astro ci && npm --prefix astro run build"
 
 [context.branch-deploy]
 command = "pip install -r requirements.txt && make preview-build"

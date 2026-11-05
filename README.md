@@ -86,6 +86,33 @@ make check-links # if you are using a local toolchain to serve the website
 
 The tool will crawl your local website and report if there's any broken link on it. If there's any, and you can't create a PR to fix the link right away, please [file an issue on GitHub](https://github.com/spiffe/spiffe.io/issues/new)
 
+## Previewing the Astro migration
+
+The Astro/Starlight build reads the same `content/`, `data/`, and `static/`
+sources as Hugo. It requires Node.js 22.23.4 or newer and the Python dependencies above:
+
+```sh
+python3 -m pip install -r requirements.txt
+make pull-external-content
+npm --prefix astro ci
+npm --prefix astro run build
+npm --prefix astro run preview
+```
+
+Open <http://localhost:4175/>. After editing source files, rerun the build to
+refresh the preview. Rerun the external-content import when updating imported pages.
+Set `GITHUB_TOKEN` for release data, or `HIDE_RELEASES=true` to omit the release
+list and use version placeholders, as with Hugo.
+
+Continue editing the existing content and data files. The build converts
+frontmatter, shortcodes and heading anchors into Starlight input and copies
+static and page-bundle assets. Files generated under `astro/src/content/` and
+`astro/public/` are ignored. The external-content contribution rules still apply.
+
+The build checks internal routes, fragments, aliases and the search index.
+Netlify deploy previews run Astro; the production and branch-deploy commands
+remain on Hugo while the migration is reviewed.
+
 ## Publishing the site
 
 The site is published automatically by [Netlify](https://netlify.com). Whenever you merge pull requests to `master`, the site is automatically built and published in about a minute. **There's no need to handle this manually**.

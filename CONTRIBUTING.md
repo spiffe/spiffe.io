@@ -54,6 +54,8 @@ Either way, the site becomes available at [`http://localhost:1313`](http://local
 and rebuilds automatically when you edit Markdown files or 
 [`external.yaml`](external.yaml). 
 
+For the Astro migration preview, follow the [Astro instructions](README.md#previewing-the-astro-migration). Continue editing the same source content and sign off commits as described below.
+
 See the [README](README.md) for details, including the`-with-releases` variants 
 and how to check for broken links with`make check-links` or 
 `make docker-check-links`.
