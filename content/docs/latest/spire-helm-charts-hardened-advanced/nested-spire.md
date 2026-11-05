@@ -83,17 +83,17 @@ external-spire-server:
 
 Also, ensure spire-server.$trustdomain is setup in your dns environment to point at your ingress controller, or update the ingress related [settings](../../spire-helm-charts-hardened-about/exposing) 
 
-For each child cluster, run the following on a control plane node and copy the generated content to a file named `<child cluster name>.kubeconfig` where you are installing the root server:
-```
-kubeadm kubeconfig user --client-name=spire-root | tr '\n' ' ' | sed 's/ //g'; echo
+On each child's control plane, generate a kubeconfig for the root server:
+
+```shell
+(umask 077 && kubeadm kubeconfig user --client-name=spire-root > child.kubeconfig)
 ```
 
-Install the root server:
+Securely copy the file to the machine where you run Helm. With the root cluster selected, install the root release. Replace `child` with the child's `global.spire.clusterName` and repeat `--set-file` for each child.
 
 ```shell
 helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.github.io/helm-charts-hardened/ \
-  # Use as many of these lines as you have child clusters. Substitute <child cluster name> for its short name:
-  --set "external-spire-server.kubeConfigs.<child cluster name>.kubeConfigBase64=$(cat <child cluster name>.kubeconfig)" \
+  --set-file external-spire-server.kubeConfigs.child.kubeConfig=child.kubeconfig \
   -f your-values.yaml -f root-values.yaml
 ```
 
@@ -126,12 +126,13 @@ helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.gi
   -f your-values.yaml -f child-values.yaml
 ```
 
-> **Note**
-> The child cluster will fail to start some services at this point, as the root server doesn't have have a trust established yet. This is expected.
+The root uses the child kubeconfig to publish its trust bundle. On the child cluster, check that the bundle appears under `data`:
 
-Next, we will establish the trust between instances.
+```shell
+kubectl -n spire-system get configmap spire-bundle-upstream -o yaml
+```
 
-Example: TODO
+Once the bundle is present, the upstream agent can authenticate the root and the child server can request its intermediate CA. If the pods started before the bundle arrived, follow the [nested-full example's restart sequence](https://github.com/spiffe/helm-charts-hardened/blob/main/examples/nested-full/run-tests.sh).
 
 ## Security Cluster
 
