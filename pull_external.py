@@ -62,17 +62,17 @@ def _pull_releases():
 
 
 def _get_releases():
-    token = os.environ.get("GITHUB_TOKEN")
-    hide_releases = os.environ.get("HIDE_RELEASES", "").lower() == "true"
-    
-    # Skip GitHub API calls if no token or explicitly hiding releases
-    if not token or hide_releases:
-        print("WARNING: GitHub releases disabled (no token or HIDE_RELEASES=true)")
+    if os.environ.get("HIDE_RELEASES", "").lower() == "true":
+        print("WARNING: GitHub releases disabled (HIDE_RELEASES=true)")
         print("Site will build but release information will show placeholder values")
         return [], {}
-    
+
     session = requests.Session()
-    session.headers.update({"Authorization": "token {}".format(token)})
+
+    # The releases API is public: a token only raises the rate limit.
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        session.headers.update({"Authorization": "token {}".format(token)})
 
     retries = Retry(
         total=3,
@@ -83,19 +83,27 @@ def _get_releases():
     session.mount("https://", HTTPAdapter(max_retries=retries))
 
     try:
-        all_releases_response = session.get(GITHUB_API_RELEASES)
-        all_releases_response.raise_for_status()
-        all_releases = all_releases_response.json()
-        
-        latest_release_response = session.get(GITHUB_API_LATEST_RELEASE)
-        latest_release_response.raise_for_status()
-        latest_release = latest_release_response.json()
-        
+        all_releases = _github_get(session, GITHUB_API_RELEASES)
+        latest_release = _github_get(session, GITHUB_API_LATEST_RELEASE)
+
         return all_releases, latest_release
     except Exception as e:
         print(f"WARNING: GitHub API request failed: {e}")
         print("Site will build but release information will show placeholder values")
         return [], {}
+
+
+def _github_get(session: requests.Session, url: str):
+    response = session.get(url)
+
+    # An expired or revoked token fails even though the endpoint is public.
+    if response.status_code == 401 and "Authorization" in session.headers:
+        print("WARNING: GitHub rejected GITHUB_TOKEN, retrying without it")
+        del session.headers["Authorization"]
+        response = session.get(url)
+
+    response.raise_for_status()
+    return response.json()
 
 
 def _read_yaml(file_name: str) -> Dict:
