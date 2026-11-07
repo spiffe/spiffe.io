@@ -4,6 +4,7 @@ import shutil
 import re
 import toml
 import subprocess
+import sys
 import requests
 from requests.adapters import HTTPAdapter, Retry
 from typing import Dict, List, Set, Tuple, Pattern, Match
@@ -55,6 +56,13 @@ def main():
 def _pull_releases():
     global latest_release
     all, latest = _get_releases()
+
+    # Publishing without releases leaves the downloads page empty and pulls the
+    # SPIRE docs from main, so production builds fail and keep the last deploy.
+    require_releases = os.environ.get("REQUIRE_RELEASES", "").lower() == "true"
+    if require_releases and not (all and latest):
+        sys.exit("ERROR: could not fetch SPIRE releases (REQUIRE_RELEASES=true)")
+
     latest_release = latest.get("tag_name", "main")
 
     with open("data/releases.yaml", "w") as releases_file:
