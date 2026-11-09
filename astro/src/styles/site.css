@@ -4,7 +4,8 @@
     --sl-color-accent-low: #e5f4f5;
     --sl-color-accent: #008b9a;
     --sl-color-accent-high: #006875;
-    --sl-font: "PT Sans", sans-serif;
+    --sl-font: "Geist Sans";
+    --sl-font-mono: "Geist Mono";
     --sl-content-width: 64rem;
   }
   .site-header {
@@ -230,6 +231,7 @@
   .home h1 {
     font-size: 2.5rem;
     font-weight: 600;
+    text-wrap: balance;
     line-height: 1.5;
     margin-bottom: 0;
   }
