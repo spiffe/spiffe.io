@@ -13,10 +13,16 @@
     gap: 1.5rem;
     height: 100%;
   }
+  html:not([data-has-sidebar]) .site-header {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+  }
   .brand {
     flex-shrink: 0;
   }
   .brand img {
+    display: block;
     width: 130px;
     height: auto;
   }
