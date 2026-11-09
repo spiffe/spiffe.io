@@ -180,8 +180,10 @@
     margin-inline: auto;
   }
   .home h1 {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.15;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 0;
   }
   .home h2 {
     font-size: 2rem;
@@ -206,6 +208,12 @@
   .home .hero-body > div {
     flex: 1;
     min-width: 0;
+  }
+  .home .hero-body > div:first-child {
+    flex: 0 0 40%;
+  }
+  .home .hero .subtitle-text {
+    padding-block: 3em;
   }
   .home .spiffe-turtle {
     width: 100%;
@@ -417,6 +425,20 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
+  @media (max-width: 48rem) {
+    .home .hero-body {
+      flex-direction: column-reverse;
+    }
+    .home .hero-body > div:first-child {
+      flex-basis: auto;
+    }
+    .home .hero .text-container {
+      text-align: center;
+    }
+    .home h1 {
+      font-size: 1.5rem;
+    }
+  }
   @media (max-width: 40rem) {
     .site-header {
       gap: 1rem;
@@ -431,7 +453,6 @@
       display: none;
     }
     .home .columns,
-    .home .hero-body,
     .sl-markdown-content .columns {
       flex-direction: column;
     }
