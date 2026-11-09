@@ -124,6 +124,41 @@
     border-bottom: 1px solid var(--sl-color-hairline);
     padding-block: 1.5rem;
   }
+  .blog-row h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.35rem;
+  }
+  .blog-row h2 a,
+  .blog-row .read-more {
+    text-decoration: none;
+  }
+  .blog-row .post-meta {
+    color: var(--sl-color-gray-2);
+    font-size: 0.85rem;
+    margin-top: 0;
+  }
+  .blog-row .read-more {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-weight: 600;
+  }
+  .post-footer hr {
+    border: 0;
+    border-top: 1px solid var(--sl-color-hairline);
+    margin-block: 2rem 1rem;
+  }
+  .blog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .blog-tags .tag {
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-gray-2);
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
   .event-card {
     border: 1px solid #d8e4e5;
     padding: 1.5rem;

@@ -1,5 +1,6 @@
 ---
 import Default from "@astrojs/starlight/components/MarkdownContent.astro";
+import BlogTags from "./BlogTags.astro";
 const { entry } = Astro.locals.starlightRoute;
 const post = entry.id.startsWith("blog/") && entry.data.date;
 ---
@@ -8,10 +9,11 @@ const post = entry.id.startsWith("blog/") && entry.data.date;
   <slot />
 </Default>
 {post && (
-  <>
-    <p>{entry.data.tags.join(" ")}</p>
+  <div class="post-footer">
+    {entry.data.tags.length > 0 && <hr />}
+    <BlogTags tags={entry.data.tags} />
     <p>
       <a href="/blog/">← Back to all posts</a>
     </p>
-  </>
+  </div>
 )}

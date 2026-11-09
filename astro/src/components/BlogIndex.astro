@@ -1,5 +1,6 @@
 ---
 import { getPosts } from "../data/blog";
+import BlogTags from "./BlogTags.astro";
 const posts = await getPosts();
 ---
 
@@ -8,7 +9,7 @@ const posts = await getPosts();
     <h2>
       <a href={`/${id}/`}>{post.title}</a>
     </h2>
-    <p>
+    <p class="post-meta">
       {post.author && `By ${post.author} · `}
       <time datetime={post.date!.toISOString()}>
         {post.date!.toLocaleDateString("en-US", {
@@ -21,7 +22,7 @@ const posts = await getPosts();
       · {post.readingTime} min read
     </p>
     <p>{post.description}</p>
-    {post.tags.length > 0 && <p>{post.tags.join(" ")}</p>}
-    <a href={`/${id}/`}>Read more →</a>
+    <BlogTags tags={post.tags} />
+    <a class="read-more" href={`/${id}/`}>Read more →</a>
   </article>
 ))}
