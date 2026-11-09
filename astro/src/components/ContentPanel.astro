@@ -1,9 +1,14 @@
 ---
 import ContentPanel from "@astrojs/starlight/components/ContentPanel.astro";
 const isBlog = Astro.url.pathname.startsWith("/blog/");
+const isHome = Astro.url.pathname === "/";
 ---
 
-{isBlog ? (
+{isHome ? (
+  <div class="content-panel">
+    <slot />
+  </div>
+) : isBlog ? (
   <div class="content-panel blog-panel">
     <div class="sl-container">
       <slot />
@@ -40,13 +45,14 @@ const isBlog = Astro.url.pathname.startsWith("/blog/");
             .sl-heading-wrapper
           ):not(:has(> img))
       ) {
-      max-width: 46rem;
+      max-width: 54rem;
       margin-inline: auto;
     }
     .blog-panel :global(.sl-heading-wrapper),
     .blog-panel :global(h1),
+    .blog-panel :global(.page-description),
     .blog-panel :global(.post-meta) {
-      max-width: 46rem;
+      max-width: 54rem;
       margin-inline: auto;
     }
     .blog-panel :global(.sl-markdown-content) {

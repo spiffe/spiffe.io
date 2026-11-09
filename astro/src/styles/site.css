@@ -5,7 +5,7 @@
     --sl-color-accent: #008b9a;
     --sl-color-accent-high: #006875;
     --sl-font: Arial, sans-serif;
-    --sl-content-width: 54rem;
+    --sl-content-width: 64rem;
   }
   .site-header {
     display: flex;
@@ -137,12 +137,12 @@
     border-bottom: 1px solid #d8e4e5;
     padding-block: 1rem;
   }
-  .home {
-    max-width: 74rem;
-    margin: auto;
-  }
   .home section {
-    padding: 3rem 1rem;
+    padding: 3rem var(--sl-content-pad-x);
+  }
+  .home section > * {
+    max-width: 84rem;
+    margin-inline: auto;
   }
   .home h1 {
     font-size: clamp(2rem, 4vw, 3.5rem);
