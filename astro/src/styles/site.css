@@ -62,6 +62,44 @@
     font-size: 1.15rem;
     color: var(--sl-color-gray-2);
   }
+  /* Shared reading rhythm for documentation and blog pages. */
+  :where([data-has-sidebar]) .content-panel:first-child,
+  .blog-panel:first-child {
+    padding-top: clamp(2rem, 4vw, 3rem);
+    padding-bottom: 1.5rem;
+  }
+  :where([data-has-sidebar], .blog-panel) h1#_top {
+    margin-top: 0;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+  :where([data-has-sidebar], .blog-panel)
+    h1#_top + :is(.page-description, .post-meta) {
+    margin-top: 0.75rem;
+    line-height: 1.6;
+  }
+  :where([data-has-sidebar], .blog-panel) .sl-markdown-content {
+    --sl-content-gap-y: 1.25rem;
+    --sl-line-height-headings: 1.25;
+    --sl-text-h1: clamp(1.75rem, 1.5rem + 0.65vw, 2.125rem);
+    --sl-text-h2: clamp(1.5rem, 1.25rem + 0.65vw, 1.875rem);
+    --sl-text-h3: 1.375rem;
+    --sl-text-h4: 1.25rem;
+    --sl-text-h5: 1.125rem;
+    --sl-text-code-sm: 0.85em;
+    font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
+    line-height: 1.8;
+  }
+  :where([data-has-sidebar], .blog-panel)
+    .sl-markdown-content :is(h1, h2, h3, h4) {
+    letter-spacing: -0.025em;
+  }
+  :where([data-has-sidebar], .blog-panel) .sl-markdown-content pre {
+    line-height: var(--sl-line-height);
+  }
+  :where([data-has-sidebar], .blog-panel) .sl-markdown-content table {
+    font-size: 1rem;
+  }
   .site-footer {
     border-top: 1px solid var(--sl-color-hairline);
     margin-top: 3rem;
@@ -274,6 +312,7 @@
   }
   .home .logo-grid img {
     width: 140px;
+    max-width: 100%;
     height: 65px;
     object-fit: contain;
   }
