@@ -29,6 +29,10 @@
     color: var(--sl-color-text);
     text-decoration: none;
   }
+  .primary-nav a {
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.7);
+  }
   .header-search {
     margin-left: auto;
   }
@@ -214,6 +218,14 @@
   }
   .home .hero .subtitle-text {
     padding-block: 3em;
+  }
+  .home .is-size-4 {
+    font-size: 1.5rem;
+  }
+  .home .is-size-5,
+  .home .subtitle.is-5,
+  .home .content.is-medium {
+    font-size: 1.25rem;
   }
   .home .spiffe-turtle {
     width: 100%;
@@ -437,6 +449,12 @@
     }
     .home h1 {
       font-size: 1.5rem;
+    }
+    .home .is-size-5-mobile {
+      font-size: 1.25rem;
+    }
+    .home .is-size-6-mobile {
+      font-size: 1rem;
     }
   }
   @media (max-width: 40rem) {
