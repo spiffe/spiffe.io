@@ -4,7 +4,7 @@
     --sl-color-accent-low: #e5f4f5;
     --sl-color-accent: #008b9a;
     --sl-color-accent-high: #006875;
-    --sl-font: Arial, sans-serif;
+    --sl-font: "PT Sans", sans-serif;
     --sl-content-width: 64rem;
   }
   .site-header {

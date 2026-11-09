@@ -42,7 +42,12 @@ export default defineConfig({
       ],
       expressiveCode: false,
       favicon: "/favicon.ico",
-      customCss: ["./src/styles/site.css"],
+      customCss: [
+        "@fontsource/pt-sans/400.css",
+        "@fontsource/pt-sans/400-italic.css",
+        "@fontsource/pt-sans/700.css",
+        "./src/styles/site.css",
+      ],
       credits: false,
       disable404Route: true,
       sidebar,
