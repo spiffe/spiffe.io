@@ -29,10 +29,10 @@ const users = YAML.parse(fs.readFileSync("../data/users.yaml", "utf8"));
             to workloads across a wide variety of platforms
           </p>
           <div class="flex">
-            <a href="/spiffe">
+            <a href="/spiffe/">
               <button class="button is-medium is-dark">Get started</button>
             </a>
-            <a href="/downloads">
+            <a href="/downloads/">
               <button class="button is-medium is-dark">Download</button>
             </a>
           </div>
@@ -51,12 +51,25 @@ const users = YAML.parse(fs.readFileSync("../data/users.yaml", "utf8"));
 
   <section class="section has-text-centered">
     <h2>Used By</h2>
-    <div class="logo-grid">
-      {users.adopters.map((user) => (
-        <a href={user.link}>
-          <img src={`/img/logos/${user.logo}`} alt={`${user.name} logo`} />
-        </a>
-      ))}
+    <div class="logo-marquee">
+      <div class="logo-track">
+        {[false, true].map((duplicate) => (
+          <div
+            class="logo-set"
+            aria-hidden={duplicate ? "true" : undefined}
+            data-pagefind-ignore={duplicate ? "all" : undefined}
+          >
+            {users.adopters.map((user) => (
+              <a href={user.link} tabindex={duplicate ? -1 : undefined}>
+                <img
+                  src={`/img/logos/${user.logo}`}
+                  alt={duplicate ? "" : `${user.name} logo`}
+                />
+              </a>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   </section>
   <section class="section has-text-centered">
@@ -151,7 +164,7 @@ const users = YAML.parse(fs.readFileSync("../data/users.yaml", "utf8"));
       ))}
     </div>
     <p>
-      <a class="button" href="/spiffe">
+      <a class="button" href="/spiffe/">
         Learn more
       </a>
     </p>
@@ -204,6 +217,8 @@ const users = YAML.parse(fs.readFileSync("../data/users.yaml", "utf8"));
         </div>
       </div>
     </div>
+    <button class="prev" type="button" aria-label="Previous slide">&#10094;</button>
+    <button class="next" type="button" aria-label="Next slide">&#10095;</button>
   </section>
 
   <section class="section">
@@ -239,7 +254,7 @@ const users = YAML.parse(fs.readFileSync("../data/users.yaml", "utf8"));
       </div>
     </div>
     <div class="has-text-centered">
-      <a href="/spiffe">
+      <a href="/spiffe/">
         <button class="button is-medium btn-wide is-dark margin-md-top-bottom">
           Learn more
         </button>
@@ -305,10 +320,10 @@ const users = YAML.parse(fs.readFileSync("../data/users.yaml", "utf8"));
       </div>
     </div>
     <div class="has-text-centered margin-md-top-bottom">
-      <a href="/spiffe">
+      <a href="/spiffe/">
         <button class="button is-medium is-dark">Get started</button>
       </a>
-      <a href="/downloads">
+      <a href="/downloads/">
         <button class="button is-medium is-dark">Download</button>
       </a>
     </div>
@@ -335,3 +350,19 @@ const users = YAML.parse(fs.readFileSync("../data/users.yaml", "utf8"));
     src="https://static.scarf.sh/a.png?x-pxid=360e600b-8ddf-4aad-92e7-76c93e550e8f"
   />
 </div>
+
+<script>
+  const slides = [...document.querySelectorAll<HTMLElement>(".home .mySlides")];
+  let current = 0;
+  const show = (n: number) => {
+    current = (n + slides.length) % slides.length;
+    slides.forEach((slide, i) => (slide.hidden = i !== current));
+  };
+  document
+    .querySelector(".home .slideshow-container .prev")
+    ?.addEventListener("click", () => show(current - 1));
+  document
+    .querySelector(".home .slideshow-container .next")
+    ?.addEventListener("click", () => show(current + 1));
+  show(0);
+</script>
