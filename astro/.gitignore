@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+public/
+src/content/docs/
+src/data/site.json
+src/data/redirects.json

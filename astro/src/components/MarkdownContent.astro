@@ -1,0 +1,19 @@
+---
+import Default from "@astrojs/starlight/components/MarkdownContent.astro";
+import BlogTags from "./BlogTags.astro";
+const { entry } = Astro.locals.starlightRoute;
+const post = entry.id.startsWith("blog/") && entry.data.date;
+---
+
+<Default>
+  <slot />
+</Default>
+{post && (
+  <div class="post-footer">
+    {entry.data.tags.length > 0 && <hr />}
+    <BlogTags tags={entry.data.tags} />
+    <p>
+      <a href="/blog/">← Back to all posts</a>
+    </p>
+  </div>
+)}

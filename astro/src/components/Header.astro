@@ -1,0 +1,64 @@
+---
+import Search from "@astrojs/starlight/components/Search.astro";
+import SocialIcons from "@astrojs/starlight/components/SocialIcons.astro";
+const path = Astro.url.pathname;
+const docs = path.startsWith("/docs/");
+const links = docs
+  ? [["Blog", "/blog/"]]
+  : [
+      ["Get SPIRE", "/downloads/"],
+      ["Documentation", "/docs/latest/"],
+      ["Blog", "/blog/"],
+    ];
+const social = [
+  ["X (formerly Twitter)", "https://x.com/SPIFFEio"],
+  ["GitHub", "https://github.com/spiffe"],
+  ["Slack", "https://slack.spiffe.io/"],
+  ["Stack Overflow", "https://stackoverflow.com/questions/tagged/spiffe"],
+  ["YouTube", "https://www.youtube.com/channel/UCVzeW7j02FDNggkI5JKPvJg/f"],
+];
+---
+
+<div class="site-header">
+  <a href="/" class="brand" aria-label="SPIFFE home">
+    <img
+      src="/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.svg"
+      width="131"
+      height="38"
+      alt="SPIFFE"
+    />
+  </a>
+  <nav class="primary-nav" aria-label="Main navigation">
+    {links.map(([label, href]) => (
+      <a href={href} aria-current={path.startsWith(href) ? "page" : undefined}>
+        {label}
+      </a>
+    ))}
+  </nav>
+  <div class="header-search">
+    <Search />
+  </div>
+  <div class="header-social">
+    <SocialIcons />
+  </div>
+  {!docs && (
+    <details class="site-menu">
+      <summary>Menu</summary>
+      <nav aria-label="Site navigation">
+        {[...links, ...social].map(([label, href]) => (
+          <a href={href}>{label}</a>
+        ))}
+      </nav>
+    </details>
+  )}
+</div>
+<script>
+  document.querySelectorAll<HTMLDetailsElement>(".site-menu").forEach((menu) =>
+    menu.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.open) {
+        menu.open = false;
+        menu.querySelector("summary")?.focus();
+      }
+    }),
+  );
+</script>
