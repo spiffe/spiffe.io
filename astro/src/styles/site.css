@@ -7,6 +7,14 @@
     --sl-font: "Geist Sans";
     --sl-font-mono: "Geist Mono";
     --sl-content-width: 64rem;
+    --sl-nav-height: 4.5rem;
+    --sl-color-bg-nav: #fff;
+    --site-chrome-text: #1f2a2e;
+    --site-chrome-muted: #566366;
+    --site-chrome-line: #dce4e6;
+  }
+  .header {
+    border-bottom: 1px solid var(--site-chrome-line);
   }
   .site-header {
     display: flex;
@@ -29,35 +37,93 @@
   }
   .primary-nav {
     display: flex;
+    align-items: center;
     gap: 1.5rem;
   }
   .primary-nav a,
   .site-menu a {
-    color: var(--sl-color-text);
+    color: var(--site-chrome-muted);
     text-decoration: none;
   }
   .primary-nav a {
-    font-weight: 700;
-    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.875rem;
+    font-weight: 550;
+    padding-block: 0.5rem;
+  }
+  .primary-nav a:hover,
+  .primary-nav a[aria-current] {
+    color: var(--site-chrome-text);
+    box-shadow: 0 2px 0 var(--sl-color-accent);
   }
   .header-search {
     margin-left: auto;
+  }
+  .header-search button[data-open-modal] {
+    border: 1px solid var(--site-chrome-line);
+    border-radius: 4px;
+    background: #fafcfc;
+    color: var(--site-chrome-muted);
+  }
+  @media (min-width: 50rem) {
+    .header-search button[data-open-modal] {
+      min-width: 9.5rem;
+    }
   }
   .header-social {
     display: flex;
     gap: 0.8rem;
   }
+  .header-social a {
+    color: var(--site-chrome-muted);
+  }
+  .header-social a:hover {
+    color: var(--sl-color-accent-high);
+  }
+  :is(.site-header, .site-footer, .mobile-site-links)
+    :is(a, button, summary):focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 4px;
+  }
   .site-menu {
     display: none;
+    position: relative;
+    font-size: 0.875rem;
+  }
+  .site-menu summary {
+    cursor: pointer;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid var(--site-chrome-line);
+    border-radius: 4px;
+    color: var(--site-chrome-text);
   }
   .site-menu nav {
     position: absolute;
-    right: 1rem;
+    right: 0;
+    top: calc(100% + 0.75rem);
+    min-width: 13rem;
+    max-width: calc(100vw - 2rem);
     background: white;
-    border: 1px solid #ccd5d6;
-    padding: 1rem;
+    border: 1px solid var(--site-chrome-line);
+    border-radius: 4px;
+    padding: 0.5rem;
     display: grid;
-    gap: 1rem;
+    gap: 0.15rem;
+  }
+  .site-menu nav a {
+    padding: 0.5rem 0.75rem;
+    min-height: 2.75rem;
+  }
+  .site-menu nav a:hover {
+    color: var(--sl-color-accent-high);
+    background: var(--sl-color-accent-low);
+  }
+  .mobile-site-links a {
+    color: var(--site-chrome-muted);
+    text-decoration: none;
+  }
+  .mobile-site-links a:hover {
+    color: var(--sl-color-accent-high);
+    text-decoration: underline;
   }
   .page-description {
     font-size: 1.15rem;
@@ -102,14 +168,53 @@
     font-size: 1rem;
   }
   .site-footer {
-    border-top: 1px solid var(--sl-color-hairline);
+    border-top: 1px solid var(--site-chrome-line);
+    max-width: 84rem;
+    margin-inline: auto;
     margin-top: 3rem;
-    padding: 2rem 0;
+    padding-block: 2.8rem;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 1.5rem;
-    font-size: 0.85rem;
+    justify-content: space-between;
+    align-items: start;
+    gap: 2rem;
+    color: var(--site-chrome-muted);
+    font-size: 0.8125rem;
+  }
+  [data-has-hero] .site-footer {
+    width: calc(100% - 2 * var(--sl-content-pad-x));
+  }
+  .blog-panel .site-footer {
+    max-width: 54rem;
+  }
+  .footer-identity img {
+    display: block;
+    width: 130px;
+    height: auto;
+  }
+  .footer-identity p {
+    margin-top: 0.75rem;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.25rem 2rem;
+  }
+  .footer-links a {
+    padding-block: 0.3rem;
+    color: var(--site-chrome-muted);
+    text-decoration: none;
+  }
+  .footer-links a:hover {
+    color: var(--sl-color-accent-high);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  @media (pointer: coarse) {
+    .site-menu summary,
+    .footer-links a {
+      min-height: 44px;
+    }
   }
   .admonition {
     padding: 1rem 1.25rem;
@@ -505,6 +610,14 @@
     }
   }
   @media (max-width: 40rem) {
+    :root {
+      --sl-nav-height: 4rem;
+    }
+    .site-footer {
+      flex-direction: column;
+      padding-block: 2rem;
+      gap: 1.5rem;
+    }
     .site-header {
       gap: 1rem;
     }
