@@ -21,6 +21,7 @@ serve-with-releases:
 		--buildFuture \
 		--disableFastRender
 
+production-build: export REQUIRE_RELEASES = true
 production-build: pull-external-content
 	hugo \
 		--gc \
