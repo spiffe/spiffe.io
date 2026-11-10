@@ -195,6 +195,7 @@ spiffe-specs:
         - standards/SPIFFE_Broker_API.md
         - standards/SPIFFE_Broker_Endpoint.md
         - standards/SPIFFE_Federation.md
+        - standards/SPIFFE_Filesystem_Delivery.md
         - standards/SPIFFE_Trust_Domain_and_Bundle.md
         - standards/SPIFFE_Workload_API.md
         - standards/SPIFFE_Workload_Endpoint.md
@@ -268,6 +269,12 @@ spiffe-specs:
                 short: SPIFFE Broker Endpoint
                 navgroup: spiffe-specs
                 weight: 460
+        SPIFFE_Filesystem_Delivery.md:
+            frontMatter:
+                title: SPIFFE Filesystem Delivery
+                short: SPIFFE Filesystem Delivery
+                navgroup: spiffe-specs
+                weight: 470
         STABILITY.md:
             frontMatter:
                 title: SPIFFE Specification Stability
