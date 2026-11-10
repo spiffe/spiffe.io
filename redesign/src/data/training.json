@@ -1,0 +1,30 @@
+[
+  {
+    "id": "lfs183",
+    "title": "Introduction to Zero Trust",
+    "attribution": "Linux Foundation · LFS183",
+    "description": "Explore workload identity through exercises in PKI, mutual TLS, SPIRE, and policy enforcement with OPA and Envoy.",
+    "links": [
+      {
+        "label": "Course page",
+        "url": "https://trainingportal.linuxfoundation.org/courses/introduction-to-zero-trust-lfs183"
+      },
+      {
+        "label": "Explore the labs",
+        "url": "https://github.com/lftraining/LFS183x-resources"
+      }
+    ]
+  },
+  {
+    "id": "lfs482",
+    "title": "SPIFFE and SPIRE labs",
+    "attribution": "Linux Foundation · LFS482",
+    "description": "Deploy SPIRE, obtain workload credentials, and configure federation. Continue with high availability and integrations with OPA, Envoy, and Cilium.",
+    "links": [
+      {
+        "label": "Explore the labs",
+        "url": "https://github.com/lftraining/lfs482-labs"
+      }
+    ]
+  }
+]

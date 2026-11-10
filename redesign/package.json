@@ -1,0 +1,30 @@
+{
+  "name": "spiffe-io-renewed",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/releases.mjs && astro build && node scripts/redirects.mjs && npm run check",
+    "preview": "astro preview --host 0.0.0.0 --port 4173",
+    "check": "node --test scripts/redirect-utils.test.mjs && node scripts/verify.mjs",
+    "refresh:releases": "node scripts/releases.mjs --refresh",
+    "check:upstream": "node scripts/check-upstream.mjs",
+    "sources": "node scripts/sources.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.0",
+    "@astrojs/starlight": "0.42.6",
+    "astro": "7.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/starlight-tailwind": "^5.0.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "yaml": "^2.8.1"
+  }
+}
