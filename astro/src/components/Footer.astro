@@ -5,22 +5,24 @@ import ScrollableContent from "./ScrollableContent.astro";
 
 <Default />
 <footer class="site-footer" data-pagefind-ignore>
-  <a href="/" aria-label="SPIFFE home">
-    <img
-      src="/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.svg"
-      width="130"
-      alt="SPIFFE"
-    />
-  </a>
-  <nav aria-label="Legal">
-    <a href="https://www.linuxfoundation.org/terms">Terms</a> ·{" "}
-    <a href="https://www.linuxfoundation.org/privacy">Privacy</a> ·{" "}
-    <a href="https://www.linuxfoundation.org/trademark-usage">Trademarks</a> ·{" "}
+  <div class="footer-identity">
+    <a href="/" aria-label="SPIFFE home">
+      <img
+        src="/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.svg"
+        width="130"
+        alt="SPIFFE"
+      />
+    </a>
+    <p>© {new Date().getUTCFullYear()} The SPIFFE authors</p>
+  </div>
+  <nav class="footer-links" aria-label="Legal">
+    <a href="https://www.linuxfoundation.org/terms">Terms</a>
+    <a href="https://www.linuxfoundation.org/privacy">Privacy</a>
+    <a href="https://www.linuxfoundation.org/trademark-usage">Trademarks</a>
     <a href="https://github.com/spiffe/spiffe.io/tree/master/LICENSE">
       License
     </a>
   </nav>
-  <p>© {new Date().getUTCFullYear()} The SPIFFE authors</p>
 </footer>
 <ScrollableContent />
 <script>
