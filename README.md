@@ -11,6 +11,27 @@ The site is built using:
 
 ## Develop the site locally
 
+### Using Docker
+
+This is the preferred way to run the website for local development as Docker is the only tool you need to install.
+
+Ensure that Docker is running and then type:
+```shell
+$ make docker-serve
+```
+The first run takes a few minutes to build a Docker image with all the tools you need. After that, it serves the website at [`http://localhost:4175`](http://localhost:4175).
+
+You can also run the website with a list of releases under the "SPIRE Releases" heading on the Downloads page (`content/downloads/_index.md`):
+```shell
+$ make docker-serve-with-releases
+```
+
+The default of `make docker-serve` omits the live SPIRE releases as a workaround to avoid a GitHub rate limiting issue as described in [issue 93](https://github.com/spiffe/spiffe.io/issues/93); version placeholders are shown instead. Set `GITHUB_TOKEN` to avoid the rate limit when including them.
+
+### Using your local environment
+
+Alternatively, you can run the website using the tools installed in your operating system.
+
 You'll need:
 * [Node.js](https://nodejs.org/) 22.23.4 or newer
 * [Python](https://www.python.org/) 3.12 or newer
@@ -26,24 +47,22 @@ $ make serve # or make serve-with-releases
 ```
 
 The website is now available at [`http://localhost:4175`](http://localhost:4175).
-The build converts the Markdown and data files into Starlight input once at
-startup, so rerun `make serve` after editing source files or the
-[external content descriptor file](./external.yaml).
 
-`make serve` omits the live SPIRE releases (`HIDE_RELEASES=true`) as a
-workaround to avoid a GitHub rate limiting issue as described in
-[issue 93](https://github.com/spiffe/spiffe.io/issues/93); version placeholders
-are shown instead. Use `make serve-with-releases` to include them, setting
-`GITHUB_TOKEN` to avoid the rate limit.
+### Editing
+
+Either way, the website runs in development mode: changes to the Markdown,
+data and static files, or to the [external content descriptor file](./external.yaml),
+rebuild the affected pages and reload them in your browser. Draft and
+future-dated pages are included, and are never published.
+
+Edit the existing `content/`, `data/` and `static/` sources. Files generated
+under `astro/src/content/` and `astro/public/` are ignored. The external-content
+contribution rules still apply.
 
 To build the site as Netlify does, run `make build`. The output is in
 `astro/dist/`, and `npm --prefix astro run preview` serves it at
 [`http://localhost:4175`](http://localhost:4175). The build checks internal
 routes, fragments, aliases and the search index.
-
-Edit the existing `content/`, `data/` and `static/` sources. Files generated
-under `astro/src/content/` and `astro/public/` are ignored. The external-content
-contribution rules still apply.
 
 ### Checking for broken links
 
@@ -51,16 +70,16 @@ It is common that URLs you are pointing to get deprecated or moved somewhere els
 
 In order to avoid this, there is a tool that lets you check whether there are broken links in the whole website or not. It runs automatically on every pull request via the [Link check](.github/workflows/link-check.yml) GitHub Actions workflow, and you can also run it locally.
 
-First, make sure you are serving the website locally with the releases included (`make serve-with-releases`), and that it is accessible at `http://localhost:4175`, then run the following command:
+First, make sure you are serving the website locally with the releases included (`make docker-serve-with-releases` or `make serve-with-releases`), and that it is accessible at `http://localhost:4175`, then run the following command:
 
 ```shell
-make docker-check-links # to run linkchecker in Docker
+make docker-check-links # if you are using Docker to serve the website
 ```
 
 or
 
 ```shell
-make check-links # if you have linkchecker installed locally (make setup installs it)
+make check-links # if you are using a local toolchain to serve the website
 ```
 
 The tool will crawl your local website and report if there's any broken link on it. If there's any, and you can't create a PR to fix the link right away, please [file an issue on GitHub](https://github.com/spiffe/spiffe.io/issues/new)
@@ -147,7 +166,8 @@ only shows in local previews) and documents the front matter, images, tags, and
 publishing flow as it goes - read it for the full walkthrough. Posts are tagged
 with one or more of three tags: `SPIFFE`, `SPIRE`, and `Community`.
 
-To preview locally, run the site (`make serve`) and open
+To preview locally, run the site (`make docker-serve` or `make serve`, both of
+which build drafts) and open
 [`http://localhost:4175/blog/`](http://localhost:4175/blog/). SEO metadata
 (title, description, canonical URL, Open Graph and Twitter Card tags) and the
 [RSS feed](https://spiffe.io/blog/index.xml) are generated automatically; you

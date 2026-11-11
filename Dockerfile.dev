@@ -1,0 +1,23 @@
+FROM node:24-trixie-slim
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends git python3 python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# trixie ships a PEP 668 "externally managed" Python; the container is
+# single-purpose, so install system-wide for whichever UID it runs as.
+COPY requirements.txt /tmp/requirements.txt
+RUN python3 -m pip install --break-system-packages --no-cache-dir -r /tmp/requirements.txt
+
+# Installed in the image rather than the bind mount, so host node_modules (for
+# another platform) never shadow them. Writable for the Vite dependency cache.
+WORKDIR /app/astro
+COPY astro/package.json astro/package-lock.json ./
+RUN npm ci && chmod -R a+rwX node_modules
+
+RUN git config --system --add safe.directory '*'
+
+WORKDIR /app
+ENV HOME=/tmp
+EXPOSE 4175
+CMD ["sh", "-c", "python3 pull_external.py && npm --prefix astro run dev"]

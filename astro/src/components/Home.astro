@@ -1,7 +1,7 @@
 ---
-import fs from "node:fs";
 import YAML from "yaml";
-const users = YAML.parse(fs.readFileSync("../data/users.yaml", "utf8"));
+import usersYaml from "../../../data/users.yaml?raw";
+const users = YAML.parse(usersYaml);
 ---
 
 <div class="home not-content" data-pagefind-body>

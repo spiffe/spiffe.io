@@ -37,19 +37,25 @@ this repository.
 
 ## Running the Site Locally
 
-With Node.js and Python installed (see the
-[README](README.md#develop-the-site-locally) for versions):
+The preferred way is Docker, since it's the only tool you need to install:
+
+```shell
+make docker-serve
+```
+
+Alternatively, with a local toolchain (Node.js and Python, see the
+[README](README.md#using-your-local-environment) for versions):
 
 ```shell
 make setup
 make serve
 ```
 
-The site becomes available at [`http://localhost:4175`](http://localhost:4175).
-Rerun `make serve` after editing Markdown files or
+Either way, the site becomes available at [`http://localhost:4175`](http://localhost:4175)
+and rebuilds automatically when you edit Markdown files or
 [`external.yaml`](external.yaml).
 
-See the [README](README.md) for details, including the `-with-releases` variant
+See the [README](README.md) for details, including the `-with-releases` variants
 and how to check for broken links with `make check-links` or
 `make docker-check-links`.
 
@@ -71,7 +77,8 @@ and how to check for broken links with `make check-links` or
 ## Submitting a Pull Request
 
 1. Fork the repository and create a branch from `master`.
-2. Make your changes and verify them locally with `make serve`.
+2. Make your changes and verify them locally with `make docker-serve` (or
+   `make serve`).
 3. **Sign off every commit** (`git commit -s`). This repository requires
    the [Developer Certificate of Origin](https://github.com/apps/dco) on all
    commits; PRs with unsigned commits cannot be merged.
