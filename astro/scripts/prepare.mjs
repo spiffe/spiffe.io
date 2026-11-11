@@ -14,14 +14,26 @@ import {
   markdown,
 } from "./content.mjs";
 
-const pages = readPages();
+// --drafts also includes draft and future-dated pages, for local development.
+const pages = readPages({ drafts: process.argv.includes("--drafts") });
 const target = "src/content/docs";
-fs.rmSync(target, { recursive: true, force: true });
-fs.mkdirSync(target, { recursive: true });
-fs.rmSync("public", { recursive: true, force: true });
-fs.cpSync(path.join(repo, "static"), "public", { recursive: true });
-// The existing /docs redirect is generated with fragment/query preservation below.
-fs.rmSync("public/docs", { recursive: true, force: true });
+// Outputs are only rewritten when they change, and stale ones removed at the
+// end, so `astro dev` sees just the edited files when this reruns.
+const emitted = new Set();
+function emit(file, contents) {
+  emitted.add(path.resolve(file));
+  const buffer = Buffer.from(contents);
+  if (fs.existsSync(file) && fs.readFileSync(file).equals(buffer)) return;
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, buffer);
+}
+const staticDir = path.join(repo, "static");
+for (const file of files(staticDir)) {
+  const rel = path.relative(staticDir, file);
+  // The existing /docs redirect is generated with fragment/query preservation below.
+  if (!rel.startsWith(`docs${path.sep}`))
+    emit(path.join("public", rel), fs.readFileSync(file));
+}
 const redirects = {
   "/docs": "/docs/latest/spiffe-about/overview/",
   "/docs/latest/spire/developing/get-involved":
@@ -93,8 +105,7 @@ for (const p of pages) {
         p.route,
         path.relative(path.dirname(p.file), asset),
       );
-      fs.mkdirSync(path.dirname(dest), { recursive: true });
-      fs.copyFileSync(asset, dest);
+      emit(dest, fs.readFileSync(asset));
     }
   }
   body = body.replace(
@@ -114,6 +125,7 @@ for (const p of pages) {
     source: p.source,
     externalSource: p.data.externalSource,
     date: p.data.date,
+    draft: p.data.draft,
     modifiedDate:
       p.route.startsWith("/blog/") && p.data.date
         ? p.data.lastmod ||
@@ -148,8 +160,7 @@ for (const p of pages) {
     p.route,
     p.route === "/blog/" ? "index.mdx" : "index.md",
   );
-  fs.mkdirSync(path.dirname(output), { recursive: true });
-  fs.writeFileSync(output, `---\n${YAML.stringify(data)}---\n${body}\n`);
+  emit(output, `---\n${YAML.stringify(data)}---\n${body}\n`);
   records.push({
     route: p.route,
     title,
@@ -160,10 +171,7 @@ for (const p of pages) {
   });
 }
 const write = (file, data, body = "") =>
-  fs.writeFileSync(
-    path.join(target, file),
-    `---\n${YAML.stringify(data)}---\n${body}\n`,
-  );
+  emit(path.join(target, file), `---\n${YAML.stringify(data)}---\n${body}\n`);
 write("index.md", {
   title: "SPIFFE",
   description: "A universal identity control plane for distributed systems.",
@@ -218,15 +226,23 @@ const sidebar = groups.map(([label, kinds]) => ({
       : links;
   }),
 }));
-fs.mkdirSync("src/data", { recursive: true });
-fs.writeFileSync(
+emit(
   "src/data/site.json",
   JSON.stringify({ pages: records, sidebar }, null, 2) + "\n",
 );
-fs.writeFileSync(
-  "src/data/redirects.json",
-  JSON.stringify(redirects, null, 2) + "\n",
-);
+emit("src/data/redirects.json", JSON.stringify(redirects, null, 2) + "\n");
+function prune(dir) {
+  for (const item of fs.readdirSync(dir, { withFileTypes: true })) {
+    const file = path.join(dir, item.name);
+    if (!item.isDirectory()) {
+      if (!emitted.has(path.resolve(file))) fs.rmSync(file);
+    } else {
+      prune(file);
+      if (!fs.readdirSync(file).length) fs.rmdirSync(file);
+    }
+  }
+}
+for (const dir of [target, "public"]) if (fs.existsSync(dir)) prune(dir);
 console.log(
   `Prepared ${records.length} upstream pages and ${Object.keys(redirects).length} existing aliases.`,
 );

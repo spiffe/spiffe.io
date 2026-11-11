@@ -6,65 +6,63 @@ This repository contains the source for the [SPIFFE](https://github.com/spiffe/s
 
 The site is built using:
 
-* [Hugo](https://gohugo.io/)
-* The [Bulma](https://bulma.io) CSS framework
+* [Astro](https://astro.build/) with the [Starlight](https://starlight.astro.build/) docs theme
+* [Python](https://www.python.org/), for [`pull_external.py`](pull_external.py), which pulls documentation in from other SPIFFE repositories
 
 ## Develop the site locally
 
 ### Using Docker
 
-This is the preferred way to run the website for local development as Docker is the only tool you need to install and tool dependencies are managed better in the Docker method.
+This is the preferred way to run the website for local development as Docker is the only tool you need to install.
 
 Ensure that Docker is running and then type:
 ```shell
 $ make docker-serve
 ```
-This command takes a few minutes to create a Docker image with all the tools you need to run the website. After that, it will serve the website locally. Note that some of the steps might ask you to run additional commands, please ignore them.
-
-The following line indicates that the image has been created and the website is ready:
-```
-Web Server is available at //localhost:1313/ (bind address 0.0.0.0)
-```
-Open [`http://localhost:1313`](http://localhost:1313) in your browser to view your local version of the spiffe.io website.
-
-The website is now running in development mode, meaning that any changes in the Markdown files or the [external content descriptor file](./external.yaml) trigger a rebuild of the site. After the rebuild, the site is reloaded in your browser.
+The first run takes a few minutes to build a Docker image with all the tools you need. After that, it serves the website at [`http://localhost:4175`](http://localhost:4175).
 
 You can also run the website with a list of releases under the "SPIRE Releases" heading on the Downloads page (`content/downloads/_index.md`):
 ```shell
 $ make docker-serve-with-releases
 ```
 
-The default of `make docker-serve` omits the live SPIRE releases as a workaround to avoid a GitHub rate limiting issue as described in [issue 93](https://github.com/spiffe/spiffe.io/issues/93).
+The default of `make docker-serve` omits the live SPIRE releases as a workaround to avoid a GitHub rate limiting issue as described in [issue 93](https://github.com/spiffe/spiffe.io/issues/93); version placeholders are shown instead. Set `GITHUB_TOKEN` to avoid the rate limit when including them.
 
 ### Using your local environment
 
-Alternatively, you can run the website in development mode using the tools installed in your operating system.
+Alternatively, you can run the website using the tools installed in your operating system.
 
 You'll need:
-* [Hugo](https://gohugo.io/) (use [HUGO VERSION](./netlify.toml), or higher)
-* [Python](https://www.python.org/) (use [recommended version](./.python-version), or higher. [Pyenv](https://github.com/pyenv/pyenv) is recommended for version management)
-* [Pipenv](https://pipenv.pypa.io/)
-* [npm](https://npmjs.org)
+* [Node.js](https://nodejs.org/) 22.23.4 or newer
+* [Python](https://www.python.org/) 3.12 or newer
 
-> If you plan on working on the Sass/CSS, make sure to install the "extended" version of Hugo with support for [Hugo Pipes](https://gohugo.io/hugo-pipes/), which processes the Sass in realtime.
-
-
-First, you will have to install the dependencies running:
+First, install the dependencies:
 ```shell
 $ make setup
 ```
 
-Then you can run the website by typing:
+Then run the website:
 ```shell
 $ make serve # or make serve-with-releases
 ```
 
-Hugo might take a few seconds to build and serve the website. The following line indicates that the website is ready:
-```
-Web Server is available at //localhost:1313/ (bind address 0.0.0.0)
-```
+The website is now available at [`http://localhost:4175`](http://localhost:4175).
 
-The website is now available at [`http://localhost:1313`](http://localhost:1313). Changes in the Markdown files or the [external content descriptor file](./external.yaml) trigger a rebuild of the site. After the rebuild, the site is reloaded in your browser.
+### Editing
+
+Either way, the website runs in development mode: changes to the Markdown,
+data and static files, or to the [external content descriptor file](./external.yaml),
+rebuild the affected pages and reload them in your browser. Draft and
+future-dated pages are included, and are never published.
+
+Edit the existing `content/`, `data/` and `static/` sources. Files generated
+under `astro/src/content/` and `astro/public/` are ignored. The external-content
+contribution rules still apply.
+
+To build the site as Netlify does, run `make build`. The output is in
+`astro/dist/`, and `npm --prefix astro run preview` serves it at
+[`http://localhost:4175`](http://localhost:4175). The build checks internal
+routes, fragments, aliases and the search index.
 
 ### Checking for broken links
 
@@ -72,7 +70,7 @@ It is common that URLs you are pointing to get deprecated or moved somewhere els
 
 In order to avoid this, there is a tool that lets you check whether there are broken links in the whole website or not. It runs automatically on every pull request via the [Link check](.github/workflows/link-check.yml) GitHub Actions workflow, and you can also run it locally.
 
-First, make sure you are serving the website locally using the `-with-releases` form of the script (`make docker-serve-with-releases` or `make serve-with-releases`), and that it is accessible at `http://localhost:1313`, then run the following command:
+First, make sure you are serving the website locally with the releases included (`make docker-serve-with-releases` or `make serve-with-releases`), and that it is accessible at `http://localhost:4175`, then run the following command:
 
 ```shell
 make docker-check-links # if you are using Docker to serve the website
@@ -85,33 +83,6 @@ make check-links # if you are using a local toolchain to serve the website
 ```
 
 The tool will crawl your local website and report if there's any broken link on it. If there's any, and you can't create a PR to fix the link right away, please [file an issue on GitHub](https://github.com/spiffe/spiffe.io/issues/new)
-
-## Previewing the Astro migration
-
-The Astro/Starlight build reads the same `content/`, `data/`, and `static/`
-sources as Hugo. It requires Node.js 22.23.4 or newer and the Python dependencies above:
-
-```sh
-python3 -m pip install -r requirements.txt
-make pull-external-content
-npm --prefix astro ci
-npm --prefix astro run build
-npm --prefix astro run preview
-```
-
-Open <http://localhost:4175/>. After editing source files, rerun the build to
-refresh the preview. Rerun the external-content import when updating imported pages.
-Set `GITHUB_TOKEN` for release data, or `HIDE_RELEASES=true` to omit the release
-list and use version placeholders, as with Hugo.
-
-Continue editing the existing content and data files. The build converts
-frontmatter, shortcodes and heading anchors into Starlight input and copies
-static and page-bundle assets. Files generated under `astro/src/content/` and
-`astro/public/` are ignored. The external-content contribution rules still apply.
-
-The build checks internal routes, fragments, aliases and the search index.
-Netlify deploy previews run Astro; the production and branch-deploy commands
-remain on Hugo while the migration is reviewed.
 
 ## Publishing the site
 
@@ -131,7 +102,7 @@ Markdown sources for the documentation are in the [`content`](content) directory
 
 #### Latest SPIRE version
 
-Hugo can automatically infer the latest version of SPIRE using the GitHub [Releases API](https://developer.github.com/v3/repos/releases/). To insert that version into text, use the [`spire-latest`](layouts/shortcodes/spire-latest.html) [shortcode](#shortcodes).
+The build can automatically infer the latest version of SPIRE using the GitHub [Releases API](https://developer.github.com/v3/repos/releases/). To insert that version into text, use the `spire-latest` [shortcode](#shortcodes).
 This shortcode has a mandatory parameter that can be either `version`, `tag` or `tarball`.
 
 Here's an example:
@@ -156,11 +127,11 @@ The [Specification](https://spiffe.netlify.com/spiffe/#spec) section of the main
 
 ### Shortcodes
 
-Hugo has a feature called [shortcodes](https://gohugo.io/content-management/shortcodes/) that enables you to embed custom logic in Markdown files. The shortcodes for the site are in [`layouts/shortcodes`](layouts/shortcodes).
+The Markdown sources use Hugo-style [shortcodes](https://gohugo.io/content-management/shortcodes/) to embed custom logic. The build expands them in [`astro/scripts/content.mjs`](astro/scripts/content.mjs).
 
 #### Acknowledgments
 
-The shortcode for the "Acknowledgments" section of the [Community](https://spiffe.netlify.com/community/#acknowledgments) page is in the [`acknowledgments.html`](layouts/shortcodes/acknowledgments.html) shortcode. To alter the contents of this section, update the [`data/acknowledgments.yaml`](data/acknowledgments.yaml) file.
+The shortcode for the "Acknowledgments" section of the [Community](https://spiffe.netlify.com/community/#acknowledgments) page is generated by the `acknowledgments` shortcode. To alter the contents of this section, update the [`data/acknowledgments.yaml`](data/acknowledgments.yaml) file.
 
 #### Admonition blocks
 
@@ -197,7 +168,7 @@ with one or more of three tags: `SPIFFE`, `SPIRE`, and `Community`.
 
 To preview locally, run the site (`make docker-serve` or `make serve`, both of
 which build drafts) and open
-[`http://localhost:1313/blog/`](http://localhost:1313/blog/). SEO metadata
+[`http://localhost:4175/blog/`](http://localhost:4175/blog/). SEO metadata
 (title, description, canonical URL, Open Graph and Twitter Card tags) and the
 [RSS feed](https://spiffe.io/blog/index.xml) are generated automatically; you
 don't need to add them by hand.

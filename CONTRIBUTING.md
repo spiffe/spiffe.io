@@ -3,8 +3,9 @@
 Thanks for your interest in improving [spiffe.io](https://spiffe.io).
 
 This  repository contains the source for the SPIFFE
-website, built with [Hugo](https://gohugo.io/) and the [Bulma](https://bulma.io)
-CSS framework, and published automatically by [Netlify](https://netlify.com). 
+website, built with [Astro](https://astro.build/) and
+[Starlight](https://starlight.astro.build/), and published automatically by
+[Netlify](https://netlify.com). 
 
 Contributions of all kinds are welcome: fixing typos, improving
 documentation, updating page layouts, or writing blog posts.
@@ -31,8 +32,8 @@ see the auto-generated `content/.gitignore` after a local build, which lists
 every pulled file.
 
 Everything else (the rest of [`content/`](content), the data files in [
-`data/`](data), layouts and shortcodes in [`layouts/`](layouts)) is 
-maintained in this repository.
+`data/`](data), and the site itself in [`astro/`](astro)) is maintained in
+this repository.
 
 ## Running the Site Locally
 
@@ -42,22 +43,20 @@ The preferred way is Docker, since it's the only tool you need to install:
 make docker-serve
 ```
 
-Alternatively, with a local toolchain (Hugo, Python, Pipenv, and npm — see
-the [README](README.md#using-your-local-environment) for versions):
+Alternatively, with a local toolchain (Node.js and Python, see the
+[README](README.md#using-your-local-environment) for versions):
 
 ```shell
 make setup
 make serve
 ```
 
-Either way, the site becomes available at [`http://localhost:1313`](http://localhost:1313) 
-and rebuilds automatically when you edit Markdown files or 
-[`external.yaml`](external.yaml). 
+Either way, the site becomes available at [`http://localhost:4175`](http://localhost:4175)
+and rebuilds automatically when you edit Markdown files or
+[`external.yaml`](external.yaml).
 
-For the Astro migration preview, follow the [Astro instructions](README.md#previewing-the-astro-migration). Continue editing the same source content and sign off commits as described below.
-
-See the [README](README.md) for details, including the`-with-releases` variants 
-and how to check for broken links with`make check-links` or 
+See the [README](README.md) for details, including the `-with-releases` variants
+and how to check for broken links with `make check-links` or
 `make docker-check-links`.
 
 ## Where Things Live
@@ -71,7 +70,7 @@ and how to check for broken links with`make check-links` or
   an annotated example post to copy.
 * **"Who uses SPIFFE?"**: [`data/users.yaml`](data/users.yaml), with logos 
   in [`static/img/logos`](static/img/logos).
-* **Shortcodes**: [`layouts/shortcodes`](layouts/shortcodes), for embedding
+* **Shortcodes**: expanded by [`astro/scripts/content.mjs`](astro/scripts/content.mjs), for embedding
   custom logic in Markdown (admonition blocks, the `spire-latest` version 
   shortcode, and more).
 

@@ -1,15 +1,13 @@
 [build]
-publish = "public"
-command = "pip install -r requirements.txt && make production-build"
+publish = "astro/dist"
+command = "pip install -r requirements.txt && REQUIRE_RELEASES=true make pull-external-content && npm --prefix astro ci && npm --prefix astro run build"
 
 [build.environment]
-HUGO_VERSION = "0.163.3"
 NODE_VERSION = "22"
 PYTHON_VERSION = "3.12"
 
 [context.deploy-preview]
-publish = "astro/dist"
 command = "pip install -r requirements.txt && make pull-external-content && npm --prefix astro ci && npm --prefix astro run build"
 
 [context.branch-deploy]
-command = "pip install -r requirements.txt && make preview-build"
+command = "pip install -r requirements.txt && make pull-external-content && npm --prefix astro ci && npm --prefix astro run build"

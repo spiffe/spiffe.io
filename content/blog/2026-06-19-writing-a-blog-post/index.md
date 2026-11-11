@@ -86,6 +86,6 @@ source, err := workloadapi.NewX509Source(ctx)
 ## Preview and publish
 
 Run the site locally and open
-[`http://localhost:1313/blog/`](http://localhost:1313/blog/). Saving a change
+[`http://localhost:4175/blog/`](http://localhost:4175/blog/). Saving a change
 reloads the page automatically. When the post is ready, set `draft: false` and
 open a pull request. Merging to `master` publishes it automatically.

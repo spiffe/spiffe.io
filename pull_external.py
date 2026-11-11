@@ -2,7 +2,6 @@ import yaml
 import os
 import shutil
 import re
-import toml
 import subprocess
 import sys
 import requests
@@ -30,7 +29,7 @@ RE_EXTRACT_GITHUB_PATH: Pattern[str] = re.compile(
 
 # holds the git URL and the new path for links between pulled in files
 internal_links: Dict = {}
-config: Dict = toml.load("config.toml")
+PUBLIC_URL = "https://spiffe.io"
 latest_release: str = None
 
 
@@ -371,8 +370,8 @@ def _process_content(
 
             # that points to this site
             new_url = url
-            if domain == config.get("publicUrl"):
-                new_url = url[len(config.get("publicUrl")) :]
+            if domain == PUBLIC_URL:
+                new_url = url[len(PUBLIC_URL) :]
             elif is_link_to_spire_repo:
                 github_url = RE_EXTRACT_GITHUB_PATH.search(url)
                 if github_url and github_url.group("path"):

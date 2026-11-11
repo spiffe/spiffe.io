@@ -44,7 +44,7 @@ export function files(dir) {
         : [path.join(dir, item.name)],
     );
 }
-export function readPages() {
+export function readPages({ drafts = false } = {}) {
   return files(path.join(repo, "content"))
     .filter((f) => /\.(md|html)$/.test(f))
     .map((file) => {
@@ -64,8 +64,9 @@ export function readPages() {
     .filter(
       (p) =>
         p.data.build?.render !== false &&
-        !p.data.draft &&
-        !(p.data.date && new Date(p.data.date) > new Date()),
+        (drafts ||
+          (!p.data.draft &&
+            !(p.data.date && new Date(p.data.date) > new Date()))),
     );
 }
 async function replaceAsync(text, regex, fn) {
@@ -109,7 +110,7 @@ export async function shortcodes(text, page, pages) {
       }
       if (name.startsWith("scarf/pixels/"))
         return fs.readFileSync(
-          path.join(repo, "layouts/shortcodes", `${name}.html`),
+          path.join(import.meta.dirname, "shortcodes", `${name}.html`),
           "utf8",
         );
       if (name === "figure")
