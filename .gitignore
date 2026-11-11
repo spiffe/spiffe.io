@@ -8,6 +8,14 @@
 # Node.js assets
 node_modules/
 
+# Astro build output and generated sources
+dist/
+.astro/
+public/
+src/content/docs/
+src/data/site.json
+src/data/redirects.json
+
 # Python virtual environment
 .venv/
 venv/

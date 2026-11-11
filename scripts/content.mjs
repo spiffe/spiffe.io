@@ -3,7 +3,7 @@ import path from "node:path";
 import YAML from "yaml";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 
-export const repo = path.resolve("..");
+export const repo = path.resolve(".");
 export const readData = (name) =>
   YAML.parse(fs.readFileSync(path.join(repo, "data", `${name}.yaml`), "utf8"));
 export const escape = (value) =>

@@ -32,7 +32,7 @@ see the auto-generated `content/.gitignore` after a local build, which lists
 every pulled file.
 
 Everything else (the rest of [`content/`](content), the data files in [
-`data/`](data), and the site itself in [`astro/`](astro)) is maintained in
+`data/`](data), and the site itself in [`src/`](src)) is maintained in
 this repository.
 
 ## Running the Site Locally
@@ -70,7 +70,7 @@ and how to check for broken links with `make check-links` or
   an annotated example post to copy.
 * **"Who uses SPIFFE?"**: [`data/users.yaml`](data/users.yaml), with logos 
   in [`static/img/logos`](static/img/logos).
-* **Shortcodes**: expanded by [`astro/scripts/content.mjs`](astro/scripts/content.mjs), for embedding
+* **Shortcodes**: expanded by [`scripts/content.mjs`](scripts/content.mjs), for embedding
   custom logic in Markdown (admonition blocks, the `spire-latest` version 
   shortcode, and more).
 

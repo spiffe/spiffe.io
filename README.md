@@ -56,11 +56,11 @@ rebuild the affected pages and reload them in your browser. Draft and
 future-dated pages are included, and are never published.
 
 Edit the existing `content/`, `data/` and `static/` sources. Files generated
-under `astro/src/content/` and `astro/public/` are ignored. The external-content
+under `src/content/docs/` and `public/` are ignored. The external-content
 contribution rules still apply.
 
 To build the site as Netlify does, run `make build`. The output is in
-`astro/dist/`, and `npm --prefix astro run preview` serves it at
+`dist/`, and `npm run preview` serves it at
 [`http://localhost:4175`](http://localhost:4175). The build checks internal
 routes, fragments, aliases and the search index.
 
@@ -127,7 +127,7 @@ The [Specification](https://spiffe.netlify.com/spiffe/#spec) section of the main
 
 ### Shortcodes
 
-The Markdown sources use Hugo-style [shortcodes](https://gohugo.io/content-management/shortcodes/) to embed custom logic. The build expands them in [`astro/scripts/content.mjs`](astro/scripts/content.mjs).
+The Markdown sources use Hugo-style [shortcodes](https://gohugo.io/content-management/shortcodes/) to embed custom logic. The build expands them in [`scripts/content.mjs`](scripts/content.mjs).
 
 #### Acknowledgments
 

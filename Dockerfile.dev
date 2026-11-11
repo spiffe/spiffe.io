@@ -11,13 +11,12 @@ RUN python3 -m pip install --break-system-packages --no-cache-dir -r /tmp/requir
 
 # Installed in the image rather than the bind mount, so host node_modules (for
 # another platform) never shadow them. Writable for the Vite dependency cache.
-WORKDIR /app/astro
-COPY astro/package.json astro/package-lock.json ./
+WORKDIR /app
+COPY package.json package-lock.json ./
 RUN npm ci && chmod -R a+rwX node_modules
 
 RUN git config --system --add safe.directory '*'
 
-WORKDIR /app
 ENV HOME=/tmp
 EXPOSE 4175
-CMD ["sh", "-c", "python3 pull_external.py && npm --prefix astro run dev"]
+CMD ["sh", "-c", "python3 pull_external.py && npm run dev"]
