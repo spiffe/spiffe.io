@@ -109,7 +109,7 @@ export async function shortcodes(text, page, pages) {
       }
       if (name.startsWith("scarf/pixels/"))
         return fs.readFileSync(
-          path.join(repo, "layouts/shortcodes", `${name}.html`),
+          path.join(import.meta.dirname, "shortcodes", `${name}.html`),
           "utf8",
         );
       if (name === "figure")

@@ -1,76 +1,37 @@
-HUGO_VERSION ?= 0.163.3
-
 # Run podman with CONTAINER_RUNTIME=podman on the commandline
 CONTAINER_RUNTIME ?= docker
 
 setup:
 	python3 -m pip install -r requirements.txt
-	npm install
+	npm --prefix astro ci
 
-serve:
-	HIDE_RELEASES=true bash run.sh \
-		--buildDrafts \
-		--buildFuture \
-		--disableFastRender \
-		--ignoreCache \
-		--noHTTPCache
+serve: export HIDE_RELEASES = true
+serve: pull-external-content
+	npm --prefix astro run dev
 
-serve-with-releases:
-	bash run.sh \
-		--buildDrafts \
-		--buildFuture \
-		--disableFastRender
+serve-with-releases: pull-external-content
+	npm --prefix astro run dev
 
-production-build: export REQUIRE_RELEASES = true
-production-build: pull-external-content
-	hugo \
-		--gc \
-		--ignoreCache
-
-preview-build: pull-external-content
-	hugo \
-		--gc \
-		--ignoreCache \
-		--baseURL $(DEPLOY_PRIME_URL)
-
-docker-build:
-	$(CONTAINER_RUNTIME) build . \
-		--rm \
-		-t spiffe.io:latest \
-		-f Dockerfile.dev
-
-docker-serve: docker-build
-	$(CONTAINER_RUNTIME) run --init --rm \
-		-v $(PWD):/app \
-		-p 1313:1313 \
-		-e HIDE_RELEASES=true \
-		-u $(shell id -u):$(shell id -g) \
-		spiffe.io:latest
-
-docker-serve-with-releases: docker-build
-	$(CONTAINER_RUNTIME) run --init --rm \
-		-v $(PWD):/app \
-		-p 1313:1313 \
-		-u $(shell id -u):$(shell id -g) \
-		spiffe.io:latest
+build: pull-external-content
+	npm --prefix astro run build
 
 pull-external-content:
 	python3 ./pull_external.py
 
-ci-check-links: pull-external-content
-	echo "Running Hugo server..." && \
-	hugo server -p 1212 & \
-	sleep 2 && \
+ci-check-links: build
+	echo "Running Astro preview server..." && \
+	npm --prefix astro run preview & \
+	sleep 5 && \
 	echo "Running links checker..." && \
-	linkchecker -f linkcheckerrc http://localhost:1212; \
-	echo "Stopping Hugo server..." && \
-	pkill hugo || true
+	linkchecker -f linkcheckerrc http://localhost:4175; \
+	echo "Stopping Astro preview server..." && \
+	pkill -f "[a]stro preview" || true
 
 check-links:
-	linkchecker -f linkcheckerrc http://localhost:1313
+	linkchecker -f linkcheckerrc http://localhost:4175
 
 docker-check-links-build:
 	$(CONTAINER_RUNTIME) build -f Dockerfile.linkchecker -t linkchecker .
 
 docker-check-links: docker-check-links-build
-	$(CONTAINER_RUNTIME) run --rm -it -u $(shell id -u):$(shell id -g) --net host linkchecker -f linkcheckerrc http://localhost:1313
+	$(CONTAINER_RUNTIME) run --rm -it -u $(shell id -u):$(shell id -g) --net host linkchecker -f linkcheckerrc http://localhost:4175

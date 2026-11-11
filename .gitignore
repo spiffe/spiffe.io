@@ -5,10 +5,6 @@
 .vscode
 .idea
 
-# Hugo-generated assets
-public/
-resources/
-
 # Node.js assets
 node_modules/
 

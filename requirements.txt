@@ -1,6 +1,4 @@
 pyyaml==6.0.3
 requests==2.33.0
 beautifulsoup4==4.15.0
-watchdog==4.0.2
-toml==0.10.2
 linkchecker==10.3.0

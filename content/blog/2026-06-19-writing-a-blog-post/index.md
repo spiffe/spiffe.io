@@ -9,8 +9,7 @@ draft: true
 ---
 
 This post is a working template. It is marked `draft: true`, so it never appears
-on the published site, but you can read it locally with `make serve` (or
-`make docker-serve`). The quickest way to start a new post is to copy this
+on the published site, but you can read it locally with `make serve`. The quickest way to start a new post is to copy this
 folder, rename it, and replace the contents.
 
 ## Create the folder
@@ -86,6 +85,6 @@ source, err := workloadapi.NewX509Source(ctx)
 ## Preview and publish
 
 Run the site locally and open
-[`http://localhost:1313/blog/`](http://localhost:1313/blog/). Saving a change
-reloads the page automatically. When the post is ready, set `draft: false` and
+[`http://localhost:4175/blog/`](http://localhost:4175/blog/). Rerun
+`make serve` to pick up changes. When the post is ready, set `draft: false` and
 open a pull request. Merging to `master` publishes it automatically.
