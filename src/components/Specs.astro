@@ -1,0 +1,15 @@
+---
+import specYaml from "../data/spec.yaml?raw";
+import { escape, parseYaml } from "../lib/content";
+const html =
+  "<ul>" +
+  parseYaml(specYaml)
+    .documents.map(
+      (d: { filename: string; title: string }) =>
+        `<li><a href="https://github.com/spiffe/spiffe/blob/main/standards/${escape(d.filename)}">${escape(d.title)}</a></li>`,
+    )
+    .join("") +
+  "</ul>";
+---
+
+<Fragment set:html={html} />

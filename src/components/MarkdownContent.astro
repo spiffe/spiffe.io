@@ -1,12 +1,27 @@
 ---
 import Default from "@astrojs/starlight/components/MarkdownContent.astro";
 import BlogTags from "./BlogTags.astro";
+import EventCard from "./EventCard.astro";
+import Agenda from "./Agenda.astro";
+import high from "./scarf/high-interest.html?raw";
+import medium from "./scarf/medium-interest.html?raw";
+import low from "./scarf/low-interest.html?raw";
 const { entry } = Astro.locals.starlightRoute;
 const post = entry.id.startsWith("blog/") && entry.data.date;
+const scarf =
+  entry.data.scarf &&
+  {
+    "high-interest": high,
+    "medium-interest": medium,
+    "low-interest": low,
+  }[entry.data.scarf];
 ---
 
 <Default>
+  <EventCard />
   <slot />
+  <Agenda />
+  {scarf && <Fragment set:html={scarf} />}
 </Default>
 {post && (
   <div class="post-footer">

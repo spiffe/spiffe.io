@@ -2,8 +2,22 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import { unified } from "@astrojs/markdown-remark";
 import fs from "node:fs";
-import { headingAttributes } from "./scripts/markdown.mjs";
-const { sidebar } = JSON.parse(fs.readFileSync("./src/data/site.json", "utf8"));
+import { spawn } from "node:child_process";
+import { headingAttributes, spireLatest } from "./scripts/markdown.mjs";
+
+// In dev, re-pull the external docs when their descriptor changes.
+const pullExternalOnChange = {
+  name: "pull-external-on-change",
+  hooks: {
+    "astro:server:setup": ({ server }) => {
+      server.watcher.add("external.yaml");
+      server.watcher.on("change", (file) => {
+        if (file.endsWith("/external.yaml"))
+          spawn("python3", ["pull_external.py"], { stdio: "inherit" });
+      });
+    },
+  },
+};
 export default defineConfig({
   site: "https://spiffe.io",
   output: "static",
@@ -13,10 +27,11 @@ export default defineConfig({
   markdown: {
     processor: unified({
       smartypants: { dashes: "oldschool" },
-      remarkPlugins: [headingAttributes],
+      remarkPlugins: [headingAttributes, spireLatest],
     }),
   },
   integrations: [
+    pullExternalOnChange,
     starlight({
       title: "SPIFFE",
       description:
@@ -48,7 +63,12 @@ export default defineConfig({
       ],
       credits: false,
       disable404Route: true,
-      sidebar,
+      // The route middleware builds the sidebar from the docs collection.
+      sidebar: [],
+      editLink: {
+        baseUrl: "https://github.com/spiffe/spiffe.io/edit/master/",
+      },
+      tableOfContents: { minHeadingLevel: 1, maxHeadingLevel: 4 },
       routeMiddleware: "./src/route-middleware.ts",
       components: {
         Sidebar: "./src/components/Sidebar.astro",

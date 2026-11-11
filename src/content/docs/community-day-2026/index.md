@@ -1,0 +1,159 @@
+---
+title: Community Day 2026
+description: Celebrating ten years of SPIFFE. 27 October 2026, City of London & Online.
+hideDescription: true
+section: true
+tagline: Celebrating ten years of SPIFFE.
+event:
+  date: Tuesday 27 October 2026
+  time: Starting 14:00 UTC
+  venue: Bloomberg, City of London
+  online: Streamed online via Zoom
+  register: https://forms.gle/t3sjPdzTAhenWbA2A
+  note: In-person places are limited.
+  links:
+  - icon: fab fa-slack
+    text: '#community-day on Slack'
+    url: https://slack.spiffe.io/
+agenda:
+  note: All times are UTC, which is London time on the day. Timings are provisional and the running order may change.
+  items:
+  - start: '13:30'
+    end: '14:00'
+    title: Doors open
+    abstract: 'In-person attendees are welcome to arrive from 13:30. The stream starts
+
+      at 14:00.'
+  - start: '14:00'
+    end: '14:10'
+    title: Welcome and opening remarks
+    speakers:
+    - name: Noah Stride
+      org: Teleport
+  - start: '14:15'
+    end: '14:45'
+    label: Keynote
+    title: 'Story time: Origins of SPIFFE'
+    speakers:
+    - name: Joe Beda
+      org: Stacklok
+  - start: '14:50'
+    end: '15:20'
+    label: Maintainer update
+    title: SPIRE Maintainers Update
+    speakers:
+    - name: Sorin Dumitru
+      org: Bloomberg
+  - start: '15:25'
+    end: '15:55'
+    label: Maintainer update
+    title: SPIFFE Maintainers Update
+    speakers:
+    - name: Noah Stride
+      org: Teleport
+    - name: Arndt Schwenkschuster
+      org: Defakto
+    abstract: 'A look back at what we''ve done over the last six months, and what we''re
+
+      planning to tackle in the next twelve. We''ll give a high-level overview of
+
+      the proposed work items - if any of them would be useful to you, we''d love
+
+      you to get involved.'
+  - start: '15:55'
+    end: '16:15'
+    title: Break
+  - start: '16:15'
+    end: '16:45'
+    title: Operating SPIRE at Wise
+    speakers:
+    - name: Taras Burko
+      org: Wise
+    - name: Matthew Kennedy
+      org: Wise
+    abstract: 'SPIRE has been successfully powering our workload identity and mTLS for
+
+      years. In this session we''re going to show how we''re running it at Wise
+
+      scale, discuss service mesh and Kafka integrations, and share operational
+
+      stories.'
+  - start: '16:50'
+    end: '17:20'
+    title: SPIFFE and AIMS - A foundation for Agentic Identity
+    speakers:
+    - name: Pieter Kasselman
+      org: Defakto
+    abstract: 'AI agents are workloads. They''re spun up on demand, act for users and for
+
+      other agents, and decide at runtime which tools and data to reach for.
+
+      Static API keys and long-lived secrets can''t keep up. Agents need
+
+      identities and credentials that are verifiable, short-lived and tied to
+
+      where they run. This is a problem made for SPIFFE.
+
+
+      The IETF WIMSE working group recently adopted the Agent Identity
+
+      Management System (AIMS) model. It points to SPIFFE as a critical part of
+
+      an agentic identity system. This talk walks through the AIMS model layer
+
+      by layer and shows where SPIFFE slots in and how it enables the other
+
+      layers in the system. Attendees will leave with a clear picture of how
+
+      existing SPIFFE/SPIRE deployments become the foundation for agent
+
+      identity, and where the community can help shape what comes next.'
+  - start: '17:25'
+    end: '17:55'
+    title: SPIFFE in Flux, or how we reached the KubernetesObjectReference SPIFFE standard
+    speakers:
+    - name: Matheus Pimenta
+      org: ControlPlane
+    abstract: 'Show our quest in Flux to support SPIFFE complying to our multi-tenancy
+
+      model. This resulted in the Broker API that was recently introduced by
+
+      SPIFFE. In particular, it''s the story behind the KubernetesObjectReference
+
+      SPIFFE standard that we contributed to support Flux.'
+  - start: '18:00'
+    end: '18:30'
+    title: 'After the SVID: Emerging Authorization Patterns for SPIFFE Workloads and Agents'
+    speakers:
+    - name: Kevin Sapp
+      org: Aembit
+    abstract: 'SPIFFE deliberately stops at authentication. Every team that adopts it
+
+      then has to answer "what is this workload allowed to do?" on its own. This
+
+      talk maps the emerging approaches: SVIDs as OAuth credentials, token
+
+      exchange and Transaction Tokens, WIMSE, AuthZEN, and AAuth. It covers
+
+      where each fits, what''s mature, and what''s still a draft.'
+  - start: '18:30'
+    title: Drinks and snacks
+---
+
+<p>
+    In 2026, SPIFFE turns ten. To mark a decade of open, vendor-neutral
+    workload identity, we're holding a SPIFFE Community Day - a chance
+    to bring the community together, celebrate how far the project has come,
+    and help shape where it goes next.
+</p>
+<p>
+    We'll be hosted by Bloomberg in the City of London, with the event also
+    streamed online via Zoom so you can join from wherever you are.
+</p>
+<p>
+    The afternoon mixes talks from teams running SPIFFE and SPIRE in
+    production, updates from the project maintainers, and more exploratory
+    topics on where workload identity is heading, from AI agents to
+    authorization. Expect plenty of room to learn from&nbsp;- and talk to&nbsp;- the
+    people building and using these projects.
+</p>

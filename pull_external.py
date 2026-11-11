@@ -1,3 +1,4 @@
+import html
 import yaml
 import os
 import shutil
@@ -11,6 +12,7 @@ from urllib.parse import urlparse, urlsplit, urlunsplit
 from pathlib import Path
 
 CHECKOUT_DIR = "checkouts"
+DOCS_DIR = "src/content/docs"
 GIT_CLONE_CMD = "git clone {{}} ./{}/{{}}/{{}}".format(CHECKOUT_DIR)
 GIT_CHECKOUT_CMD = "git checkout {}"
 GITHUB_API_RELEASES = "https://api.github.com/repos/spiffe/spire/releases"
@@ -64,7 +66,7 @@ def _pull_releases():
 
     latest_release = latest.get("tag_name", "main")
 
-    with open("data/releases.yaml", "w") as releases_file:
+    with open("src/data/releases.yaml", "w") as releases_file:
         releases_file.write(yaml.dump({"latest": latest, "all": all}))
 
 
@@ -141,7 +143,6 @@ def _get_file_content(filename: str, remove_heading=False) -> Tuple[str, str]:
         for i in range(len(raw)):
             if raw[i].startswith("#"):
                 heading = RE_EXTRACT_TITLE.match(raw[i]).group("title")
-                heading = '"' + heading.replace('"', '\\"') + '"'
                 # Return everything after this first heading line
                 return "".join(raw[i + 1:]).lstrip('\n'), heading
             # Skip blank lines at the start
@@ -152,17 +153,9 @@ def _get_file_content(filename: str, remove_heading=False) -> Tuple[str, str]:
         return "".join(raw), None
 
 
-def _generate_yaml_front_matter(front_matter: Dict = {}) -> List[str]:
-    fm = ["---"]
-    for key, value in front_matter.items():
-        if type(value) == dict:
-            fm.append(yaml.dump({key: value}).strip())
-        else:
-            fm.append("{}: {}".format(key, value))
-    fm.append("---")
-    fm = [l + "\n" for l in fm]
-
-    return fm
+def _generate_yaml_front_matter(front_matter: Dict) -> str:
+    dumped = yaml.safe_dump(front_matter, sort_keys=False, allow_unicode=True, width=1000)
+    return "---\n" + dumped + "---\n"
 
 
 def _clone_repos(repos: List[str]):
@@ -246,10 +239,10 @@ def _pull_files(yaml_external: Dict) -> List[str]:
 
 
 def _generate_gitignore(paths_to_include: List[str]):
-    with open("content/.gitignore", "w") as gitignore:
+    with open(os.path.join(DOCS_DIR, ".gitignore"), "w") as gitignore:
         gitignore.write("# THIS FILE IS AUTO-GENERATED. DO NOT MODIFY BY HAND\n\n")
         for f in paths_to_include:
-            gitignore.write(os.path.relpath(f, "content") + "\n")
+            gitignore.write(os.path.relpath(f, DOCS_DIR) + "\n")
 
 
 def _copy_file(
@@ -265,7 +258,7 @@ def _copy_file(
 
     rel_path_to_target_file = os.path.join(target_dir, file_name)
     abs_path_to_target_file = os.path.abspath(
-        os.path.join("content/docs/latest", rel_path_to_target_file)
+        os.path.join(DOCS_DIR, "docs/latest", rel_path_to_target_file)
     )
 
     path_to_target_file = Path(os.path.dirname(abs_path_to_target_file))
@@ -283,25 +276,21 @@ def _copy_file(
     with open(abs_path_to_target_file, "w") as target_file:
         content, heading = _get_file_content(abs_path_to_source_file, remove_heading)
 
-        front_matter = None
-        beacon = None
-        if heading:
-            front_matter = {"title": heading}
+        transform_file = transform_file or {}
+        front_matter = {"title": heading} if heading else {}
+        front_matter.update(transform_file.get("frontMatter", {}))
 
-        if transform_file:
-            front_matter = {**front_matter, **transform_file.get("frontMatter", {})}
-            beacon = transform_file.get("beacon", None)
-
-        # Add external source URL for linking back to canonical source
+        # Edits go to the canonical source rather than this repository.
         branch = _get_branch_by_repo_url(source, source_branch)
         external_source_url = "{}/blob/{}/{}".format(source, branch, rel_path_to_source_file)
-        if front_matter:
-            front_matter["externalSource"] = external_source_url
-        else:
-            front_matter = {"externalSource": external_source_url}
+        front_matter["editUrl"] = external_source_url
+        target_file.write(_generate_yaml_front_matter(front_matter))
 
-        if front_matter:
-            target_file.writelines(_generate_yaml_front_matter(front_matter))
+        if target_dir == "spiffe-specs":
+            target_file.write(
+                ":::note\nThis document is part of the SPIFFE standard. The canonical version can be found at "
+                "<{0}>\n:::\n\n".format(external_source_url)
+            )
 
         final_content = _process_content(
             content=content,
@@ -310,10 +299,15 @@ def _copy_file(
             source=source,
             source_branch=source_branch,
         )
+        # Keep fragments already used by published links.
+        for title, anchor in transform_file.get("anchors", {}).items():
+            final_content = re.sub(
+                r"^(#{{1,6}} {})$".format(re.escape(title)),
+                '<span id="{}"></span>\n\n\\1'.format(anchor),
+                final_content,
+                flags=re.M,
+            )
         target_file.write(final_content)
-        
-        if beacon:
-            target_file.write(f"\n{beacon}\n")
 
         return abs_path_to_target_file
 
@@ -346,10 +340,10 @@ def _process_content(
             repo_owner=repo_owner,
             repo_name=repo_name,
         )
-        figure = '{{{{< figure src="{}" alt="{}" title="{}" width="100" >}}}}'.format(
-            new_url, alt, title
+        title_attr = ' title="{}"'.format(html.escape(title, quote=True)) if title else ""
+        return '<figure><img src="{}" style="width:100%" alt="{}"{}></figure>\n'.format(
+            html.escape(new_url, quote=True), html.escape(alt, quote=True), title_attr
         )
-        return figure
 
     def repl_links(m: Match[str]):
         global latest_release
@@ -428,7 +422,7 @@ def _copy_asset(
 
     path_to_source_asset = os.path.join(abs_path_to_source_dir, rel_path_to_asset)
     path_to_target_asset = Path(
-        os.path.join("./static/img/checkouts", repo_owner, repo_name, rel_path_to_asset)
+        os.path.join("./public/img/checkouts", repo_owner, repo_name, rel_path_to_asset)
     )
     path_to_target_asset.parent.mkdir(parents=True, exist_ok=True)
 

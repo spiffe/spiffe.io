@@ -1,16 +1,9 @@
 ---
 import Default from "@astrojs/starlight/components/PageTitle.astro";
+import { readingTime } from "../lib/content";
 const { entry } = Astro.locals.starlightRoute;
-const {
-  date,
-  author,
-  tags,
-  draft,
-  description,
-  hideTitle,
-  hideDescription,
-  readingTime,
-} = entry.data;
+const { date, author, tags, draft, description, hideTitle, hideDescription } =
+  entry.data;
 ---
 
 {!hideTitle ? (
@@ -34,7 +27,7 @@ const {
         timeZone: "UTC",
       })}
     </time>
-    {readingTime && <span> · {readingTime} min read</span>}
+    <span> · {readingTime(entry)} min read</span>
     {draft && <strong> · Draft</strong>}
   </p>
 )}

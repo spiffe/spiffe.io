@@ -1,0 +1,13 @@
+---
+import { escape, markdown } from "../lib/content";
+const { agenda } = Astro.locals.starlightRoute.entry.data;
+let html = "";
+if (agenda) {
+  html += `<section id="agenda"><h2>Agenda</h2><p>${escape(agenda.note || "")}</p><ol class="agenda-list">`;
+  for (const a of agenda.items)
+    html += `<li><p>${escape(a.start || "")}${a.end ? " - " + escape(a.end) : ""}${a.start && a.label ? " · " : ""}${escape(a.label || "")}</p><h3>${escape(a.title || "Title to be announced")}</h3>${a.speakers ? `<p>${a.speakers.map((s) => `<strong>${escape(s.name)}</strong> ${escape(s.org || "")}`).join(" ")}</p>` : ""}${await markdown(a.abstract)}</li>`;
+  html += "</ol></section>";
+}
+---
+
+<Fragment set:html={html} />

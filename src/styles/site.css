@@ -216,20 +216,31 @@
       min-height: 44px;
     }
   }
-  .admonition {
+  .starlight-aside {
     padding: 1rem 1.25rem;
+    border: 0;
     border-left: 4px solid #008b9a;
     background: #edf7f8;
+    color: inherit;
     margin-block: 1.5rem;
+    --sl-color-asides-text-accent: var(--sl-color-text-accent);
   }
-  .admonition.warning,
-  .admonition.requirement {
+  .starlight-aside--caution {
     border-color: #b17b00;
     background: #fff8e5;
   }
-  .admonition.danger {
+  .starlight-aside--danger {
     border-color: #b73d3d;
     background: #fff1f1;
+  }
+  .starlight-aside__title {
+    display: none;
+  }
+  .starlight-aside__content {
+    margin-top: 0;
+  }
+  .starlight-aside code {
+    background-color: var(--sl-color-bg-inline-code);
   }
   .sl-markdown-content figure {
     text-align: center;

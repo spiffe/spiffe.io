@@ -13,8 +13,6 @@ const redirects = JSON.parse(
   await fs.readFile("src/data/redirects.json", "utf8"),
 );
 const redirectRoutes = redirectMap(redirects);
-const site = JSON.parse(await fs.readFile("src/data/site.json", "utf8"));
-const legacy = { paths: site.pages.map((page) => page.route), fragments: {} };
 const files = [];
 async function walk(dir) {
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
@@ -65,7 +63,7 @@ for (const file of files.filter((f) => f.endsWith(".html"))) {
     pageIds.add(id);
   }
   ids.set(file, pageIds);
-  if (/@@SPIRE_|\{\{[<%]|\{#[\w-]+\}/.test(html))
+  if (/SPIRE_LATEST_|\{\{[<%]|\{#[\w-]+\}/.test(html))
     errors.add(`${path.relative(root, file)}: unrendered source token`);
   if (!/<title>[^<]+<\/title>/.test(html)) errors.add(`${file}: missing title`);
 }
@@ -99,9 +97,6 @@ for (const [file, html] of pages) {
       check(ref, route);
   }
 }
-for (const route of legacy.paths) check(route, "/", true);
-for (const [route, fragments] of Object.entries(legacy.fragments))
-  for (const fragment of fragments) check(`${route}#${fragment}`, "/", true);
 for (const from of Object.keys(redirects)) {
   check(from, "/", true);
   const html = pages.get(routeFile(from));
@@ -115,5 +110,5 @@ if (errors.size) {
   process.exit(1);
 }
 console.log(
-  `Verified ${pages.size} HTML pages, ${links} internal references, ${Object.keys(redirects).length} redirects and ${legacy.paths.length} legacy routes.`,
+  `Verified ${pages.size} HTML pages, ${links} internal references and ${Object.keys(redirects).length} redirects.`,
 );

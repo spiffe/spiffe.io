@@ -2,12 +2,90 @@ import { defineRouteMiddleware } from "@astrojs/starlight/route-data";
 import { imageMetadata, inferRemoteSize } from "astro/assets/utils";
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { execFileSync } from "node:child_process";
+import {
+  getPages,
+  pageOrder,
+  route as pageRoute,
+  type Page,
+} from "./lib/content";
 
 const imageOrigin =
   process.env.CONTEXT === "deploy-preview" && process.env.DEPLOY_PRIME_URL
     ? process.env.DEPLOY_PRIME_URL
     : "https://spiffe.io";
 const imageCache = new Map<string, ReturnType<typeof imageMetadata>>();
+
+const sidebarGroups: [string, string[]][] = [
+  ["SPIFFE", ["spiffe-about", "spiffe-specs"]],
+  ["SPIRE", ["spire-about", "try", "planning", "deploying", "maintenance"]],
+  [
+    "Helm Charts Hardened",
+    ["spire-helm-charts-hardened-about", "spire-helm-charts-hardened-advanced"],
+  ],
+  ["Integrate SPIRE", ["microservices", "keyless", "architecture"]],
+];
+type SidebarEntry = ReturnType<typeof link> | ReturnType<typeof group>;
+const link = (
+  page: Page,
+  label = page.data.sidebar.label || page.data.title,
+) => ({
+  type: "link" as const,
+  label,
+  href: pageRoute(page),
+  isCurrent: false,
+  badge: undefined,
+  attrs: {},
+});
+const group = (label: string, entries: SidebarEntry[]) => ({
+  type: "group" as const,
+  label,
+  entries,
+  collapsed: false,
+  badge: undefined,
+});
+// Each directory is a group headed by its index page, like the Hugo navgroups.
+async function buildSidebar() {
+  const pages = await getPages();
+  return sidebarGroups.map(([label, dirs]) =>
+    group(
+      label,
+      dirs.flatMap((dir) => {
+        const id = `docs/latest/${dir}`;
+        const members = pages
+          .filter((p) => p.id.startsWith(id + "/"))
+          .sort(pageOrder)
+          .map((p) => link(p));
+        const section = pages.find((p) => p.id === id);
+        if (!section) return members;
+        const sectionLabel = section.data.sidebar.label || section.data.title;
+        return [group(sectionLabel, [link(section, sectionLabel), ...members])];
+      }),
+    ),
+  );
+}
+let sidebar: ReturnType<typeof buildSidebar> | undefined;
+const markCurrent = (entries: SidebarEntry[], path: string): SidebarEntry[] =>
+  entries.map((e) =>
+    e.type === "link"
+      ? { ...e, isCurrent: e.href === path }
+      : { ...e, entries: markCurrent(e.entries, path) },
+  );
+
+const modifiedDates = new Map<string, Date | undefined>();
+function modifiedDate(page: Page) {
+  if (page.data.lastmod) return page.data.lastmod;
+  const file = page.filePath!;
+  if (!modifiedDates.has(file)) {
+    const committed = execFileSync(
+      "git",
+      ["log", "-1", "--format=%cI", "--", file],
+      { encoding: "utf8" },
+    ).trim();
+    modifiedDates.set(file, committed ? new Date(committed) : page.data.date);
+  }
+  return modifiedDates.get(file);
+}
 
 export const onRequest = defineRouteMiddleware(async (context) => {
   const route = context.locals.starlightRoute;
@@ -19,20 +97,17 @@ export const onRequest = defineRouteMiddleware(async (context) => {
         "SPIFFE | Secure Production Identity Framework for Everyone";
   }
   if (!path.startsWith("/docs/")) {
+    route.entry.data.template = "splash";
     route.hasSidebar = false;
     route.toc = undefined;
+  } else {
+    // Rebuilt per request in dev so new and renamed pages show up.
+    if (!sidebar || import.meta.env.DEV) sidebar = buildSidebar();
+    route.sidebar = markCurrent(await sidebar, path);
   }
   route.pagination = { prev: undefined, next: undefined };
-  const {
-    image,
-    imageAlt,
-    title,
-    description,
-    date,
-    modifiedDate,
-    author,
-    tags,
-  } = route.entry.data;
+  const { image, imageAlt, title, description, date, author, tags } =
+    route.entry.data;
   route.head = route.head.filter(
     ({ tag, attrs }) =>
       tag !== "meta" ||
@@ -63,13 +138,13 @@ export const onRequest = defineRouteMiddleware(async (context) => {
             },
           ]
         : []),
-      ...(modifiedDate
+      ...(date
         ? [
             {
               tag: "meta" as const,
               attrs: {
                 property: "article:modified_time",
-                content: modifiedDate.toISOString(),
+                content: modifiedDate(route.entry)!.toISOString(),
               },
             },
           ]
@@ -97,11 +172,13 @@ export const onRequest = defineRouteMiddleware(async (context) => {
     }
   }
   const imageUrl = new URL(
-    image || "/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png",
+    image?.src ||
+      "/img/logos/spiffe/horizontal/color/spiffe-horizontal-color.png",
     imageOrigin,
   );
   const alt = image ? imageAlt || title : "SPIFFE logo.";
-  if (!imageCache.has(imageUrl.href)) {
+  if (image) imageCache.set(imageUrl.href, Promise.resolve(image));
+  else if (!imageCache.has(imageUrl.href)) {
     imageCache.set(
       imageUrl.href,
       imageUrl.origin === new URL(imageOrigin).origin
