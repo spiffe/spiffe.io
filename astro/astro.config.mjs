@@ -43,9 +43,7 @@ export default defineConfig({
       expressiveCode: false,
       favicon: "/favicon.ico",
       customCss: [
-        "@fontsource/pt-sans/400.css",
-        "@fontsource/pt-sans/400-italic.css",
-        "@fontsource/pt-sans/700.css",
+        "./src/styles/fonts.css",
         "./src/styles/site.css",
       ],
       credits: false,

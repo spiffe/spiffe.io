@@ -27,9 +27,6 @@ const isHome = Astro.url.pathname === "/";
       max-width: 64rem;
       margin-inline: auto;
     }
-    .blog-panel:first-child {
-      padding-top: 3rem;
-    }
     .blog-panel:last-child {
       padding-bottom: 2rem;
     }
@@ -57,7 +54,7 @@ const isHome = Astro.url.pathname === "/";
       margin-inline: auto;
     }
     .blog-panel :global(.sl-markdown-content) {
-      margin-top: 2rem;
+      margin-top: 0;
     }
   }
 </style>
