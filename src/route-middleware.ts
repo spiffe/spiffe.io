@@ -59,7 +59,7 @@ async function buildSidebar() {
         const section = pages.find((p) => p.id === id);
         if (!section) return members;
         const sectionLabel = section.data.sidebar.label || section.data.title;
-        return [group(sectionLabel, [link(section, sectionLabel), ...members])];
+        return [group(sectionLabel, [link(section, "Overview"), ...members])];
       }),
     ),
   );
