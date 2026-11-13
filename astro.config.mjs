@@ -2,6 +2,8 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import { unified } from "@astrojs/markdown-remark";
 import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 import { headingAttributes, spireLatest } from "./scripts/markdown.mjs";
 
@@ -15,6 +17,23 @@ const pullExternalOnChange = {
         if (file.endsWith("/external.yaml"))
           spawn("python3", ["pull_external.py"], { stdio: "inherit" });
       });
+    },
+  },
+};
+// Pages use optimised copies from /_astro, but older links and embeds point at
+// the bundle files, so publish those beside built pages too.
+const bundleAssets = {
+  name: "bundle-assets",
+  hooks: {
+    "astro:build:done": ({ dir }) => {
+      const docs = "src/content/docs";
+      const out = fileURLToPath(dir);
+      for (const file of fs.readdirSync(docs, { recursive: true })) {
+        const page = path.join(out, path.dirname(file), "index.html");
+        if (/(^|\/)\.|\.mdx?$/.test(file) || !fs.existsSync(page)) continue;
+        if (!fs.statSync(path.join(docs, file)).isFile()) continue;
+        fs.cpSync(path.join(docs, file), path.join(out, file));
+      }
     },
   },
 };
@@ -32,6 +51,7 @@ export default defineConfig({
   },
   integrations: [
     pullExternalOnChange,
+    bundleAssets,
     starlight({
       title: "SPIFFE",
       description:
