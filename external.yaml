@@ -1,283 +1,259 @@
 try:
     source: https://github.com/spiffe/spire
     pullFiles:
-        - doc/SPIRE101.md
+    - doc/SPIRE101.md
     transform:
         SPIRE101.md:
             frontMatter:
                 title: Quickstart for Docker
-                short: Quickstart for Docker
                 description: Quickly get SPIRE up and running on Docker
-                navgroup: try
-                weight: 55
-                aliases:
-                    - /docs/latest/spire/installing/spire101/
-            beacon: "{{< scarf/pixels/medium-interest >}}"
+                sidebar:
+                    order: 55
+                scarf: medium-interest
 maintenance:
     source: https://github.com/spiffe/spire
     pullFiles:
-        - doc/upgrading.md
+    - doc/upgrading.md
     transform:
         upgrading.md:
             frontMatter:
-                short: Upgrade/Downgrade SPIRE
-                navgroup: maintenance
                 description: SPIRE Server and Agent version compatibility
-                weight: 80
-                aliases:
-                    - /spire/docs/upgrading
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    label: Upgrade/Downgrade SPIRE
+                    order: 80
+                scarf: high-interest
 planning:
     source: https://github.com/spiffe/spire
     pullFiles:
-        - doc/scaling_spire.md
+    - doc/scaling_spire.md
     transform:
         scaling_spire.md:
             frontMatter:
                 title: Scaling SPIRE
                 description: Supported SPIRE topologies, identity federation, and sizing considerations
-                navgroup: planning
-                weight: 80
-                aliases:
-                    - /spire/docs/scaling_spire
-                    - /spire/docs/scaling-spire
-                    - /docs/latest/spire/using/scaling_spire/
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    order: 80
+                scarf: high-interest
 deploying:
     source: https://github.com/spiffe/spire
     pullFiles:
-        - doc/using_spire.md
-        - doc/spire_agent.md
-        - doc/spire_server.md
-        - doc/telemetry/telemetry_config.md
+    - doc/using_spire.md
+    - doc/spire_agent.md
+    - doc/spire_server.md
+    - doc/telemetry/telemetry_config.md
     transform:
         using_spire.md:
             frontMatter:
                 title: Getting SPIRE
                 description: Platforms on Which SPIRE is Supported
-                navgroup: deploying
-                weight: 10
-                aliases:
-                    - /docs/latest/spire/installing/using_spire/
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    order: 10
+                scarf: high-interest
         spire_agent.md:
             frontMatter:
                 title: SPIRE Agent Configuration Reference
                 description: Command line options, agent.conf settings, and built-in plugins for SPIRE Agent
-                navgroup: deploying
-                weight: 300
-                aliases:
-                    - /docs/latest/spire/using/spire_agent/
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    order: 300
+                scarf: high-interest
         spire_server.md:
             frontMatter:
                 title: SPIRE Server Configuration Reference
                 description: Command line options, server.conf settings, and built-in plugins for SPIRE Server
-                navgroup: deploying
-                weight: 400
-                aliases:
-                    - /docs/latest/spire/using/spire_server/
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    order: 400
+                scarf: high-interest
         telemetry_config.md:
             frontMatter:
                 title: SPIRE Telemetry Configuration
                 description: Configure SPIRE Agent and Server metrics output to supported sinks
-                navgroup: deploying
-                weight: 500
-                aliases:
-                    - /docs/latest/spire/using/telemetry_config/
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    order: 500
+                scarf: high-interest
 keyless/vault:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
     pullFiles:
-        - k8s/oidc-vault/README.md
+    - k8s/oidc-vault/README.md
     transform:
         README.md:
             frontMatter:
-                short: Vault Integration Example
-                navgroup: keyless
                 description: Using SPIRE JWT-SVIDs to Authenticate to Hashicorp Vault
-                weight: 200
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    label: Vault Integration Example
+                    order: 200
+                scarf: high-interest
+            anchors:
+                'Part 2: Configure DNS for the OIDC Discovery IP Address': part-2-configure-dns-for-the-oidc-discovery-provider-ip-address
 architecture/nested:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
     pullFiles:
-        - docker-compose/nested-spire/README.md
+    - docker-compose/nested-spire/README.md
     transform:
         README.md:
             frontMatter:
                 title: Deploying a Nested SPIRE Architecture
-                short: Nested SPIRE Example
-                navgroup: architecture
                 description: Chaining SPIRE Servers to Use the Same Trust Domain
-                weight: 100
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    label: Nested SPIRE Example
+                    order: 100
+                scarf: high-interest
 architecture/federation:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
     pullFiles:
-        - docker-compose/federation/README.md
+    - docker-compose/federation/README.md
     transform:
         README.md:
             frontMatter:
                 title: Deploying a Federated SPIRE Architecture
-                short: SPIRE Federation Example
-                navgroup: architecture
                 description: Federating SPIRE Servers with Different Trust Domains
-                weight: 200
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    label: SPIRE Federation Example
+                    order: 200
+                scarf: high-interest
 microservices/envoy-x509:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
     pullFiles:
-        - k8s/envoy-x509/README.md
+    - k8s/envoy-x509/README.md
     transform:
         README.md:
             frontMatter:
                 title: Using Envoy with X.509-SVIDs
-                short: SPIRE with Envoy and X.509-SVIDs
-                navgroup: microservices
                 description: Securing Microservice Communication with Envoy Using X.509 SPIFFE IDs
-                weight: 100
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    label: SPIRE with Envoy and X.509-SVIDs
+                    order: 100
+                scarf: high-interest
 microservices/envoy-jwt:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
     pullFiles:
-        - k8s/envoy-jwt/README.md
+    - k8s/envoy-jwt/README.md
     transform:
         README.md:
             frontMatter:
                 title: Using Envoy with JWT-SVIDs
-                short: SPIRE with Envoy and JWT-SVIDs
-                navgroup: microservices
                 description: Securing Microservice Communication with Envoy Using JWT SPIFFE IDs
-                weight: 200
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    label: SPIRE with Envoy and JWT-SVIDs
+                    order: 200
+                scarf: high-interest
 microservices/envoy-opa:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
     pullFiles:
-        - k8s/envoy-opa/README.md
+    - k8s/envoy-opa/README.md
     transform:
         README.md:
             frontMatter:
                 title: OPA Authorization with Envoy and X.509-SVIDs
-                short: Spire with OPA + Envoy + X.509-SVIDs
-                navgroup: microservices
                 description: Secure Communication Using Envoy with X.509-SVIDs and Open Policy Agent Authorization
-                weight: 300
-            beacon: "{{< scarf/pixels/high-interest >}}"
+                sidebar:
+                    label: Spire with OPA + Envoy + X.509-SVIDs
+                    order: 300
+                scarf: high-interest
 microservices/envoy-jwt-opa:
     source: https://github.com/spiffe/spire-tutorials
     branch: main
     pullFiles:
-        - k8s/envoy-jwt-opa/README.md
+    - k8s/envoy-jwt-opa/README.md
     transform:
         README.md:
             frontMatter:
                 title: OPA Authorization with Envoy and JWT-SVIDs
-                short: Spire with OPA + Envoy + JWT-SVIDs
-                navgroup: microservices
                 description: Secure Communication Using Envoy with JWT-SVIDs and Open Policy Agent Authorization
-                weight: 400
-            beacon: "{{< scarf/pixels/high-interest >}}"
-
+                sidebar:
+                    label: Spire with OPA + Envoy + JWT-SVIDs
+                    order: 400
+                scarf: high-interest
 spiffe-specs:
     source: https://github.com/spiffe/spiffe
     branch: main
     pullFiles:
-        - standards/JWT-SVID.md
-        - standards/SPIFFE-ID.md
-        - standards/SPIFFE.md
-        - standards/SPIFFE_Broker_API.md
-        - standards/SPIFFE_Broker_Endpoint.md
-        - standards/SPIFFE_Federation.md
-        - standards/SPIFFE_Filesystem_Delivery.md
-        - standards/SPIFFE_Trust_Domain_and_Bundle.md
-        - standards/SPIFFE_Workload_API.md
-        - standards/SPIFFE_Workload_Endpoint.md
-        - standards/STABILITY.md
-        - standards/WIT-SVID.md
-        - standards/X509-SVID.md
+    - standards/JWT-SVID.md
+    - standards/SPIFFE-ID.md
+    - standards/SPIFFE.md
+    - standards/SPIFFE_Broker_API.md
+    - standards/SPIFFE_Broker_Endpoint.md
+    - standards/SPIFFE_Federation.md
+    - standards/SPIFFE_Filesystem_Delivery.md
+    - standards/SPIFFE_Trust_Domain_and_Bundle.md
+    - standards/SPIFFE_Workload_API.md
+    - standards/SPIFFE_Workload_Endpoint.md
+    - standards/STABILITY.md
+    - standards/WIT-SVID.md
+    - standards/X509-SVID.md
     transform:
         SPIFFE.md:
             frontMatter:
                 title: Secure Production Identity Framework for Everyone
-                short: SPIFFE
-                navgroup: spiffe-specs
-                weight: 100
+                sidebar:
+                    label: SPIFFE
+                    order: 100
         JWT-SVID.md:
             frontMatter:
                 title: JWT-SVID
-                short: JWT-SVID
-                navgroup: spiffe-specs
-                weight: 300
+                sidebar:
+                    order: 300
         X509-SVID.md:
             frontMatter:
                 title: X509-SVID
-                short: X509-SVID
-                navgroup: spiffe-specs
-                weight: 300
+                sidebar:
+                    order: 300
         SPIFFE-ID.md:
             frontMatter:
                 title: SPIFFE Identity and Verifiable Identity Document
-                short: SPIFFE ID and Verifiable Identity Document
-                navgroup: spiffe-specs
-                weight: 200
+                sidebar:
+                    label: SPIFFE ID and Verifiable Identity Document
+                    order: 200
         SPIFFE_Federation.md:
             frontMatter:
                 title: SPIFFE Federation
-                short: SPIFFE Federation
-                navgroup: spiffe-specs
-                weight: 500
+                sidebar:
+                    order: 500
         SPIFFE_Trust_Domain_and_Bundle.md:
             frontMatter:
                 title: SPIFFE Trust Domain and Bundle
-                short: SPIFFE Trust Domain and Bundle
-                navgroup: spiffe-specs
-                weight: 200
+                sidebar:
+                    order: 200
         SPIFFE_Workload_API.md:
             frontMatter:
                 title: SPIFFE Workload API
-                short: SPIFFE Workload API
-                navgroup: spiffe-specs
-                weight: 400
+                sidebar:
+                    order: 400
+            anchors:
+                8. Default Identity: 53-default-identity
         SPIFFE_Workload_Endpoint.md:
             frontMatter:
                 title: SPIFFE Workload Endpoint
-                short: SPIFFE Workload Endpoint
-                navgroup: spiffe-specs
-                weight: 400
+                sidebar:
+                    order: 400
         WIT-SVID.md:
             frontMatter:
                 title: WIT-SVID
-                short: WIT-SVID
-                navgroup: spiffe-specs
-                weight: 350
+                sidebar:
+                    order: 350
         SPIFFE_Broker_API.md:
             frontMatter:
                 title: SPIFFE Broker API
-                short: SPIFFE Broker API
-                navgroup: spiffe-specs
-                weight: 450
+                sidebar:
+                    order: 450
         SPIFFE_Broker_Endpoint.md:
             frontMatter:
                 title: SPIFFE Broker Endpoint
-                short: SPIFFE Broker Endpoint
-                navgroup: spiffe-specs
-                weight: 460
+                sidebar:
+                    order: 460
         SPIFFE_Filesystem_Delivery.md:
             frontMatter:
                 title: SPIFFE Filesystem Delivery
-                short: SPIFFE Filesystem Delivery
-                navgroup: spiffe-specs
-                weight: 470
+                sidebar:
+                    order: 470
         STABILITY.md:
             frontMatter:
                 title: SPIFFE Specification Stability
-                short: Specification Stability
-                navgroup: spiffe-specs
-                weight: 600
+                sidebar:
+                    label: Specification Stability
+                    order: 600

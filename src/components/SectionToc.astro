@@ -1,0 +1,18 @@
+---
+import { escape, getPages, pageOrder, route } from "../lib/content";
+const { entry } = Astro.locals.starlightRoute;
+const pages = (await getPages())
+  .filter((p) => p.id.startsWith(entry.id + "/"))
+  .sort(pageOrder);
+const html =
+  "<ul>\n" +
+  pages
+    .map(
+      (p) =>
+        `<li><a href="${route(p)}">${escape(p.data.title)}</a><p>${escape(p.data.description || "")}</p></li>`,
+    )
+    .join("\n") +
+  "\n</ul>\n";
+---
+
+<Fragment set:html={html} />

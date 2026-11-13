@@ -3,24 +3,24 @@ CONTAINER_RUNTIME ?= docker
 
 setup:
 	python3 -m pip install -r requirements.txt
-	npm --prefix astro ci
+	npm ci
 
 serve: export HIDE_RELEASES = true
 serve: pull-external-content
-	npm --prefix astro run dev
+	npm run dev
 
 serve-with-releases: pull-external-content
-	npm --prefix astro run dev
+	npm run dev
 
 build: pull-external-content
-	npm --prefix astro run build
+	npm run build
 
 pull-external-content:
 	python3 ./pull_external.py
 
 ci-check-links: build
 	echo "Running Astro preview server..." && \
-	npm --prefix astro run preview & \
+	npm run preview & \
 	sleep 5 && \
 	echo "Running links checker..." && \
 	linkchecker -f linkcheckerrc http://localhost:4175; \
@@ -40,7 +40,7 @@ docker-build:
 docker-serve: docker-build
 	$(CONTAINER_RUNTIME) run --init --rm \
 		-v $(PWD):/app \
-		-v /app/astro/node_modules \
+		-v /app/node_modules \
 		-p 4175:4175 \
 		-e HIDE_RELEASES=true \
 		-u $(shell id -u):$(shell id -g) \
@@ -49,7 +49,7 @@ docker-serve: docker-build
 docker-serve-with-releases: docker-build
 	$(CONTAINER_RUNTIME) run --init --rm \
 		-v $(PWD):/app \
-		-v /app/astro/node_modules \
+		-v /app/node_modules \
 		-p 4175:4175 \
 		-e GITHUB_TOKEN \
 		-u $(shell id -u):$(shell id -g) \

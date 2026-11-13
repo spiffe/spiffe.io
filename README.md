@@ -21,7 +21,7 @@ $ make docker-serve
 ```
 The first run takes a few minutes to build a Docker image with all the tools you need. After that, it serves the website at [`http://localhost:4175`](http://localhost:4175).
 
-You can also run the website with a list of releases under the "SPIRE Releases" heading on the Downloads page (`content/downloads/_index.md`):
+You can also run the website with a list of releases under the "SPIRE Releases" heading on the Downloads page (`src/content/docs/downloads/index.mdx`):
 ```shell
 $ make docker-serve-with-releases
 ```
@@ -55,12 +55,14 @@ data and static files, or to the [external content descriptor file](./external.y
 rebuild the affected pages and reload them in your browser. Draft and
 future-dated pages are included, and are never published.
 
-Edit the existing `content/`, `data/` and `static/` sources. Files generated
-under `astro/src/content/` and `astro/public/` are ignored. The external-content
-contribution rules still apply.
+Pages are Markdown (or MDX, where they use components) under
+[`src/content/docs/`](src/content/docs), data files are in [`src/data/`](src/data)
+and static files in [`public/`](public). Pages pulled from other repositories
+are listed in the generated `src/content/docs/.gitignore`; the external-content
+contribution rules apply to them.
 
 To build the site as Netlify does, run `make build`. The output is in
-`astro/dist/`, and `npm --prefix astro run preview` serves it at
+`dist/`, and `npm run preview` serves it at
 [`http://localhost:4175`](http://localhost:4175). The build checks internal
 routes, fragments, aliases and the search index.
 
@@ -90,25 +92,23 @@ The site is published automatically by [Netlify](https://netlify.com). Whenever 
 
 ## Updating the site
 
-The assets used to build the site are in a variety of directories and formats.
-
 ### The "Who uses SPIFFE?" section
 
-The list of issuers and consumers in the "Who uses SPIFFE?" section of the [home page](https://spiffe.netlify.com/) is generated using the [`data/users.yaml`](data/users.yaml) file. Make sure to add `name`, `description` (supports Markdown), `logo` file (all logos should be added to [`static/img/logos`](static/img/logos)), and a `link` to an external page.
+The list of issuers and consumers in the "Who uses SPIFFE?" section of the [home page](https://spiffe.io/) is generated using the [`src/data/users.yaml`](src/data/users.yaml) file. Make sure to add `name`, `description` (supports Markdown), `logo` file (all logos should be added to [`public/img/logos`](public/img/logos)), and a `link` to an external page.
 
 ### Documentation
 
-Markdown sources for the documentation are in the [`content`](content) directory.
+Markdown sources for the documentation are in [`src/content/docs/docs/latest/`](src/content/docs/docs/latest).
+Each directory is a sidebar group headed by its `index` page; pages are ordered
+by `sidebar.order`, then title, and labelled with `sidebar.label` if it is set.
+Old URLs that should keep working go in [`src/data/redirects.json`](src/data/redirects.json).
 
 #### Latest SPIRE version
 
-The build can automatically infer the latest version of SPIRE using the GitHub [Releases API](https://developer.github.com/v3/repos/releases/). To insert that version into text, use the `spire-latest` [shortcode](#shortcodes).
-This shortcode has a mandatory parameter that can be either `version`, `tag` or `tarball`.
-
-Here's an example:
+The build fetches the latest version of SPIRE from the GitHub [Releases API](https://developer.github.com/v3/repos/releases/). To insert it into text, code blocks or link URLs, use one of these placeholders:
 
 ```markdown
-The most recent version of SPIRE is "{{< spire-latest "version" >}}", that is tagged as "{{< spire-latest "tag" >}}" and packed in the file "{{< spire-latest "tarball" >}}"
+The most recent version of SPIRE is "SPIRE_LATEST_VERSION", that is tagged as "SPIRE_LATEST_TAG" and packed in the file "SPIRE_LATEST_TARBALL"
 ```
 
 that will generate the following output:
@@ -119,48 +119,46 @@ The most recent version of SPIRE is "0.9.3", that is tagged as "v0.9.3" and pack
 
 ### The Downloads page
 
-The [Downloads](https://spiffe.netlify.com/downloads) page is built automatically using information from the GitHub [Releases API](https://developer.github.com/v3/repos/releases/). You can alter the text of the Downloads page in [`content/downloads/_index.md`](content/downloads/_index.md).
+The [Downloads](https://spiffe.io/downloads/) page is built automatically using information from the GitHub [Releases API](https://developer.github.com/v3/repos/releases/). You can alter the text of the Downloads page in [`src/content/docs/downloads/index.mdx`](src/content/docs/downloads/index.mdx).
 
 ### The SPIFFE specification
 
-The [Specification](https://spiffe.netlify.com/spiffe/#spec) section of the main [SPIFFE page](https://spiffe.netlify.com/spiffe) is generated using a YAML list in [`data/spec.yaml`](data/spec.yaml).
+The list of specifications on the [Concepts](https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/) page is generated using a YAML list in [`src/data/spec.yaml`](src/data/spec.yaml).
 
-### Shortcodes
+### Components
 
-The Markdown sources use Hugo-style [shortcodes](https://gohugo.io/content-management/shortcodes/) to embed custom logic. The build expands them in [`astro/scripts/content.mjs`](astro/scripts/content.mjs).
+Pages that need generated content are MDX files that import a component from
+[`src/components/`](src/components): `SectionToc` (the list of pages in a
+section), `Ecosystem`, `Specs`, `Presentations` and `Releases`.
 
-#### Acknowledgments
+#### Asides
 
-The shortcode for the "Acknowledgments" section of the [Community](https://spiffe.netlify.com/community/#acknowledgments) page is generated by the `acknowledgments` shortcode. To alter the contents of this section, update the [`data/acknowledgments.yaml`](data/acknowledgments.yaml) file.
+Use Starlight's [asides](https://starlight.astro.build/guides/authoring-content/#asides) for notes and warnings: `note`, `tip`, `caution` and `danger`. For example:
 
-#### Admonition blocks
-
-There are four admonition blocks available for the site: info, danger, success, and warning. Here's an example:
-
-```
-{{< info >}}
+```markdown
+:::note
 Here's some important info regarding the SPIFFE project.
-{{< /info >}}
+:::
 ```
 
-Admonition blocks support Markdown.
+Asides support Markdown.
 
 ## Writing for the blog
 
 The blog lives at [`/blog/`](https://spiffe.io/blog/) and is generated from
-Markdown under [`content/blog/`](content/blog). Each post is a folder named
+Markdown under [`src/content/docs/blog/`](src/content/docs/blog). Each post is a folder named
 `YYYY-MM-DD-slug` (the date prefix keeps posts ordered in the filesystem and
 becomes part of the URL) containing an `index.md` and any images it uses:
 
 ```
-content/blog/
+src/content/docs/blog/
   2026-06-19-my-post/
     index.md        # front matter + body
     diagram.png     # images live alongside the post
 ```
 
 **The fastest way to write a post is to copy the annotated example,
-[`content/blog/2026-06-19-writing-a-blog-post/`](content/blog/2026-06-19-writing-a-blog-post/index.md),
+[`src/content/docs/blog/2026-06-19-writing-a-blog-post/`](src/content/docs/blog/2026-06-19-writing-a-blog-post/index.md),
 rename the folder, and replace the contents.** That post is a `draft` (so it
 only shows in local previews) and documents the front matter, images, tags, and
 publishing flow as it goes - read it for the full walkthrough. Posts are tagged

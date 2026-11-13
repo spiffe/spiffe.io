@@ -28,12 +28,12 @@ If the page you want to fix is one of these, **open your PR against the upstream
 repository instead**: changes made here would be overwritten on the next build. 
 
 To check, look for the source file in [`external.yaml`](external.yaml), or
-see the auto-generated `content/.gitignore` after a local build, which lists
+see the auto-generated `src/content/docs/.gitignore` after a local build, which lists
 every pulled file.
 
-Everything else (the rest of [`content/`](content), the data files in [
-`data/`](data), and the site itself in [`astro/`](astro)) is maintained in
-this repository.
+Everything else (the rest of [`src/content/docs/`](src/content/docs), the data
+files in [`src/data/`](src/data), and the rest of [`src/`](src)) is maintained
+in this repository.
 
 ## Running the Site Locally
 
@@ -61,18 +61,18 @@ and how to check for broken links with `make check-links` or
 
 ## Where Things Live
 
-* **Documentation**: Markdown under [`content/docs/latest/`](content/docs/latest), 
+* **Documentation**: Markdown under [`src/content/docs/docs/latest/`](src/content/docs/docs/latest), 
   organized by section (`deploying/`, `planning/`, `maintenance/`, 
   and so on). Remember the external-content caveat above.
-* **Blog posts**: folders under [`content/blog/`](content/blog) named
+* **Blog posts**: folders under [`src/content/docs/blog/`](src/content/docs/blog) named
   `YYYY-MM-DD-slug`.
   The [README](README.md#writing-for-the-blog) has a full walkthrough, including
   an annotated example post to copy.
-* **"Who uses SPIFFE?"**: [`data/users.yaml`](data/users.yaml), with logos 
-  in [`static/img/logos`](static/img/logos).
-* **Shortcodes**: expanded by [`astro/scripts/content.mjs`](astro/scripts/content.mjs), for embedding
-  custom logic in Markdown (admonition blocks, the `spire-latest` version 
-  shortcode, and more).
+* **"Who uses SPIFFE?"**: [`src/data/users.yaml`](src/data/users.yaml), with logos 
+  in [`public/img/logos`](public/img/logos).
+* **Components**: [`src/components`](src/components), imported by the MDX pages
+  that need generated content (section listings, the ecosystem and releases
+  tables, and more). The [README](README.md#components) lists them.
 
 ## Submitting a Pull Request
 

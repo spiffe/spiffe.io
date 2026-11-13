@@ -8,6 +8,10 @@
 # Node.js assets
 node_modules/
 
+# Astro build output and generated sources
+dist/
+.astro/
+
 # Python virtual environment
 .venv/
 venv/
@@ -17,5 +21,5 @@ __pycache__/
 
 # Temporal content
 checkouts/
-static/img/checkouts/
-data/releases.yaml
+public/img/checkouts/
+src/data/releases.yaml

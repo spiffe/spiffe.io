@@ -1,0 +1,55 @@
+---
+import ecosystemYaml from "../data/ecosystem.yaml?raw";
+import {
+  escape,
+  inline,
+  markdown,
+  order,
+  parseYaml,
+  slug,
+} from "../lib/content";
+
+type Project = {
+  name: string;
+  type: string;
+  link: string;
+  description?: string;
+  weight?: number;
+};
+type Category = {
+  name: string;
+  description: string;
+  weight?: number;
+  projects: Project[];
+};
+const labels: Record<string, string> = {
+  official: "SPIFFE official project",
+  community: "Community project",
+  commercial: "Commercial project",
+};
+const icons: Record<string, string> = {
+  official: "★",
+  community: "●",
+  commercial: "◆",
+};
+let html =
+  "<p><strong>Key:</strong> " +
+  Object.entries(labels)
+    .map(
+      ([k, v]) =>
+        `<span class="project-kind ${k}" role="img" aria-label="${v}">${icons[k]}</span> ${v}`,
+    )
+    .join(" ") +
+  "</p>\n";
+const categories: Category[] = parseYaml(ecosystemYaml).categories;
+for (const c of categories.sort(order)) {
+  html += `<h2 id="${slug(c.name)}">${escape(c.name)}</h2>\n${await markdown(c.description)}<ul>\n`;
+  for (const p of c.projects.sort(order)) {
+    const label = labels[p.type] || labels.community;
+    html += `<li><span class="project-kind ${p.type}" role="img" aria-label="${label}" title="${label}">${icons[p.type] || "●"}</span> <a href="${escape(p.link)}"><strong>${escape(p.name)}</strong></a>${p.description ? " - " + (await inline(p.description)) : ""}</li>\n`;
+  }
+  html += "</ul>\n";
+}
+---
+
+<Fragment set:html={html} />

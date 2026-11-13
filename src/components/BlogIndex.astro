@@ -1,0 +1,34 @@
+---
+import { getPosts } from "../data/blog";
+import BlogTags from "./BlogTags.astro";
+import { readingTime } from "../lib/content";
+const posts = (await getPosts()).map((entry) => ({
+  ...entry,
+  minutes: readingTime(entry),
+}));
+---
+
+{posts.map(({ id, data: post, minutes }) => (
+  <article class="blog-row">
+    <h2>
+      <a href={`/${id}/`}>{post.title}</a>
+    </h2>
+    <p class="post-meta">
+      {post.author && `By ${post.author} · `}
+      <time datetime={post.date!.toISOString()}>
+        {post.date!.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          timeZone: "UTC",
+        })}
+      </time>{" "}
+      · {minutes} min read
+    </p>
+    <p>{post.description}</p>
+    <BlogTags tags={post.tags} />
+    <a class="read-more" href={`/${id}/`}>
+      Read more →
+    </a>
+  </article>
+))}

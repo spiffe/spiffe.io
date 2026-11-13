@@ -1,0 +1,34 @@
+---
+import presentationsYaml from "../data/presentations.yaml?raw";
+import { escape, parseYaml } from "../lib/content";
+
+type Presentation = {
+  category: string;
+  title: string;
+  link: string;
+  weight?: number;
+  youtube?: string;
+  thumbnail?: string;
+  organizations?: string;
+  description?: string;
+  presenters?: string;
+  venue?: string;
+  publication?: string;
+  date?: string;
+};
+const { category } = Astro.props;
+const items: Presentation[] = parseYaml(presentationsYaml);
+// Match the existing list: entries without weights keep their position.
+for (let i = 1; i < items.length; i++)
+  for (let j = i; j > 0 && items[j].weight! < items[j - 1].weight!; j--)
+    [items[j], items[j - 1]] = [items[j - 1], items[j]];
+let html = "";
+for (const p of items.filter((p) => p.category === category)) {
+  const image = p.youtube
+    ? `https://img.youtube.com/vi/${p.youtube}/1.jpg`
+    : p.thumbnail;
+  html += `<div class="presentation">${image ? `<a href="${escape(p.link)}"><img src="${escape(image)}" width="120" height="90" alt=""></a>` : ""}<div><a href="${escape(p.link)}"><strong>${escape(p.title)}</strong></a>${p.organizations ? " (" + escape(p.organizations) + ")" : ""}${p.description ? `<p>${escape(p.description)}</p>` : ""}<p><i>${p.venue ? "Presented" + (p.presenters ? " by " + escape(p.presenters) : "") : "By " + escape(p.presenters)}${p.venue ? " at " + escape(p.venue) : ""}${p.publication ? " in " + escape(p.publication) : ""}${p.date ? " on " + escape(p.date) : ""}.</i></p></div></div>\n`;
+}
+---
+
+<Fragment set:html={html} />

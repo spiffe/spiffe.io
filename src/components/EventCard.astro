@@ -1,0 +1,16 @@
+---
+import { escape } from "../lib/content";
+const { tagline, event } = Astro.locals.starlightRoute.entry.data;
+let html = tagline ? `<p>${escape(tagline)}</p>` : "";
+if (event)
+  html += `<aside class="event-card"><ul>${(
+    ["date", "time", "venue", "online"] as const
+  )
+    .filter((k) => event[k])
+    .map((k) => `<li>${escape(event[k])}</li>`)
+    .join(
+      "",
+    )}</ul>${event.register ? `<a class="button" href="${escape(event.register)}">Register to attend</a>` : ""}${event.note ? `<p>${escape(event.note)}</p>` : ""}${(event.links || []).map((l) => `<a href="${escape(l.url)}">${escape(l.text)}</a>`).join(" ")}</aside>`;
+---
+
+<Fragment set:html={html} />

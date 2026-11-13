@@ -1,0 +1,56 @@
+---
+import { escape } from "../lib/content";
+import { readReleases, type Release } from "../lib/releases";
+const data = readReleases();
+const html =
+  process.env.HIDE_RELEASES === "true"
+    ? ""
+    : '<table class="releases"><thead><tr><th>Version</th><th>Click to copy link to clipboard</th><th>Click to trigger download</th></tr></thead><tbody>' +
+      data.all
+        .sort((a, b) => b.created_at.localeCompare(a.created_at))
+        .map((r: Release) => {
+          const links: [string, string][] = [];
+          for (const [platform, label, checksumLabel] of [
+            [
+              "linux-amd64",
+              "Linux amd64 binaries (.tar.gz)",
+              "Linux amd64 checksum (.txt)",
+            ],
+            ["linux-arm64", "Linux Arm (.tar.gz)", "Linux Arm Checksum (.txt)"],
+            ["windows-amd64", "Windows (.tar.gz)", "Windows Checksum (.txt)"],
+          ]) {
+            const candidates = r.assets.filter(
+              (a: { name: string }) =>
+                a.name.startsWith("spire-") &&
+                !a.name.startsWith("spire-extras-") &&
+                a.name.includes(platform),
+            );
+            const checksum = candidates.find(
+              (a) => a.name.includes("sha256") && a.name.includes(".txt"),
+            );
+            const binary = candidates.find(
+              (a) => !(a.name.includes("sha256") && a.name.includes(".txt")),
+            );
+            if (binary && checksum)
+              links.push(
+                [label, binary.browser_download_url],
+                [checksumLabel, checksum.browser_download_url],
+              );
+          }
+          links.push(
+            [
+              "Source (.zip)",
+              `https://github.com/spiffe/spire/archive/${r.tag_name}.zip`,
+            ],
+            [
+              "Source (.tar.gz)",
+              `https://github.com/spiffe/spire/archive/${r.tag_name}.tar.gz`,
+            ],
+          );
+          return `<tr><td><a href="${escape(r.html_url)}">${escape(r.tag_name)}</a>${r.tag_name === data.latest.tag_name ? " <strong>LATEST</strong>" : ""}</td><td>${links.map(([label, url]) => `<button data-copy-url="${escape(url)}">${label}</button>`).join(" ")}</td><td>${links.map(([label, url]) => `<a href="${escape(url)}">${label}</a>`).join(" ")}</td></tr>`;
+        })
+        .join("") +
+      "</tbody></table>";
+---
+
+<Fragment set:html={html} />
