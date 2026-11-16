@@ -260,18 +260,140 @@
   .presentation > a {
     flex-shrink: 0;
   }
-  .project-kind {
-    display: inline-block;
-    min-width: 1.1em;
+  .eco-entries {
+    margin-block: 1rem 2rem;
+    border-top: 1px solid var(--sl-color-hairline);
   }
-  .official {
+  .eco-entry {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 0.4rem 1.5rem;
+    padding: 0.85rem 0.5rem;
+    border-bottom: 1px solid var(--sl-color-hairline);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .eco-entry:target {
+    background: var(--sl-color-accent-low);
+  }
+  .eco-entry header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .eco-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .eco-body p {
+    margin: 0;
+    color: var(--sl-color-gray-2);
+  }
+  @media (max-width: 50rem) {
+    .eco-entry {
+      grid-template-columns: 1fr;
+    }
+  }
+  .eco-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    text-decoration: none;
+  }
+  .eco-name:hover {
+    color: var(--sl-color-accent-high);
+  }
+  .eco-provenance {
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .eco-spiffe {
     color: #916300;
   }
-  .community {
+  .eco-open-source {
     color: #137ba1;
   }
-  .commercial {
+  .eco-commercial {
     color: #14733b;
+  }
+  .eco-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .eco-labels li {
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-gray-2);
+    font-size: 0.75rem;
+  }
+  .eco-labels a {
+    color: inherit;
+  }
+  .eco-labels .eco-native {
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-accent-high);
+  }
+  .eco-entry footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    font-size: 0.8rem;
+  }
+  .eco-compare {
+    overflow-x: auto;
+    margin-block: 1rem;
+  }
+  .eco-compare table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+  }
+  .eco-compare th,
+  .eco-compare td {
+    padding: 0.35rem 0.5rem;
+    border: 1px solid var(--sl-color-hairline);
+    text-align: center;
+  }
+  .eco-compare thead th {
+    font-weight: 600;
+    background: var(--sl-color-gray-7, var(--sl-color-gray-6));
+  }
+  .eco-compare tbody th {
+    position: sticky;
+    left: 0;
+    text-align: left;
+    white-space: nowrap;
+    font-weight: 500;
+    background: var(--sl-color-bg);
+  }
+  .eco-compare a,
+  .eco-body a {
+    color: var(--sl-color-accent-high);
+    text-decoration: none;
+  }
+  .eco-compare a:hover,
+  .eco-body a:hover {
+    text-decoration: underline;
+  }
+  .eco-compare td {
+    color: var(--sl-color-accent-high);
+  }
+  .eco-kind {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--sl-color-gray-3);
+  }
+  .eco-notes {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-2);
   }
   .releases button,
   .releases td > a {

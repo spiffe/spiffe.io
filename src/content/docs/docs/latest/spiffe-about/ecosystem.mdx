@@ -1,16 +1,75 @@
 ---
 title: SPIFFE Ecosystem
-description: Official and community projects in the SPIFFE ecosystem
+description: Software and services that issue or accept SPIFFE identities
 sidebar:
   label: Ecosystem
   order: 250
 scarf: medium-interest
 ---
 
-import Ecosystem from "../../../../../components/Ecosystem.astro";
+import EcosystemEntries from "../../../../../components/EcosystemEntries.astro";
+import IssuerComparison from "../../../../../components/IssuerComparison.astro";
 
-SPIFFE is supported by a broad ecosystem of projects, ranging from the core specifications and their reference implementation through to SDKs, deployment tooling, and the many open-source and commercial platforms that issue or consume SPIFFE identities.
+SPIFFE is supported by a broad ecosystem: systems that issue SPIFFE identities to workloads, the many services that accept those identities in place of passwords and API keys, and the libraries and tools that connect the two.
 
-This page collects some of the more notable projects, grouped by what they do. Each one is marked as a SPIFFE official project, a community project, or a commercial offering. The list is not exhaustive - if a project is missing, contributions are welcome via a [pull request to this site](https://github.com/spiffe/spiffe.io).
+Each entry is marked as a **SPIFFE project**, **open source**, or **commercial**. Systems that accept SPIFFE identities show which SVID formats they accept, and whether they are **Native** (they have SPIFFE-specific support) or **Compatible** (they authorize by SPIFFE ID through a general X.509 or JWT mechanism).
 
-<Ecosystem />
+This list is not exhaustive. To add or correct an entry, open a [pull request to this site](https://github.com/spiffe/spiffe.io).
+
+## SPIFFE issuers
+
+Systems whose main purpose is issuing SPIFFE identities to workloads. Several systems listed under other headings, such as service meshes, also issue SVIDs; they are included in the comparison below.
+
+<EcosystemEntries kind="issuers" />
+
+### Compare issuers
+
+<IssuerComparison />
+
+## Cloud, SaaS and AI APIs
+
+Hosted APIs where a workload authenticates with an SVID in place of a static API key or cloud credential, usually through workload identity federation.
+
+<EcosystemEntries kind="cloud-apis" />
+
+## Secrets managers
+
+Secret stores that authenticate workloads by their SPIFFE identity.
+
+<EcosystemEntries kind="secrets-managers" />
+
+## Service meshes, proxies and runtimes
+
+Systems that use SPIFFE identities to authenticate and secure traffic between workloads.
+
+<EcosystemEntries kind="meshes" />
+
+## Data platforms
+
+Databases, streaming and messaging systems that accept SPIFFE identities from clients.
+
+<EcosystemEntries kind="data-platforms" />
+
+## PKI and certificate management
+
+Certificate tooling that can issue or manage SVIDs.
+
+<EcosystemEntries kind="pki" />
+
+## SDKs and libraries
+
+Fetch and validate SPIFFE identities directly from your application code.
+
+<EcosystemEntries kind="sdks" />
+
+## Workload helpers
+
+Deliver SPIFFE identities to workloads, and bridge them to platforms that do not use the Workload API natively.
+
+<EcosystemEntries kind="workload-helpers" />
+
+## SPIRE extensions and tooling
+
+Projects that extend, deploy and operate SPIRE.
+
+<EcosystemEntries kind="spire-tooling" />

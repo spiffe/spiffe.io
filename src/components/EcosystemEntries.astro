@@ -1,0 +1,65 @@
+---
+import { inline } from "../lib/content";
+import {
+  entries,
+  entryId,
+  formatLabels,
+  provenanceLabels,
+  sorted,
+} from "../lib/ecosystem";
+
+interface Props {
+  kind: string;
+}
+
+const list = await Promise.all(
+  sorted(entries.filter((e) => e.kind === Astro.props.kind)).map(
+    async (e) => ({ ...e, html: await inline(e.description) }),
+  ),
+);
+---
+
+<div class="eco-entries not-content">
+  {
+    list.map((e) => (
+      <article class="eco-entry" id={entryId(e)}>
+        <header>
+          <a class="eco-name" href={e.link}>
+            {e.name}
+          </a>
+          <span class={`eco-provenance eco-${e.provenance}`}>
+            {provenanceLabels[e.provenance]}
+          </span>
+        </header>
+        <div class="eco-body">
+          <p set:html={e.html} />
+          {(e.issues || e.accepts) && (
+            <ul class="eco-labels">
+              {e.issues && e.kind !== "issuers" && (
+                <li>
+                  <a href="#compare-issuers">Issues SVIDs</a>
+                </li>
+              )}
+              {e.accepts?.formats?.map((f) => (
+                <li>Accepts {formatLabels[f]}</li>
+              ))}
+              {e.accepts?.support && (
+                <li class={`eco-support eco-${e.accepts.support}`}>
+                  {e.accepts.support === "native" ? "Native" : "Compatible"}
+                </li>
+              )}
+            </ul>
+          )}
+          {(e.docs || e.guides) && (
+            <footer>
+              {e.docs && <a href={e.docs}>SPIFFE docs</a>}
+              {e.guides?.map((g) => (
+                <a href={g.link}>Guide: {g.title}</a>
+              ))}
+            </footer>
+          )}
+        </div>
+      </article>
+    ))
+  }
+</div>
