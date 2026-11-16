@@ -1,0 +1,95 @@
+---
+import {
+  entries,
+  entryId,
+  issuerTables,
+  sorted,
+} from "../lib/ecosystem";
+
+interface Props {
+  // Page holding the entry cards, when rendered on another page.
+  entryPage?: string;
+}
+const { entryPage = "" } = Astro.props;
+
+const issuers = sorted(entries.filter((e) => e.kind === "issuers"));
+
+const notes: string[] = [];
+const noteNumber = (text: string) => {
+  if (!notes.includes(text)) notes.push(text);
+  return notes.indexOf(text) + 1;
+};
+const tables = issuerTables.map((groups) => {
+  const columns = groups.flatMap((g) => g.columns);
+  return {
+    groups,
+    columns,
+    rows: issuers.map((e) => ({
+      entry: e,
+      cells: columns.map((c) => {
+        const note = e["issues-notes"]?.[c.id];
+        return {
+          supported: Array.isArray(e.issues) && e.issues.includes(c.id),
+          note: note && { number: noteNumber(note), text: note },
+        };
+      }),
+    })),
+  };
+});
+---
+
+{
+  tables.map((t) => (
+    <div class="eco-compare not-content">
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="2" scope="col">
+              Issuer
+            </th>
+            {t.groups.map((g) => (
+              <th colspan={g.columns.length} scope="colgroup">
+                {g.group}
+              </th>
+            ))}
+          </tr>
+          <tr>
+            {t.columns.map((c) => (
+              <th scope="col">{c.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {t.rows.map((r) => (
+            <tr>
+              <th scope="row">
+                <a href={`${entryPage}#${entryId(r.entry)}`}>
+                  {r.entry["short-name"] ?? r.entry.name}
+                </a>
+              </th>
+              {r.cells.map((cell) => (
+                <td>
+                  {cell.supported && (
+                    <span aria-label="Yes" title={cell.note?.text}>
+                      ✔
+                    </span>
+                  )}
+                  {cell.note && <sup>{cell.note.number}</sup>}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ))
+}
+{
+  notes.length > 0 && (
+    <ol class="eco-notes">
+      {notes.map((n) => (
+        <li>{n}</li>
+      ))}
+    </ol>
+  )
+}
