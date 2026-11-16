@@ -24,41 +24,58 @@ const list = await Promise.all(
     list.map((e) => (
       <article class="eco-entry" id={entryId(e)}>
         <header>
-          <a class="eco-name" href={e.link}>
-            {e.name}
-          </a>
+          <h3>{e.name}</h3>
+          {(e.kind !== "issuers" && e.issues) || e.accepts?.formats ? (
+            <p class="eco-labels">
+              {e.kind !== "issuers" && e.issues && (
+                <span class="eco-label">Issues SVIDs</span>
+              )}
+              {e.accepts?.formats && (
+                <>
+                  <span>Accepts</span>
+                  {e.accepts.formats.map((f) => (
+                    <span class="eco-label">{formatLabels[f]}</span>
+                  ))}
+                </>
+              )}
+              {e.accepts?.support && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span class="eco-label">
+                    {e.accepts.support === "native"
+                      ? "SPIFFE-native"
+                      : "SPIFFE-compatible"}
+                  </span>
+                </>
+              )}
+            </p>
+          ) : null}
           <span class={`eco-provenance eco-${e.provenance}`}>
             {provenanceLabels[e.provenance]}
           </span>
         </header>
-        <div class="eco-body">
-          <p set:html={e.html} />
-          {(e.issues || e.accepts) && (
-            <ul class="eco-labels">
-              {e.issues && e.kind !== "issuers" && (
-                <li>
-                  <a href="#compare-issuers">Issues SVIDs</a>
-                </li>
-              )}
-              {e.accepts?.formats?.map((f) => (
-                <li>Accepts {formatLabels[f]}</li>
-              ))}
-              {e.accepts?.support && (
-                <li class={`eco-support eco-${e.accepts.support}`}>
-                  {e.accepts.support === "native" ? "Native" : "Compatible"}
-                </li>
-              )}
-            </ul>
+        <p class="eco-description" set:html={e.html} />
+        <ul class="eco-links">
+          <li>
+            <a href={e.link}>
+              {e.provenance === "commercial" ? "Product page" : "Project page"}
+              <span class="sr-only"> for {e.name}</span>
+            </a>
+          </li>
+          {e.docs && (
+            <li>
+              <a href={e.docs}>
+                SPIFFE integration docs
+                <span class="sr-only"> for {e.name}</span>
+              </a>
+            </li>
           )}
-          {(e.docs || e.guides) && (
-            <footer>
-              {e.docs && <a href={e.docs}>SPIFFE docs</a>}
-              {e.guides?.map((g) => (
-                <a href={g.link}>Guide: {g.title}</a>
-              ))}
-            </footer>
-          )}
-        </div>
+          {e.guides?.map((g) => (
+            <li>
+              <a href={g.link}>Guide: {g.title}</a>
+            </li>
+          ))}
+        </ul>
       </article>
     ))
   }

@@ -13,10 +13,12 @@
 #                               clearly open source.
 #   docs                      - optional link to the entry's SPIFFE integration documentation
 #   guides                    - optional list of {title, link} guides on spiffe.io
-#   issues                    - for systems that issue SVIDs: the capabilities they support, from
+#   issues                    - for entries of kind issuers: the capabilities they support, from
 #                               x509, jwt, wit, workload-api, sds, bundle-endpoint, federation,
-#                               oidc-discovery, attestation, upstream-ca, kubernetes, vm, serverless.
+#                               oidc-discovery, attestation, upstream-ca, kubernetes, vm, serverless,
+#                               shown in the issuer comparison on the SPIFFE overview page.
 #                               issues-notes maps a capability to a short caveat.
+#                               For other kinds, `issues: true` marks a system that also issues SVIDs.
 #   accepts                   - for systems that accept SVIDs: formats (x509, jwt) and support
 #                               (native, compatible). Both require per-SPIFFE-ID authorization:
 #                               native systems have SPIFFE-specific support; compatible ones match
@@ -31,9 +33,13 @@ entries:
     kind: issuers
     provenance: spiffe
     link: https://github.com/spiffe/spire
-    docs: /docs/latest/spire-about/
+    guides:
+      - title: SPIRE overview
+        link: /docs/latest/spire-about/
+      - title: Quickstart for Kubernetes
+        link: /docs/latest/try/getting-started-k8s/
     description: The SPIFFE Runtime Environment, the reference implementation of SPIFFE, handling node and workload attestation and SVID issuance and rotation.
-    issues: [x509, jwt, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm, serverless]
+    issues: [x509, jwt, wit, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm, serverless]
   - name: Aembit
     kind: issuers
     provenance: commercial
@@ -59,13 +65,13 @@ entries:
     link: https://docs.cloud.google.com/iam/docs/managed-workload-identity
     description: Issues X.509-SVIDs from Certificate Authority Service to workloads on GKE (in preview) and Compute Engine.
     issues: [x509, attestation, upstream-ca, kubernetes, vm]
-  - name: Greymatter.io
+  - name: Idira® by Palo Alto Networks
+    short-name: Idira
     kind: issuers
     provenance: commercial
-    link: https://greymatter.io
-    docs: https://greymatter.gitbook.io/grey-matter-documentation/usage/fabric/security/spire
-    description: Application networking platform that incorporates SPIRE to issue and consume SPIFFE identities.
-    issues: [x509, jwt, workload-api, sds, attestation, upstream-ca, kubernetes, vm, serverless]
+    link: https://www.paloaltonetworks.com/idira
+    description: Issues SPIFFE SVIDs to workloads and AI agents, and its SaaS secrets manager authenticates workloads by their SPIFFE identity.
+    issues: [x509, jwt, workload-api, oidc-discovery, attestation, kubernetes, vm, serverless]
     accepts: {formats: [x509, jwt], support: native}
   - name: Red Hat Zero Trust Workload Identity Manager
     short-name: Red Hat
@@ -75,11 +81,12 @@ entries:
     description: OpenShift operator that manages SPIRE to issue SPIFFE identities to workloads in OpenShift clusters, with integration into OpenShift Service Mesh.
     issues: [x509, jwt, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm]
     issues-notes: {sds: Via OpenShift Service Mesh 3.0}
-  - name: Teleport
+  - name: Teleport Machine & Workload Identity
+    short-name: Teleport MWI
     kind: issuers
     provenance: commercial
     link: https://goteleport.com/platform/machine-and-workload-identity/
-    description: Infrastructure identity platform whose Workload Identity feature issues SPIFFE identities to workloads.
+    description: Teleport's machine and workload identity product, which issues SPIFFE identities to workloads.
     issues: [x509, jwt, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm]
 
   # Cloud, SaaS and AI APIs
@@ -154,14 +161,6 @@ entries:
     docs: https://developer.hashicorp.com/vault/docs/auth/spiffe
     description: Secrets manager whose SPIFFE auth method (Vault Enterprise) authenticates workloads with X.509-SVIDs or JWT-SVIDs, matched by SPIFFE ID and validated against SPIFFE trust bundles.
     accepts: {formats: [x509, jwt], support: native}
-  - name: Idira by Palo Alto Networks
-    short-name: Idira
-    kind: secrets-managers
-    provenance: commercial
-    link: https://www.paloaltonetworks.com/idira/machine/secrets-management
-    description: SaaS secrets manager supporting SPIFFE authentication that also issues SPIFFE SVIDs to workloads and AI agents.
-    issues: [x509, jwt, workload-api, oidc-discovery, attestation, kubernetes, vm, serverless]
-    accepts: {formats: [x509, jwt], support: native}
   - name: Infisical
     kind: secrets-managers
     provenance: commercial
@@ -182,7 +181,7 @@ entries:
     provenance: open-source
     link: https://istio.io/
     description: Service mesh that issues SPIFFE identities to the workloads in the mesh.
-    issues: [x509, sds, attestation, upstream-ca, kubernetes, vm]
+    issues: true
     accepts: {formats: [x509, jwt], support: native}
   - name: Ghostunnel
     kind: meshes
@@ -195,14 +194,22 @@ entries:
     provenance: open-source
     link: https://dapr.io/
     description: Distributed application runtime that issues SPIFFE identities to applications for mTLS between them.
-    issues: [x509, jwt, upstream-ca, kubernetes, vm]
+    issues: true
   - name: HashiCorp Consul
     kind: meshes
     provenance: commercial
     link: https://www.consul.io/
     description: Service mesh that can issue SPIFFE identities to the services it manages.
-    issues: [x509, upstream-ca, kubernetes, vm, serverless]
-    issues-notes: {serverless: Beta}
+    issues: true
+
+  - name: Greymatter.io
+    kind: meshes
+    provenance: commercial
+    link: https://greymatter.io
+    docs: https://greymatter.gitbook.io/grey-matter-documentation/usage/fabric/security/spire
+    description: Application networking platform that incorporates SPIRE to issue and consume SPIFFE identities.
+    issues: true
+    accepts: {formats: [x509, jwt], support: native}
 
   # Data platforms
   - name: WarpStream
@@ -220,7 +227,7 @@ entries:
     link: https://cert-manager.io/
     docs: https://cert-manager.io/docs/usage/csi-driver-spiffe/
     description: Kubernetes certificate controller; its csi-driver-spiffe issues X.509-SVIDs to pods.
-    issues: [x509, attestation, upstream-ca, kubernetes]
+    issues: true
 
   # SDKs and libraries
   - name: go-spiffe

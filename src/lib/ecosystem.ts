@@ -12,7 +12,7 @@ export type Entry = {
   description: string;
   docs?: string;
   guides?: { title: string; link: string }[];
-  issues?: string[];
+  issues?: string[] | true;
   "issues-notes"?: Record<string, string>;
   accepts?: { formats?: string[]; support?: "native" | "compatible" };
 };
@@ -21,13 +21,6 @@ export const provenanceLabels: Record<Provenance, string> = {
   spiffe: "SPIFFE project",
   "open-source": "Open source",
   commercial: "Commercial",
-};
-
-// Shown in the issuer comparison for issuers listed under another kind.
-export const kindLabels: Record<string, string> = {
-  "secrets-managers": "Secrets manager",
-  meshes: "Mesh or runtime",
-  pki: "PKI",
 };
 
 export const formatLabels: Record<string, string> = {

@@ -20,12 +20,12 @@ SPIFFE is a set of open-source specifications for a framework capable of bootstr
 You can read more about how the SPIFFE APIs are defined and used in the [Concepts](/docs/latest/spiffe/concepts/) guide.
 
 
-# Which Tools Implement SPIFFE?
+## SPIFFE issuers
 
-SPIFFE comprises many specifications, each providing different parts of the SPIFFE functionality. Software that implements SPIFFE may support some or all of these functionalities. The following tables compare software that's capable of providing your infrastructure with SPIFFE identities, along with the functionalities they support. The [ecosystem page](/docs/latest/spiffe-about/ecosystem/#spiffe-issuers) describes each of them.
+An issuer provides workloads with SPIFFE identities. SPIFFE has several specifications, and issuers support different parts of them: which SVID formats they issue, how they deliver SVIDs to workloads, how they distribute trust, and where they run. The tables below compare them. The [ecosystem page](/docs/latest/spiffe-about/ecosystem/#spiffe-issuers) describes each one.
 
 <IssuerComparison entryPage="/docs/latest/spiffe-about/ecosystem/" />
 
-# Which Tools Work with SPIFFE?
+## Software that accepts SPIFFE identities
 
-SPIFFE enjoys a broad ecosystem, with many software projects, products, and platforms providing SPIFFE support in one way or another. The [ecosystem page](/docs/latest/spiffe-about/ecosystem/) lists software that accepts SPIFFE identities, including cloud APIs, secrets managers, service meshes and proxies, along with the SVID formats each accepts.
+Many cloud APIs, secrets managers, service meshes and data platforms let workloads authenticate with an SVID instead of a password or API key. The [ecosystem page](/docs/latest/spiffe-about/ecosystem/) lists them, with the SVID formats each accepts.

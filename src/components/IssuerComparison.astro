@@ -3,7 +3,6 @@ import {
   entries,
   entryId,
   issuerTables,
-  kindLabels,
   sorted,
 } from "../lib/ecosystem";
 
@@ -13,7 +12,7 @@ interface Props {
 }
 const { entryPage = "" } = Astro.props;
 
-const issuers = sorted(entries.filter((e) => e.issues));
+const issuers = sorted(entries.filter((e) => e.kind === "issuers"));
 
 const notes: string[] = [];
 const noteNumber = (text: string) => {
@@ -30,7 +29,7 @@ const tables = issuerTables.map((groups) => {
       cells: columns.map((c) => {
         const note = e["issues-notes"]?.[c.id];
         return {
-          supported: e.issues!.includes(c.id),
+          supported: Array.isArray(e.issues) && e.issues.includes(c.id),
           note: note && { number: noteNumber(note), text: note },
         };
       }),
@@ -67,9 +66,6 @@ const tables = issuerTables.map((groups) => {
                 <a href={`${entryPage}#${entryId(r.entry)}`}>
                   {r.entry["short-name"] ?? r.entry.name}
                 </a>
-                {kindLabels[r.entry.kind] && (
-                  <span class="eco-kind">{kindLabels[r.entry.kind]}</span>
-                )}
               </th>
               {r.cells.map((cell) => (
                 <td>

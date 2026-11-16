@@ -265,10 +265,10 @@
     border-top: 1px solid var(--sl-color-hairline);
   }
   .eco-entry {
-    display: grid;
-    grid-template-columns: 12rem 1fr;
-    gap: 0.4rem 1.5rem;
-    padding: 0.85rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1rem 0.5rem 1.1rem;
     border-bottom: 1px solid var(--sl-color-hairline);
     font-size: 0.9rem;
     line-height: 1.5;
@@ -278,33 +278,22 @@
   }
   .eco-entry header {
     display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 1rem;
   }
-  .eco-body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .eco-body p {
+  .eco-entry h3 {
     margin: 0;
-    color: var(--sl-color-gray-2);
-  }
-  @media (max-width: 50rem) {
-    .eco-entry {
-      grid-template-columns: 1fr;
-    }
-  }
-  .eco-name {
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--sl-color-white);
-    text-decoration: none;
   }
-  .eco-name:hover {
-    color: var(--sl-color-accent-high);
+  .eco-description {
+    margin: 0;
+    color: var(--sl-color-gray-2);
   }
   .eco-provenance {
+    margin-left: auto;
     font-size: 0.75rem;
     font-weight: 500;
     white-space: nowrap;
@@ -319,32 +308,44 @@
     color: #14733b;
   }
   .eco-labels {
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.35rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    font-size: 0.75rem;
   }
-  .eco-labels li {
+  .eco-label {
     padding: 0.1rem 0.5rem;
     border-radius: 999px;
     background: var(--sl-color-gray-6);
-    color: var(--sl-color-gray-2);
-    font-size: 0.75rem;
+    color: var(--sl-color-gray-1);
   }
-  .eco-labels a {
-    color: inherit;
+  .eco-label + span:not(.eco-label) {
+    margin-left: 0.4rem;
   }
-  .eco-labels .eco-native {
-    background: var(--sl-color-accent-low);
-    color: var(--sl-color-accent-high);
-  }
-  .eco-entry footer {
+  .eco-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 1rem;
-    font-size: 0.8rem;
+    gap: 0.2rem 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.85rem;
+  }
+  @media (max-width: 50rem) {
+    .eco-entry .eco-provenance {
+      order: 1;
+    }
+    .eco-entry .eco-labels {
+      order: 2;
+      flex-basis: 100%;
+    }
+  }
+  .eco-links li + li::before {
+    content: "·";
+    margin-inline: 0.6rem;
+    color: var(--sl-color-gray-4);
   }
   .eco-compare {
     overflow-x: auto;
@@ -374,22 +375,18 @@
     background: var(--sl-color-bg);
   }
   .eco-compare a,
-  .eco-body a {
+  .eco-description a,
+  .eco-links a {
     color: var(--sl-color-accent-high);
     text-decoration: none;
   }
   .eco-compare a:hover,
-  .eco-body a:hover {
+  .eco-description a:hover,
+  .eco-links a:hover {
     text-decoration: underline;
   }
   .eco-compare td {
     color: var(--sl-color-accent-high);
-  }
-  .eco-kind {
-    display: block;
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: var(--sl-color-gray-3);
   }
   .eco-notes {
     font-size: 0.8rem;
