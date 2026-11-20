@@ -44,6 +44,8 @@ SPIFFE comprises many specifications, each providing different parts of the SPIF
 | [Cofide](https://www.cofide.io)                                                                            |     ✔      |    ✔     |             ✔              |      ✔       |    ✔    |         ✔         |        ✔        |        ✔        |         ✔          |             ✔             |         ✔          |
 | [Aembit](https://aembit.io)                                                                                |     ✔      |    ✔     |             ✔              |              |         |                   |        ✔        |                 |         ✔          |             ✔             |         ✔          |
 
+| [Vijil](https://www.vijil.ai/)                                                                           |     ✔      |     ✔     |             ✔              |              |         |                   |                 |                 |         ✔          |             ✔             | 
+
 ** Supported via Red Hat's OpenShift Service Mesh 3.0  
 
 ### Explanation of Columns - Software that Implements SPIFFE
