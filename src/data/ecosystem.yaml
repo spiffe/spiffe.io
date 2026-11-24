@@ -80,6 +80,16 @@ categories:
         weight: 600
         link: https://github.com/jeengbe/ts-packages/tree/master/packages/spiffe
         description: SPIFFE SDK for TypeScript.
+      - name: tanya-ok/mcp-spiffe-bridge
+        type: community
+        weight: 700
+        link: https://github.com/tanya-ok/mcp-spiffe-bridge
+        description: TypeScript library for SPIFFE identity over mutual TLS between MCP clients and servers.
+      - name: tanya-ok/mcp-svid-auth
+        type: community
+        weight: 800
+        link: https://github.com/tanya-ok/mcp-svid-auth
+        description: Proof of concept that exchanges a JWT-SVID for short-lived, audience-bound OAuth tokens for MCP servers.
 
   - name: Deployment & Workload Helpers
     weight: 300
