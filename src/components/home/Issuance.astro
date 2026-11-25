@@ -1,0 +1,29 @@
+<section class="hp-issuance hp-wrap hp-section" aria-labelledby="issuance-heading">
+  <div class="hp-section-heading">
+    <div><p class="hp-eyebrow">Credential issuance</p><h2 id="issuance-heading">How SPIRE issues credentials</h2></div>
+    <p>SPIFFE supports <a class="hp-text-link" href="/docs/latest/spiffe-about/ecosystem/">multiple implementations</a>. This example uses SPIRE to show how X.509-SVIDs are issued and renewed.</p>
+  </div>
+  <figure>
+    <ol class="hp-issuance-flow">
+      <li>
+        <span class="hp-flow-number" aria-hidden="true">01</span>
+        <p class="hp-eyebrow">Issuance and rotation</p>
+        <h3>SPIRE Server <span aria-label="to">→</span> Attested Agent</h3>
+        <p>SPIRE attests nodes and workloads and determines which identities they may receive. The server issues X.509-SVIDs; the agent renews them before expiration.</p>
+      </li>
+      <li>
+        <span class="hp-flow-number" aria-hidden="true">02</span>
+        <p class="hp-eyebrow">Local Workload API</p>
+        <h3>Agent <span aria-label="to">→</span> Your workload</h3>
+        <p>The agent delivers authorized SVIDs, private keys and trust bundles to applications through the SPIFFE Workload API.</p>
+      </li>
+      <li>
+        <span class="hp-flow-number" aria-hidden="true">03</span>
+        <p class="hp-eyebrow">Application connection</p>
+        <h3>Your workload <span aria-label="and">↔</span> Peer service</h3>
+        <p>Applications use X.509-SVIDs to authenticate TLS connections and prove possession of their private keys. Receiving services apply their own access policies.</p>
+      </li>
+    </ol>
+    <figcaption><p>X.509-SVID example. Credential renewal runs independently of application connections.</p><a class="hp-text-link" href="/docs/latest/spire-about/spire-concepts/">Attestation and issuance in detail <span aria-hidden="true">↗</span></a></figcaption>
+  </figure>
+</section>

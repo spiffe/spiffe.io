@@ -1,0 +1,16 @@
+---
+import hero from '../../assets/home/hero.svg?raw';
+import mobile from '../../assets/home/hero-mobile.svg?raw';
+import services from '../../assets/home/services.svg?raw';
+import platforms from '../../assets/home/platforms.svg?raw';
+import federation from '../../assets/home/federation.svg?raw';
+interface Props { variant: 'hero' | 'services' | 'platforms' | 'federation' }
+const { variant } = Astro.props;
+const illustrations = { services, platforms, federation };
+---
+{variant === 'hero' ? (
+  <>
+    <div class="hp-art-desktop" data-pagefind-ignore="all" set:html={hero} />
+    <div class="hp-art-mobile" data-pagefind-ignore="all" set:html={mobile} />
+  </>
+) : <div class="hp-application-art" data-pagefind-ignore="all" set:html={illustrations[variant]} />}

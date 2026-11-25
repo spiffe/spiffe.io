@@ -1,0 +1,269 @@
+{
+  "projects": [
+    {
+      "name": "Athenz",
+      "link": "https://www.athenz.io/",
+      "logo": "athenz.svg",
+      "roles": [
+        "Identity issuer"
+      ]
+    },
+    {
+      "name": "cert-manager CSI driver for SPIFFE",
+      "link": "https://github.com/cert-manager/csi-driver-spiffe",
+      "logo": "cert-manager.png",
+      "roles": [
+        "Identity issuer"
+      ]
+    },
+    {
+      "name": "Envoy",
+      "link": "https://www.envoyproxy.io/",
+      "logo": "envoy.svg",
+      "roles": [
+        "Integration"
+      ]
+    },
+    {
+      "name": "Ghostunnel",
+      "link": "https://github.com/ghostunnel/ghostunnel",
+      "logo": "ghostunnel.svg",
+      "roles": [
+        "Integration"
+      ]
+    },
+    {
+      "name": "HashiCorp Consul",
+      "link": "https://developer.hashicorp.com/consul",
+      "logo": "consul.svg",
+      "roles": [
+        "Identity issuer"
+      ]
+    },
+    {
+      "name": "Istio",
+      "link": "https://istio.io/",
+      "logo": "istio.svg",
+      "roles": [
+        "Identity issuer"
+      ]
+    },
+    {
+      "name": "Keycloak",
+      "link": "https://www.keycloak.org/",
+      "logo": "keycloak.svg",
+      "roles": [
+        "Accepts identities"
+      ],
+      "status": "SPIFFE provider: Preview"
+    },
+    {
+      "name": "Kuma",
+      "link": "https://kuma.io/",
+      "logo": "kuma.svg",
+      "roles": [
+        "Identity issuer",
+        "Integration"
+      ],
+      "status": "MeshIdentity: Experimental"
+    },
+    {
+      "name": "Sigstore Fulcio",
+      "link": "https://docs.sigstore.dev/certificate_authority/overview/",
+      "logo": "fulcio.svg",
+      "roles": [
+        "Accepts identities"
+      ]
+    },
+    {
+      "name": "SPIRE",
+      "link": "https://github.com/spiffe/spire",
+      "logo": "spire/icon/color/spire-icon-color.svg",
+      "roles": [
+        "Identity issuer"
+      ]
+    },
+    {
+      "name": "Tekton Chains",
+      "link": "https://tekton.dev/docs/chains/",
+      "logo": "tekton-chains.svg",
+      "roles": [
+        "Integration"
+      ]
+    },
+    {
+      "name": "Traefik Proxy",
+      "link": "https://traefik.io/traefik/",
+      "logo": "traefik-proxy.svg",
+      "roles": [
+        "Integration"
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "name": "Aembit",
+      "link": "https://aembit.io/",
+      "logo": "aembit.svg"
+    },
+    {
+      "name": "Akeyless",
+      "link": "https://www.akeyless.io/",
+      "logo": "akeyless.svg"
+    },
+    {
+      "name": "Amazon Web Services",
+      "link": "https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html",
+      "logo": "Amazon-Web-Services-logo.svg"
+    },
+    {
+      "name": "Anthropic",
+      "link": "https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe",
+      "logo": "anthropic.svg"
+    },
+    {
+      "name": "Cofide",
+      "link": "https://www.cofide.io/",
+      "logo": "cofide.svg"
+    },
+    {
+      "name": "Defakto",
+      "link": "https://www.defakto.security/",
+      "logo": "defakto.svg"
+    },
+    {
+      "name": "Edera",
+      "link": "https://edera.dev/",
+      "logo": "edera.svg"
+    },
+    {
+      "name": "Eviden",
+      "link": "https://docs.cosmian.com/",
+      "logo": "eviden.svg"
+    },
+    {
+      "name": "Google Cloud",
+      "link": "https://docs.cloud.google.com/iam/docs/managed-workload-identity",
+      "logo": "google-cloud.png"
+    },
+    {
+      "name": "Greymatter",
+      "link": "https://greymatter.io/",
+      "logo": "Greymatter-name-logo.svg"
+    },
+    {
+      "name": "HashiCorp",
+      "link": "https://developer.hashicorp.com/vault/docs/auth/spiffe",
+      "logo": "HashiCorp-logo.svg"
+    },
+    {
+      "name": "Infisical",
+      "link": "https://infisical.com/docs/documentation/platform/identities/spiffe-auth",
+      "logo": "infisical.svg"
+    },
+    {
+      "name": "Kong",
+      "link": "https://konghq.com/",
+      "logo": "kong.svg"
+    },
+    {
+      "name": "Messier 42",
+      "link": "https://messier42.com/",
+      "logo": "messier42.png"
+    },
+    {
+      "name": "Microsoft",
+      "link": "https://www.microsoft.com/",
+      "logo": "microsoft.png"
+    },
+    {
+      "name": "OpenAI",
+      "link": "https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe",
+      "logo": "openai.png",
+      "logoScale": 1.5
+    },
+    {
+      "name": "Palo Alto Networks",
+      "link": "https://www.paloaltonetworks.com/resources/techbriefs/secure-workload-access",
+      "logo": "PANW-horizontal-logo.svg"
+    },
+    {
+      "name": "Red Hat",
+      "link": "https://www.redhat.com/en/technologies/cloud-computing/openshift/zero-trust-workload-identity-manager",
+      "logo": "redhat.svg"
+    },
+    {
+      "name": "Riptides",
+      "link": "https://riptides.io/",
+      "logo": "Riptides-logo.svg"
+    },
+    {
+      "name": "StrongDM",
+      "link": "https://id.strongdm.ai",
+      "logo": "strongdm.png"
+    },
+    {
+      "name": "Teleport",
+      "link": "https://goteleport.com/docs/machine-workload-identity/workload-identity/introduction/",
+      "logo": "teleport_logo.svg"
+    },
+    {
+      "name": "Traefik Labs",
+      "link": "https://traefik.io/",
+      "logo": "traefik-labs.svg"
+    },
+    {
+      "name": "WarpStream",
+      "link": "https://docs.warpstream.com/warpstream/kafka/manage-security/mutual-tls-mtls",
+      "logo": "warpstream.svg"
+    }
+  ],
+  "additionalAdopters": [
+    {
+      "name": "GitHub",
+      "logo": "GitHub_Logo.png",
+      "link": "https://github.com/",
+      "source": "https://github.com/spiffe/spire/blob/main/ADOPTERS.md"
+    },
+    {
+      "name": "LinkedIn",
+      "logo": "linkedin.png",
+      "link": "https://www.linkedin.com/",
+      "source": "https://github.com/spiffe/spire/issues/6543",
+      "logoSource": "https://brand.linkedin.com/downloads"
+    },
+    {
+      "name": "Niantic",
+      "logo": "niantic.png",
+      "link": "https://github.com/NianticLabs",
+      "source": "https://github.com/spiffe/spire/blob/main/ADOPTERS.md",
+      "logoSource": "https://github.com/NianticLabs"
+    },
+    {
+      "name": "Pinterest",
+      "logo": "pinterest.png",
+      "link": "https://www.pinterest.com/",
+      "source": "https://github.com/spiffe/spire/blob/main/ADOPTERS.md"
+    },
+    {
+      "name": "Square",
+      "logo": "square.jpg",
+      "link": "https://squareup.com/",
+      "source": "https://github.com/spiffe/spire/blob/main/ADOPTERS.md"
+    },
+    {
+      "name": "State Farm",
+      "logo": "state-farm.svg",
+      "link": "https://www.statefarm.com/",
+      "source": "https://endusers.cncf.io/events/2025/kubecon-na/",
+      "logoSource": "https://static1.st8fm.com/en_US/dxl-1x/prod/css/images/header/state-farm-logo-4.svg"
+    },
+    {
+      "name": "Z Lab Corporation",
+      "logo": "zlab.png",
+      "link": "https://github.com/zlabjp",
+      "source": "https://github.com/spiffe/spire/blob/main/ADOPTERS.md",
+      "logoSource": "https://github.com/zlabjp"
+    }
+  ]
+}

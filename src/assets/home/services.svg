@@ -1,0 +1,31 @@
+<svg class="illus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 230" role="img" aria-labelledby="services-title services-desc">
+<title id="services-title">Authenticate a peer</title>
+<desc id="services-desc">A caller and a service use signed SPIFFE credentials to authenticate.</desc>
+<ellipse cx="181" cy="118" rx="143" ry="80" fill="#f3f7cc"/>
+<path d="M106 102C162 102 170 143 238 143" fill="none" stroke="#1f2a2e" stroke-width="2"/>
+<path d="M228 137L235 143L228 149" fill="none" stroke="#1f2a2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(89 103) rotate(-10) scale(0.55)">
+<path d="M-76-57H69Q81-57 81-45V56Q81 68 69 68H-76Q-88 68-88 56V-45Q-88-57-76-57Z" fill="#beda00"/>
+<rect x="-78" y="-72" width="168" height="126" rx="11" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<path d="M-77-44H89" stroke="#1f2a2e" stroke-width="1.5"/>
+<circle cx="-62" cy="-58" r="3.2" fill="#00beda"/>
+<circle cx="-50" cy="-58" r="3.2" fill="#beda00"/>
+<circle cx="-38" cy="-58" r="3.2" fill="#beda00"/>
+<path d="M-45-15L-59-3L-45 9M-26-20L-35 15" fill="none" stroke="#1f2a2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-7-12H51M-7 2H32M-57 29H7" stroke="#beda00" stroke-width="7" stroke-linecap="round"/>
+<circle cx="63" cy="28" r="10" fill="#e4ee8c"/>
+<path d="M59 28L62 31L68 25" fill="none" stroke="#1f2a2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(268 134) rotate(9) scale(0.49)">
+<path d="M-60-80H58Q70-80 70-68V78Q70 90 58 90H-60Q-72 90-72 78V-68Q-72-80-60-80Z" fill="#00beda"/>
+<rect x="-60" y="-91" width="142" height="170" rx="13" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<rect x="-43" y="-72" width="109" height="62" rx="7" fill="#e5f8fc"/>
+<path d="M-21-52L-31-42L-21-32M37-52L47-42L37-32M15-57L4-27" fill="none" stroke="#1f2a2e" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-41 12H25M-41 28H9" fill="none" stroke="#cddce0" stroke-width="6" stroke-linecap="round"/>
+<path d="M-41 53H63" stroke="#cddce0" stroke-width="1.5"/>
+<circle cx="54" cy="19" r="13" fill="#00beda"/>
+<path d="M49 19L53 23L60 15" fill="none" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<circle cx="176" cy="124" r="20" fill="#00beda"/>
+<path d="M167 124L174 131L187 116" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

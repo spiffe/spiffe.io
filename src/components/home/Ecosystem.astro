@@ -1,0 +1,37 @@
+---
+import { projects, organizations } from '../../data/homepage-ecosystem.json';
+
+const groups = [
+  { title: 'Identity issuers', description: 'Issue SPIFFE identity credentials.', projects: projects.filter(project => project.roles.includes('Identity issuer')) },
+  { title: 'Integrations and identity-aware services', description: 'Use identities in applications and infrastructure.', projects: projects.filter(project => !project.roles.includes('Identity issuer')) },
+];
+---
+<section class="hp-ecosystem hp-wrap hp-section" aria-labelledby="ecosystem-heading">
+  <div class="hp-section-heading">
+    <div><p class="hp-eyebrow">An open ecosystem</p><h2 id="ecosystem-heading">SPIFFE implementations<br /> and integrations</h2></div>
+    <a class="hp-primary" href="/docs/latest/spiffe-about/ecosystem/">Browse the ecosystem <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="hp-ecosystem-groups">
+    {groups.map(group => <section>
+      <h3>{group.title}</h3><p>{group.description}</p>
+      <ul class="hp-project-logos" role="list">
+        {group.projects.map(project => <li><a href={project.link}>
+          <img src={`/img/logos/${project.logo}`} width="64" height="56" alt="" loading="lazy" />
+          <span>{project.name}</span><small>{project.roles.join(' · ')}</small>
+          {project.status && <small>{project.status}</small>}
+        </a></li>)}
+      </ul>
+    </section>)}
+  </div>
+</section>
+<section class="hp-commercial hp-wrap hp-section" aria-labelledby="commercial-heading">
+  <div class="hp-section-heading">
+    <div><h2 id="commercial-heading">Commercial products and services</h2><p class="hp-section-intro">Commercial offerings that issue or work with SPIFFE identities.</p></div>
+  </div>
+  <ul class="hp-commercial-logos" role="list">
+    {organizations.map(organization => <li><a href={organization.link}>
+      <img src={`/img/logos/${organization.logo}`} width="112" height="36" alt="" loading="lazy" style={`--logo-scale: ${organization.logoScale || 1}`} />
+      <span>{organization.name}</span>
+    </a></li>)}
+  </ul>
+</section>

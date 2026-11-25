@@ -1,0 +1,25 @@
+<svg class="illus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 230" role="img" aria-labelledby="platforms-title platforms-desc">
+<title id="platforms-title">Access platform APIs</title>
+<desc id="platforms-desc">Exchange a SPIFFE identity credential for a platform credential, then use the platform credential to call its API.</desc>
+<ellipse cx="181" cy="118" rx="139" ry="81" fill="#e5f8fc"/>
+<path d="M79 112H279" fill="none" stroke="#1f2a2e" stroke-width="2"/>
+<path d="M269 106L276 112L269 118" fill="none" stroke="#1f2a2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(77 108) rotate(-10) scale(0.37)">
+<path d="M-139-52H126L145-32V58Q145 70 133 70H-139Q-151 70-151 58V-40Q-151-52-139-52Z" fill="#00beda"/>
+<path d="M-139-64H126L145-44V45Q145 57 133 57H-139Q-151 57-151 45V-52Q-151-64-139-64Z" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<path d="M126-64V-44H145" fill="#e5f8fc" stroke="#1f2a2e" stroke-width="1.5"/>
+<circle cx="-124" cy="-36" r="8" fill="#00beda"/>
+<text x="-105" y="-31" class="credential-label" >SIGNED IDENTITY</text>
+<text x="-129" y="1" class="id-code" >SPIFFE credential</text>
+<path d="M-128 31H-95M-86 31H-66M-57 31H-19" stroke="#b2eaf4" stroke-width="4" stroke-linecap="round"/>
+<path d="M75 25C84 9 80 40 92 24S100 42 111 25" fill="none" stroke="#1f2a2e" stroke-width="2" stroke-linecap="round"/>
+</g>
+<circle cx="180" cy="112" r="29" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<path d="M164 105H195L190 100M196 119H165L170 124" fill="none" stroke="#1f2a2e" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(276 111) rotate(9)">
+<rect x="-32" y="-42" width="66" height="88" rx="12" fill="#00beda"/>
+<path d="M-17-14L-25-7L-17 0M17-14L25-7L17 0M7-21L-4 8" stroke="white" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-17 24H16" stroke="white" stroke-width="3" stroke-linecap="round"/>
+</g>
+<text x="180" y="184" class="note" text-anchor="middle">Exchange for platform credentials</text>
+</svg>

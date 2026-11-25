@@ -1,0 +1,48 @@
+<svg class="illus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 370" role="img" aria-labelledby="hero-art-title hero-art-desc">
+<title id="hero-art-title">A workload presents a verifiable identity to another service</title>
+<desc id="hero-art-desc">A workload sends a signed SPIFFE identity credential to another service. The receiving service verifies it and makes its own access decision. Workloads can be services, jobs, or agents running across different environments.</desc>
+<path d="M96 128C123 58 245 48 295 105S311 238 236 272S73 250 78 198Z" fill="#f3f7cc"/>
+<path d="M890 130C908 59 1032 50 1087 112S1115 240 1041 269S869 234 890 130Z" fill="#e5f8fc"/>
+<path d="M492 111C513 56 644 57 686 99S735 219 677 259S502 259 475 212S468 165 492 111Z" fill="#e5f8fc"/>
+<path d="M280 169C371 169 369 208 455 208H491M732 193C815 193 815 161 912 161" fill="none" stroke="#b2eaf4" stroke-width="10" stroke-linecap="round"/>
+<path d="M280 169C371 169 369 208 455 208H491M732 193C815 193 815 161 912 161" fill="none" stroke="#1f2a2e" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M891 155L898 161L891 167" fill="none" stroke="#1f2a2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(195 168) rotate(-9) scale(1)">
+<path d="M-76-57H69Q81-57 81-45V56Q81 68 69 68H-76Q-88 68-88 56V-45Q-88-57-76-57Z" fill="#beda00"/>
+<rect x="-78" y="-72" width="168" height="126" rx="11" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<path d="M-77-44H89" stroke="#1f2a2e" stroke-width="1.5"/>
+<circle cx="-62" cy="-58" r="3.2" fill="#00beda"/>
+<circle cx="-50" cy="-58" r="3.2" fill="#beda00"/>
+<circle cx="-38" cy="-58" r="3.2" fill="#beda00"/>
+<path d="M-45-15L-59-3L-45 9M-26-20L-35 15" fill="none" stroke="#1f2a2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-7-12H51M-7 2H32M-57 29H7" stroke="#beda00" stroke-width="7" stroke-linecap="round"/>
+<circle cx="63" cy="28" r="10" fill="#e4ee8c"/>
+<path d="M59 28L62 31L68 25" fill="none" stroke="#1f2a2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(600 170) rotate(-5) scale(1)">
+<path d="M-139-52H126L145-32V58Q145 70 133 70H-139Q-151 70-151 58V-40Q-151-52-139-52Z" fill="#00beda"/>
+<path d="M-139-64H126L145-44V45Q145 57 133 57H-139Q-151 57-151 45V-52Q-151-64-139-64Z" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<path d="M126-64V-44H145" fill="#e5f8fc" stroke="#1f2a2e" stroke-width="1.5"/>
+<circle cx="-124" cy="-36" r="8" fill="#00beda"/>
+<text x="-105" y="-31" class="credential-label" >SIGNED IDENTITY</text>
+<text x="-129" y="1" class="id-code" >spiffe://example.org/orders</text>
+<path d="M-128 31H-95M-86 31H-66M-57 31H-19" stroke="#b2eaf4" stroke-width="4" stroke-linecap="round"/>
+<path d="M75 25C84 9 80 40 92 24S100 42 111 25" fill="none" stroke="#1f2a2e" stroke-width="2" stroke-linecap="round"/>
+</g>
+<g transform="translate(988 166) rotate(8) scale(1)">
+<path d="M-60-80H58Q70-80 70-68V78Q70 90 58 90H-60Q-72 90-72 78V-68Q-72-80-60-80Z" fill="#00beda"/>
+<rect x="-60" y="-91" width="142" height="170" rx="13" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<rect x="-43" y="-72" width="109" height="62" rx="7" fill="#e5f8fc"/>
+<path d="M-21-52L-31-42L-21-32M37-52L47-42L37-32M15-57L4-27" fill="none" stroke="#1f2a2e" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-41 12H25M-41 28H9" fill="none" stroke="#cddce0" stroke-width="6" stroke-linecap="round"/>
+<path d="M-41 53H63" stroke="#cddce0" stroke-width="1.5"/>
+<circle cx="54" cy="19" r="13" fill="#00beda"/>
+<path d="M49 19L53 23L60 15" fill="none" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="195" y="311" class="scene-label" text-anchor="middle">Your workload</text>
+<text x="195" y="337" class="note" text-anchor="middle">A service, job, or agent</text>
+<text x="600" y="311" class="scene-label" text-anchor="middle">Verifiable identity</text>
+<text x="600" y="337" class="note" text-anchor="middle">X.509-SVID or JWT-SVID</text>
+<text x="988" y="311" class="scene-label" text-anchor="middle">Another service</text>
+<text x="988" y="337" class="note" text-anchor="middle">Its own access policy</text>
+</svg>

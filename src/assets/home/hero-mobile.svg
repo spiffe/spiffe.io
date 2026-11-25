@@ -1,0 +1,46 @@
+<svg class="illus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 510" role="img" aria-labelledby="mobile-art-title mobile-art-desc">
+<title id="mobile-art-title">Workload identity across environments</title>
+<desc id="mobile-art-desc">A workload presents a signed SPIFFE credential. Another service verifies the credential and applies its own access policy.</desc>
+<path d="M26 80C45 40 137 43 155 96S151 185 97 187S4 132 26 80Z" fill="#f3f7cc"/>
+<path d="M203 352C231 315 316 322 332 369S312 452 261 454S175 404 203 352Z" fill="#e5f8fc"/>
+<path d="M75 252C90 207 249 202 279 244S266 322 195 328S62 298 75 252Z" fill="#e5f8fc"/>
+<path d="M98 147V184Q98 219 139 219H175V248M175 293V330Q175 370 237 370" fill="none" stroke="#b2eaf4" stroke-width="9" stroke-linecap="round"/>
+<path d="M98 147V184Q98 219 139 219H175V248M175 293V330Q175 370 237 370" fill="none" stroke="#1f2a2e" stroke-width="1.5"/>
+<g transform="translate(91 109) rotate(-8) scale(0.64)">
+<path d="M-76-57H69Q81-57 81-45V56Q81 68 69 68H-76Q-88 68-88 56V-45Q-88-57-76-57Z" fill="#beda00"/>
+<rect x="-78" y="-72" width="168" height="126" rx="11" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<path d="M-77-44H89" stroke="#1f2a2e" stroke-width="1.5"/>
+<circle cx="-62" cy="-58" r="3.2" fill="#00beda"/>
+<circle cx="-50" cy="-58" r="3.2" fill="#beda00"/>
+<circle cx="-38" cy="-58" r="3.2" fill="#beda00"/>
+<path d="M-45-15L-59-3L-45 9M-26-20L-35 15" fill="none" stroke="#1f2a2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-7-12H51M-7 2H32M-57 29H7" stroke="#beda00" stroke-width="7" stroke-linecap="round"/>
+<circle cx="63" cy="28" r="10" fill="#e4ee8c"/>
+<path d="M59 28L62 31L68 25" fill="none" stroke="#1f2a2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="191" y="103" class="mobile-label" >Your workload</text>
+<text x="191" y="125" class="mobile-note" >Service, job, or agent</text>
+<g transform="translate(174 263) rotate(-4) scale(0.93)">
+<path d="M-139-52H126L145-32V58Q145 70 133 70H-139Q-151 70-151 58V-40Q-151-52-139-52Z" fill="#00beda"/>
+<path d="M-139-64H126L145-44V45Q145 57 133 57H-139Q-151 57-151 45V-52Q-151-64-139-64Z" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<path d="M126-64V-44H145" fill="#e5f8fc" stroke="#1f2a2e" stroke-width="1.5"/>
+<circle cx="-124" cy="-36" r="8" fill="#00beda"/>
+<text x="-105" y="-31" class="credential-label" >SIGNED IDENTITY</text>
+<text x="-129" y="1" class="id-code" >spiffe://example.org/orders</text>
+<path d="M-128 31H-95M-86 31H-66M-57 31H-19" stroke="#b2eaf4" stroke-width="4" stroke-linecap="round"/>
+<path d="M75 25C84 9 80 40 92 24S100 42 111 25" fill="none" stroke="#1f2a2e" stroke-width="2" stroke-linecap="round"/>
+</g>
+<g transform="translate(264 385) rotate(7) scale(0.63)">
+<path d="M-60-80H58Q70-80 70-68V78Q70 90 58 90H-60Q-72 90-72 78V-68Q-72-80-60-80Z" fill="#00beda"/>
+<rect x="-60" y="-91" width="142" height="170" rx="13" fill="white" stroke="#1f2a2e" stroke-width="1.5"/>
+<rect x="-43" y="-72" width="109" height="62" rx="7" fill="#e5f8fc"/>
+<path d="M-21-52L-31-42L-21-32M37-52L47-42L37-32M15-57L4-27" fill="none" stroke="#1f2a2e" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-41 12H25M-41 28H9" fill="none" stroke="#cddce0" stroke-width="6" stroke-linecap="round"/>
+<path d="M-41 53H63" stroke="#cddce0" stroke-width="1.5"/>
+<circle cx="54" cy="19" r="13" fill="#00beda"/>
+<path d="M49 19L53 23L60 15" fill="none" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="15" y="385" class="mobile-label" >Another service</text>
+<text x="15" y="407" class="mobile-note" >Its own access policy</text>
+<text x="175" y="492" class="note" text-anchor="middle">X.509-SVID or JWT-SVID</text>
+</svg>
