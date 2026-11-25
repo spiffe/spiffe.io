@@ -68,7 +68,7 @@ spire-server:
 
 # SPIFFE OIDC Discovery Provider
 
-The most likely service you will want to expose outside the Kubernetes Cluster is the the SPIFFE OIDC Discovery Provider.
+The most likely service you will want to expose outside the Kubernetes Cluster is the SPIFFE OIDC Discovery Provider.
 
 In order to check the integrity of a JWT, an external service needs information about the server used to sign the
 JWT. This info can be retrieved from the SPIFFE OIDC Discovery Provider. It will need to be exposed to any other

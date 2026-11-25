@@ -124,7 +124,7 @@ helm upgrade --install -n spire-mgmt spire spire-nested --repo https://spiffe.gi
 ```
 
 > **Note**
-> The child cluster will fail to start some services at this point, as the root server doesn't have have a trust established yet. This is expected.
+> The child cluster will fail to start some services at this point, as the root server doesn't have a trust established yet. This is expected.
 
 Next, we will establish the trust between instances.
 
