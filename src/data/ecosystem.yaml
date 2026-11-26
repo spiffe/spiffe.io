@@ -145,7 +145,7 @@ entries:
     link: https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-overview
     logo: azure.png
     docs: https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-spiffe-spire
-    description: Exchanges JWT-SVIDs for Microsoft Entra access tokens to Azure resources through a federated identity credential matching the SPIFFE ID. Needs a public OIDC discovery endpoint and RS256-signed JWT-SVIDs.
+    description: Exchanges JWT-SVIDs for Microsoft Entra access tokens to Azure resources through a federated identity credential matching the SPIFFE ID.
     accepts: [jwt]
   - name: OpenAI API
     kind: cloud-apis
