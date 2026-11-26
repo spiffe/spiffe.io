@@ -265,13 +265,35 @@
     border-top: 1px solid var(--sl-color-hairline);
   }
   .eco-entry {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    gap: 0.4rem 1rem;
     padding: 1rem 0.5rem 1.1rem;
     border-bottom: 1px solid var(--sl-color-hairline);
     font-size: 0.9rem;
     line-height: 1.5;
+  }
+  .eco-entry > :not(.eco-logo) {
+    grid-column: 2;
+  }
+  .eco-logo {
+    grid-row: 1 / span 3;
+    box-sizing: border-box;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.35rem;
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.5rem;
+    background: #fff;
+    object-fit: contain;
+  }
+  .eco-monogram {
+    display: grid;
+    place-items: center;
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-gray-2);
+    font-size: 0.85rem;
+    font-weight: 600;
   }
   .eco-entry:target {
     background: var(--sl-color-accent-low);
@@ -320,9 +342,6 @@
     border-radius: 999px;
     background: var(--sl-color-gray-6);
     color: var(--sl-color-gray-1);
-  }
-  .eco-label + span:not(.eco-label) {
-    margin-left: 0.4rem;
   }
   .eco-links {
     display: flex;

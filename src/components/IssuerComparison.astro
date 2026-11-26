@@ -29,7 +29,7 @@ const tables = issuerTables.map((groups) => {
       cells: columns.map((c) => {
         const note = e["issues-notes"]?.[c.id];
         return {
-          supported: Array.isArray(e.issues) && e.issues.includes(c.id),
+          supported: e.issues?.includes(c.id),
           note: note && { number: noteNumber(note), text: note },
         };
       }),

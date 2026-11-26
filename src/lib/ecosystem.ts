@@ -9,12 +9,13 @@ export type Entry = {
   kind: string;
   provenance: Provenance;
   link: string;
+  logo?: string;
   description: string;
   docs?: string;
   guides?: { title: string; link: string }[];
-  issues?: string[] | true;
+  issues?: string[];
   "issues-notes"?: Record<string, string>;
-  accepts?: { formats?: string[]; support?: "native" | "compatible" };
+  accepts?: string[];
 };
 
 export const provenanceLabels: Record<Provenance, string> = {
@@ -98,3 +99,23 @@ export const sorted = (list: Entry[]) => [...list].sort(compare);
 
 export const entryId = (e: Entry) =>
   "entry-" + e.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
+
+export const entryLogo = (e: Entry) => {
+  if (e.logo) return { src: `/img/logos/${e.logo}` };
+  if (e.provenance === "spiffe") {
+    const project = e.kind === "spire-tooling" ? "spire" : "spiffe";
+    return {
+      src: `/img/logos/${project}/icon/color/${project}-icon-color.svg`,
+    };
+  }
+  const words = (e["short-name"] ?? e.name)
+    .split("/")
+    .pop()!
+    .split(/[\s-]+/);
+  return {
+    initials: words
+      .slice(0, 2)
+      .map((w) => w[0].toUpperCase())
+      .join(""),
+  };
+};

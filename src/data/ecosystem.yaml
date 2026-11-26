@@ -4,6 +4,8 @@
 # Each entry has:
 #   name, description, link   - required
 #   short-name                - optional shorter name for the issuer comparison tables
+#   logo                      - optional square logo, relative to public/img/logos/. Without one,
+#                               SPIFFE projects show the SPIFFE or SPIRE icon and others their initials.
 #   kind                      - the section it is listed under: issuers, cloud-apis,
 #                               secrets-managers, meshes, data-platforms, pki, sdks,
 #                               workload-helpers, spire-tooling
@@ -18,11 +20,9 @@
 #                               oidc-discovery, attestation, upstream-ca, kubernetes, vm, serverless,
 #                               shown in the issuer comparison on the SPIFFE overview page.
 #                               issues-notes maps a capability to a short caveat.
-#                               For other kinds, `issues: true` marks a system that also issues SVIDs.
-#   accepts                   - for systems that accept SVIDs: formats (x509, jwt) and support
-#                               (native, compatible). Both require per-SPIFFE-ID authorization:
-#                               native systems have SPIFFE-specific support; compatible ones match
-#                               the SPIFFE ID with a general X.509 or JWT mechanism.
+#   accepts                   - for systems that accept SVIDs: the formats they accept (x509, jwt).
+#                               Only list systems that can authorize by SPIFFE ID, not just by
+#                               chaining to a CA.
 #
 # Entries are listed SPIFFE projects first, then open source, then commercial. Within those
 # groups, SPIFFE and open source entries keep the order of this file; commercial entries are
@@ -33,6 +33,7 @@ entries:
     kind: issuers
     provenance: spiffe
     link: https://github.com/spiffe/spire
+    logo: spire/icon/color/spire-icon-color.svg
     guides:
       - title: SPIRE overview
         link: /docs/latest/spire-about/
@@ -44,18 +45,21 @@ entries:
     kind: issuers
     provenance: commercial
     link: https://aembit.io
+    logo: aembit.png
     description: Workload identity and access platform that issues SPIFFE identities to workloads.
     issues: [x509, jwt, oidc-discovery, attestation, kubernetes, vm, serverless]
   - name: Cofide
     kind: issuers
     provenance: commercial
     link: https://www.cofide.io
+    logo: cofide.png
     description: Workload identity platform that issues SPIFFE identities to workloads.
     issues: [x509, jwt, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm, serverless]
   - name: Defakto
     kind: issuers
     provenance: commercial
     link: https://www.defakto.security
+    logo: defakto.svg
     description: Workload identity platform that issues SPIFFE identities to workloads.
     issues: [x509, jwt, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm, serverless]
   - name: Google Cloud managed workload identities
@@ -63,6 +67,7 @@ entries:
     kind: issuers
     provenance: commercial
     link: https://docs.cloud.google.com/iam/docs/managed-workload-identity
+    logo: google-cloud.png
     description: Issues X.509-SVIDs from Certificate Authority Service to workloads on GKE (in preview) and Compute Engine.
     issues: [x509, attestation, upstream-ca, kubernetes, vm]
   - name: Idira® by Palo Alto Networks
@@ -70,14 +75,16 @@ entries:
     kind: issuers
     provenance: commercial
     link: https://www.paloaltonetworks.com/idira
+    logo: PANW-logo.svg
     description: Issues SPIFFE SVIDs to workloads and AI agents, and its SaaS secrets manager authenticates workloads by their SPIFFE identity.
     issues: [x509, jwt, workload-api, oidc-discovery, attestation, kubernetes, vm, serverless]
-    accepts: {formats: [x509, jwt], support: native}
+    accepts: [x509, jwt]
   - name: Red Hat Zero Trust Workload Identity Manager
     short-name: Red Hat
     kind: issuers
     provenance: commercial
     link: https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/security_and_compliance/zero-trust-workload-identity-manager
+    logo: redhat.svg
     description: OpenShift operator that manages SPIRE to issue SPIFFE identities to workloads in OpenShift clusters, with integration into OpenShift Service Mesh.
     issues: [x509, jwt, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm]
     issues-notes: {sds: Via OpenShift Service Mesh 3.0}
@@ -86,12 +93,14 @@ entries:
     kind: issuers
     provenance: commercial
     link: https://goteleport.com/platform/machine-and-workload-identity/
+    logo: teleport_logo.svg
     description: Teleport's machine and workload identity product, which issues SPIFFE identities to workloads.
     issues: [x509, jwt, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm]
   - name: Vijil
     kind: issuers
     provenance: commercial
     link: https://www.vijil.ai/
+    logo: vijil.png
     description: Trust platform for AI agents that gives each agent a SPIFFE identity it can prove.
     issues: [x509, jwt, workload-api, attestation, kubernetes, vm, serverless]
 
@@ -100,166 +109,185 @@ entries:
     kind: cloud-apis
     provenance: commercial
     link: https://platform.claude.com/docs/en/manage-claude/workload-identity-federation
+    logo: anthropic.svg
     docs: https://platform.claude.com/docs/en/manage-claude/wif-providers/spiffe
     description: The Claude API's workload identity federation exchanges JWT-SVIDs for API access in place of API keys, matching on the SPIFFE ID. The issuer's key set can be uploaded, so its discovery endpoint need not be public.
-    accepts: {formats: [jwt], support: compatible}
+    accepts: [jwt]
   - name: AWS IAM Roles Anywhere
     kind: cloud-apis
     provenance: commercial
     link: https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html
+    logo: Amazon-Web-Services-logo.svg
     docs: https://docs.aws.amazon.com/rolesanywhere/latest/userguide/trust-model.html
     description: Exchanges X.509 certificates, including X.509-SVIDs, for temporary AWS credentials. The [AWS SPIFFE Workload Helper](https://github.com/spiffe/aws-spiffe-workload-helper) automates this for workloads.
-    accepts: {formats: [x509], support: compatible}
+    accepts: [x509]
   - name: AWS IAM OIDC federation
     kind: cloud-apis
     provenance: commercial
     link: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html
+    logo: Amazon-Web-Services-logo.svg
     description: Exchanges JWT-SVIDs for temporary AWS credentials through an IAM OIDC identity provider that trusts the issuer's OIDC discovery endpoint.
     guides:
       - title: AWS OIDC Authentication
         link: /docs/latest/keyless/oidc-federation-aws/
-    accepts: {formats: [jwt], support: compatible}
+    accepts: [jwt]
   - name: GCP Workload Identity Federation
     kind: cloud-apis
     provenance: commercial
     link: https://docs.cloud.google.com/iam/docs/workload-identity-federation
+    logo: google-cloud.png
     docs: https://docs.cloud.google.com/iam/docs/workload-identity-federation-with-x509-certificates
     description: Exchanges X.509-SVIDs (over mTLS) and JWT-SVIDs (over OIDC, with an uploadable key set) for access to Google Cloud APIs.
-    accepts: {formats: [x509, jwt], support: compatible}
+    accepts: [x509, jwt]
   - name: OpenAI API
     kind: cloud-apis
     provenance: commercial
     link: https://developers.openai.com/api/docs/guides/workload-identity-federation
+    logo: openai.svg
     docs: https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe
     description: The OpenAI API's workload identity federation exchanges JWT-SVIDs for API access in place of API keys, matching on the SPIFFE ID. The issuer's key set can be uploaded, so its discovery endpoint need not be public.
-    accepts: {formats: [jwt], support: compatible}
+    accepts: [jwt]
   - name: Snowflake
     kind: cloud-apis
     provenance: commercial
     link: https://docs.snowflake.com/en/user-guide/workload-identity-federation
+    logo: snowflake.svg
     docs: https://docs.snowflake.com/en/user-guide/workload-identity-federation#authenticate-using-spiffespire
     description: Snowflake's workload identity federation authenticates workloads by the SPIFFE ID in a JWT-SVID. The issuer's OIDC discovery endpoint must be publicly reachable.
-    accepts: {formats: [jwt], support: compatible}
+    accepts: [jwt]
 
   # Secrets managers
   - name: SPIKE
     kind: secrets-managers
     provenance: spiffe
     link: https://github.com/spiffe/spike
+    logo: spike.png
     description: A SPIFFE-native secrets manager that allows workloads to use SPIFFE authentication to retrieve secrets.
-    accepts: {formats: [x509], support: native}
+    accepts: [x509]
   - name: Knox
     kind: secrets-managers
     provenance: open-source
     link: https://github.com/pinterest/knox
+    logo: pinterest.svg
     description: Pinterest's secret management service, which authenticates clients with X.509-SVIDs.
-    accepts: {formats: [x509], support: native}
+    accepts: [x509]
   - name: VMware Secrets Manager
     kind: secrets-managers
     provenance: open-source
     link: https://github.com/vmware-tanzu/secrets-manager
+    logo: vsecm.png
     description: A Kubernetes-native secrets manager with support for SPIFFE authentication.
-    accepts: {formats: [x509], support: native}
+    accepts: [x509]
   - name: HashiCorp Vault
     kind: secrets-managers
     provenance: commercial
     link: https://developer.hashicorp.com/vault
+    logo: vault.svg
     docs: https://developer.hashicorp.com/vault/docs/auth/spiffe
     description: Secrets manager whose SPIFFE auth method (Vault Enterprise) authenticates workloads with X.509-SVIDs or JWT-SVIDs, matched by SPIFFE ID and validated against SPIFFE trust bundles.
-    accepts: {formats: [x509, jwt], support: native}
+    accepts: [x509, jwt]
   - name: Infisical
     kind: secrets-managers
     provenance: commercial
     link: https://infisical.com/
+    logo: infisical.png
     docs: https://infisical.com/docs/documentation/platform/identities/spiffe-auth
     description: Secrets manager whose SPIFFE Auth method authenticates workloads with JWT-SVIDs, matched against allowed SPIFFE IDs and a SPIRE trust bundle.
-    accepts: {formats: [jwt], support: native}
+    accepts: [jwt]
 
   # Service meshes, proxies and runtimes
   - name: Envoy
     kind: meshes
     provenance: open-source
     link: https://www.envoyproxy.io/
+    logo: envoy.svg
     description: Service proxy that can consume SVIDs over the Envoy SDS API to establish mTLS.
-    accepts: {formats: [x509, jwt], support: native}
+    accepts: [x509, jwt]
   - name: Istio
     kind: meshes
     provenance: open-source
     link: https://istio.io/
+    logo: istio.svg
     description: Service mesh that issues SPIFFE identities to the workloads in the mesh.
-    issues: true
-    accepts: {formats: [x509, jwt], support: native}
+    accepts: [x509, jwt]
   - name: Ghostunnel
     kind: meshes
     provenance: open-source
     link: https://github.com/ghostunnel/ghostunnel
+    logo: ghostunnel.svg
     description: A TLS proxy that attaches to the SPIFFE Workload API to authenticate connections.
-    accepts: {formats: [x509], support: native}
+    accepts: [x509]
   - name: Dapr
     kind: meshes
     provenance: open-source
     link: https://dapr.io/
+    logo: Dapr_logo.svg
     description: Distributed application runtime that issues SPIFFE identities to applications for mTLS between them.
-    issues: true
   - name: HashiCorp Consul
     kind: meshes
     provenance: commercial
     link: https://www.consul.io/
+    logo: consul.svg
     description: Service mesh that can issue SPIFFE identities to the services it manages.
-    issues: true
 
   - name: Greymatter.io
     kind: meshes
     provenance: commercial
     link: https://greymatter.io
+    logo: Greymatter-logo.svg
     docs: https://greymatter.gitbook.io/grey-matter-documentation/usage/fabric/security/spire
     description: Application networking platform that incorporates SPIRE to issue and consume SPIFFE identities.
-    issues: true
-    accepts: {formats: [x509, jwt], support: native}
+    accepts: [x509, jwt]
 
   # Data platforms
   - name: WarpStream
     kind: data-platforms
     provenance: commercial
     link: https://www.warpstream.com/
+    logo: warpstream.png
     docs: https://docs.warpstream.com/warpstream/kafka/manage-security/mutual-tls-mtls
     description: Kafka-compatible streaming platform whose SPIFFE mTLS mode uses the X.509-SVID's SPIFFE ID as the Kafka principal for ACLs.
-    accepts: {formats: [x509], support: native}
+    accepts: [x509]
 
   # PKI and certificate management
   - name: cert-manager
     kind: pki
     provenance: open-source
     link: https://cert-manager.io/
+    logo: cert-manager.png
     docs: https://cert-manager.io/docs/usage/csi-driver-spiffe/
     description: Kubernetes certificate controller; its csi-driver-spiffe issues X.509-SVIDs to pods.
-    issues: true
 
   # SDKs and libraries
   - name: go-spiffe
     kind: sdks
     provenance: spiffe
     link: https://github.com/spiffe/go-spiffe
+    logo: languages/go.svg
     description: SPIFFE SDK for Go.
   - name: java-spiffe
     kind: sdks
     provenance: spiffe
     link: https://github.com/spiffe/java-spiffe
+    logo: languages/java.svg
     description: SPIFFE SDK for Java.
   - name: HewlettPackard/py-spiffe
     kind: sdks
     provenance: open-source
     link: https://github.com/HewlettPackard/py-spiffe
+    logo: languages/python.svg
     description: SPIFFE SDK for Python.
   - name: maxlambrecht/rust-spiffe
     kind: sdks
     provenance: open-source
     link: https://github.com/maxlambrecht/rust-spiffe
+    logo: languages/rust.svg
     description: SPIFFE SDK for Rust.
   - name: jeengbe/spiffe
     kind: sdks
     provenance: open-source
     link: https://github.com/jeengbe/ts-packages/tree/master/packages/spiffe
+    logo: languages/typescript.svg
     description: SPIFFE SDK for TypeScript.
 
   # Workload helpers
@@ -309,6 +337,7 @@ entries:
     kind: spire-tooling
     provenance: spiffe
     link: https://github.com/spiffe/tornjak
+    logo: tornjak.png
     description: A management UI that provides visibility and governance across one or more SPIRE deployments.
   - name: SPIRE TPM Plugin
     kind: spire-tooling

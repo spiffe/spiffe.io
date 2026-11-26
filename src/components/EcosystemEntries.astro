@@ -3,6 +3,7 @@ import { inline } from "../lib/content";
 import {
   entries,
   entryId,
+  entryLogo,
   formatLabels,
   provenanceLabels,
   sorted,
@@ -14,7 +15,11 @@ interface Props {
 
 const list = await Promise.all(
   sorted(entries.filter((e) => e.kind === Astro.props.kind)).map(
-    async (e) => ({ ...e, html: await inline(e.description) }),
+    async (e) => ({
+      ...e,
+      html: await inline(e.description),
+      logo: entryLogo(e),
+    }),
   ),
 );
 ---
@@ -23,33 +28,23 @@ const list = await Promise.all(
   {
     list.map((e) => (
       <article class="eco-entry" id={entryId(e)}>
+        {e.logo.src ? (
+          <img class="eco-logo" src={e.logo.src} alt="" loading="lazy" />
+        ) : (
+          <span class="eco-logo eco-monogram" aria-hidden="true">
+            {e.logo.initials}
+          </span>
+        )}
         <header>
           <h3>{e.name}</h3>
-          {(e.kind !== "issuers" && e.issues) || e.accepts?.formats ? (
+          {e.kind !== "issuers" && e.accepts && (
             <p class="eco-labels">
-              {e.kind !== "issuers" && e.issues && (
-                <span class="eco-label">Issues SVIDs</span>
-              )}
-              {e.accepts?.formats && (
-                <>
-                  <span>Accepts</span>
-                  {e.accepts.formats.map((f) => (
-                    <span class="eco-label">{formatLabels[f]}</span>
-                  ))}
-                </>
-              )}
-              {e.accepts?.support && (
-                <>
-                  <span aria-hidden="true">·</span>
-                  <span class="eco-label">
-                    {e.accepts.support === "native"
-                      ? "SPIFFE-native"
-                      : "SPIFFE-compatible"}
-                  </span>
-                </>
-              )}
+              <span>Accepts</span>
+              {e.accepts.map((f) => (
+                <span class="eco-label">{formatLabels[f]}</span>
+              ))}
             </p>
-          ) : null}
+          )}
           <span class={`eco-provenance eco-${e.provenance}`}>
             {provenanceLabels[e.provenance]}
           </span>
