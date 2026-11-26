@@ -1,16 +1,88 @@
 ---
 title: SPIFFE Ecosystem
-description: Official and community projects in the SPIFFE ecosystem
+description: Software and services that issue or accept SPIFFE identities
 sidebar:
   label: Ecosystem
   order: 250
 scarf: medium-interest
 ---
 
-import Ecosystem from "../../../../../components/Ecosystem.astro";
+import EcosystemEntries from "../../../../../components/EcosystemEntries.astro";
 
-SPIFFE is supported by a broad ecosystem of projects, ranging from the core specifications and their reference implementation through to SDKs, deployment tooling, and the many open-source and commercial platforms that issue or consume SPIFFE identities.
+SPIFFE identities can be issued by a wide range of platforms, from open source projects like SPIRE to commercial and managed cloud offerings. Once a workload has an identity, it can use it across a growing list of software: cloud and AI APIs, identity providers, secrets managers, service meshes, data platforms and CI/CD tools all accept SPIFFE identities, and SDKs and helpers fill the gaps.
 
-This page collects some of the more notable projects, grouped by what they do. Each one is marked as a SPIFFE official project, a community project, or a commercial offering. The list is not exhaustive - if a project is missing, contributions are welcome via a [pull request to this site](https://github.com/spiffe/spiffe.io).
+Because they all build on the same standard, a workload can use one short-lived, automatically rotated identity to authenticate to each of them, in place of a long-lived API key or password per service.
 
-<Ecosystem />
+## SPIFFE issuers
+
+Platforms that issue SPIFFE identities to workloads. The [SPIFFE overview](/docs/latest/spiffe-about/overview/#spiffe-issuers) compares their capabilities.
+
+<EcosystemEntries kind="issuers" />
+
+## Cloud, SaaS and AI APIs
+
+Hosted APIs that accept SVIDs in place of API keys or cloud credentials.
+
+<EcosystemEntries kind="cloud-apis" />
+
+## OAuth and identity providers
+
+Authorization servers and identity providers that authenticate OAuth clients with SVIDs.
+
+<EcosystemEntries kind="identity-providers" />
+
+## Secrets managers
+
+Secret stores that authenticate workloads by their SPIFFE identity.
+
+<EcosystemEntries kind="secrets-managers" />
+
+## Service meshes, proxies and runtimes
+
+Systems that use SPIFFE identities for mTLS between workloads.
+
+<EcosystemEntries kind="meshes" />
+
+## Data platforms
+
+Databases and streaming platforms that authenticate clients with SVIDs.
+
+<EcosystemEntries kind="data-platforms" />
+
+## CI/CD and GitOps
+
+Delivery tools that use SPIFFE identities between their components and to authenticate to other services.
+
+<EcosystemEntries kind="cicd" />
+
+## PKI and certificate management
+
+Certificate tooling that can issue or manage SVIDs.
+
+<EcosystemEntries kind="pki" />
+
+## SDKs and libraries
+
+Fetch and validate SPIFFE identities directly from your application code.
+
+<EcosystemEntries kind="sdks" />
+
+## Workload helpers
+
+Tools that get SVIDs to workloads, and bridge SPIFFE identities to software that doesn't support SPIFFE natively.
+
+<EcosystemEntries kind="workload-helpers" />
+
+## SPIRE extensions and tooling
+
+Projects that extend, deploy and operate SPIRE.
+
+<EcosystemEntries kind="spire-tooling" />
+
+## Missing something?
+
+This list isn't exhaustive, and new integrations land regularly.
+
+- **Maintainers and vendors**: if you're adding SPIFFE support to your project or product, come and talk to the community in the [SPIFFE Slack](https://slack.spiffe.io/). SPIRE and SDK maintainers hang out there and are happy to help with design questions. The [SDKs](#sdks-and-libraries) and [specifications](/docs/latest/spiffe-specs/) are good places to start, and once it ships, open a pull request to add it here.
+- **Users**: if software you rely on doesn't support SPIFFE yet, open an issue or feature request asking for it, and point its maintainers at this page. Hearing from users helps them prioritize it.
+- **Everyone**: to add or correct an entry, open a pull request against [`src/data/ecosystem.yaml`](https://github.com/spiffe/spiffe.io/blob/master/src/data/ecosystem.yaml).
