@@ -7,7 +7,7 @@
 #   logo                      - optional square logo, relative to public/img/logos/. Without one,
 #                               SPIFFE projects show the SPIFFE or SPIRE icon and others their initials.
 #   kind                      - the section it is listed under: issuers, cloud-apis,
-#                               secrets-managers, meshes, data-platforms, pki, sdks,
+#                               secrets-managers, meshes, data-platforms, cicd, pki, sdks,
 #                               workload-helpers, spire-tooling
 #   provenance                - spiffe (under the SPIFFE umbrella), open-source, or commercial.
 #                               Consider the license and whether SPIFFE support is gated behind
@@ -255,6 +255,16 @@ entries:
     logo: warpstream.png
     docs: https://docs.warpstream.com/warpstream/kafka/manage-security/mutual-tls-mtls
     description: Kafka-compatible streaming platform whose SPIFFE mTLS mode uses the X.509-SVID's SPIFFE ID as the Kafka principal for ACLs.
+    accepts: [x509]
+
+  # CI/CD and GitOps
+  - name: Flux
+    kind: cicd
+    provenance: open-source
+    link: https://fluxcd.io
+    logo: flux.svg
+    docs: https://fluxcd.io/flux/integrations/spiffe-mtls/
+    description: GitOps toolkit for Kubernetes. Its controllers secure traffic between each other with X.509-SVIDs from the Workload API, authorized by SPIFFE ID, and can fetch JWT-SVIDs for each Flux object through the SPIFFE Broker API to authenticate to cloud providers.
     accepts: [x509]
 
   # PKI and certificate management
