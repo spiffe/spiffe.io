@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import YAML from "yaml";
+import { currentLink, redirectMap } from "./redirect-utils.mjs";
 
 // Preserve Hugo's explicit heading anchors without displaying the attribute syntax.
 export function headingAttributes() {
@@ -44,6 +45,25 @@ export function spireLatest() {
     const visit = (node) => {
       if (typeof node.value === "string") node.value = replace(node.value);
       if (typeof node.url === "string") node.url = replace(node.url);
+      node.children?.forEach(visit);
+    };
+    visit(tree);
+  };
+}
+
+// Old URLs still work through redirects, but local and pulled docs should link
+// to the current page so crawlers and readers skip the extra hop.
+export function redirectedLinks() {
+  const routes = redirectMap(
+    JSON.parse(fs.readFileSync("src/data/redirects.json", "utf8")),
+  );
+  return (tree) => {
+    const visit = (node) => {
+      if (
+        (node.type === "link" || node.type === "definition") &&
+        typeof node.url === "string"
+      )
+        node.url = currentLink(node.url, routes);
       node.children?.forEach(visit);
     };
     visit(tree);
