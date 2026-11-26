@@ -1,7 +1,7 @@
 import ecosystemYaml from "../data/ecosystem.yaml?raw";
 import { parseYaml } from "./content";
 
-export type Provenance = "spiffe" | "open-source" | "commercial";
+export type Provenance = "spiffe" | "cncf" | "open-source" | "commercial";
 
 export type Entry = {
   name: string;
@@ -20,6 +20,7 @@ export type Entry = {
 
 export const provenanceLabels: Record<Provenance, string> = {
   spiffe: "SPIFFE project",
+  cncf: "CNCF project",
   "open-source": "Open source",
   commercial: "Commercial",
 };
@@ -78,8 +79,9 @@ export const issuerTables = [
 
 const provenanceRank: Record<Provenance, number> = {
   spiffe: 0,
-  "open-source": 1,
-  commercial: 2,
+  cncf: 1,
+  "open-source": 2,
+  commercial: 3,
 };
 
 export const entries: Entry[] = parseYaml(ecosystemYaml).entries.map(

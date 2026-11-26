@@ -7,9 +7,10 @@
 #   logo                      - optional square logo, relative to public/img/logos/. Without one,
 #                               SPIFFE projects show the SPIFFE or SPIRE icon and others their initials.
 #   kind                      - the section it is listed under: issuers, cloud-apis,
-#                               secrets-managers, meshes, data-platforms, cicd, pki, sdks,
-#                               workload-helpers, spire-tooling
-#   provenance                - spiffe (under the SPIFFE umbrella), open-source, or commercial.
+#                               identity-providers, secrets-managers, meshes, data-platforms, cicd,
+#                               pki, sdks, workload-helpers, spire-tooling
+#   provenance                - spiffe (under the SPIFFE umbrella), cncf (another CNCF project, at any
+#                               maturity level), open-source, or commercial.
 #                               Consider the license and whether SPIFFE support is gated behind
 #                               enterprise licensing; err on the side of commercial if it is not
 #                               clearly open source.
@@ -24,8 +25,8 @@
 #                               Only list systems that can authorize by SPIFFE ID, not just by
 #                               chaining to a CA.
 #
-# Entries are listed SPIFFE projects first, then open source, then commercial. Within those
-# groups, SPIFFE and open source entries keep the order of this file; commercial entries are
+# Entries are listed SPIFFE projects first, then CNCF projects, then open source, then commercial.
+# Within those groups, non-commercial entries keep the order of this file; commercial entries are
 # sorted alphabetically.
 entries:
   # SPIFFE issuers
@@ -164,6 +165,16 @@ entries:
     description: Snowflake's workload identity federation authenticates workloads by the SPIFFE ID in a JWT-SVID. The issuer's OIDC discovery endpoint must be publicly reachable.
     accepts: [jwt]
 
+  # OAuth and identity providers
+  - name: Keycloak
+    kind: identity-providers
+    provenance: cncf
+    link: https://www.keycloak.org
+    logo: keycloak.svg
+    docs: https://www.keycloak.org/docs/latest/server_admin/index.html#_identity_broker_spiffe
+    description: Identity and access management server whose SPIFFE identity provider (a preview feature) lets OAuth clients authenticate with JWT-SVIDs, validated against the trust domain's SPIFFE bundle endpoint.
+    accepts: [jwt]
+
   # Secrets managers
   - name: SPIKE
     kind: secrets-managers
@@ -206,14 +217,14 @@ entries:
   # Service meshes, proxies and runtimes
   - name: Envoy
     kind: meshes
-    provenance: open-source
+    provenance: cncf
     link: https://www.envoyproxy.io/
     logo: envoy.svg
     description: Service proxy that can consume SVIDs over the Envoy SDS API to establish mTLS.
     accepts: [x509, jwt]
   - name: Istio
     kind: meshes
-    provenance: open-source
+    provenance: cncf
     link: https://istio.io/
     logo: istio.svg
     description: Service mesh that issues SPIFFE identities to the workloads in the mesh.
@@ -227,7 +238,7 @@ entries:
     accepts: [x509]
   - name: Dapr
     kind: meshes
-    provenance: open-source
+    provenance: cncf
     link: https://dapr.io/
     logo: Dapr_logo.svg
     description: Distributed application runtime that issues SPIFFE identities to applications for mTLS between them.
@@ -260,7 +271,7 @@ entries:
   # CI/CD and GitOps
   - name: Flux
     kind: cicd
-    provenance: open-source
+    provenance: cncf
     link: https://fluxcd.io
     logo: flux.svg
     docs: https://fluxcd.io/flux/integrations/spiffe-mtls/
@@ -270,7 +281,7 @@ entries:
   # PKI and certificate management
   - name: cert-manager
     kind: pki
-    provenance: open-source
+    provenance: cncf
     link: https://cert-manager.io/
     logo: cert-manager.png
     docs: https://cert-manager.io/docs/usage/csi-driver-spiffe/

@@ -11,9 +11,7 @@ import EcosystemEntries from "../../../../../components/EcosystemEntries.astro";
 
 SPIFFE is supported by a broad ecosystem: systems that issue SPIFFE identities to workloads, the many services that accept those identities in place of passwords and API keys, and the libraries and tools that connect the two.
 
-Each entry is marked as a **SPIFFE project**, **open source**, or **commercial**. Systems that accept SPIFFE identities show which SVID formats they accept.
-
-This list is not exhaustive. To add or correct an entry, open a [pull request to this site](https://github.com/spiffe/spiffe.io).
+Each entry is marked as a **SPIFFE project**, a **CNCF project**, **open source**, or **commercial**. Systems that accept SPIFFE identities show which SVID formats they accept.
 
 ## SPIFFE issuers
 
@@ -26,6 +24,12 @@ Systems whose main purpose is issuing SPIFFE identities to workloads. The [SPIFF
 Hosted APIs where a workload authenticates with an SVID in place of a static API key or cloud credential, usually through workload identity federation.
 
 <EcosystemEntries kind="cloud-apis" />
+
+## OAuth and identity providers
+
+Authorization servers and identity providers that authenticate clients by their SPIFFE identity, for example through the IETF [OAuth SPIFFE Client Authentication](https://datatracker.ietf.org/doc/draft-ietf-oauth-spiffe-client-auth/) draft.
+
+<EcosystemEntries kind="identity-providers" />
 
 ## Secrets managers
 
@@ -74,3 +78,11 @@ Deliver SPIFFE identities to workloads, and bridge them to platforms that do not
 Projects that extend, deploy and operate SPIRE.
 
 <EcosystemEntries kind="spire-tooling" />
+
+## Missing something?
+
+This list is not exhaustive, and SPIFFE support keeps growing.
+
+- **Maintainers and vendors**: if you're adding SPIFFE support to your project or product, come and talk to the community in the [SPIFFE Slack](https://slack.spiffe.io/). The [SDKs and libraries](#sdks-and-libraries) and the [specifications](/docs/latest/spiffe-specs/) are good places to start.
+- **Users**: if software you depend on doesn't support SPIFFE yet, ask its maintainers for it, and point them at this page.
+- **Everyone**: to add or correct an entry, open a pull request that edits [`src/data/ecosystem.yaml`](https://github.com/spiffe/spiffe.io/blob/master/src/data/ecosystem.yaml).
