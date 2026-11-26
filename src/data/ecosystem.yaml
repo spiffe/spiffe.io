@@ -88,6 +88,12 @@ entries:
     link: https://goteleport.com/platform/machine-and-workload-identity/
     description: Teleport's machine and workload identity product, which issues SPIFFE identities to workloads.
     issues: [x509, jwt, workload-api, sds, bundle-endpoint, federation, oidc-discovery, attestation, upstream-ca, kubernetes, vm]
+  - name: Vijil
+    kind: issuers
+    provenance: commercial
+    link: https://www.vijil.ai/
+    description: Trust platform for AI agents that gives each agent a SPIFFE identity it can prove.
+    issues: [x509, jwt, workload-api, attestation, kubernetes, vm, serverless]
 
   # Cloud, SaaS and AI APIs
   - name: Anthropic API
