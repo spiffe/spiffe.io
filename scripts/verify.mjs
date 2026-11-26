@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { existsSync, statSync } from "node:fs";
 import {
+  netlifyRedirects,
   normalizeRoute,
   redirectMap,
   resolveRedirect,
@@ -103,6 +104,12 @@ for (const from of Object.keys(redirects)) {
   if (!html?.includes(redirectScript(redirects[from])))
     errors.add(`${from}: redirect must preserve query and fragment`);
 }
+const httpRedirects = path.join(root, "_redirects");
+if (
+  !existing.has(httpRedirects) ||
+  (await fs.readFile(httpRedirects, "utf8")) !== netlifyRedirects(redirects)
+)
+  errors.add("_redirects must list every redirect as a forced 301");
 if (!existing.has(path.join(root, "pagefind/pagefind.js")))
   errors.add("Missing Pagefind search index");
 if (errors.size) {

@@ -34,6 +34,16 @@ export function resolveRedirect(target, incoming) {
   return destination;
 }
 
+// Netlify serves these as HTTP 301s ahead of the static stub pages ("!" forces
+// the rule even though a file exists). Its edge normalises trailing slashes
+// before matching and passes the inbound query string through; browsers keep
+// the fragment across the redirect.
+export function netlifyRedirects(redirects) {
+  return Object.entries(redirects)
+    .map(([from, to]) => `${normalizeRoute(from)} ${to} 301!\n`)
+    .join("");
+}
+
 export function redirectScript(target) {
   const encoded = JSON.stringify(target).replaceAll("<", "\\u003c");
   return `<script>location.replace((${resolveRedirect.toString()})(${encoded},location.href).href)</script>`;

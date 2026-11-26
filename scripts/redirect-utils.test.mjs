@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
+  netlifyRedirects,
   redirectMap,
   resolveRedirect,
   redirectScript,
@@ -47,5 +48,12 @@ test("generated client redirect runs the same URL resolution without breaking sc
     (redirectScript("/current/?value=</script>").match(/<\/script>/g) || [])
       .length,
     1,
+  );
+});
+
+test("Netlify rules are forced 301s keyed by the normalised source route", () => {
+  assert.equal(
+    netlifyRedirects({ "/old/": "/current/", "/spire": "/docs/latest/spire-about/" }),
+    "/old /current/ 301!\n/spire /docs/latest/spire-about/ 301!\n",
   );
 });
