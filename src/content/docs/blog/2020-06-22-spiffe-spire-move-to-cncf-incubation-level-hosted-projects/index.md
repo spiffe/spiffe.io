@@ -31,6 +31,6 @@ We are looking forward to the opportunity that the CNCF Incubation stage offers 
 
 **New to SPIFFE and SPIRE? Get involved**
 
-To get going with SPIFFE and SPIRE, the best place to start is is [spiffe.io](https://spiffe.io/). From there, have a look at the docs, check out the code on [Github](https://github.com/spiffe/spire), and join our Slack channel. If you are actively looking to deploy, we’d love to hear from you! Know we are here to help.
+To get going with SPIFFE and SPIRE, the best place to start is [spiffe.io](https://spiffe.io/). From there, have a look at the docs, check out the code on [Github](https://github.com/spiffe/spire), and join our Slack channel. If you are actively looking to deploy, we’d love to hear from you! Know we are here to help.
 
 *This post was [originally published on the SPIFFE Medium blog](https://medium.com/spiffe/spiffe-spire-move-to-cncf-incubation-level-hosted-projects-18ba3ac01ee8).*
