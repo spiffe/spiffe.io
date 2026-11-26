@@ -236,6 +236,14 @@ entries:
     logo: ghostunnel.svg
     description: TLS proxy that uses SVIDs from the Workload API to authenticate connections.
     accepts: [x509]
+  - name: Traefik Proxy
+    kind: meshes
+    provenance: open-source
+    link: https://traefik.io/traefik/
+    logo: traefik.svg
+    docs: https://doc.traefik.io/traefik/reference/install-configuration/tls/spiffe/
+    description: Reverse proxy and ingress controller that uses X.509-SVIDs from the Workload API for mTLS to backends, verified by SPIFFE ID or trust domain.
+    accepts: [x509]
   - name: Dapr
     kind: meshes
     provenance: cncf
@@ -259,6 +267,14 @@ entries:
     accepts: [x509, jwt]
 
   # Data platforms
+  - name: Apache Cassandra
+    kind: data-platforms
+    provenance: open-source
+    link: https://cassandra.apache.org/
+    logo: cassandra.svg
+    docs: https://cassandra.apache.org/doc/latest/cassandra/getting-started/mtlsauthenticators.html
+    description: Distributed database whose mTLS authenticator maps the SPIFFE ID in a client's X.509-SVID to a Cassandra role.
+    accepts: [x509]
   - name: WarpStream
     kind: data-platforms
     provenance: commercial
