@@ -34,6 +34,18 @@ export function resolveRedirect(target, incoming) {
   return destination;
 }
 
+// Rewrites a site link that hits a redirect to its destination, so pages link
+// straight to content. Other links, including relative ones, are unchanged.
+export function currentLink(href, routes) {
+  if (!/^(?:\/(?!\/)|https:\/\/spiffe\.io\/)/.test(href)) return href;
+  const url = new URL(href, "https://spiffe.io");
+  const target = routes.get(normalizeRoute(url.pathname));
+  if (!target) return href;
+  const to = resolveRedirect(target, url.href);
+  const origin = href.startsWith("/") ? "" : to.origin;
+  return origin + to.pathname + to.search + to.hash;
+}
+
 // Netlify serves these as HTTP 301s ahead of the static stub pages ("!" forces
 // the rule even though a file exists). Its edge normalises trailing slashes
 // before matching and passes the inbound query string through; browsers keep

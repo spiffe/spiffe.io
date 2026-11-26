@@ -207,7 +207,7 @@ More articles will come, building up from here.
 
 1. Reference implementation of a bottom turtle SPIRE HA setup - Documentation at: https://github.com/spiffe/bootc/tree/main/demo
 2. *Solving the Bottom Turtle* — the SPIFFE community book on SPIFFE/SPIRE as the foundation of trust: https://spiffe.io/book/
-3. SPIFFE/SPIRE project documentation: https://spiffe.io/docs/latest/
+3. SPIFFE/SPIRE project documentation: https://spiffe.io/docs/latest/spiffe-about/overview/
 4. `spire-ha-agent` — an agent for a SPIRE HA trust domain using two independent SPIRE servers: https://github.com/spiffe/spire-ha-agent (Helm chart: https://artifacthub.io/packages/helm/spiffe/spire-ha-agent)
 5. `spire-tpm-plugin` — TPM 2.0 credential-activation node attestation for SPIRE: https://github.com/spiffe/spire-tpm-plugin
 6. `spire-server-attestor-tpm` — TPM based server attestation plugin: https://github.com/spiffe/spire-server-attestor-tpm

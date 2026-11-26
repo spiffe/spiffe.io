@@ -73,6 +73,12 @@ function check(ref, route, allowRedirect = false) {
   const url = new URL(ref, "https://spiffe.io" + route);
   if (url.origin !== "https://spiffe.io") return;
   links++;
+  if (!allowRedirect && redirectRoutes.has(normalizeRoute(url.pathname))) {
+    const to = destination(url);
+    errors.add(
+      `${route}: links to redirect ${ref}, use ${to.pathname}${to.search}${to.hash}`,
+    );
+  }
 
   const original = routeFile(url.pathname);
   if (!existing.has(original)) {
