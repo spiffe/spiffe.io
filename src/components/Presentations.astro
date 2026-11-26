@@ -1,34 +1,124 @@
 ---
 import presentationsYaml from "../data/presentations.yaml?raw";
-import { escape, parseYaml } from "../lib/content";
+import { parseYaml } from "../lib/content";
 
+type Category = "introduction" | "case-study" | "deep-dive";
 type Presentation = {
-  category: string;
   title: string;
   link: string;
-  weight?: number;
   youtube?: string;
   thumbnail?: string;
+  presenters: string;
   organizations?: string;
+  event?: string;
+  date: string;
+  type: "talk" | "podcast" | "article";
+  category: Category;
+  featured?: boolean;
   description?: string;
-  presenters?: string;
-  venue?: string;
-  publication?: string;
-  date?: string;
 };
-const { category } = Astro.props;
-const items: Presentation[] = parseYaml(presentationsYaml);
-// Match the existing list: entries without weights keep their position.
-for (let i = 1; i < items.length; i++)
-  for (let j = i; j > 0 && items[j].weight! < items[j - 1].weight!; j--)
-    [items[j], items[j - 1]] = [items[j - 1], items[j]];
-let html = "";
-for (const p of items.filter((p) => p.category === category)) {
-  const image = p.youtube
-    ? `https://img.youtube.com/vi/${p.youtube}/1.jpg`
-    : p.thumbnail;
-  html += `<div class="presentation">${image ? `<a href="${escape(p.link)}"><img src="${escape(image)}" width="120" height="90" alt=""></a>` : ""}<div><a href="${escape(p.link)}"><strong>${escape(p.title)}</strong></a>${p.organizations ? " (" + escape(p.organizations) + ")" : ""}${p.description ? `<p>${escape(p.description)}</p>` : ""}<p><i>${p.venue ? "Presented" + (p.presenters ? " by " + escape(p.presenters) : "") : "By " + escape(p.presenters)}${p.venue ? " at " + escape(p.venue) : ""}${p.publication ? " in " + escape(p.publication) : ""}${p.date ? " on " + escape(p.date) : ""}.</i></p></div></div>\n`;
-}
+type Props = { category?: Category; featured?: boolean; filters?: boolean };
+
+const { category, featured, filters } = Astro.props as Props;
+const categories: Record<Category, [string, string]> = {
+  introduction: ["Introduction", "Introductions"],
+  "case-study": ["Case study", "Case studies"],
+  "deep-dive": ["Deep dive", "Deep dives"],
+};
+const months = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(" ");
+const formatDate = (date: string) => {
+  const [year, month] = date.split("-").map(Number);
+  return `${months[month - 1]} ${year}`;
+};
+
+const all: Presentation[] = parseYaml(presentationsYaml);
+const items = all
+  .filter((p) => (!category || p.category === category) && (!featured || p.featured))
+  .sort((a, b) => b.date.localeCompare(a.date));
+const groups = filters
+  ? Object.entries(Object.groupBy(items, (p) => p.date.slice(0, 4))).sort(
+      ([a], [b]) => b.localeCompare(a),
+    )
+  : [["", items] as const];
+const counts = Object.fromEntries(
+  Object.keys(categories).map((c) => [c, items.filter((p) => p.category === c).length]),
+);
 ---
 
-<Fragment set:html={html} />
+{
+  filters && (
+    <div class="presentation-filters not-content" role="group" aria-label="Filter by category" hidden>
+      <button type="button" data-filter="" aria-pressed="true">
+        All <span>{items.length}</span>
+      </button>
+      {Object.entries(categories).map(([key, [, label]]) => (
+        <button type="button" data-filter={key} aria-pressed="false">
+          {label} <span>{counts[key]}</span>
+        </button>
+      ))}
+    </div>
+  )
+}
+<div class={filters ? "presentation-library" : undefined}>
+{
+  groups.map(([year, group]) => (
+    <section class="presentation-group not-content">
+      {year && <h3 class="presentation-year">{year}</h3>}
+      <ul class="presentation-list">
+        {group!.map((p) => (
+          <li class="presentation" data-category={p.category}>
+            <a class="presentation-thumb" href={p.link} tabindex="-1" aria-hidden="true">
+              {p.youtube ? (
+                <img src={`https://i.ytimg.com/vi/${p.youtube}/mqdefault.jpg`} alt="" loading="lazy" />
+              ) : p.thumbnail ? (
+                <img class="is-logo" src={p.thumbnail} alt="" loading="lazy" />
+              ) : (
+                <span class="presentation-type-icon">{p.type === "article" ? "Article" : "Podcast"}</span>
+              )}
+            </a>
+            <div class="presentation-body">
+              <a class="presentation-title" href={p.link}>
+                {p.title}
+              </a>
+              <p class="presentation-meta">
+                {[p.event, formatDate(p.date), p.type !== "talk" && p.type[0].toUpperCase() + p.type.slice(1)]
+                  .filter(Boolean)
+                  .join(" · ")}
+                {filters && <span class="presentation-category">{categories[p.category][0]}</span>}
+              </p>
+              <p class="presentation-people">
+                {p.presenters}
+                {p.organizations && <span> · {p.organizations}</span>}
+              </p>
+              {p.description && <p class="presentation-description">{p.description}</p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))
+}
+</div>
+
+{
+  filters && (
+    <script>
+      const bar = document.querySelector<HTMLElement>(".presentation-filters")!;
+      const buttons = [...bar.querySelectorAll("button")];
+      bar.hidden = false;
+      for (const button of buttons)
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          for (const b of buttons) b.setAttribute("aria-pressed", String(b === button));
+          for (const group of document.querySelectorAll<HTMLElement>(".presentation-library .presentation-group")) {
+            let visible = 0;
+            for (const row of group.querySelectorAll<HTMLElement>(".presentation")) {
+              row.hidden = !!filter && row.dataset.category !== filter;
+              if (!row.hidden) visible++;
+            }
+            group.hidden = visible === 0;
+          }
+        });
+    </script>
+  )
+}
