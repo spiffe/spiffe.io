@@ -139,6 +139,14 @@ entries:
     docs: https://docs.cloud.google.com/iam/docs/workload-identity-federation-with-x509-certificates
     description: Exchanges X.509-SVIDs (over mTLS) and JWT-SVIDs (over OIDC, with an uploadable key set) for access to Google Cloud APIs.
     accepts: [x509, jwt]
+  - name: Microsoft Entra Workload ID
+    kind: cloud-apis
+    provenance: commercial
+    link: https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-overview
+    logo: azure.png
+    docs: https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-spiffe-spire
+    description: Exchanges JWT-SVIDs for Microsoft Entra access tokens to Azure resources through a federated identity credential matching the SPIFFE ID. Needs a public OIDC discovery endpoint and RS256-signed JWT-SVIDs.
+    accepts: [jwt]
   - name: OpenAI API
     kind: cloud-apis
     provenance: commercial
