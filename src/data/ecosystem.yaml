@@ -89,7 +89,7 @@ categories:
         type: community
         weight: 800
         link: https://github.com/tanya-ok/mcp-svid-auth
-        description: Proof of concept that exchanges a JWT-SVID for short-lived, audience-bound OAuth tokens for MCP servers.
+        description: Python authorization server and MCP client wrapper that exchange a JWT-SVID for short-lived, audience-bound OAuth tokens for MCP servers.
 
   - name: Deployment & Workload Helpers
     weight: 300
