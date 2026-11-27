@@ -115,6 +115,20 @@ export default defineConfig({
             href: "/blog/index.xml",
           },
         },
+        {
+          tag: "script",
+          attrs: {
+            async: true,
+            src: "https://www.googletagmanager.com/gtag/js?id=G-SC8WXCFW6M",
+          },
+        },
+        {
+          tag: "script",
+          content: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SC8WXCFW6M');`,
+        },
       ],
     }),
   ],
