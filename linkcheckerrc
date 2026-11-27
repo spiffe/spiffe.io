@@ -6,7 +6,14 @@ timeout=15
 
 [filtering]
 checkextern=1
-ignore=letsencrypt\.org
+# Release assets link the GitHub Releases API's browser_download_url as is and
+# each one redirects to a signed download, so crawling them is slow and adds
+# little. Source archive URLs are built in Releases.astro, so they stay checked.
+# Edit links only redirect to GitHub's login page, which proves nothing.
+ignore=
+  letsencrypt\.org
+  github\.com/spiffe/spire/releases/download/
+  github\.com/spiffe/spiffe\.io/edit/
 
 [output]
 status=0
