@@ -401,8 +401,16 @@
     text-decoration: none;
     vertical-align: middle;
   }
-  h1#_top + .stability-badge {
-    margin-top: 0.75rem;
+  .spec-source {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .spec-source .stability-badge {
+    flex: none;
+  }
+  .spec-source a {
+    color: var(--sl-color-text-accent);
   }
   .stability-badge.stable {
     background: #e2f3d2;

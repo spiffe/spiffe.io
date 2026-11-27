@@ -293,12 +293,6 @@ def _copy_file(
         front_matter["editUrl"] = external_source_url
         target_file.write(_generate_yaml_front_matter(front_matter))
 
-        if target_dir == "spiffe-specs":
-            target_file.write(
-                ":::note\nThis document is part of the SPIFFE standard. The canonical version can be found at "
-                "<{0}>\n:::\n\n".format(external_source_url)
-            )
-
         final_content = _process_content(
             content=content,
             abs_path_to_source_dir=abs_path_to_repo_checkout_dir,

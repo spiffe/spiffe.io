@@ -12,6 +12,7 @@ const {
   hideTitle,
   hideDescription,
   stability,
+  editUrl,
 } = entry.data;
 ---
 
@@ -22,9 +23,21 @@ const {
 ) : (
   <span id="_top"></span>
 )}
-{stability && <StabilityBadge level={stability} link />}
 {description && !hideDescription && !date && (
   <p class="page-description">{description}</p>
+)}
+{stability && (
+  <p class="spec-source">
+    <StabilityBadge level={stability} link />
+    <span>
+      This document is part of the SPIFFE standard.
+      {typeof editUrl === "string" && (
+        <>
+          {" "}The canonical version is <a href={editUrl}>on GitHub ↗</a>
+        </>
+      )}
+    </span>
+  </p>
 )}
 {entry.id.startsWith("blog/") && date && (
   <p class="post-meta">
