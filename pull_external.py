@@ -28,6 +28,8 @@ RE_EXTRACT_LINKS: Pattern[str] = re.compile(
 RE_EXTRACT_GITHUB_PATH: Pattern[str] = re.compile(
     r"https?:\/\/github\.com\/\w+\/\w+\/\w+\/\w+\/(?P<path>.*)"
 )
+# The banner a specification carries beneath its title, see standards/STABILITY.md.
+RE_STABILITY_BANNER: Pattern[str] = re.compile(r"\A> \*\*Stability: (?P<level>\w+)\*\*.*\n+")
 
 # holds the git URL and the new path for links between pulled in files
 internal_links: Dict = {}
@@ -279,6 +281,11 @@ def _copy_file(
         transform_file = transform_file or {}
         front_matter = {"title": heading} if heading else {}
         front_matter.update(transform_file.get("frontMatter", {}))
+        # The page title renders the banner as a badge.
+        banner = RE_STABILITY_BANNER.match(content)
+        if banner:
+            front_matter["stability"] = banner.group("level").lower()
+            content = content[banner.end():]
 
         # Edits go to the canonical source rather than this repository.
         branch = _get_branch_by_repo_url(source, source_branch)

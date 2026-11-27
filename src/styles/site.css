@@ -390,6 +390,66 @@
   .commercial {
     color: #14733b;
   }
+  .stability-badge {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-transform: capitalize;
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  h1#_top + .stability-badge {
+    margin-top: 0.75rem;
+  }
+  .stability-badge.stable {
+    background: #e2f3d2;
+    color: #2d5a0b;
+  }
+  .stability-badge.incubating {
+    background: #fcefcf;
+    color: #7a4d00;
+  }
+  .stability-badge.experimental {
+    background: #eceff1;
+    color: #45525a;
+  }
+  a.stability-badge:hover {
+    text-decoration: underline;
+  }
+  .spec-group h2 .stability-badge {
+    font-size: 1rem;
+  }
+  .spec-group-summary {
+    color: var(--site-chrome-muted);
+  }
+  .spec-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .spec-list li {
+    margin: 0;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--site-chrome-line);
+  }
+  .spec-list li:last-child {
+    border-bottom: none;
+  }
+  .spec-list a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .spec-list a:hover {
+    text-decoration: underline;
+  }
+  .spec-list p {
+    margin: 0.15rem 0 0;
+    font-size: 0.875rem;
+    color: var(--site-chrome-text);
+  }
   .releases button,
   .releases td > a {
     display: block;

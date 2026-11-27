@@ -1,9 +1,18 @@
 ---
 import Default from "@astrojs/starlight/components/PageTitle.astro";
 import { readingTime } from "../lib/content";
+import StabilityBadge from "./StabilityBadge.astro";
 const { entry } = Astro.locals.starlightRoute;
-const { date, author, tags, draft, description, hideTitle, hideDescription } =
-  entry.data;
+const {
+  date,
+  author,
+  tags,
+  draft,
+  description,
+  hideTitle,
+  hideDescription,
+  stability,
+} = entry.data;
 ---
 
 {!hideTitle ? (
@@ -13,6 +22,7 @@ const { date, author, tags, draft, description, hideTitle, hideDescription } =
 ) : (
   <span id="_top"></span>
 )}
+{stability && <StabilityBadge level={stability} link />}
 {description && !hideDescription && !date && (
   <p class="page-description">{description}</p>
 )}
