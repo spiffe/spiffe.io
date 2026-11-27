@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { existsSync, statSync } from "node:fs";
 import {
+  netlifyRedirects,
   normalizeRoute,
   redirectMap,
   resolveRedirect,
@@ -72,6 +73,12 @@ function check(ref, route, allowRedirect = false) {
   const url = new URL(ref, "https://spiffe.io" + route);
   if (url.origin !== "https://spiffe.io") return;
   links++;
+  if (!allowRedirect && redirectRoutes.has(normalizeRoute(url.pathname))) {
+    const to = destination(url);
+    errors.add(
+      `${route}: links to redirect ${ref}, use ${to.pathname}${to.search}${to.hash}`,
+    );
+  }
 
   const original = routeFile(url.pathname);
   if (!existing.has(original)) {
@@ -103,6 +110,12 @@ for (const from of Object.keys(redirects)) {
   if (!html?.includes(redirectScript(redirects[from])))
     errors.add(`${from}: redirect must preserve query and fragment`);
 }
+const httpRedirects = path.join(root, "_redirects");
+if (
+  !existing.has(httpRedirects) ||
+  (await fs.readFile(httpRedirects, "utf8")) !== netlifyRedirects(redirects)
+)
+  errors.add("_redirects must list every redirect as a forced 301");
 if (!existing.has(path.join(root, "pagefind/pagefind.js")))
   errors.add("Missing Pagefind search index");
 if (errors.size) {

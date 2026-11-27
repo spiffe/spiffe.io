@@ -341,7 +341,7 @@ The reference implementation of the Kubernetes layer is linked below, and it run
 ## References & further reading
 
 1. *The Bottom Turtle That Heals Itself - Design* — the architecture this builds on: https://spiffe.io/blog/2026-07-19-bottom-turtle-ha-architecture/
-2. *The Bottom Turtle That Heals Itself - Deployment from Scratch* — the two-server host build, package by package: https://spiffe.io/blog/2026-10-23-bottom-turtle-ha-deployment/
+2. *The Bottom Turtle That Heals Itself - Deployment from Scratch* — the two-server host build, package by package: https://spiffe.io/blog/2026-08-23-bottom-turtle-ha-deployment/
 3. Kubernetes bottom turtle HA reference example — diagrams, values files, registration manifests, and the CI test: https://github.com/spiffe/helm-charts-hardened/tree/main/examples/bottom-turtle-ha
 4. `spire-nested` Helm chart — the `bottomTurtleHAA` / `bottomTurtleHAB` / `haAgentCommon` tags quoted above: https://github.com/spiffe/helm-charts-hardened/tree/main/charts/spire-nested
 5. `k8s-spiffe-workload-auth-config` — maintains the API server's `AuthenticationConfiguration` trust bundle: https://github.com/spiffe/k8s-spiffe-workload-auth-config

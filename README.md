@@ -102,6 +102,8 @@ Markdown sources for the documentation are in [`src/content/docs/docs/latest/`](
 Each directory is a sidebar group headed by its `index` page; pages are ordered
 by `sidebar.order`, then title, and labelled with `sidebar.label` if it is set.
 Old URLs that should keep working go in [`src/data/redirects.json`](src/data/redirects.json).
+The build turns them into HTTP 301s in Netlify's `_redirects` file, plus static
+fallback pages for hosts without server-side redirects.
 
 #### Latest SPIRE version
 

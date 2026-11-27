@@ -1,6 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
+  currentLink,
+  netlifyRedirects,
   redirectMap,
   resolveRedirect,
   redirectScript,
@@ -48,4 +50,26 @@ test("generated client redirect runs the same URL resolution without breaking sc
       .length,
     1,
   );
+});
+
+test("Netlify rules are forced 301s keyed by the normalised source route", () => {
+  assert.equal(
+    netlifyRedirects({ "/old/": "/current/", "/spire": "/docs/latest/spire-about/" }),
+    "/old /current/ 301!\n/spire /docs/latest/spire-about/ 301!\n",
+  );
+});
+
+test("links that hit a redirect point at its destination, keeping query and fragment", () => {
+  const routes = redirectMap({ "/spire/": "/docs/latest/spire-about/" });
+  assert.equal(currentLink("/spire", routes), "/docs/latest/spire-about/");
+  assert.equal(
+    currentLink("/spire/?a=1#attestation", routes),
+    "/docs/latest/spire-about/?a=1#attestation",
+  );
+  assert.equal(
+    currentLink("https://spiffe.io/spire/", routes),
+    "https://spiffe.io/docs/latest/spire-about/",
+  );
+  for (const href of ["/other/", "spire/", "../spire/", "//spiffe.io/spire/", "https://example.com/spire/", "#spire"])
+    assert.equal(currentLink(href, routes), href);
 });

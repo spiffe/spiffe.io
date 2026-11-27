@@ -5,7 +5,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
-import { headingAttributes, spireLatest } from "./scripts/markdown.mjs";
+import {
+  headingAttributes,
+  redirectedLinks,
+  spireLatest,
+} from "./scripts/markdown.mjs";
 
 // In dev, re-pull the external docs when their descriptor changes.
 const pullExternalOnChange = {
@@ -46,7 +50,7 @@ export default defineConfig({
   markdown: {
     processor: unified({
       smartypants: { dashes: "oldschool" },
-      remarkPlugins: [headingAttributes, spireLatest],
+      remarkPlugins: [headingAttributes, spireLatest, redirectedLinks],
     }),
   },
   integrations: [
