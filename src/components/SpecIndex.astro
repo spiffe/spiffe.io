@@ -1,0 +1,42 @@
+---
+import { getPages, pageOrder, route } from "../lib/content";
+import StabilityBadge from "./StabilityBadge.astro";
+
+const levels = {
+  stable: "Breaking changes are reserved for critical security fixes. Safe for production use.",
+  incubating:
+    "The design is settled, but may still change in response to implementation experience. Implementations usually gate these behind a feature flag.",
+  experimental: "May change or be removed at any time.",
+} as const;
+
+const { entry } = Astro.locals.starlightRoute;
+const specs = (await getPages())
+  .filter((p) => p.id.startsWith(entry.id + "/") && p.data.stability)
+  .sort(pageOrder);
+const groups = Object.entries(levels)
+  .map(([level, summary]) => ({
+    level: level as keyof typeof levels,
+    summary,
+    specs: specs.filter((p) => p.data.stability === level),
+  }))
+  .filter((g) => g.specs.length);
+---
+
+{
+  groups.map((g) => (
+    <section class="spec-group">
+      <h2 id={g.level}>
+        <StabilityBadge level={g.level} />
+      </h2>
+      <p class="spec-group-summary">{g.summary}</p>
+      <ul class="spec-list">
+        {g.specs.map((p) => (
+          <li>
+            <a href={route(p)}>{p.data.title}</a>
+            {p.data.description && <p>{p.data.description}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))
+}

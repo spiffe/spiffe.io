@@ -190,38 +190,45 @@ spiffe-specs:
         SPIFFE.md:
             frontMatter:
                 title: Secure Production Identity Framework for Everyone
+                description: Overview of the SPIFFE standards and how they fit together
                 sidebar:
                     label: SPIFFE
                     order: 100
         JWT-SVID.md:
             frontMatter:
                 title: JWT-SVID
+                description: Encoding a SPIFFE ID in a JWT bearer token
                 sidebar:
                     order: 300
         X509-SVID.md:
             frontMatter:
                 title: X509-SVID
+                description: Encoding a SPIFFE ID in an X.509 certificate
                 sidebar:
                     order: 300
         SPIFFE-ID.md:
             frontMatter:
                 title: SPIFFE Identity and Verifiable Identity Document
+                description: The SPIFFE ID URI format and the verifiable identity document that carries it
                 sidebar:
                     label: SPIFFE ID and Verifiable Identity Document
                     order: 200
         SPIFFE_Federation.md:
             frontMatter:
                 title: SPIFFE Federation
+                description: Exchanging trust bundles between trust domains
                 sidebar:
                     order: 500
         SPIFFE_Trust_Domain_and_Bundle.md:
             frontMatter:
                 title: SPIFFE Trust Domain and Bundle
+                description: Trust domains and the bundles of keys used to validate their SVIDs
                 sidebar:
                     order: 200
         SPIFFE_Workload_API.md:
             frontMatter:
                 title: SPIFFE Workload API
+                description: The gRPC API workloads use to fetch their SVIDs and trust bundles
                 sidebar:
                     order: 400
             anchors:
@@ -229,31 +236,37 @@ spiffe-specs:
         SPIFFE_Workload_Endpoint.md:
             frontMatter:
                 title: SPIFFE Workload Endpoint
+                description: How the Workload API is exposed to workloads and how it authenticates callers
                 sidebar:
                     order: 400
         WIT-SVID.md:
             frontMatter:
                 title: WIT-SVID
+                description: A SPIFFE profile of the WIMSE Workload Identity Token, which binds a workload's identity to a public key
                 sidebar:
                     order: 350
         SPIFFE_Broker_API.md:
             frontMatter:
                 title: SPIFFE Broker API
+                description: Lets trusted brokers fetch SVIDs and bundles on behalf of the workloads they reference
                 sidebar:
                     order: 450
         SPIFFE_Broker_Endpoint.md:
             frontMatter:
                 title: SPIFFE Broker Endpoint
+                description: How the Broker API is exposed and how it authenticates brokers
                 sidebar:
                     order: 460
         SPIFFE_Filesystem_Delivery.md:
             frontMatter:
                 title: SPIFFE Filesystem Delivery
+                description: Delivering SVIDs and trust bundles to workloads as files on disk
                 sidebar:
                     order: 470
         STABILITY.md:
             frontMatter:
                 title: SPIFFE Specification Stability
+                description: The stability levels a specification moves through, and what each one promises
                 sidebar:
                     label: Specification Stability
                     order: 600

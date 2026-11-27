@@ -1,0 +1,13 @@
+---
+type Props = { level: "experimental" | "incubating" | "stable"; link?: boolean };
+const { level, link } = Astro.props;
+const Tag = link ? "a" : "span";
+---
+
+<Tag
+  class={`stability-badge ${level}`}
+  href={link ? "/docs/latest/spiffe-specs/stability/" : undefined}
+  title={link ? "About specification stability levels" : undefined}
+>
+  {level}
+</Tag>

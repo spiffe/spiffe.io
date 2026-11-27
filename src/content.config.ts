@@ -73,6 +73,7 @@ export const collections = {
           tagline: z.string().optional(),
           event: event.optional(),
           agenda: agenda.optional(),
+          stability: z.enum(["experimental", "incubating", "stable"]).optional(),
         }),
       })(context).transform((data) => ({
         ...data,
